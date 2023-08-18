@@ -1,0 +1,40 @@
+.. _Masks_in_VTS:
+
+Physical masks in VTS
+==================================================================================
+
+A physical mask describes irregularities of the aiming volume of a ground station due to obstacles (relief, buildings, ...). It applies to the full visibility area (no minimal elevation angle).
+
+Mask point coordinates describe the contour of a closed shape in elevation/azimuth. To represent a line of sight, it's necessary to close to the surface along the horizon. Using this convention, any shape can be represented as a mask.
+
+
+.. figure:: /_images/MaskRing.png
+   :scale: 50 %
+   :align: center
+
+   Ring shaped mask in ZenithView
+
+.. figure:: /_images/MaskDisc.png
+   :scale: 50 %
+   :align: center
+
+   Disc shaped mask in ZenithView
+
+
+.. _Masks_in_VTS#CIC/CIC/CCSDS_mask_file_format:
+
+CIC/CCSDS mask file format
+----------------------------------------------------------------------------------
+Masks are defined in CIC/CCSDS files in MPM format. For more information on the CIC/CCSDS file format, refer to the :ref:`CIC-CCSDS data files in VTS <CIC-CCSDS_data_files_in_VTS>` chapter.
+
+A CIC/CCSDS mask file must have the following characteristics:
+
+- The ``USER_DEFINED_PROTOCOL`` must be ``NONE``.
+- The ``USER_DEFINED_CONTENT`` may be arbitrary.
+- The ``USER_DEFINED_SIZE`` must be ``2``.
+- The ``USER_DEFINED_TYPE`` must be ``REAL``.
+- The ``USER_DEFINED_UNIT`` must be ``[deg]``.
+
+The data values in the file are coordinates in elevation/azimuth.
+
+In masks files, the special data value ``180 180`` is interpreted as a separator and will create a new polygon with the following sequence of coordinates.

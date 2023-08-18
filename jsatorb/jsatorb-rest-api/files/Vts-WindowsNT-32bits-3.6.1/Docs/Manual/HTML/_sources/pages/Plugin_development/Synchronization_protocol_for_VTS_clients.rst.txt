@@ -1,0 +1,2489 @@
+.. _Synchronization_protocol_for_VTS_clients:
+
+Synchronization protocol for VTS clients
+==================================================================================
+
+Once all client application launchers have successfully terminated, the Broker starts all client applications with their respective command-line arguments. Client applications must then connect to the Broker via TCP. Once connection has been established, the VTS synchronization protocol is used for communication between the Broker and its clients.
+
+.. This chapter describes version **2.0** of the VTS synchronization protocol. Differences between version 1.0 and 2.0 are detailed whenever necessary.
+
+
+.. _Synchronization_protocol_for_VTS_clients#Message_syntax:
+
+Message syntax
+----------------------------------------------------------------------------------
+Messages must abide by the following syntax rules in order to be correctly parsed by VTS and standard client applications:
+
+1. Sent messages must be followed by a terminating newline character (``\n``)
+2. Message fields which contain whitespace (spaces, tabs) must be quoted using double quotes (e.g. ``"field with whitespace"``)
+3. Literal quotes in message fields must be escaped with a backslash (e.g. ``"field with \"literal quotes\""``)
+4. Literal backslashes in message fields must be escaped with an additional backslash (e.g. ``"C:\\path\\to\\file"``)
+
+
+.. _Synchronization_protocol_for_VTS_clients#Connecting_to_the_Broker:
+
+Connecting to the Broker
+----------------------------------------------------------------------------------
+In order to engage communication with the Broker, **client applications must connect to a socket server setup by the Broker**.
+
+
+- By default, the Broker server port is 8888. In this case, the launchers are started with no specific port option.
+- If VTS is configured for open ports scanning, the launchers are started with a ``--serverport <portNum>`` option in command line. See the chapter *Broker Options* of the section :ref:`VTS_configuration_utility_user_manual` for more information.
+
+
+.. _Synchronization_protocol_for_VTS_clients#Messages_received_by_the_Broker:
+
+Messages received by the Broker
+----------------------------------------------------------------------------------
+This section describes the commands client applications may send to the Broker.
+
+
+.. _Synchronization_protocol_for_VTS_clients#INIT_message:_connection_to_the_Broker:
+
+*INIT* message: connection to the Broker
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Once connected to the server, client applications must sent the following initialization command to engage communication:
+
+.. code-block:: bash
+
+   INIT <Name> <ClientType> [ProtocolVersion] [ClientId]
+
+The parameters for this command are described below:
+
+.. list-table::
+   :header-rows: 1
+
+   * - Parameter
+     - Required
+     - Description
+     - Format (unit)
+     - See also
+   * - Name
+     - Yes
+     - Name of the client
+     - Character string
+     -
+   * - ClientType
+     - Yes
+     - Time behavior of the client
+     - CONSTRAINT or REGULATING
+     - :ref:`Real-time VTS`
+   * - ProtocolVersion
+     - Optional (default: 1.0)
+     - Synchronization protocol version
+     - Integer.Integer
+     -
+   * - ClientId
+     - Optional (auto attribution of an external ID if not provided)
+     - Unique client ID
+     - Integer
+     - Application IDs in VTS
+
+Commands can be sent by the client before INIT, but no TIME or DATA paquets will be received until the INIT message is sent to the Broker.
+
+Below are some sample *INIT* commands:
+
+.. code-block:: bash
+
+   INIT PrestoPlot CONSTRAINT 1.0 2
+
+.. code-block:: bash
+
+   INIT Simulator REGULATING
+
+.. It is important to specify the adequate protocol version. The current (latest) protocol version is ``2.0``. Starting from version 2.0, the differences between protocols versions are:
+..   - Support for Data bus commands (version 1.0 does not recognize these commands),
+..   - Commands encoding in ``UTF-8`` (version 1.0 encodes in ``ISO-8859-1``)
+..   - ``DATA`` commands now specify the ``ProviderID`` as the first argument (not specified in version 1.0)
+
+
+.. _Synchronization_protocol_for_VTS_clients#TIME_messages:
+
+*TIME* messages
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Client applications may set the visualization date and time ratio. This is used for example when drag-and-dropping a satellite in the SurfaceView client application.
+
+*TIME* commands have the following syntax:
+
+.. code-block:: bash
+
+   TIME <TimeJD1950> [TimeRatio]
+
+.. list-table::
+   :header-rows: 1
+
+   * - Parameter
+     - Required
+     - Description
+     - Format (unit)
+     - See also
+   * - TimeJD1950
+     - Yes
+     - Visualization date in JD1950 format
+     - Real number
+     - Date formats in VTS
+   * - TimeRatio
+     - Optional
+     - Time ratio
+     - Real number
+     -
+
+The date must be provided in JD1950 format. The time ratio defines the speed ratio between visualization time and wall-clock time. If it is not provided, the current time ratio is kept.
+
+For example, the following messages set the visualization date to July 9th, 2016 at 00:00:03, with a time ratio of 10 compared to real time (10 seconds of visualization time pass with each second of wall-clock time):
+
+.. code-block:: bash
+
+   TIME 24296.000042 10.00000
+
+Only clients with *CONSTRAINT* time behavior may provide a time ratio. For *REGULATING* clients, the actual time ratio is computed by the Broker.
+
+
+.. _Synchronization_protocol_for_VTS_clients#CMD_messages:
+
+*CMD* messages
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Command messages allow some level of control over the visualization.
+They are divided in several categories:
+
+- *CMD TIME* commands alter the flow of time (but do not modify the visualization date or time ratio: refer to the *TIME* messages above for this)
+- *CMD SERVICE* commands control various aspects of the visualization unrelated to time
+- *CMD TIMELINE* commands deal with the CIC/CCSDS files displayed in the timeline
+- *CMD EVENT* commands deal with CIC/CCSDS mission event files for the visualization
+
+
+.. _Synchronization_protocol_for_VTS_clients#CMD_TIME_messages:
+
+*CMD TIME* messages
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+.. _Synchronization_protocol_for_VTS_clients#PAUSE_command:
+
+*PAUSE* command
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The *PAUSE* command stops the time flow in the Broker. This is equivalent to pressing the **Pause** button in the Broker's GUI.
+
+This command has the following syntax:
+
+.. code-block:: bash
+
+   CMD TIME PAUSE
+
+When paused, the Broker keeps sending *TIME* messages with the current visualization date (even though it remains constant).
+
+
+.. _Synchronization_protocol_for_VTS_clients#PLAY_command:
+
+*PLAY* command
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The *PLAY* command resumes the time flow in the Broker. This is equivalent to pressing the **Play** button in the Broker's GUI.
+
+This command has the following syntax:
+
+.. code-block:: bash
+
+   CMD TIME PLAY
+
+
+.. _Synchronization_protocol_for_VTS_clients#IncreaseTimeRatio_command:
+
+*IncreaseTimeRatio* command
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The *IncreaseTimeRatio* command increases the time ratio in the Broker. The increase depends on the current time ratio. The predefined time ratio sequence is: 1x, 2x, 5x, 10x, 20x, 50x, 100x, etc.
+This is equivalent to pressing the corresponding button in the Broker's GUI.
+
+This command has the following syntax:
+
+.. code-block:: bash
+
+   CMD TIME IncreaseTimeRatio
+
+.. _Synchronization_protocol_for_VTS_clients#DecreaseTimeRatio_command:
+
+*DecreaseTimeRatio* command
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The *DecreaseTimeRatio* command decreases the time ratio in the Broker. It is the opposite of the *IncreaseTimeRatio* command.
+This is equivalent to pressing the corresponding button in the Broker's GUI.
+
+This command has the following syntax:
+
+.. code-block:: bash
+
+   CMD TIME DecreaseTimeRatio
+
+
+.. _Synchronization_protocol_for_VTS_clients#SetTimeRatio_command:
+
+*SetTimeRatio* command
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The *SetTimeRatio* command sets a custom time ratio in the Broker. It is redundant with the *[TimeRatio]* parameter of the *TIME* message, but does not require a visualization date to be provided.
+
+This command has the following syntax:
+
+.. code-block:: bash
+
+   CMD TIME SetTimeRatio <TimeRatio>
+
+.. list-table::
+   :header-rows: 1
+
+   * - Parameter
+     - Required
+     - Description
+     - Format (unit)
+     - See alos
+   * - TimeRatio
+     - Yes
+     - Time ratio
+     - Real number
+     -
+
+For example, the following commands set a visualization time ratio 10x slower than wall-clock time:
+
+.. code-block:: bash
+
+   CMD TIME SetTimeRatio 0.1
+
+.. _Synchronization_protocol_for_VTS_clients#RevertTime_command:
+
+*RevertTime* command
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The *RevertTime* command reverses the time flow direction. This is equivalent to pressing the corresponding button in the Broker's GUI.
+
+This command has the following syntax:
+
+.. code-block:: bash
+
+   CMD TIME RevertTime
+
+
+.. _Synchronization_protocol_for_VTS_clients#TimeModeChangedTo_command:
+
+*TimeModeChangedTo* command
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The *TimeModeChangedTo* command specifies de time mode currently in use. It can be useful for client to adapt their behavior according the mode.
+
+This command has the following syntax:
+
+.. code-block:: bash
+
+   CMD TIME TimeModeChangedTo <mode>
+
+The mode can be "STANDALONE", "REGULATED", "SYSTIME" or "RECORDING".
+
+
+*CMD SERVICE* messages
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+.. _Synchronization_protocol_for_VTS_clients#AUTOCLOSE_command:
+
+*AUTOCLOSE* command
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The *AUTOCLOSE* command instructs the Broker to close the visualization session. All client applications are disconnected, clients started by the Broker are terminated, and the Broker itself exits.
+
+This command has the following syntax:
+
+.. code-block:: bash
+
+   CMD SERVICE AUTOCLOSE
+
+.. _Synchronization_protocol_for_VTS_clients#AUTORESTART_command:
+
+*AUTORESTART* command
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The *AUTORESTART* command instructs the Broker to restart the visualization session. The Broker does the AUTOCLOSE process and then :
+
+- Restarts itself with the same project file if the --externalRestart has not been set
+- Closes with a special return code otherwise (i.e. it will be restart by the configuration utility)
+
+This command has the following syntax:
+
+.. code-block:: bash
+
+   CMD SERVICE AUTOCLOSE
+
+
+.. _Synchronization_protocol_for_VTS_clients#Request_replies:
+
+Request replies
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+These commands are sent in reply of requests from the Broker. Refer to the :ref:`paragraph below <Synchronization_protocol_for_VTS_clients#Requests>` for more information on the various Broker requests.
+
+
+.. _Synchronization_protocol_for_VTS_clients#StoreCommand_command:
+
+*StoreCommand* command
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The *StoreCommand* command is sent in reply to a :ref:`Synchronization_protocol_for_VTS_clients#SaveState_request` or :ref:`Synchronization_protocol_for_VTS_clients#SaveWindow_request` context save request. It instructs the Broker to store a view property command for the application into the current scenario state.
+
+This command has the following syntax:
+
+.. code-block:: bash
+
+   CMD SERVICE StoreCommand <ViewPropertyCommand>
+
+.. list-table::
+   :header-rows: 1
+
+   * - Parameter
+     - Required
+     - Description
+     - Format (unit)
+     - See also
+   * - ViewPropertyCommand
+     - Yes
+     - Command for setting a view property of the application
+     - Character string
+     - CMD PROP commands, CMD STRUCT commands
+
+Commands stored through a *StoreCommand* command will be sent back to the client application when the scenario state they are stored in becomes active. For more information on the project scenario, refer to the :ref:`Scenario_in_VTS` chapter.
+
+
+.. _Synchronization_protocol_for_VTS_clients#SaveStateFinished_command:
+
+*SaveStateFinished* command
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The *SaveStateFinished* command instructs the Broker that all :ref:`Synchronization_protocol_for_VTS_clients#StoreCommand_command` (see above) in reply to a :ref:`Synchronization_protocol_for_VTS_clients#SaveState_request` or :ref:`Synchronization_protocol_for_VTS_clients#SaveWindow_request` context save request have been sent by the client application.
+
+This command has the following syntax:
+
+.. code-block:: bash
+
+   CMD SERVICE SaveStateFinished
+
+
+.. _Synchronization_protocol_for_VTS_clients#Synchronized_command:
+
+*Synchronized* command
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The *Synchronized* command is sent by clients in reply to a :ref:`Synchronization_protocol_for_VTS_clients#SynchroRequested_request`, to indicate that the client is synchronized and ready for screen capture.
+
+This command has the following syntax:
+
+.. code-block:: bash
+
+   CMD SERVICE Synchronized
+
+The recording of high quality movies in VTS requires client applications to ensure that once a *Synchronized* command has been issued, the visualized scene in the sender will remain frozen until the next *TIME* or *CMD TIME PLAY* message received from the Broker. Refer to the :ref:`Broker_user_manual#Recording_movies` section in the :ref:`Broker_user_manual` chapter for more information on movies in VTS.
+
+
+.. _Synchronization_protocol_for_VTS_clients#CaptureArea_command:
+
+*CaptureArea* command
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The *CaptureArea* command instructs the Broker to take a screenshot of a desktop area.
+
+This command has the following syntax:
+
+.. code-block:: bash
+
+   CMD SERVICE CaptureArea <X> <Y> <Width> <Height> <ImagePath>
+
+.. list-table::
+   :header-rows: 1
+
+   * - Parameter
+     - Required
+     - Description
+     - Format (unit)
+     - See also
+   * - X
+     - Yes
+     - X coordinate of the area top left corner
+     - Integer
+     -
+   * - Y
+     - Yes
+     - Y coordinate of the area top left corner
+     - Integer
+     -
+   * - Width
+     - Yes
+     - Width of the captured area
+     - Integer
+     -
+   * - Height
+     - Yes
+     - Height of the captured area
+     - Integer
+     -
+   * - ImagePath
+     - Yes
+     - Image path
+     - Character string
+     -
+
+.. _Synchronization_protocol_for_VTS_clients#StartApplication_command:
+
+*StartApplication* command
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The *StartApplication* command instructs the Broker to start a new instance of the specified client application.
+
+This command has the following syntax:
+
+.. code-block:: bash
+
+   CMD SERVICE StartApplication <ApplicationName> [ApplicationId]
+
+.. list-table::
+   :header-rows: 1
+
+   * - Parameter
+     - Required
+     - Description
+     - Format (unit)
+     - See also
+   * - ApplicationName
+     - Yes
+     - Application name
+     - Character string
+     -
+   * - ApplicationId
+     - Optional (default: -1)
+     - Application ID
+     - Positive or null integer
+     - Application IDs in VTS
+
+The provided application name must match that of a client application available to VTS. If the provided application ID is already used amongst already connected clients, the clients is restarted if it is in a sleeping state. If the ID is known and the application is running, the application is not restarted.
+
+
+.. _Synchronization_protocol_for_VTS_clients#StopApplication_command:
+
+*StopApplication* command
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The *StopApplication* command instructs the Broker to stop a running client application.
+
+This command has the following syntax:
+
+.. code-block:: bash
+
+   CMD SERVICE StopApplication <ApplicationId>
+
+.. list-table::
+   :header-rows: 1
+
+   * - Parameter
+     - Required
+     - Description
+     - Format (unit)
+     - See also
+   * - ApplicationId
+     - Yes (default: -1)
+     - Application ID
+     - Positive or null integer
+     - Application IDs in VTS
+
+The provided application ID must match that of a running client application. If the provided application ID is not used by any application or if the client application is already stopped, the command has no effect.
+
+Please note that external applications (not launched by the Broker) cannot be stopped using this command.
+
+
+.. _Synchronization_protocol_for_VTS_clients#CMD_TIMELINE_messages:
+
+*CMD TIMELINE* messages
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+*CMD TIMELINE* messages allow client applications to add, remove or reload CIC/CCSDS files to the timeline.
+
+
+.. _Synchronization_protocol_for_VTS_clients#CMD_TIMELINE_LoadFile_command:
+
+*LoadFile* command
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The *LoadFile* command instructs the Broker to load a new CIC/CCSDS file, and display it in the timeline. If the specified file is already present in the timeline, this command has no effect.
+
+This command has the following syntax:
+
+.. code-block:: bash
+
+   CMD TIMELINE LoadFile <FilePath>
+
+
+.. list-table::
+   :header-rows: 1
+
+   * - Parameter
+     - Required
+     - Description
+     - Format (unit)
+     - See also
+   * - FilePath
+     - Yes
+     - Absolute or project-relative path to a CIC/CCSDS file in OEM, AEM or MEM format
+     - Character string
+     -
+
+.. _Synchronization_protocol_for_VTS_clients#CMD_TIMELINE_ReloadFile_command:
+
+*ReloadFile* command
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The *ReloadFile* command instructs the Broker to reload an already loaded CIC/CCSDS file. If the specified file is not present in the timeline, this command has no effect.
+
+This command has the following syntax:
+
+.. code-block:: bash
+
+   CMD TIMELINE ReloadFile <FilePath>
+
+.. list-table::
+   :header-rows: 1
+
+   * - Parameter
+     - Required
+     - Description
+     - Format (unit)
+     - See also
+   * - FilePath
+     - Yes
+     - Absolute or project-relative path to a CIC/CCSDS file in OEM, AEM or MEM format
+     - Character string
+     -
+
+.. _Synchronization_protocol_for_VTS_clients#CMD_TIMELINE_UnloadFile_command:
+
+*UnloadFile* command
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The *UnloadFile* command instructs the Broker to unload an already loaded CIC/CCSDS file from the timeline.
+
+This command has the following syntax:
+
+.. code-block:: bash
+
+   CMD TIMELINE UnloadFile <FilePath>
+
+.. list-table::
+   :header-rows: 1
+
+   * - Parameter
+     - Required
+     - Description
+     - Format (unit)
+     - See also
+   * - FilePath
+     - Yes
+     - Absolute or project-relative path to a CIC/CCSDS file in OEM, AEM or MEM format
+     - Character string
+     -
+
+Note that the specified file must have been loaded previously via a ``CMD TIMELINE LoadFile`` command.
+Files added in the VTS configuration utility may not be removed via the ``CMD TIMELINE UnloadFile`` command: they can only be removed from the VTS configuration utility or the Broker itself.
+
+
+*CMD EVENT* messages
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+*CMD EVENT* messages allow client applications to add, remove or reload CIC/CCSDS mission event files attached to project entities. The Broker will process these commands and forward them to all clients (except the sender client).
+
+
+.. _Synchronization_protocol_for_VTS_clients#CMD_EVENT_LoadFile_command:
+
+*LoadFile* command
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The *LoadFile* command instructs the Broker to load a new CIC/CCSDS event file, and attach it to a project satellite.
+
+This command has the following syntax:
+
+.. code-block:: bash
+
+   CMD EVENT LoadFile <EventFilePath> <SatelliteFullName>
+
++-------------------+----------+---------------------------------------------------------------------------+------------------+---------------------+
+| Parameter         | Required | Description                                                               | Format (unit)    | See also            |
++===================+==========+===========================================================================+==================+=====================+
+| EventFilePath     | Yes      | Absolute or project-relative path to a CIC/CCSDS event file in MEM format | Character string |                     |
++-------------------+----------+---------------------------------------------------------------------------+------------------+---------------------+
+| SatelliteFullName | Yes      | Full name of the satellite to attach the event file to                    | Character string | Object paths in VTS |
++-------------------+----------+---------------------------------------------------------------------------+------------------+---------------------+
+
+.. _Synchronization_protocol_for_VTS_clients#CMD_EVENT_ReloadFile_command:
+
+*ReloadFile* command
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The *ReloadFile* command instructs the Broker to reload an already loaded CIC/CCSDS event file. If the specified file is not an already loaded event file, this command has no effect.
+
+This command has the following syntax:
+
+.. code-block:: bash
+
+   CMD EVENT ReloadFile <EventFilePath>
+
++---------------+----------+---------------------------------------------------------------------------+------------------+----------+
+| Parameter     | Required | Description                                                               | Format (unit)    | See also |
++===============+==========+===========================================================================+==================+==========+
+| EventFilePath | Yes      | Absolute or project-relative path to a CIC/CCSDS event file in MEM format | Character string |          |
++---------------+----------+---------------------------------------------------------------------------+------------------+----------+
+
+.. _Synchronization_protocol_for_VTS_clients#CMD_EVENT_UnloadFile_command:
+
+*UnloadFile* command
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The *UnloadFile* command instructs the Broker to unload and detach an already loaded CIC/CCSDS event file from all project satellites. Events from this file are no longer attached to any satellite.
+
+This command has the following syntax:
+
+.. code-block:: bash
+
+   CMD EVENT UnloadFile <EventFilePath>
+
++---------------+----------+---------------------------------------------------------------------------+------------------+----------+
+| Parameters    | Required | Description                                                               | Format (unit)    | See also |
++===============+==========+===========================================================================+==================+==========+
+| EventFilePath | Yes      | Absolute or project-relative path to a CIC/CCSDS event file in MEM format | Character string |          |
++---------------+----------+---------------------------------------------------------------------------+------------------+----------+
+
+Note that the specified file must have been loaded previously via a ``CMD EVENT LoadFile`` command.
+Event files configured in the VTS configuration utility may not be removed via the ``CMD EVENT UnloadFile`` command: they can only be removed from the VTS configuration utility itself.
+
+
+.. _Synchronization_protocol_for_VTS_clients#FWD_messages:
+
+*FWD* messages
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+*FWD* messages provide inter-client communication, by forwarding messages from one client to another.
+
+These messages have the following syntax:
+
+.. code-block:: bash
+
+   FWD <RecipientId> <Message>
+
+table
+
++-------------+----------+-------------------------------------+---------------------------------------+------------------------+
+| Parameter   | Required | Description                         | Format (unit)                         | See also               |
++=============+==========+=====================================+=======================================+========================+
+| RecipientId | Yes      | Application ID of the recipient     | ALL character string                  | Application IDs in VTS |
+|             |          |                                     | Positive or null integer              |                        |
++-------------+----------+-------------------------------------+---------------------------------------+------------------------+
+| Message     | Yes      | Message to forward to the recipient | Character string (may contain spaces) |                        |
++-------------+----------+-------------------------------------+---------------------------------------+------------------------+
+
+The recipient ID must be an existing client application ID for the current visualization. If the ID is not registered in the Broker, the command is bufferised and will be send when an application connect with this exact ID.
+
+Client application IDs are displayed in the :ref:`*Applications* tab <Broker_user_manual#Applications_tab>` of the Broker.
+The *ALL* character string may be used instead of a numerical ID to broadcast the message to all clients (except the sender).
+
+The transferred message may contain spaces. It will be transferred as is to the recipient(s).
+
+Below are a few sample forward messages:
+
+- Hide solar arrays in all 3D clients displaying them (the clients must implement the *Visible* structural property for the command to have any effect):
+
+.. code-block:: bash
+
+   FWD ALL CMD STRUCT Visible "Sol/Earth/CubeSat/GS" true
+
+
+
+- Reset view position and zoom level in client ID 0 (for this command to have any effect, client ID 0 must be a SurfaceView client application):
+
+.. code-block:: bash
+
+   FWD 0 CMD PROP ViewInfos Default
+
+
+
+.. _Synchronization_protocol_for_VTS_clients#DATA_messages:
+
+*DATA* messages
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+*DATA* messages are described in the :ref:`Synchronization_protocol_for_VTS_clients#Real-time_VTS` section below. They provide data for streamed values.
+
+
+.. _Synchronization_protocol_for_VTS_clients#Common_messages_received_by_client_applications:
+
+Common messages received by client applications
+----------------------------------------------------------------------------------
+Some messages received by clients from the Broker are common across all client applications. This section describes those messages. Application-specific messages are described further below.
+
+Messages received by client applications are categorized as follows:
+
+- *TIME* messages concern time synchronization
+- *CMD* messages control various aspects of the visualization
+- *DATA* messages provide values for streamed data
+
+Some commands have similar syntax as commands received by the Broker described in the above section.
+
+
+.. _Synchronization_protocol_for_VTS_clients#CMD_EVENT_TIME_messages:
+
+*TIME* messages
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Time messages synchronize client applications with the current visualization date. Client applications must handle these messages in order to properly synchronize with VTS.
+
+When no *REGULATING* client is connected, the Broker broadcasts the current visualization date to all clients at a rate of 2 Hertz.
+
+These messages have the following syntax:
+
+.. code-block:: bash
+
+   TIME <TimeJD1950> <TimeRatio>
+
+
+Parameters are the same as those described in the :ref:`*TIME* messages <Synchronization_protocol_for_VTS_clients#TIME_messages>` paragraph of the :ref:`Messages received by the Broker <Synchronization_protocol_for_VTS_clients#Messages_received_by_the_Broker>` section above, except that the time ratio is always provided.
+
+Client applications which interpolate date between time ticks sent by the Broker may use the date provided in *TIME* messages to synchronize their interpolation loop.
+
+Note that when the visualization is paused, the time ratio is set to 0.
+
+
+*CMD* messages
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Command messages control various aspects of the visualization for clients. They are divided in several categories:
+
+- *CMD TIME* commands inform about alterations to the flow of time (but do not provide the visualization date or time ratio: refer to the *TIME* messages above for this)
+- *CMD SERVICE* commands control various aspects of the visualization unrelated to time
+- *CMD EVENT* commands deal with CIC/CCSDS mission event files for the visualization
+- *CMD CAMERA* commands define the camera position and target for client applications handling camera commands
+- *CMD PROP* commands set new values for specific view properties of client applications
+- *CMD STRUCT* commands set new values for structural view properties of client applications
+
+
+*CMD TIME* messages
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+*PAUSE* command
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The *PAUSE* command informs client applications that visualization is paused. Clients may then stop all animation of the visualization scene, while still letting the user interact with their GUI.
+
+This command has the following syntax:
+
+.. code-block:: bash
+
+   CMD TIME PAUSE
+
+
+Visualization date is still sent by the Broker when the visualization is paused. However it remains constant, and the time ratio is set to 0.
+
+
+*PLAY* command
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The *PLAY* command informs client applications that visualization has resumed from pause.
+
+This command has the following syntax:
+
+.. code-block:: bash
+
+   CMD TIME PLAY
+
+
+*CMD SERVICE* messages
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+.. _Synchronization_protocol_for_VTS_clients#Initialization_commands:
+
+Initialization commands
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Upon connection (after reception of the *INIT* messages), the Broker sends several initialization commands to inform client applications of the main objects for the visualization.
+
+
+.. _Synchronization_protocol_for_VTS_clients#InitCentralBody_command:
+
+*InitCentralBody* command
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The *InitCentralBody* command informs client applications of a central body used in the visualization. This may be used by client applications to trigger specific initialization for this central body.
+One such command is sent for each central body of the visualization.
+
+This command has the following syntax:
+
+.. code-block:: bash
+
+   CMD SERVICE InitCentralBody <CentralBodyName> <FullParentPath>
+
+.. list-table::
+   :header-rows: 1
+
+   * - Parameter
+     - Description
+     - Format (unit)
+     - See also
+   * - CentralBodyName
+     - Name of a central body
+     - Character string
+     - Object paths in VTS
+   * - FullParentPath
+     - Full path to the body's parent
+     - Character string
+     - Object paths in VTS
+
+
+.. _Synchronization_protocol_for_VTS_clients#InitSatellite_command:
+
+*InitSatellite* command
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The *InitSatellite* command informs client applications of a satellite taking part in the visualization. This may be used by client applications to trigger specific initialization for this satellite.
+One such command is sent for each satellite of the visualization.
+
+This command has the following syntax:
+
+.. code-block:: bash
+
+   CMD SERVICE InitSatellite <SatelliteName> <FullParentPath>
+
+.. list-table::
+   :header-rows: 1
+
+   * - Parameter
+     - Description
+     - Format (unit)
+     - See also
+   * - SatelliteName
+     - Name of a satellite
+     - Character string
+     - Object paths in VTS
+   * - FullParentPath
+     - Full path to the satellite's parent (should be a central body)
+     - Character string
+     - Object paths in VTS
+
+
+.. _Synchronization_protocol_for_VTS_clients#Requests:
+
+Requests
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Requests are special commands for which the Broker expects replies from client applications within a defined time frame. Refer to the :ref:`Request replies <Synchronization_protocol_for_VTS_clients#Request_replies>` paragraph above for more information on request replies.
+
+
+.. _Synchronization_protocol_for_VTS_clients#SaveState_request:
+
+*SaveState* request
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The *SaveState* request informs client applications that a scenario state context save is ongoing, and instructs them to send commands for the view properties declared in their INI files back to the Broker.
+
+This request has the following syntax:
+
+.. code-block:: bash
+
+   CMD SERVICE SaveState
+
+
+Client applications should reply using :ref:`*StoreCommand* commands <Synchronization_protocol_for_VTS_clients#StoreCommand_command>` described above. Once all properties have been sent back, a :ref:`*SaveStateFinished* command <Synchronization_protocol_for_VTS_clients#SaveStateFinished_command>` should be issued to inform the Broker that the context save is complete.
+
+**Note:** Once the *SaveState* request has been issued by the Broker, client applications are expected to send all *StoreCommand* commands and the *SaveStateFinished* command within '*3 seconds*'. Beyond this time frame, the context save will time out for clients which have not responded.
+
+Refer to the :ref:`Timeline toolbar <Scenario_in_VTS#Timeline_toolbar>` section of the :ref:`Scenario in VTS <Scenario_in_VTS>` chapter for more information on scenario state context save actions.
+
+Note that this request does not concern the special *WindowGeometry* property. This property should only be sent in reply to a :ref:`*SaveWindow* request <Synchronization_protocol_for_VTS_clients#SaveWindow_request>` (see below).
+
+
+.. _Synchronization_protocol_for_VTS_clients#SaveWindow_request:
+
+*SaveWindow* request
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The *SaveWindow* request informs client applications that a window position and geometry context save is ongoing, and instructs them to send back to the Broker the corresponding :ref:`*StoreCommand* command <Synchronization_protocol_for_VTS_clients#StoreCommand_command>`.
+
+This request has the following syntax:
+
+.. code-block:: bash
+
+   CMD SERVICE SaveWindow
+
+
+Client applications should reply with a single *StoreCommand* command for the specific *WindowGeometry* property command. The value for this property is application-specific, e.g. *CMD SERVICE StoreCommand CMD PROP WindowGeometry 0 480 640 480*.
+
+**Note:** Once the *SaveWindow* request has been issued by the Broker, client applications are expected to send back a *StoreCommand* command for the *WindowGeometry* property within **1 second**. Beyond this time frame, the context save will time out for clients which have not responded.
+
+Refer to the :ref:`Timeline toolbar <Scenario_in_VTS#Timeline_toolbar>` section of the :ref:`Scenario in VTS <Scenario_in_VTS>` chapter for more information on window position and geometry context save actions.
+
+
+.. _Synchronization_protocol_for_VTS_clients#SynchroRequested_request:
+
+*SynchroRequested* request
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The *SynchroRequested* request instructs client applications that they should freeze the visualization at the last transmitted visualization date. This request is transmitted when a movie recording is ongoing in the Broker. Refer to the :ref:`Recording movies <Broker_user_manual#Recording_movies>` section in the :ref:`Broker user manual <Broker_user_manual>` chapter for more information on movies in VTS.
+
+This request has the following syntax:
+
+.. code-block:: bash
+
+   CMD SERVICE SynchroRequested
+
+
+Client applications should reply with the :ref:`*Synchronized* command <Synchronization_protocol_for_VTS_clients#Synchronized_command>` once they are synchronized with the current visualization date. The Broker will capture a movie frame once all client applications have replied (or timed out).
+
+**Note:** Once the *SynchroRequested* request has been issued by the Broker, client applications are expected to send back a *Synchronized* command within **500 milliseconds**. Beyond this time frame, the synchronization request will time out for clients which have not responded.
+
+
+.. _Synchronization_protocol_for_VTS_clients#Other_commands:
+
+Other commands
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. _Synchronization_protocol_for_VTS_clients#ActivateWindow_command:
+
+*ActivateWindow* command
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The *ActivateWindow* command instructs an application to raise its window if it's minimized and move to the front of other applications. This command should be implemented to enable one of the :ref:`Window Geometry Manager <Window_Geometry_Manager>` feature.
+
+This command has the following syntax:
+
+.. code-block:: bash
+
+   CMD SERVICE ActivateWindow
+
+
+.. _Synchronization_protocol_for_VTS_clients#TakeScreenshot_command:
+
+*TakeScreenshot* command
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The *TakeScreenshot* command instructs client applications to take a screenshot of the visualization scene. This may be used within scripts to save an image of the visualization at specific dates.
+
+This command has the following syntax:
+
+.. code-block:: bash
+
+   CMD SERVICE TakeScreenshot <Filename>
+
+.. list-table::
+   :header-rows: 1
+
+   * - Parameter
+     - Description
+     - Format (unit)
+     - See also
+   * - Filename
+     - Name of the image file to save the screenshot to
+     - Character string
+     -
+
+The file path must be relative to the project folder.
+
+
+*CMD EVENT* messages
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+*CMD EVENT* messages instruct client applications to add, remove or reload CIC/CCSDS mission event files attached to project entities.
+
+
+.. _Synchronization_protocol_for_VTS_clients#CMD_EVENT_LoadFile_command2:
+
+*LoadFile* command
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The *LoadFile* command instructs client applications to load a new CIC/CCSDS event file, and attach it to a project satellite.
+
+This command has the same syntax and parameters as the :ref:`*LoadFile* command <Synchronization_protocol_for_VTS_clients#CMD_EVENT_LoadFile_command2>` received by the Broker. Refer to it for details.
+
+*LoadFile* commands may be sent upon connection of a new client, to instruct it to load mission event files which were loaded by other client applications before it joined the visualization.
+
+
+.. _Synchronization_protocol_for_VTS_clients#CMD_EVENT_ReloadFile_command2:
+
+*ReloadFile* command
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The *ReloadFile* command instructs client applications to reload an already loaded CIC/CCSDS event file.
+
+This command has the same syntax and parameters as the :ref:`*ReloadFile* command <Synchronization_protocol_for_VTS_clients#CMD_TIMELINE_ReloadFile_command>` received by the Broker. Refer to it for details.
+
+
+.. _Synchronization_protocol_for_VTS_clients#CMD_EVENT_UnloadFile_command2:
+
+*UnloadFile* command
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The *UnloadFile* command instructs client applications to unload and detach an already loaded CIC/CCSDS event file from all project satellites. Events from this file should no longer be attached to any satellite.
+
+This command has the same syntax and parameters as the :ref:`*UnloadFile* command <Synchronization_protocol_for_VTS_clients#CMD_TIMELINE_UnloadFile_command>` received by the Broker. Refer to it for details.
+
+
+.. _Synchronization_protocol_for_VTS_clients#CMD_CAMERA_commands:
+
+*CMD CAMERA* commands
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+*CMD CAMERA* messages instruct client applications to change the visualization camera. Only messages corresponding to cameras declared in the client application's INI file may be received.
+
+These commands have the following syntax:
+
+.. code-block:: bash
+
+   CMD CAMERA <CameraName> <CameraParameters>
+
+
+The list below describes available cameras:
+
+- **Synchronous**
+   Generic camera attached to a reference frame, pointing to the target object from the given frame axis.
+   This is the camera used by VTS for INI camera types Body_Synchronous, Body_Inertial, Satellite_Inertial, Satellite_Sun, Satellite_SatFrame, Satellite_QswFrame, and Satellite_TnwFrame.
+
+   Parameters:
+      - **objName**: Celestia full name of the target object (e.g.: "Sol/Earth/CubeSat_ref/CubeSat")
+      - **refObjectName**: Celestia full name of the reference frame to attach to (e.g.: "Sol/Earth/CubeSat_ref/CubeSat_Eme2000Axes", "Sol/Earth/CubeSat_ref/CubeSat_SunDir")
+      - **direction**: frame axis from which to point to the object (X, -X, Y, -Y, Z, -Z or XYZ)
+      - **distanceFactor** (optional): distance factor along the direction (relative to the default distance)
+
+- **Goto**
+   Go to the target object and attach to its reference frame.
+   This is the camera used by VTS for INI camera types Body_Goto and Satellite_Goto.
+
+   Parameters:
+      - **objName**: name of the target object (e.g.: "Earth")
+
+- **Center**
+   Point towards the target object. The camera remains at its current location, attached to its current reference frame.
+   This is the camera used by VTS for INI camera types Body_Center and Satellite_Center.
+
+   Parameters:
+      - **objName**: name of the target object (e.g.: "CubeSat")
+
+- **CameraOrbitSat**
+   Position the camera along the normal vector of the target object's orbital plane, pointing along that vector, so that the full orbit path of the target object can be seen.
+   This is the camera used by VTS for INI camera type Satellite_Orbit.
+
+   Parameters:
+      - **objName**: name of the target object (e.g.: "CubeSat")
+
+- **CameraSensorView**
+   Position the camera from the target sensor's point of view, pointing along its aim direction. The field of view should be adjusted to match the sensor.
+   This is the camera used by VTS for INI camera type Sensor_SensorView.
+
+   Parameters:
+      - **sensorName**: Celestia full name of the target sensor (e.g.: "Sol/Earth/CubeSat_ref/CubeSat/Sensor_sens_ref/Sensor")
+      - **halfAngleOnX** and **halfAngleOnY** (real number, in radians): aperture half-angles of the target sensor
+      - **up** (optional, "X" or "Y"): UP vector for the camera
+
+- **CameraAzimuthElevation**
+   This command is specific to a sensor defined with azimuth and elevation angles constaints alternatively to the CameraSensorView command. It sets the camera from the target sensor's point of view, pointing along its aim direction. 
+
+   Parameters:
+      - **sensorName**: Celestia full name of the target sensor (e.g.: "Sol/Earth/Station_ref/Station/Sensor_sens_ref")
+      - **minAzimuth**, **maxAzimuth**, **minElevation** and **maxElevation** (real number, in radians): aperture angles of the azimuth-elevation sensor
+      - **up** (optional, "X" or "Y"): UP vector for the camera
+
+- **WindowSensorView**
+   Same as CameraSensorView, except that the window is resized to fit exactly the sensor.
+
+   Parameters:
+      - **sensorName**: Celestia full name of the target sensor (e.g.: "Sol/Earth/CubeSat_ref/CubeSat/Sensor_sens_ref/Sensor")
+      - **halfAngleOnX** and **halfAngleOnY** (real number, in radians): aperture half-angles of the target sensor
+      - **width** (integer number, in pixels): final width of the window. Height depends on sensor ratio.
+      - **up** (optional, "X" or "Y"): UP vector for the camera.
+
+Refer to the :ref:`Available cameras <Description_of_application_properties#Available_cameras>` section of the :ref:`Description of application properties <Description_of_application_properties>` chapter for more information on camera capability declarations for client applications.
+
+
+*CMD PROP* commands
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+*CMD PROP* commands set new values for specific properties of a client application. These properties are declared in the *[SPECIFIC]* section of the application's INI file.
+
+Refer to the :ref:`Description of application properties <Description_of_application_properties>` chapter for more information on application properties.
+These properties include for example the equatorial grid in Celestia or the zoom level and view position in SurfaceView.
+
+These commands have the following syntax:
+
+.. code-block:: bash
+
+   CMD PROP <PropertyName> <PropertyValue>
+
+.. list-table::
+   :header-rows: 1
+
+   * - Parameter
+     - Description
+     - Format (unit)
+     - See also
+   * - PropertyName
+     - Property name
+     - Character string
+     -
+   * - PropertyValue
+     - Property value
+     - Property-specific (may be composed of several space-separated fields)
+     - Messages received by Celestia and Messages received by SurfaceView
+
+*CMD PROP* commands are sent upon modification of specific properties in the view properties editor of the Broker, and when a scenario state becomes active and its view properties are restored.
+
+Below are some sample *CMD PROP* commands:
+
+- Enable the equatorial grid in Celestia
+
+.. code-block:: bash
+
+   CMD PROP equatorialgrid true
+
+
+
+- Reset the view position and zoom level in SurfaceView
+
+.. code-block:: bash
+
+   CMD PROP ViewInfos Default
+
+
+
+*CMD STRUCT* commands
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+*CMD STRUCT* commands set new values for structural properties of a client application. These properties are declared in the entity sections of the application's INI file.
+
+Refer to the :ref:`Description of application properties <Description_of_application_properties>` chapter for more information on application properties.
+
+These commands have the following syntax:
+
+.. code-block:: bash
+
+   CMD STRUCT <PropertyName> <EntityFullName> <PropertyValue>
+
+.. list-table::
+   :header-rows: 1
+
+   * - Parameter
+     - Description
+     - Format (unit)
+     - See also
+   * - PropertyName
+     - Property name
+     - Character string
+     -
+   * - EntityFullName
+     - Full name of a target entity for the property
+     - Character string
+     - Object paths in VTS
+   * - PropertyValue
+     - Property value
+     - Property-specific (may be composed of several space-separated fields)
+     - Messages received by Celestia and Messages received by SurfaceView
+
+Below are some sample *CMD STRUCT* commands:
+
+- Set the scale factor for Earth in Celestia
+
+.. code-block:: bash
+
+   CMD STRUCT BodyScale "Sol/Earth" 0.8
+
+
+- Disable the sensor footprint in SurfaceView
+
+.. code-block:: bash
+
+   CMD STRUCT AimContourVisible "Sol/Earth/CubeSat/Sensor" false
+
+
+
+.. _Synchronization_protocol_for_VTS_clients#Messages_received_by_Celestia:
+
+Messages received by Celestia
+----------------------------------------------------------------------------------
+Apart from the common messages described above, Celestia handles the commands corresponding to properties declared in its INI configuration file.
+
+
+*CMD PROP* commands
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
++------------------------------------+-------------------------+
+| **Label** ``Antialiasing Samples`` | **Name**                |
+|                                    | ``AntialiasingSamples`` |
++====================================+=========================+
+| **Propagation mode** ``INITIAL``   | **Default value** ``1`` |
++------------------------------------+-------------------------+
+| **Parameters format**                                        |
+| ``0/1/2/4/8``                                                |
++------------------------------------+-------------------------+
+| Antialiasing setting for Celestia.                           |
++------------------------------------+-------------------------+
+
++--------------------------------------------+------------------------+
+| **Label**                                  | **Name**               |
+| ``Sensor view camera offset``              | ``SensorCameraOffset`` |
++============================================+========================+
+| **Propagation mode**                       | **Default value**      |
+| ``INITIAL``                                | ``1``                  |
++--------------------------------------------+------------------------+
+| **Parameters format**                                               |
+| ``Positive real number (meters)``                                   |
++--------------------------------------------+------------------------+
+| Position offset of the sensor view camera.                          |
++--------------------------------------------+------------------------+
+
++------------------------------------------------+--------------------------------+
+| **Label**                                      | **Name**                       |
+| ``Sensor geometry section count``              | ``SensorGeometrySectionCount`` |
++================================================+================================+
+| **Propagation mode**                           | **Default value**              |
+| ``INITIAL``                                    | ``128``                        |
++------------------------------------------------+--------------------------------+
+| **Parameters format**                                                           |
+| ``Positive real number``                                                        |
++------------------------------------------------+--------------------------------+
+| Number of points making up the outline polygon                                  |
++------------------------------------------------+--------------------------------+
+
++-----------------------------------------------------------+---------------------------+
+| **Label**                                                 | **Name**                  |
+| ``Sensor view camera offset``                             | ``SensorSwathResolution`` |
++===========================================================+===========================+
+| **Propagation mode**                                      | **Default value**         |
+| ``INITIAL``                                               | ``1``                     |
++-----------------------------------------------------------+---------------------------+
+| **Parameters format**                                                                 |
+| ``Positive real number(s)``                                                           |
++-----------------------------------------------------------+---------------------------+
+| Interval between two instantaneous sensor aiming surfaces                             |
++-----------------------------------------------------------+---------------------------+
+
++------------------------------------------------+--------------------+
+| **Label**                                      | **Name**           |
+| ``Window geometry``                            | ``WindowGeometry`` |
++================================================+====================+
+| **Propagation mode**                           | **Default value**  |
+| ``MANUAL``                                     | ``0,0,640,480``    |
++------------------------------------------------+--------------------+
+| **Parameters format**                                               |
+| ``4 integers (pixels)``                                             |
++------------------------------------------------+--------------------+
+| Window position and size (x, y, width, height)                      |
++------------------------------------------------+--------------------+
+
++------------------------------------------+--------------------+
+| **Label**                                | **Name**           |
+| ``Equatorial grid``                      | ``equatorialgrid`` |
++==========================================+====================+
+| **Propagation mode**                     | **Default value**  |
+| ``MANUAL``                               | ``false``          |
++------------------------------------------+--------------------+
+| **Parameters format**                                         |
+| ``Boolean``                                                   |
++------------------------------------------+--------------------+
+| Display of the celestial equatorial grid                      |
++------------------------------------------+--------------------+
+
++-----------------------------------------------------------------------+-------------------+
+| **Label**                                                             | **Name**          |
+| ``Camera parameters``                                                 | ``CameraDesc``    |
++=======================================================================+===================+
+| **Propagation mode**                                                  | **Default value** |
+| ``MANUAL``                                                            | ``Default``       |
++-----------------------------------------------------------------------+-------------------+
+| **Parameters format**                                                                     |
+| ``Character string``                                                                      |
++-----------------------------------------------------------------------+-------------------+
+| Camera description (target, reference frame, position, field of view)                     |
++-----------------------------------------------------------------------+-------------------+
+
++-----------------------------------------------------+-------------------+
+| **Label**                                           | **Name**          |
+| ``Selected object``                                 | ``SelectObject``  |
++=====================================================+===================+
+| **Propagation mode**                                | **Default value** |
+| ``MANUAL``                                          | ``"Sol/Earth"``   |
++-----------------------------------------------------+-------------------+
+| **Parameters format**                                                   |
+| ``Character string``                                                    |
++-----------------------------------------------------+-------------------+
+| Selected object in the 3D view (Celestia full name)                     |
++-----------------------------------------------------+-------------------+
+
++------------------------------------+----------------------------+
+| **Label**                          | **Name**                   |
+| ``Satellite labels``               | ``SatelliteLabelsVisible`` |
++====================================+============================+
+| **Propagation mode**               | **Default value**          |
+| ``MANUAL``                         | ``true``                   |
++------------------------------------+----------------------------+
+| **Parameters format**                                           |
+| ``Boolean (false or true)``                                     |
++------------------------------------+----------------------------+
+| Visibility of all satellite labels                              |
++------------------------------------+----------------------------+
+
++-----------------------------------+----------------------+
+| **Label**                         | **Name**             |
+| ``Solar system scale``            | ``SolarSystemScale`` |
++===================================+======================+
+| **Propagation mode**              | **Default value**    |
+| ``MANUAL``                        | ``1``                |
++-----------------------------------+----------------------+
+| **Parameters format**                                    |
+| ``Positive real number``                                 |
++-----------------------------------+----------------------+
+| Scale factor for the solar system                        |
++-----------------------------------+----------------------+
+
++-----------------------------+-------------------+
+| **Label**                   | **Name**          |
+| ``Window menu``             | ``WindowMenus``   |
++=============================+===================+
+| **Propagation mode**        | **Default value** |
+| ``MANUAL``                  | ``false``         |
++-----------------------------+-------------------+
+| **Parameters format**                           |
+| ``Boolean (false or true)``                     |
++-----------------------------+-------------------+
+| Display of the menu bar                         |
++-----------------------------+-------------------+
+
++---------------------------------------------------+-------------------+
+| **Label**                                         | **Name**          |
+| ``Window text``                                   | ``WindowText``    |
++===================================================+===================+
+| **Propagation mode**                              | **Default value** |
+| ``MANUAL``                                        | ``true``          |
++---------------------------------------------------+-------------------+
+| **Parameters format**                                                 |
+| ``Boolean (false or true)``                                           |
++---------------------------------------------------+-------------------+
+| Display of text information on the current object                     |
++---------------------------------------------------+-------------------+
+
++------------------------------------+-------------------+
+| **Label**                          | **Name**          |
+| ``Ambient Light``                  | ``AmbientLight``  |
++====================================+===================+
+| **Propagation mode**               | **Default value** |
+| ``MANUAL``                         | ``0.3``           |
++------------------------------------+-------------------+
+| **Parameters format**                                  |
+| ``Real number within [0,1]``                           |
++------------------------------------+-------------------+
+| Amount of articifial ambient light                     |
++------------------------------------+-------------------+
+
+
+*CMD STRUCT* commands
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. _Synchronization_protocol_for_VTS_clients#Celestia_Central_body_properties:
+
+Central body properties
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``Body scale``
+     - **Name** ``BodyScale``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``1.``
+   * - **Parameters format** ``Positive real number``
+     -
+   * - Scale factor for the central body
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``EME2000 inertial frame axes``
+     - **Name** ``Eme2000AxesVisible``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``false``
+   * - **Parameters format** ``Boolean (false or true)``
+     -
+   * - Display of the EME2000 inertial reference frame
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``Body frame axes``
+     - **Name** ``FrameAxesVisible``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``false``
+   * - **Parameters format** ``Boolean (false or true)``
+     -
+   * - Display of the local body frame
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``Planetographic grid``
+     - **Name** ``PlanetographicGridVisible``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``false``
+   * - **Parameters format** ``Boolean (false or true)``
+     -
+   * - Display of the planetographic grid
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``All stations visibility``
+     - **Name** ``AllStationVisible``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``true``
+   * - **Parameters format** ``Boolean (false or true)``
+     -
+   * - Display of all the ground stations
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``All POI visibility``
+     - **Name** ``AllPoiVisible``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``true``
+   * - **Parameters format** ``Boolean (false or true)``
+     -
+   * - Display of all Points of Interest
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``All ROI visibility``
+     - **Name** ``AllRoiVisible``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``true``
+   * - **Parameters format** ``Boolean (false or true)``
+     -
+   * - Display of all Regions of Interest
+     -
+
+
+.. _Synchronization_protocol_for_VTS_clients#Satellite_and_subpart_properties:
+
+Satellite and subpart properties
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``Component visibility``
+     - **Name** ``Visible``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``true``
+   * - **Parameters format** ``Boolean (false or true)``
+     -
+   * - Visibility of the object
+     -
+
+
+.. _Synchronization_protocol_for_VTS_clients#Celestia_Satellite_properties:
+
+Satellite properties
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``Satellite scale``
+     - **Name** ``SatelliteScale``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``1.``
+   * - **Parameters format** ``Positive real number``
+     -
+   * - Scale factor for the whole satellite
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``Orbit path``
+     - **Name** ``TrackVisible``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``true``
+   * - **Parameters format** ``Boolean (false or true)``
+     -
+   * - Display of the satellite's orbit path
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``Orbit time window``
+     - **Name** ``TrackWindow``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``2 hours, 2 hours``
+   * - **Parameters format** ``2 positive real numers (hours) Duration before event, duration after event, in hours``
+     -
+   * - Duration of the satellite's orbit path before and after the satellite
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``EME2000 inertial frame axes``
+     - **Name** ``Eme2000AxesVisible``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``false``
+   * - **Parameters format** ``Boolean (false or true)``
+     -
+   * - Display of the EME2000 inertial reference frame
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``QSW local frame axes``
+     - **Name** ``QswAxesVisible``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``false``
+   * - **Parameters format** ``Boolean (false or true)``
+     -
+   * - Display of the QSW local orbital frame
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``TNW local frame axes``
+     - **Name** ``TnwAxesVisible``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``false``
+   * - **Parameters format** ``Boolean (false or true)``
+     -
+   * - Display of the TNW local orbital frame
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``Satellite frame axes``
+     - **Name** ``FrameAxesVisible``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``true``
+   * - **Parameters format** ``Boolean (false or true)``
+     -
+   * - Display of the local satellite frame
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``Sun direction``
+     - **Name** ``SunDirectionVisible``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``false``
+   * - **Parameters format** ``Boolean (false or true)``
+     -
+   * - Display of the Sun direction vector
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``Body direction``
+     - **Name** ``BodyDirectionVisible``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``false``
+   * - **Parameters format** ``Boolean (false or true)``
+     -
+   * - Display of the satellite body direction vector
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``Velocity vector``
+     - **Name** ``VelocityVectorVisible``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``false``
+   * - **Parameters format** ``Boolean (false or true)``
+     -
+   * - Display of the satellite velocity vector
+     -
+
+
+.. _Synchronization_protocol_for_VTS_clients#Celestia_Sensor_properties:
+
+Sensor properties
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``Sensor contour``
+     - **Name** ``AimContourVisible``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``true``
+   * - **Parameters format** ``Boolean (false or true)``
+     -
+   * - Display of the sensor base contour
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``Sensor volume``
+     - **Name** ``AimVolumeVisible``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``true``
+   * - **Parameters format** ``Boolean (false or true)``
+     -
+   * - Display of the sensor volume
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``Sensor axis``
+     - **Name** ``AimAxisVisible``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``false``
+   * - **Parameters format** ``Boolean (false or true)``
+     -
+   * - Display of the sensor aim axis
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``Sensor swath``
+     - **Name** ``AimTraceVisible``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``false``
+   * - **Parameters format** ``Boolean (false or true)``
+     -
+   * - Display of the sensor swath trace
+     -
+
+
+.. _Synchronization_protocol_for_VTS_clients#Celestia_ROI_properties:
+
+
+POI properties
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``POI visibility``
+     - **Name** ``PoiVisible``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``true``
+   * - **Parameters format** ``Boolean (false or true)``
+     -
+   * - Display the point of interest
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``Text visibility``
+     - **Name** ``PoiTextVisible``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``true``
+   * - **Parameters format** ``Boolean (false or true)``
+     -
+   * - Display the point of interest's text
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``POI icon color``
+     - **Name** ``PoiIconColor``
+   * - **Parameters format** ``Color (i.e. #ffffff)``
+     -
+   * - Modify the point of interest's color
+     -
+
+The *POI icon color* command is only available via the VTS protocol :
+
+.. code-block:: bash
+
+   CMD STRUCT PoiIconColor <POIFullName> <color>
+
+
+ROI properties
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``ROI visibility``
+     - **Name** ``RoiVisible``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``true``
+   * - **Parameters format** ``Boolean (false or true)``
+     -
+   * - Display the region of interest
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``Text visibility``
+     - **Name** ``RoiTextVisible``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``true``
+   * - **Parameters format** ``Boolean (false or true)``
+     -
+   * - Display the region of interest's text
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``ROI contour color``
+     - **Name** ``RoiContourColor``
+   * - **Parameters format** ``Color (i.e. #ffffff)``
+     -
+   * - Modify the region of interest's color
+     -
+
+The *ROI contour color* command is only available via the VTS protocol :
+
+.. code-block:: bash
+
+   CMD STRUCT RoiContourColor <ROIFullName> <color>
+
+
+.. _Synchronization_protocol_for_VTS_clients#Scriptable_*CMD_CAMERA*_commands:
+
+Scriptable *CMD CAMERA* commands
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Scriptable *CMD CAMERA* commands are not used by the Broker, but they can be used inside VTS scripts (refer to the :ref:`Scripts and macros in VTS <Scripts_and_macros_in_VTS>` chapter for more information).
+
+These commands have the following syntax:
+
+.. code-block:: bash
+
+   CMD CAMERA <CameraName> <CameraParameters>
+
+
+The table below describes available cameras:
+
++-----------------+-------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| Camera name     | Parameters (unit)                                                                   | Description                                                       |
++=================+=====================================================================================+===================================================================+
+| CreateMultiView | X Y: where X is the number of views horizontaly and Y the number of views verticaly | Creates multi viewports, each viewport has a scriptable camera.   |
++-----------------+-------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| SelectView      | X Y: coordinates of the viewport to control in MultiView mode                       | Select a viewport, the next command will only affct this viewpot. |
++-----------------+-------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| SetFov          | angle: Field Of View angle in randians                                              | Changes the current camera field of view                          |
++-----------------+-------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+
+
+.. _Synchronization_protocol_for_VTS_clients#Messages_received_by_SurfaceView:
+
+Messages received by SurfaceView
+----------------------------------------------------------------------------------
+Apart from the common messages described above, SurfaceView handles the following commands corresponding to properties declared in its INI configuration file.
+
+.. _Synchronization_protocol_for_VTS_clients#CMD_PROP_initial_commands:
+
+*CMD PROP* initial commands
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``Scene reference``
+     - **Name** ``SceneReference``
+   * - **Propagation mode** ``INITIAL``
+     - **Default value** ``"Default" (First defined body in the project)``
+   * - **Parameters format** ``Character string (internal format)``
+     -
+   * - Body name as a scene reference defining which body's surface will be visible in SurfaceView
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``Map Projection``
+     - **Name** ``MapProjection``
+   * - **Propagation mode** ``INITIAL``
+     - **Default value** ``Equirectangular``
+   * - **Parameters format** ``Character string``
+     -
+   * - Projection name amongst the implemented projections
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``Target framerate``
+     - **Name** ``TargetFramerate``
+   * - **Propagation mode** ``INITIAL``
+     - **Default value** ``10``
+   * - **Parameters format** ``Positive integer number (Hz)``
+     -
+   * - Update frequency of the visualization. A high value will produce smoother animation but will consume more CPU time
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``Track sampling resolution``
+     - **Name** ``TrackSamplingResolution``
+   * - **Propagation mode** ``INITIAL``
+     - **Default value** ``100``
+   * - **Parameters format** ``Positive integer number (seconds)``
+     -
+   * - A low value will increase track accuracy at the expense of application's performance.
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``Sensor geometry section count``
+     - **Name** ``SensorGeometrySectionCount``
+   * - **Propagation mode** ``INITIAL``
+     - **Default value** ``128``
+   * - **Parameters format** ``Positiveinteger number``
+     -
+   * - Number of points making up the outline polygon
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``Sensor coverage significant threshold``
+     - **Name** ``SensorCoverageSignificantThreshold``
+   * - **Propagation mode** ``INITIAL``
+     - **Default value** ``5.``
+   * - **Parameters format** ``Positive real number (%)``
+     -
+   * - Minimal percentage of new coverage
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``Sensor coverage merging threshold``
+     - **Name** ``SensorCoverageMergingThreshold``
+   * - **Propagation mode** ``INITIAL``
+     - **Default value** ``90.``
+   * - **Parameters format** ``Positive real number (%)``
+     -
+   * - Minimal percentage for merging polygons
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``Sensor coverage nadir optimization``
+     - **Name** ``SensorCoverageNadirOptimization``
+   * - **Propagation mode** ``INITIAL``
+     - **Default value** ``.``
+   * - **Parameters format** ``Boolean (false or true)``
+     -
+   * - Section Coverage swath of the SurfaceView user manual. Enable the sensor coverage nadir optimization
+     -
+
+
+
+
+
+.. _Synchronization_protocol_for_VTS_clients#CMD_PROP_specific_commands:
+
+*CMD PROP* specific commands
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``Window geometry``
+     - **Name** ``WindowGeometry``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``0,0,640,480``
+   * - **Parameters format** ``4 integers (pixels)``
+     -
+   * - Window position and size (x, y, width, height)
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``View parameters``
+     - **Name** ``ViewInfos``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``"Default"``
+   * - **Parameters format** ``Character string (internal format)``
+     -
+   * - View position and zoom level
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``Projection center``
+     - **Name** ``ProjectionCenter``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``0 0`` or ``1 0 0 0``
+   * - **Parameters format** ``2 real numbers (latitude longitude)`` or ``4 real numbers (quaternion for polar projection)``
+     -
+   * - Center of the projection
+     -
+
+
+*CMD STRUCT* commands
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+.. _Synchronization_protocol_for_VTS_clients#Sun_properties:
+
+Sun properties
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``Sub-solar point``
+     - **Name** ``SubEntityPointVisible``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``true``
+   * - **Parameters format** ``Boolean (false or true)``
+     -
+   * - Display of the sub-solar point
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``Terminator``
+     - **Name** ``VisibilityCircleVisible``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``true``
+   * - **Parameters format** ``Boolean (false or true)``
+     -
+   * - Display of the day-night terminator
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``Track visibility``
+     - **Name** ``TrackVisible``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``true``
+   * - **Parameters format** ``Boolean (false or true)``
+     -
+   * - Display of the Sun track
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``Track time window``
+     - **Name** ``TrackWindow``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``2 hours, 2 hours``
+   * - **Parameters format** ``2 positive real numers (hours)``
+     -
+   * - Duration of the Sun track before and after the current position of the Sun icon
+     -
+
+.. _Synchronization_protocol_for_VTS_clients#SurfaceView_Central_body_properties:
+
+Central body properties
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``Sub-entity point``
+     - **Name** ``SubEntityPointVisible``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``true``
+   * - **Parameters format** ``Boolean (false or true)``
+     -
+   * - Display of the sub-entity point
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``Visibility circle``
+     - **Name** ``VisibilityCircleVisible``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``true``
+   * - **Parameters format** ``Boolean (false or true)``
+     -
+   * - Display of the visibility circle of this body on the scene reference (no effect on the scene reference)
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``Track visibility``
+     - **Name** ``TrackVisible``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``true``
+   * - **Parameters format** ``Boolean (false or true)``
+     -
+   * - Display of the track (no effect on the scene reference)
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``Track time window``
+     - **Name** ``TrackWindow``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``2 hours, 2 hours``
+   * - **Parameters format** ``2 positive real numers (hours)``
+     -
+   * - Duration of the track before and after the current position of the sub-object icon
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``Planetographic grid``
+     - **Name** ``PlanetographicGridVisible``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``false``
+   * - **Parameters format** ``Boolean (false or true)``
+     -
+   * - Display of the planetographic grid
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``Terminator``
+     - **Name** ``TerminatorVisible``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``false``
+   * - **Parameters format** ``Boolean (false or true)``
+     -
+   * - Display the area where the body is visible on other bodies
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``All stations visibility``
+     - **Name** ``AllStationVisible``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``true``
+   * - **Parameters format** ``Boolean (false or true)``
+     -
+   * - Display of all Ground Stations
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``All sensor station contours``
+     - **Name** ``AllSensorStationContourVisible``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``true``
+   * - **Parameters format** ``Boolean (false or true)``
+     -
+   * - Display of all sensor station contours
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``All sensor station surfaces``
+     - **Name** ``AllSensorStationSurfaceVisible``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``true``
+   * - **Parameters format** ``Boolean (false or true)``
+     -
+   * - Display of all sensor station surfaces
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``All POI visibility``
+     - **Name** ``AllPoiVisible``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``true``
+   * - **Parameters format** ``Boolean (false or true)``
+     -
+   * - Display of all Points of Interest
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``All POI text visibility``
+     - **Name** ``AllPoiTextVisible``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``true``
+   * - **Parameters format** ``Boolean (false or true)``
+     -
+   * - Display of all POI text
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``All ROI visibility``
+     - **Name** ``AllRoiVisible``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``true``
+   * - **Parameters format** ``Boolean (false or true)``
+     -
+   * - Display of all Regionsof Interest
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``All ROI text visibility``
+     - **Name** ``AllRoiTextVisible``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``true``
+   * - **Parameters format** ``Boolean (false or true)``
+     -
+   * - Display of all ROI text
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``All ROI contour visibility``
+     - **Name** ``AllRoiContourVisible``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``true``
+   * - **Parameters format** ``Boolean (false or true)``
+     -
+   * - Display of all ROI contours
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``All ROI fill visibility``
+     - **Name** ``AllRoiFillVisible``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``true``
+   * - **Parameters format** ``Boolean (false or true)``
+     -
+   * - Display of all ROI filled surfaces
+     -
+
+
+.. _Synchronization_protocol_for_VTS_clients#Layer_properties:
+
+Layer properties
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``Layer visibility``
+     - **Name** ``LayerVisible``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``true``
+   * - **Parameters format** ``Layer name (string) Visibility Boolean (false or true)``
+     -
+   * - Display of a layer
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``Layer opacity``
+     - **Name** ``LayerOpacity``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``1.0``
+   * - **Parameters format** ``Layer name (string) Opacity (EntityRange_t)``
+     -
+   * - Opacity of a layer
+     -
+
+
+.. _Synchronization_protocol_for_VTS_clients#SurfaceView_Satellite_properties:
+
+Satellite properties
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``Track visibility``
+     - **Name** ``TrackVisible``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``true``
+   * - **Parameters format** ``Boolean (false or true)``
+     -
+   * - Display of the satellite's orbit path
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``Track time window``
+     - **Name** ``TrackWindow``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``2 hours, 2 hours``
+   * - **Parameters format** ``2 positive real numers (hours) Duration before event, duration after event, in hours``
+     -
+   * - Duration of the satellite's orbit path before and after the satellite
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``Visible events``
+     - **Name** ``VisibleEvents``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``"*"``
+   * - **Parameters format** ``Character string list``
+     -
+   * - List of visible event types
+     -
+
+
+.. _Synchronization_protocol_for_VTS_clients#SurfaceView_Sensor_properties:
+
+Sensor properties
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``Sensor footprint``
+     - **Name** ``AimContourVisible``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``true``
+   * - **Parameters format** ``Boolean (false or true)``
+     -
+   * - Display of the sensor footprint (intersection with the central body)
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``Sensor swath``
+     - **Name** ``AimTraceVisible``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``true``
+   * - **Parameters format** ``Boolean (false or true)``
+     -
+   * - Display of the sensor swath trace
+     -
+
+
+.. _Synchronization_protocol_for_VTS_clients#POI_properties:
+
+POI properties
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``POI visibility``
+     - **Name** ``PoiVisible``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``true``
+   * - **Parameters format** ``Boolean (false or true)``
+     -
+   * - Display the point of interest
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``Text visibility``
+     - **Name** ``PoiTextVisible``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``true``
+   * - **Parameters format** ``Boolean (false or true)``
+     -
+   * - Display the label of the point of interest
+     -
+
+
+.. _Synchronization_protocol_for_VTS_clients#SurfaceView_ROI_properties:
+
+ROI properties
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``ROI visibility``
+     - **Name** ``RoiVisible``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``true``
+   * - **Parameters format** ``Boolean (false or true)``
+     -
+   * - Display the region of interest
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``Text visibility``
+     - **Name** ``RoiTextVisible``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``true``
+   * - **Parameters format** ``Boolean (false or true)``
+     -
+   * - Display the label of the region of interest
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``Contour visibility``
+     - **Name** ``RoiContourVisible``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``true``
+   * - **Parameters format** ``Boolean (false or true)``
+     -
+   * - Display the ROI contour
+     -
+
+.. list-table::
+   :header-rows: 1
+
+   * - **Label** ``Fill visibility``
+     - **Name** ``RoiFillVisible``
+   * - **Propagation mode** ``MANUAL``
+     - **Default value** ``true``
+   * - **Parameters format** ``Boolean (false or true)``
+     -
+   * - Display the ROI fill
+     -
+
+*CMD SERVICE* messages
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+.. _Synchronization_protocol_for_VTS_clients#CreateROI_command:
+
+*CreateROI* command
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+The *CreateROI* command instructs SurfaceView to instantiate a new Region in the specified body, and correpsonding to the specified coordinates.
+
+This command has the following syntax:
+
+.. code-block:: bash
+
+   CMD SERVICE CreateROI <ROIName> <BodyName> <Coordinates>
+
++-------------+----------+------------------------------------------------------------------------------------------------+------------------+
+| Parameter   | Required | Description                                                                                    | Format (unit)    |
++=============+==========+================================================================================================+==================+
+| ROIName     | Yes      | Name given to the new ROI.                                                                     | Character string |
++-------------+----------+------------------------------------------------------------------------------------------------+------------------+
+| BodyName    | Yes      | Full name of the receiving body. (ex: "Sol/Earth")                                             | Character string |
++-------------+----------+------------------------------------------------------------------------------------------------+------------------+
+| Coordinates | Yes      | Space-separated list of comma-separated Lat/Long coordinnates. (ex: "15,2 -1,-15 -15,1 -1,15") | Character string |
++-------------+----------+------------------------------------------------------------------------------------------------+------------------+
+
+
+.. _Synchronization_protocol_for_VTS_clients#Real-time_VTS:
+
+Real-time VTS
+----------------------------------------------------------------------------------
+
+.. _Synchronization_protocol_for_VTS_clients#Time_synchronization_with_an_external_time_source:
+
+Time synchronization with an external time source
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+By default, the VTS Broker regulates the flow of visualization time for all client applications. This is the **playback** visualization mode: visualization data is read from CIC/CCSDS data files and time flow can be fully controlled (play/pause, time ratio, flow direction, etc.).
+
+The **real-time** visualization mode allows VTS to synchronize with an external time source.
+Upon connection to the Broker, a client wishing to control the visualization time may declare itself as *REGULATING* (as described in the :ref:`*INIT* message: connection to the Broker <Synchronization_protocol_for_VTS_clients#INIT_message:_connection_to_the_Broker>` section above). The Broker then switches to real-time mode:
+
+- time control buttons and commands are disabled
+- visualization date is received from the regulating client
+
+Note that several regulating clients may not connect to the Broker simultaneously.
+
+The regulating client must send *TIME* messages to the Broker to set the visualization date, as described in the :ref:`*TIME* messages <Synchronization_protocol_for_VTS_clients#TIME_messges>` section above, e.g.:
+
+.. code-block:: bash
+
+   TIME 22105.5468754
+
+
+To ensure good quality of synchronization for the visualization date, a *TIME* message should be sent every second of wall-clock time. Increasing the rate will not necessarily increase the quality of synchronization, due to communication delays and congestion which are better smoothed out by interpolation at a synchronization rate of 1Hz. Decreasing the rate is discouraged as it may lead to misleadingly inaccurate interpolation in client applications.
+
+The VTS Broker estimates the current visualization date based on the *TIME* messages received from the regulating client, and relays the visualization date to all constrained clients, similarly to what happend in *playback* mode.
+
+To ensure correct interpolation of streamed data, the Broker may introduce a delay between the moment it receives the current visualization date from the regulating client and the moment it relays it to constrained clients. This delay is based on the refresh rate of *Stream* data: it is computed as twice the maximum refresh rate of all *INTERPOL* mode streamed data. For example, if all streamed data values from a simulator are broadcasted every second, the Broker will introduce a 2-seconds delay in visualization time. However, if all streamed data are in *DIRECT* mode, no delay is introduced.
+
+Lastly, it should be noted that it is important for the visualization date sent by the regulating client to be recent, i.e. it must be a good representation of the regulating client's clock. The Broker uses the system time at packet reception to relate system time to regulating client time.
+
+
+.. _Synchronization_protocol_for_VTS_clients#Supplying_real-time_data:
+
+Supplying real-time data
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Besides visualization date, data values may also be supplied by a client application. This is the purpose of *DATA* messages:
+
+.. code-block:: bash
+
+   DATA <ProviderID> <JD1950 date> <data ID> "<data value>"
+
+For example:
+
+.. code-block:: bash
+
+   DATA 123 20447.000174 pos "-6538.3475061863419 2703.5361504162843 197.30707005759857"
+   DATA 123 20447.000174 quat "0.22339793344197931 0.65359251975872334 0.53489502701655522 0.48661842497202529"
+   DATA 123 20447.000174 angle "0.175"
+
+The sections below describe the parameters to a *DATA* message.
+
+Note that previous versions of VTS required *DATA* messages to provide a protocol version number. Since this version number is now specified in the *INIT* message, they should no longer be provided with *DATA* messages. In order to retain compatibility with previously written clients, the Broker still handles a version number in *DATA* messages.
+
+
+.. _Synchronization_protocol_for_VTS_clients#Data_value_date:
+
+Data Provider ID
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+The Provider ID field corresponds to the ID of the client application that provides the data.
+
+This field can be used by data consumers in order to distinguish data sources, as two different providers might provide the same parameters.
+
+
+Data value date
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+The *<JD1950 date>* field provides the recording date of the data value. In most cases, this date is the same as the sending date of the message.
+
+Due to the visualization date delay introduced by the Broker, clients receive data messages slightly in advance. This allows them to store the values and interpolate data for the current visualization date (as opposed to extrapolation were no future data values available).
+
+
+.. _Synchronization_protocol_for_VTS_clients#Data_identifier:
+
+Data identifier
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+The *<data ID>* field provides the unique identifier of the data. This ID is matched with the *Stream ID* set for streamed data in the VTS configuration utility. Refer to the :ref:`Data sources in VTS <Data_sources_in_VTS>` chapter for further information on streamed data configuration.
+
+
+.. _Synchronization_protocol_for_VTS_clients#Data_value:
+
+Data value
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+The *<data value>* field provides the value for the data at the given date. The value must be quoted, no matter its dimension (scalar value, vector, etc.). The unit for the value depends on the data type, e.g.:
+
+- Position of a satellite: kilometers
+- Position of a satellite subpart: meters
+- Quaternion: no unit
+- Angle: degrees
+
+
+.. _Synchronization_protocol_for_VTS_clients#Sample_session:
+
+Sample session
+----------------------------------------------------------------------------------
+This example shows the messages sent by a regulating client defining a square equatorial orbit (don't try this at home!), at 100x wall-clock time:
+
++--------------+------------------------------------+
+| Sending date | Message                            |
++==============+====================================+
+| T0           | INIT example REGULATING            |
++--------------+------------------------------------+
+| T0           | TIME 23000.000000                  |
++--------------+------------------------------------+
+| T0           | DATA 23000.000000 pos "10000 0 0"  |
++--------------+------------------------------------+
+| T0+1s        | TIME 23000.001157                  |
++--------------+------------------------------------+
+| T0+1s        | DATA 23000.001157 pos "0 10000 0"  |
++--------------+------------------------------------+
+| T0+2s        | TIME 23000.002315                  |
++--------------+------------------------------------+
+| T0+2s        | DATA 23000.002315 pos "-10000 0 0" |
++--------------+------------------------------------+
+| T0+3s        | TIME 23000.003472                  |
++--------------+------------------------------------+
+| T0+3s        | DATA 23000.003472 pos "0 -10000 0" |
++--------------+------------------------------------+
+| T0+4s        | TIME 23000.004630                  |
++--------------+------------------------------------+
+| T0+4s        | DATA 23000.004630 pos "10000 0 0"  |
++--------------+------------------------------------+
+| T0+5s        | TIME 23000.005787                  |
++--------------+------------------------------------+
+| T0+5s        | DATA 23000.005787 pos "0 10000 0"  |
++--------------+------------------------------------+
+| T0+6s        | Etc.                               |
++--------------+------------------------------------+

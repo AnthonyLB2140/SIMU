@@ -1,0 +1,5252 @@
+"Sol_Eme2000Axes" "Sol"
+{
+   Class "component"
+   Mesh "emeAxes.3ds"
+   Radius 1392684
+   MeshScale 1392684
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedQuaternion [0.707107 0.707107 0 0]
+   OrbitFrame { BodyFixed { Center "Sol" } }
+   BodyFrame { EquatorJ2000 { Center "Sol" } }
+}
+
+"Sol_Axes" "Sol"
+{
+   Class "component"
+   Mesh "bodyAxes.3ds"
+   Radius 1392684
+   MeshScale 1392684
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedQuaternion [0.707107 0.707107 0 0]
+   OrbitFrame { BodyFixed { Center "Sol" } }
+   BodyFrame { BodyFixed { Center "Sol" } }
+}
+
+Modify "Earth" "Sol"
+{
+   Class "planet"
+   OrbitColor [1 0 0.697841]
+   TrajectoryPlotWidth 1
+   Radius 6378.137
+}
+
+"Earth_Eme2000Axes" "Sol/Earth"
+{
+   Class "component"
+   Mesh "emeAxes.3ds"
+   Radius 12756.274
+   MeshScale 12756.274
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedQuaternion [0.707107 0.707107 0 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth" } }
+   BodyFrame { EquatorJ2000 { Center "Sol/Earth" } }
+}
+
+"Earth_Axes" "Sol/Earth"
+{
+   Class "component"
+   Mesh "bodyAxes.3ds"
+   Radius 12756.274
+   MeshScale 12756.274
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedQuaternion [0.707107 0.707107 0 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth" } }
+}
+
+Location "IPEV_Ny_Alesund" "Sol/Earth"
+{
+   Type "Observatory"
+   Size 500
+   LongLat [ 11.9234600067139 78.924186706543 0.02 ]
+}
+
+"IPEV_Ny_Alesund_ref" "Sol/Earth"
+{
+   Class "invisible"
+   FixedPosition { Planetographic [ 11.9234600067139 78.924186706543 0.02 ] }
+   OrbitFrame { BodyFixed {} }
+   BodyFrame {
+      TwoVector
+      {
+         Center "Sol/Earth/IPEV_Ny_Alesund_ref"
+         Primary
+         {
+            Axis "-y"
+            RelativePosition { Target "Sol/Earth" }
+         }
+         Secondary
+         {
+            Axis "-x"
+            ConstantVector
+            {
+               Vector [ 0 0 1 ]
+               Frame { BodyFixed { Center "Sol/Earth" } }
+            }
+         }
+      }
+   }
+   FixedRotation { }
+}
+
+"IPEV_Ny_Alesund" "Sol/Earth/IPEV_Ny_Alesund_ref"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/IPEV_Ny_Alesund_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/IPEV_Ny_Alesund_ref" } }
+}
+
+"IPEV_Ny_Alesund_Axes" "Sol/Earth/IPEV_Ny_Alesund_ref"
+{
+   Class "component"
+   Mesh "bodyAxes.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/IPEV_Ny_Alesund_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/IPEV_Ny_Alesund_ref" } }
+}
+
+"Default_sens_ref" "Sol/Earth/IPEV_Ny_Alesund_ref/IPEV_Ny_Alesund"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/IPEV_Ny_Alesund_ref/IPEV_Ny_Alesund" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/IPEV_Ny_Alesund_ref/IPEV_Ny_Alesund" } }
+}
+
+"Default" "Sol/Earth/IPEV_Ny_Alesund_ref/IPEV_Ny_Alesund/Default_sens_ref"
+{
+   Class "invisible"
+   Radius 810.775
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/IPEV_Ny_Alesund_ref/IPEV_Ny_Alesund/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/IPEV_Ny_Alesund_ref/IPEV_Ny_Alesund/Default_sens_ref" } }
+   Sensor {
+      Target "Sol/Earth"
+      Range 810.775
+      Shape "Elliptical"
+      HorizontalFOV 30
+      VerticalFOV 30
+      FrustumColor [0.717647 0 1]
+      FrustumBaseColor [0.717647 0 1]
+      FrustumOpacity 0.1
+      GridOpacity 0.1
+   }
+}
+
+"Default_AimAxis" "Sol/Earth/IPEV_Ny_Alesund_ref/IPEV_Ny_Alesund/Default_sens_ref"
+{
+   Class "component"
+   Mesh "vector-cyan.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   Orientation [ 90 0 1 0 ]
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/IPEV_Ny_Alesund_ref/IPEV_Ny_Alesund/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/IPEV_Ny_Alesund_ref/IPEV_Ny_Alesund/Default_sens_ref" } }
+}
+
+Location "IPEV_Dumont_DUrville" "Sol/Earth"
+{
+   Type "Observatory"
+   Size 500
+   LongLat [ 140.002502441406 -66.6631698608398 0.00100000004749745 ]
+}
+
+"IPEV_Dumont_DUrville_ref" "Sol/Earth"
+{
+   Class "invisible"
+   FixedPosition { Planetographic [ 140.002502441406 -66.6631698608398 0.00100000004749745 ] }
+   OrbitFrame { BodyFixed {} }
+   BodyFrame {
+      TwoVector
+      {
+         Center "Sol/Earth/IPEV_Dumont_DUrville_ref"
+         Primary
+         {
+            Axis "-y"
+            RelativePosition { Target "Sol/Earth" }
+         }
+         Secondary
+         {
+            Axis "-x"
+            ConstantVector
+            {
+               Vector [ 0 0 1 ]
+               Frame { BodyFixed { Center "Sol/Earth" } }
+            }
+         }
+      }
+   }
+   FixedRotation { }
+}
+
+"IPEV_Dumont_DUrville" "Sol/Earth/IPEV_Dumont_DUrville_ref"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/IPEV_Dumont_DUrville_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/IPEV_Dumont_DUrville_ref" } }
+}
+
+"IPEV_Dumont_DUrville_Axes" "Sol/Earth/IPEV_Dumont_DUrville_ref"
+{
+   Class "component"
+   Mesh "bodyAxes.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/IPEV_Dumont_DUrville_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/IPEV_Dumont_DUrville_ref" } }
+}
+
+"Default_sens_ref" "Sol/Earth/IPEV_Dumont_DUrville_ref/IPEV_Dumont_DUrville"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/IPEV_Dumont_DUrville_ref/IPEV_Dumont_DUrville" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/IPEV_Dumont_DUrville_ref/IPEV_Dumont_DUrville" } }
+}
+
+"Default" "Sol/Earth/IPEV_Dumont_DUrville_ref/IPEV_Dumont_DUrville/Default_sens_ref"
+{
+   Class "invisible"
+   Radius 810.775
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/IPEV_Dumont_DUrville_ref/IPEV_Dumont_DUrville/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/IPEV_Dumont_DUrville_ref/IPEV_Dumont_DUrville/Default_sens_ref" } }
+   Sensor {
+      Target "Sol/Earth"
+      Range 810.775
+      Shape "Elliptical"
+      HorizontalFOV 30
+      VerticalFOV 30
+      FrustumColor [0.717647 0 1]
+      FrustumBaseColor [0.717647 0 1]
+      FrustumOpacity 0.1
+      GridOpacity 0.1
+   }
+}
+
+"Default_AimAxis" "Sol/Earth/IPEV_Dumont_DUrville_ref/IPEV_Dumont_DUrville/Default_sens_ref"
+{
+   Class "component"
+   Mesh "vector-cyan.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   Orientation [ 90 0 1 0 ]
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/IPEV_Dumont_DUrville_ref/IPEV_Dumont_DUrville/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/IPEV_Dumont_DUrville_ref/IPEV_Dumont_DUrville/Default_sens_ref" } }
+}
+
+Location "IPEV_BA_Concordia" "Sol/Earth"
+{
+   Type "Observatory"
+   Size 500
+   LongLat [ 123.34700012207 -75.1006164550781 3.265 ]
+}
+
+"IPEV_BA_Concordia_ref" "Sol/Earth"
+{
+   Class "invisible"
+   FixedPosition { Planetographic [ 123.34700012207 -75.1006164550781 3.265 ] }
+   OrbitFrame { BodyFixed {} }
+   BodyFrame {
+      TwoVector
+      {
+         Center "Sol/Earth/IPEV_BA_Concordia_ref"
+         Primary
+         {
+            Axis "-y"
+            RelativePosition { Target "Sol/Earth" }
+         }
+         Secondary
+         {
+            Axis "-x"
+            ConstantVector
+            {
+               Vector [ 0 0 1 ]
+               Frame { BodyFixed { Center "Sol/Earth" } }
+            }
+         }
+      }
+   }
+   FixedRotation { }
+}
+
+"IPEV_BA_Concordia" "Sol/Earth/IPEV_BA_Concordia_ref"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/IPEV_BA_Concordia_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/IPEV_BA_Concordia_ref" } }
+}
+
+"IPEV_BA_Concordia_Axes" "Sol/Earth/IPEV_BA_Concordia_ref"
+{
+   Class "component"
+   Mesh "bodyAxes.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/IPEV_BA_Concordia_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/IPEV_BA_Concordia_ref" } }
+}
+
+"Default_sens_ref" "Sol/Earth/IPEV_BA_Concordia_ref/IPEV_BA_Concordia"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/IPEV_BA_Concordia_ref/IPEV_BA_Concordia" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/IPEV_BA_Concordia_ref/IPEV_BA_Concordia" } }
+}
+
+"Default" "Sol/Earth/IPEV_BA_Concordia_ref/IPEV_BA_Concordia/Default_sens_ref"
+{
+   Class "invisible"
+   Radius 810.775
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/IPEV_BA_Concordia_ref/IPEV_BA_Concordia/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/IPEV_BA_Concordia_ref/IPEV_BA_Concordia/Default_sens_ref" } }
+   Sensor {
+      Target "Sol/Earth"
+      Range 810.775
+      Shape "Elliptical"
+      HorizontalFOV 30
+      VerticalFOV 30
+      FrustumColor [0.717647 0 1]
+      FrustumBaseColor [0.717647 0 1]
+      FrustumOpacity 0.1
+      GridOpacity 0.1
+   }
+}
+
+"Default_AimAxis" "Sol/Earth/IPEV_BA_Concordia_ref/IPEV_BA_Concordia/Default_sens_ref"
+{
+   Class "component"
+   Mesh "vector-cyan.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   Orientation [ 90 0 1 0 ]
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/IPEV_BA_Concordia_ref/IPEV_BA_Concordia/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/IPEV_BA_Concordia_ref/IPEV_BA_Concordia/Default_sens_ref" } }
+}
+
+Location "Ariel_University" "Sol/Earth"
+{
+   Type "Observatory"
+   Size 500
+   LongLat [ 35.2077407836914 32.103099822998 0.664 ]
+}
+
+"Ariel_University_ref" "Sol/Earth"
+{
+   Class "invisible"
+   FixedPosition { Planetographic [ 35.2077407836914 32.103099822998 0.664 ] }
+   OrbitFrame { BodyFixed {} }
+   BodyFrame {
+      TwoVector
+      {
+         Center "Sol/Earth/Ariel_University_ref"
+         Primary
+         {
+            Axis "-y"
+            RelativePosition { Target "Sol/Earth" }
+         }
+         Secondary
+         {
+            Axis "-x"
+            ConstantVector
+            {
+               Vector [ 0 0 1 ]
+               Frame { BodyFixed { Center "Sol/Earth" } }
+            }
+         }
+      }
+   }
+   FixedRotation { }
+}
+
+"Ariel_University" "Sol/Earth/Ariel_University_ref"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Ariel_University_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Ariel_University_ref" } }
+}
+
+"Ariel_University_Axes" "Sol/Earth/Ariel_University_ref"
+{
+   Class "component"
+   Mesh "bodyAxes.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Ariel_University_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Ariel_University_ref" } }
+}
+
+"Default_sens_ref" "Sol/Earth/Ariel_University_ref/Ariel_University"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Ariel_University_ref/Ariel_University" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Ariel_University_ref/Ariel_University" } }
+}
+
+"Default" "Sol/Earth/Ariel_University_ref/Ariel_University/Default_sens_ref"
+{
+   Class "invisible"
+   Radius 810.775
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Ariel_University_ref/Ariel_University/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Ariel_University_ref/Ariel_University/Default_sens_ref" } }
+   Sensor {
+      Target "Sol/Earth"
+      Range 810.775
+      Shape "Elliptical"
+      HorizontalFOV 30
+      VerticalFOV 30
+      FrustumColor [0.717647 0 1]
+      FrustumBaseColor [0.717647 0 1]
+      FrustumOpacity 0.1
+      GridOpacity 0.1
+   }
+}
+
+"Default_AimAxis" "Sol/Earth/Ariel_University_ref/Ariel_University/Default_sens_ref"
+{
+   Class "component"
+   Mesh "vector-cyan.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   Orientation [ 90 0 1 0 ]
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Ariel_University_ref/Ariel_University/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Ariel_University_ref/Ariel_University/Default_sens_ref" } }
+}
+
+Location "UPF_Faa" "Sol/Earth"
+{
+   Type "Observatory"
+   Size 500
+   LongLat [ -149.609100341797 -17.5765895843506 0.064 ]
+}
+
+"UPF_Faa_ref" "Sol/Earth"
+{
+   Class "invisible"
+   FixedPosition { Planetographic [ -149.609100341797 -17.5765895843506 0.064 ] }
+   OrbitFrame { BodyFixed {} }
+   BodyFrame {
+      TwoVector
+      {
+         Center "Sol/Earth/UPF_Faa_ref"
+         Primary
+         {
+            Axis "-y"
+            RelativePosition { Target "Sol/Earth" }
+         }
+         Secondary
+         {
+            Axis "-x"
+            ConstantVector
+            {
+               Vector [ 0 0 1 ]
+               Frame { BodyFixed { Center "Sol/Earth" } }
+            }
+         }
+      }
+   }
+   FixedRotation { }
+}
+
+"UPF_Faa" "Sol/Earth/UPF_Faa_ref"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/UPF_Faa_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/UPF_Faa_ref" } }
+}
+
+"UPF_Faa_Axes" "Sol/Earth/UPF_Faa_ref"
+{
+   Class "component"
+   Mesh "bodyAxes.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/UPF_Faa_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/UPF_Faa_ref" } }
+}
+
+"Default_sens_ref" "Sol/Earth/UPF_Faa_ref/UPF_Faa"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/UPF_Faa_ref/UPF_Faa" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/UPF_Faa_ref/UPF_Faa" } }
+}
+
+"Default" "Sol/Earth/UPF_Faa_ref/UPF_Faa/Default_sens_ref"
+{
+   Class "invisible"
+   Radius 810.775
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/UPF_Faa_ref/UPF_Faa/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/UPF_Faa_ref/UPF_Faa/Default_sens_ref" } }
+   Sensor {
+      Target "Sol/Earth"
+      Range 810.775
+      Shape "Elliptical"
+      HorizontalFOV 30
+      VerticalFOV 30
+      FrustumColor [0.717647 0 1]
+      FrustumBaseColor [0.717647 0 1]
+      FrustumOpacity 0.1
+      GridOpacity 0.1
+   }
+}
+
+"Default_AimAxis" "Sol/Earth/UPF_Faa_ref/UPF_Faa/Default_sens_ref"
+{
+   Class "component"
+   Mesh "vector-cyan.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   Orientation [ 90 0 1 0 ]
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/UPF_Faa_ref/UPF_Faa/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/UPF_Faa_ref/UPF_Faa/Default_sens_ref" } }
+}
+
+Location "CNES_Toulouse" "Sol/Earth"
+{
+   Type "Observatory"
+   Size 500
+   LongLat [ 1.4094899892807 43.5616683959961 0.15 ]
+}
+
+"CNES_Toulouse_ref" "Sol/Earth"
+{
+   Class "invisible"
+   FixedPosition { Planetographic [ 1.4094899892807 43.5616683959961 0.15 ] }
+   OrbitFrame { BodyFixed {} }
+   BodyFrame {
+      TwoVector
+      {
+         Center "Sol/Earth/CNES_Toulouse_ref"
+         Primary
+         {
+            Axis "-y"
+            RelativePosition { Target "Sol/Earth" }
+         }
+         Secondary
+         {
+            Axis "-x"
+            ConstantVector
+            {
+               Vector [ 0 0 1 ]
+               Frame { BodyFixed { Center "Sol/Earth" } }
+            }
+         }
+      }
+   }
+   FixedRotation { }
+}
+
+"CNES_Toulouse" "Sol/Earth/CNES_Toulouse_ref"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/CNES_Toulouse_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/CNES_Toulouse_ref" } }
+}
+
+"CNES_Toulouse_Axes" "Sol/Earth/CNES_Toulouse_ref"
+{
+   Class "component"
+   Mesh "bodyAxes.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/CNES_Toulouse_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/CNES_Toulouse_ref" } }
+}
+
+"Default_sens_ref" "Sol/Earth/CNES_Toulouse_ref/CNES_Toulouse"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/CNES_Toulouse_ref/CNES_Toulouse" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/CNES_Toulouse_ref/CNES_Toulouse" } }
+}
+
+"Default" "Sol/Earth/CNES_Toulouse_ref/CNES_Toulouse/Default_sens_ref"
+{
+   Class "invisible"
+   Radius 810.775
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/CNES_Toulouse_ref/CNES_Toulouse/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/CNES_Toulouse_ref/CNES_Toulouse/Default_sens_ref" } }
+   Sensor {
+      Target "Sol/Earth"
+      Range 810.775
+      Shape "Elliptical"
+      HorizontalFOV 30
+      VerticalFOV 30
+      FrustumColor [0.717647 0 1]
+      FrustumBaseColor [0.717647 0 1]
+      FrustumOpacity 0.1
+      GridOpacity 0.1
+   }
+}
+
+"Default_AimAxis" "Sol/Earth/CNES_Toulouse_ref/CNES_Toulouse/Default_sens_ref"
+{
+   Class "component"
+   Mesh "vector-cyan.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   Orientation [ 90 0 1 0 ]
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/CNES_Toulouse_ref/CNES_Toulouse/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/CNES_Toulouse_ref/CNES_Toulouse/Default_sens_ref" } }
+}
+
+Location "NPI_Tromso" "Sol/Earth"
+{
+   Type "Observatory"
+   Size 500
+   LongLat [ 18.9485855102539 69.6438522338867 0.005 ]
+}
+
+"NPI_Tromso_ref" "Sol/Earth"
+{
+   Class "invisible"
+   FixedPosition { Planetographic [ 18.9485855102539 69.6438522338867 0.005 ] }
+   OrbitFrame { BodyFixed {} }
+   BodyFrame {
+      TwoVector
+      {
+         Center "Sol/Earth/NPI_Tromso_ref"
+         Primary
+         {
+            Axis "-y"
+            RelativePosition { Target "Sol/Earth" }
+         }
+         Secondary
+         {
+            Axis "-x"
+            ConstantVector
+            {
+               Vector [ 0 0 1 ]
+               Frame { BodyFixed { Center "Sol/Earth" } }
+            }
+         }
+      }
+   }
+   FixedRotation { }
+}
+
+"NPI_Tromso" "Sol/Earth/NPI_Tromso_ref"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/NPI_Tromso_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/NPI_Tromso_ref" } }
+}
+
+"NPI_Tromso_Axes" "Sol/Earth/NPI_Tromso_ref"
+{
+   Class "component"
+   Mesh "bodyAxes.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/NPI_Tromso_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/NPI_Tromso_ref" } }
+}
+
+"Default_sens_ref" "Sol/Earth/NPI_Tromso_ref/NPI_Tromso"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/NPI_Tromso_ref/NPI_Tromso" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/NPI_Tromso_ref/NPI_Tromso" } }
+}
+
+"Default" "Sol/Earth/NPI_Tromso_ref/NPI_Tromso/Default_sens_ref"
+{
+   Class "invisible"
+   Radius 810.775
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/NPI_Tromso_ref/NPI_Tromso/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/NPI_Tromso_ref/NPI_Tromso/Default_sens_ref" } }
+   Sensor {
+      Target "Sol/Earth"
+      Range 810.775
+      Shape "Elliptical"
+      HorizontalFOV 30
+      VerticalFOV 30
+      FrustumColor [0.717647 0 1]
+      FrustumBaseColor [0.717647 0 1]
+      FrustumOpacity 0.1
+      GridOpacity 0.1
+   }
+}
+
+"Default_AimAxis" "Sol/Earth/NPI_Tromso_ref/NPI_Tromso/Default_sens_ref"
+{
+   Class "component"
+   Mesh "vector-cyan.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   Orientation [ 90 0 1 0 ]
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/NPI_Tromso_ref/NPI_Tromso/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/NPI_Tromso_ref/NPI_Tromso/Default_sens_ref" } }
+}
+
+Location "DGER_Station" "Sol/Earth"
+{
+   Type "Observatory"
+   Size 500
+   LongLat [ 5.1143274307251 43.6195106506348 0.147 ]
+}
+
+"DGER_Station_ref" "Sol/Earth"
+{
+   Class "invisible"
+   FixedPosition { Planetographic [ 5.1143274307251 43.6195106506348 0.147 ] }
+   OrbitFrame { BodyFixed {} }
+   BodyFrame {
+      TwoVector
+      {
+         Center "Sol/Earth/DGER_Station_ref"
+         Primary
+         {
+            Axis "-y"
+            RelativePosition { Target "Sol/Earth" }
+         }
+         Secondary
+         {
+            Axis "-x"
+            ConstantVector
+            {
+               Vector [ 0 0 1 ]
+               Frame { BodyFixed { Center "Sol/Earth" } }
+            }
+         }
+      }
+   }
+   FixedRotation { }
+}
+
+"DGER_Station" "Sol/Earth/DGER_Station_ref"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/DGER_Station_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/DGER_Station_ref" } }
+}
+
+"DGER_Station_Axes" "Sol/Earth/DGER_Station_ref"
+{
+   Class "component"
+   Mesh "bodyAxes.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/DGER_Station_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/DGER_Station_ref" } }
+}
+
+"Default_sens_ref" "Sol/Earth/DGER_Station_ref/DGER_Station"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/DGER_Station_ref/DGER_Station" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/DGER_Station_ref/DGER_Station" } }
+}
+
+"Default" "Sol/Earth/DGER_Station_ref/DGER_Station/Default_sens_ref"
+{
+   Class "invisible"
+   Radius 810.775
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/DGER_Station_ref/DGER_Station/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/DGER_Station_ref/DGER_Station/Default_sens_ref" } }
+   Sensor {
+      Target "Sol/Earth"
+      Range 810.775
+      Shape "Elliptical"
+      HorizontalFOV 45
+      VerticalFOV 45
+      FrustumColor [0.717647 0 1]
+      FrustumBaseColor [0.717647 0 1]
+      FrustumOpacity 0.1
+      GridOpacity 0.1
+   }
+}
+
+"Default_AimAxis" "Sol/Earth/DGER_Station_ref/DGER_Station/Default_sens_ref"
+{
+   Class "component"
+   Mesh "vector-cyan.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   Orientation [ 90 0 1 0 ]
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/DGER_Station_ref/DGER_Station/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/DGER_Station_ref/DGER_Station/Default_sens_ref" } }
+}
+
+Location "Gao_Airport" "Sol/Earth"
+{
+   Type "Observatory"
+   Size 500
+   LongLat [ -0.00776325911283493 16.2536430358887 0.227 ]
+}
+
+"Gao_Airport_ref" "Sol/Earth"
+{
+   Class "invisible"
+   FixedPosition { Planetographic [ -0.00776325911283493 16.2536430358887 0.227 ] }
+   OrbitFrame { BodyFixed {} }
+   BodyFrame {
+      TwoVector
+      {
+         Center "Sol/Earth/Gao_Airport_ref"
+         Primary
+         {
+            Axis "-y"
+            RelativePosition { Target "Sol/Earth" }
+         }
+         Secondary
+         {
+            Axis "-x"
+            ConstantVector
+            {
+               Vector [ 0 0 1 ]
+               Frame { BodyFixed { Center "Sol/Earth" } }
+            }
+         }
+      }
+   }
+   FixedRotation { }
+}
+
+"Gao_Airport" "Sol/Earth/Gao_Airport_ref"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Gao_Airport_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Gao_Airport_ref" } }
+}
+
+"Gao_Airport_Axes" "Sol/Earth/Gao_Airport_ref"
+{
+   Class "component"
+   Mesh "bodyAxes.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Gao_Airport_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Gao_Airport_ref" } }
+}
+
+"Default_sens_ref" "Sol/Earth/Gao_Airport_ref/Gao_Airport"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Gao_Airport_ref/Gao_Airport" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Gao_Airport_ref/Gao_Airport" } }
+}
+
+"Default" "Sol/Earth/Gao_Airport_ref/Gao_Airport/Default_sens_ref"
+{
+   Class "invisible"
+   Radius 810.775
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Gao_Airport_ref/Gao_Airport/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Gao_Airport_ref/Gao_Airport/Default_sens_ref" } }
+   Sensor {
+      Target "Sol/Earth"
+      Range 810.775
+      Shape "Elliptical"
+      HorizontalFOV 45
+      VerticalFOV 45
+      FrustumColor [0.717647 0 1]
+      FrustumBaseColor [0.717647 0 1]
+      FrustumOpacity 0.1
+      GridOpacity 0.1
+   }
+}
+
+"Default_AimAxis" "Sol/Earth/Gao_Airport_ref/Gao_Airport/Default_sens_ref"
+{
+   Class "component"
+   Mesh "vector-cyan.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   Orientation [ 90 0 1 0 ]
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Gao_Airport_ref/Gao_Airport/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Gao_Airport_ref/Gao_Airport/Default_sens_ref" } }
+}
+
+Location "Rostov" "Sol/Earth"
+{
+   Type "Observatory"
+   Size 500
+   LongLat [ 39.6987457275391 47.2363128662109 0.076 ]
+}
+
+"Rostov_ref" "Sol/Earth"
+{
+   Class "invisible"
+   FixedPosition { Planetographic [ 39.6987457275391 47.2363128662109 0.076 ] }
+   OrbitFrame { BodyFixed {} }
+   BodyFrame {
+      TwoVector
+      {
+         Center "Sol/Earth/Rostov_ref"
+         Primary
+         {
+            Axis "-y"
+            RelativePosition { Target "Sol/Earth" }
+         }
+         Secondary
+         {
+            Axis "-x"
+            ConstantVector
+            {
+               Vector [ 0 0 1 ]
+               Frame { BodyFixed { Center "Sol/Earth" } }
+            }
+         }
+      }
+   }
+   FixedRotation { }
+}
+
+"Rostov" "Sol/Earth/Rostov_ref"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Rostov_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Rostov_ref" } }
+}
+
+"Rostov_Axes" "Sol/Earth/Rostov_ref"
+{
+   Class "component"
+   Mesh "bodyAxes.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Rostov_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Rostov_ref" } }
+}
+
+"Default_sens_ref" "Sol/Earth/Rostov_ref/Rostov"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Rostov_ref/Rostov" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Rostov_ref/Rostov" } }
+}
+
+"Default" "Sol/Earth/Rostov_ref/Rostov/Default_sens_ref"
+{
+   Class "invisible"
+   Radius 810.775
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Rostov_ref/Rostov/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Rostov_ref/Rostov/Default_sens_ref" } }
+   Sensor {
+      Target "Sol/Earth"
+      Range 810.775
+      Shape "Elliptical"
+      HorizontalFOV 45
+      VerticalFOV 45
+      FrustumColor [0.717647 0 1]
+      FrustumBaseColor [0.717647 0 1]
+      FrustumOpacity 0.1
+      GridOpacity 0.1
+   }
+}
+
+"Default_AimAxis" "Sol/Earth/Rostov_ref/Rostov/Default_sens_ref"
+{
+   Class "component"
+   Mesh "vector-cyan.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   Orientation [ 90 0 1 0 ]
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Rostov_ref/Rostov/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Rostov_ref/Rostov/Default_sens_ref" } }
+}
+
+Location "Kharkiv" "Sol/Earth"
+{
+   Type "Observatory"
+   Size 500
+   LongLat [ 36.2307243347168 49.9926567077637 0.152 ]
+}
+
+"Kharkiv_ref" "Sol/Earth"
+{
+   Class "invisible"
+   FixedPosition { Planetographic [ 36.2307243347168 49.9926567077637 0.152 ] }
+   OrbitFrame { BodyFixed {} }
+   BodyFrame {
+      TwoVector
+      {
+         Center "Sol/Earth/Kharkiv_ref"
+         Primary
+         {
+            Axis "-y"
+            RelativePosition { Target "Sol/Earth" }
+         }
+         Secondary
+         {
+            Axis "-x"
+            ConstantVector
+            {
+               Vector [ 0 0 1 ]
+               Frame { BodyFixed { Center "Sol/Earth" } }
+            }
+         }
+      }
+   }
+   FixedRotation { }
+}
+
+"Kharkiv" "Sol/Earth/Kharkiv_ref"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Kharkiv_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Kharkiv_ref" } }
+}
+
+"Kharkiv_Axes" "Sol/Earth/Kharkiv_ref"
+{
+   Class "component"
+   Mesh "bodyAxes.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Kharkiv_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Kharkiv_ref" } }
+}
+
+"Default_sens_ref" "Sol/Earth/Kharkiv_ref/Kharkiv"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Kharkiv_ref/Kharkiv" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Kharkiv_ref/Kharkiv" } }
+}
+
+"Default" "Sol/Earth/Kharkiv_ref/Kharkiv/Default_sens_ref"
+{
+   Class "invisible"
+   Radius 810.775
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Kharkiv_ref/Kharkiv/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Kharkiv_ref/Kharkiv/Default_sens_ref" } }
+   Sensor {
+      Target "Sol/Earth"
+      Range 810.775
+      Shape "Elliptical"
+      HorizontalFOV 45
+      VerticalFOV 45
+      FrustumColor [0.717647 0 1]
+      FrustumBaseColor [0.717647 0 1]
+      FrustumOpacity 0.1
+      GridOpacity 0.1
+   }
+}
+
+"Default_AimAxis" "Sol/Earth/Kharkiv_ref/Kharkiv/Default_sens_ref"
+{
+   Class "component"
+   Mesh "vector-cyan.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   Orientation [ 90 0 1 0 ]
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Kharkiv_ref/Kharkiv/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Kharkiv_ref/Kharkiv/Default_sens_ref" } }
+}
+
+Location "Moscow" "Sol/Earth"
+{
+   Type "Observatory"
+   Size 500
+   LongLat [ 37.6190948486328 55.7556037902832 0.156 ]
+}
+
+"Moscow_ref" "Sol/Earth"
+{
+   Class "invisible"
+   FixedPosition { Planetographic [ 37.6190948486328 55.7556037902832 0.156 ] }
+   OrbitFrame { BodyFixed {} }
+   BodyFrame {
+      TwoVector
+      {
+         Center "Sol/Earth/Moscow_ref"
+         Primary
+         {
+            Axis "-y"
+            RelativePosition { Target "Sol/Earth" }
+         }
+         Secondary
+         {
+            Axis "-x"
+            ConstantVector
+            {
+               Vector [ 0 0 1 ]
+               Frame { BodyFixed { Center "Sol/Earth" } }
+            }
+         }
+      }
+   }
+   FixedRotation { }
+}
+
+"Moscow" "Sol/Earth/Moscow_ref"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Moscow_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Moscow_ref" } }
+}
+
+"Moscow_Axes" "Sol/Earth/Moscow_ref"
+{
+   Class "component"
+   Mesh "bodyAxes.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Moscow_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Moscow_ref" } }
+}
+
+"Default_sens_ref" "Sol/Earth/Moscow_ref/Moscow"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Moscow_ref/Moscow" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Moscow_ref/Moscow" } }
+}
+
+"Default" "Sol/Earth/Moscow_ref/Moscow/Default_sens_ref"
+{
+   Class "invisible"
+   Radius 810.775
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Moscow_ref/Moscow/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Moscow_ref/Moscow/Default_sens_ref" } }
+   Sensor {
+      Target "Sol/Earth"
+      Range 810.775
+      Shape "Elliptical"
+      HorizontalFOV 45
+      VerticalFOV 45
+      FrustumColor [0.717647 0 1]
+      FrustumBaseColor [0.717647 0 1]
+      FrustumOpacity 0.1
+      GridOpacity 0.1
+   }
+}
+
+"Default_AimAxis" "Sol/Earth/Moscow_ref/Moscow/Default_sens_ref"
+{
+   Class "component"
+   Mesh "vector-cyan.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   Orientation [ 90 0 1 0 ]
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Moscow_ref/Moscow/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Moscow_ref/Moscow/Default_sens_ref" } }
+}
+
+Location "Lattakia" "Sol/Earth"
+{
+   Type "Observatory"
+   Size 500
+   LongLat [ 35.7728652954102 35.5313034057617 0.011 ]
+}
+
+"Lattakia_ref" "Sol/Earth"
+{
+   Class "invisible"
+   FixedPosition { Planetographic [ 35.7728652954102 35.5313034057617 0.011 ] }
+   OrbitFrame { BodyFixed {} }
+   BodyFrame {
+      TwoVector
+      {
+         Center "Sol/Earth/Lattakia_ref"
+         Primary
+         {
+            Axis "-y"
+            RelativePosition { Target "Sol/Earth" }
+         }
+         Secondary
+         {
+            Axis "-x"
+            ConstantVector
+            {
+               Vector [ 0 0 1 ]
+               Frame { BodyFixed { Center "Sol/Earth" } }
+            }
+         }
+      }
+   }
+   FixedRotation { }
+}
+
+"Lattakia" "Sol/Earth/Lattakia_ref"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Lattakia_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Lattakia_ref" } }
+}
+
+"Lattakia_Axes" "Sol/Earth/Lattakia_ref"
+{
+   Class "component"
+   Mesh "bodyAxes.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Lattakia_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Lattakia_ref" } }
+}
+
+"Default_sens_ref" "Sol/Earth/Lattakia_ref/Lattakia"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Lattakia_ref/Lattakia" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Lattakia_ref/Lattakia" } }
+}
+
+"Default" "Sol/Earth/Lattakia_ref/Lattakia/Default_sens_ref"
+{
+   Class "invisible"
+   Radius 810.775
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Lattakia_ref/Lattakia/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Lattakia_ref/Lattakia/Default_sens_ref" } }
+   Sensor {
+      Target "Sol/Earth"
+      Range 810.775
+      Shape "Elliptical"
+      HorizontalFOV 45
+      VerticalFOV 45
+      FrustumColor [0.717647 0 1]
+      FrustumBaseColor [0.717647 0 1]
+      FrustumOpacity 0.1
+      GridOpacity 0.1
+   }
+}
+
+"Default_AimAxis" "Sol/Earth/Lattakia_ref/Lattakia/Default_sens_ref"
+{
+   Class "component"
+   Mesh "vector-cyan.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   Orientation [ 90 0 1 0 ]
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Lattakia_ref/Lattakia/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Lattakia_ref/Lattakia/Default_sens_ref" } }
+}
+
+Location "Bagdad" "Sol/Earth"
+{
+   Type "Observatory"
+   Size 500
+   LongLat [ 44.3646087646484 33.3086051940918 0.034 ]
+}
+
+"Bagdad_ref" "Sol/Earth"
+{
+   Class "invisible"
+   FixedPosition { Planetographic [ 44.3646087646484 33.3086051940918 0.034 ] }
+   OrbitFrame { BodyFixed {} }
+   BodyFrame {
+      TwoVector
+      {
+         Center "Sol/Earth/Bagdad_ref"
+         Primary
+         {
+            Axis "-y"
+            RelativePosition { Target "Sol/Earth" }
+         }
+         Secondary
+         {
+            Axis "-x"
+            ConstantVector
+            {
+               Vector [ 0 0 1 ]
+               Frame { BodyFixed { Center "Sol/Earth" } }
+            }
+         }
+      }
+   }
+   FixedRotation { }
+}
+
+"Bagdad" "Sol/Earth/Bagdad_ref"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Bagdad_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Bagdad_ref" } }
+}
+
+"Bagdad_Axes" "Sol/Earth/Bagdad_ref"
+{
+   Class "component"
+   Mesh "bodyAxes.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Bagdad_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Bagdad_ref" } }
+}
+
+"Default_sens_ref" "Sol/Earth/Bagdad_ref/Bagdad"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Bagdad_ref/Bagdad" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Bagdad_ref/Bagdad" } }
+}
+
+"Default" "Sol/Earth/Bagdad_ref/Bagdad/Default_sens_ref"
+{
+   Class "invisible"
+   Radius 810.775
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Bagdad_ref/Bagdad/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Bagdad_ref/Bagdad/Default_sens_ref" } }
+   Sensor {
+      Target "Sol/Earth"
+      Range 810.775
+      Shape "Elliptical"
+      HorizontalFOV 45
+      VerticalFOV 45
+      FrustumColor [0.717647 0 1]
+      FrustumBaseColor [0.717647 0 1]
+      FrustumOpacity 0.1
+      GridOpacity 0.1
+   }
+}
+
+"Default_AimAxis" "Sol/Earth/Bagdad_ref/Bagdad/Default_sens_ref"
+{
+   Class "component"
+   Mesh "vector-cyan.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   Orientation [ 90 0 1 0 ]
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Bagdad_ref/Bagdad/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Bagdad_ref/Bagdad/Default_sens_ref" } }
+}
+
+Location "Teheran" "Sol/Earth"
+{
+   Type "Observatory"
+   Size 500
+   LongLat [ 51.3815689086914 35.6910705566406 1.2 ]
+}
+
+"Teheran_ref" "Sol/Earth"
+{
+   Class "invisible"
+   FixedPosition { Planetographic [ 51.3815689086914 35.6910705566406 1.2 ] }
+   OrbitFrame { BodyFixed {} }
+   BodyFrame {
+      TwoVector
+      {
+         Center "Sol/Earth/Teheran_ref"
+         Primary
+         {
+            Axis "-y"
+            RelativePosition { Target "Sol/Earth" }
+         }
+         Secondary
+         {
+            Axis "-x"
+            ConstantVector
+            {
+               Vector [ 0 0 1 ]
+               Frame { BodyFixed { Center "Sol/Earth" } }
+            }
+         }
+      }
+   }
+   FixedRotation { }
+}
+
+"Teheran" "Sol/Earth/Teheran_ref"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Teheran_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Teheran_ref" } }
+}
+
+"Teheran_Axes" "Sol/Earth/Teheran_ref"
+{
+   Class "component"
+   Mesh "bodyAxes.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Teheran_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Teheran_ref" } }
+}
+
+"Default_sens_ref" "Sol/Earth/Teheran_ref/Teheran"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Teheran_ref/Teheran" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Teheran_ref/Teheran" } }
+}
+
+"Default" "Sol/Earth/Teheran_ref/Teheran/Default_sens_ref"
+{
+   Class "invisible"
+   Radius 810.775
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Teheran_ref/Teheran/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Teheran_ref/Teheran/Default_sens_ref" } }
+   Sensor {
+      Target "Sol/Earth"
+      Range 810.775
+      Shape "Elliptical"
+      HorizontalFOV 45
+      VerticalFOV 45
+      FrustumColor [0.717647 0 1]
+      FrustumBaseColor [0.717647 0 1]
+      FrustumOpacity 0.1
+      GridOpacity 0.1
+   }
+}
+
+"Default_AimAxis" "Sol/Earth/Teheran_ref/Teheran/Default_sens_ref"
+{
+   Class "component"
+   Mesh "vector-cyan.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   Orientation [ 90 0 1 0 ]
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Teheran_ref/Teheran/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Teheran_ref/Teheran/Default_sens_ref" } }
+}
+
+Location "Kabul" "Sol/Earth"
+{
+   Type "Observatory"
+   Size 500
+   LongLat [ 69.2074584960938 34.556713104248 1.791 ]
+}
+
+"Kabul_ref" "Sol/Earth"
+{
+   Class "invisible"
+   FixedPosition { Planetographic [ 69.2074584960938 34.556713104248 1.791 ] }
+   OrbitFrame { BodyFixed {} }
+   BodyFrame {
+      TwoVector
+      {
+         Center "Sol/Earth/Kabul_ref"
+         Primary
+         {
+            Axis "-y"
+            RelativePosition { Target "Sol/Earth" }
+         }
+         Secondary
+         {
+            Axis "-x"
+            ConstantVector
+            {
+               Vector [ 0 0 1 ]
+               Frame { BodyFixed { Center "Sol/Earth" } }
+            }
+         }
+      }
+   }
+   FixedRotation { }
+}
+
+"Kabul" "Sol/Earth/Kabul_ref"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Kabul_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Kabul_ref" } }
+}
+
+"Kabul_Axes" "Sol/Earth/Kabul_ref"
+{
+   Class "component"
+   Mesh "bodyAxes.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Kabul_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Kabul_ref" } }
+}
+
+"Default_sens_ref" "Sol/Earth/Kabul_ref/Kabul"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Kabul_ref/Kabul" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Kabul_ref/Kabul" } }
+}
+
+"Default" "Sol/Earth/Kabul_ref/Kabul/Default_sens_ref"
+{
+   Class "invisible"
+   Radius 810.775
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Kabul_ref/Kabul/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Kabul_ref/Kabul/Default_sens_ref" } }
+   Sensor {
+      Target "Sol/Earth"
+      Range 810.775
+      Shape "Elliptical"
+      HorizontalFOV 45
+      VerticalFOV 45
+      FrustumColor [0.717647 0 1]
+      FrustumBaseColor [0.717647 0 1]
+      FrustumOpacity 0.1
+      GridOpacity 0.1
+   }
+}
+
+"Default_AimAxis" "Sol/Earth/Kabul_ref/Kabul/Default_sens_ref"
+{
+   Class "component"
+   Mesh "vector-cyan.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   Orientation [ 90 0 1 0 ]
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Kabul_ref/Kabul/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Kabul_ref/Kabul/Default_sens_ref" } }
+}
+
+Location "Baikonur" "Sol/Earth"
+{
+   Type "Observatory"
+   Size 500
+   LongLat [ 63.306079864502 45.6120491027832 0.1 ]
+}
+
+"Baikonur_ref" "Sol/Earth"
+{
+   Class "invisible"
+   FixedPosition { Planetographic [ 63.306079864502 45.6120491027832 0.1 ] }
+   OrbitFrame { BodyFixed {} }
+   BodyFrame {
+      TwoVector
+      {
+         Center "Sol/Earth/Baikonur_ref"
+         Primary
+         {
+            Axis "-y"
+            RelativePosition { Target "Sol/Earth" }
+         }
+         Secondary
+         {
+            Axis "-x"
+            ConstantVector
+            {
+               Vector [ 0 0 1 ]
+               Frame { BodyFixed { Center "Sol/Earth" } }
+            }
+         }
+      }
+   }
+   FixedRotation { }
+}
+
+"Baikonur" "Sol/Earth/Baikonur_ref"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Baikonur_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Baikonur_ref" } }
+}
+
+"Baikonur_Axes" "Sol/Earth/Baikonur_ref"
+{
+   Class "component"
+   Mesh "bodyAxes.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Baikonur_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Baikonur_ref" } }
+}
+
+"Default_sens_ref" "Sol/Earth/Baikonur_ref/Baikonur"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Baikonur_ref/Baikonur" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Baikonur_ref/Baikonur" } }
+}
+
+"Default" "Sol/Earth/Baikonur_ref/Baikonur/Default_sens_ref"
+{
+   Class "invisible"
+   Radius 810.775
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Baikonur_ref/Baikonur/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Baikonur_ref/Baikonur/Default_sens_ref" } }
+   Sensor {
+      Target "Sol/Earth"
+      Range 810.775
+      Shape "Elliptical"
+      HorizontalFOV 45
+      VerticalFOV 45
+      FrustumColor [0.717647 0 1]
+      FrustumBaseColor [0.717647 0 1]
+      FrustumOpacity 0.1
+      GridOpacity 0.1
+   }
+}
+
+"Default_AimAxis" "Sol/Earth/Baikonur_ref/Baikonur/Default_sens_ref"
+{
+   Class "component"
+   Mesh "vector-cyan.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   Orientation [ 90 0 1 0 ]
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Baikonur_ref/Baikonur/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Baikonur_ref/Baikonur/Default_sens_ref" } }
+}
+
+Location "Xinjiang_point" "Sol/Earth"
+{
+   Type "Observatory"
+   Size 500
+   LongLat [ 90.8546600341797 40.4686508178711 1 ]
+}
+
+"Xinjiang_point_ref" "Sol/Earth"
+{
+   Class "invisible"
+   FixedPosition { Planetographic [ 90.8546600341797 40.4686508178711 1 ] }
+   OrbitFrame { BodyFixed {} }
+   BodyFrame {
+      TwoVector
+      {
+         Center "Sol/Earth/Xinjiang_point_ref"
+         Primary
+         {
+            Axis "-y"
+            RelativePosition { Target "Sol/Earth" }
+         }
+         Secondary
+         {
+            Axis "-x"
+            ConstantVector
+            {
+               Vector [ 0 0 1 ]
+               Frame { BodyFixed { Center "Sol/Earth" } }
+            }
+         }
+      }
+   }
+   FixedRotation { }
+}
+
+"Xinjiang_point" "Sol/Earth/Xinjiang_point_ref"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Xinjiang_point_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Xinjiang_point_ref" } }
+}
+
+"Xinjiang_point_Axes" "Sol/Earth/Xinjiang_point_ref"
+{
+   Class "component"
+   Mesh "bodyAxes.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Xinjiang_point_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Xinjiang_point_ref" } }
+}
+
+"Default_sens_ref" "Sol/Earth/Xinjiang_point_ref/Xinjiang_point"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Xinjiang_point_ref/Xinjiang_point" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Xinjiang_point_ref/Xinjiang_point" } }
+}
+
+"Default" "Sol/Earth/Xinjiang_point_ref/Xinjiang_point/Default_sens_ref"
+{
+   Class "invisible"
+   Radius 810.775
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Xinjiang_point_ref/Xinjiang_point/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Xinjiang_point_ref/Xinjiang_point/Default_sens_ref" } }
+   Sensor {
+      Target "Sol/Earth"
+      Range 810.775
+      Shape "Elliptical"
+      HorizontalFOV 45
+      VerticalFOV 45
+      FrustumColor [0.717647 0 1]
+      FrustumBaseColor [0.717647 0 1]
+      FrustumOpacity 0.1
+      GridOpacity 0.1
+   }
+}
+
+"Default_AimAxis" "Sol/Earth/Xinjiang_point_ref/Xinjiang_point/Default_sens_ref"
+{
+   Class "component"
+   Mesh "vector-cyan.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   Orientation [ 90 0 1 0 ]
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Xinjiang_point_ref/Xinjiang_point/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Xinjiang_point_ref/Xinjiang_point/Default_sens_ref" } }
+}
+
+Location "Beijing" "Sol/Earth"
+{
+   Type "Observatory"
+   Size 500
+   LongLat [ 116.391258239746 39.9151458740234 0.044 ]
+}
+
+"Beijing_ref" "Sol/Earth"
+{
+   Class "invisible"
+   FixedPosition { Planetographic [ 116.391258239746 39.9151458740234 0.044 ] }
+   OrbitFrame { BodyFixed {} }
+   BodyFrame {
+      TwoVector
+      {
+         Center "Sol/Earth/Beijing_ref"
+         Primary
+         {
+            Axis "-y"
+            RelativePosition { Target "Sol/Earth" }
+         }
+         Secondary
+         {
+            Axis "-x"
+            ConstantVector
+            {
+               Vector [ 0 0 1 ]
+               Frame { BodyFixed { Center "Sol/Earth" } }
+            }
+         }
+      }
+   }
+   FixedRotation { }
+}
+
+"Beijing" "Sol/Earth/Beijing_ref"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Beijing_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Beijing_ref" } }
+}
+
+"Beijing_Axes" "Sol/Earth/Beijing_ref"
+{
+   Class "component"
+   Mesh "bodyAxes.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Beijing_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Beijing_ref" } }
+}
+
+"Default_sens_ref" "Sol/Earth/Beijing_ref/Beijing"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Beijing_ref/Beijing" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Beijing_ref/Beijing" } }
+}
+
+"Default" "Sol/Earth/Beijing_ref/Beijing/Default_sens_ref"
+{
+   Class "invisible"
+   Radius 810.775
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Beijing_ref/Beijing/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Beijing_ref/Beijing/Default_sens_ref" } }
+   Sensor {
+      Target "Sol/Earth"
+      Range 810.775
+      Shape "Elliptical"
+      HorizontalFOV 45
+      VerticalFOV 45
+      FrustumColor [0.717647 0 1]
+      FrustumBaseColor [0.717647 0 1]
+      FrustumOpacity 0.1
+      GridOpacity 0.1
+   }
+}
+
+"Default_AimAxis" "Sol/Earth/Beijing_ref/Beijing/Default_sens_ref"
+{
+   Class "component"
+   Mesh "vector-cyan.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   Orientation [ 90 0 1 0 ]
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Beijing_ref/Beijing/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Beijing_ref/Beijing/Default_sens_ref" } }
+}
+
+Location "Hainan_Naval" "Sol/Earth"
+{
+   Type "Observatory"
+   Size 500
+   LongLat [ 109.686683654785 18.211446762085 0.00100000004749745 ]
+}
+
+"Hainan_Naval_ref" "Sol/Earth"
+{
+   Class "invisible"
+   FixedPosition { Planetographic [ 109.686683654785 18.211446762085 0.00100000004749745 ] }
+   OrbitFrame { BodyFixed {} }
+   BodyFrame {
+      TwoVector
+      {
+         Center "Sol/Earth/Hainan_Naval_ref"
+         Primary
+         {
+            Axis "-y"
+            RelativePosition { Target "Sol/Earth" }
+         }
+         Secondary
+         {
+            Axis "-x"
+            ConstantVector
+            {
+               Vector [ 0 0 1 ]
+               Frame { BodyFixed { Center "Sol/Earth" } }
+            }
+         }
+      }
+   }
+   FixedRotation { }
+}
+
+"Hainan_Naval" "Sol/Earth/Hainan_Naval_ref"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Hainan_Naval_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Hainan_Naval_ref" } }
+}
+
+"Hainan_Naval_Axes" "Sol/Earth/Hainan_Naval_ref"
+{
+   Class "component"
+   Mesh "bodyAxes.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Hainan_Naval_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Hainan_Naval_ref" } }
+}
+
+"Default_sens_ref" "Sol/Earth/Hainan_Naval_ref/Hainan_Naval"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Hainan_Naval_ref/Hainan_Naval" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Hainan_Naval_ref/Hainan_Naval" } }
+}
+
+"Default" "Sol/Earth/Hainan_Naval_ref/Hainan_Naval/Default_sens_ref"
+{
+   Class "invisible"
+   Radius 810.775
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Hainan_Naval_ref/Hainan_Naval/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Hainan_Naval_ref/Hainan_Naval/Default_sens_ref" } }
+   Sensor {
+      Target "Sol/Earth"
+      Range 810.775
+      Shape "Elliptical"
+      HorizontalFOV 45
+      VerticalFOV 45
+      FrustumColor [0.717647 0 1]
+      FrustumBaseColor [0.717647 0 1]
+      FrustumOpacity 0.1
+      GridOpacity 0.1
+   }
+}
+
+"Default_AimAxis" "Sol/Earth/Hainan_Naval_ref/Hainan_Naval/Default_sens_ref"
+{
+   Class "component"
+   Mesh "vector-cyan.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   Orientation [ 90 0 1 0 ]
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Hainan_Naval_ref/Hainan_Naval/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Hainan_Naval_ref/Hainan_Naval/Default_sens_ref" } }
+}
+
+Location "CSUG" "Sol/Earth"
+{
+   Type "Observatory"
+   Size 500
+   LongLat [ 5.75996685028076 45.1917495727539 0.227 ]
+}
+
+"CSUG_ref" "Sol/Earth"
+{
+   Class "invisible"
+   FixedPosition { Planetographic [ 5.75996685028076 45.1917495727539 0.227 ] }
+   OrbitFrame { BodyFixed {} }
+   BodyFrame {
+      TwoVector
+      {
+         Center "Sol/Earth/CSUG_ref"
+         Primary
+         {
+            Axis "-y"
+            RelativePosition { Target "Sol/Earth" }
+         }
+         Secondary
+         {
+            Axis "-x"
+            ConstantVector
+            {
+               Vector [ 0 0 1 ]
+               Frame { BodyFixed { Center "Sol/Earth" } }
+            }
+         }
+      }
+   }
+   FixedRotation { }
+}
+
+"CSUG" "Sol/Earth/CSUG_ref"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/CSUG_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/CSUG_ref" } }
+}
+
+"CSUG_Axes" "Sol/Earth/CSUG_ref"
+{
+   Class "component"
+   Mesh "bodyAxes.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/CSUG_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/CSUG_ref" } }
+}
+
+"Default_sens_ref" "Sol/Earth/CSUG_ref/CSUG"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/CSUG_ref/CSUG" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/CSUG_ref/CSUG" } }
+}
+
+"Default" "Sol/Earth/CSUG_ref/CSUG/Default_sens_ref"
+{
+   Class "invisible"
+   Radius 810.775
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/CSUG_ref/CSUG/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/CSUG_ref/CSUG/Default_sens_ref" } }
+   Sensor {
+      Target "Sol/Earth"
+      Range 810.775
+      Shape "Elliptical"
+      HorizontalFOV 30
+      VerticalFOV 30
+      FrustumColor [0.717647 0 1]
+      FrustumBaseColor [0.717647 0 1]
+      FrustumOpacity 0.1
+      GridOpacity 0.1
+   }
+}
+
+"Default_AimAxis" "Sol/Earth/CSUG_ref/CSUG/Default_sens_ref"
+{
+   Class "component"
+   Mesh "vector-cyan.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   Orientation [ 90 0 1 0 ]
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/CSUG_ref/CSUG/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/CSUG_ref/CSUG/Default_sens_ref" } }
+}
+
+Location "PuertollanoSR" "Sol/Earth"
+{
+   Type "Observatory"
+   Size 500
+   LongLat [ -4.15999984741211 38.6699981689453 0.678 ]
+}
+
+"PuertollanoSR_ref" "Sol/Earth"
+{
+   Class "invisible"
+   FixedPosition { Planetographic [ -4.15999984741211 38.6699981689453 0.678 ] }
+   OrbitFrame { BodyFixed {} }
+   BodyFrame {
+      TwoVector
+      {
+         Center "Sol/Earth/PuertollanoSR_ref"
+         Primary
+         {
+            Axis "-y"
+            RelativePosition { Target "Sol/Earth" }
+         }
+         Secondary
+         {
+            Axis "-x"
+            ConstantVector
+            {
+               Vector [ 0 0 1 ]
+               Frame { BodyFixed { Center "Sol/Earth" } }
+            }
+         }
+      }
+   }
+   FixedRotation { }
+}
+
+"PuertollanoSR" "Sol/Earth/PuertollanoSR_ref"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/PuertollanoSR_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/PuertollanoSR_ref" } }
+}
+
+"PuertollanoSR_Axes" "Sol/Earth/PuertollanoSR_ref"
+{
+   Class "component"
+   Mesh "bodyAxes.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/PuertollanoSR_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/PuertollanoSR_ref" } }
+}
+
+"Default_sens_ref" "Sol/Earth/PuertollanoSR_ref/PuertollanoSR"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/PuertollanoSR_ref/PuertollanoSR" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/PuertollanoSR_ref/PuertollanoSR" } }
+}
+
+"Default" "Sol/Earth/PuertollanoSR_ref/PuertollanoSR/Default_sens_ref"
+{
+   Class "invisible"
+   Radius 810.775
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/PuertollanoSR_ref/PuertollanoSR/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/PuertollanoSR_ref/PuertollanoSR/Default_sens_ref" } }
+   Sensor {
+      Target "Sol/Earth"
+      Range 810.775
+      Shape "Elliptical"
+      HorizontalFOV 80
+      VerticalFOV 80
+      FrustumColor [0.717647 0 1]
+      FrustumBaseColor [0.717647 0 1]
+      FrustumOpacity 0.1
+      GridOpacity 0.1
+   }
+}
+
+"Default_AimAxis" "Sol/Earth/PuertollanoSR_ref/PuertollanoSR/Default_sens_ref"
+{
+   Class "component"
+   Mesh "vector-cyan.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   Orientation [ 90 0 1 0 ]
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/PuertollanoSR_ref/PuertollanoSR/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/PuertollanoSR_ref/PuertollanoSR/Default_sens_ref" } }
+}
+
+Location "MilanSR" "Sol/Earth"
+{
+   Type "Observatory"
+   Size 500
+   LongLat [ 9.35999965667725 45.5900001525879 0.174 ]
+}
+
+"MilanSR_ref" "Sol/Earth"
+{
+   Class "invisible"
+   FixedPosition { Planetographic [ 9.35999965667725 45.5900001525879 0.174 ] }
+   OrbitFrame { BodyFixed {} }
+   BodyFrame {
+      TwoVector
+      {
+         Center "Sol/Earth/MilanSR_ref"
+         Primary
+         {
+            Axis "-y"
+            RelativePosition { Target "Sol/Earth" }
+         }
+         Secondary
+         {
+            Axis "-x"
+            ConstantVector
+            {
+               Vector [ 0 0 1 ]
+               Frame { BodyFixed { Center "Sol/Earth" } }
+            }
+         }
+      }
+   }
+   FixedRotation { }
+}
+
+"MilanSR" "Sol/Earth/MilanSR_ref"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/MilanSR_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/MilanSR_ref" } }
+}
+
+"MilanSR_Axes" "Sol/Earth/MilanSR_ref"
+{
+   Class "component"
+   Mesh "bodyAxes.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/MilanSR_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/MilanSR_ref" } }
+}
+
+"Default_sens_ref" "Sol/Earth/MilanSR_ref/MilanSR"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/MilanSR_ref/MilanSR" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/MilanSR_ref/MilanSR" } }
+}
+
+"Default" "Sol/Earth/MilanSR_ref/MilanSR/Default_sens_ref"
+{
+   Class "invisible"
+   Radius 810.775
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/MilanSR_ref/MilanSR/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/MilanSR_ref/MilanSR/Default_sens_ref" } }
+   Sensor {
+      Target "Sol/Earth"
+      Range 810.775
+      Shape "Elliptical"
+      HorizontalFOV 80
+      VerticalFOV 80
+      FrustumColor [0.717647 0 1]
+      FrustumBaseColor [0.717647 0 1]
+      FrustumOpacity 0.1
+      GridOpacity 0.1
+   }
+}
+
+"Default_AimAxis" "Sol/Earth/MilanSR_ref/MilanSR/Default_sens_ref"
+{
+   Class "component"
+   Mesh "vector-cyan.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   Orientation [ 90 0 1 0 ]
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/MilanSR_ref/MilanSR/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/MilanSR_ref/MilanSR/Default_sens_ref" } }
+}
+
+Location "AirLiquide_Global_Helium" "Sol/Earth"
+{
+   Type "Observatory"
+   Size 500
+   LongLat [ 55.0873184204102 24.9344501495361 0.053 ]
+}
+
+"AirLiquide_Global_Helium_ref" "Sol/Earth"
+{
+   Class "invisible"
+   FixedPosition { Planetographic [ 55.0873184204102 24.9344501495361 0.053 ] }
+   OrbitFrame { BodyFixed {} }
+   BodyFrame {
+      TwoVector
+      {
+         Center "Sol/Earth/AirLiquide_Global_Helium_ref"
+         Primary
+         {
+            Axis "-y"
+            RelativePosition { Target "Sol/Earth" }
+         }
+         Secondary
+         {
+            Axis "-x"
+            ConstantVector
+            {
+               Vector [ 0 0 1 ]
+               Frame { BodyFixed { Center "Sol/Earth" } }
+            }
+         }
+      }
+   }
+   FixedRotation { }
+}
+
+"AirLiquide_Global_Helium" "Sol/Earth/AirLiquide_Global_Helium_ref"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/AirLiquide_Global_Helium_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/AirLiquide_Global_Helium_ref" } }
+}
+
+"AirLiquide_Global_Helium_Axes" "Sol/Earth/AirLiquide_Global_Helium_ref"
+{
+   Class "component"
+   Mesh "bodyAxes.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/AirLiquide_Global_Helium_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/AirLiquide_Global_Helium_ref" } }
+}
+
+"Default_sens_ref" "Sol/Earth/AirLiquide_Global_Helium_ref/AirLiquide_Global_Helium"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/AirLiquide_Global_Helium_ref/AirLiquide_Global_Helium" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/AirLiquide_Global_Helium_ref/AirLiquide_Global_Helium" } }
+}
+
+"Default" "Sol/Earth/AirLiquide_Global_Helium_ref/AirLiquide_Global_Helium/Default_sens_ref"
+{
+   Class "invisible"
+   Radius 810.775
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/AirLiquide_Global_Helium_ref/AirLiquide_Global_Helium/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/AirLiquide_Global_Helium_ref/AirLiquide_Global_Helium/Default_sens_ref" } }
+   Sensor {
+      Target "Sol/Earth"
+      Range 810.775
+      Shape "Elliptical"
+      HorizontalFOV 30
+      VerticalFOV 30
+      FrustumColor [0.717647 0 1]
+      FrustumBaseColor [0.717647 0 1]
+      FrustumOpacity 0.1
+      GridOpacity 0.1
+   }
+}
+
+"Default_AimAxis" "Sol/Earth/AirLiquide_Global_Helium_ref/AirLiquide_Global_Helium/Default_sens_ref"
+{
+   Class "component"
+   Mesh "vector-cyan.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   Orientation [ 90 0 1 0 ]
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/AirLiquide_Global_Helium_ref/AirLiquide_Global_Helium/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/AirLiquide_Global_Helium_ref/AirLiquide_Global_Helium/Default_sens_ref" } }
+}
+
+Location "Univ_Intl_Rabat" "Sol/Earth"
+{
+   Type "Observatory"
+   Size 500
+   LongLat [ -6.72520017623901 33.9848442077637 0.145 ]
+}
+
+"Univ_Intl_Rabat_ref" "Sol/Earth"
+{
+   Class "invisible"
+   FixedPosition { Planetographic [ -6.72520017623901 33.9848442077637 0.145 ] }
+   OrbitFrame { BodyFixed {} }
+   BodyFrame {
+      TwoVector
+      {
+         Center "Sol/Earth/Univ_Intl_Rabat_ref"
+         Primary
+         {
+            Axis "-y"
+            RelativePosition { Target "Sol/Earth" }
+         }
+         Secondary
+         {
+            Axis "-x"
+            ConstantVector
+            {
+               Vector [ 0 0 1 ]
+               Frame { BodyFixed { Center "Sol/Earth" } }
+            }
+         }
+      }
+   }
+   FixedRotation { }
+}
+
+"Univ_Intl_Rabat" "Sol/Earth/Univ_Intl_Rabat_ref"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Univ_Intl_Rabat_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Univ_Intl_Rabat_ref" } }
+}
+
+"Univ_Intl_Rabat_Axes" "Sol/Earth/Univ_Intl_Rabat_ref"
+{
+   Class "component"
+   Mesh "bodyAxes.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Univ_Intl_Rabat_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Univ_Intl_Rabat_ref" } }
+}
+
+"Default_sens_ref" "Sol/Earth/Univ_Intl_Rabat_ref/Univ_Intl_Rabat"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Univ_Intl_Rabat_ref/Univ_Intl_Rabat" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Univ_Intl_Rabat_ref/Univ_Intl_Rabat" } }
+}
+
+"Default" "Sol/Earth/Univ_Intl_Rabat_ref/Univ_Intl_Rabat/Default_sens_ref"
+{
+   Class "invisible"
+   Radius 810.775
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Univ_Intl_Rabat_ref/Univ_Intl_Rabat/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Univ_Intl_Rabat_ref/Univ_Intl_Rabat/Default_sens_ref" } }
+   Sensor {
+      Target "Sol/Earth"
+      Range 810.775
+      Shape "Elliptical"
+      HorizontalFOV 30
+      VerticalFOV 30
+      FrustumColor [0.717647 0 1]
+      FrustumBaseColor [0.717647 0 1]
+      FrustumOpacity 0.1
+      GridOpacity 0.1
+   }
+}
+
+"Default_AimAxis" "Sol/Earth/Univ_Intl_Rabat_ref/Univ_Intl_Rabat/Default_sens_ref"
+{
+   Class "component"
+   Mesh "vector-cyan.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   Orientation [ 90 0 1 0 ]
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Univ_Intl_Rabat_ref/Univ_Intl_Rabat/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Univ_Intl_Rabat_ref/Univ_Intl_Rabat/Default_sens_ref" } }
+}
+
+Location "IPEV_Bretagne" "Sol/Earth"
+{
+   Type "Observatory"
+   Size 500
+   LongLat [ -4.56248617172241 48.3597412109375 0.075 ]
+}
+
+"IPEV_Bretagne_ref" "Sol/Earth"
+{
+   Class "invisible"
+   FixedPosition { Planetographic [ -4.56248617172241 48.3597412109375 0.075 ] }
+   OrbitFrame { BodyFixed {} }
+   BodyFrame {
+      TwoVector
+      {
+         Center "Sol/Earth/IPEV_Bretagne_ref"
+         Primary
+         {
+            Axis "-y"
+            RelativePosition { Target "Sol/Earth" }
+         }
+         Secondary
+         {
+            Axis "-x"
+            ConstantVector
+            {
+               Vector [ 0 0 1 ]
+               Frame { BodyFixed { Center "Sol/Earth" } }
+            }
+         }
+      }
+   }
+   FixedRotation { }
+}
+
+"IPEV_Bretagne" "Sol/Earth/IPEV_Bretagne_ref"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/IPEV_Bretagne_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/IPEV_Bretagne_ref" } }
+}
+
+"IPEV_Bretagne_Axes" "Sol/Earth/IPEV_Bretagne_ref"
+{
+   Class "component"
+   Mesh "bodyAxes.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/IPEV_Bretagne_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/IPEV_Bretagne_ref" } }
+}
+
+"Default_sens_ref" "Sol/Earth/IPEV_Bretagne_ref/IPEV_Bretagne"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/IPEV_Bretagne_ref/IPEV_Bretagne" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/IPEV_Bretagne_ref/IPEV_Bretagne" } }
+}
+
+"Default" "Sol/Earth/IPEV_Bretagne_ref/IPEV_Bretagne/Default_sens_ref"
+{
+   Class "invisible"
+   Radius 810.775
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/IPEV_Bretagne_ref/IPEV_Bretagne/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/IPEV_Bretagne_ref/IPEV_Bretagne/Default_sens_ref" } }
+   Sensor {
+      Target "Sol/Earth"
+      Range 810.775
+      Shape "Elliptical"
+      HorizontalFOV 30
+      VerticalFOV 30
+      FrustumColor [0.717647 0 1]
+      FrustumBaseColor [0.717647 0 1]
+      FrustumOpacity 0.1
+      GridOpacity 0.1
+   }
+}
+
+"Default_AimAxis" "Sol/Earth/IPEV_Bretagne_ref/IPEV_Bretagne/Default_sens_ref"
+{
+   Class "component"
+   Mesh "vector-cyan.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   Orientation [ 90 0 1 0 ]
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/IPEV_Bretagne_ref/IPEV_Bretagne/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/IPEV_Bretagne_ref/IPEV_Bretagne/Default_sens_ref" } }
+}
+
+Location "Univ_Ouv_Catalogne" "Sol/Earth"
+{
+   Type "Observatory"
+   Size 500
+   LongLat [ 2.19450306892395 41.4065399169922 0.01 ]
+}
+
+"Univ_Ouv_Catalogne_ref" "Sol/Earth"
+{
+   Class "invisible"
+   FixedPosition { Planetographic [ 2.19450306892395 41.4065399169922 0.01 ] }
+   OrbitFrame { BodyFixed {} }
+   BodyFrame {
+      TwoVector
+      {
+         Center "Sol/Earth/Univ_Ouv_Catalogne_ref"
+         Primary
+         {
+            Axis "-y"
+            RelativePosition { Target "Sol/Earth" }
+         }
+         Secondary
+         {
+            Axis "-x"
+            ConstantVector
+            {
+               Vector [ 0 0 1 ]
+               Frame { BodyFixed { Center "Sol/Earth" } }
+            }
+         }
+      }
+   }
+   FixedRotation { }
+}
+
+"Univ_Ouv_Catalogne" "Sol/Earth/Univ_Ouv_Catalogne_ref"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Univ_Ouv_Catalogne_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Univ_Ouv_Catalogne_ref" } }
+}
+
+"Univ_Ouv_Catalogne_Axes" "Sol/Earth/Univ_Ouv_Catalogne_ref"
+{
+   Class "component"
+   Mesh "bodyAxes.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Univ_Ouv_Catalogne_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Univ_Ouv_Catalogne_ref" } }
+}
+
+"Default_sens_ref" "Sol/Earth/Univ_Ouv_Catalogne_ref/Univ_Ouv_Catalogne"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Univ_Ouv_Catalogne_ref/Univ_Ouv_Catalogne" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Univ_Ouv_Catalogne_ref/Univ_Ouv_Catalogne" } }
+}
+
+"Default" "Sol/Earth/Univ_Ouv_Catalogne_ref/Univ_Ouv_Catalogne/Default_sens_ref"
+{
+   Class "invisible"
+   Radius 810.775
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Univ_Ouv_Catalogne_ref/Univ_Ouv_Catalogne/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Univ_Ouv_Catalogne_ref/Univ_Ouv_Catalogne/Default_sens_ref" } }
+   Sensor {
+      Target "Sol/Earth"
+      Range 810.775
+      Shape "Elliptical"
+      HorizontalFOV 30
+      VerticalFOV 30
+      FrustumColor [0.717647 0 1]
+      FrustumBaseColor [0.717647 0 1]
+      FrustumOpacity 0.1
+      GridOpacity 0.1
+   }
+}
+
+"Default_AimAxis" "Sol/Earth/Univ_Ouv_Catalogne_ref/Univ_Ouv_Catalogne/Default_sens_ref"
+{
+   Class "component"
+   Mesh "vector-cyan.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   Orientation [ 90 0 1 0 ]
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Univ_Ouv_Catalogne_ref/Univ_Ouv_Catalogne/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Univ_Ouv_Catalogne_ref/Univ_Ouv_Catalogne/Default_sens_ref" } }
+}
+
+Location "TEST" "Sol/Earth"
+{
+   Type "Observatory"
+   Size 500
+   LongLat [ 4 45.5 2.5 ]
+}
+
+"TEST_ref" "Sol/Earth"
+{
+   Class "invisible"
+   FixedPosition { Planetographic [ 4 45.5 2.5 ] }
+   OrbitFrame { BodyFixed {} }
+   BodyFrame {
+      TwoVector
+      {
+         Center "Sol/Earth/TEST_ref"
+         Primary
+         {
+            Axis "-y"
+            RelativePosition { Target "Sol/Earth" }
+         }
+         Secondary
+         {
+            Axis "-x"
+            ConstantVector
+            {
+               Vector [ 0 0 1 ]
+               Frame { BodyFixed { Center "Sol/Earth" } }
+            }
+         }
+      }
+   }
+   FixedRotation { }
+}
+
+"TEST" "Sol/Earth/TEST_ref"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/TEST_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/TEST_ref" } }
+}
+
+"TEST_Axes" "Sol/Earth/TEST_ref"
+{
+   Class "component"
+   Mesh "bodyAxes.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/TEST_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/TEST_ref" } }
+}
+
+"Default_sens_ref" "Sol/Earth/TEST_ref/TEST"
+{
+   Class "invisible"
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/TEST_ref/TEST" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/TEST_ref/TEST" } }
+}
+
+"Default" "Sol/Earth/TEST_ref/TEST/Default_sens_ref"
+{
+   Class "invisible"
+   Radius 810.775
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/TEST_ref/TEST/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/TEST_ref/TEST/Default_sens_ref" } }
+   Sensor {
+      Target "Sol/Earth"
+      Range 810.775
+      Shape "Elliptical"
+      HorizontalFOV 45
+      VerticalFOV 45
+      FrustumColor [0.717647 0 1]
+      FrustumBaseColor [0.717647 0 1]
+      FrustumOpacity 0.1
+      GridOpacity 0.1
+   }
+}
+
+"Default_AimAxis" "Sol/Earth/TEST_ref/TEST/Default_sens_ref"
+{
+   Class "component"
+   Mesh "vector-cyan.3ds"
+   Radius 8.50418266666667
+   MeshScale 8.50418266666667
+   NormalizeMesh false
+   Emissive true
+   Orientation [ 90 0 1 0 ]
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/TEST_ref/TEST/Default_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/TEST_ref/TEST/Default_sens_ref" } }
+}
+
+"Sat_ref" "Sol/Earth"
+{
+   Class "spacecraft"
+   Radius 0.001
+   Mesh "ref_model.3ds"
+   NormalizeMesh false
+   MeshScale 0.0000001
+   OrbitColor [0.664668 1 0]
+   TrajectoryPlotWidth 2
+   TrajectoryPlotDuration 0.5
+   TrajectoryPlotLead 0.25
+   TrajectoryPlotFade 0.5
+   SampledTrajectory
+   {
+      Source "Sat_OEM_POSITION.xyz"
+      ColorSource "Sat_COLOR.color"
+      Interpolation "cubic"
+      DoublePrecision true
+   }
+   SampledOrientation "Sat_AEM_ATTITUDE.q"
+   OrbitFrame { EquatorJ2000 { Center "Sol/Earth" } }
+   BodyFrame { EquatorJ2000 { Center "Sol/Earth" } }
+}
+
+"Sat" "Sol/Earth/Sat_ref"
+{
+   Class "component"
+   Mesh "rosetta-orbiterOnly.3ds"
+   Emissive false
+   Radius 0.001
+   MeshScale 0.001
+   NormalizeMesh false
+   Albedo 0.7
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Sat_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Sat_ref" } }
+}
+
+"Sat_Eme2000Axes" "Sol/Earth/Sat_ref"
+{
+   Class "component"
+   Mesh "emeAxes.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedQuaternion [0.707107 0.707107 0 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Sat_ref" } }
+   BodyFrame { EquatorJ2000 { Center "Sol/Earth" } }
+}
+
+"Sat_QswAxes" "Sol/Earth/Sat_ref"
+{
+   Class "component"
+   Mesh "qswAxes.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 0 1]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Sat_ref" } }
+   BodyFrame {
+      TwoVector {
+         Center "Sol/Earth/Sat_ref"
+         Primary {
+            Axis "x"
+            RelativePosition { Target "Sol/Earth" }
+         }
+         Secondary {
+            Axis "z"
+            RelativeVelocity { Target "Sol/Earth" }
+         }
+      }
+   }
+}
+
+"Sat_TnwAxes" "Sol/Earth/Sat_ref"
+{
+   Class "component"
+   Mesh "tnwAxes.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedQuaternion [1 0 0 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Sat_ref" } }
+   BodyFrame {
+      TwoVector {
+         Center "Sol/Earth/Sat_ref"
+         Primary {
+            Axis "-x"
+            RelativeVelocity { Target "Sol/Earth" }
+         }
+         Secondary {
+            Axis "z"
+            RelativePosition { Target "Sol/Earth" }
+         }
+      }
+   }
+}
+
+"Sat_Axes" "Sol/Earth/Sat_ref"
+{
+   Class "component"
+   Mesh "satAxes.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Sat_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Sat_ref" } }
+}
+
+"Sat_SunDir" "Sol/Earth/Sat_ref"
+{
+   Class "component"
+   Mesh "vector-yellow-sun.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Sat_ref" } }
+   FixedRotation { MeridianAngle 180 }
+   BodyFrame {
+      TwoVector {
+         Center "Sol/Earth/Sat_ref"
+         Primary {
+            Axis "x"
+            RelativePosition { Target "Sol" }
+         }
+         Secondary {
+            Axis "z"
+            ConstantVector
+            {
+               Vector [ 0 0 1 ]
+               Frame {
+                  EquatorJ2000 { Center "Sol/Earth" }
+               }
+            }
+         }
+      }
+   }
+   Visible false
+}
+
+"Sat_BodyDir" "Sol/Earth/Sat_ref"
+{
+   Class "component"
+   Mesh "vector-magenta-body.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Sat_ref" } }
+   FixedRotation { MeridianAngle 180 }
+   BodyFrame {
+      TwoVector {
+         Center "Sol/Earth/Sat_ref"
+         Primary {
+            Axis "x"
+            RelativePosition { Target "Sol/Earth" }
+         }
+         Secondary {
+            Axis "z"
+            RelativeVelocity { Target "Sol/Earth" }
+         }
+      }
+   }
+   Visible false
+}
+
+"Sat_VelDir" "Sol/Earth/Sat_ref"
+{
+   Class "component"
+   Mesh "vector-white.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Sat_ref" } }
+   FixedRotation { MeridianAngle 180 }
+   BodyFrame {
+      TwoVector {
+         Center "Sol/Earth/Sat_ref"
+         Primary {
+            Axis "-x"
+            RelativeVelocity { Target "Sol/Earth" }
+         }
+         Secondary {
+            Axis "z"
+            RelativePosition { Target "Sol/Earth" }
+         }
+      }
+   }
+   Visible false
+}
+
+"sensor_Sat_sens_ref" "Sol/Earth/Sat_ref/Sat"
+{
+   Class "component"
+   Visible false
+   Radius 0.000001
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Sat_ref/Sat" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Sat_ref/Sat" } }
+}
+
+"sensor_Sat" "Sol/Earth/Sat_ref/Sat/sensor_Sat_sens_ref"
+{
+   Class "component"
+   Radius 10000
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Sat_ref/Sat/sensor_Sat_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Sat_ref/Sat/sensor_Sat_sens_ref" } }
+   Sensor {
+      Target "Sol/Earth"
+      Range 10000
+      Shape "Rectangular"
+      HorizontalFOV 9.96947
+      VerticalFOV 19.9389
+      FrustumColor [1 0.286275 0.00392157]
+      FrustumBaseColor [1 0.921569 0.0235294]
+      FrustumOpacity 0.6
+      GridOpacity 0.6
+      TraceDuration 60
+      TraceOpacity 0.6
+      TraceColorFile "Sat_COLOR_0.color"
+   }
+}
+
+"sensor_Sat_AimAxis" "Sol/Earth/Sat_ref/Sat/sensor_Sat_sens_ref"
+{
+   Class "component"
+   Mesh "vector-cyan.3ds"
+   Radius 0.00533333333333333
+   MeshScale 0.00533333333333333
+   NormalizeMesh false
+   Emissive true
+   Orientation [ 90 0 1 0 ]
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/Sat_ref/Sat/sensor_Sat_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/Sat_ref/Sat/sensor_Sat_sens_ref" } }
+}
+
+"PLEIADES1A_ref" "Sol/Earth"
+{
+   Class "spacecraft"
+   Radius 0.001
+   Mesh "ref_model.3ds"
+   NormalizeMesh false
+   MeshScale 0.0000001
+   OrbitColor [0.664668 1 0]
+   TrajectoryPlotWidth 2
+   TrajectoryPlotDuration 0.5
+   TrajectoryPlotLead 0.25
+   TrajectoryPlotFade 0.5
+   SampledTrajectory
+   {
+      Source "PLEIADES1A_OEM_POSITION.xyz"
+      ColorSource "PLEIADES1A_COLOR.color"
+      Interpolation "cubic"
+      DoublePrecision true
+   }
+   SampledOrientation "PLEIADES1A_AEM_ATTITUDE.q"
+   OrbitFrame { EquatorJ2000 { Center "Sol/Earth" } }
+   BodyFrame { EquatorJ2000 { Center "Sol/Earth" } }
+}
+
+"PLEIADES1A" "Sol/Earth/PLEIADES1A_ref"
+{
+   Class "component"
+   Mesh "rosetta-orbiterOnly.3ds"
+   Emissive false
+   Radius 0.001
+   MeshScale 0.001
+   NormalizeMesh false
+   Albedo 0.7
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/PLEIADES1A_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/PLEIADES1A_ref" } }
+}
+
+"PLEIADES1A_Eme2000Axes" "Sol/Earth/PLEIADES1A_ref"
+{
+   Class "component"
+   Mesh "emeAxes.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedQuaternion [0.707107 0.707107 0 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/PLEIADES1A_ref" } }
+   BodyFrame { EquatorJ2000 { Center "Sol/Earth" } }
+}
+
+"PLEIADES1A_QswAxes" "Sol/Earth/PLEIADES1A_ref"
+{
+   Class "component"
+   Mesh "qswAxes.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 0 1]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/PLEIADES1A_ref" } }
+   BodyFrame {
+      TwoVector {
+         Center "Sol/Earth/PLEIADES1A_ref"
+         Primary {
+            Axis "x"
+            RelativePosition { Target "Sol/Earth" }
+         }
+         Secondary {
+            Axis "z"
+            RelativeVelocity { Target "Sol/Earth" }
+         }
+      }
+   }
+}
+
+"PLEIADES1A_TnwAxes" "Sol/Earth/PLEIADES1A_ref"
+{
+   Class "component"
+   Mesh "tnwAxes.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedQuaternion [1 0 0 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/PLEIADES1A_ref" } }
+   BodyFrame {
+      TwoVector {
+         Center "Sol/Earth/PLEIADES1A_ref"
+         Primary {
+            Axis "-x"
+            RelativeVelocity { Target "Sol/Earth" }
+         }
+         Secondary {
+            Axis "z"
+            RelativePosition { Target "Sol/Earth" }
+         }
+      }
+   }
+}
+
+"PLEIADES1A_Axes" "Sol/Earth/PLEIADES1A_ref"
+{
+   Class "component"
+   Mesh "satAxes.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/PLEIADES1A_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/PLEIADES1A_ref" } }
+}
+
+"PLEIADES1A_SunDir" "Sol/Earth/PLEIADES1A_ref"
+{
+   Class "component"
+   Mesh "vector-yellow-sun.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/PLEIADES1A_ref" } }
+   FixedRotation { MeridianAngle 180 }
+   BodyFrame {
+      TwoVector {
+         Center "Sol/Earth/PLEIADES1A_ref"
+         Primary {
+            Axis "x"
+            RelativePosition { Target "Sol" }
+         }
+         Secondary {
+            Axis "z"
+            ConstantVector
+            {
+               Vector [ 0 0 1 ]
+               Frame {
+                  EquatorJ2000 { Center "Sol/Earth" }
+               }
+            }
+         }
+      }
+   }
+   Visible false
+}
+
+"PLEIADES1A_BodyDir" "Sol/Earth/PLEIADES1A_ref"
+{
+   Class "component"
+   Mesh "vector-magenta-body.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/PLEIADES1A_ref" } }
+   FixedRotation { MeridianAngle 180 }
+   BodyFrame {
+      TwoVector {
+         Center "Sol/Earth/PLEIADES1A_ref"
+         Primary {
+            Axis "x"
+            RelativePosition { Target "Sol/Earth" }
+         }
+         Secondary {
+            Axis "z"
+            RelativeVelocity { Target "Sol/Earth" }
+         }
+      }
+   }
+   Visible false
+}
+
+"PLEIADES1A_VelDir" "Sol/Earth/PLEIADES1A_ref"
+{
+   Class "component"
+   Mesh "vector-white.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/PLEIADES1A_ref" } }
+   FixedRotation { MeridianAngle 180 }
+   BodyFrame {
+      TwoVector {
+         Center "Sol/Earth/PLEIADES1A_ref"
+         Primary {
+            Axis "-x"
+            RelativeVelocity { Target "Sol/Earth" }
+         }
+         Secondary {
+            Axis "z"
+            RelativePosition { Target "Sol/Earth" }
+         }
+      }
+   }
+   Visible false
+}
+
+"sensor_PLEIADES1A_sens_ref" "Sol/Earth/PLEIADES1A_ref/PLEIADES1A"
+{
+   Class "component"
+   Visible false
+   Radius 0.000001
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/PLEIADES1A_ref/PLEIADES1A" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/PLEIADES1A_ref/PLEIADES1A" } }
+}
+
+"sensor_PLEIADES1A" "Sol/Earth/PLEIADES1A_ref/PLEIADES1A/sensor_PLEIADES1A_sens_ref"
+{
+   Class "component"
+   Radius 10000
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/PLEIADES1A_ref/PLEIADES1A/sensor_PLEIADES1A_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/PLEIADES1A_ref/PLEIADES1A/sensor_PLEIADES1A_sens_ref" } }
+   Sensor {
+      Target "Sol/Earth"
+      Range 10000
+      Shape "Rectangular"
+      HorizontalFOV 9.96947
+      VerticalFOV 19.9389
+      FrustumColor [1 0.286275 0.00392157]
+      FrustumBaseColor [1 0.921569 0.0235294]
+      FrustumOpacity 0.6
+      GridOpacity 0.6
+      TraceDuration 60
+      TraceOpacity 0.6
+      TraceColorFile "PLEIADES1A_COLOR_1.color"
+   }
+}
+
+"sensor_PLEIADES1A_AimAxis" "Sol/Earth/PLEIADES1A_ref/PLEIADES1A/sensor_PLEIADES1A_sens_ref"
+{
+   Class "component"
+   Mesh "vector-cyan.3ds"
+   Radius 0.00533333333333333
+   MeshScale 0.00533333333333333
+   NormalizeMesh false
+   Emissive true
+   Orientation [ 90 0 1 0 ]
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/PLEIADES1A_ref/PLEIADES1A/sensor_PLEIADES1A_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/PLEIADES1A_ref/PLEIADES1A/sensor_PLEIADES1A_sens_ref" } }
+}
+
+"PLEIADES1B_ref" "Sol/Earth"
+{
+   Class "spacecraft"
+   Radius 0.001
+   Mesh "ref_model.3ds"
+   NormalizeMesh false
+   MeshScale 0.0000001
+   OrbitColor [0.664668 1 0]
+   TrajectoryPlotWidth 2
+   TrajectoryPlotDuration 0.5
+   TrajectoryPlotLead 0.25
+   TrajectoryPlotFade 0.5
+   SampledTrajectory
+   {
+      Source "PLEIADES1B_OEM_POSITION.xyz"
+      ColorSource "PLEIADES1B_COLOR.color"
+      Interpolation "cubic"
+      DoublePrecision true
+   }
+   SampledOrientation "PLEIADES1B_AEM_ATTITUDE.q"
+   OrbitFrame { EquatorJ2000 { Center "Sol/Earth" } }
+   BodyFrame { EquatorJ2000 { Center "Sol/Earth" } }
+}
+
+"PLEIADES1B" "Sol/Earth/PLEIADES1B_ref"
+{
+   Class "component"
+   Mesh "rosetta-orbiterOnly.3ds"
+   Emissive false
+   Radius 0.001
+   MeshScale 0.001
+   NormalizeMesh false
+   Albedo 0.7
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/PLEIADES1B_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/PLEIADES1B_ref" } }
+}
+
+"PLEIADES1B_Eme2000Axes" "Sol/Earth/PLEIADES1B_ref"
+{
+   Class "component"
+   Mesh "emeAxes.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedQuaternion [0.707107 0.707107 0 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/PLEIADES1B_ref" } }
+   BodyFrame { EquatorJ2000 { Center "Sol/Earth" } }
+}
+
+"PLEIADES1B_QswAxes" "Sol/Earth/PLEIADES1B_ref"
+{
+   Class "component"
+   Mesh "qswAxes.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 0 1]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/PLEIADES1B_ref" } }
+   BodyFrame {
+      TwoVector {
+         Center "Sol/Earth/PLEIADES1B_ref"
+         Primary {
+            Axis "x"
+            RelativePosition { Target "Sol/Earth" }
+         }
+         Secondary {
+            Axis "z"
+            RelativeVelocity { Target "Sol/Earth" }
+         }
+      }
+   }
+}
+
+"PLEIADES1B_TnwAxes" "Sol/Earth/PLEIADES1B_ref"
+{
+   Class "component"
+   Mesh "tnwAxes.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedQuaternion [1 0 0 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/PLEIADES1B_ref" } }
+   BodyFrame {
+      TwoVector {
+         Center "Sol/Earth/PLEIADES1B_ref"
+         Primary {
+            Axis "-x"
+            RelativeVelocity { Target "Sol/Earth" }
+         }
+         Secondary {
+            Axis "z"
+            RelativePosition { Target "Sol/Earth" }
+         }
+      }
+   }
+}
+
+"PLEIADES1B_Axes" "Sol/Earth/PLEIADES1B_ref"
+{
+   Class "component"
+   Mesh "satAxes.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/PLEIADES1B_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/PLEIADES1B_ref" } }
+}
+
+"PLEIADES1B_SunDir" "Sol/Earth/PLEIADES1B_ref"
+{
+   Class "component"
+   Mesh "vector-yellow-sun.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/PLEIADES1B_ref" } }
+   FixedRotation { MeridianAngle 180 }
+   BodyFrame {
+      TwoVector {
+         Center "Sol/Earth/PLEIADES1B_ref"
+         Primary {
+            Axis "x"
+            RelativePosition { Target "Sol" }
+         }
+         Secondary {
+            Axis "z"
+            ConstantVector
+            {
+               Vector [ 0 0 1 ]
+               Frame {
+                  EquatorJ2000 { Center "Sol/Earth" }
+               }
+            }
+         }
+      }
+   }
+   Visible false
+}
+
+"PLEIADES1B_BodyDir" "Sol/Earth/PLEIADES1B_ref"
+{
+   Class "component"
+   Mesh "vector-magenta-body.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/PLEIADES1B_ref" } }
+   FixedRotation { MeridianAngle 180 }
+   BodyFrame {
+      TwoVector {
+         Center "Sol/Earth/PLEIADES1B_ref"
+         Primary {
+            Axis "x"
+            RelativePosition { Target "Sol/Earth" }
+         }
+         Secondary {
+            Axis "z"
+            RelativeVelocity { Target "Sol/Earth" }
+         }
+      }
+   }
+   Visible false
+}
+
+"PLEIADES1B_VelDir" "Sol/Earth/PLEIADES1B_ref"
+{
+   Class "component"
+   Mesh "vector-white.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/PLEIADES1B_ref" } }
+   FixedRotation { MeridianAngle 180 }
+   BodyFrame {
+      TwoVector {
+         Center "Sol/Earth/PLEIADES1B_ref"
+         Primary {
+            Axis "-x"
+            RelativeVelocity { Target "Sol/Earth" }
+         }
+         Secondary {
+            Axis "z"
+            RelativePosition { Target "Sol/Earth" }
+         }
+      }
+   }
+   Visible false
+}
+
+"sensor_PLEIADES1B_sens_ref" "Sol/Earth/PLEIADES1B_ref/PLEIADES1B"
+{
+   Class "component"
+   Visible false
+   Radius 0.000001
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/PLEIADES1B_ref/PLEIADES1B" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/PLEIADES1B_ref/PLEIADES1B" } }
+}
+
+"sensor_PLEIADES1B" "Sol/Earth/PLEIADES1B_ref/PLEIADES1B/sensor_PLEIADES1B_sens_ref"
+{
+   Class "component"
+   Radius 10000
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/PLEIADES1B_ref/PLEIADES1B/sensor_PLEIADES1B_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/PLEIADES1B_ref/PLEIADES1B/sensor_PLEIADES1B_sens_ref" } }
+   Sensor {
+      Target "Sol/Earth"
+      Range 10000
+      Shape "Rectangular"
+      HorizontalFOV 9.96947
+      VerticalFOV 19.9389
+      FrustumColor [1 0.286275 0.00392157]
+      FrustumBaseColor [1 0.921569 0.0235294]
+      FrustumOpacity 0.6
+      GridOpacity 0.6
+      TraceDuration 60
+      TraceOpacity 0.6
+      TraceColorFile "PLEIADES1B_COLOR_2.color"
+   }
+}
+
+"sensor_PLEIADES1B_AimAxis" "Sol/Earth/PLEIADES1B_ref/PLEIADES1B/sensor_PLEIADES1B_sens_ref"
+{
+   Class "component"
+   Mesh "vector-cyan.3ds"
+   Radius 0.00533333333333333
+   MeshScale 0.00533333333333333
+   NormalizeMesh false
+   Emissive true
+   Orientation [ 90 0 1 0 ]
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/PLEIADES1B_ref/PLEIADES1B/sensor_PLEIADES1B_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/PLEIADES1B_ref/PLEIADES1B/sensor_PLEIADES1B_sens_ref" } }
+}
+
+"PLEIADES-NEO3_ref" "Sol/Earth"
+{
+   Class "spacecraft"
+   Radius 0.001
+   Mesh "ref_model.3ds"
+   NormalizeMesh false
+   MeshScale 0.0000001
+   OrbitColor [0.664668 1 0]
+   TrajectoryPlotWidth 2
+   TrajectoryPlotDuration 0.5
+   TrajectoryPlotLead 0.25
+   TrajectoryPlotFade 0.5
+   SampledTrajectory
+   {
+      Source "PLEIADES-NEO3_OEM_POSITION.xyz"
+      ColorSource "PLEIADES-NEO3_COLOR.color"
+      Interpolation "cubic"
+      DoublePrecision true
+   }
+   SampledOrientation "PLEIADES-NEO3_AEM_ATTITUDE.q"
+   OrbitFrame { EquatorJ2000 { Center "Sol/Earth" } }
+   BodyFrame { EquatorJ2000 { Center "Sol/Earth" } }
+}
+
+"PLEIADES-NEO3" "Sol/Earth/PLEIADES-NEO3_ref"
+{
+   Class "component"
+   Mesh "rosetta-orbiterOnly.3ds"
+   Emissive false
+   Radius 0.001
+   MeshScale 0.001
+   NormalizeMesh false
+   Albedo 0.7
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/PLEIADES-NEO3_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/PLEIADES-NEO3_ref" } }
+}
+
+"PLEIADES-NEO3_Eme2000Axes" "Sol/Earth/PLEIADES-NEO3_ref"
+{
+   Class "component"
+   Mesh "emeAxes.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedQuaternion [0.707107 0.707107 0 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/PLEIADES-NEO3_ref" } }
+   BodyFrame { EquatorJ2000 { Center "Sol/Earth" } }
+}
+
+"PLEIADES-NEO3_QswAxes" "Sol/Earth/PLEIADES-NEO3_ref"
+{
+   Class "component"
+   Mesh "qswAxes.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 0 1]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/PLEIADES-NEO3_ref" } }
+   BodyFrame {
+      TwoVector {
+         Center "Sol/Earth/PLEIADES-NEO3_ref"
+         Primary {
+            Axis "x"
+            RelativePosition { Target "Sol/Earth" }
+         }
+         Secondary {
+            Axis "z"
+            RelativeVelocity { Target "Sol/Earth" }
+         }
+      }
+   }
+}
+
+"PLEIADES-NEO3_TnwAxes" "Sol/Earth/PLEIADES-NEO3_ref"
+{
+   Class "component"
+   Mesh "tnwAxes.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedQuaternion [1 0 0 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/PLEIADES-NEO3_ref" } }
+   BodyFrame {
+      TwoVector {
+         Center "Sol/Earth/PLEIADES-NEO3_ref"
+         Primary {
+            Axis "-x"
+            RelativeVelocity { Target "Sol/Earth" }
+         }
+         Secondary {
+            Axis "z"
+            RelativePosition { Target "Sol/Earth" }
+         }
+      }
+   }
+}
+
+"PLEIADES-NEO3_Axes" "Sol/Earth/PLEIADES-NEO3_ref"
+{
+   Class "component"
+   Mesh "satAxes.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/PLEIADES-NEO3_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/PLEIADES-NEO3_ref" } }
+}
+
+"PLEIADES-NEO3_SunDir" "Sol/Earth/PLEIADES-NEO3_ref"
+{
+   Class "component"
+   Mesh "vector-yellow-sun.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/PLEIADES-NEO3_ref" } }
+   FixedRotation { MeridianAngle 180 }
+   BodyFrame {
+      TwoVector {
+         Center "Sol/Earth/PLEIADES-NEO3_ref"
+         Primary {
+            Axis "x"
+            RelativePosition { Target "Sol" }
+         }
+         Secondary {
+            Axis "z"
+            ConstantVector
+            {
+               Vector [ 0 0 1 ]
+               Frame {
+                  EquatorJ2000 { Center "Sol/Earth" }
+               }
+            }
+         }
+      }
+   }
+   Visible false
+}
+
+"PLEIADES-NEO3_BodyDir" "Sol/Earth/PLEIADES-NEO3_ref"
+{
+   Class "component"
+   Mesh "vector-magenta-body.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/PLEIADES-NEO3_ref" } }
+   FixedRotation { MeridianAngle 180 }
+   BodyFrame {
+      TwoVector {
+         Center "Sol/Earth/PLEIADES-NEO3_ref"
+         Primary {
+            Axis "x"
+            RelativePosition { Target "Sol/Earth" }
+         }
+         Secondary {
+            Axis "z"
+            RelativeVelocity { Target "Sol/Earth" }
+         }
+      }
+   }
+   Visible false
+}
+
+"PLEIADES-NEO3_VelDir" "Sol/Earth/PLEIADES-NEO3_ref"
+{
+   Class "component"
+   Mesh "vector-white.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/PLEIADES-NEO3_ref" } }
+   FixedRotation { MeridianAngle 180 }
+   BodyFrame {
+      TwoVector {
+         Center "Sol/Earth/PLEIADES-NEO3_ref"
+         Primary {
+            Axis "-x"
+            RelativeVelocity { Target "Sol/Earth" }
+         }
+         Secondary {
+            Axis "z"
+            RelativePosition { Target "Sol/Earth" }
+         }
+      }
+   }
+   Visible false
+}
+
+"sensor_PLEIADES-NEO3_sens_ref" "Sol/Earth/PLEIADES-NEO3_ref/PLEIADES-NEO3"
+{
+   Class "component"
+   Visible false
+   Radius 0.000001
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/PLEIADES-NEO3_ref/PLEIADES-NEO3" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/PLEIADES-NEO3_ref/PLEIADES-NEO3" } }
+}
+
+"sensor_PLEIADES-NEO3" "Sol/Earth/PLEIADES-NEO3_ref/PLEIADES-NEO3/sensor_PLEIADES-NEO3_sens_ref"
+{
+   Class "component"
+   Radius 10000
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/PLEIADES-NEO3_ref/PLEIADES-NEO3/sensor_PLEIADES-NEO3_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/PLEIADES-NEO3_ref/PLEIADES-NEO3/sensor_PLEIADES-NEO3_sens_ref" } }
+   Sensor {
+      Target "Sol/Earth"
+      Range 10000
+      Shape "Rectangular"
+      HorizontalFOV 9.96947
+      VerticalFOV 19.9389
+      FrustumColor [1 0.286275 0.00392157]
+      FrustumBaseColor [1 0.921569 0.0235294]
+      FrustumOpacity 0.6
+      GridOpacity 0.6
+      TraceDuration 60
+      TraceOpacity 0.6
+      TraceColorFile "PLEIADES-NEO3_COLOR_3.color"
+   }
+}
+
+"sensor_PLEIADES-NEO3_AimAxis" "Sol/Earth/PLEIADES-NEO3_ref/PLEIADES-NEO3/sensor_PLEIADES-NEO3_sens_ref"
+{
+   Class "component"
+   Mesh "vector-cyan.3ds"
+   Radius 0.00533333333333333
+   MeshScale 0.00533333333333333
+   NormalizeMesh false
+   Emissive true
+   Orientation [ 90 0 1 0 ]
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/PLEIADES-NEO3_ref/PLEIADES-NEO3/sensor_PLEIADES-NEO3_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/PLEIADES-NEO3_ref/PLEIADES-NEO3/sensor_PLEIADES-NEO3_sens_ref" } }
+}
+
+"PLEIADES-NEO4_ref" "Sol/Earth"
+{
+   Class "spacecraft"
+   Radius 0.001
+   Mesh "ref_model.3ds"
+   NormalizeMesh false
+   MeshScale 0.0000001
+   OrbitColor [0.664668 1 0]
+   TrajectoryPlotWidth 2
+   TrajectoryPlotDuration 0.5
+   TrajectoryPlotLead 0.25
+   TrajectoryPlotFade 0.5
+   SampledTrajectory
+   {
+      Source "PLEIADES-NEO4_OEM_POSITION.xyz"
+      ColorSource "PLEIADES-NEO4_COLOR.color"
+      Interpolation "cubic"
+      DoublePrecision true
+   }
+   SampledOrientation "PLEIADES-NEO4_AEM_ATTITUDE.q"
+   OrbitFrame { EquatorJ2000 { Center "Sol/Earth" } }
+   BodyFrame { EquatorJ2000 { Center "Sol/Earth" } }
+}
+
+"PLEIADES-NEO4" "Sol/Earth/PLEIADES-NEO4_ref"
+{
+   Class "component"
+   Mesh "rosetta-orbiterOnly.3ds"
+   Emissive false
+   Radius 0.001
+   MeshScale 0.001
+   NormalizeMesh false
+   Albedo 0.7
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/PLEIADES-NEO4_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/PLEIADES-NEO4_ref" } }
+}
+
+"PLEIADES-NEO4_Eme2000Axes" "Sol/Earth/PLEIADES-NEO4_ref"
+{
+   Class "component"
+   Mesh "emeAxes.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedQuaternion [0.707107 0.707107 0 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/PLEIADES-NEO4_ref" } }
+   BodyFrame { EquatorJ2000 { Center "Sol/Earth" } }
+}
+
+"PLEIADES-NEO4_QswAxes" "Sol/Earth/PLEIADES-NEO4_ref"
+{
+   Class "component"
+   Mesh "qswAxes.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 0 1]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/PLEIADES-NEO4_ref" } }
+   BodyFrame {
+      TwoVector {
+         Center "Sol/Earth/PLEIADES-NEO4_ref"
+         Primary {
+            Axis "x"
+            RelativePosition { Target "Sol/Earth" }
+         }
+         Secondary {
+            Axis "z"
+            RelativeVelocity { Target "Sol/Earth" }
+         }
+      }
+   }
+}
+
+"PLEIADES-NEO4_TnwAxes" "Sol/Earth/PLEIADES-NEO4_ref"
+{
+   Class "component"
+   Mesh "tnwAxes.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedQuaternion [1 0 0 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/PLEIADES-NEO4_ref" } }
+   BodyFrame {
+      TwoVector {
+         Center "Sol/Earth/PLEIADES-NEO4_ref"
+         Primary {
+            Axis "-x"
+            RelativeVelocity { Target "Sol/Earth" }
+         }
+         Secondary {
+            Axis "z"
+            RelativePosition { Target "Sol/Earth" }
+         }
+      }
+   }
+}
+
+"PLEIADES-NEO4_Axes" "Sol/Earth/PLEIADES-NEO4_ref"
+{
+   Class "component"
+   Mesh "satAxes.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/PLEIADES-NEO4_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/PLEIADES-NEO4_ref" } }
+}
+
+"PLEIADES-NEO4_SunDir" "Sol/Earth/PLEIADES-NEO4_ref"
+{
+   Class "component"
+   Mesh "vector-yellow-sun.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/PLEIADES-NEO4_ref" } }
+   FixedRotation { MeridianAngle 180 }
+   BodyFrame {
+      TwoVector {
+         Center "Sol/Earth/PLEIADES-NEO4_ref"
+         Primary {
+            Axis "x"
+            RelativePosition { Target "Sol" }
+         }
+         Secondary {
+            Axis "z"
+            ConstantVector
+            {
+               Vector [ 0 0 1 ]
+               Frame {
+                  EquatorJ2000 { Center "Sol/Earth" }
+               }
+            }
+         }
+      }
+   }
+   Visible false
+}
+
+"PLEIADES-NEO4_BodyDir" "Sol/Earth/PLEIADES-NEO4_ref"
+{
+   Class "component"
+   Mesh "vector-magenta-body.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/PLEIADES-NEO4_ref" } }
+   FixedRotation { MeridianAngle 180 }
+   BodyFrame {
+      TwoVector {
+         Center "Sol/Earth/PLEIADES-NEO4_ref"
+         Primary {
+            Axis "x"
+            RelativePosition { Target "Sol/Earth" }
+         }
+         Secondary {
+            Axis "z"
+            RelativeVelocity { Target "Sol/Earth" }
+         }
+      }
+   }
+   Visible false
+}
+
+"PLEIADES-NEO4_VelDir" "Sol/Earth/PLEIADES-NEO4_ref"
+{
+   Class "component"
+   Mesh "vector-white.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/PLEIADES-NEO4_ref" } }
+   FixedRotation { MeridianAngle 180 }
+   BodyFrame {
+      TwoVector {
+         Center "Sol/Earth/PLEIADES-NEO4_ref"
+         Primary {
+            Axis "-x"
+            RelativeVelocity { Target "Sol/Earth" }
+         }
+         Secondary {
+            Axis "z"
+            RelativePosition { Target "Sol/Earth" }
+         }
+      }
+   }
+   Visible false
+}
+
+"sensor_PLEIADES-NEO4_sens_ref" "Sol/Earth/PLEIADES-NEO4_ref/PLEIADES-NEO4"
+{
+   Class "component"
+   Visible false
+   Radius 0.000001
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/PLEIADES-NEO4_ref/PLEIADES-NEO4" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/PLEIADES-NEO4_ref/PLEIADES-NEO4" } }
+}
+
+"sensor_PLEIADES-NEO4" "Sol/Earth/PLEIADES-NEO4_ref/PLEIADES-NEO4/sensor_PLEIADES-NEO4_sens_ref"
+{
+   Class "component"
+   Radius 10000
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/PLEIADES-NEO4_ref/PLEIADES-NEO4/sensor_PLEIADES-NEO4_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/PLEIADES-NEO4_ref/PLEIADES-NEO4/sensor_PLEIADES-NEO4_sens_ref" } }
+   Sensor {
+      Target "Sol/Earth"
+      Range 10000
+      Shape "Rectangular"
+      HorizontalFOV 9.96947
+      VerticalFOV 19.9389
+      FrustumColor [1 0.286275 0.00392157]
+      FrustumBaseColor [1 0.921569 0.0235294]
+      FrustumOpacity 0.6
+      GridOpacity 0.6
+      TraceDuration 60
+      TraceOpacity 0.6
+      TraceColorFile "PLEIADES-NEO4_COLOR_4.color"
+   }
+}
+
+"sensor_PLEIADES-NEO4_AimAxis" "Sol/Earth/PLEIADES-NEO4_ref/PLEIADES-NEO4/sensor_PLEIADES-NEO4_sens_ref"
+{
+   Class "component"
+   Mesh "vector-cyan.3ds"
+   Radius 0.00533333333333333
+   MeshScale 0.00533333333333333
+   NormalizeMesh false
+   Emissive true
+   Orientation [ 90 0 1 0 ]
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/PLEIADES-NEO4_ref/PLEIADES-NEO4/sensor_PLEIADES-NEO4_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/PLEIADES-NEO4_ref/PLEIADES-NEO4/sensor_PLEIADES-NEO4_sens_ref" } }
+}
+
+"BLUE1_ref" "Sol/Earth"
+{
+   Class "spacecraft"
+   Radius 0.001
+   Mesh "ref_model.3ds"
+   NormalizeMesh false
+   MeshScale 0.0000001
+   OrbitColor [0.664668 1 0]
+   TrajectoryPlotWidth 2
+   TrajectoryPlotDuration 0.5
+   TrajectoryPlotLead 0.25
+   TrajectoryPlotFade 0.5
+   SampledTrajectory
+   {
+      Source "BLUE1_OEM_POSITION.xyz"
+      ColorSource "BLUE1_COLOR.color"
+      Interpolation "cubic"
+      DoublePrecision true
+   }
+   SampledOrientation "BLUE1_AEM_ATTITUDE.q"
+   OrbitFrame { EquatorJ2000 { Center "Sol/Earth" } }
+   BodyFrame { EquatorJ2000 { Center "Sol/Earth" } }
+}
+
+"BLUE1" "Sol/Earth/BLUE1_ref"
+{
+   Class "component"
+   Mesh "rosetta-orbiterOnly.3ds"
+   Emissive false
+   Radius 0.001
+   MeshScale 0.001
+   NormalizeMesh false
+   Albedo 0.7
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/BLUE1_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/BLUE1_ref" } }
+}
+
+"BLUE1_Eme2000Axes" "Sol/Earth/BLUE1_ref"
+{
+   Class "component"
+   Mesh "emeAxes.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedQuaternion [0.707107 0.707107 0 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/BLUE1_ref" } }
+   BodyFrame { EquatorJ2000 { Center "Sol/Earth" } }
+}
+
+"BLUE1_QswAxes" "Sol/Earth/BLUE1_ref"
+{
+   Class "component"
+   Mesh "qswAxes.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 0 1]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/BLUE1_ref" } }
+   BodyFrame {
+      TwoVector {
+         Center "Sol/Earth/BLUE1_ref"
+         Primary {
+            Axis "x"
+            RelativePosition { Target "Sol/Earth" }
+         }
+         Secondary {
+            Axis "z"
+            RelativeVelocity { Target "Sol/Earth" }
+         }
+      }
+   }
+}
+
+"BLUE1_TnwAxes" "Sol/Earth/BLUE1_ref"
+{
+   Class "component"
+   Mesh "tnwAxes.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedQuaternion [1 0 0 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/BLUE1_ref" } }
+   BodyFrame {
+      TwoVector {
+         Center "Sol/Earth/BLUE1_ref"
+         Primary {
+            Axis "-x"
+            RelativeVelocity { Target "Sol/Earth" }
+         }
+         Secondary {
+            Axis "z"
+            RelativePosition { Target "Sol/Earth" }
+         }
+      }
+   }
+}
+
+"BLUE1_Axes" "Sol/Earth/BLUE1_ref"
+{
+   Class "component"
+   Mesh "satAxes.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/BLUE1_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/BLUE1_ref" } }
+}
+
+"BLUE1_SunDir" "Sol/Earth/BLUE1_ref"
+{
+   Class "component"
+   Mesh "vector-yellow-sun.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/BLUE1_ref" } }
+   FixedRotation { MeridianAngle 180 }
+   BodyFrame {
+      TwoVector {
+         Center "Sol/Earth/BLUE1_ref"
+         Primary {
+            Axis "x"
+            RelativePosition { Target "Sol" }
+         }
+         Secondary {
+            Axis "z"
+            ConstantVector
+            {
+               Vector [ 0 0 1 ]
+               Frame {
+                  EquatorJ2000 { Center "Sol/Earth" }
+               }
+            }
+         }
+      }
+   }
+   Visible false
+}
+
+"BLUE1_BodyDir" "Sol/Earth/BLUE1_ref"
+{
+   Class "component"
+   Mesh "vector-magenta-body.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/BLUE1_ref" } }
+   FixedRotation { MeridianAngle 180 }
+   BodyFrame {
+      TwoVector {
+         Center "Sol/Earth/BLUE1_ref"
+         Primary {
+            Axis "x"
+            RelativePosition { Target "Sol/Earth" }
+         }
+         Secondary {
+            Axis "z"
+            RelativeVelocity { Target "Sol/Earth" }
+         }
+      }
+   }
+   Visible false
+}
+
+"BLUE1_VelDir" "Sol/Earth/BLUE1_ref"
+{
+   Class "component"
+   Mesh "vector-white.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/BLUE1_ref" } }
+   FixedRotation { MeridianAngle 180 }
+   BodyFrame {
+      TwoVector {
+         Center "Sol/Earth/BLUE1_ref"
+         Primary {
+            Axis "-x"
+            RelativeVelocity { Target "Sol/Earth" }
+         }
+         Secondary {
+            Axis "z"
+            RelativePosition { Target "Sol/Earth" }
+         }
+      }
+   }
+   Visible false
+}
+
+"sensor_BLUE1_sens_ref" "Sol/Earth/BLUE1_ref/BLUE1"
+{
+   Class "component"
+   Visible false
+   Radius 0.000001
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/BLUE1_ref/BLUE1" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/BLUE1_ref/BLUE1" } }
+}
+
+"sensor_BLUE1" "Sol/Earth/BLUE1_ref/BLUE1/sensor_BLUE1_sens_ref"
+{
+   Class "component"
+   Radius 10000
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/BLUE1_ref/BLUE1/sensor_BLUE1_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/BLUE1_ref/BLUE1/sensor_BLUE1_sens_ref" } }
+   Sensor {
+      Target "Sol/Earth"
+      Range 10000
+      Shape "Rectangular"
+      HorizontalFOV 9.96947
+      VerticalFOV 19.9389
+      FrustumColor [1 0.286275 0.00392157]
+      FrustumBaseColor [1 0.921569 0.0235294]
+      FrustumOpacity 0.6
+      GridOpacity 0.6
+      TraceDuration 60
+      TraceOpacity 0.6
+      TraceColorFile "BLUE1_COLOR_5.color"
+   }
+}
+
+"sensor_BLUE1_AimAxis" "Sol/Earth/BLUE1_ref/BLUE1/sensor_BLUE1_sens_ref"
+{
+   Class "component"
+   Mesh "vector-cyan.3ds"
+   Radius 0.00533333333333333
+   MeshScale 0.00533333333333333
+   NormalizeMesh false
+   Emissive true
+   Orientation [ 90 0 1 0 ]
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/BLUE1_ref/BLUE1/sensor_BLUE1_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/BLUE1_ref/BLUE1/sensor_BLUE1_sens_ref" } }
+}
+
+"BLUE2_ref" "Sol/Earth"
+{
+   Class "spacecraft"
+   Radius 0.001
+   Mesh "ref_model.3ds"
+   NormalizeMesh false
+   MeshScale 0.0000001
+   OrbitColor [0.664668 1 0]
+   TrajectoryPlotWidth 2
+   TrajectoryPlotDuration 0.5
+   TrajectoryPlotLead 0.25
+   TrajectoryPlotFade 0.5
+   SampledTrajectory
+   {
+      Source "BLUE2_OEM_POSITION.xyz"
+      ColorSource "BLUE2_COLOR.color"
+      Interpolation "cubic"
+      DoublePrecision true
+   }
+   SampledOrientation "BLUE2_AEM_ATTITUDE.q"
+   OrbitFrame { EquatorJ2000 { Center "Sol/Earth" } }
+   BodyFrame { EquatorJ2000 { Center "Sol/Earth" } }
+}
+
+"BLUE2" "Sol/Earth/BLUE2_ref"
+{
+   Class "component"
+   Mesh "rosetta-orbiterOnly.3ds"
+   Emissive false
+   Radius 0.001
+   MeshScale 0.001
+   NormalizeMesh false
+   Albedo 0.7
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/BLUE2_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/BLUE2_ref" } }
+}
+
+"BLUE2_Eme2000Axes" "Sol/Earth/BLUE2_ref"
+{
+   Class "component"
+   Mesh "emeAxes.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedQuaternion [0.707107 0.707107 0 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/BLUE2_ref" } }
+   BodyFrame { EquatorJ2000 { Center "Sol/Earth" } }
+}
+
+"BLUE2_QswAxes" "Sol/Earth/BLUE2_ref"
+{
+   Class "component"
+   Mesh "qswAxes.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 0 1]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/BLUE2_ref" } }
+   BodyFrame {
+      TwoVector {
+         Center "Sol/Earth/BLUE2_ref"
+         Primary {
+            Axis "x"
+            RelativePosition { Target "Sol/Earth" }
+         }
+         Secondary {
+            Axis "z"
+            RelativeVelocity { Target "Sol/Earth" }
+         }
+      }
+   }
+}
+
+"BLUE2_TnwAxes" "Sol/Earth/BLUE2_ref"
+{
+   Class "component"
+   Mesh "tnwAxes.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedQuaternion [1 0 0 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/BLUE2_ref" } }
+   BodyFrame {
+      TwoVector {
+         Center "Sol/Earth/BLUE2_ref"
+         Primary {
+            Axis "-x"
+            RelativeVelocity { Target "Sol/Earth" }
+         }
+         Secondary {
+            Axis "z"
+            RelativePosition { Target "Sol/Earth" }
+         }
+      }
+   }
+}
+
+"BLUE2_Axes" "Sol/Earth/BLUE2_ref"
+{
+   Class "component"
+   Mesh "satAxes.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/BLUE2_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/BLUE2_ref" } }
+}
+
+"BLUE2_SunDir" "Sol/Earth/BLUE2_ref"
+{
+   Class "component"
+   Mesh "vector-yellow-sun.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/BLUE2_ref" } }
+   FixedRotation { MeridianAngle 180 }
+   BodyFrame {
+      TwoVector {
+         Center "Sol/Earth/BLUE2_ref"
+         Primary {
+            Axis "x"
+            RelativePosition { Target "Sol" }
+         }
+         Secondary {
+            Axis "z"
+            ConstantVector
+            {
+               Vector [ 0 0 1 ]
+               Frame {
+                  EquatorJ2000 { Center "Sol/Earth" }
+               }
+            }
+         }
+      }
+   }
+   Visible false
+}
+
+"BLUE2_BodyDir" "Sol/Earth/BLUE2_ref"
+{
+   Class "component"
+   Mesh "vector-magenta-body.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/BLUE2_ref" } }
+   FixedRotation { MeridianAngle 180 }
+   BodyFrame {
+      TwoVector {
+         Center "Sol/Earth/BLUE2_ref"
+         Primary {
+            Axis "x"
+            RelativePosition { Target "Sol/Earth" }
+         }
+         Secondary {
+            Axis "z"
+            RelativeVelocity { Target "Sol/Earth" }
+         }
+      }
+   }
+   Visible false
+}
+
+"BLUE2_VelDir" "Sol/Earth/BLUE2_ref"
+{
+   Class "component"
+   Mesh "vector-white.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/BLUE2_ref" } }
+   FixedRotation { MeridianAngle 180 }
+   BodyFrame {
+      TwoVector {
+         Center "Sol/Earth/BLUE2_ref"
+         Primary {
+            Axis "-x"
+            RelativeVelocity { Target "Sol/Earth" }
+         }
+         Secondary {
+            Axis "z"
+            RelativePosition { Target "Sol/Earth" }
+         }
+      }
+   }
+   Visible false
+}
+
+"sensor_BLUE2_sens_ref" "Sol/Earth/BLUE2_ref/BLUE2"
+{
+   Class "component"
+   Visible false
+   Radius 0.000001
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/BLUE2_ref/BLUE2" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/BLUE2_ref/BLUE2" } }
+}
+
+"sensor_BLUE2" "Sol/Earth/BLUE2_ref/BLUE2/sensor_BLUE2_sens_ref"
+{
+   Class "component"
+   Radius 10000
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/BLUE2_ref/BLUE2/sensor_BLUE2_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/BLUE2_ref/BLUE2/sensor_BLUE2_sens_ref" } }
+   Sensor {
+      Target "Sol/Earth"
+      Range 10000
+      Shape "Rectangular"
+      HorizontalFOV 9.96947
+      VerticalFOV 19.9389
+      FrustumColor [1 0.286275 0.00392157]
+      FrustumBaseColor [1 0.921569 0.0235294]
+      FrustumOpacity 0.6
+      GridOpacity 0.6
+      TraceDuration 60
+      TraceOpacity 0.6
+      TraceColorFile "BLUE2_COLOR_6.color"
+   }
+}
+
+"sensor_BLUE2_AimAxis" "Sol/Earth/BLUE2_ref/BLUE2/sensor_BLUE2_sens_ref"
+{
+   Class "component"
+   Mesh "vector-cyan.3ds"
+   Radius 0.00533333333333333
+   MeshScale 0.00533333333333333
+   NormalizeMesh false
+   Emissive true
+   Orientation [ 90 0 1 0 ]
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/BLUE2_ref/BLUE2/sensor_BLUE2_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/BLUE2_ref/BLUE2/sensor_BLUE2_sens_ref" } }
+}
+
+"RED1_ref" "Sol/Earth"
+{
+   Class "spacecraft"
+   Radius 0.001
+   Mesh "ref_model.3ds"
+   NormalizeMesh false
+   MeshScale 0.0000001
+   OrbitColor [0.664668 1 0]
+   TrajectoryPlotWidth 2
+   TrajectoryPlotDuration 0.5
+   TrajectoryPlotLead 0.25
+   TrajectoryPlotFade 0.5
+   SampledTrajectory
+   {
+      Source "RED1_OEM_POSITION.xyz"
+      ColorSource "RED1_COLOR.color"
+      Interpolation "cubic"
+      DoublePrecision true
+   }
+   SampledOrientation "RED1_AEM_ATTITUDE.q"
+   OrbitFrame { EquatorJ2000 { Center "Sol/Earth" } }
+   BodyFrame { EquatorJ2000 { Center "Sol/Earth" } }
+}
+
+"RED1" "Sol/Earth/RED1_ref"
+{
+   Class "component"
+   Mesh "rosetta-orbiterOnly.3ds"
+   Emissive false
+   Radius 0.001
+   MeshScale 0.001
+   NormalizeMesh false
+   Albedo 0.7
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/RED1_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/RED1_ref" } }
+}
+
+"RED1_Eme2000Axes" "Sol/Earth/RED1_ref"
+{
+   Class "component"
+   Mesh "emeAxes.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedQuaternion [0.707107 0.707107 0 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/RED1_ref" } }
+   BodyFrame { EquatorJ2000 { Center "Sol/Earth" } }
+}
+
+"RED1_QswAxes" "Sol/Earth/RED1_ref"
+{
+   Class "component"
+   Mesh "qswAxes.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 0 1]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/RED1_ref" } }
+   BodyFrame {
+      TwoVector {
+         Center "Sol/Earth/RED1_ref"
+         Primary {
+            Axis "x"
+            RelativePosition { Target "Sol/Earth" }
+         }
+         Secondary {
+            Axis "z"
+            RelativeVelocity { Target "Sol/Earth" }
+         }
+      }
+   }
+}
+
+"RED1_TnwAxes" "Sol/Earth/RED1_ref"
+{
+   Class "component"
+   Mesh "tnwAxes.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedQuaternion [1 0 0 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/RED1_ref" } }
+   BodyFrame {
+      TwoVector {
+         Center "Sol/Earth/RED1_ref"
+         Primary {
+            Axis "-x"
+            RelativeVelocity { Target "Sol/Earth" }
+         }
+         Secondary {
+            Axis "z"
+            RelativePosition { Target "Sol/Earth" }
+         }
+      }
+   }
+}
+
+"RED1_Axes" "Sol/Earth/RED1_ref"
+{
+   Class "component"
+   Mesh "satAxes.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/RED1_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/RED1_ref" } }
+}
+
+"RED1_SunDir" "Sol/Earth/RED1_ref"
+{
+   Class "component"
+   Mesh "vector-yellow-sun.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/RED1_ref" } }
+   FixedRotation { MeridianAngle 180 }
+   BodyFrame {
+      TwoVector {
+         Center "Sol/Earth/RED1_ref"
+         Primary {
+            Axis "x"
+            RelativePosition { Target "Sol" }
+         }
+         Secondary {
+            Axis "z"
+            ConstantVector
+            {
+               Vector [ 0 0 1 ]
+               Frame {
+                  EquatorJ2000 { Center "Sol/Earth" }
+               }
+            }
+         }
+      }
+   }
+   Visible false
+}
+
+"RED1_BodyDir" "Sol/Earth/RED1_ref"
+{
+   Class "component"
+   Mesh "vector-magenta-body.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/RED1_ref" } }
+   FixedRotation { MeridianAngle 180 }
+   BodyFrame {
+      TwoVector {
+         Center "Sol/Earth/RED1_ref"
+         Primary {
+            Axis "x"
+            RelativePosition { Target "Sol/Earth" }
+         }
+         Secondary {
+            Axis "z"
+            RelativeVelocity { Target "Sol/Earth" }
+         }
+      }
+   }
+   Visible false
+}
+
+"RED1_VelDir" "Sol/Earth/RED1_ref"
+{
+   Class "component"
+   Mesh "vector-white.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/RED1_ref" } }
+   FixedRotation { MeridianAngle 180 }
+   BodyFrame {
+      TwoVector {
+         Center "Sol/Earth/RED1_ref"
+         Primary {
+            Axis "-x"
+            RelativeVelocity { Target "Sol/Earth" }
+         }
+         Secondary {
+            Axis "z"
+            RelativePosition { Target "Sol/Earth" }
+         }
+      }
+   }
+   Visible false
+}
+
+"sensor_RED1_sens_ref" "Sol/Earth/RED1_ref/RED1"
+{
+   Class "component"
+   Visible false
+   Radius 0.000001
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/RED1_ref/RED1" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/RED1_ref/RED1" } }
+}
+
+"sensor_RED1" "Sol/Earth/RED1_ref/RED1/sensor_RED1_sens_ref"
+{
+   Class "component"
+   Radius 10000
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/RED1_ref/RED1/sensor_RED1_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/RED1_ref/RED1/sensor_RED1_sens_ref" } }
+   Sensor {
+      Target "Sol/Earth"
+      Range 10000
+      Shape "Rectangular"
+      HorizontalFOV 9.96947
+      VerticalFOV 19.9389
+      FrustumColor [1 0.286275 0.00392157]
+      FrustumBaseColor [1 0.921569 0.0235294]
+      FrustumOpacity 0.6
+      GridOpacity 0.6
+      TraceDuration 60
+      TraceOpacity 0.6
+      TraceColorFile "RED1_COLOR_7.color"
+   }
+}
+
+"sensor_RED1_AimAxis" "Sol/Earth/RED1_ref/RED1/sensor_RED1_sens_ref"
+{
+   Class "component"
+   Mesh "vector-cyan.3ds"
+   Radius 0.00533333333333333
+   MeshScale 0.00533333333333333
+   NormalizeMesh false
+   Emissive true
+   Orientation [ 90 0 1 0 ]
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/RED1_ref/RED1/sensor_RED1_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/RED1_ref/RED1/sensor_RED1_sens_ref" } }
+}
+
+"RED2_ref" "Sol/Earth"
+{
+   Class "spacecraft"
+   Radius 0.001
+   Mesh "ref_model.3ds"
+   NormalizeMesh false
+   MeshScale 0.0000001
+   OrbitColor [0.664668 1 0]
+   TrajectoryPlotWidth 2
+   TrajectoryPlotDuration 0.5
+   TrajectoryPlotLead 0.25
+   TrajectoryPlotFade 0.5
+   SampledTrajectory
+   {
+      Source "RED2_OEM_POSITION.xyz"
+      ColorSource "RED2_COLOR.color"
+      Interpolation "cubic"
+      DoublePrecision true
+   }
+   SampledOrientation "RED2_AEM_ATTITUDE.q"
+   OrbitFrame { EquatorJ2000 { Center "Sol/Earth" } }
+   BodyFrame { EquatorJ2000 { Center "Sol/Earth" } }
+}
+
+"RED2" "Sol/Earth/RED2_ref"
+{
+   Class "component"
+   Mesh "rosetta-orbiterOnly.3ds"
+   Emissive false
+   Radius 0.001
+   MeshScale 0.001
+   NormalizeMesh false
+   Albedo 0.7
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/RED2_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/RED2_ref" } }
+}
+
+"RED2_Eme2000Axes" "Sol/Earth/RED2_ref"
+{
+   Class "component"
+   Mesh "emeAxes.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedQuaternion [0.707107 0.707107 0 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/RED2_ref" } }
+   BodyFrame { EquatorJ2000 { Center "Sol/Earth" } }
+}
+
+"RED2_QswAxes" "Sol/Earth/RED2_ref"
+{
+   Class "component"
+   Mesh "qswAxes.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 0 1]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/RED2_ref" } }
+   BodyFrame {
+      TwoVector {
+         Center "Sol/Earth/RED2_ref"
+         Primary {
+            Axis "x"
+            RelativePosition { Target "Sol/Earth" }
+         }
+         Secondary {
+            Axis "z"
+            RelativeVelocity { Target "Sol/Earth" }
+         }
+      }
+   }
+}
+
+"RED2_TnwAxes" "Sol/Earth/RED2_ref"
+{
+   Class "component"
+   Mesh "tnwAxes.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedQuaternion [1 0 0 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/RED2_ref" } }
+   BodyFrame {
+      TwoVector {
+         Center "Sol/Earth/RED2_ref"
+         Primary {
+            Axis "-x"
+            RelativeVelocity { Target "Sol/Earth" }
+         }
+         Secondary {
+            Axis "z"
+            RelativePosition { Target "Sol/Earth" }
+         }
+      }
+   }
+}
+
+"RED2_Axes" "Sol/Earth/RED2_ref"
+{
+   Class "component"
+   Mesh "satAxes.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/RED2_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/RED2_ref" } }
+}
+
+"RED2_SunDir" "Sol/Earth/RED2_ref"
+{
+   Class "component"
+   Mesh "vector-yellow-sun.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/RED2_ref" } }
+   FixedRotation { MeridianAngle 180 }
+   BodyFrame {
+      TwoVector {
+         Center "Sol/Earth/RED2_ref"
+         Primary {
+            Axis "x"
+            RelativePosition { Target "Sol" }
+         }
+         Secondary {
+            Axis "z"
+            ConstantVector
+            {
+               Vector [ 0 0 1 ]
+               Frame {
+                  EquatorJ2000 { Center "Sol/Earth" }
+               }
+            }
+         }
+      }
+   }
+   Visible false
+}
+
+"RED2_BodyDir" "Sol/Earth/RED2_ref"
+{
+   Class "component"
+   Mesh "vector-magenta-body.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/RED2_ref" } }
+   FixedRotation { MeridianAngle 180 }
+   BodyFrame {
+      TwoVector {
+         Center "Sol/Earth/RED2_ref"
+         Primary {
+            Axis "x"
+            RelativePosition { Target "Sol/Earth" }
+         }
+         Secondary {
+            Axis "z"
+            RelativeVelocity { Target "Sol/Earth" }
+         }
+      }
+   }
+   Visible false
+}
+
+"RED2_VelDir" "Sol/Earth/RED2_ref"
+{
+   Class "component"
+   Mesh "vector-white.3ds"
+   Radius 0.004
+   MeshScale 0.004
+   NormalizeMesh false
+   Emissive true
+   FixedPosition [0 0 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/RED2_ref" } }
+   FixedRotation { MeridianAngle 180 }
+   BodyFrame {
+      TwoVector {
+         Center "Sol/Earth/RED2_ref"
+         Primary {
+            Axis "-x"
+            RelativeVelocity { Target "Sol/Earth" }
+         }
+         Secondary {
+            Axis "z"
+            RelativePosition { Target "Sol/Earth" }
+         }
+      }
+   }
+   Visible false
+}
+
+"sensor_RED2_sens_ref" "Sol/Earth/RED2_ref/RED2"
+{
+   Class "component"
+   Visible false
+   Radius 0.000001
+   FixedPosition [0 0 0]
+   FixedRotation {}
+   OrbitFrame { BodyFixed { Center "Sol/Earth/RED2_ref/RED2" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/RED2_ref/RED2" } }
+}
+
+"sensor_RED2" "Sol/Earth/RED2_ref/RED2/sensor_RED2_sens_ref"
+{
+   Class "component"
+   Radius 10000
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/RED2_ref/RED2/sensor_RED2_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/RED2_ref/RED2/sensor_RED2_sens_ref" } }
+   Sensor {
+      Target "Sol/Earth"
+      Range 10000
+      Shape "Rectangular"
+      HorizontalFOV 9.96947
+      VerticalFOV 19.9389
+      FrustumColor [1 0.286275 0.00392157]
+      FrustumBaseColor [1 0.921569 0.0235294]
+      FrustumOpacity 0.6
+      GridOpacity 0.6
+      TraceDuration 60
+      TraceOpacity 0.6
+      TraceColorFile "RED2_COLOR_8.color"
+   }
+}
+
+"sensor_RED2_AimAxis" "Sol/Earth/RED2_ref/RED2/sensor_RED2_sens_ref"
+{
+   Class "component"
+   Mesh "vector-cyan.3ds"
+   Radius 0.00533333333333333
+   MeshScale 0.00533333333333333
+   NormalizeMesh false
+   Emissive true
+   Orientation [ 90 0 1 0 ]
+   FixedPosition [0 0 0]
+   FixedQuaternion [0 0 1 0]
+   OrbitFrame { BodyFixed { Center "Sol/Earth/RED2_ref/RED2/sensor_RED2_sens_ref" } }
+   BodyFrame { BodyFixed { Center "Sol/Earth/RED2_ref/RED2/sensor_RED2_sens_ref" } }
+}
+

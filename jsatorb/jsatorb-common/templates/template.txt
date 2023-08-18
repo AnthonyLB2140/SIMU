@@ -1,0 +1,23 @@
+CCSDS_OEM_VERS = 2.0
+CREATION_DATE = {{ timeNow }}
+ORIGINATOR = ISAE-SUPAERO
+
+{% for key, value in satellitesResult.items(): %}
+META_START
+OBJECT_NAME = {{ key }}
+OBJECT_ID = {{ key }}
+CENTER_NAME = {{ celestialBody }}
+REF_FRAME = EME2000
+TIME_SYSTEM = UTC
+START_TIME = {{ value[0]['epoch'] }}
+USEABLE_START_TIME = {{ value[0]['epoch'] }}
+USEABLE_STOP_TIME = {{ value[-1]['epoch'] }}
+STOP_TIME = {{ value[-1]['epoch'] }}
+INTERPOLATION = lagrange
+INTERPOLATION_DEGREE = 5
+META_STOP
+
+{% for data in value %}
+{{ data['epoch'] }} {{ '%.7e' % data['x'] }} {{ '%.7e' % data['y'] }} {{ '%.7e' % data['z'] }} {{ '%.7e' % data['vx'] }} {{ '%.7e' % data['vy'] }} {{ '%.7e' % data['vz'] }}{% endfor %}
+
+{% endfor %}

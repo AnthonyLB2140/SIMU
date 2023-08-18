@@ -1,0 +1,719 @@
+2022-02-10T16:48:31	INFO	VTS	Launch of VTS.
+2022-02-10T16:50:19	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/Geopol/WorldBorders.vts"
+2022-02-10T16:50:20	INFO	Logger	Application windows (size and position) were updated according to your configuration (Settings/Geometry).
+2022-02-10T16:50:20	INFO	Loader	Project loaded from revision 7287 by XmlReader v3.2
+2022-02-10T16:51:09	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/UnitSphere/UnitSphere.vts"
+2022-02-10T16:51:09	INFO	Logger	Application windows (size and position) were updated according to your configuration (Settings/Geometry).
+2022-02-10T16:51:09	INFO	Loader	Project loaded from revision 7287 by XmlReader v3.2
+2022-02-10T16:51:23	INFO	Validator	The project is valid
+2022-02-10T16:51:23	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/UnitSphere/UnitSphere.vts~
+2022-02-10T16:51:23	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/UnitSphere/UnitSphere.vts~
+2022-03-17T09:04:55	INFO	VTS	Launch of VTS.
+2022-03-17T09:05:34	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/SMOS/SMOS.vts"
+2022-03-17T09:05:34	INFO	Loader	Project loaded from revision 4110 by XmlReader v2.6
+2022-03-17T09:05:43	INFO	Validator	The project is valid
+2022-03-17T09:05:43	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/SMOS/SMOS.vts~
+2022-03-17T09:05:43	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/SMOS/SMOS.vts~
+2022-03-17T09:06:36	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat - Molniya.vts"
+2022-03-17T09:06:36	INFO	Loader	Project loaded from revision 4110 by XmlReader v2.6
+2022-03-17T09:06:57	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/UnitSphere/UnitSphere.vts"
+2022-03-17T09:06:57	INFO	Logger	Application windows (size and position) were updated according to your configuration (Settings/Geometry).
+2022-03-17T09:06:57	INFO	Loader	Project loaded from revision 7287 by XmlReader v3.2
+2022-03-17T09:07:22	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/ExempleCIC/ExempleCIC_3.vts"
+2022-03-17T09:07:22	INFO	Loader	Project loaded from revision 4110 by XmlReader v2.6
+2022-03-17T09:07:30	INFO	Validator	The project is valid
+2022-03-17T09:07:30	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/ExempleCIC/ExempleCIC_3.vts~
+2022-03-17T09:07:30	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/ExempleCIC/ExempleCIC_3.vts~
+2022-03-17T09:08:18	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/ExempleCIC/ExempleCIC_1.vts"
+2022-03-17T09:08:18	INFO	Loader	Project loaded from revision 4110 by XmlReader v2.6
+2022-03-17T09:08:27	INFO	Validator	The project is valid
+2022-03-17T09:08:27	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/ExempleCIC/ExempleCIC_1.vts~
+2022-03-17T09:08:27	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/ExempleCIC/ExempleCIC_1.vts~
+2022-03-17T09:11:26	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/Plancton/PlanctonSat.vts"
+2022-03-17T09:11:26	INFO	Loader	Warning: Body layers have been upgraded. Their projection might be inconsistent.
+2022-03-17T09:11:26	INFO	Loader	Project loaded from revision 4110 by XmlReader v2.6
+2022-03-17T09:25:47	INFO	VTS	Launch of VTS.
+2022-03-17T09:25:54	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/SMOS/SMOS.vts"
+2022-03-17T09:25:54	INFO	Loader	Project loaded from revision 4110 by XmlReader v2.6
+2022-03-17T09:25:59	INFO	Validator	The project is valid
+2022-03-17T09:25:59	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/SMOS/SMOS.vts~
+2022-03-17T09:25:59	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/SMOS/SMOS.vts~
+2022-03-17T14:33:23	INFO	VTS	Launch of VTS.
+2022-03-17T14:33:31	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat.vts"
+2022-03-17T14:33:31	INFO	Loader	Project loaded from revision 4110 by XmlReader v2.6
+2022-03-17T14:33:37	INFO	Validator	The project is valid
+2022-03-17T14:33:37	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat.vts~
+2022-03-17T14:33:37	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat.vts~
+2022-03-17T14:34:21	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/UnitSphere/UnitSphere.vts"
+2022-03-17T14:34:21	INFO	Logger	Application windows (size and position) were updated according to your configuration (Settings/Geometry).
+2022-03-17T14:34:21	INFO	Loader	Project loaded from revision 7287 by XmlReader v3.2
+2022-03-17T14:34:22	INFO	Validator	The project is valid
+2022-03-17T14:34:22	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/UnitSphere/UnitSphere.vts~
+2022-03-17T14:34:22	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/UnitSphere/UnitSphere.vts~
+2022-03-17T14:34:51	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/Plancton/PlanctonSat.vts"
+2022-03-17T14:34:51	INFO	Loader	Warning: Body layers have been upgraded. Their projection might be inconsistent.
+2022-03-17T14:34:51	INFO	Loader	Project loaded from revision 4110 by XmlReader v2.6
+2022-03-17T14:34:52	INFO	Validator	The project is valid
+2022-03-17T14:34:52	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/Plancton/PlanctonSat.vts~
+2022-03-17T14:34:52	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/Plancton/PlanctonSat.vts~
+2022-03-17T14:45:50	INFO	VTS	Launch of VTS.
+2022-03-17T14:45:59	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat.vts"
+2022-03-17T14:45:59	INFO	Loader	Project loaded from revision 4110 by XmlReader v2.6
+2022-03-17T14:47:51	INFO	Validator	The project is valid
+2022-03-17T14:47:51	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat.vts~
+2022-03-17T14:47:51	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat.vts~
+2022-03-17T14:48:26	INFO	Validator	The project is valid
+2022-03-17T14:48:26	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat.vts~
+2022-03-17T14:48:26	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat.vts~
+2022-03-17T14:49:08	INFO	Validator	The project is valid
+2022-03-17T14:49:08	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat.vts~
+2022-03-17T14:49:08	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat.vts~
+2022-03-23T14:42:23	INFO	VTS	Launch of VTS.
+2022-03-23T14:42:32	TRACE	VTS	Opening project: "/Ubuntu-20.04/home/antoine/jsatorb/jsatorb-rest-api/files/default_Sat/default_Sat.vts"
+2022-03-23T14:42:32	INFO	Loader	Error while opening project file /Ubuntu-20.04/home/antoine/jsatorb/jsatorb-rest-api/files/default_Sat/default_Sat.vts:
+Error: This file doesn't exist : /Ubuntu-20.04/home/antoine/jsatorb/jsatorb-rest-api/files/default_Sat/default_Sat.vts
+2022-03-23T14:43:01	TRACE	VTS	Opening project: "/Ubuntu-20.04/home/antoine/jsatorb/jsatorb-rest-api/files/default_Sat/default_Sat.vts"
+2022-03-23T14:43:01	INFO	Loader	Error while opening project file /Ubuntu-20.04/home/antoine/jsatorb/jsatorb-rest-api/files/default_Sat/default_Sat.vts:
+Error: This file doesn't exist : /Ubuntu-20.04/home/antoine/jsatorb/jsatorb-rest-api/files/default_Sat/default_Sat.vts
+2022-03-23T14:43:35	INFO	VTS	Launch of VTS.
+2022-03-23T14:43:42	TRACE	VTS	Opening project: "/Ubuntu-20.04/home/antoine/jsatorb/jsatorb-rest-api/files/default_Sat/default_Sat.vts"
+2022-03-23T14:43:42	INFO	Loader	Error while opening project file /Ubuntu-20.04/home/antoine/jsatorb/jsatorb-rest-api/files/default_Sat/default_Sat.vts:
+Error: This file doesn't exist : /Ubuntu-20.04/home/antoine/jsatorb/jsatorb-rest-api/files/default_Sat/default_Sat.vts
+2022-03-23T14:44:29	INFO	VTS	Launch of VTS.
+2022-03-23T14:44:37	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/default_Sat/default_Sat.vts"
+2022-03-23T14:44:37	INFO	Loader	Error while opening project file C:/Users/antoine.ciborski/Documents/default_Sat/default_Sat.vts:
+(Reader v3.4) line 1497 : Unexpected text.
+2022-03-23T17:05:41	INFO	VTS	Launch of VTS.
+2022-03-23T17:05:45	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/ExempleCIC/ExempleCIC_3.vts"
+2022-03-23T17:05:45	INFO	Loader	Project loaded from revision 4110 by XmlReader v2.6
+2022-03-23T17:05:47	INFO	Validator	The project is valid
+2022-03-23T17:05:47	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/ExempleCIC/ExempleCIC_3.vts~
+2022-03-23T17:05:47	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/ExempleCIC/ExempleCIC_3.vts~
+2022-03-23T17:07:01	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/Plancton/PlanctonSat.vts"
+2022-03-23T17:07:01	INFO	Loader	Warning: Body layers have been upgraded. Their projection might be inconsistent.
+2022-03-23T17:07:01	INFO	Loader	Project loaded from revision 4110 by XmlReader v2.6
+2022-03-23T17:07:03	INFO	Validator	The project is valid
+2022-03-23T17:07:03	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/Plancton/PlanctonSat.vts~
+2022-03-23T17:07:03	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/Plancton/PlanctonSat.vts~
+2022-03-23T17:08:10	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat.vts"
+2022-03-23T17:08:10	INFO	Loader	Project loaded from revision 4110 by XmlReader v2.6
+2022-03-23T17:08:11	INFO	Validator	The project is valid
+2022-03-23T17:08:11	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat.vts~
+2022-03-23T17:08:11	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat.vts~
+2022-03-23T17:08:49	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/UnitSphere/UnitSphere.vts"
+2022-03-23T17:08:49	INFO	Logger	Application windows (size and position) were updated according to your configuration (Settings/Geometry).
+2022-03-23T17:08:49	INFO	Loader	Project loaded from revision 7287 by XmlReader v3.2
+2022-03-23T17:08:50	INFO	Validator	The project is valid
+2022-03-23T17:08:50	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/UnitSphere/UnitSphere.vts~
+2022-03-23T17:08:50	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/UnitSphere/UnitSphere.vts~
+2022-03-23T17:09:10	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/Rosetta/CIVAP_SDL_LAFR.vts"
+2022-03-23T17:09:10	INFO	Loader	Project loaded from revision 4169 by XmlReader v2.6
+2022-03-23T17:09:12	INFO	Validator	The project is valid
+2022-03-23T17:09:12	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/Rosetta/CIVAP_SDL_LAFR.vts~
+2022-03-23T17:09:12	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/Rosetta/CIVAP_SDL_LAFR.vts~
+2022-03-23T17:09:36	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/Rosetta/MUPUS_SDL_LAFR.vts"
+2022-03-23T17:09:37	INFO	Loader	Project loaded from revision 4169 by XmlReader v2.6
+2022-03-23T17:09:38	INFO	Validator	The project is valid
+2022-03-23T17:09:38	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/Rosetta/MUPUS_SDL_LAFR.vts~
+2022-03-23T17:09:38	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/Rosetta/MUPUS_SDL_LAFR.vts~
+2022-03-23T17:09:53	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/Rosetta/RMOC_77_traj_P_076.vts"
+2022-03-23T17:09:53	INFO	Loader	Warning: Body layers have been upgraded. Their projection might be inconsistent.
+2022-03-23T17:09:53	INFO	Loader	Project loaded from revision 4322 by XmlReader v2.6
+2022-03-23T17:09:55	INFO	Time & Options	Warning: Insufficient data for the defined time interval. Consider using the compute dates button.
+2022-03-23T17:09:55	INFO	Validator	The project is valid
+2022-03-23T17:09:55	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/Rosetta/RMOC_77_traj_P_076.vts~
+2022-03-23T17:09:55	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/Rosetta/RMOC_77_traj_P_076.vts~
+2022-03-23T17:11:41	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/SMOS/SMOS.vts"
+2022-03-23T17:11:41	INFO	Loader	Project loaded from revision 4110 by XmlReader v2.6
+2022-03-23T17:11:42	INFO	Validator	The project is valid
+2022-03-23T17:11:42	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/SMOS/SMOS.vts~
+2022-03-23T17:11:42	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/SMOS/SMOS.vts~
+2022-03-31T17:49:48	INFO	VTS	Launch of VTS.
+2022-03-31T17:50:09	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat.vts"
+2022-03-31T17:50:10	INFO	Loader	Project loaded from revision 4110 by XmlReader v2.6
+2022-03-31T17:52:15	INFO	Events	Error (CIC library) in file "": cannot create file  (line 0)
+2022-03-31T17:52:33	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-03-31T17:52:33	INFO	Validator	The project is valid
+2022-03-31T17:52:33	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat.vts~
+2022-03-31T17:52:33	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat.vts~
+2022-03-31T17:53:47	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-03-31T17:53:47	INFO	Validator	The project is valid
+2022-03-31T17:53:47	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat.vts~
+2022-03-31T17:53:47	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat.vts~
+2022-03-31T18:00:57	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-03-31T18:00:57	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_REENTRY_75.vts
+2022-03-31T21:10:10	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-03-31T21:10:10	INFO	Validator	The project is valid
+2022-03-31T21:10:10	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_REENTRY_75.vts~
+2022-03-31T21:10:10	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_REENTRY_75.vts~
+2022-03-31T22:43:24	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-03-31T22:43:24	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_REENTRY_long-debris.vts
+2022-03-31T22:43:28	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-03-31T22:43:28	INFO	Validator	The project is valid
+2022-03-31T22:43:28	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_REENTRY_long-debris.vts~
+2022-03-31T22:43:28	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_REENTRY_long-debris.vts~
+2022-03-31T22:49:32	INFO	VTS	Launch of VTS.
+2022-03-31T22:49:40	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/SMOS/SMOS.vts"
+2022-03-31T22:49:40	INFO	Loader	Project loaded from revision 4110 by XmlReader v2.6
+2022-03-31T22:49:42	INFO	Validator	The project is valid
+2022-03-31T22:49:42	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/SMOS/SMOS.vts~
+2022-03-31T22:49:42	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/SMOS/SMOS.vts~
+2022-03-31T22:50:01	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/ExempleCIC/ExempleCIC_3.vts"
+2022-03-31T22:50:01	INFO	Loader	Project loaded from revision 4110 by XmlReader v2.6
+2022-03-31T22:50:02	INFO	Validator	The project is valid
+2022-03-31T22:50:03	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/ExempleCIC/ExempleCIC_3.vts~
+2022-03-31T22:50:03	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/ExempleCIC/ExempleCIC_3.vts~
+2022-03-31T22:51:09	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/Rosetta/RMOC_LAFR_OEF.vts"
+2022-03-31T22:51:09	INFO	Loader	Warning: Body layers have been upgraded. Their projection might be inconsistent.
+2022-03-31T22:51:10	INFO	Loader	Project loaded from revision 4169 by XmlReader v2.6
+2022-03-31T22:51:12	INFO	Validator	The project is valid
+2022-03-31T22:51:12	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/Rosetta/RMOC_LAFR_OEF.vts~
+2022-03-31T22:51:12	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/Rosetta/RMOC_LAFR_OEF.vts~
+2022-03-31T23:10:44	INFO	VTS	Launch of VTS.
+2022-03-31T23:10:56	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_REENTRY_75.vts"
+2022-03-31T23:10:56	INFO	Loader	Project loaded from revision 9032 by XmlReader v3.6
+2022-03-31T23:25:53	INFO	VTS	Launch of VTS.
+2022-03-31T23:25:59	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_REENTRY_75.vts"
+2022-03-31T23:25:59	INFO	Loader	Project loaded from revision 9032 by XmlReader v3.6
+2022-03-31T23:34:43	INFO	VTS	Launch of VTS.
+2022-03-31T23:34:49	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_REENTRY_75.vts"
+2022-03-31T23:34:49	INFO	Loader	Project loaded from revision 9032 by XmlReader v3.6
+2022-03-31T23:39:10	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-03-31T23:39:10	INFO	Validator	The project is valid
+2022-03-31T23:39:10	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_REENTRY_75.vts~
+2022-03-31T23:39:10	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_REENTRY_75.vts~
+2022-04-05T09:11:15	INFO	VTS	Launch of VTS.
+2022-04-06T18:06:22	INFO	VTS	Launch of VTS.
+2022-04-06T18:06:34	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_REENTRY_75.vts"
+2022-04-06T18:06:34	INFO	Loader	Project loaded from revision 9032 by XmlReader v3.6
+2022-04-06T18:06:48	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-04-06T18:06:48	INFO	Validator	The project is valid
+2022-04-06T18:06:48	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_REENTRY_75.vts~
+2022-04-06T18:06:48	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_REENTRY_75.vts~
+2022-04-06T18:10:29	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_REENTRY_long-debris.vts"
+2022-04-06T18:10:30	INFO	Loader	Project loaded from revision 9032 by XmlReader v3.6
+2022-04-06T18:10:31	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-04-06T18:10:31	INFO	Validator	The project is valid
+2022-04-06T18:10:31	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_REENTRY_long-debris.vts~
+2022-04-06T18:10:31	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_REENTRY_long-debris.vts~
+2022-04-08T00:44:45	INFO	VTS	Launch of VTS.
+2022-04-08T00:45:00	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_REENTRY_75.vts"
+2022-04-08T00:45:00	INFO	Loader	Project loaded from revision 9032 by XmlReader v3.6
+2022-04-08T00:48:10	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-04-08T00:48:10	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts
+2022-04-08T00:48:13	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-04-08T00:48:13	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts
+2022-04-08T00:48:14	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-04-08T00:48:14	INFO	Validator	The project is valid
+2022-04-08T00:48:14	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-04-08T00:48:14	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-04-08T09:20:04	INFO	VTS	Launch of VTS.
+2022-04-08T09:20:16	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts"
+2022-04-08T09:20:17	INFO	Loader	Project loaded from revision 9032 by XmlReader v3.6
+2022-04-08T09:23:59	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-04-08T09:23:59	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts
+2022-04-08T09:24:01	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-04-08T09:24:01	INFO	Validator	The project is valid
+2022-04-08T09:24:01	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-04-08T09:24:01	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-04-08T09:25:54	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-04-08T09:25:54	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts
+2022-04-08T09:25:54	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-04-08T09:25:54	INFO	Validator	The project is valid
+2022-04-08T09:25:54	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-04-08T09:25:54	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-04-08T09:42:27	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-04-08T09:42:27	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts
+2022-04-08T09:42:29	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-04-08T09:42:29	INFO	Validator	The project is valid
+2022-04-08T09:42:29	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-04-08T09:42:29	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-04-08T09:52:06	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-04-08T09:52:06	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts
+2022-04-08T09:52:08	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-04-08T09:52:08	INFO	Validator	The project is valid
+2022-04-08T09:52:08	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-04-08T09:52:08	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-04-08T09:56:26	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-04-08T09:56:26	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts
+2022-04-08T09:56:27	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-04-08T09:56:27	INFO	Validator	The project is valid
+2022-04-08T09:56:27	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-04-08T09:56:27	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-04-08T09:57:49	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-04-08T09:57:49	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts
+2022-04-08T09:57:50	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-04-08T09:57:50	INFO	Validator	The project is valid
+2022-04-08T09:57:50	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-04-08T09:57:50	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-04-08T10:39:28	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-04-08T10:39:29	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts
+2022-04-08T11:31:02	INFO	VTS	Launch of VTS.
+2022-04-08T11:31:06	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts"
+2022-04-08T11:31:06	INFO	Loader	Project loaded from revision 9032 by XmlReader v3.6
+2022-04-08T11:32:14	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-04-08T11:32:14	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts
+2022-04-08T11:32:16	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-04-08T11:32:16	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts
+2022-04-08T11:32:17	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-04-08T11:32:17	INFO	Validator	The project is valid
+2022-04-08T11:32:17	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-04-08T11:32:17	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-04-08T11:33:25	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-04-08T11:33:25	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts
+2022-04-08T11:33:27	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-04-08T11:33:27	INFO	Validator	The project is valid
+2022-04-08T11:33:27	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-04-08T11:33:27	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-04-08T11:36:51	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-04-08T11:36:51	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts
+2022-04-08T11:37:24	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-04-08T11:37:24	INFO	Validator	The project is valid
+2022-04-08T11:37:24	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-04-08T11:37:24	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-04-13T15:45:57	INFO	VTS	Launch of VTS.
+2022-04-13T15:50:03	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_REENTRY_long-debris.vts"
+2022-04-13T15:50:03	INFO	Loader	Project loaded from revision 9032 by XmlReader v3.6
+2022-04-13T15:50:12	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-04-13T15:50:12	INFO	Validator	The project is valid
+2022-04-13T15:50:12	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_REENTRY_long-debris.vts~
+2022-04-13T15:50:12	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_REENTRY_long-debris.vts~
+2022-04-13T15:55:45	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-04-13T15:55:45	INFO	Validator	The project is valid
+2022-04-13T15:55:45	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_REENTRY_long-debris.vts~
+2022-04-13T15:55:45	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_REENTRY_long-debris.vts~
+2022-06-21T09:49:58	INFO	VTS	Launch of VTS.
+2022-06-21T09:49:58	INFO	Updater	Can't check for updates
+2022-06-21T09:50:40	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/Rosetta/RMOC_LAFR_Philae_atterrit.vts"
+2022-06-21T09:50:40	INFO	Loader	Warning: Body layers have been upgraded. Their projection might be inconsistent.
+2022-06-21T09:50:40	INFO	Loader	Project loaded from revision 4328 by XmlReader v2.6
+2022-06-21T09:50:44	INFO	Time & Options	Warning: Insufficient data for the defined time interval. Consider using the compute dates button.
+2022-06-21T09:50:44	INFO	Validator	The project is valid
+2022-06-21T09:50:44	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/Rosetta/RMOC_LAFR_Philae_atterrit.vts~
+2022-06-21T09:50:44	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/Rosetta/RMOC_LAFR_Philae_atterrit.vts~
+2022-08-04T17:06:04	INFO	VTS	Launch of VTS.
+2022-08-04T17:06:18	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts"
+2022-08-04T17:06:18	INFO	Loader	Project loaded from revision 9032 by XmlReader v3.6
+2022-08-04T17:08:45	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-08-04T17:08:45	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts
+2022-08-04T17:08:46	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-08-04T17:08:46	INFO	Validator	The project is valid
+2022-08-04T17:08:46	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-08-04T17:08:46	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-08-04T17:15:30	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-08-04T17:15:30	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts
+2022-08-04T17:15:31	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-08-04T17:15:31	INFO	Validator	The project is valid
+2022-08-04T17:15:31	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-08-04T17:15:31	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-08-04T17:17:48	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-08-04T17:17:48	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts
+2022-08-04T17:17:49	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-08-04T17:17:49	INFO	Validator	The project is valid
+2022-08-04T17:17:49	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-08-04T17:17:49	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-08-04T17:31:10	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-08-04T17:31:10	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts
+2022-08-04T17:31:11	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-08-04T17:31:11	INFO	Validator	The project is valid
+2022-08-04T17:31:11	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-08-04T17:31:11	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-08-05T11:23:50	INFO	VTS	Created file 'C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/vtsdiag.log'
+2022-09-05T10:21:46	INFO	VTS	Launch of VTS.
+2022-09-05T10:21:57	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts"
+2022-09-05T10:21:57	INFO	Loader	Project loaded from revision 9032 by XmlReader v3.6
+2022-09-05T10:24:07	INFO	Events	Error: This file doesn't exist: VTS_EVE_testMan.txt
+2022-09-05T10:24:07	INFO	Position/Orientation	Error: This file doesn't exist: C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/VTS_EPH_testMan.txt
+2022-09-05T10:24:07	INFO	Position/Orientation	Error: This file doesn't exist: C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/VTS_ATT_testMan.txt
+2022-09-05T10:24:07	INFO	Writer	Warning: The project contains errors, the file "CubeSat_maneuver1.vts" may be corrupted.
+2022-09-05T10:24:07	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts
+2022-09-05T10:24:09	INFO	Position/Orientation	Error: This file doesn't exist: VTS_EPH_testMan.txt
+2022-09-05T10:24:09	INFO	Position/Orientation	Error: This file doesn't exist: VTS_ATT_testMan.txt
+2022-09-05T10:24:09	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-09-05T10:24:09	INFO	Events	Error: This file doesn't exist: VTS_EVE_testMan.txt
+2022-09-05T10:24:09	INFO	Position/Orientation	Error: This file doesn't exist: C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/VTS_EPH_testMan.txt
+2022-09-05T10:24:09	INFO	Position/Orientation	Error: This file doesn't exist: C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/VTS_ATT_testMan.txt
+2022-09-05T10:24:09	INFO	Player	Fix errors before running visualization
+2022-09-05T10:24:28	INFO	Events	Error: This file doesn't exist : C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/VTS_EVE_testMan.txt
+2022-09-05T10:26:22	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-09-05T10:26:22	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts
+2022-09-05T10:26:23	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-09-05T10:26:23	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-09-05T10:26:23	INFO	Validator	The project is valid
+2022-09-05T10:26:23	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-09-05T10:26:23	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-09-05T10:27:41	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-09-05T10:27:41	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts
+2022-09-05T10:27:42	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-09-05T10:27:42	INFO	Validator	The project is valid
+2022-09-05T10:27:42	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-09-05T10:27:42	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-09-05T11:19:03	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts"
+2022-09-05T11:19:03	INFO	Loader	Project loaded from revision 9032 by XmlReader v3.6
+2022-09-05T11:19:29	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_REENTRY_long-debris.vts"
+2022-09-05T11:19:29	INFO	Loader	Project loaded from revision 9032 by XmlReader v3.6
+2022-09-05T11:19:37	INFO	Events	Error: This file doesn't exist: VTS_EVE_long-debris.txt
+2022-09-05T11:19:37	INFO	Position/Orientation	Error: This file doesn't exist: C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/VTS_EPH_long-debris.txt
+2022-09-05T11:19:37	INFO	Position/Orientation	Error: This file doesn't exist: C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/VTS_ATT_long-debris.txt
+2022-09-05T11:19:37	INFO	Player	Fix errors before running visualization
+2022-09-05T11:20:35	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_REENTRY_long-debris.vts"
+2022-09-05T11:20:35	INFO	Loader	Project loaded from revision 9032 by XmlReader v3.6
+2022-09-05T11:20:45	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-09-05T11:20:45	INFO	Validator	The project is valid
+2022-09-05T11:20:45	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_REENTRY_long-debris.vts~
+2022-09-05T11:20:45	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_REENTRY_long-debris.vts~
+2022-09-05T11:38:08	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts"
+2022-09-05T11:38:09	INFO	Loader	Project loaded from revision 9032 by XmlReader v3.6
+2022-09-05T11:39:04	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-09-05T11:39:04	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts
+2022-09-05T11:39:06	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-09-05T11:39:06	INFO	Validator	The project is valid
+2022-09-05T11:39:06	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-09-05T11:39:06	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-09-05T11:41:56	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-09-05T11:41:56	INFO	Validator	The project is valid
+2022-09-05T11:41:56	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-09-05T11:41:56	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-09-05T11:47:44	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-09-05T11:47:44	INFO	Validator	The project is valid
+2022-09-05T11:47:44	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-09-05T11:47:44	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-09-05T11:52:28	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-09-05T11:52:28	INFO	Validator	The project is valid
+2022-09-05T11:52:28	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-09-05T11:52:28	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-09-05T11:52:58	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-09-05T11:52:58	INFO	Validator	The project is valid
+2022-09-05T11:52:58	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-09-05T11:52:58	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-09-05T12:10:01	INFO	VTS	Launch of VTS.
+2022-09-05T12:10:05	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts"
+2022-09-05T12:10:05	INFO	Loader	Project loaded from revision 9032 by XmlReader v3.6
+2022-09-05T12:12:07	INFO	Events	Error: This file doesn't exist: VTS_EVE_testMan.txt
+2022-09-05T12:12:07	INFO	Position/Orientation	Error: This file doesn't exist: C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/VTS_EPH_testMan.txt
+2022-09-05T12:12:07	INFO	Position/Orientation	Error: This file doesn't exist: C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/VTS_ATT_testMan.txt
+2022-09-05T12:12:07	INFO	Writer	Warning: The project contains errors, the file "CubeSat_maneuver1.vts" may be corrupted.
+2022-09-05T12:12:07	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts
+2022-09-05T12:12:14	INFO	Events	Error: This file doesn't exist: VTS_EVE_testMan.txt
+2022-09-05T12:12:14	INFO	Position/Orientation	Error: This file doesn't exist: C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/VTS_EPH_testMan.txt
+2022-09-05T12:12:14	INFO	Position/Orientation	Error: This file doesn't exist: C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/VTS_ATT_testMan.txt
+2022-09-05T12:12:14	INFO	Player	Fix errors before running visualization
+2022-09-05T12:12:20	INFO	Events	Error: This file doesn't exist: VTS_EVE_testMan.txt
+2022-09-05T12:12:20	INFO	Position/Orientation	Error: This file doesn't exist: C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/VTS_EPH_testMan.txt
+2022-09-05T12:12:20	INFO	Position/Orientation	Error: This file doesn't exist: C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/VTS_ATT_testMan.txt
+2022-09-05T12:12:20	INFO	Player	Fix errors before running visualization
+2022-09-05T14:56:11	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-09-05T14:56:11	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts
+2022-09-05T14:56:39	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-09-05T14:56:39	INFO	Validator	The project is valid
+2022-09-05T14:56:39	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-09-05T14:56:39	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-09-05T15:09:06	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-09-05T15:09:06	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts
+2022-09-05T15:22:26	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-09-05T15:22:26	INFO	Validator	The project is valid
+2022-09-05T15:22:26	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-09-05T15:22:26	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-09-05T16:25:44	INFO	VTS	Launch of VTS.
+2022-09-05T16:25:52	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts"
+2022-09-05T16:25:52	INFO	Loader	Project loaded from revision 9032 by XmlReader v3.6
+2022-09-05T16:26:49	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-09-05T16:26:49	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts
+2022-09-05T16:26:53	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-09-05T16:26:53	INFO	Validator	The project is valid
+2022-09-05T16:26:53	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-09-05T16:26:53	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-09-05T16:28:05	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-09-05T16:28:05	INFO	Validator	The project is valid
+2022-09-05T16:28:06	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-09-05T16:28:06	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-09-05T16:42:16	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-09-05T16:42:16	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts
+2022-09-05T16:42:17	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-09-05T16:42:17	INFO	Validator	The project is valid
+2022-09-05T16:42:17	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-09-05T16:42:17	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-09-05T16:54:13	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-09-05T16:54:13	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts
+2022-09-05T16:54:17	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-09-05T16:54:17	INFO	Validator	The project is valid
+2022-09-05T16:54:17	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-09-05T16:54:17	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-11-04T09:41:12	INFO	VTS	Launch of VTS.
+2022-11-04T09:41:25	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts"
+2022-11-04T09:41:26	INFO	Loader	Project loaded from revision 9032 by XmlReader v3.6
+2022-11-04T09:42:24	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-11-04T09:42:24	INFO	Validator	The project is valid
+2022-11-04T09:42:24	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-11-04T09:42:24	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-11-04T09:44:59	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_REENTRY_long-debris.vts"
+2022-11-04T09:44:59	INFO	Loader	Project loaded from revision 9032 by XmlReader v3.6
+2022-11-04T09:45:06	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-11-04T09:45:06	INFO	Validator	The project is valid
+2022-11-04T09:45:06	INFO	Writer	Project saved in C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_REENTRY_long-debris.vts~
+2022-11-04T09:45:06	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_REENTRY_long-debris.vts~
+2022-11-21T14:05:56	INFO	VTS	Launch of VTS.
+2022-11-21T14:06:36	TRACE	VTS	Opening project: "/Ubuntu-20.04/home/antoine/jsatorb/jsatorb-rest-api/files/default_Sat/default_Sat.vts"
+2022-11-21T14:06:36	INFO	Loader	Error while opening project file /Ubuntu-20.04/home/antoine/jsatorb/jsatorb-rest-api/files/default_Sat/default_Sat.vts:
+Error: This file doesn't exist : /Ubuntu-20.04/home/antoine/jsatorb/jsatorb-rest-api/files/default_Sat/default_Sat.vts
+2022-11-21T14:15:17	INFO	VTS	Launch of VTS.
+2022-11-21T14:15:24	TRACE	VTS	Opening project: "/Ubuntu-20.04/home/antoine/jsatorb/jsatorb-rest-api/files/default_Sat/default_Sat.vts"
+2022-11-21T14:15:24	INFO	Loader	Error while opening project file /Ubuntu-20.04/home/antoine/jsatorb/jsatorb-rest-api/files/default_Sat/default_Sat.vts:
+Error: This file doesn't exist : /Ubuntu-20.04/home/antoine/jsatorb/jsatorb-rest-api/files/default_Sat/default_Sat.vts
+2022-11-21T14:16:13	TRACE	VTS	Opening project: "/Ubuntu-20.04/home/antoine/jsatorb/jsatorb-rest-api/files/default_Sat/default_Sat.vts"
+2022-11-21T14:16:13	INFO	Loader	Error while opening project file /Ubuntu-20.04/home/antoine/jsatorb/jsatorb-rest-api/files/default_Sat/default_Sat.vts:
+Error: This file doesn't exist : /Ubuntu-20.04/home/antoine/jsatorb/jsatorb-rest-api/files/default_Sat/default_Sat.vts
+2022-11-21T14:19:56	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_REENTRY_long-debris.vts"
+2022-11-21T14:19:56	INFO	Loader	Error while opening project file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_REENTRY_long-debris.vts:
+Error: This file doesn't exist : C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_REENTRY_long-debris.vts
+2022-11-21T14:20:10	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts"
+2022-11-21T14:20:10	INFO	Loader	Error while opening project file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts:
+Error: This file doesn't exist : C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts
+2022-11-21T14:26:33	INFO	VTS	Launch of VTS.
+2022-11-21T14:26:40	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/Plancton/PlanctonSat.vts"
+2022-11-21T14:26:40	INFO	Loader	Error while opening project file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/Plancton/PlanctonSat.vts:
+Error: This file doesn't exist : C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/Plancton/PlanctonSat.vts
+2022-11-21T14:27:38	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/Rosetta/RMOC_77_traj_P_076.vts"
+2022-11-21T14:27:38	INFO	Loader	Error while opening project file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/Rosetta/RMOC_77_traj_P_076.vts:
+Error: This file doesn't exist : C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/Rosetta/RMOC_77_traj_P_076.vts
+2022-11-21T14:27:50	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/Rosetta/MUPUS_SDL_LAFR.vts"
+2022-11-21T14:27:50	INFO	Loader	Error while opening project file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/Rosetta/MUPUS_SDL_LAFR.vts:
+Error: This file doesn't exist : C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/Rosetta/MUPUS_SDL_LAFR.vts
+2022-11-21T14:28:07	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/Rosetta/RMOC_LAFR_Philae_atterrit.vts"
+2022-11-21T14:28:07	INFO	Loader	Error while opening project file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/Rosetta/RMOC_LAFR_Philae_atterrit.vts:
+Error: This file doesn't exist : C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/Rosetta/RMOC_LAFR_Philae_atterrit.vts
+2022-11-21T14:28:51	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat - Molniya.vts"
+2022-11-21T14:28:51	INFO	Loader	Project loaded from revision 4110 by XmlReader v2.6
+2022-11-21T14:29:24	TRACE	VTS	Opening project: "/Ubuntu-20.04/home/antoine/jsatorb/jsatorb-rest-api/files/default_Sat/default_Sat.vts"
+2022-11-21T14:29:24	INFO	Loader	Error while opening project file /Ubuntu-20.04/home/antoine/jsatorb/jsatorb-rest-api/files/default_Sat/default_Sat.vts:
+Error: This file doesn't exist : /Ubuntu-20.04/home/antoine/jsatorb/jsatorb-rest-api/files/default_Sat/default_Sat.vts
+2022-11-21T14:29:47	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat - Molniya.vts"
+2022-11-21T14:29:47	INFO	Loader	Project loaded from revision 4110 by XmlReader v2.6
+2022-11-21T14:29:52	INFO	Validator	The project is valid
+2022-11-21T14:29:52	INFO	Writer	Project saved in C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat - Molniya.vts~
+2022-11-21T14:29:52	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat - Molniya.vts~
+2022-11-21T14:31:17	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/SMOS/SMOS.vts"
+2022-11-21T14:31:17	INFO	Loader	Error while opening project file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/SMOS/SMOS.vts:
+Error: This file doesn't exist : C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/SMOS/SMOS.vts
+2022-11-21T14:34:04	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/SMOS/SMOS.vts"
+2022-11-21T14:34:04	INFO	Loader	Error while opening project file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/SMOS/SMOS.vts:
+Error: This file doesn't exist : C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/SMOS/SMOS.vts
+2022-11-21T14:35:30	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat - Molniya.vts"
+2022-11-21T14:35:30	INFO	Loader	Project loaded from revision 4110 by XmlReader v2.6
+2022-11-21T14:36:35	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Data/Plancton/PlanctonSat.vts"
+2022-11-21T14:36:35	INFO	Loader	Warning: Body layers have been upgraded. Their projection might be inconsistent.
+2022-11-21T14:36:35	INFO	Loader	Project loaded from revision 4110 by XmlReader v2.6
+2022-11-21T14:37:00	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Data/SMOS/SMOS.vts"
+2022-11-21T14:37:00	INFO	Loader	Project loaded from revision 4110 by XmlReader v2.6
+2022-11-21T14:37:21	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Data/SMOS/SMOS.vts"
+2022-11-21T14:37:21	INFO	Loader	Project loaded from revision 4110 by XmlReader v2.6
+2022-11-21T14:37:51	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_REENTRY_75.vts"
+2022-11-21T14:37:51	INFO	Loader	Project loaded from revision 9032 by XmlReader v3.6
+2022-11-21T14:38:18	TRACE	VTS	Opening project: "/Ubuntu-20.04/home/antoine/jsatorb/jsatorb-rest-api/files/default_Sat/default_Sat.vts"
+2022-11-21T14:38:18	INFO	Loader	Error while opening project file /Ubuntu-20.04/home/antoine/jsatorb/jsatorb-rest-api/files/default_Sat/default_Sat.vts:
+Error: This file doesn't exist : /Ubuntu-20.04/home/antoine/jsatorb/jsatorb-rest-api/files/default_Sat/default_Sat.vts
+2022-11-21T14:38:53	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Data/Geopol/WorldBorders_PerCountry.vts"
+2022-11-21T14:38:53	INFO	Logger	Application windows (size and position) were updated according to your configuration (Settings/Geometry).
+2022-11-21T14:38:53	INFO	Loader	Project loaded from revision 7287 by XmlReader v3.2
+2022-11-21T14:42:09	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts"
+2022-11-21T14:42:09	INFO	Loader	Project loaded from revision 9032 by XmlReader v3.6
+2022-11-21T14:42:11	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-11-21T14:42:11	INFO	Validator	The project is valid
+2022-11-21T14:42:11	INFO	Writer	Project saved in C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-11-21T14:42:11	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2022-11-21T15:07:03	INFO	VTS	Launch of VTS.
+2022-11-21T15:07:07	TRACE	VTS	Opening project: "/Ubuntu-20.04/home/antoine/jsatorb/jsatorb-rest-api/files/default_Sat/default_Sat.vts"
+2022-11-21T15:07:07	INFO	Loader	Error while opening project file /Ubuntu-20.04/home/antoine/jsatorb/jsatorb-rest-api/files/default_Sat/default_Sat.vts:
+Error: This file doesn't exist : /Ubuntu-20.04/home/antoine/jsatorb/jsatorb-rest-api/files/default_Sat/default_Sat.vts
+2022-11-21T15:07:44	TRACE	VTS	Opening project: "/Ubuntu-20.04/home/antoine/jsatorb/jsatorb-rest-api/files/default_Sat/default_Sat.vts"
+2022-11-21T15:07:44	INFO	Loader	Error while opening project file /Ubuntu-20.04/home/antoine/jsatorb/jsatorb-rest-api/files/default_Sat/default_Sat.vts:
+Error: This file doesn't exist : /Ubuntu-20.04/home/antoine/jsatorb/jsatorb-rest-api/files/default_Sat/default_Sat.vts
+2022-11-21T15:12:48	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_REENTRY_long-debris.vts"
+2022-11-21T15:12:48	INFO	Loader	Error while opening project file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_REENTRY_long-debris.vts:
+Error: This file doesn't exist : C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_REENTRY_long-debris.vts
+2022-11-21T15:13:06	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_REENTRY_long-debris.vts"
+2022-11-21T15:13:06	INFO	Loader	Project loaded from revision 9032 by XmlReader v3.6
+2022-11-21T15:13:11	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_REENTRY_75.vts"
+2022-11-21T15:13:11	INFO	Loader	Project loaded from revision 9032 by XmlReader v3.6
+2022-11-21T15:13:15	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Data/Geopol/WorldBorders_PerCountry.vts"
+2022-11-21T15:13:15	INFO	Logger	Application windows (size and position) were updated according to your configuration (Settings/Geometry).
+2022-11-21T15:13:15	INFO	Loader	Project loaded from revision 7287 by XmlReader v3.2
+2022-11-21T15:13:35	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_REENTRY_long-debris.vts"
+2022-11-21T15:13:35	INFO	Loader	Error while opening project file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_REENTRY_long-debris.vts:
+Error: This file doesn't exist : C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_REENTRY_long-debris.vts
+2022-11-21T15:33:31	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/Rosetta/RMOC_77_traj_P_076.vts"
+2022-11-21T15:33:31	INFO	Loader	Error while opening project file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/Rosetta/RMOC_77_traj_P_076.vts:
+Error: This file doesn't exist : C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/Rosetta/RMOC_77_traj_P_076.vts
+2022-11-21T15:36:03	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Data/Geopol/WorldBorders_PerCountry.vts"
+2022-11-21T15:36:03	INFO	Logger	Application windows (size and position) were updated according to your configuration (Settings/Geometry).
+2022-11-21T15:36:03	INFO	Loader	Project loaded from revision 7287 by XmlReader v3.2
+2022-11-21T15:47:07	TRACE	VTS	Opening project: "/Ubuntu-20.04/home/antoine/jsatorb/jsatorb-rest-api/files/default_Sat/default_Sat.vts"
+2022-11-21T15:47:07	INFO	Loader	Error while opening project file /Ubuntu-20.04/home/antoine/jsatorb/jsatorb-rest-api/files/default_Sat/default_Sat.vts:
+Error: This file doesn't exist : /Ubuntu-20.04/home/antoine/jsatorb/jsatorb-rest-api/files/default_Sat/default_Sat.vts
+2022-11-21T17:35:44	INFO	VTS	Launch of VTS.
+2022-11-21T17:35:51	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_REENTRY_long-debris.vts"
+2022-11-21T17:35:52	INFO	Loader	Project loaded from revision 9032 by XmlReader v3.6
+2022-11-21T17:35:53	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2022-11-21T17:35:53	INFO	Validator	The project is valid
+2022-11-21T17:35:53	INFO	Writer	Project saved in C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_REENTRY_long-debris.vts~
+2022-11-21T17:35:53	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_REENTRY_long-debris.vts~
+2023-02-16T12:35:45	INFO	VTS	Launch of VTS.
+2023-02-16T12:36:04	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts"
+2023-02-16T12:36:05	INFO	Loader	Error while opening project file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts:
+Error: This file doesn't exist : C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts
+2023-02-16T12:36:25	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts"
+2023-02-16T12:36:25	INFO	Loader	Project loaded from revision 9032 by XmlReader v3.6
+2023-02-16T12:39:25	INFO	Events	Error: This file doesn't exist: VTS_EVE_testMan.txt
+2023-02-16T12:39:25	INFO	Position/Orientation	Error: This file doesn't exist: C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/VTS_EPH_testMan.txt
+2023-02-16T12:39:25	INFO	Position/Orientation	Error: This file doesn't exist: C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/VTS_ATT_testMan.txt
+2023-02-16T12:39:25	INFO	Writer	Warning: The project contains errors, the file "CubeSat_maneuver1.vts" may be corrupted.
+2023-02-16T12:39:25	INFO	Writer	Project saved in C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts
+2023-02-16T12:39:32	INFO	Position/Orientation	Error: This file doesn't exist: VTS_EPH_testMan.txt
+2023-02-16T12:39:32	INFO	Position/Orientation	Error: This file doesn't exist: VTS_ATT_testMan.txt
+2023-02-16T12:39:32	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2023-02-16T12:39:32	INFO	Events	Error: This file doesn't exist: VTS_EVE_testMan.txt
+2023-02-16T12:39:32	INFO	Position/Orientation	Error: This file doesn't exist: C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/VTS_EPH_testMan.txt
+2023-02-16T12:39:32	INFO	Position/Orientation	Error: This file doesn't exist: C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/VTS_ATT_testMan.txt
+2023-02-16T12:39:32	INFO	Player	Fix errors before running visualization
+2023-02-16T12:39:36	INFO	Position/Orientation	Error: This file doesn't exist: VTS_EPH_testMan.txt
+2023-02-16T12:39:36	INFO	Position/Orientation	Error: This file doesn't exist: VTS_ATT_testMan.txt
+2023-02-16T12:39:36	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2023-02-16T12:39:36	INFO	Events	Error: This file doesn't exist: VTS_EVE_testMan.txt
+2023-02-16T12:39:36	INFO	Position/Orientation	Error: This file doesn't exist: C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/VTS_EPH_testMan.txt
+2023-02-16T12:39:36	INFO	Position/Orientation	Error: This file doesn't exist: C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/VTS_ATT_testMan.txt
+2023-02-16T12:39:36	INFO	Player	Fix errors before running visualization
+2023-02-16T12:40:27	INFO	Events	Error: This file doesn't exist : C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/VTS_EVE_testMan.txt
+2023-02-16T12:41:25	INFO	Events	Events must be described in MEM format in file "VTS_ATT_test-man.txt"
+2023-02-16T12:41:25	INFO	Position/Orientation	Error (CIC library) in file "EPH_test-man.txt": Unable to allocate file object : Unknown header "#<AM-acces:COL-V2.0>
+<INIT:
+Logiciel="JPSIMU"
+VERSION="V11.6.2"
+<COL:
+  1 : DATE ~cal (date (UTC))
+  2 : TIME ~s (duration since initial conditions)
+  3 : A ~km (semi-major axis)
+>
+>
+ 2010-01-01T12:00:00.000        0.00000000000000e+00        7.20270000000000e+03
+ 2010-01-01T12:00:00.000        0.00000000000000e+00        7.20270007807422e+03
+ 2010-01-01T12:01:00.000        6.00000000000000e+01        7.20269989763780e+03
+ 2010-01-01T12:02:00.000        1.20000000000000e+02        7.20269974369734e+03
+ 2010-01-01T12:02:30.000        1.50000000000000e+02        7.20269967776638e+03
+ 2010-01-01T12:03:00.000        1.80000000000000e+02        6.23654240626021e+03
+ 2010-01-01T12:03:20.000        2.00000000000000e+02        6.23654234455485e+03
+ 2010-01-01T12:04:00.000        2.40000000000000e+02        6.23654223152073e+03
+ 2010-01-01T12:05:00.000        3.00000000000000e+02        6.23654207950740e+03
+ 2010-01-01T12:05:00.100        3.00100000000000e+02        6.23654207926565e+03
+ 2010-01-0"
+2023-02-16T12:41:25	INFO	Writer	Warning: The project contains errors, the file "CubeSat_maneuver1.vts" may be corrupted.
+2023-02-16T12:41:25	INFO	Writer	Project saved in C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts
+2023-02-16T12:41:26	INFO	Position/Orientation	Error (CIC library) in file "EPH_test-man.txt": Unable to allocate file object : Unknown header "#<AM-acces:COL-V2.0>
+<INIT:
+Logiciel="JPSIMU"
+VERSION="V11.6.2"
+<COL:
+  1 : DATE ~cal (date (UTC))
+  2 : TIME ~s (duration since initial conditions)
+  3 : A ~km (semi-major axis)
+>
+>
+ 2010-01-01T12:00:00.000        0.00000000000000e+00        7.20270000000000e+03
+ 2010-01-01T12:00:00.000        0.00000000000000e+00        7.20270007807422e+03
+ 2010-01-01T12:01:00.000        6.00000000000000e+01        7.20269989763780e+03
+ 2010-01-01T12:02:00.000        1.20000000000000e+02        7.20269974369734e+03
+ 2010-01-01T12:02:30.000        1.50000000000000e+02        7.20269967776638e+03
+ 2010-01-01T12:03:00.000        1.80000000000000e+02        6.23654240626021e+03
+ 2010-01-01T12:03:20.000        2.00000000000000e+02        6.23654234455485e+03
+ 2010-01-01T12:04:00.000        2.40000000000000e+02        6.23654223152073e+03
+ 2010-01-01T12:05:00.000        3.00000000000000e+02        6.23654207950740e+03
+ 2010-01-01T12:05:00.100        3.00100000000000e+02        6.23654207926565e+03
+ 2010-01-0"
+2023-02-16T12:41:26	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2023-02-16T12:41:26	INFO	Events	Events must be described in MEM format in file "VTS_ATT_test-man.txt"
+2023-02-16T12:41:26	INFO	Position/Orientation	Error (CIC library) in file "EPH_test-man.txt": Unable to allocate file object : Unknown header "#<AM-acces:COL-V2.0>
+<INIT:
+Logiciel="JPSIMU"
+VERSION="V11.6.2"
+<COL:
+  1 : DATE ~cal (date (UTC))
+  2 : TIME ~s (duration since initial conditions)
+  3 : A ~km (semi-major axis)
+>
+>
+ 2010-01-01T12:00:00.000        0.00000000000000e+00        7.20270000000000e+03
+ 2010-01-01T12:00:00.000        0.00000000000000e+00        7.20270007807422e+03
+ 2010-01-01T12:01:00.000        6.00000000000000e+01        7.20269989763780e+03
+ 2010-01-01T12:02:00.000        1.20000000000000e+02        7.20269974369734e+03
+ 2010-01-01T12:02:30.000        1.50000000000000e+02        7.20269967776638e+03
+ 2010-01-01T12:03:00.000        1.80000000000000e+02        6.23654240626021e+03
+ 2010-01-01T12:03:20.000        2.00000000000000e+02        6.23654234455485e+03
+ 2010-01-01T12:04:00.000        2.40000000000000e+02        6.23654223152073e+03
+ 2010-01-01T12:05:00.000        3.00000000000000e+02        6.23654207950740e+03
+ 2010-01-01T12:05:00.100        3.00100000000000e+02        6.23654207926565e+03
+ 2010-01-0"
+2023-02-16T12:41:26	INFO	Player	Fix errors before running visualization
+2023-02-16T12:41:35	INFO	Position/Orientation	Error (CIC library) in file "EPH_test-man.txt": Unable to allocate file object : Unknown header "#<AM-acces:COL-V2.0>
+<INIT:
+Logiciel="JPSIMU"
+VERSION="V11.6.2"
+<COL:
+  1 : DATE ~cal (date (UTC))
+  2 : TIME ~s (duration since initial conditions)
+  3 : A ~km (semi-major axis)
+>
+>
+ 2010-01-01T12:00:00.000        0.00000000000000e+00        7.20270000000000e+03
+ 2010-01-01T12:00:00.000        0.00000000000000e+00        7.20270007807422e+03
+ 2010-01-01T12:01:00.000        6.00000000000000e+01        7.20269989763780e+03
+ 2010-01-01T12:02:00.000        1.20000000000000e+02        7.20269974369734e+03
+ 2010-01-01T12:02:30.000        1.50000000000000e+02        7.20269967776638e+03
+ 2010-01-01T12:03:00.000        1.80000000000000e+02        6.23654240626021e+03
+ 2010-01-01T12:03:20.000        2.00000000000000e+02        6.23654234455485e+03
+ 2010-01-01T12:04:00.000        2.40000000000000e+02        6.23654223152073e+03
+ 2010-01-01T12:05:00.000        3.00000000000000e+02        6.23654207950740e+03
+ 2010-01-01T12:05:00.100        3.00100000000000e+02        6.23654207926565e+03
+ 2010-01-0"
+2023-02-16T12:41:35	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2023-02-16T12:41:35	INFO	Events	Events must be described in MEM format in file "VTS_ATT_test-man.txt"
+2023-02-16T12:41:35	INFO	Position/Orientation	Error (CIC library) in file "EPH_test-man.txt": Unable to allocate file object : Unknown header "#<AM-acces:COL-V2.0>
+<INIT:
+Logiciel="JPSIMU"
+VERSION="V11.6.2"
+<COL:
+  1 : DATE ~cal (date (UTC))
+  2 : TIME ~s (duration since initial conditions)
+  3 : A ~km (semi-major axis)
+>
+>
+ 2010-01-01T12:00:00.000        0.00000000000000e+00        7.20270000000000e+03
+ 2010-01-01T12:00:00.000        0.00000000000000e+00        7.20270007807422e+03
+ 2010-01-01T12:01:00.000        6.00000000000000e+01        7.20269989763780e+03
+ 2010-01-01T12:02:00.000        1.20000000000000e+02        7.20269974369734e+03
+ 2010-01-01T12:02:30.000        1.50000000000000e+02        7.20269967776638e+03
+ 2010-01-01T12:03:00.000        1.80000000000000e+02        6.23654240626021e+03
+ 2010-01-01T12:03:20.000        2.00000000000000e+02        6.23654234455485e+03
+ 2010-01-01T12:04:00.000        2.40000000000000e+02        6.23654223152073e+03
+ 2010-01-01T12:05:00.000        3.00000000000000e+02        6.23654207950740e+03
+ 2010-01-01T12:05:00.100        3.00100000000000e+02        6.23654207926565e+03
+ 2010-01-0"
+2023-02-16T12:41:35	INFO	Player	Fix errors before running visualization
+2023-03-01T19:51:40	INFO	VTS	Launch of VTS.
+2023-03-01T19:51:51	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/vts/orbite.vts"
+2023-03-01T19:51:51	INFO	Logger	Application windows (size and position) were updated according to your configuration (Settings/Geometry).
+2023-03-01T19:51:52	INFO	Loader	Project loaded from revision 8680 by XmlReader v3.5
+2023-03-01T19:53:11	INFO	Time & Options	Warning: Project is in real-time mode, dates will not be checked.
+2023-03-01T19:53:11	INFO	Validator	The project is valid
+2023-03-01T19:53:11	INFO	Writer	Project saved in C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/vts/orbite.vts~
+2023-03-01T19:53:11	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/vts/orbite.vts~
+2023-03-06T15:27:35	INFO	VTS	Launch of VTS.
+2023-03-06T15:27:42	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts"
+2023-03-06T15:27:42	INFO	Loader	Error while opening project file C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts:
+Error: This file doesn't exist : C:/Users/antoine.ciborski/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts
+2023-03-06T15:28:08	TRACE	VTS	Opening project: "C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts"
+2023-03-06T15:28:08	INFO	Loader	Project loaded from revision 9032 by XmlReader v3.6
+2023-03-06T15:35:36	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2023-03-06T15:35:36	INFO	Writer	Project saved in C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts
+2023-03-06T15:35:38	INFO	Time & Options	Warning: No intersection of data date ranges. Check the data files currently in use.
+2023-03-06T15:35:38	INFO	Validator	The project is valid
+2023-03-06T15:35:38	INFO	Writer	Project saved in C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~
+2023-03-06T15:35:38	INFO	Player	Start visualization of file C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Data/CubeSat/CubeSat_maneuver1.vts~

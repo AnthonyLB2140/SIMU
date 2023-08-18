@@ -1,0 +1,113 @@
+.. _VTS_Quick_Start:
+
+VTS Quick Start
+==================================================================================
+
+.. _VTS_Quick_Start#Installing_the_toolkit:
+
+Installing the toolkit
+----------------------------------------------------------------------------------
+The VTS toolkit comes as a zip archive. To install it, simply decompress it in a folder. This installation folder will be referred to as ``VTS/`` throughout this manual.
+
+
+.. _VTS_Quick_Start#Starting_the_toolkit:
+
+Starting the toolkit
+----------------------------------------------------------------------------------
+The VTS toolkit can be started by double-clicking the ``startVTS.exe`` executable file under Windows, or by running the command ``./startVTS`` under Linux.
+
+The main window that opens is the configuration utility. It is used to create a project and define its elements: satellites, sensors, ground stations, and client applications. This quick start guide will only cover opening and launching an existing project. If the directory containing the executable file doesn't allow writing, a warning message appears  in the notification area.
+
+
+.. _VTS_Quick_Start#Opening_an_existing_project:
+
+Opening an existing project 
+----------------------------------------------------------------------------------
+
+.. |VTSOpen| image:: /_images/Vts_open.png
+
+- Click the ``Open project`` |VTSOpen| button in the toolbar, or in the ``File`` menu.
+- The ``Open Project File`` dialog opens. Select the ``Cubesat.vts`` project file located under ``VTS/Data/CubeSat/`` and click ``Open``.
+- The project is loaded into the project tree.
+
+
+.. _VTS_Quick_Start#Starting_the_visualization:
+
+Starting the visualization 
+----------------------------------------------------------------------------------
+
+.. |VTSControlPlay| image:: /_images/Vts_control_play_blue.png
+
+- To start the project visualization, click the ``Run`` |VTSControlPlay| button in the toolbar, or in the ``Project`` menu.
+- The *Broker* window opens, with all the client applications defined for the project: the 2D window, Celestia, PrestoPlot, etc.
+
+
+.. _VTS_Quick_Start#Interacting_with_the_Broker:
+
+Interacting with the Broker 
+----------------------------------------------------------------------------------
+The Broker is the core application of the visualization phase. It starts the client applications, regulates the visualization time, sends user commands to the client applications, and much more.
+
+
+.. _VTS_Quick_Start#Start_of_a_visualization:
+
+Start of a visualization 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+When visualization is started from the :ref:`VTS configuration utility <VTS_configuration_utility_user_manual>`, the Broker starts all the :ref:`client applications <Client_applications_in_VTS>` defined in the VTS project. During this initialization phase, the Broker displays the *Initializing* message in the text fields of the time control area. Time does not start flowing until all client applications have signaled they are ready.
+
+Upon connection of the various client applications, the Broker's tabs are populated with commands and information regarding these applications.
+
+Visualization automatically starts to play with time ratio 1 once initialization is finished, unless specified otherwise in the VTS project.
+
+
+.. _VTS_Quick_Start#End_of_a_visualization:
+
+End of a visualization 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The visualization can be stopped directly by clicking the top-right cross button to close the Broker. It also stops once all client applications have been closed by the user, or if the VTS configuration utility is closed (if the visualization was started from there).
+
+
+.. _VTS_Quick_Start#Time_management:
+
+Time management 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Controls and information regarding time are available in all Broker display modes. The following interface allows interacting with visualization time:
+
+.. figure:: /_images/02_brokerMinimize.png
+   :align: center
+
+   Time control areas
+
+
+.. _VTS_Quick_Start#Time_controls:
+
+Time controls 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+The buttons in area (1) control time in all client applications:
+
+- **Time Loop**: Toggles loop playback for the visualization.
+- **Restart**: Resets time to the project's start date. The play/pause status remains unchanged.
+- **Play/Pause**: Plays/pauses the time flow. Pausing does not prevent interaction with the visualized entities in the client applications, or navigation in visualization time using the timeline.
+- **Reverse Time**: Every click on this button inverts the time flow direction. The time ratio remains unchanged.
+- **Use Scenario State Time Ratio**: When this button is unchecked, the user have a full control over the time ratio. When the button is checked, every time the time bar crosses a state, the state time ratio is applied to the visualization. The modification of the time ratio value is only  applied when the ``Use Scenario State Time Ratio`` is toggled from ``OFF`` to ``ON``.
+- **Slower**: Decreases the time ratio. Two clicks on this button result in a 5 times slower time flow. The current time ratio is displayed next to this button.
+- **Faster**: Increases the time ratio. Two clicks on this button result in a 5 times faster time flow.
+
+
+.. _VTS_Quick_Start#Timeline:
+
+Timeline 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+The timeline (2) displays the visualization's time range. Dragging the cursor controls the visualization's current time. While moving the cursor, the current time is kept updated in all client applications synchronously. For finer or coarser-grained time control, the timeline can be zoomed in/out using the mouse wheel.
+
+
+.. _VTS_Quick_Start#Current_time:
+
+Current time 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+A text area (3) displays the current visualization time. 
+The default format is the ISO time format (date and time in UTC). 
+The arrow button circles through other available time formats: CNES julian day (JD1950, fractional days, with reference date January 1st, 1950) and modified julian day (MJD, days and seconds, reference date November 17th, 1858). 
+The ``Edit date...`` button pops up a dialog in which the current visualization time can be accurately defined (in all of the above time formats).
+
+

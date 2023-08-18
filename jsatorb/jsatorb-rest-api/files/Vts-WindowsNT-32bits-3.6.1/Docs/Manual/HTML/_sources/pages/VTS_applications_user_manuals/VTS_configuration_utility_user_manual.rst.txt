@@ -1,0 +1,1835 @@
+.. _VTS_configuration_utility_user_manual:
+
+VTS configuration utility user manual
+==================================================================================
+
+The VTS configuration utility is the entry point for the VTS toolkit. It allows creating and editing VTS projects, as well as starting the visualization of a project.
+
+A project is composed of a set of configurable entities such as satellites, central bodies, ground stations, and client applications. These entities will be used during the visualization phase. It is also possible to configure a scenario of view properties which will be played back during the visualization. The following paragraphs describe in detail how to edit a VTS project.
+
+
+.. _VTS_configuration_utility_user_manual#Command_line_arguments:
+
+Command line arguments
+----------------------------------------------------------------------------------
+
+Command line arguments for the VTS configuration utility can be passed from the *startVTS* binary using the following syntax:
+
+.. code-block:: bash
+
+   startVTS [VTS configuration utility arguments]
+
+The following command line arguments are available:
+
+- ``--project <project.vts>`` : Open the specified VTS project file upon start of the VTS configuration utility.
+- ``--migrate  <project.vts> <migrated_project.vts>`` : Migrate the specified VTS project file at the current VTS project version and save it at specified location.
+- ``--readonly`` : Start VTS in read-only mode, meaning it will not write to its installation directory. It may still write project files outside its installation directory. This mode is enabled automatically if VTS detects it cannot write to its installation directory.
+
+
+   .. note:: In this mode, changes to the VTS settings or to a project file located inside the installation directory will be written to a temporary directory instead, and discarded when VTS is closed.
+
+
+.. _VTS_configuration_utility_user_manual#User_interface_description:
+
+User interface description
+----------------------------------------------------------------------------------
+
+The user interface is composed of:
+
+- A menu and toolbar **(1)**
+- A pane containing the project entities tree **(2)**
+- A pane displaying properties of the currently selected entity in the project tree **(3)**
+- A text area for notifications (warnings, errors, etc.) **(4)**
+- A tab area displaying the editors : **(5)**
+   - The **Scenario Editor** tab features all the tools required to edit the project's scenario. These tools are detailed in the chapter about concepts specific to VTS, in the :ref:`Scenario in VTS <Scenario_in_VTS>` section.
+   - The **Event Type Editor** tab allows customizing the appearance of mission events attached to the project's satellites.
+
+.. figure:: /_images/01_GlobalView.png
+   :align: center
+
+   User interface of the VTS configuration utility
+
+The position of the configuration utility window is saved between two sessions of the application. Multiple monitors environments are supported.
+
+The configuration utility window is guaranteed not to disappear in the case of a change of the desktop geometry. When a new session of the application begins, if the monitor displaying the window is no longer available, the window will move itself inside the closest available monitor.
+
+Messages displayed in the notification area are also stored in a log file (vts.log). This file can be found in the "Apps/Logs" directory or in the temporary directory (if readonly is on).
+
+
+.. _VTS_configuration_utility_user_manual#Toolbar_actions:
+
+Toolbar actions
+----------------------------------------------------------------------------------
+
+The actions below are available in the toolbar of the VTS configuration utility:
+
+- **New Project** button (*Ctrl+N*): create a new project
+- **Open Project** button (*Ctrl+O*): load an existing project
+- **Save Project** button (*Ctrl+S*): save the current project
+- **Run** button (*Ctrl+R*): start the visualization
+- **Stop** button: stop the current visualization
+- **Check project** button: check that the project is valid
+- **Check project and data files** button: check that the project and its data files are valid
+- **Clear Logger** button: clear all messages in the notification pane (4)
+- **Undo** button (*Ctrl+Z*): undo the previous modification of the project
+- **Redo** button (*Ctrl+Y*): redo the next modification of the project (only available with a previously undone modification)
+- **Start Propagator** : start the :ref:`Propagator <Data_generators_in_VTS#Orbit_propagation_with_the_Keplerian_Generator>`
+
+A popup window displaying the history of all modifications to the current project can be displayed with the *Ctrl+Alt+Z* keyboard shortcut.
+
+Use *Ctrl+F* to filter the project hierarchy using case-insensitive regexp patterns.
+
+
+.. _VTS_configuration_utility_user_manual#Validity_of_the_project:
+
+Validity of the project
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The **Check project** button triggers a validation of the project integrity. If any error or warning is encontoured, they will be reported on the logger panel. Double-clic an error will focus the project to the errered item.
+
+The following items are checked:
+
+- Applications check
+   - Client applications of the project exist
+   - Launchers exist for each of those client applications
+- Central bodies check
+   - At least one central body is defined
+   - All central bodies have unique names
+   - Central body textures are valid
+   - If applicable, all 3D models used by central bodies exist
+   - If applicable, all data files used by central bodies are valid (shallow check)
+   - All ground stations on a single body have unique names
+   - All POI on a single body have unique names
+   - All data files used by POI are valid (shallow check)
+   - All ROI on a single body have unique names
+   - All data files used by ROI are valid (shallow check)
+- Star Catalog check
+   - If the Star Catalog is configured in mode *Custom*, the specified catalog file is checked (shallow check)
+- Satellites check
+   - All satellites have unique names
+   - All satellites are attached to a central body
+   - All 3D models used by satellites exist
+   - If applicable, all data files used by satellites are valid (shallow check)
+   - Components check
+      - All components of a single satellite have unique names
+      - All 3D models used by components exist
+      - If applicable, all data files used by components are valid (shallow check)
+      - Sub-components check
+   - Sensors check
+      - All sensors on a given satellite have unique names
+      - If applicable, all data files used by sensors are valid (shallow check)
+- Dates check
+   - Project start date is before its end date
+   - All data files used by the project cover the time range of the project
+   - Catalog ephemerides for default bodies used in the project cover the time range of the project
+- Additional checks
+   - All additional files displayed in the timeline are valid (shallow check)
+   - All script files used by the project are valid (shallow check)
+
+Checks on data files are shallow, i.e. only the header and file metadata are checked:
+
+- No errors in the header
+- Data type described in the metadata matches what VTS expects
+   - Data type
+   - Data dimension
+   - Data unit
+
+
+
+.. _VTS_configuration_utility_user_manual#Validity_of_the_project_and_its_data_files:
+
+Validity of the project and its data files
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The **Check project and data files** action covers the perimeter of the **Check project** action, and also ensures the contents of all data files can be loaded without errors.
+
+
+
+.. _VTS_configuration_utility_user_manual#Managing_a_project:
+
+Managing a project
+----------------------------------------------------------------------------------
+
+
+.. _VTS_configuration_utility_user_manual#Creating_a_project:
+
+Creating a project
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+By definition, the project folder is the folder containing the current project file (''.vts). This folder also contains data referenced by the project. A VTS project file is an XML file describing the entities of the visualization, the start and end dates of the visualization, the client applications for the visualization, and the states of the visualization scenario. While editing a project, if the user selects some data or 3D file outside the project folder, a popup will offer to copy the file under the project folder.
+
+Several project files may reside in a common folder. However caution must be taken when altering a shared data file, as this will impact all projects using it.
+
+A new project can be created by doing the following:
+
+- In the toolbar, click the **New project** button, or in the **File** menu click the **New project** entry.
+- The **Create a new project** dialog opens, asking for a location to save the project. Select a folder which will contain all files related to the project, fill in the project's name, and click **Save**.
+
+
+.. _VTS_configuration_utility_user_manual#Opening_a_project:
+
+Opening a project
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+An existing project can be opened by doing one of the following:
+
+- Select the project file on disk
+   - In the toolbar click the **Open project** button, or in the **File** menu click the **Open project** entry.
+   - The **Open project file** dialog opens. Select a project file (*.vts*) and click **Open**.
+- Select the project file in the list of the last 15 project files available in the **File** menu.
+- Drag-and-drop the project file from a file browser onto the window of the VTS configuration utility.
+
+Opening a project file by double-clicking on it is currently not supported, due to the VTS toolkit being portable.
+
+
+.. _VTS_configuration_utility_user_manual#Saving_a_project:
+
+Saving a project
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The current project can be saved to disk by doing one of the following:
+
+- In the toolbar click the **Save** button, or in the **File** menu click the **Save** entry.
+- To save the project under a different name, click the **Save as...** entry in the **File** menu and modify the name of the project file. Beware that if the project is saved under a different folder, all relative paths in the project will become erroneous.
+
+
+.. _VTS_configuration_utility_user_manual#Exporting_an_archived_project:
+
+Exporting an archived project
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The current project can be exported as a zip archive by clicking on the **Create a Project Archive...** entry in the **File** menu. The .vts project file, all the data files in use, all the symbol files in use, and all the 3ds model files in use will be archived. Notice that all the image files (bmp, png or jpg) found in the used models folders will be exported as VTS doesn't know which texture files are effectively reference by the models files.
+
+
+.. _VTS_configuration_utility_user_manual#Visualizing_a_project:
+
+Visualizing a project
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The current project can be visualized by doing the following:
+
+- Start the visualization by clicking the **Run** button in the toolbar, or the **Run** entry in the **Project** menu.
+
+When the visualization ends, a popup offers to load any changes made to the project through the Broker during visualization. These changes can then be saved or discarded.
+
+
+.. _VTS_configuration_utility_user_manual#The_Project_Hierarchy:
+
+
+The Project Hierarchy
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The project hierarchy describes the project's entities in a hierarchical fashion. The hierarchy can be modified through context-sensitive menus.
+
+.. figure:: /_images/ArborescenceProjet.png
+   :align: center
+
+The following actions can be accessed by right-clicking the project hierarchy:
+
+- on any item
+   - *Collapse* folds the selected tree item
+   - *Expand* unfolds the selected tree item
+   - *Copy* puts a copy of the selected tree item in the clipboard
+   - *Paste* pastes a previously copied item onto the selected tree item
+- on the **Project** item
+   - *View XML* opens the project file in the text editor associated with the *.vts* file extension
+   - *Open project location* opens a file browser in the project folder
+- on the **Celestial Bodies** item
+   - *Add Body* adds a new body to the list of central bodies
+- on a **Body** item
+   - *Remove* removes the selected body
+- on a **Ground stations** item
+   - *Add GroundStation* adds a new ground station to the current body
+- on a **Ground station** item
+   - *Remove* removes the selected ground station
+- on a **Points Of Interest** item
+   - *Add Point Of Interest* adds a new set of points of interest to the current body
+- on a **POI** item
+   - *Remove* removes the selected set of points of interest
+- on a **Regions Of Interest** item
+   - *Add Region Of Interest* adds a new region of interest to the current body
+- on a **ROI** item
+   - *Remove* removes the selected region of interest
+- on the **Satellites** item
+   - *Add Satellite* adds a new satellite to the list of satellites
+- on a **Satellite** item
+   - *Add SubPart* adds a new component to the selected satellite
+   - *Add Sensor* adds a new sensor to the selected satellite
+   - *Add Visualizer* adds a new visualizer to the selected satellite
+   - *Remove* removes the selected satellite
+- on a **SubPart** item
+   - *Add SubPart* adds a new sub-component to the selected component
+   - *Add Sensor* adds a new sensor to the selected component
+   - *Remove* removes the selected component
+- on a **Sensor** item
+   - *Remove* removes the selected sensor
+- on the **Clusters** item
+   - *Add Cluster* adds a new cluster to the list of clusters
+- on the **Visualizers** item
+   - *Add Link* adds a new link between two satellites of the project
+- on the **Applications** item
+   - *Add Application* adds a new client application to the project (selected in the dropdown menu)
+- on any client application item
+   - *Remove* removes the selected client application
+
+The *Del* keyboard shortcut can be used to remove an item from the hierarchy, if the selected item can be removed.
+
+Use *Ctrl+F* to filter the project hierarchy using case-insensitive regexp patterns.
+
+
+.. _VTS_configuration_utility_user_manual#Copy-pasting_entities:
+
+Copy-pasting entities
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The copy-paste feature can be used to quickly create entities in the project hierarchy.
+
+An entity can be copied through the clipboard either through the *Ctrl+C* keyboard shortcut, or through the *Copy* entry in the context menu. Central bodies, satellites, components, sensors, ground stations, points and regions of interest can be copied.
+
+A previously copied entity can be pasted through the *Ctrl+V* keyboard shortcut, or through the *Paste* entry in the context menu, once a compatible destination entity has been selected (e.g. a satellite to paste a component, a central body to paste a ground station, etc.). If the selected entity is not a valid destination for the entity currently in the clipboard, the paste operation will fail. If the destination is the same entity as the one currently in the clipboard (i.e. when hitting *Ctrl+C* and *Ctrl+V* in sequence), a duplicate of the selected entity is created on the same level of the hierarchy. Note that in order to paste a component as a sub-component of itself, a special paste entry is available in the context menu as *Paste as subpart*.
+
+When copy-pasting an entity, all of its structural properties (i.e. those set in the *Structure* tab) are copied and pasted, as well as all its scenario properties (i.e. those set per-application and per-state in the *Scenario editor* tab).
+Entities are pasted as they were upon copy: if an entity is copied, modified, then pasted, the new entity will have the properties its source entity had at the time of the copy.
+
+The following table lists the compatible destination entities for each source entity:
+
+
+.. table:: Destinations for pasting a copied entity
+
+   ========================== =====================================
+   Source entity type         Valid destinations
+   ========================== =====================================
+   Central body               **Project, Celestial bodies item**
+   Ground station             **Body, Ground stations item**
+   Point Of Interest          **Body, Points Of Interest item**
+   Region Of Interest         **Body, Regions Of Interest item**
+   Satellite                  **Project, Satellites item, Body**
+   Component                  **Satellite, SubPart**
+   Sensor                     **Satellite**
+   Cluster                    **Project, Clusters item, Body**
+   ========================== =====================================
+
+.. _VTS_configuration_utility_user_manual#Importing_entities_from_an_external_project:
+
+Importing entities from an external project
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+VTS allows entities to be imported into the current project, from an external project file. This feature is available through the **Import entities** entry in the **Project** menu.
+
+.. figure:: /_images/ImportDialog.png
+   :align: center
+
+   Dialog for importing entities from an external project
+
+The hierarchy of the source project is displayed in the left pane, while the hierarchy of the current project is displayed in the right pane.
+
+To import an entity from the source project, simply select the entity to be imported in the source hierarchy, its destination entity in the destination hierarchy, and click the import arrow button located between the two panes. Valid destinations are listed in the above table (in the :ref:`#Copy-pasting entities section <VTS_configuration_utility_user_manual#Copy-pasting_entities>` section). The import of an entity can be canceled by selected it in the right pane and clicking the cross button located between the two panes.
+
+The **Files** group allows enabling or disabling the following options:
+
+- **Import 3D model**: import the 3D models and textures used by imported entities
+- **Import icons**: import the icons used by imported entities
+- **Import CIC files**: import the CIC/CCSDS data files used by imported entities
+
+The relative paths to the imported files in the source project will kept after the import. If a filename collision occurs, the user will have to decide whether to skip the import of the conflicting file, rename it, or overwrite the existing file.
+
+The **Scenario** group is only enabled when client applications are identical in both the source and destination projects. It allows enabling or disabling the following options:
+
+- **Import scenario states**: import the scenario states from the source project which do not already exist in the destination project
+- **Remove states outside current project dates**: do not import scenario states from the source project which are outside the date range of the destination project
+
+The **Events** allows enabling or disabling the following options:
+
+- **Import default event decorations**: import the default event decorations for all satellites
+- **Import satellite event decorations**: import event decorations for the imported satellites (only available when at least one satellite has been selected for import)
+
+Once the import has been configured, it can be applied by clicking the **OK** button, or canceled by clicking the **Cancel** button.
+Once the import has been applied, it can still be undone thanks to the **Undo** feature of VTS. Beware that file operations will not be undone.
+
+
+
+.. _VTS_configuration_utility_user_manual#Configuring_the_VTS_project_and_its_entities:
+
+Configuring the VTS project and its entities
+----------------------------------------------------------------------------------
+
+
+.. _VTS_configuration_utility_user_manual#General_parameters_of_a_project:
+
+General parameters of a project
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The general parameters of a project are its start and end dates, and the initial properties of the visualization (used by the Broker).
+
+.. figure:: /_images/ProjectGeneral.png
+   :align: center
+
+   Configuration of the project dates and initial properties of the visualization
+
+
+.. _VTS_configuration_utility_user_manual#Configuring_the_project_dates:
+
+Configuring the project dates
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+- The **Compute dates** button automatically computes the date range of the project based on the widest common time interval  of all ephemerides files used in the project.
+
+   .. note:: Dates are not updated when a data file or entity is added/removed from the project.
+   .. note:: The date range is computed from the bodies and the satellites entities. Events dates are **NOT** taken into account.
+
+- The **Auto compute** option enables automatic computation of the project's date range when the user starts the visualization. This option is not saved in the project XML and can be changed manually after loading the project if needed. By default this option is unchecked, but this can be modified in the **Options/Settings...** dialog.
+- The **Change date...** button located besides the project start and end dates allows manually editing the dates in CNES julian day format (JD1950), modified julian day format (MJD), calendar format (ISO), and relative to project start date (Project).
+- The **Synchronize with system time** option allows synchronizing the visualization time with the computer's system clock. In this mode, time controls are disabled during visualization. Data files must provide data for the visualization time range.
+
+Refer to the :ref:`Date formats in VTS <Date_formats_in_VTS>` for further information on dates.
+
+
+.. _VTS_configuration_utility_user_manual#Configuring_initial_properties_of_the_visualization:
+
+Configuring initial properties of the visualization
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+- The **Initial time ratio** setting allows specifying the initial visualization time ratio
+- The **Pause visualization** option allows starting the visualization paused/unpaused
+- The **Loop visualization** option allows the visualization to start over once it reaches the end of the time range
+- The **Minimize broker** option allows the Broker to start minimized in the taskbar
+- The **Auto close at end date** option allows the Broker to automatically close once the visualization reaches the end of the time range
+
+.. _VTS_configuration_utility_user_manual#Configuring_timeshifting:
+
+Configuring the timeshifting
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+- The **Enabled** setting allows activating the timeshifting feature
+
+
+Refer to the :ref:`Timeshifting in VTS <Broker_user_manual#Timeshifting>` for further information about this feature.
+
+.. _VTS_configuration_utility_user_manual#Configuring_an_entity:
+
+Configuring an entity
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Several entities in the project rely on some common parameters, which are described in the current section. Parameters specific to an entity are described in the sections concerning their respective entities.
+
+
+.. _VTS_configuration_utility_user_manual#Position_and_orientation_of_an_entity:
+
+Position and orientation of an entity
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+This section describes the common mechanisms used for defining the position and orientation of an entity. Details specific to the various entities (such as the units used) are described in their respective sections.
+
+For further information on how position and orientation are defined, refer to the :ref:`Position of objects in VTS <Position_of_objects_in_VTS>` and :ref:`Orientation of objects in VTS <Orientation_of_objects_in_VTS>` sections.
+
+For further information on the available data sources, refer to the :ref:`Data sources in VTS <Data_sources_in_VTS>` section.
+
+.. _VTS_configuration_utility_user_manual#Reference_frame:
+
+Reference frame
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+By default, all coordinates are expressed in a reference frame defined by convention for each type of entity (refer to the :ref:`Position of objects in VTS <Position_of_objects_in_VTS>` and :ref:`Orientation of objects in VTS <Orientation_of_objects_in_VTS>` sections).
+
+For satellites whose coordinates are expressed in a local reference frame relative to another satellite, it is possible to select a different type of reference frame (EME2000, BodyFixed, QSW, TNW).
+
+.. figure:: /_images/SatelliteReferenceFrame.png
+   :align: center
+
+   Satellite Reference Frame
+
+.. _VTS_configuration_utility_user_manual#Fixed_position:
+
+Fixed position
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. figure:: /_images/GeomPosConstant.png
+   :align: center
+
+   Fixed position
+
+
+- The radio button in the **Constant** tab selects a fixed position for the current entity. Note that in the EME2000 reference frame, a fixed position is usually meaningless. This position mode is mainly used for defining the coordinates of a component in the satellite's local frame.
+- By default, positions are expressed in a Cartesian coordinate system. A combo box next to the fixed position value allows to change to a geographic coordinate system. This case is useful if the reference frame is defined as BodyFixed relative to a central body.
+
+
+.. _VTS_configuration_utility_user_manual#Entity_Position_from_a_file:
+
+Position from a file
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. figure:: /_images/GeomPosFile.png
+   :align: center
+
+   Position defined by an ephemerides file
+
+
+- The radio button in the **File** tab allows specifying the path to a CIC/CCSDS file containing the position ephemerides for the current entity. The CIC/CCSDS file format is defined in the :ref:`CIC/CCSDS data files in VTS <CIC/CCSDS_data_files_in_VTS>` section.
+- The **Edit file...** button opens the currently selected file in a text editor.
+- The **Browse...** button opens a dialog to select an existing CIC/CCSDS file from disk. If the selected file is not located in a sub-folder of the project folder, a dialog offers to copy it inside the project folder.
+- The **New CIC file...** button creates an empty CIC/CCSDS file for the user to edit manually. Note that the CIC/CCSDS file header will depend on the currently selected type of position or orientation.
+
+
+.. _VTS_configuration_utility_user_manual#Position_as_a_stream:
+
+Position as a stream
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. figure:: /_images/GeomPosStream.png
+   :align: center
+
+   Position defined by a stream
+
+
+- The radio button in the **Stream** tab allows specifying the ID of a data stream.
+- The stream mode can be selected as *INTERPOL* or *DIRECT*. In *INTERPOL* mode, data will be interpolated, while in *DIRECT* mode data will be used as is, without interpolation. Note that the *INTERPOL* mode induces a delay in the visualisation.
+
+Refer to the :ref:`Real-time VTS <Synchronization_protocol_for_VTS_clients#Real-time_VTS>` section in the :ref:`Synchronization protocol for VTS clients <Synchronization_protocol_for_VTS_clients>` chapter for further information.
+
+
+.. _VTS_configuration_utility_user_manual#Orientation_modes:
+
+Orientation modes
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+.. figure:: /_images/GeomQuatFile.png
+   :align: center
+
+   Orientation defined by an ephemerides file
+
+
+- Five radio buttons allow selecting the orientation mode of an entity: **Quaternion**, **Euler angles**, **Axis and angle**, **Direction**, **Azimuth and elevation**. Each of these orientation modes can be configured to use a fixed value, a sampled value in a CIC/CCSDS data file, or a value stream (as described above for the configuration of the position).
+
+
+.. _VTS_configuration_utility_user_manual#Orientation_by_quaternion:
+
+Orientation by quaternion
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. figure:: /_images/GeomQuatConstant.png
+   :align: center
+
+   Orientation by constant quaternion
+
+
+- An orientation by quaternion is defined by its four components: **Q0**, **Q1**, **Q2** and '*Q3*'.
+
+
+.. _VTS_configuration_utility_user_manual#Orientation_by_Euler_angles:
+
+Orientation by Euler angles
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. figure:: /_images/GeomEulerConstant.png
+   :align: center
+
+   Orientation by Euler angles
+
+
+- An orientation by Euler angles is defined by a sequence of three rotations as follows: **Z**, **X**', **Z"**
+
+
+.. _VTS_configuration_utility_user_manual#Orientation_by_axis_and_angle:
+
+Orientation by axis and angle
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. figure:: /_images/GeomAxisAngleConstant.png
+   :align: center
+
+   Orientation by axis and angle
+
+
+- An orientation by axis and angle is defined by the direction vector of the axis and the angle of rotation (in degrees). Both can be defined independently.
+- It is possible to define a fixed axis and a sampled/streamed angle, as well as a sampled/streamed axis and a fixed angle. However, it is not possible to define both a sampled/streamed axis and a sampled/streamed angle.
+
+
+.. _VTS_configuration_utility_user_manual#Orientation_by_direction:
+
+Orientation by direction
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. figure:: /_images/GeomDirectionConstant.png
+   :align: center
+
+   Orientation by direction
+
+
+- An orientation by direction is defined by a direction vector in the entity's local frame. **This orientation mode does not strictly define an orientation**, there remains a degree of freedom around the direction of the vector. This mode offers a simple solution to define the orientation of a satellite component based for example on a file containing the direction of the Sun in the satellite's local frame.
+
+
+.. _VTS_configuration_utility_user_manual#Orientation_by_azimuth_and_elevation:
+
+Orientation by azimuth and elevation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. figure:: /_images/GeomAltAzConstant.png
+   :align: center
+
+   Orientation by azimuth and elevation
+
+
+- An orientation by azimuth and elevation is defined by two angles for the azimuth and elevation, both in degrees. **This orientation mode does not strictly define an orientation**, there remains a degree of freedom around the direction of aim.
+
+
+
+.. _VTS_configuration_utility_user_manual#Icon_configuration:
+
+Icon configuration
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+An **icon** can be configured in the following panel:
+
+.. figure:: /_images/IconConfiguration.png
+   :align: center
+
+
+
+- **Anchor**: The anchor allows to modify the center of the icon. It can be useful with pinpoints icons
+
+.. figure:: /_images/AnchorConfiguration.png
+   :align: center
+
+
+- **Size**: A predefined size from values between 9x9 pixels and 129x129 pixels. The values are odd so the positioning of the center pixel is accurate according to the real coordinates.
+- **Opacity**: 0 = transparent, 100 = opaque
+- **Layers**: An icon can be composed by many layers. Each layer can be move up and down in the layer stack
+   - **Image layer**: Can be a default icon or a custom icon (can be imported from the catalog)
+   - **Shape layer**: A predefined shape of which color and filling can be configured
+
+The **icon caption** can be configured with a **color** and a **size** (limited to 100px).
+
+
+
+.. _VTS_configuration_utility_user_manual#Track_configuration:
+
+Track configuration
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+The ground **track** of satellites and celestial bodies can be configured in the following panel:
+
+.. figure:: /_images/TrackProperties.png
+   :align: center
+
+
+
+- **Color**: defines the color of the track.
+- **Style**: defines how the track is traced (with dashes, with dots, ...).
+- **Width**: defines the thickness of the track.
+
+
+
+.. _VTS_configuration_utility_user_manual#Visibility_circle_configuration:
+
+Visibility circle configuration
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+The **visibility circle** of the satellite and celestial bodies can be configured in the following panel:
+
+.. figure:: /_images/VisibilityCircleProperties.png
+   :align: center
+
+
+
+- **Contour**: defines the contour of the visibility circle.
+	- **Color**: defines the color of the contour.
+	- **Style**: defines how the contour is traced (with dashes, with dots, ...).
+	- **Width**: defines the thickness of the contour.
+- **Fill**: define the fill of the visibility circle.
+	- **Color**: defines the color of the fill.
+	- **Opacity**: defines the opacity of the fill.
+
+
+.. _VTS_configuration_utility_user_manual#Configuring_Sky:
+
+Configuring Sky
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+.. _VTS_configuration_utility_user_manual#Configuring_the_Sun:
+
+Configuring the Sun
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+The Sun uses default properties of client applications which means that properties such as its 3D model or texture cannot be modified. However, the icon, track and the terminator properties can be modified from the VTS Configuration utility.
+
+.. figure:: /_images/SunProperties.png
+   :align: center
+
+
+Please refer to :ref:`Icon configuration <VTS_configuration_utility_user_manual#Icon_configuration>`, :ref:`Track configuration <VTS_configuration_utility_user_manual#Track_configuration>` and :ref:`Visibility circle configuration <VTS_configuration_utility_user_manual#Visibility_circle_configuration>` sections in order to configure these properties for the sun.
+
+''Note that the **Sun terminator** properties are similar to those of a visibility circle although the sun terminator affects the opposite region (the obscured face of the body)''.
+
+
+
+.. _VTS_configuration_utility_user_manual#Configuring_the_Star_Catalog:
+
+Configuring the Star Catalog
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+This panel allows you to define the specific star catalog that will be used in client applications. Note however that some client applications may still use their built-in star catalog, so please refer to the specific client application manual to check.
+
+.. figure:: /_images/StarCatalogProperties.png
+   :align: center
+
+
+
+.. _VTS_configuration_utility_user_manual#Star_Catalog_definition:
+
+Star Catalog definition
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+There are three modes to load the star catalog:
+
+
+- *Use the default star catalog of client applications*: This mode will notify client applications to use their built-in star catalog.
+- *Use the star catalog from VTS to provide external data to client applications*: This mode will notify client applications to use the star catalog provided with VTS (see :ref:`Hipparcos Catalog provided with VTS <VTS_configuration_utility_user_manual#Hipparcos_Catalog_provided_with_VTS>` for more information).
+- *Use a custom star catalog to overload catalog in client applications*: Allows to specify a custom star catalog file.
+
+If the *custom* catalog mode is selected, you can specify your own star catalog file. Note that this file must be a valid CIC/CCSDS file and that it must have the same structure of the provided catalog (please see :ref:`Hipparcos Catalog provided with VTS <VTS_configuration_utility_user_manual#Hipparcos_Catalog_provided_with_VTS>` for information about the file structure).
+
+
+.. _VTS_configuration_utility_user_manual#Star_Track_properties:
+
+Star Track properties
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The graphical properties of the stars tracks can be configured for this Star Catalog. Please refer to :ref:`Track configuration <VTS_configuration_utility_user_manual#Track_configuration>` sections.
+
+
+.. _VTS_configuration_utility_user_manual#*Hipparcos_Catalogue*_provided_with_VTS:
+
+*Hipparcos Catalogue* provided with VTS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+VTS provides the *Hipparcos Catalogue* in a CIC/CCSDS format. The provided catalog file has the following columns:
+
+
+- **HIP**: Identifier (HIP number).
+- **RAdeg**: Right ascencion in degrees.
+- **DEdeg**: Declination in degrees.
+- **Vmag**: Magnitude in Johnson V.
+
+The star catalog file provided with VTS has the following characteristics:
+
+- Stars are sorted by magnitude.
+- Stars without RAdeg/DEdeg have been removed.
+
+
+Note: the provided star catalog was created based on the `VizieR catalogue access tool <http://vizier.u-strasbg.fr/viz-bin/VizieR?-source=I/239&-to=3>`_. Please refer to this site for more information.
+
+
+
+.. _VTS_configuration_utility_user_manual#Configuring_a_central_body:
+
+Configuring a central body
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Missions visualized in VTS are defined around central bodies. A central body can be a planet or an object orbiting the Sun. A spacecraft is always attached to a central body. At least one central body must be defined for the VTS project to be valid. New projects use the Earth as default central body.
+
+
+.. _VTS_configuration_utility_user_manual#General_properties_of_a_body:
+
+General properties of a body
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+The general properties of a body are its:
+
+- Name
+- Parent body name
+- UseWGS84 reference system : in this mode, the flattening (ellipticity, or oblateness) of the body is taken into account. For the moment, only SurfaceView viewing Earth handles this configuration.
+- Icon
+- Ground Track
+- Visibility circle over other celestial bodies.
+
+.. figure:: /_images/BodyGeneral.png
+   :align: center
+
+
+
+- If the central body has a valid Celestia body name, its default ephemerides can be used or overridden (refer to the :ref:`Position and orientation of a body <VTS_configuration_utility_user_manual#Position_and_orientation_of_a_body>` section below). A drop-down list allows choosing a body name amongst the planets of the solar system. The planet's radius is automatically filled in in the 3D properties of the body.
+- A body not known to Celestia can be defined. However, it will then be necessary to provide user-defined 3D properties and ephemerides.
+
+
+.. _VTS_configuration_utility_user_manual#Other_properties_of_a_body:
+
+Other properties of a body
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Refer to :ref:`Icon configuration <VTS_configuration_utility_user_manual#Icon_configuration>`, :ref:`Track configuration <VTS_configuration_utility_user_manual#Track_configuration>` and :ref:`Visibility circle configuration <VTS_configuration_utility_user_manual#Visibility_circle_configuration>` sections in order to configure these properties for a central body.
+
+
+.. _VTS_configuration_utility_user_manual#Textures_of_a_body:
+
+Textures of a body
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+The textures of a body defines its appearance in the 2D and 3D views. A body can have many textures (zero or more) organized as stacked layers.
+
+**Notes:**
+
+- User-defined textures must correspond to a plate carrée projection, i.e. with a 1:2 ratio and centered on longitude 0°.
+- Due to limitations in Celestia, only one central body may used the *Fixed*, *Timed* or *Cyclic* texture types in the project.
+
+
+.. _VTS_configuration_utility_user_manual#Body_layers:
+
+Body layers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A body's layers list can be modified through its layers property page. The layers list is shown on the upper-part of this view. Selecting a layer in this list displays the layer's properties on the lower-part of the view (according to the layer's type).
+
+A layer can be added without the menu displayed by the **+** button.<br />
+A layer can be removed by selecting it in the list and clicking on the **-** button.
+
+The layers are organized as a stack. Therefore, the top-most layer in the list will be the top-most layer of the body. As a consequence, if a layer covers (without transparency) the whole body, then the layers located under it will never be visible.
+The ordering of the layers can changed bo selecting a layer in the list, and clicking on the **up** and **down** buttons.
+
+In order to be recognized, each layer has a name that must be unique within a body.
+
+.. figure:: /_images/BodyTextureLayers.png
+   :align: center
+
+
+New bodies come by default with a **built-in** layer, which can be removed if wanted.
+
+
+.. _VTS_configuration_utility_user_manual#Texture_types:
+
+Texture types
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A texture can be of 6 different types, selected by the **new layer** button: **Built-in**, **Fixed**, **Timed** (**acyclic** or **cyclic**) and **Tile Map** (**local** or **WMS**).
+
+
+.. _VTS_configuration_utility_user_manual#*Built-in*_texture:
+
+*Built-in* texture
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The texture is provided by Celestia, if available. Celestia has built-in textures for all planets of the solar system and some of their natural satellites.
+
+.. figure:: /_images/BodyTextureBuiltin.png
+   :align: center
+
+
+
+.. _VTS_configuration_utility_user_manual#Fixed_texture:
+
+Fixed texture
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The texture is defined by an image file in the project folder.
+
+.. figure:: /_images/BodyTextureFixed.png
+   :align: center
+
+
+.. _VTS_configuration_utility_user_manual#Timed_texture:
+
+Timed texture
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The texture is defined through a CIC/CCSDS file in the MEM format. This file contains the relative path (in the project folder) to the texture to use with regards to the current visualization date.
+
+.. figure:: /_images/BodyTextureTimed.png
+   :align: center
+
+
+The MEM timed texture file, containing *STRING* data of dimension *1*, must be defined for all timed textures (cyclic and acyclic).
+
+Notes:
+
+- If a line of the MEM file contains the string *DEFAULT*, the built-in texture of the body is used for this date
+
+Beware, using a timed texture can make the visualization jerky, especially when using Celestia. The following circumstances may cause performance issues:
+
+- timed texture with frequent texture changes (every few seconds of wall-clock time)
+- timed texture with textures of significant sizes
+- timed texture visualized at high time ratio (causing texture changes every few seconds of wall-clock time)
+
+
+.. _VTS_configuration_utility_user_manual#Acyclic_timed_texture:
+
+Acyclic timed texture
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For an acyclic texture, dates in the MEM file are the dates at which the texture changes occur. For example, the following line:
+
+::
+
+   56018 0 "Textures/Chl_a_april 2012.png"
+
+specifies that image file *Textures/Chl_a_april 2012.png* is to be used as texture for the central body at MJD date *56018 0*.
+
+
+.. _VTS_configuration_utility_user_manual#Cyclic_timed_texture:
+
+Cyclic timed texture
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For a cyclic texture, dates in the MEM file describe the instants of the cycle at which texture changes occur. Two additional parameters are required:
+
+- The epoch of the cycle
+- The period of the cycle in fractional days
+
+The epoch of the cycle must be prior to the start date of the project. Periods of an variable number of days, such as a month or a year, may not be specified. The best solution in this case is to use an acyclic timed texture with texture changes adjusted for the project.
+
+Dates in the MEM file are interpreted as durations from the start of the cycle. This means that a timed texture MEM file must contain dates in the MJD date format. For example, the following lines:
+
+::
+
+   0     0 "Textures/plankton_00.jpg"
+   0  7200 "Textures/plankton_01.jpg"
+
+specify that the image file *Textures/plankton_00.jpg* is to be used as texture at the start of a cycle, and that the image file *Textures/plankton_01.jpg* is to be used as texture two hours after the start of a cycle.
+
+Beware, if MJD date *0 0* is not present in the MEM file, no texture will be displayed at the start of a cycle.
+
+
+.. _VTS_configuration_utility_user_manual#Tile_Map_textures:
+
+Tile Map textures
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The tilemap mechanism allows you to load and display high definition maps as background images, depending on the zoom level. The tilemap can be configured either by a local URL pointing to a multi-level image hierarchy or a WMS server.
+
+
+.. _VTS_configuration_utility_user_manual#Local_tilemap:
+
+Local tilemap
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The local tilemap mechanism is compatible with Celestia. Some examples are provided with the level 0 and level 1 tiles :
+
+- ../Celestia/bin/extras/BMNG/textures/hires/BMNG
+- ../Catalog/Maps/OpenStreetMap
+
+*Note that the path is relative to the application directory*.
+
+These default textures were obtained from `NASA's Blue Marble Next Generation <http://earthobservatory.nasa.gov/Features/BlueMarble/>`_.
+
+.. figure:: /_images/LocalTileMapTexture.png
+   :align: center
+
+
+
+.. _VTS_configuration_utility_user_manual#Textures_directory:
+
+Textures directory
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+A tilemap texture directory should can contain up to 15 tilemap levels, each level corresponding to a directory named as ``levelN`` where ``N`` is the level number (from 0 to 14).
+
+Each level directory contains tile texture files named ``tx_<C>_<R>.<ext>`` where <C> is the column index, <R> is the row index and <ext> the image file extension (many formats supported by Qt). A tile must not necessary be complete, it can contain just a few files corresponding to a region close-up.
+
+The total texture count of a level can be calculated as 2\ :sup:`2n+1`\ .
+
+
+.. _VTS_configuration_utility_user_manual#Creating_custom_tilemap:
+
+Creating custom tilemap
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The method used for creating textures in Celestia can also be used in SurfaceView :
+
+- `Creating Textures for Celestia <http://www.lns.cornell.edu/~seb/celestia/textures.html>`_
+- `Texture Virtuelle (french) <http://www.ikiru.ch/celestia/wiki/index.php/Texture:Texture_Virtuelle>`_
+
+
+.. _VTS_configuration_utility_user_manual#Using_Celestia_Virtual_Textures:
+
+Using Celestia Virtual Textures
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+SurfaceView is compatible with Celestia's Virtual Texture mechanism, all existing virtual textures for Celestia can be used with SurfaceView :
+
+- `Earth textures <http://www.celestiamotherlode.net/catalog/earth.php>`_
+- `Earth Close-Ups <http://www.celestiamotherlode.net/catalog/earthcloseup.php>`_
+
+
+.. _VTS_configuration_utility_user_manual#Using_a_Web_Tile_Map_service:
+
+Using a Web Tile Map service
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Tilemaps can also be retrieved from a Web Map Service (WMS) or a Web Tile Map Service (WMTS). *Some WMS formats might not be supported yet*.
+Currently, the following coordinates reference system are well-supported: ``EPSG:4326`` (equirectangular, WGS84), ``EPSG:3857`` (Mercator, WGS84). Please refer to epsg.io in order to get information about these CRS.
+
+.. figure:: /_images/WMSTileMapTexture.png
+   :align: center
+
+
+The specified URL must be well-formatted and must correspond to a GetMap (WMS) or GetTile (WMTS) request.
+You can either write your own URL, or use the TileMap URL Wizard as shown below.
+
+You can access the TileMap URL wizard through the "Create the tilemap URL with the wizard" button.
+
+.. figure:: /_images/TileMapURLWizard.png
+   :align: center
+
+
+The wizard is splitted into three parts, vertically:
+
+- The **Webmap URL**: this is the root URL that corresponds to the server URL. It must include the full url root and the service type (WMS or WMTS) requested. It can include supplementary parameters not related to the service: these parameters will be kept. For example:
+
+ http://server.arcgisonline.com/arcgis/rest/services/ESRI_Imagery_World_2D/MapServer/WMTS?SERVICE=WMTS
+
+
+- The **Web Map Service Options**: this part of the wizard is accessible by clicking on the **Get the service capabilities**. The options correspond to the data available from the requested web map service :
+   - Layer: all the layers supported by VTS
+   - Style: all the available styles for the specified layer.
+   - Bounding Box / Tile Matrix Set: all the available bounding boxes for the specified layer. After selecting a bounding box, its informations are displayed below:
+      - The projection type (equirectangular or mercator).
+      - The bounding box boundaries (expressed in the CRS units).
+
+
+- The **Generated request URL**: this field is read-only and corresponds to the generated URL, resulting from the chosen options.
+
+When you have configured the different options, you can click the OK button: the generated URL will be transferred to the layer's tilemap URL, as well as the projection type.
+
+If you want to write your own URL, you need to respect the following rules :
+
+- The URL must correspond to a GetMap (for WMS) or GetTile (for WMTS) request.
+- The requested FORMAT **must be** ``image/png``. No other format is supported as for now.
+- The URL must tell the service type that is requested through the ``SERVICE`` parameter, values can be ``WMS`` or ``WMTS``.
+- The URL must provide any necessary information about the requested information: layer name, CRS/SRS name, style name, bounding box (for WMS), tile matrix set (for WMTS).
+
+You can use the ``GetCapabilities`` request to get information about the service. Example:
+
+ http://ows.terrestris.de/osm/service?service=WMS&request=GetCapabilities
+
+Then create a ``GetMap`` request defining an equidistant projection of the whole world, often ``EPSG:4326`` in WGS 84 (World Geodetic System), the image format, a SurfaceView compatible protocol version (To Be Defined).
+
+*Please note that WMS tiles are stored in a local cache directory. This cache can be clean using the **Clear all client application data caches** button in the Settings menu of the VTS configuration utility*.
+
+
+.. _VTS_configuration_utility_user_manual#Example_using_an_OpenStreetMap_based_WMS:
+
+Example using an OpenStreetMap based WMS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The ``GetMap`` request :
+
+   http://ows.terrestris.de/osm/service?service=WMS&request=GetMap&CRS=EPSG:4326&format=image/png&VERSION=1.3.06&styles&LAYERS=OSM-WMS
+
+
+.. _VTS_configuration_utility_user_manual#3D_properties_of_a_body:
+
+3D properties of a body
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+The 3D properties of a body define its appearance in 3D views.
+
+.. figure:: /_images/Body3dProperties.png
+   :align: center
+
+
+The *Graphics Definition* radio buttons select the 3D properties to use for the body:
+
+- default: use the graphics properties available if Celestia, if any.
+- custom: redefine the 3D mesh of an existing Celestia body or define the 3D mesh of a body not available in Celestia. The parameters are similar to those described in the :ref:`3D properties of a satellite <VTS_configuration_utility_user_manual#3D_properties_of_a_satellite>` section. Values are expressed in kilometers.
+
+All custom 3D properties field must be filled in when redefining the 3D mesh of an existing Celestia body.
+
+Custom 3D properties must be selected and a 3D mesh must be defined if the current body is not available in Celestia.
+
+
+.. _VTS_configuration_utility_user_manual#Position_and_orientation_of_a_body:
+
+Position and orientation of a body
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+The VTS toolkit is mainly geared towards the visualization of missions around central bodies of the solar system. In general, the ephemerides of these bodies are known. However it remains possible to override the ephemerides of predefined bodies, or to define the ephemeris of a non-default body.
+
+.. figure:: /_images/BodyPositionOrientation.png
+   :align: center
+
+
+The *Ephemeris Definition* radio buttons select the position and orientation to use for the body:
+
+
+- Default ephemeris mode : client applications choose their preferred ephemeris origin
+- Catalog ephemeris mode : client applications use VTS catalog ephemeris files
+- Custom ephemeris mode : the user provides the ephemeris for the body as described in the :ref:`Position and orientation of an entity <VTS_configuration_utility_user_manual#Position_and_orientation_of_an_entity>` section.
+
+See the :ref:`Central bodies in VTS <Central_bodies_in_VTS>` section for more details.
+
+
+.. _VTS_configuration_utility_user_manual#Configuring_a_satellite:
+
+Configuring a satellite
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A satellite is composed of a main component and sub-components. General, 3D, and geometric properties are configured at the component level. Common properties are configured only for the main component.
+
+
+.. _VTS_configuration_utility_user_manual#General_properties_of_a_satellite:
+
+General properties of a satellite
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+The general properties of a satellite are its:
+
+
+- Name
+- Central body
+- Icon
+- Orbit path
+- Visibility circle over other celestial bodies
+- Eclipse circle over the attached body
+
+.. figure:: /_images/SatelliteGeneral.png
+   :align: center
+
+
+
+.. _VTS_configuration_utility_user_manual#Name_and_central_body_of_a_satellite:
+
+Name and central body of a satellite
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The name of the satellite will be the satellite's unique identifier during visualization, used to identify the satellite in view properties and messages between the Broker and client applications.
+
+The central body of the satellite defines the reference frame for the satellite, in which the satellite's position is expressed.
+
+
+.. _VTS_configuration_utility_user_manual#Orbit_path_of_a_satellite:
+
+Orbit path of a satellite
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The orbit path of a satellite is displayed in the 2D and 3D views. It has the same properties as a :ref:`track <VTS_configuration_utility_user_manual#Track_configuration>`. But it is also possible to colorize the satellite's orbit path with a CIC/CCSDS color file.
+
+Note: the displayed length of the satellite's orbit path is now configured in the :ref:`project scenario <Scenario_in_VTS>`.
+
+Note: Color files format must meet the following requirements:
+
+- MEM format with 3 (or 4) real fields ranging from 0 to 1, for the RGB components (and transparency)
+- MEM format with 3 (or 4) integer fields ranging from 0 to 255, for the RGB components (and transparency)
+- MEM format with 1 string field in HTML color format ("#RRGGBB" in hexadecimal), for the RGB components (no transparency)
+
+Eclipse circle of a satellite
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The eclipse circle of a satellite is the projection on its parent body of the area where the satellite is in the umbra cone of its parent body
+at a steady altitude.
+
+This can be visualised in SurfaceView by enabling its visibility in its configuration in the SurfaceView configurator (available in the Scenario Editor tab)
+
+
+.. figure:: /_images/SatelliteEclipseCircle.png
+   :align: center
+
+.. _VTS_configuration_utility_user_manual#Satellite_Position_from_a_file:
+
+Position from a file
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. figure:: /_images/SatelliteGeomPosFile.png
+   :align: center
+
+   Position of a Satellite defined by an ephemerides file
+
+For a Satellites, the **New CIC file...** button allows you to select the type of input for the position of the satellite. Two reference frames are supported :
+
+- EME2000 (Earth Mean Equator at epoch J2000)
+- Central body's local frame (only with file MEM with lat/long/alt)
+
+
+.. _VTS_configuration_utility_user_manual#Other_properties_of_a_satellite:
+
+Other properties of a satellite
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. figure:: /_images/SatelliteIcon.png
+   :align: center
+
+
+Refer to :ref:`Icon configuration <VTS_configuration_utility_user_manual#Icon_configuration>` and :ref:`Visibility circle configuration <VTS_configuration_utility_user_manual#Visibility_circle_configuration>` sections in order to configure these properties for a satellite.
+
+
+.. _VTS_configuration_utility_user_manual#Events_attached_to_a_satellite:
+
+Events attached to a satellite
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Mission events can be attached to the satellite to be displayed in the project timeline and in compatible client applications. These events are provided in CIC/CCSDS files in MEM format.
+
+- The **Add...** button allows selecting an additional CIC/CCSDS event file
+- The **Create...** button allows creating an empty CIC/CCSDS event file
+- The **Edit file...** button on each line opens the selected CIC/CCSDS event file in a text editor
+- The **Remove file** button on each line removes the selected CIC/CCSDS file from the list
+
+.. figure:: /_images/EventList.png
+   :align: center
+
+   List of mission event files
+
+Each file has its top-level event type displayed next to its name on its line. This event type is used to construct the full event type name for events of the file.
+
+The decoration of all events can be controlled in the *Event Type Editor* tab of the VTS configuration utility (see the :ref:`Configuring event types <VTS_configuration_utility_user_manual#Configuring_event_types>` section). The visibility of the events can be controlled during visualization through the Broker (see the :ref:`*Events* tab <Broker_user_manual#Events_tab>` section in the :ref:`Broker user manual <Broker_user_manual>`).
+
+Refer to the :ref:`Mission events in VTS <Mission_events_in_VTS>` chapter for more information on events in VTS.
+
+
+.. _VTS_configuration_utility_user_manual#3D_properties_of_a_satellite:
+
+3D properties of a satellite
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+The 3D properties of a satellite define its appearance in 3D views.
+
+.. figure:: /_images/3dProperties.png
+   :align: center
+
+   3D properties of a satellite
+
+
+- The **Approximate size** field only applies to the current component (3ds file). It has two meanings:
+   - If the '*Use 3ds coordinates*' option is enabled, it defines the bounding sphere of the 3D mesh to be used by clipping mechanisms. This parameter should be set to a realistic value.
+   - If the '*Use 3ds coordinates*' option is disabled, it defines the actual dimensions to be applied to the 3D mesh of the component.
+- The '*3ds File*' field defines the 3ds mesh file to use for the component. It must be point to an AutoDesk 3DS Max file. If the selected file is not located in a sub-folder of the project folder, a dialog will offer to copy it inside the project folder.
+- The **Light sensitive** option enables or disables shading of the 3D mesh. Objects such as satellite bodies or solar arrays usually should be shaded, while abstract objects such as frame axes or vectors should not. Unshaded objects are only lighted in a diffuse manner, and do not show specular reflections from light sources such as the Sun.
+- The '*Use 3ds coordinates*' option allows using the intrinsic coordinates of the 3ds mesh file. If the 3ds mesh file originates from a known CAD source, it is advised to leave the option enabled and to set the **Approximate size** field accordingly to define a bounding sphere for the 3D mesh. If the 3ds mesh file originates from an unknown source, it is advised to disable the option and to set the **Approximate size** field to the desired size for the 3D mesh. The **Unit** drop-down list defines the unit to use when reading coordinates in the 3ds mesh file.
+- The **Center of gravity** (for a satellite) or **Rotation center** (for a subpart) field defines the XYZ coordinates of this point in the current item's local frame, in meters.
+- The **Display axes at** option allows to specify the position of the axes, such as satellite reference frame or sun direction. If **Model frame origin** is selected, the axes will be placed at the origin of 3D model, i.e. the satellite frame. If **Center of gravity** is selected, the axes will be placed at the specified center of gravity of the object. This option is not available for subparts.
+
+Note: Modifying the center of gravity of a satellite has no effect on the origin of the satellite's frame. The satellite's local frame can only be altered by directly modifying the 3D mesh using specialized 3D software.
+
+
+.. _VTS_configuration_utility_user_manual#Position_and_orientation_of_a_satellite:
+
+Position and orientation of a satellite
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+The position and orientation of a satellite can be configured as described in the :ref:`Position and orientation of an entity <VTS_configuration_utility_user_manual#Position_and_orientation_of_an_entity>` section. They are expressed in the EME2000 reference frame (inertial equatorial earth-centered) when the center of the reference frame is a celestial body. When another satellite is defined as the center of the reference frame, local reference frame are also available (BodyFixed, QSW, TNW). The unit for position values is the kilometer.
+
+
+.. _VTS_configuration_utility_user_manual#Configuring_a_sub-component:
+
+Configuring a sub-component
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A sub-component is a part of a satellite detached from the main component. A satellite is composed of a main component, and may be composed of any number of sub-components. A sub-component itself may be composed of any number of sub-components. Sub-components can be animated in the local frame of their parent component. The definition of a sub-component is quite similar to the definition of the main component of a satellite.
+
+
+.. _VTS_configuration_utility_user_manual#General_properties_of_a_sub-component:
+
+General properties of a sub-component
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+The general properties of a component define its name in the project hierarchy. This name will be used as a unique identifier during visualization, by commands interacting with entities.
+
+
+.. _VTS_configuration_utility_user_manual#3D_properties_of_a_sub-component:
+
+3D properties of a sub-component
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+The 3D properties of a sub-component define its appearance in 3D views. They are similar to the 3D properties of a satellite. Refer to the :ref:`3D properties of a satellite <VTS_configuration_utility_user_manual#3D_properties_of_a_satellite>` for further information.
+
+
+- The coordinates of the rotation center are expressed in the satellite's frame, in meters.
+
+
+.. _VTS_configuration_utility_user_manual#Position_and_orientation_of_a_sub-component:
+
+Position and orientation of a sub-component
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+The position and orientation of a sub-component are defined as described in the :ref:`Position and orientation of an entity <VTS_configuration_utility_user_manual#Position_and_orientation_of_an_entity>` section. The transformations are expressed in the parent component's frame. For example, for a solar array split in several levels of components, the coordinates of the first component are expressed in the satellite's frame, those of the second component are expressed in the first component's frame, etc.
+
+The unit for position values is the meter.
+
+
+.. _VTS_configuration_utility_user_manual#Configuring_a_satellite_sensor:
+
+Configuring a satellite sensor
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Satellite sensors can be attached to the main component of a satellite.
+
+
+.. _VTS_configuration_utility_user_manual#General_properties_of_a_satellite_sensor:
+
+General properties of a satellite sensor
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+The general properties of a satellite sensor define the name of the sensor in the project hierarchy. This name will be used as a unique identifier during visualization, by commands interacting with entities.
+
+
+.. _VTS_configuration_utility_user_manual#Properties_of_a_satellite_sensor:
+
+Properties of a satellite sensor
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+By convention, in its canonical position a satellite sensor frame is aligned with the satellite's frame and the sensor points along the Z axis.
+
+.. figure:: /_images/SenseurProperties.png
+   :align: center
+
+   Properties of a satellite sensor
+
+
+.. _VTS_configuration_utility_user_manual#Physical_properties_of_a_satellite_sensor:
+
+Physical properties of a satellite sensor
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+A sensor is described by the following physical properties:
+
+- The sensor's shape: the **Type** drop-down list defines either an *Elliptical* (conical) or *Rectangular* (pyramidal) base for the sensor, or *azimuth and elevation* constraints to represent an angular sector of space.
+- The sensor's aperture: the **Half-angle on X** and **Half-angle on Y** fields define the half-angles of aperture around the X axis (in the YZ plane) and around the Y axis (in the XZ plane). These angles are expressed either in degrees or radians. They are internally limited to 90° in OmniView and Celestia.
+- Aimuth and elevation constraints: the **minimum azimuth** and **maximum azimuth** define the horizontal limits of an angular sector of space. The **minimum elevation** and **maximum elevation** define the vertical limits of an angular sector of space.
+
+See the :ref:`Sensors in VTS <Sensors_in_VTS>` chapter for more information.
+
+.. _VTS_configuration_utility_user_manual#Graphic_properties_of_a_satellite_sensor:
+
+Graphic properties of a satellite sensor
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The graphical properties of a sensor define its appearance in the 2D and 3D views:
+
+- The **Range** field defines the maximum length of the sensor volume in the 3D views, expressed in kilometers
+- **Sensor volume** (3D views only)
+   - The **Color** button defines the color of the sensor volume. This color is also used in the graphical interfaces to identify the sensor.
+   - The **Opacity** field defines the opacity of the sensor volume (0: transparent, 100: opaque)
+- **Sensor contour** (2D and 3D views)
+   - The **Color** button defines the color of the sensor contour
+- **Sensor swath** (2D and 3D views)
+   - The **Mode** list defines the display mode of the sensor swath
+      - The **Instantaneous** mode only displays the instant sensor swath (for the current location of the sensor; this corresponds to a trace of null duration)
+      - The **Duration** mode allows defining the residual length of the sensor swath, expressed in hours or days
+   - The **Opacity** field defines the opacity of the sensor swath (0: transparent, 100: opaque)
+   - The **Color** list allows defining the sensor swath color using one of the following 3 methods:
+      - The **Orbit path color** mode uses the same color as the one used for the satellite's orbit path (either defined in the general properties of the satellite, or by the CIC/CCSDS color file attached to the position file of the satellite)
+      - The **Fixed color** mode uses a fixed user-defined color
+      - The **Fixed file** mode uses the colors specified in a user-defined CIC/CCSDS color file
+
+Color files format must meet the following requirements:
+
+- MEM format with 3 (or 4) real fields ranging from 0 to 1, for the RGB components (and transparency)
+- MEM format with 3 (or 4) integer fields ranging from 0 to 255, for the RGB components (and transparency)
+- MEM format with 1 string field in HTML color format ("#RRGGBB" in hexadecimal), for the RGB components (no transparency)
+
+**Note:** When using a color file, the black color (0 0 0) is used to disable rendering of the sensor swath while it is in effect. This allows drawing the sensor swath by "patches", e.g. to visualize instrument power-on/power-off cycles.
+
+.. figure:: /_images/SenseurCelestia.png
+   :align: center
+
+   Satellite sensor in Celestia
+
+.. figure:: /_images/Senseur2DWin.png
+   :align: center
+
+   Satellite sensor in SurfaceView
+
+
+.. _VTS_configuration_utility_user_manual#Position_and_orientation_of_a_satellite_sensor:
+
+Position and orientation of a satellite sensor
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+The position and orientation of a satellite sensor are defined as described in the :ref:`Position and orientation of an entity <VTS_configuration_utility_user_manual#Position_and_orientation_of_an_entity>` section. Transformations are expressed in the satellite's frame.
+
+**Note:** The *Direction* and *Azimuth and elevation* modes are not available for the orientation of a sensor as the induced degree of freedom implies the orientation of the sensor cannot be correctly specified.
+
+
+.. _VTS_configuration_utility_user_manual#Configuring_a_ground_station:
+
+Configuring a visualizer
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A visualizer is a virtual entity making it possible to display different physical quantities in the scene. Support for different viewers depends on the ability of each client application to display them.
+
+See :
+
+* :ref:`Positional covariance ellipsoid <Other_visualisable_objects#Positional_covariance_ellipsoid>`
+* :ref:`Grid <Other_visualisable_objects#Grid_Visualizer>`
+* :ref:`Spherical shell <Other_visualisable_objects#SphericalShell_Visualizer>`
+
+.. _VTS_configuration_utility_user_manual#General_properties_of_a_sub-component:
+
+General properties of a sub-component
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+Configuring a ground station
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Any number of ground stations can be attached to central bodies in the project. Please read the section :ref:`Ground station sensor <Sensors_in_VTS#Ground_station_sensor>` of the chapter *Sensors in VTS* for more detailled information.
+
+
+.. _VTS_configuration_utility_user_manual#General_properties_of_a_ground_station:
+
+General properties of a ground station
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+The general properties of a ground station define its name, icon, position on its central body, and the target of its antenna.
+
+.. figure:: /_images/StationSolGeneral.png
+   :align: center
+
+
+
+- The name of a ground station must be unique on its parent body.
+- The geographical coordinates (longitude and latitude, in degrees) of a ground station must be defined. Its altitude (in meters) is optional.
+- The target of a ground station's antenna can be either a fixed altitude, or the altitude of one or more project's satellites.
+
+Note that when a ground station is configured targeting a satellite :
+
+- A specific camera will be available for each ground station to view the satellite from or towards it
+- The geometrical visibility between the satellite and the ground station will be display in SurfaceView
+
+Refer to :ref:`Icon configuration <VTS_configuration_utility_user_manual#Icon_configuration>` sections in order to configure the icon for a ground station.
+
+
+.. _VTS_configuration_utility_user_manual#Properties_of_a_ground_station_sensor:
+
+Properties of a ground station sensor
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+By convention, in its canonical position a ground station sensor frame is aligned with the ground station's frame and the sensor points along the Z axis.
+
+.. figure:: /_images/SenseurPropertiesStation.png
+   :align: center
+
+   Properties of a ground station sensor
+
+
+.. _VTS_configuration_utility_user_manual#Physical_properties_of_a_ground_station_sensor:
+
+Physical properties of a ground station sensor
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+These properties are identical to those of a satellite sensor. Refer to the :ref:`Physical properties of a satellite sensor <VTS_configuration_utility_user_manual#Physical_properties_of_a_satellite_sensor>` section for further information.
+
+
+.. _VTS_configuration_utility_user_manual#Graphic_properties_of_a_ground_station_sensor:
+
+Graphic properties of a ground station sensor
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The graphic properties of a ground station sensor define the appearance of the sensor.
+
+
+- **Sensor area**
+   - **Color**: defines the color of the sensor area .
+   - **Opacity**: defines the opacity value for the transparency.
+
+- **Sensor contour**
+   - **Color**: defines the color of the contour.
+   - **Style**: defines how the contour is traced (with dashes, with dots, ...).
+   - **Width**: defines the thickness of the contour.
+
+.. figure:: /_images/SenseurStation2DWin.png
+   :align: center
+
+   Ground station sensor in SurfaceView
+
+
+Masks of a ground station
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+See the :ref:`Physical masks in VTS <Masks_in_VTS>` section for further information.
+
+
+Secondary ground station sensor
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+See the :ref:`Ground station sensor <Sensors_in_VTS#Ground_station_sensor>` section of the chapter *Sensors in VTS* for further information.
+
+
+.. _VTS_configuration_utility_user_manual#Configuring_a_Point_Of_Interest:
+
+Configuring a Point Of Interest
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+A Point Of Interest (abbreviated POI) represents one or many locations in geographical coordinates. Any number of POIs can be attached to central bodies in the project.
+
+Refer to the :ref:`POIs and ROIs in VTS <POIs_and_ROIs_in_VTS>` chapter for more information of the POI file format.
+
+.. figure:: /_images/POI_Example.png
+   :align: center
+
+   Points Of Interest in SurfaceView
+
+
+.. _VTS_configuration_utility_user_manual#General_properties_of_a_POI:
+
+General properties of a POI
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+The general properties of a POI define its name. It must be unique among other POIs in the same parent body.
+POIs support the complex naming rule described in :ref:`Object paths in VTS <Object_paths_in_VTS>`.
+
+.. figure:: /_images/POI_Properties.png
+   :align: center
+
+   Properties of a Point Of Interest
+
+
+.. _VTS_configuration_utility_user_manual#Graphic_properties_of_a_POI:
+
+Graphic properties of a POI
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+The graphic properties of a POI define the shape of the location markers, as well as their color and opacity. (see the :ref:`Icon configuration section <VTS_configuration_utility_user_manual#Icon_configuration>` of the VTS configuration user manual).
+
+
+.. _VTS_configuration_utility_user_manual#Configuring_a_Region_Of_Interest:
+
+Configuring a Region Of Interest
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+A Region Of Interest (abbreviated ROI) represents one or many polygons in geographical coordinates. Any number of ROIs can be attached to central bodies in the project.
+
+Refer to the :ref:`POIs and ROIs in VTS <POIs_and_ROIs_in_VTS>` chapter for more information of the ROI file format.
+
+.. figure:: /_images/ROI_Example.png
+   :align: center
+
+   Region Of Interest in SurfaceView
+
+
+.. _VTS_configuration_utility_user_manual#General_properties_of_a_ROI:
+
+General properties of a ROI
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+The general properties of a ROI define its name. It must be unique among other ROIs in the same parent body.
+POIs support the complex naming rule described in :ref:`Object paths in VTS <Object_paths_in_VTS>`.
+
+.. figure:: /_images/ROI_Properties.png
+   :align: center
+
+   Properties of a Region Of Interest
+
+
+.. _VTS_configuration_utility_user_manual#Graphic_properties_of_a_ROI:
+
+Graphic properties of a ROI
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+The graphic properties of a ROI define the color of the polygon and its opacity.
+
+
+.. _VTS_configuration_utility_user_manual#Configuring_a_Cluster:
+
+Configuring a Cluster
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A cluster represent a set of objects where each of them an orbit.
+
+The cluster entity serves two purposes:
+- facilitating the creation of hundreds or thousands entities
+- improving the visualisation performance for SurfaceView and Celestia
+
+The population of the cluster will be represented by an icon and a label whose text is the unique ID of the object in the cluster.
+
+.. figure:: /_images/ClusterInAction.png
+   :align: center
+
+   A Cluster displayed in SurfaceView and Celestia
+
+
+.. _VTS_configuration_utility_user_manual#General_Properties_of_a_Cluster:
+
+General properties of a Cluster
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+The general properties of a cluster are its:
+
+- Name
+- Central body
+- Radius
+- Object radius
+- Population folder
+
+.. figure:: /_images/ClusterGeneral.png
+   :align: center
+
+
+.. _VTS_configuration_utility_user_manual#Name_and_central_body_of_a_cluster:
+
+Name and central body of a cluster
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The name of the cluster will be the cluster's unique identifier during visualization, used to identify the cluster in view properties and messages between the Broker and client applications.
+
+The central body of the cluster defines the reference frame for the cluster, in which the cluster object's positions are expressed.
+
+
+.. _VTS_configuration_utility_user_manual#radius_and_object_radius_of_a_cluster:
+
+Radius and object radius of a cluster
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The radius is the approximate radius in kilometers of its global bounding sphere. In 3D: if an element disappears when the camera is turned towards the outside of the bounding sphere, it is necessary to increase this radius.
+
+The object radius is the approximate radius for the objects composing the cluster. In 3D: small items will disappear quicker when the camera is moved away from the object.
+
+
+.. _VTS_configuration_utility_user_manual#population_folder_of_a_cluster:
+
+Population folder of a cluster
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+All files with the following extensions : 
+
+- \*.oem
+- \*.txt
+- \*.TXT
+
+contained at the root of the specified folder will be imported if and only they are CIC files
+with oem content. All these files will be copied if necessary in the project folder.
+
+
+.. _VTS_configuration_utility_user_manual#graphics_properties_of_a_cluster:
+
+Graphics properties of a cluster
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+The graphic properties of a cluster consist in:
+
+- an icon : like for satellites, the icon can be customized in appareance and positionning. Only the appearance will be taken into account in Celestia.
+- a label : color and size of the text will only be applied in SurfaceView.
+
+.. figure:: /_images/ClusterConfigurationGraphics.png
+   :align: center
+
+
+.. _VTS_configuration_utility_user_manual#Configuring_a_Link:
+
+Configuring a Link
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The general properties of a link are:
+
+- its name
+- the entities that are linked together
+- the color of the link
+
+.. figure:: /_images/LinkGeneral.png
+   :align: center
+   
+   Properties of a link
+   
+   
+
+.. _VTS_configuration_utility_user_manual#Configuring_a_client_application:
+
+Configuring a client application
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Any number of client applications may take part in the visualization of a project.
+The view properties of these applications can be configured in the :ref:`project scenario <Scenario_in_VTS>`.
+
+Selecting an application in the project hierarchy shows some information and parameters:
+
+- Text information about the application (found in the application's *README* file).
+- Start Options
+   - Giving an application label allows to specify a custom name for the application. This label will replace the application name during the visualization.
+   - Unchecking "Launch *application* #*N* when Broker starts" allows to delay the start of the application.
+- Some applications define parameters which must be passed on to the application once it has successfully connected to the visualization. Those can be specified in the **Initial States** area.
+- Some applications require specific parameters to be passed on to their launchers. Those can be specified in the **Specific Args** field.
+
+.. figure:: /_images/ApplicationConfiguration.png
+   :align: center
+
+
+
+.. _VTS_configuration_utility_user_manual#Configuring_event_types:
+
+Configuring event types
+----------------------------------------------------------------------------------
+Event types can be configured in the **Event Type Editor** tab of the VTS configuration utility. The appearance of the event types in the Timeline and 2D views can be specified for all events of the project. The GUI is composed of the following:
+
+- An action toolbar
+- A hierarchical view of all event types
+- An editing pane for the currently selected event type
+
+.. figure:: /_images/EventTab.png
+   :align: center
+
+   Event type editor
+
+
+.. _VTS_configuration_utility_user_manual#Loading_event_files:
+
+Loading event files
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. |reloadevent| image:: /_images/ReloadEvent.png
+
+The event types displayed in the tree view are loaded from the event files attached to the project's satellites. Clicking the **Reload Events** |reloadevent| button in the toolbar reads all event files and displays the event types available in these files. This should be done manually each time an event file is added to or removed from the project, or if existing event files are modified. Decorations of existing event types are not affected by a reload.
+
+
+.. _VTS_configuration_utility_user_manual#Configuring_default_event_type_decorations:
+
+Configuring default event type decorations
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. |eventexpertmode| image:: /_images/EventExpertMode.png
+
+When the **Toggle Edit Entity Decorations Mode** |eventexpertmode| button is untoggled, the event type editor is in "basic" mode and only the **All satellites** column is visible. Decorations configured in this mode will apply to all satellites in the project.
+
+The default decoration displayed in the tree for all types is a gray diamond. Clicking the decoration on the line of an event type selects it for edition in the editing pane. The **Customized** option can then be enabled to customize the event type's decoration. See the :ref:`Icon configuration section <VTS_configuration_utility_user_manual#Icon_configuration>` of the VTS configuration user manual for more information about editing an icon.
+
+The preview area displays the event type decoration as it will appear in client applications that handle events.
+
+Stars in the hierarchical view indicate event types with custom decorations. Decorations are inherited by all descendant types of a decorated event type, unless one of these descendants itself has its decoration customized.
+
+
+.. _VTS_configuration_utility_user_manual#Configuring_satellite-specific_event_type_decorations:
+
+Configuring satellite-specific event type decorations
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When the **Toggle Edit Entity Decorations Mode** |eventexpertmode| button is toggled, the event type editor switches to "advanced" mode. In this mode, event type decorations specified the **All satellites** column are applied by default, unless satellite-specific decorations are set in the per-satellite columns of the hierarchical view.
+
+.. figure:: /_images/EventExpertTree.png
+   :align: center
+
+   Entity-based event type decorations
+
+**Note:** All custom satellite-specific decorations will be lost when switching from "advanced" to "basic" mode. When loading a VTS project with satellite-specific decorations, the "advanced" mode is automatically selected.
+
+
+.. _VTS_configuration_utility_user_manual#Settings_dialog:
+
+Settings dialog
+----------------------------------------------------------------------------------
+
+General options independent from the project can be set in the **File/Settings...** menu item.
+
+
+.. _VTS_configuration_utility_user_manual#Project_options:
+
+Project options
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. figure:: /_images/SettingsTabConfigurator.png
+   :align: center
+
+
+.. _VTS_configuration_utility_user_manual#Use_auto_compute_dates_by_default:
+
+Use auto compute dates by default
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+By default this option is unchecked : the **compute dates** button must be pressed to take in consideration all data files in use for determining the start and end dates of the project . Check this option to automatically compute date on each visualization run, but it might take a while on large data files.
+
+.. _VTS_configuration_utility_user_manual#Clear_all_client_application_data_caches:
+
+Clear all client application data caches
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+This action triggers an action for all compatible VTS applications that clears the temporary files. This action is available for each client application providing an application cleaner (see documentation in the :ref:`developer manual <Client_applications_in_VTS#Application_cleaners>`)
+
+.. _VTS_configuration_utility_user_manual#Custom_editors:
+
+Custom editors
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+This section allows you to define custom editor or executable to open CIC files.
+The specified executable will be launched by VTS with the CIC file path as a single parameter.
+If no executable is defined, the system's default application for this file type will be used.
+
+.. _VTS_configuration_utility_user_manual#Broker_options:
+
+Broker options
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. figure:: /_images/SettingsTabBroker.png
+   :align: center
+
+
+.. _VTS_configuration_utility_user_manual#Allow_multiple_instances:
+
+Allow multiple instances
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+By default, the broker server runs on port 8888. If a visualization is run on a second instance of VTS on the same computer, the Broker will fail. Check this option to fill a range of ports and when the Broker starts, it will scan the range for an open port.
+
+Let this option unchecked but change the port range begin value to force a single value different from 8888.
+
+.. warning::  If the server port is different from ``8888``, the launchers will be started with a ``--serverport <portNum>`` option in command line.
+
+
+.. _VTS_configuration_utility_user_manual#Stream_buffer_length:
+
+Stream buffer length
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Configure the length of the DATA buffer, which is used to display streamed values in the Timeline.
+
+
+.. _VTS_configuration_utility_user_manual#Log_message_max_length:
+
+Log message max length
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Configure the message max width displayed in the Server/Received packets or Server/Sent packets. Wider messages are truncated.
+
+
+.. _VTS_configuration_utility_user_manual#Max_number_of_log_messages:
+
+Max number of log messages
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Configure the number of messages displayed in the tabs *Received packets* and *Send packets* of the *Server* tab of the Broker. If this value is increased, older messages can be viewed but the Broker's performance can be affected when many network messages are received at the same time.
+
+
+.. _VTS_configuration_utility_user_manual#Timeshifting_directory:
+
+Timeshifting directory
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Configure the folder path which will be used to save databases during the playback of project supporting
+timeshifting.
+
+.. _VTS_configuration_utility_user_manual#Timeline:
+
+Timeline options
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. figure:: /_images/SettingsTabTimeline.png
+   :align: center
+
+
+.. _VTS_configuration_utility_user_manual#Auto-load_file_size_limit:
+
+Auto-load file size limit
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Configure the maximum size for files displayed in the project timeline. The data for files above this size will not be loaded: the file will appear as a gray box without tooltips.
+
+.. note:: Please note that the dates and file type are still loaded.
+
+Tuning this setting allows to speed up the loading time of the timeline for projects with large files.
+
+
+.. _VTS_configuration_utility_user_manual#Auto-load_item_count_limit:
+
+Auto-load item count limit
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Configure the maximum number of data lines for files displayed in any mode other than *Block* mode in the project timeline. Files containing more lines will have their data loaded but displayed in colored *Block* mode (with tooltips showing the data).
+
+Tuning this setting allows to improve the responsiveness of the timeline for projects with large files.
+
+
+.. _VTS_configuration_utility_user_manual#Badges_display_text:
+
+Display text (Scenario Editor, Broker)
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Controls how badges are displayed in the Timeline (Scenario Editor, Broker). See image below.
+
+- (1) Display text **Never**: badge text is never displayed
+- (2) Display text **When hover**: badge text is only displayed when hover with mouse cursor
+- (3) Display text **Always**: badge text is always displayed
+
+.. figure:: /_images/BadgeDisplayText.png
+   :align: center
+
+
+.. _VTS_configuration_utility_user_manual#Geometry:
+
+Geometry options
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. figure:: /_images/SettingsTabGeometry.png
+   :align: center
+
+
+.. _VTS_configuration_utility_user_manual#Application_position_strategy:
+
+Application position strategy
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+The definition of a VTS scenario is tighgly related to the user's monitor configuration. For example, a given scenario can display a VTS client application in the bottom-right part of the primary screen and another full-screen on the secondary screen. In some cases, the monitor configuration used to define a VTS project it is different to the one used to visualize it.
+
+In order to adapt as best as possible the position and size of client application windows to the current monitor configuration, VTS allows you to choose the strategy to apply when visualizing a VTS project. Available options are:
+
+- *Use original window geometry*: VTS will not modify the geometry (size, position) of client applications's windows
+- *Adapt windows position*: VTS will adapt window positions to the current monitor configuration. If a window was displayed in a secondary screen in the original monitor configuration it will be displayed in the secondary screen of the current monitor configuration, regardless of the logical position of the screen on the system's virtual desktop.
+- *Adapt windows position and size* (default): VTS will adapt windows position to the current monitor configuration as the previous option. Windows will be resized to cover as much screen space as it covered in the original VTS project. If a window covered 100% of a screen in the original monitor configuration, it will cover 100% of the screen regardless of any change in the screen size.
+
+
+.. _VTS_configuration_utility_user_manual#Grid_resolution:
+
+Grid resolution
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+To arrange all client application windows on the user's monitor configuration, the Window Geometry Manager uses a grid where each cell represents a portion of the monitor. The dimension of the portion is guided by the grid resolution.
+
+The grid resolution gives a square which represents the ideal cell of the grid. But, in order to avoid truncated cells, cell dimension might be modified to create a grid of rectangle where all cells are identical.
+
+For example, if the grid resolution is equal to 192 for a monitor with a 1920x1080 resolution, each cell will be a 192x180 rectangle.

@@ -1,0 +1,335 @@
+.. _Description_of_application_properties:
+
+Description of application properties
+=====================================
+
+The VTS toolkit relies on a command mechanism to control client applications from the Broker in a centralized way. This mechanism is used to send view properties commands upon activation of a new scenario state.
+
+Client applications may describe view properties which will be displayed in the :ref:`view properties editor <Scenario_in_VTS#View_properties_editor>` of the VTS configuration toolkit or of the Broker. Initial properties sent to clients upon connection may also be described.
+
+3D client applications may also declare compatible cameras available in the :ref:`*3D Cameras* tab <Broker_user_manual#3D_Cameras_tab>` of the Broker. It is the client application's responsibility to ensure it is compatible with the cameras it declares to have available.
+
+
+.. _Description_of_application_properties#Application_properties_file_format:
+
+Application properties file format
+----------------------------------
+
+The applications properties file must be located in the **doc** subfolder of the application folder with the following name: *<application name>VtsConf.ini*
+
+This file is in standard INI format. It must be composed of sections with uppercase names. Properties in each section are stored in associative arrays with keys prefixed by a number, in order to preserve the order of declarations when displaying the properties in VTS. Array keys must be written in lowercase.
+
+**Important:** array keys in a single section are numbered from 1 to N. The section must hold the "size = N" statement.
+
+
+.. _Description_of_application_properties#Section_list:
+
+Section list
+------------
+
+
+- **[INITIAL]**: Initial properties for the application. These properties are configured in the application's pane in the *Structure* tab of the VTS configuration utility. The propagation mode must be set to *INITIAL* for all properties in this section.
+- **[SPECIFIC]**: Specific properties for the application.
+- **[BODY]**: Structural properties for central bodies.
+- **[SUN]**: Specific properties for the Sun.
+- **[COMPONENT]**: Structural properties for satellite components. These will be available for the root component of a satellite and for all of its subparts.
+- **[SATELLITE]**: Structural properties for satellites.
+- **[SENSOR]**: Structural properties for satellite sensors.
+- **[STATION]**: Structural properties for ground stations.
+- **[CAMERAS]**: Compatible cameras for the application.
+- **[ROI]** and **[POI]**: Properties for regions and points of interest.
+- **[LAYER]**: Properties for layers.
+
+
+.. _Description_of_application_properties#Property_declaration:
+
+Property declaration
+--------------------
+
+Each property must be declared with the following required fields:
+
+- **name**: Name of the property. This name must be unique within the current INI section. It will be used as command name in the :ref:`VTS synchronization protocol <Synchronization_protocol_for_VTS_clients>`.
+- **type**: Property data type. This may be a basic type, a Qt type, or a VTS type. See below for further details.
+- **defaultValue**: Default value for the property.
+- **propagation**: Propagation mode for the property. See below for further details.
+- **label**: Label of the property, displayed in the view properties editor.
+
+Below is an example of an application properties file:
+
+.. code-block:: ini
+	
+	[INITIAL]
+
+	; XMLFile
+	1/name = XMLFile
+	1/type = DataFile_t
+	1/defaultValue = "Data/ft.xml"
+	1/propagation = INITIAL
+	1/label = Transfer Function File
+
+	size = 1
+
+
+	[SPECIFIC]
+
+	; WindowGeometry
+	1/name = WindowGeometry
+	1/type = QRect
+	1/defaultValue = @Rect(0 0 640 480)
+	1/propagation = MANUAL
+	1/label = Window geometry
+
+	size = 1
+
+
+	[SATELLITE]
+
+	; SatelliteScale
+	1/name = SatelliteScale
+	1/type = SatelliteScale_t
+	1/defaultValue = 1.0
+	1/propagation = MANUAL
+	1/label = Satellite scale
+
+	size = 1
+
+
+.. _Description_of_application_properties#Available_property_types:
+
+Available property types
+------------------------
+
+There are three categories of property types: basic types, VTS types, and Qt types.
+
+
+.. _Description_of_application_properties#Basic_types:
+
+Basic types
+^^^^^^^^^^^
+
+The table below lists the available basic types:
+
++--------+----------------+-------------+----------+
+| Type   | Description    | Example     | Editor   |
++========+================+=============+==========+
+| bool   | Boolean value  | true, false | Checkbox |
++--------+----------------+-------------+----------+
+| int    | Integer number | 42          | Text box |
++--------+----------------+-------------+----------+
+| double | Real number    | 1.618       | Text box |
++--------+----------------+-------------+----------+
+
+
+.. _Description_of_application_properties#VTS_types:
+
+VTS types
+^^^^^^^^^
+
+VTS types are convenience types handled by VTS.
+
+The table below lists the available VTS types:
+
++-----------------------+---------------------------------------------------------------------------------------+------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Type                  | Description                                                                           | Example                            | Editor                                                                                                                                                                             |
++=======================+=======================================================================================+====================================+====================================================================================================================================================================================+
+| Color_t               | RGB color                                                                             | #00ff00                            | Color coded on an hexadecimal string, no alpha channel                                                                                                                             |
++-----------------------+---------------------------------------------------------------------------------------+------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| EntityScale_t         | Scale factor for a celestial body (double)                                            | 0.5                                | Slider with a zoom factor of 1000                                                                                                                                                  |
++-----------------------+---------------------------------------------------------------------------------------+------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| SatelliteScale_t      | Scale factor for a satellite (double)                                                 | 1000                               | Slider with a zoom factor of 100                                                                                                                                                   |
++-----------------------+---------------------------------------------------------------------------------------+------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| EntityRange_t         | Interval of real values [0,1]                                                         | 0.75                               | Slider with min value 0, max value 1, default value 30%                                                                                                                            |
++-----------------------+---------------------------------------------------------------------------------------+------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| DataFile_t            | Relative path to a data file in the project folder                                    | "Data/config.xml"                  | Text field with browse button and copy dialog if the selected file is outside the project folder                                                                                   |
++-----------------------+---------------------------------------------------------------------------------------+------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ExternalFile_t        | Absolute path to a data file (portability of the project may break on other machines) | "C:/Generate/today.oem"            | Text field with browse button allowing absolute paths                                                                                                                              |
++-----------------------+---------------------------------------------------------------------------------------+------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| CameraDesc_t          | Camera description for Celestia                                                       | N/A                                | Specific camera editor                                                                                                                                                             |
++-----------------------+---------------------------------------------------------------------------------------+------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| TimeWindow_t          | Time distribution before and after a dated event. Durations should be in hours.       | 5 1                                | Slider setting the total duration distribution bewteen before and after the event. Changing the "before" or "after" duration modifies the total duration but not the distribution. |
++-----------------------+---------------------------------------------------------------------------------------+------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Font_t                | Font                                                                                  | Arial,12,-1,5,50,0,0,0,0,0         | Font described in a string: <family>,<pointSizeF>,<pixelSize>,<styleHint>,<weight>,<style>,<underline>,<strikeOut>,<fixedPitch>,<rawMode>                                          |
++-----------------------+---------------------------------------------------------------------------------------+------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ProjectNamedObject_t  | Named object defined in the project                                                   | Sol/Earth/CubeSat                  | Drop-down list containing object defined in the project.                                                                                                                           |
++-----------------------+---------------------------------------------------------------------------------------+------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| CelestiaNamedObject_t | Named object defined in Celestia                                                      | Sol/Earth/CubeSat_ref/CubeSat_Axes | Drop-down list containing object defined in the project. It can also contain a object selected from Celestia, like a star for example.                                             |
++-----------------------+---------------------------------------------------------------------------------------+------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+.. _Description_of_application_properties#Qt_types:
+
+Qt types
+^^^^^^^^
+
+Qt types are those handled by the QVariant class from the Qt library.
+
+The table below lists the available Qt types:
+
++-------------+---------------------------------------------+---------------------------+----------------------------------+
+| Type        | Description                                 | Example                   | Editor                           |
++=============+=============================================+===========================+==================================+
+| QString     | Character string                            | "Sol/Earth"               | Text box                         |
++-------------+---------------------------------------------+---------------------------+----------------------------------+
+| QStringList | List of character strings (comma-separated) | "SurfaceView", "Celestia" | Text box                         |
++-------------+---------------------------------------------+---------------------------+----------------------------------+
+| QRect       | Rectangle (integer coordinates)             | @Rect(0 0 640 480)        | Spin boxes (X, Y, width, height) |
++-------------+---------------------------------------------+---------------------------+----------------------------------+
+
+.. _Description_of_application_properties#Available_propagation_modes:
+
+Available propagation modes
+---------------------------
+
+The following propagation modes are available:
+
+- **MANUAL**: The property may be set independently for each scenario state. Its value may be propagated across states with the propagation buttons in the view properties editor.
+- **AUTO**: The property has a unique value for all scenario states. Its value is automatically propagated across the whole scenario upon modification. Its name is displayed in italics in the view properties editor. This propagation mode should be used in rare cases where the property should remain consistent during the whole project, for example the visibility of a toolbar.
+- **INITIAL**: The property is sent to the client application upon startup and may not be altered dynamically nor resent. This propagation mode must be used only for properties in the *INITIAL* section.
+
+
+.. _Description_of_application_properties#Available_cameras:
+
+Available cameras
+-----------------
+
+The *[CAMERAS]* section lists VTS cameras available in the client application. Refer to the :ref:`*3D Cameras* tab <Broker_user_manual#3D_Cameras_tab>` section in the :ref:`Broker user manual <Broker_user_manual>` chapter for a description of all VTS cameras. For each available camera, several orientations must be implemented.
+
+.. code-block:: ini
+
+	[CAMERAS]
+	1/type = Body_Synchronous
+	2/type = Body_Inertial
+	size = 2
+
+The following VTS cameras may be declared:
+
+
++---------------+--------------------+------------------------------+
+| Target entity | Camera name        | Corresponding Broker cameras |
++===============+====================+==============================+
+| Central body  | Body_Synchronous   | Fixed in Earth frame:        |
+|               |                    | ``North pole`` and           |
+|               |                    | ``South pole``               |
+|               +--------------------+------------------------------+
+|               | Body_Inertial      | ``Inertial``                 |
+|               +--------------------+------------------------------+
+|               | Body_Goto          | ``Goto``                     |
+|               +--------------------+------------------------------+
+|               | Body_Center        | ``Center``                   |
++---------------+--------------------+------------------------------+
+| Satellite     | Satellite_Inertial | Inertial cameras             |
++               +--------------------+------------------------------+
+|               | Satellite_Sun      | Sun and Body cameras :       |
+|               |                    | ``View from Sun`` and        |
+|               |                    | ``View toward Sun``          |
+|               +--------------------+------------------------------+
+|               | Satellite_SatFrame | Satellite frame cameras      |
+|               +--------------------+------------------------------+
+|               | Satellite_QswFrame | Sun and Body cameras :       |
+|               |                    | ``View from Body`` and       |
+|               |                    | ``View toward Body``         |
+|               |                    | QSW frame cameras            |
+|               +--------------------+------------------------------+
+|               | Satellite_TnwFrame | TNW frame cameras            |
+|               +--------------------+------------------------------+
+|               | Satellite_Orbit    | Miscellaneous cameras :      |
+|               |                    | ``Orbit``                    |
+|               +--------------------+------------------------------+
+|               | Satellite_Goto     | Miscellaneous cameras :      |
+|               |                    | ``Goto``                     |
+|               +--------------------+------------------------------+
+|               | Satellite_Center   | Miscellaneous cameras :      |
+|               |                    | ``Center``                   |
++---------------+--------------------+------------------------------+
+| Sensor        | Sensor_SensorView  | ``Sensors``                  |
++---------------+--------------------+------------------------------+
+
+
+Refer to the :ref:`*CMD CAMERA* commands <Synchronization_protocol_for_VTS_clients#CMD_CAMERA_commands>` section in the :ref:`Synchronization protocol for VTS clients <Synchronization_protocol_for_VTS_clients>` chapter for more information on the corresponding camera messages sent to client applications.
+
+
+.. _Description_of_application_properties#Usage_in_the_VTS_synchronization_protocol:
+
+Usage in the VTS synchronization protocol
+-----------------------------------------
+
+Properties and cameras declared in the INI file are used by the VTS synchronization protocol to generate commands for client applications. Properties in the *[INITIAL]* and *[SPECIFIC]* sections are translated into **PROP** commands, while those in entity-specific sections (*[BODY]*, *[COMPONENT]*, *[SATELLITE]*, and *[SENSOR]*) are translated into **STRUCT** commands. Cameras in the *[CAMERAS]* section result in corresponding **CAMERA** commands being sent.
+
+Specific properties:
+
+.. code-block:: bash
+
+	CMD PROP <PropertyName> <PropertyValue>
+
+
+For example:
+
+.. code-block:: bash
+
+	CMD PROP WindowGeometry 0 1 640 480
+
+
+Structural properties:
+.. code-block:: bash
+
+	CMD STRUCT <PropertyName> <EntityFullName> <PropertyValue>
+
+For example:
+
+.. code-block:: bash
+	
+	CMD STRUCT AimContourVisible "Sol/Earth/CubeSat/Sensor" true
+
+Cameras:
+
+.. code-block:: bash
+
+	CMD CAMERA <CameraType> <CameraParameters>
+
+Note that the *CameraType* parameter is not identical to the camera name listed in the *[CAMERAS]* section of the INI file.
+
+For example:
+
+.. code-block:: bash
+
+	CMD CAMERA CameraSensorView "Sol/Earth/CubeSat_ref/CubeSat/Sensor_sens_ref/Sensor" 0.872665 0.349066
+
+.. _Description_of_application_properties#Application_properties_guidelines:
+
+Application properties guidelines
+---------------------------------
+
+For a better integration and taking advantage of all VTS features, here are some recommended properties an application should take into account (property declaration in the ini file and protocol command implementation):
+
+
+.. list-table::
+   :header-rows: 1
+
+   * - Property
+     - Section
+     - Type
+     - Default value
+     - MANUAL
+     - Description
+     - Received command
+   * - WindowGeometry
+     - SPECIFIC
+     - QRect
+     - @Rect(0 0 640 480)
+     - MANUAL
+     - Sets the window geometry of an application
+     - CMD PROP WindowGeometry 0 0 640 480
+   * - AlwaysOnTop
+     - SPECIFIC
+     - bool
+     - true/false
+     - MANUAL
+     - Sets the always on top property of an application
+     - CMD PROP AlwaysOnTop false
+   * - Frameless
+     - SPECIFIC
+     - bool
+     - true/false
+     - MANUAL
+     - Sets the frameless property of an application
+     - CMD PROP Frameless false
+

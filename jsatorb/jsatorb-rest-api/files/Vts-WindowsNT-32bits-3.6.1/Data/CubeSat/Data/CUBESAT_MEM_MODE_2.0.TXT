@@ -1,0 +1,29 @@
+CIC_MEM_VERS = 1.0
+CREATION_DATE  = 2009-12-08T09:00:00
+ORIGINATOR     = SPACEBEL
+ 
+META_START
+
+COMMENT Cic infos
+
+OBJECT_NAME = CubeSat
+OBJECT_ID = CubeSat
+
+USER_DEFINED_PROTOCOL = CIC
+USER_DEFINED_CONTENT = SATELLITE_MODES
+
+TIME_SYSTEM = UTC
+
+META_STOP
+
+55276  20000.000    Début mission
+55276  20641.461    Entrée éclipse
+55276  22710.538    Sortie éclipse
+55276  24000.000    Mode Normal
+55276  26599.610    Entrée éclipse
+55276  28668.074    Sortie éclipse
+55276  29000.000    Mode BBQ
+55276  31000.000    Mode Normal
+55276  32558.061    Entrée éclipse
+55276  34625.389    Sortie éclipse
+55276  37000.000    Fin mission

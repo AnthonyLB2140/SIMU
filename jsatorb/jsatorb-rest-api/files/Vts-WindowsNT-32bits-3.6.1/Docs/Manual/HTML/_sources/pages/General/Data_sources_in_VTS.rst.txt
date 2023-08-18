@@ -1,0 +1,52 @@
+.. _Data_sources_in_VTS:
+
+Data sources in VTS
+==================================================================================
+
+There are three types of data sources in VTS:
+
+- ``Fixed``: a fixed value
+- ``File``: a time-dependent value read from a file
+- ``Stream``: a value provided by a network stream
+
+
+.. _Data_sources_in_VTS#Fixed_data_source:
+
+*Fixed* data source 
+----------------------------------------------------------------------------------
+
+This data source provides a constant, user-defined value. The actual value is defined by the user upon selection of the source.
+
+This source can be used eg. for the position and orientation of fixed satellite components and sensors.
+
+
+.. _Data_sources_in_VTS#File_data_source:
+
+*File* data source 
+----------------------------------------------------------------------------------
+
+This data source is based on a file, specified by the user upon selection of the source. The values are read from the file, which must follow the standard :ref:`CIC/CCSDS format <Data_description_for_VTS_projects#The_CIC/CCSDS_file_format>`.
+
+This source can be used for the ephemerides of celestial bodies, satellites, as well as for the position and orientation of mobile parts on satellites.
+It is most adequate for *offline* visualization, once the position and attitude data have been saved to files.
+
+
+.. _Data_sources_in_VTS#Stream_data_source:
+
+*Stream* data source 
+----------------------------------------------------------------------------------
+
+This data source is based on a network stream, defined by the user upon selection of the source.
+
+This source can be used for the ephemerides of celestial bodies, satellites, as well as for the position and orientation of mobile parts on satellites.
+It is most adequate for *online* visualization, in which the position and attitude data are streamed on-the-fly by external applications, such as a simulator.
+
+The *Stream* data source provides two modes of operation:
+
+- ``INTERPOL``: in order for visualization clients (SurfaceView, Celestia, etc.) to use interpolated values, the Broker will introduce a slight delay between data transmission and time synchronization with visualization clients.
+- ``DIRECT``: the data update rate is not taken into account while computing time synchronization delay. Beware that no extrapolation is done in standard VTS clients.
+
+See also the documentation for :ref:`Real-time VTS <Synchronization_protocol_for_VTS_clients#Real-time_VTS>` in the :ref:`Synchronization protocol for VTS clients <Synchronization_protocol_for_VTS_clients>` chapter.
+
+
+

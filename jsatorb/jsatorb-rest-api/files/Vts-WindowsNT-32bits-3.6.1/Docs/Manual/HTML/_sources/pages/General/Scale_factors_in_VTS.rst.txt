@@ -1,0 +1,37 @@
+.. _Scale_factors_in_VTS:
+
+Scale factors in VTS
+==================================================================================
+
+Scale factors in VTS can be applied to central bodies or satellites of a project, for Celestia and client applications that support scale factors. This feature allows easy visualization of both the satellite's attitude and its orbital position. All satellite components are affected by the satellite's scale factor. Note that when a central body's scale factor is different than 1, the computations for sensor-body intersection will be erroneous in clients affected by the scale factor.
+
+The scale factor for central bodies and satellites can be dynamically adjusted in the :ref:`View Properties tab <Broker_user_manual#View_Properties_tab>` of the Broker, using the **Body scale** and **Satellite scale** properties.
+
+.. figure:: /_images/FacteurEchelleDefault.png
+   :align: center
+
+   Scale factor 1 for Earth and the project's satellite
+
+
+.. figure:: /_images/FacteurEchelleCustom.png
+   :align: center
+
+   Scale factor 0.75 for Earth and 500 000 for the project's satellite
+
+
+Scale factors also allow for easy visualization of motion for the whole solar system. The **Solar system scale** property in the :ref:`*View Properties* tab <Broker_user_manual#View_Properties_tab>` of the Broker allows dynamically setting the scale factor of the whole solar system. Note that the Sun is not affected by this scale factor. Scale factors can be set for the whole solar system and for independent central bodies within in, e.g. to decrease the size of the gas giants.
+
+
+.. figure:: /_images/FacteurEchelleSolSys.png
+   :align: center
+
+   Scaled solar system
+
+The scale factor editor in the :ref:`view properties editor <Scenario_in_VTS#View_properties_editor>` allows editing the scale factor as follows:
+
+- by directly entering a numerical value in the text field
+- by moving the slider left/right to increase/decrease the factor
+- by setting the factor to 1 using the ``x1`` button
+- by setting the factor to 100 000 using the ``x1e5`` button (satellites only)
+
+

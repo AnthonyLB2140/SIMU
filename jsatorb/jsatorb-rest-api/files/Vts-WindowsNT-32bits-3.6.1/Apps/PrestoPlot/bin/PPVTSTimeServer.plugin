@@ -1,0 +1,1196 @@
+# ----------------------------------------------------------------------------
+# PPVTSTimeServer.plugin
+#
+# HISTORIQUE
+# VERSION : 3.5 : DM : DM_568 : 14/12/2020 : Sauvegarde du contexte PrestoPlot
+# VERSION : 3.2 : DM : DM_424 : 07/12/2017 : Mise à jour de PrestoPlot
+# VERSION : 3.1 : DM : DM_385 : 06/02/2017 : Passage à Qt5
+# VERSION : 2.6 : DM : DM_201 : 14/11/2014 : Chargement dynamique de fichiers dans PrestoPlot
+# VERSION : 2.3 : DM : DM_96 : 09/07/2013 : Label des fenêtres PrestoPlot
+# VERSION : 2.3 : DM : DM_89 : 09/07/2013 : Rendre les listes de paramètres accessibles aux plugins
+# VERSION : 2.2 : DM : VTS 2012 (S2) : 19/02/2013 : VTS 2.2 ( Maintenance corrective (PrestoPlot : Double initialisation lors de l'utilisation de dataplot.ini) )
+# VERSION : 2.1 : DM : VTS 2012 : 23/07/2012 : VTS 2.1 ( Lot 1 - Grp E - Films )
+# VERSION : 2.1 : FA : FA_57 : 23/07/2012 : Déplacement du temps dans PrestoPlot ne restitue pas la PAUSE
+# VERSION : 2.0 : DM : VTS 2012 : 23/07/2012 : VTS 2.0 ( DM 36 - Conservation du parametrage )
+# FIN-HISTORIQUE
+# Copyright © (2020) CNES All rights reserved
+#
+# VER : $Id: PPVTSTimeServer.plugin 9014 2021-12-08 10:55:32Z lct $
+# ---------------------------------------------------------------------------- #
+# Plugin to connect to a VTS time broker files
+
+# Register this plugin with prestoplot  (INIT, CONFIGURE, SETTIME)
+RegisterPlugin "TimeServer" "VTSConnect" "1.0" "Connect Prestoplot to the VTS Time broker" VTSConnect::Init VTSConnect::Entry VTSConnect::SetTime
+
+# Register some callbacks
+RegisterPluginCallback VTSConnect NewGraph VTSConnect::onNewGraph
+RegisterPluginCallback VTSConnect GraphDeleted VTSConnect::onGraphDeleted
+
+# Create a namespace for all procedures and variables
+namespace eval VTSConnect {
+    namespace eval Models {
+    }
+}
+
+# Image for the new graph button
+image create photo VTS_saveModel -data {
+    R0lGODlhGAAYAKECAP8AAP+uAf///////yH5BAEKAAIALAAAAAAYABgAAAIwlI+py30ADQQyilmp27ybAH6hAAaiSY7eyrbuC8fy
+    TNf2XZ56iuZ3jLlYgkTL71UAADs=
+}
+image create photo VTS_ModelLoad -data {
+    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
+    TkSuQmCC
+}
+
+image create photo VTS_ModelSave -data {
+    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
+}
+
+image create photo VTS_ModelSaveAll -data {
+    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
+}
+
+####################################
+# Entry Point: One off Initialisation
+#  Initialise the connection info (Maybe read ini file or use global Config)
+#
+# Arguments: NONE
+#
+# Globals:
+#   Config    Override the default date format precision
+#   Widgets
+#
+# Variables:
+#   Gui       Configuration information for the connection
+#
+# Return: NONE
+proc VTSConnect::Init {} {
+    global Config
+    global Widgets
+    variable Gui
+
+    set Gui(Geometry) "640x480+0+0"
+    set Gui(ClientSocket) "NONE"
+    set Gui(Hostname) localhost
+    set Gui(Port) 8888
+    set Gui(AppId) -1
+    set Gui(Title) "PrestoPlot"
+    set Gui(ConnectButtonId) ""
+    set Gui(MouseDragging) 0
+    set Gui(TimePaused) 1
+    # Models location
+    set Gui(ModelsFolder) ""
+    # Graphs geometry dictionnary
+    set Gui(GraphsInfos) [dict create]
+
+    set Gui(ArrangeOption) horizontal
+
+    set Config(DefaultDateFormatPrec) "9"
+
+    # Add a dedicated button group
+    set gr [GroupFrame $Widgets(TaskBar).vts "VTS"]
+    pack $Widgets(TaskBar).vts -fill both -side left
+    set Gui(VTSLoadModel) [ttk::button $gr.loadmodel  -style Toolbutton -image VTS_ModelLoad -command "VTSConnect::Models::Choose $gr.loadmodel" -state disabled]
+    Balloon $Gui(VTSLoadModel) "Load a pre-configured VTS model"
+    set Gui(VTSSaveAllModel) [ttk::button $gr.saveallmodel  -style Toolbutton -image VTS_ModelSaveAll -command "VTSConnect::SaveAndSendStates" -state disabled]
+    Balloon $Gui(VTSSaveAllModel) "Save all graphs to VTS models"
+    pack $Gui(VTSLoadModel) -side left -padx 5
+    pack $Gui(VTSSaveAllModel) -side left -padx {0 5}
+}
+
+####################################
+# Entry point: Display the dialog window for the configuration of the plugin or
+# process given configuration
+#
+# Arguments: CONFIG or list of options
+#
+# Globals: NONE
+#
+# Variables:
+#   Gui
+#
+# Return:
+#   -
+proc VTSConnect::Entry {{arg ""}} {
+    variable Gui
+    # Special case when Entry is called by the GUI button
+    if {$arg eq "CONFIG"} {
+        # Ask PrestoPlot for a frame to display our configuration options
+        set top [TimeServerWindow "INIT"]
+
+        # If the window already exists
+        if {$top eq ""} {
+            # Do nothing
+            return
+        }
+       # Create the contents for configuration
+        set fr [ttk::frame $top.host]
+        pack $fr -side top -fill x
+        ttk::label $fr.lab -text "Hostname" -width 8
+        pack $fr.lab -side left
+        ttk::entry $fr.ent -textvariable VTSConnect::Gui(Hostname) -width 30
+        pack $fr.ent -side left -fill x -expand y
+        set fr [ttk::frame $top.port]
+        pack $fr -side top -fill x
+        ttk::label $fr.lab -text "Port" -width 8
+        pack $fr.lab -side left
+        ttk::entry $fr.ent -textvariable VTSConnect::Gui(Port)
+        pack $fr.ent -side left -fill x -expand y
+
+        set fr [ttk::frame $top.but]
+        pack $fr -side top -fill x
+        if {$Gui(ClientSocket) eq "NONE"} {
+            ttk::button $fr.connect -image ConnectImg    -compound left -text "Connect"    -command {VTSConnect::Connect "OPEN"}
+        } else {
+            ttk::button $fr.connect -image NotConnectImg -compound left -text "Disconnect" -command {VTSConnect::Connect "CLOSE"}
+        }
+        set Gui(ConnectButtonId) $fr.connect
+        pack $fr.connect -side left -padx 5 -pady 5
+
+        # Tell PrestoPlot to display the window
+        TimeServerWindow "DISPLAY"
+    } else {
+        set doReconnect false
+        set arg [string trim $arg]
+        while {[string length $arg] > 0} {
+            set element ""
+            regexp {([^=]+=(?:(?:'[^']+')|(?:[^ ]+)))} $arg -> element
+            switch -nocase -glob -- $element {
+                "hostname=*" {
+                    # Called by the command line -plugin
+                    regexp {hostname=(.+)} $element -> Gui(Hostname)
+                    set doReconnect true
+                }
+                "port=*" {
+                    # Called by the command line -plugin
+                    regexp {port=(.+)} $element -> Gui(Port)
+                    set doReconnect true
+                }
+                "appId=*" {
+                    # Called by the command line -plugin
+                    regexp {appId=(.+)} $element -> Gui(AppId)
+                    set doReconnect true
+                }
+                "title=*" {
+                    # Called by the command line -plugin
+                    regexp {title=(.+)} $element -> Gui(Title)
+                    set Gui(Title) [string trim $Gui(Title) ']
+                    set doReconnect true
+                }
+                "arrange=*" {
+                    regexp {arrange=(.+)} $element -> Gui(ArrangeOption)
+                    ArrangeWindows $Gui(ArrangeOption)
+                }
+                "pmdDirectory=*" {
+                    regexp -nocase {pmdDirectory=(.+)} $element -> Gui(ModelsFolder)
+                    set Gui(ModelsFolder) [string trim $Gui(ModelsFolder) ']
+                    # check the folder exists or try to create it
+                    if { ![file exists $Gui(ModelsFolder)] } {
+                        catch { file mkdir $Gui(ModelsFolder) }
+                    }
+                    # check the folder exists
+                    if { ![file exists $Gui(ModelsFolder)] || ![file isdirectory $Gui(ModelsFolder)]} {
+                        InternMessageDlg .err -title "Plugin VTS" -icon error -type warning -message "Specified graph models folder '$Gui(ModelsFolder)' is invalid."
+                        set Gui(ModelsFolder) ""
+                    }
+                    # Update buttons
+                    UpdateButtonStates
+                }
+            }
+            set arg [string trim [string map [list $element ""] $arg]]
+        }
+
+        if { $doReconnect } {
+            # Disconnect the server if it is connected
+            VTSConnect::Connect "CLOSE"
+            # Start up the connection server
+            VTSConnect::Connect "OPEN"
+        }
+    }
+}
+
+####################################
+# PLUGIN CALLBACK - Invoked when a new graph is created
+#
+# Arguments :
+#   graphNum The graph number just created
+#
+# Variables :
+#   Gui
+#
+# Globals : NONE
+#
+# Return: NONE
+#
+proc VTSConnect::onNewGraph { graphNum } {
+    variable Gui
+
+    # Add a separator
+    AddGraphToolbarButton $graphNum ""
+    # Add a VTS Save button
+    set Gui(SaveModel,$graphNum)     [AddGraphToolbarButton $graphNum "VTS_saveModel" VTS_ModelSave "Save this model" "VTSConnect::Models::NameAndSave $graphNum"]
+
+    # Update graph button state
+    UpdateButtonStates $graphNum
+}
+
+####################################
+# PLUGIN CALLBACK - Invoked when a graph is deleted
+#
+# Arguments :
+#   graphNum The graph number just deleted
+#
+# Variables :
+#   Gui
+#
+# Globals : NONE
+#
+# Return: NONE
+#
+proc VTSConnect::onGraphDeleted { graphNum } {
+    variable Gui
+    # Remove the reference to the VTS button
+    unset -nocomplain Gui(SaveModel,$graphNum)
+}
+
+
+####################################
+# Entry point: The internal date has changed send it to the server
+# N.B. the time is in internal time needs conversion to JJCNESFRAC
+#
+#  Internal2Date $date JJCNES_FRAC
+#
+# Arguments:
+#   date   The date to send
+#   mode   One of MOVE or RELEASE
+#
+# Globals: NONE
+#
+# Variables:
+#   Gui
+#
+# Return: NONE
+proc VTSConnect::SetTime {date mode} {
+    variable Gui
+
+    if {$mode eq "MOVE"} {
+        if {$Gui(MouseDragging) == 0} {
+            puts $Gui(ClientSocket) "CMD TIME PAUSE"
+            set Gui(MouseDragging) 1
+        }
+    } else {
+        if { !$Gui(TimePaused) } {
+            puts $Gui(ClientSocket) "CMD TIME PLAY"
+        }
+        set Gui(MouseDragging) 0
+    }
+
+    # Update the internal date
+    TimeServerUpdateInternalDate $date "SCROLL" [Internal2Date $date JJCNES_FRAC]
+
+    puts $Gui(ClientSocket) "TIME [Internal2Date $date JJCNES_FRAC]"
+}
+
+
+####################################
+# Internal command to set the Prestoplot window geometry
+#
+# Arguments:
+#   -
+#
+# Globals:
+#   -
+#
+# Variables:
+#   Gui
+#
+# Return:
+#   -
+proc VTSConnect::SetWindowGeometry {} {
+    variable Gui
+
+    # Attendre la fin du démarrage de l'appli
+    after 100 {
+        . config -minsize {0 0}
+        wm state . normal
+        wm geometry . $VTSConnect::Gui(Geometry)
+    }
+}
+
+
+####################################
+# Internal command to OPEN/CLOSE the connection with the VTS server
+#
+# Arguments:
+#   mode  OPEN/CLOSE
+#
+# Globals:
+#   Widgets
+#
+# Variables:
+#   Gui
+#
+# Return:
+#   -
+proc VTSConnect::Connect {mode} {
+    global Widgets
+    variable Gui
+
+    if {$mode eq "OPEN"} {
+        # Connect to server
+        catch {set sock [socket $Gui(Hostname) $Gui(Port)]} msg
+        # If the socket was not opened
+        if {![string match "sock*" $msg]} {
+            InternMessageDlg .err -title "Server Connect" -icon error -type ok -message "Error connecting to server '$Gui(Hostname):$Gui(Port)'\n'$msg'"
+            return
+        }
+
+        # Configure the socket to process each incoming line
+        fconfigure $sock -buffering line
+        fileevent $sock readable [list VTSConnect::ReadSocket $sock]
+        # Remember the socket
+        set Gui(ClientSocket) $sock
+        if {$Gui(ConnectButtonId) ne ""} {
+            # Update the connect button
+            $Gui(ConnectButtonId) configure -image NotConnectImg -text "Disconnect" -command {VTSConnect::Connect "CLOSE"}
+        }
+        # Signal the connected state
+        TimeServerInit
+        TimeServerState "CONNECTED"
+        TimeServerInformation "Connected to $Gui(Hostname) ($Gui(Port))"
+
+        # Update the window title
+        wm title . "$Gui(Title)"
+
+        puts $sock "INIT PrestoPlot CONSTRAINT 1.0 $Gui(AppId)"
+    } else {
+        # Disconnect
+        if {$Gui(ClientSocket) ne "NONE"} {
+            # Close the socket connection
+            close $Gui(ClientSocket)
+            set Gui(ClientSocket) "NONE"
+            TimeServerState "NOTCONNECTED"
+            if {$Gui(ConnectButtonId) ne ""} {
+                $Gui(ConnectButtonId) configure -image ConnectImg -text "Connect" -command {VTSConnect::Connect "OPEN"}
+            }
+            TimeServerInformation ""
+            wm title . "PrestoPlot"
+        }
+    }
+
+    # Update button states
+    UpdateButtonStates
+}
+
+####################################
+# CALLBACK: New data has been recieved, process it
+#
+# Arguments:
+#   client The socket client used for reading and writing data
+#
+# Globals:
+#   Widgets
+#
+# Variables:
+#   Gui
+#
+# Return: NONE
+proc VTSConnect::ReadSocket {client} {
+    global Widgets
+    variable Gui
+
+    # If the socket has been closed
+    if {[eof $client]} {
+        TimeServerState "NOTCONNECTED"
+        # Update the dialog to show the clsed state
+        close $client
+        TimeServerInformation ""
+        set Gui(ClientSocket) "NONE"
+        if {$Gui(ConnectButtonId) ne ""} {
+            $Gui(ConnectButtonId) configure -image ConnectImg -text "Connect" -command {VTSConnect::Connect "OPEN"}
+        }
+        # Update button states
+        UpdateButtonStates
+    } else {
+        # Fetch the next client message
+        set commandLine [gets $client]
+
+        # If this is a time packet
+        if {[string match "TIME *" $commandLine]} {
+            # Extract the time from the recieved packet
+            scan $commandLine "TIME %f " time
+
+            if { !$Gui(MouseDragging) } {
+                set intern [JJCNES_FRAC2Internal $time]
+                # Update the internal date
+                TimeServerUpdateInternalDate $intern "SCROLL" $time
+            }
+
+        # VTS can ask to play/pause visualization
+        } elseif {[string match "CMD TIME *" $commandLine]} {
+            # Extract the play/pause command
+            scan $commandLine "CMD TIME %s" command
+
+            if { !$Gui(MouseDragging) } {
+                # Store the play/pause status
+                if { [string match "PLAY" $command] } {
+                    set Gui(TimePaused) 0
+                } elseif { [string match "PAUSE" $command] } {
+                    set Gui(TimePaused) 1
+                }
+            }
+
+        # VTS can ask for synchronization for recording movies
+        } elseif {[string match "CMD SERVICE SynchroRequested" $commandLine]} {
+            # Answer that PrestoPlot is synchronized
+            puts $client "CMD SERVICE Synchronized"
+
+        # VTS can ask to raise the window if it is minimized and move it to the foreground
+        } elseif {[string match "CMD SERVICE ActivateWindow" $commandLine]} {
+            # Bring up the window
+            StdLibGui::ForceFocus .
+
+        # VTS can ask for save state
+        } elseif {[string match "CMD SERVICE SaveState" $commandLine]} {
+            # Save and send state
+            SaveAndSendStates
+            # Terminate the command
+            puts $client "CMD SERVICE SaveStateFinished"
+        # VTS can ask for save window
+        } elseif {[string match "CMD SERVICE SaveWindow" $commandLine]} {
+            # Get de Prestoplot window geometry
+            set Gui(Geometry) [wm geometry .]
+            scan $Gui(Geometry) "%dx%d+%d+%d" winWidth winHeight winXpos winYpos
+
+            # Write the geometry into the socket
+            puts $client "CMD SERVICE StoreCommand CMD PROP WindowGeometry $winXpos $winYpos $winWidth $winHeight"
+
+        # VTS can ask for draw graphs
+        } elseif {[string match "CMD PROP GraphsList *" $commandLine]} {
+            # Extract the graph list from the received packet
+            set graphsList [string range $commandLine [string length "CMD PROP GraphsList "] [string length $commandLine] ]
+            UnserializeGraphs $graphsList
+        # VTS can ask for tool bar
+        } elseif {[string match "CMD PROP GraphGeometries *" $commandLine]} {
+            # Extract the graph geometries from the received packet
+            set graphsGeometries [string range $commandLine [string length "CMD PROP GraphGeometries "] [string length $commandLine] ]
+            UnserializeGeometries $graphsGeometries
+        # VTS can ask for tool bar
+        } elseif {[string match "CMD PROP DateBarVisible *" $commandLine]} {
+            # Extract the boolean
+            scan $commandLine "CMD PROP DateBarVisible %s" boolString
+            ToggleBar DATEBAR $boolString
+        } elseif {[string match "CMD PROP TabBarVisible *" $commandLine]} {
+            # Extract the boolean
+            scan $commandLine "CMD PROP TabBarVisible %s" boolString
+            ToggleBar TABSET $boolString
+        } elseif {[string match "CMD PROP ToolBarVisible *" $commandLine]} {
+            # Extract the boolean
+            scan $commandLine "CMD PROP ToolBarVisible %s" boolString
+            ToggleBar TOOLBAR $boolString
+
+        # Command for window geometry change
+        } elseif {[string match "CMD PROP WindowGeometry *" $commandLine]} {
+            # Extract the geometry from the received packet
+            scan $commandLine "CMD PROP WindowGeometry %d %d %d %d " winXpos winYpos winWidth winHeight
+            if {[IsDisplayMode "WINDOW"]} {
+                set winHeight 125
+            }
+            set Gui(Geometry) "${winWidth}x${winHeight}+${winXpos}+${winYpos}"
+            # Set de Prestoplot window geometry
+            VTSConnect::SetWindowGeometry
+
+        # PrestoPlot-specific commands to load data files
+        } elseif {[string match "CMD LoadFile *" $commandLine]} {
+            # Inhibit error messages
+            global ProcessingArgs
+            set inhibit false
+            if {!$ProcessingArgs} {
+                set ProcessingArgs true
+                set inhibit true
+            }
+            # Extract the file type and path
+            scan $commandLine "CMD LoadFile %s %s" type path
+            # Load the file according to its type
+            switch -- $type {
+                CCSDS -
+                TSV -
+                TAB {
+                    # Load a TAB/TSV file
+                    ReadDataFile $path
+                }
+                default {
+                    # Load a custom file (try loading through a plugin and fallback to standard TAB/TSV loading)
+                    if {[PluginExists $type]} {
+                        PluginEntry $type $path
+                    } else {
+                        ReadDataFile $path
+                    }
+                }
+            }
+            # Stop error inhibition
+            if {$inhibit} {
+               set ProcessingArgs false
+            }
+        }
+    }
+}
+
+
+####################################
+# Serialize graphs to store their state into
+# a vts setting
+#
+# Arguments : NONE
+#
+# Variables :
+#   Gui
+#
+# Globals :
+#   Graphs
+#   DataSet
+#
+# Return: Serialized graphs
+#
+proc VTSConnect::SerializeGraphs {} {
+    global Graphs
+    global DataSet
+    variable Gui
+
+
+    # Build up a list of data by graph
+    set results {}
+    foreach graphNum [lsort [array names Graphs]] {
+        # Keep its name for VTS setting
+        set graphname [GraphName $graphNum]
+        set graphname [Models::NormalizeName $graphname]
+        lappend results $graphname
+    }
+
+    # Be sure there is something in results
+    if { [llength $results] == 0 } {
+        set results "\"\""
+    }
+
+    # Return the list of data for each graph
+    return $results
+}
+
+####################################
+# Save all graphs and send states to VTS
+#
+# Arguments : NONE
+#
+# Variables :
+#   Gui
+#
+# Globals : NONE
+#
+# Return: NONE
+#
+proc VTSConnect::SaveAndSendStates {} {
+    variable Gui
+    # Save All graphs
+    Models::SaveAll
+    # Save states if connected
+    if {$Gui(ClientSocket) ne "NONE"} {
+        # Retrieve and save graph list and geometries
+        puts $Gui(ClientSocket) "CMD SERVICE StoreCommand CMD PROP GraphsList [VTSConnect::SerializeGraphs]"
+        puts $Gui(ClientSocket) "CMD SERVICE StoreCommand CMD PROP GraphGeometries [VTSConnect::SerializeGeometries]"
+        # Tool bars
+        puts $Gui(ClientSocket) "CMD SERVICE StoreCommand CMD PROP DateBarVisible [GetBarState DATEBAR]"
+        puts $Gui(ClientSocket) "CMD SERVICE StoreCommand CMD PROP TabBarVisible [GetBarState TABSET]"
+        puts $Gui(ClientSocket) "CMD SERVICE StoreCommand CMD PROP ToolBarVisible [GetBarState TOOLBAR]"
+    }
+}
+
+####################################
+# Serialize graph geometries to store their positions
+#
+# Arguments : NONE
+#
+# Variables : NONE
+#
+# Globals : NONE
+#
+# Return: Space-separated geometries (graph|x+y+wxh)
+#
+proc VTSConnect::SerializeGeometries {} {
+    global Graphs
+    variable Gui
+
+    # Save position from graphs to the geometries dictionnary
+    foreach graphNum [array names Graphs] {
+        # Get graph name
+        set graphname [GraphName $graphNum]
+        set graphname [Models::NormalizeName $graphname]
+        # Get geometry
+        set doc [lindex $Graphs($graphNum) 0]
+        set geometry [$doc geometry]
+        # Save geometry
+        dict set Gui(GraphsInfos) $graphname geometry $geometry
+    }
+    # Serialise geometries
+    set geometries {}
+    dict for {key val} $Gui(GraphsInfos) {
+        set val [dict get? $val "" geometry]
+        lassign $val x y w h
+        if { $key ne "" && [Models::Exists $key] } {
+            lappend geometries "$key|$x+$y+${w}x$h"
+        }
+    }
+    # Be sure there is something in results
+    if { [llength $geometries] == 0 } {
+        return "\"\""
+    }
+    return [join $geometries " "]
+}
+
+####################################
+# Restore graphs from a vts setting.
+# All other graphs will be deleted. Needed graphs will be
+# created. If a graph can't be found, try to use old syntax :
+# (dataset1|dataset2) for creating graphs without models
+#
+# Arguments :
+#   graphList The graph list received from VTS
+#
+# Variables :
+#   Gui
+#
+# Globals :
+#   Graphs
+#
+# Return: NONE
+#
+proc VTSConnect::UnserializeGraphs {graphsList} {
+    global Graphs
+    variable Gui
+
+    # Attendre la fin du démarrage de l'appli
+    if { $::ProcessingArgs } {
+        after 100 [list VTSConnect::UnserializeGraphs $graphsList]
+    } else {
+
+        # For graphs that should be closed
+        set delete {}
+        foreach num [array names Graphs] {
+            set name [GraphName $num]
+            if { $name ni $graphsList } {
+                # Delete it
+                lappend delete $num
+            }
+        }
+
+        # Load graphs
+        foreach graph $graphsList {
+            if { $graph eq "" } {
+                continue
+            }
+
+            if { [Models::Exists $graph] } {
+                Models::Load $graph
+            } else {
+                set datasets [split $graph "|"]
+                # Create a new graph without models (old setting syntax)
+                set varList [string map {"|" " "} $graph]
+                ::NewGraph "NAMES" $varList
+            }
+        }
+
+        # For graphs that should be closed
+        foreach num $delete {
+            # Delete it
+            DeleteGraph $num
+        }
+
+    }
+}
+
+####################################
+# Restore graph geometries from a vts setting.
+# Graphs will effectively be moved and resized.
+#
+# Arguments :
+#  geometries The space-separated graphs geomertry (graph|x+y+wxh)
+#
+# Variables :
+#   Gui
+#
+# Globals :
+#   Graphs
+#
+# Return: NONE
+#
+proc VTSConnect::UnserializeGeometries { geometries } {
+    global Graphs
+    variable Gui
+
+    foreach graphGeo $geometries {
+        lassign [split $graphGeo "|"] graph geometry
+        if { $graph eq "" } {
+            continue
+        }
+        lassign [split $geometry "+x"] x y w h
+        set geometry [list $x $y $w $h]
+        # Remember geometry
+        dict set Gui(GraphsInfos) $graph geometry $geometry
+        # Search graph for updating it
+        set graphnum [GetGraphID $graph]
+        if { $graphnum ne "" } {
+            # Get document for resizing
+            set doc [lindex $Graphs($graphnum) 0]
+            # Catch in case user geometry is invalid
+            catch { $doc configure -geometry $geometry }
+        }
+    }
+}
+
+
+####################################
+# Update buttons states (main toolbar and graphs (one or all) according
+# to the connection status and models folder configuration.
+#
+# Arguments :
+#   graphNum : The graphNumber to uptade, if empty, all
+#              graphs save button will be updated.
+#
+# Variables :
+#   Gui
+#
+# Globals : NONE
+#
+# Return: NONE
+#
+proc VTSConnect::UpdateButtonStates { {graphNum ""} }  {
+    variable Gui
+    # Disable button if no models folder or not connected
+    if { $Gui(ModelsFolder) ne "" && $Gui(ClientSocket) ne "NONE"} {
+        set state normal
+    } else {
+        set state disabled
+    }
+    # Determine if we must update one graph ubtton or all graphs
+    if { $graphNum eq "" } {
+        set keys [array names Gui "SaveModel,*"]
+    } else {
+        set keys "SaveModel,$graphNum"
+        if { ! [info exists Gui($keys)] } {
+            set keys ""
+        }
+    }
+    # Update graphs buttons
+    foreach key $keys {
+        $Gui($key) configure -state $state
+    }
+    # Update main toolbar
+    $Gui(VTSLoadModel) configure -state $state
+    $Gui(VTSSaveAllModel) configure -state $state
+}
+
+####################################
+# PLUGIN CALLBACK - Invoked when the save-all button is pressed
+#
+# Arguments : NONE
+#
+# Variables : NONE
+#
+# Globals :
+#   Graphs
+#
+# Return: NONE
+#
+proc VTSConnect::Models::SaveAll {} {
+    global Graphs
+    # Save all graphs
+    foreach graphNum [array names Graphs] {
+        # Save the model
+        Save $graphNum
+    }
+}
+
+####################################
+# PLUGIN CALLBACK - Invoked when the save button is pressed on a graph
+#
+# Arguments :
+#   num     the graph number just created
+#
+# Variables :
+#   VTSConnect::Gui
+#
+# Globals :
+#   Graphs
+#   Widgets
+#
+# Return: NONE
+#
+proc VTSConnect::Models::Save { graphNum } {
+    upvar VTSConnect::Gui Gui
+    global Graphs Widgets
+
+    # Fatch and secure name
+    set doc [lindex $Graphs($graphNum) 0]
+    set graphname [GraphName $graphNum]
+    set graphname [NormalizeName $graphname]
+    RenameGraph $Widgets(TabSet) "Graph $graphNum" $doc $graphname
+
+    # Fetch the graph widget id
+    set graphWidget [lindex $::Graphs($graphNum) 1]
+    # Save the model
+    if { [file exists $Gui(ModelsFolder)] && [file isdirectory $Gui(ModelsFolder)] } {
+        set fd [open [file join $Gui(ModelsFolder) "$graphname.pmd"] w]
+        # Dirty workarround : By setting this variable, we ensure no progress dialog will be shown.
+        # The fact is, in non-MDI mode (WINDOW mode), the progress-dialog will raise and give focus to the main window after the graph/model is loaded so it
+        # will appear behhind the main window ; unacceptable.
+        set ::display_out_of_screen 1
+        SaveGraph MODEL $graphWidget $fd
+        set ::display_out_of_screen 0
+        close $fd
+    }
+    # Save position
+    set geometry [$doc geometry]
+    dict set Gui(GraphsInfos) $graphname geometry $geometry
+
+}
+
+
+####################################
+# Rename a model (rename subsequent file)
+#
+# Arguments :
+#   oldName The old graph name
+#   newName The new graph name
+#
+# Variables :
+#   VTSConnect::Gui
+#
+# Globals : NONE
+#
+# Return: NONE
+#
+proc VTSConnect::Models::Rename { oldName newName } {
+    upvar VTSConnect::Gui Gui
+
+    # Normalize names
+    set oldName [NormalizeName $oldName]
+    set newName [NormalizeName $newName]
+    if { $oldName eq $newName || $newName eq "" } {
+        return
+    }
+    # Update its geometry dictionnary
+    dict set Gui(GraphsInfos) $newName [dict get? $Gui(GraphsInfos) "" $oldName]
+    dict unset Gui(GraphsInfos) $oldName
+    # Rename file
+    set oldFile [file join $Gui(ModelsFolder) "$oldName.pmd"]
+    set newFile [file join $Gui(ModelsFolder) "$newName.pmd"]
+    # Catch because file might not exist (creation)
+    catch { file rename -force $oldFile $newFile }
+}
+
+
+####################################
+# PLUGIN CALLBACK - Invoked on a click on a graph save button.
+#
+# Arguments :
+#   graphNum     the graph to save
+#
+# Variables : NONE
+#
+# Globals :
+#   Widgets
+#   Graphs
+#
+# Return: NONE
+#
+proc VTSConnect::Models::NameAndSave { graphNum } {
+    global Widgets
+    global Graphs
+    # Fetch document path for request renaming
+    lassign $Graphs($graphNum) document graph AxisMenu DataSetMenu
+    # Ask for name
+    set oldName [GraphName $graphNum]
+    set newName [RenameGraphDialog $Widgets(TabSet) "Graph $graphNum" $document "$document.work"]
+    if { $newName ne "" } {
+        # First rename the model
+        Rename $oldName $newName
+        # Save model
+        Save $graphNum
+    }
+}
+
+
+####################################
+# Load a VTS model
+#
+# Arguments :
+#   name     the graph name to load
+#
+# Variables :
+#   VTSConnect::Gui
+#
+# Globals :
+#   Graphs
+#   GraphCount
+#
+# Return: NONE
+#
+proc VTSConnect::Models::Load { name } {
+    global Graphs GraphCount
+    upvar VTSConnect::Gui Gui
+
+    set filename [file join $Gui(ModelsFolder) "$name.pmd"]
+    if { ![file exists $filename] } {
+        InternMessageDlg .err -title "VTS model loading fail" -icon error -type ok -message "The model file '$name.pmd' does not exist in VTS model directory ($Gui(ModelsFolder))."
+        return
+    }
+
+    # Check the model is not already loaded
+    foreach graphNum [array names Graphs] {
+        set graphName [GraphName $graphNum]
+        set graphName [NormalizeName $graphName]
+        if { $graphName eq $name } {
+            lassign $Graphs($graphNum) document graph AxisMenu DataSetMenu
+            Document $document Raise
+            return
+        }
+    }
+
+    # Create the graph
+    if { ![catch {LoadSource $filename} err] } {
+        if { ![info exist elements] } {
+            InternMessageDlg .err -title "VTS model Loading fail" -icon error -type ok -message "The model file '$name.pmd' have no elements declared."
+            return
+        }
+        # Fetch needed parameters list
+        set parameters {}
+        foreach element $elements {
+            lappend parameters [dict get $DS($element) Name]
+        }
+
+        # Workarround : By setting this variable, we ensure no progress dialog will be shown.
+        # The fact is, in non-MDI mode (WINDOW mode), the progress-dialog will raise and give focus to the main window after the graph/model is loaded so it
+        # will appear behhind the main window ; unacceptable.
+        set ::display_out_of_screen 1
+        # Load the graph if the model file has been successfully sourced
+        LoadGraph MODEL "" Automatic
+        set ::display_out_of_screen 0
+
+        # Find the newly loaded model doc
+        set graphNum $GraphCount
+        # Restore the graph geometry
+        set savedGeometry [dict get? $Gui(GraphsInfos) "" $name geometry]
+        if { $savedGeometry ne "" } {
+            set doc [lindex $Graphs($graphNum) 0]
+            # Catch in case user geometry is invalid
+            after idle "$doc configure -geometry [list $savedGeometry]"
+        }
+    }
+
+}
+
+#############################
+# Check if a model exists.
+#
+# Arguments :
+#   name     the model name to test
+#
+# Variables :
+#   VTSConnect::Gui
+#
+# Globals : NONE
+#
+# Return: True or false
+#
+proc VTSConnect::Models::Exists { name } {
+    upvar VTSConnect::Gui Gui
+
+    if { $Gui(ModelsFolder) eq "" } {
+        return false
+    }
+
+    set name [NormalizeName $name]
+    set filename [file join $Gui(ModelsFolder) "$name.pmd"]
+    return [file exists $filename]
+}
+
+
+####################################
+# PLUGIN CALLBACK - Invoked when the user deletes a graph
+#
+# Arguments :
+#   graphName the graph to delete
+#
+# Variables :
+#   VTSConnect::Gui
+#
+# Globals : NONE
+#
+# Return: NONE
+#
+proc VTSConnect::Models::Delete { graphName } {
+    upvar VTSConnect::Gui Gui
+
+    # Build model filename
+    set filename [file join $Gui(ModelsFolder) "$graphName.pmd"]
+    if { ![file exists $filename] } {
+        InternMessageDlg .info -title "VTS model deleting fail" -icon info -type ok -message "The model file '$graphName.pmd' does not exist in VTS model directory ($Gui(ModelsFolder))."
+        return
+    }
+    # Remove saved geometry
+    set Gui(GraphsInfos) [dict remove $Gui(GraphsInfos) $graphName]
+    # Delete the file
+    file delete $filename
+}
+
+
+####################################
+# PLUGIN CALLBACK - Invoked when the user want to load a model.
+# Will display a popup to choose from the list.
+#
+# Arguments :
+#   parentWidget The widget that initiate the dropdown menu show
+#
+# Variables :
+#   VTSConnect::Gui
+#
+# Globals : NONE
+#
+# Return: NONE
+#
+proc VTSConnect::Models::Choose { parentWidget } {
+    upvar VTSConnect::Gui Gui
+
+    if { $Gui(ModelsFolder) eq "" } {
+        return false
+    }
+
+    # Get list of available graphs
+    set files [glob -nocomplain -directory $Gui(ModelsFolder) "*.pmd" ]
+    set models {}
+    foreach file $files {
+        lappend models [file rootname [file tail $file]]
+    }
+
+    if { [llength $models] == 0 } {
+        InternMessageDlg .info -title "Loading VTS model" -icon info -type ok -message "No VTS models have been created and saved yet."
+        return
+    }
+
+    set m ".choosemodel"
+    set d ".choosemodel.delete"
+    catch { destroy $m }
+    menu $m -tearoff 0
+    menu $d -tearoff 0
+    foreach model [lsort -dictionary $models] {
+        $m add command -label $model -command [list VTSConnect::Models::Load $model]
+        $d add command -label $model -command [list VTSConnect::Models::Delete $model]
+    }
+    $m add separator
+    $m add cascade -label "Delete a model" -menu $d
+
+    # Recover the widgets position and its height
+    set X [winfo rootx $parentWidget]
+    set Y [expr [winfo rooty $parentWidget]+[winfo height $parentWidget]]
+    # Activate and display the menu
+    tk_popup $m $X $Y
+}
+
+
+####################################
+# Return the normalized name of a model. This normalized name
+# can be used as a file name.
+#
+# Arguments :
+#   name   A model name
+#
+# Variables : NONE
+#
+# Globals : NONE
+#
+# Return: Normalized name of a model
+#
+proc VTSConnect::Models::NormalizeName { name } {
+    return [regsub -all {[^[:alnum:]_]} $name "_"]
+}

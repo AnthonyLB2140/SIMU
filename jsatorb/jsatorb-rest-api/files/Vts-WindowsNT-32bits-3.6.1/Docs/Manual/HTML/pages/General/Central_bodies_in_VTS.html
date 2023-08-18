@@ -1,0 +1,399 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Central bodies in VTS &mdash; VTS 3.6.0-9030 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="VTS 3.6.0-9030 documentation" href="../../index.html"/>
+        <link rel="up" title="General" href="index.html"/>
+        <link rel="next" title="Structure of satellites in VTS" href="Structure_of_satellites_in_VTS.html"/>
+        <link rel="prev" title="Object paths in VTS" href="Object_paths_in_VTS.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> VTS
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction/index.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">General</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Conventions_in_VTS.html">Conventions in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Date_formats_in_VTS.html">Date formats in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Data_sources_in_VTS.html">Data sources in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Position_of_objects_in_VTS.html">Position of objects in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Orientation_of_objects_in_VTS.html">Orientation of objects in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Examples_for_position_and_orientation_of_objects_in_VTS.html">Examples for position and orientation of objects in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Backwards_compatibility_in_VTS.html">Backward compatibility in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Object_paths_in_VTS.html">Object paths in VTS</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Central bodies in VTS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#categories-of-bodies">Categories of bodies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bodies-definition">Bodies definition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#origin-of-ephemeris">Origin of ephemeris</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#default-ephemeris-mode">Default ephemeris mode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#catalog-ephemeris-mode">Catalog ephemeris mode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#custom-ephemeris-mode">Custom ephemeris mode</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#central-body-frame">Central body frame</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Structure_of_satellites_in_VTS.html">Structure of satellites in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sensors_in_VTS.html">Sensors in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Masks_in_VTS.html">Physical masks in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scale_factors_in_VTS.html">Scale factors in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cluster_in_VTS.html">Clusters in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scenario_in_VTS.html">Scenario in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Manage_window_geometry.html">Window Geometry Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mission_events_in_VTS.html">Mission events in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="POIs_and_ROIs_in_VTS.html">POIs and ROIs in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Other_visualisable_objects.html">Other visualisable objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scripts_and_macros_in_VTS.html">Scripts and macros in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="VTS_Broker.html">VTS Broker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Files_used_by_VTS/index.html">Files used by VTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Starting_VTS/index.html">Starting VTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VTS_applications_user_manuals/index.html">VTS applications user manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Plugin_development/index.html">Plugin development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Data_generators_in_VTS/index.html">Data generator integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../About/index.html">About</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">VTS</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">General</a> &raquo;</li>
+        
+      <li>Central bodies in VTS</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/pages/General/Central_bodies_in_VTS.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="central-bodies-in-vts">
+<span id="id1"></span><h1>Central bodies in VTS<a class="headerlink" href="#central-bodies-in-vts" title="Permalink to this headline">¶</a></h1>
+<p>Central bodies are celestial objects (such as planets, moons or comets) that can
+be used to define a mission. They support multiple features such as
+<strong>region of interests</strong>, <strong>ground stations</strong> and <strong>map layers</strong>. Satellites
+defined in a VTS project must orbit one of the defined celestial bodies.</p>
+<div class="section" id="categories-of-bodies">
+<span id="central-bodies-in-vts-categories-of-bodies"></span><h2>Categories of bodies<a class="headerlink" href="#categories-of-bodies" title="Permalink to this headline">¶</a></h2>
+<p>All celestial bodies share the same properties in VTS, but a distinction is made
+between bodies <em>supported</em> by VTS and <em>custom</em> bodies.</p>
+<p>For <strong>supported celestial bodies</strong> there is no need to define its ephemerides as
+they are “known” and configured by VTS.</p>
+<p>For <strong>custom celestial bodies</strong>, the ephemerides and properties (such as its
+radius) must be defined by the user.</p>
+<p>The table below lists the <em>supported</em> celestial bodies. All other celestial bodies
+are considered <em>custom</em> celestial bodies.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="41%" />
+<col width="59%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Celestial body</th>
+<th class="head">Parent body (Catalog)</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Sun (Sol)</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>Mercury</td>
+<td>Sol</td>
+</tr>
+<tr class="row-even"><td>Venus</td>
+<td>Sol</td>
+</tr>
+<tr class="row-odd"><td>Earth</td>
+<td>Sol</td>
+</tr>
+<tr class="row-even"><td>Moon</td>
+<td>Sol/Earth</td>
+</tr>
+<tr class="row-odd"><td>Mars</td>
+<td>Sol</td>
+</tr>
+<tr class="row-even"><td>Jupiter</td>
+<td>Sol</td>
+</tr>
+<tr class="row-odd"><td>Saturn</td>
+<td>Sol</td>
+</tr>
+<tr class="row-even"><td>Uranus</td>
+<td>Sol</td>
+</tr>
+<tr class="row-odd"><td>Neptune</td>
+<td>Sol</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="bodies-definition">
+<span id="central-bodies-in-vts-bodies-definition"></span><h2>Bodies definition<a class="headerlink" href="#bodies-definition" title="Permalink to this headline">¶</a></h2>
+<p>Central bodies ephemerides are defined in their <strong>parent body</strong>’s reference frame.</p>
+<p>For supported bodies, if the parent body is different from the Catalog (see table
+above), the ephemerides must be specified by the user.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The Moon uses Earth-centered ephemerides in catalog mode. Defining the
+Moon as a central body also requires defining the Earth in the project.
+If required, the Moon can be attached to the Sun by specifying custom ephemerides.</p>
+</div>
+<p>Existing natural bodies may also be partially supported: some celestial bodies
+can be supported out of the box by Celestia but not in other VTS applications.
+In this case, VTS will try to use existing features (such as textures) but
+will not use default ephemerides.</p>
+</div>
+<div class="section" id="origin-of-ephemeris">
+<span id="central-bodies-in-vts-origin-of-ephemeris"></span><h2>Origin of ephemeris<a class="headerlink" href="#origin-of-ephemeris" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="default-ephemeris-mode">
+<span id="central-bodies-in-vts-default-ephemeris-mode"></span><h3>Default ephemeris mode<a class="headerlink" href="#default-ephemeris-mode" title="Permalink to this headline">¶</a></h3>
+<p>Client applications choose their default mode to select the central bodies
+ephemerides. They can use their own calculation or shipped data, or VTS ephemerides
+catalog. This option can be also used for application that don’t animate the central
+body or if this information is not relevant for them.</p>
+<p>In this mode Celestia uses its own calculation, and SurfaceView uses catalog
+ephemerides files.</p>
+<div class="figure align-center" id="id2">
+<img alt="../../_images/DefaultEphemerisMode.png" src="../../_images/DefaultEphemerisMode.png" />
+<p class="caption"><span class="caption-text">Ephemeris source in default mode</span></p>
+</div>
+</div>
+<div class="section" id="catalog-ephemeris-mode">
+<span id="central-bodies-in-vts-catalog-ephemeris-mode"></span><h3>Catalog ephemeris mode<a class="headerlink" href="#catalog-ephemeris-mode" title="Permalink to this headline">¶</a></h3>
+<p>Client applications use the VTS ephemeris catalog data in this mode. The
+ephemeris catalog contains CIC files describing the position and the orientation
+of the solar system planets between 01/01/1950 and 31/12/2100. Position files
+contain one point per day and orientation files contain 6 point per day. These
+files are provided by CNES.</p>
+<div class="figure align-center" id="id3">
+<img alt="../../_images/CatalogEphemerisMode.png" src="../../_images/CatalogEphemerisMode.png" />
+<p class="caption"><span class="caption-text">Catalog ephemeris mode</span></p>
+</div>
+</div>
+<div class="section" id="custom-ephemeris-mode">
+<span id="central-bodies-in-vts-custom-ephemeris-mode"></span><h3>Custom ephemeris mode<a class="headerlink" href="#custom-ephemeris-mode" title="Permalink to this headline">¶</a></h3>
+<p>Redefine the ephemerides of an existing Celestia body or define the ephemerides
+of a body not available in Celestia. Custom ephemerides must be defined if the
+current body is not available in Celestia.</p>
+<div class="figure align-center" id="id4">
+<img alt="../../_images/CustomEphemerisMode.png" src="../../_images/CustomEphemerisMode.png" />
+<p class="caption"><span class="caption-text">Custom ephemeris mode</span></p>
+</div>
+</div>
+</div>
+<div class="section" id="central-body-frame">
+<span id="central-bodies-in-vts-central-body-frame"></span><h2>Central body frame<a class="headerlink" href="#central-body-frame" title="Permalink to this headline">¶</a></h2>
+<p>Coordinates of a central body are expressed in the heliocentric EME2000 frame.</p>
+<p>North Pole of a central body is always the rotation North. It is used to display
+body axes and the planetographic grid.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Structure_of_satellites_in_VTS.html" class="btn btn-neutral float-right" title="Structure of satellites in VTS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Object_paths_in_VTS.html" class="btn btn-neutral" title="Object paths in VTS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright VTS Team.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'3.6.0-9030',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

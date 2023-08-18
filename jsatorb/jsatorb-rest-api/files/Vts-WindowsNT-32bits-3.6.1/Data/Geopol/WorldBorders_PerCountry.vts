@@ -1,0 +1,892 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project Revision="7287">
+ <General Name="" StartDateTime="51544 0.000000" EndDateTime="51545 0.000000"/>
+ <MetaData>
+  <Description></Description>
+ </MetaData>
+ <MonitorConfiguration>
+  <Monitor X="0" Y="0" Height="1032" Width="1920"/>
+  <Monitor X="0" Y="-1200" Height="1200" Width="1920"/>
+ </MonitorConfiguration>
+ <StartOptions TimeRatio="1" UseStateTimeRatio="0" SysTimeSynced="0" Paused="1" Looped="0" Minimized="1" Hidden="0" AutoClosed="0"/>
+ <TimelineOptions ProjectLocked="1" CursorLocked="0" CursorRatio="0" ViewStart="33282 0.000000" ViewSpan="0" DateFormat="ISODate"/>
+ <Sky>
+  <Sun>
+   <Prop2d>
+    <Icon Anchor="CENTER" Size="MEDIUM" Opacity="100">
+     <Font Size="MEDIUM" Color="1 1 1"/>
+     <ImageLayer Type="Default"/>
+    </Icon>
+   </Prop2d>
+   <Track Color="0.862745 0.862745 0" PenStyle="SolidLine" PenWidth="2"/>
+   <VisibilityCircle ContourColor="0.501961 0.501961 0" FillColor="0 0 0" FillOpacity="50"/>
+  </Sun>
+  <StarCatalog CatalogMode="Builtin">
+   <Track Color="1 1 1" PenStyle="DotLine" PenWidth="1"/>
+  </StarCatalog>
+ </Sky>
+ <ToBeUsedApps>
+  <Application Name="SurfaceView" Id="0" AutoStarted="1"/>
+ </ToBeUsedApps>
+ <Entities>
+  <Body Name="Earth" ParentPath="Sol">
+   <UseWGS84/>
+   <Prop2d>
+    <Icon Anchor="CENTER" Size="MEDIUM" Opacity="100">
+     <Font Size="MEDIUM" Color="1 1 1"/>
+     <ImageLayer Type="Default"/>
+    </Icon>
+   </Prop2d>
+   <Track Color="0 0.101503 1" PenStyle="SolidLine" PenWidth="2"/>
+   <VisibilityCircle ContourColor="0.930327 0 1" FillColor="0.965164 0.499992 1" FillOpacity="60"/>
+   <EphemerisMode Mode="Default"/>
+   <Layers>
+    <BuiltinLayer Name="Builtin layer"/>
+   </Layers>
+   <GroupRegionsOfInterest>
+    <RegionOfInterest Name="Afghanistan">
+     <CoordinatesFile Name="Data/Countries/Afghanistan.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Albania">
+     <CoordinatesFile Name="Data/Countries/Albania.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Algeria">
+     <CoordinatesFile Name="Data/Countries/Algeria.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Andorra">
+     <CoordinatesFile Name="Data/Countries/Andorra.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Angola">
+     <CoordinatesFile Name="Data/Countries/Angola.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Antarctica">
+     <CoordinatesFile Name="Data/Countries/Antarctica.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Antigua and Barbuda">
+     <CoordinatesFile Name="Data/Countries/Antigua_and_Barbuda.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Argentina">
+     <CoordinatesFile Name="Data/Countries/Argentina.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Armenia">
+     <CoordinatesFile Name="Data/Countries/Armenia.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Australia">
+     <CoordinatesFile Name="Data/Countries/Australia.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Austria">
+     <CoordinatesFile Name="Data/Countries/Austria.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Azerbaijan">
+     <CoordinatesFile Name="Data/Countries/Azerbaijan.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Bahamas, The">
+     <CoordinatesFile Name="Data/Countries/Bahamas,_The.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Bahrain">
+     <CoordinatesFile Name="Data/Countries/Bahrain.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Bangladesh">
+     <CoordinatesFile Name="Data/Countries/Bangladesh.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Barbados">
+     <CoordinatesFile Name="Data/Countries/Barbados.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Belgium">
+     <CoordinatesFile Name="Data/Countries/Belgium.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Belize">
+     <CoordinatesFile Name="Data/Countries/Belize.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Benin">
+     <CoordinatesFile Name="Data/Countries/Benin.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Bermuda">
+     <CoordinatesFile Name="Data/Countries/Bermuda.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Bhutan">
+     <CoordinatesFile Name="Data/Countries/Bhutan.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Bolivia">
+     <CoordinatesFile Name="Data/Countries/Bolivia.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Bosnia and Herzegovina">
+     <CoordinatesFile Name="Data/Countries/Bosnia_and_Herzegovina.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Botswana">
+     <CoordinatesFile Name="Data/Countries/Botswana.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Brazil">
+     <CoordinatesFile Name="Data/Countries/Brazil.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Brunei">
+     <CoordinatesFile Name="Data/Countries/Brunei.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Bulgaria">
+     <CoordinatesFile Name="Data/Countries/Bulgaria.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Burkina Faso">
+     <CoordinatesFile Name="Data/Countries/Burkina_Faso.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Burundi">
+     <CoordinatesFile Name="Data/Countries/Burundi.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Byelarus">
+     <CoordinatesFile Name="Data/Countries/Byelarus.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Cambodia">
+     <CoordinatesFile Name="Data/Countries/Cambodia.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Cameroon">
+     <CoordinatesFile Name="Data/Countries/Cameroon.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Canada">
+     <CoordinatesFile Name="Data/Countries/Canada.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Cape Verde">
+     <CoordinatesFile Name="Data/Countries/Cape_Verde.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Central African Republic">
+     <CoordinatesFile Name="Data/Countries/Central_African_Republic.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Chad">
+     <CoordinatesFile Name="Data/Countries/Chad.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Chile">
+     <CoordinatesFile Name="Data/Countries/Chile.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="China">
+     <CoordinatesFile Name="Data/Countries/China.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Colombia">
+     <CoordinatesFile Name="Data/Countries/Colombia.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Comoros">
+     <CoordinatesFile Name="Data/Countries/Comoros.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Congo">
+     <CoordinatesFile Name="Data/Countries/Congo.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Costa Rica">
+     <CoordinatesFile Name="Data/Countries/Costa_Rica.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Croatia">
+     <CoordinatesFile Name="Data/Countries/Croatia.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Cuba">
+     <CoordinatesFile Name="Data/Countries/Cuba.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Cyprus">
+     <CoordinatesFile Name="Data/Countries/Cyprus.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Czech Republic">
+     <CoordinatesFile Name="Data/Countries/Czech_Republic.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Denmark">
+     <CoordinatesFile Name="Data/Countries/Denmark.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Djibouti">
+     <CoordinatesFile Name="Data/Countries/Djibouti.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Dominica">
+     <CoordinatesFile Name="Data/Countries/Dominica.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Dominican Republic">
+     <CoordinatesFile Name="Data/Countries/Dominican_Republic.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Ecuador">
+     <CoordinatesFile Name="Data/Countries/Ecuador.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Egypt">
+     <CoordinatesFile Name="Data/Countries/Egypt.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="El Salvador">
+     <CoordinatesFile Name="Data/Countries/El_Salvador.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Equatorial Guinea">
+     <CoordinatesFile Name="Data/Countries/Equatorial_Guinea.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Eritrea">
+     <CoordinatesFile Name="Data/Countries/Eritrea.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Estonia">
+     <CoordinatesFile Name="Data/Countries/Estonia.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Ethiopia">
+     <CoordinatesFile Name="Data/Countries/Ethiopia.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Falkland Islands (Islas Malvinas)">
+     <CoordinatesFile Name="Data/Countries/Falkland_Islands_(Islas_Malvinas).txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Faroe Islands">
+     <CoordinatesFile Name="Data/Countries/Faroe_Islands.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Fiji">
+     <CoordinatesFile Name="Data/Countries/Fiji.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Finland">
+     <CoordinatesFile Name="Data/Countries/Finland.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="France">
+     <CoordinatesFile Name="Data/Countries/France.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="French Guiana">
+     <CoordinatesFile Name="Data/Countries/French_Guiana.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="French Polynesia">
+     <CoordinatesFile Name="Data/Countries/French_Polynesia.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Gabon">
+     <CoordinatesFile Name="Data/Countries/Gabon.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Gambia, The">
+     <CoordinatesFile Name="Data/Countries/Gambia,_The.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Gaza Strip">
+     <CoordinatesFile Name="Data/Countries/Gaza_Strip.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Georgia">
+     <CoordinatesFile Name="Data/Countries/Georgia.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Germany">
+     <CoordinatesFile Name="Data/Countries/Germany.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Ghana">
+     <CoordinatesFile Name="Data/Countries/Ghana.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Greece">
+     <CoordinatesFile Name="Data/Countries/Greece.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Greenland">
+     <CoordinatesFile Name="Data/Countries/Greenland.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Grenada">
+     <CoordinatesFile Name="Data/Countries/Grenada.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Guadeloupe">
+     <CoordinatesFile Name="Data/Countries/Guadeloupe.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Guatemala">
+     <CoordinatesFile Name="Data/Countries/Guatemala.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Guinea">
+     <CoordinatesFile Name="Data/Countries/Guinea.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Guinea-Bissau">
+     <CoordinatesFile Name="Data/Countries/Guinea-Bissau.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Guyana">
+     <CoordinatesFile Name="Data/Countries/Guyana.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Haiti">
+     <CoordinatesFile Name="Data/Countries/Haiti.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Honduras">
+     <CoordinatesFile Name="Data/Countries/Honduras.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Hong Kong">
+     <CoordinatesFile Name="Data/Countries/Hong_Kong.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Hungary">
+     <CoordinatesFile Name="Data/Countries/Hungary.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Iceland">
+     <CoordinatesFile Name="Data/Countries/Iceland.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="India">
+     <CoordinatesFile Name="Data/Countries/India.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Indonesia">
+     <CoordinatesFile Name="Data/Countries/Indonesia.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Iran">
+     <CoordinatesFile Name="Data/Countries/Iran.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Iraq">
+     <CoordinatesFile Name="Data/Countries/Iraq.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Iraq-Saudi Arabia Neutral Zone">
+     <CoordinatesFile Name="Data/Countries/Iraq-Saudi_Arabia_Neutral_Zone.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Ireland">
+     <CoordinatesFile Name="Data/Countries/Ireland.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Isle of Man">
+     <CoordinatesFile Name="Data/Countries/Isle_of_Man.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Israel">
+     <CoordinatesFile Name="Data/Countries/Israel.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Italy">
+     <CoordinatesFile Name="Data/Countries/Italy.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Ivory Coast">
+     <CoordinatesFile Name="Data/Countries/Ivory_Coast.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Jamaica">
+     <CoordinatesFile Name="Data/Countries/Jamaica.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Jan Mayen">
+     <CoordinatesFile Name="Data/Countries/Jan_Mayen.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Japan">
+     <CoordinatesFile Name="Data/Countries/Japan.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Jordan">
+     <CoordinatesFile Name="Data/Countries/Jordan.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Kazakhstan">
+     <CoordinatesFile Name="Data/Countries/Kazakhstan.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Kenya">
+     <CoordinatesFile Name="Data/Countries/Kenya.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Kerguelen">
+     <CoordinatesFile Name="Data/Countries/Kerguelen.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Kiribati">
+     <CoordinatesFile Name="Data/Countries/Kiribati.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Korea, Peoples Republic of">
+     <CoordinatesFile Name="Data/Countries/Korea,_Peoples_Republic_of.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Korea, Republic of">
+     <CoordinatesFile Name="Data/Countries/Korea,_Republic_of.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Kuwait">
+     <CoordinatesFile Name="Data/Countries/Kuwait.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Kyrgyzstan">
+     <CoordinatesFile Name="Data/Countries/Kyrgyzstan.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Laos">
+     <CoordinatesFile Name="Data/Countries/Laos.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Latvia">
+     <CoordinatesFile Name="Data/Countries/Latvia.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Lebanon">
+     <CoordinatesFile Name="Data/Countries/Lebanon.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Lesotho">
+     <CoordinatesFile Name="Data/Countries/Lesotho.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Liberia">
+     <CoordinatesFile Name="Data/Countries/Liberia.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Libya">
+     <CoordinatesFile Name="Data/Countries/Libya.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Liechtenstein">
+     <CoordinatesFile Name="Data/Countries/Liechtenstein.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Lithuania">
+     <CoordinatesFile Name="Data/Countries/Lithuania.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Luxembourg">
+     <CoordinatesFile Name="Data/Countries/Luxembourg.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Macau">
+     <CoordinatesFile Name="Data/Countries/Macau.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Macedonia">
+     <CoordinatesFile Name="Data/Countries/Macedonia.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Madagascar">
+     <CoordinatesFile Name="Data/Countries/Madagascar.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Malawi">
+     <CoordinatesFile Name="Data/Countries/Malawi.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Malaysia">
+     <CoordinatesFile Name="Data/Countries/Malaysia.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Maldives">
+     <CoordinatesFile Name="Data/Countries/Maldives.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Mali">
+     <CoordinatesFile Name="Data/Countries/Mali.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Malta">
+     <CoordinatesFile Name="Data/Countries/Malta.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Martinique">
+     <CoordinatesFile Name="Data/Countries/Martinique.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Mauritania">
+     <CoordinatesFile Name="Data/Countries/Mauritania.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Mauritius">
+     <CoordinatesFile Name="Data/Countries/Mauritius.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Mexico">
+     <CoordinatesFile Name="Data/Countries/Mexico.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Moldova">
+     <CoordinatesFile Name="Data/Countries/Moldova.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Monaco">
+     <CoordinatesFile Name="Data/Countries/Monaco.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Mongolia">
+     <CoordinatesFile Name="Data/Countries/Mongolia.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Morocco">
+     <CoordinatesFile Name="Data/Countries/Morocco.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Mozambique">
+     <CoordinatesFile Name="Data/Countries/Mozambique.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Myanmar (Burma)">
+     <CoordinatesFile Name="Data/Countries/Myanmar_(Burma).txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Namibia">
+     <CoordinatesFile Name="Data/Countries/Namibia.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Nepal">
+     <CoordinatesFile Name="Data/Countries/Nepal.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Netherlands">
+     <CoordinatesFile Name="Data/Countries/Netherlands.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="New Caledonia">
+     <CoordinatesFile Name="Data/Countries/New_Caledonia.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="New Zealand">
+     <CoordinatesFile Name="Data/Countries/New_Zealand.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Nicaragua">
+     <CoordinatesFile Name="Data/Countries/Nicaragua.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Niger">
+     <CoordinatesFile Name="Data/Countries/Niger.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Nigeria">
+     <CoordinatesFile Name="Data/Countries/Nigeria.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Northern Mariana Islands">
+     <CoordinatesFile Name="Data/Countries/Northern_Mariana_Islands.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Norway">
+     <CoordinatesFile Name="Data/Countries/Norway.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Oman">
+     <CoordinatesFile Name="Data/Countries/Oman.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Pakistan">
+     <CoordinatesFile Name="Data/Countries/Pakistan.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Panama">
+     <CoordinatesFile Name="Data/Countries/Panama.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Papua New Guinea">
+     <CoordinatesFile Name="Data/Countries/Papua_New_Guinea.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Paraguay">
+     <CoordinatesFile Name="Data/Countries/Paraguay.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Peru">
+     <CoordinatesFile Name="Data/Countries/Peru.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Philippines">
+     <CoordinatesFile Name="Data/Countries/Philippines.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Poland">
+     <CoordinatesFile Name="Data/Countries/Poland.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Portugal">
+     <CoordinatesFile Name="Data/Countries/Portugal.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Puerto Rico">
+     <CoordinatesFile Name="Data/Countries/Puerto_Rico.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Qatar">
+     <CoordinatesFile Name="Data/Countries/Qatar.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Reunion">
+     <CoordinatesFile Name="Data/Countries/Reunion.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Romania">
+     <CoordinatesFile Name="Data/Countries/Romania.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Russia">
+     <CoordinatesFile Name="Data/Countries/Russia.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Rwanda">
+     <CoordinatesFile Name="Data/Countries/Rwanda.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="San Marino">
+     <CoordinatesFile Name="Data/Countries/San_Marino.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Sao Tome and Principe">
+     <CoordinatesFile Name="Data/Countries/Sao_Tome_and_Principe.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Saudi Arabia">
+     <CoordinatesFile Name="Data/Countries/Saudi_Arabia.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Senegal">
+     <CoordinatesFile Name="Data/Countries/Senegal.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Seychelles">
+     <CoordinatesFile Name="Data/Countries/Seychelles.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Sierra Leone">
+     <CoordinatesFile Name="Data/Countries/Sierra_Leone.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Singapore">
+     <CoordinatesFile Name="Data/Countries/Singapore.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Slovakia">
+     <CoordinatesFile Name="Data/Countries/Slovakia.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Slovenia">
+     <CoordinatesFile Name="Data/Countries/Slovenia.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Solomon Islands">
+     <CoordinatesFile Name="Data/Countries/Solomon_Islands.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Somalia">
+     <CoordinatesFile Name="Data/Countries/Somalia.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="South Africa">
+     <CoordinatesFile Name="Data/Countries/South_Africa.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Spain">
+     <CoordinatesFile Name="Data/Countries/Spain.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Sri Lanka">
+     <CoordinatesFile Name="Data/Countries/Sri_Lanka.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="St. Christopher-Nevis">
+     <CoordinatesFile Name="Data/Countries/St._Christopher-Nevis.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="St. Lucia">
+     <CoordinatesFile Name="Data/Countries/St._Lucia.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="St. Vincent and the Grenadines">
+     <CoordinatesFile Name="Data/Countries/St._Vincent_and_the_Grenadines.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Sudan">
+     <CoordinatesFile Name="Data/Countries/Sudan.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Suriname">
+     <CoordinatesFile Name="Data/Countries/Suriname.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Svalbard">
+     <CoordinatesFile Name="Data/Countries/Svalbard.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Swaziland">
+     <CoordinatesFile Name="Data/Countries/Swaziland.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Sweden">
+     <CoordinatesFile Name="Data/Countries/Sweden.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Switzerland">
+     <CoordinatesFile Name="Data/Countries/Switzerland.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Syria">
+     <CoordinatesFile Name="Data/Countries/Syria.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Taiwan">
+     <CoordinatesFile Name="Data/Countries/Taiwan.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Tajikistan">
+     <CoordinatesFile Name="Data/Countries/Tajikistan.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Tanzania, United Republic of">
+     <CoordinatesFile Name="Data/Countries/Tanzania,_United_Republic_of.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Thailand">
+     <CoordinatesFile Name="Data/Countries/Thailand.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Togo">
+     <CoordinatesFile Name="Data/Countries/Togo.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Tonga">
+     <CoordinatesFile Name="Data/Countries/Tonga.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Trinidad and Tobago">
+     <CoordinatesFile Name="Data/Countries/Trinidad_and_Tobago.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Tunisia">
+     <CoordinatesFile Name="Data/Countries/Tunisia.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Turkey">
+     <CoordinatesFile Name="Data/Countries/Turkey.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Turkmenistan">
+     <CoordinatesFile Name="Data/Countries/Turkmenistan.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Turks and Caicos Islands">
+     <CoordinatesFile Name="Data/Countries/Turks_and_Caicos_Islands.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Uganda">
+     <CoordinatesFile Name="Data/Countries/Uganda.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Ukraine">
+     <CoordinatesFile Name="Data/Countries/Ukraine.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="United Arab Emirates">
+     <CoordinatesFile Name="Data/Countries/United_Arab_Emirates.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="United Kingdom">
+     <CoordinatesFile Name="Data/Countries/United_Kingdom.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="United States">
+     <CoordinatesFile Name="Data/Countries/United_States.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Uruguay">
+     <CoordinatesFile Name="Data/Countries/Uruguay.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Uzbekistan">
+     <CoordinatesFile Name="Data/Countries/Uzbekistan.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Vanuatu">
+     <CoordinatesFile Name="Data/Countries/Vanuatu.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Venezuela">
+     <CoordinatesFile Name="Data/Countries/Venezuela.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Vietnam">
+     <CoordinatesFile Name="Data/Countries/Vietnam.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Western Sahara">
+     <CoordinatesFile Name="Data/Countries/Western_Sahara.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Western Samoa">
+     <CoordinatesFile Name="Data/Countries/Western_Samoa.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Yemen">
+     <CoordinatesFile Name="Data/Countries/Yemen.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Yugoslavia">
+     <CoordinatesFile Name="Data/Countries/Yugoslavia.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Zaire">
+     <CoordinatesFile Name="Data/Countries/Zaire.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Zambia">
+     <CoordinatesFile Name="Data/Countries/Zambia.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Zimbabwe">
+     <CoordinatesFile Name="Data/Countries/Zimbabwe.txt"/>
+     <Graphics Color="1 1 1" FillOpacity="33"/>
+    </RegionOfInterest>
+   </GroupRegionsOfInterest>
+  </Body>
+ </Entities>
+ <Events/>
+ <States>
+  <Instant Time="33282 0" TimeRatio="1" Label="Initial state">
+   <AppState Id="0"/>
+  </Instant>
+ </States>
+</Project>

@@ -1,0 +1,56 @@
+.. _NadirView_user_manual:
+
+NadirView user manual
+==================================================================================
+
+The NadirView client application displays an equirectangular projection of the celestial sphere as seen from a specific satellite (centered on the Nadir, X axis aligned with velocity).
+
+
+.. _NadirView_user_manual#Introduction:
+
+Introduction 
+----------------------------------------------------------------------------------
+
+The NadirView client application displays an equirectangular projection of the celestial sphere as seen from a specific satellite (centered on the Nadir, X axis aligned with velocity). Project entities (such as satellites and celestial bodies) are projected into the celestial sphere according to their position relative to this frame.
+
+.. figure:: /_images/NadirView.png
+   :align: center
+
+   NadirView application
+
+
+.. _NadirView_user_manual#Configuration_in_VTS:
+
+Configuration in VTS 
+----------------------------------------------------------------------------------
+
+The entities and properties defined in the VTS configuration utility will be displayed in NadirView.
+
+
+.. _NadirView_user_manual#Application_parameters_in_VTS:
+
+Application parameters in VTS 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When adding NadirView as a VTS client application, some parameters can be set by clicking on the NadirView entry in the VTS project tree.
+
+Since NadirView shares its parameters with SurfaceView and SkyView, please refer to :ref:`SurfaceView user manual <SurfaceView_user_manual#Application_parameters_in_VTS>` and :ref:`SkyView user manual <SkyView_user_manual#Application_parameters_in_VTS>` for more detail on the application parameters in common.
+
+
+.. _NadirView_user_manual#Satellite_frame_axes:
+
+Satellite frame axes 
+----------------------------------------------------------------------------------
+The intersection of a satellite frame axes with the visualization plan can be enabled through the satellites proprerties.
+The following frame axes can be represented:
+
+- EME2000 inertial frame axes,
+- QSW frame axes,
+- Satellite frame axes.
+
+Axes are represented by crosses (red, green and blue) followed by the axe name: ``<SatelliteName>_<AxisName>``.
+
+
+- **EME2000**: Xeme2000 (red), Yeme2000 (green), Zeme2000 (blue),
+- **QSW**: Q (red), S (green), W (blue),
+- **Satellite**: Xsat (red), Ysat (green), Zsat (blue).

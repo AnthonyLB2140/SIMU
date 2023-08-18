@@ -1,0 +1,22 @@
+.. VTS User Manual
+
+.. VTS documentation master file, created by
+   sphinx-quickstart on Tue May 02 16:59:47 2017.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Welcome to VTS's documentation!
+===============================
+
+.. toctree::
+   :maxdepth: 3
+   :caption: Contents:
+   
+   pages/Introduction/index.rst
+   pages/General/index.rst
+   pages/Files_used_by_VTS/index.rst
+   pages/Starting_VTS/index.rst
+   pages/VTS_applications_user_manuals/index.rst
+   pages/Plugin_development/index.rst
+   pages/Data_generators_in_VTS/index.rst
+   pages/About/index.rst

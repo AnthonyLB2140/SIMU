@@ -1,0 +1,5 @@
+docker cp ./red1-tle-storage.json ccc_nodered:usr/src/node-red/
+docker cp ./red2-tle-storage.json ccc_nodered:usr/src/node-red/
+docker cp ./blue1-tle-storage.json ccc_nodered:usr/src/node-red/
+docker cp ./blue2-tle-storage.json ccc_nodered:usr/src/node-red/
+

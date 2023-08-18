@@ -1,0 +1,190 @@
+Agent pid 16004
+Identity added: /home/jsatorb/tuleap-git-key-jsatorb (/home/jsatorb/tuleap-git-key-jsatorb)
+jsatorb@jsatorb1-xubuntu~/JSatOrb/repos-cs/git$sudo apt-get remove docker docker-engine docker.io containerd runc
+[sudo] password for jsatorb: 
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+Package 'docker-engine' is not installed, so not removed
+Package 'docker' is not installed, so not removed
+Package 'containerd' is not installed, so not removed
+Package 'docker.io' is not installed, so not removed
+Package 'runc' is not installed, so not removed
+The following packages were automatically installed and are no longer required:
+  libann0 libcdt5 libcgraph6 libgts-0.7-5 libgts-bin libgvc6 libgvpr2 liblab-gamut1 libpathplan4
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 93 not upgraded.
+jsatorb@jsatorb1-xubuntu~/JSatOrb/repos-cs/git$sudo apt-get update
+Hit:1 http://archive.ubuntu.com/ubuntu bionic InRelease
+Get:2 http://archive.ubuntu.com/ubuntu bionic-updates InRelease [88.7 kB]                                                                                                          
+Hit:3 https://deb.nodesource.com/node_11.x bionic InRelease                                                                                                                        
+Get:4 http://archive.ubuntu.com/ubuntu bionic-backports InRelease [74.6 kB]                                                                                         
+Get:5 https://packages.microsoft.com/repos/vscode stable InRelease [3,959 B]                                
+Get:6 http://archive.ubuntu.com/ubuntu bionic-security InRelease [88.7 kB]                                               
+Hit:7 http://mirrors.edge.kernel.org/ubuntu xenial InRelease                         
+Get:8 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 DEP-11 Metadata [306 kB]
+Get:9 http://archive.ubuntu.com/ubuntu bionic-updates/universe amd64 DEP-11 Metadata [279 kB]                
+Get:10 http://archive.ubuntu.com/ubuntu bionic-updates/multiverse amd64 DEP-11 Metadata [2,468 B]  
+Get:11 http://archive.ubuntu.com/ubuntu bionic-backports/universe amd64 DEP-11 Metadata [7,964 B]                            
+Get:12 http://archive.ubuntu.com/ubuntu bionic-security/main amd64 DEP-11 Metadata [43.8 kB]  
+Get:13 http://archive.ubuntu.com/ubuntu bionic-security/universe amd64 DEP-11 Metadata [49.2 kB]
+Get:14 http://archive.ubuntu.com/ubuntu bionic-security/multiverse amd64 DEP-11 Metadata [2,464 B]        
+Get:15 https://packages.microsoft.com/repos/vscode stable/main amd64 Packages [184 kB]
+Fetched 1,131 kB in 2s (568 kB/s)  
+Reading package lists... Done
+jsatorb@jsatorb1-xubuntu~/JSatOrb/repos-cs/git$sudo apt-get install \
+>     apt-transport-https \
+>     ca-certificates \
+>     curl \
+>     gnupg-agent \
+>     software-properties-common
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+ca-certificates is already the newest version (20190110~18.04.1).
+curl is already the newest version (7.58.0-2ubuntu3.8).
+apt-transport-https is already the newest version (1.6.12ubuntu0.1).
+The following packages were automatically installed and are no longer required:
+  libann0 libcdt5 libcgraph6 libgts-0.7-5 libgts-bin libgvc6 libgvpr2 liblab-gamut1 libpathplan4
+Use 'sudo apt autoremove' to remove them.
+The following additional packages will be installed:
+  python3-software-properties software-properties-gtk
+The following NEW packages will be installed:
+  gnupg-agent
+The following packages will be upgraded:
+  python3-software-properties software-properties-common software-properties-gtk
+3 upgraded, 1 newly installed, 0 to remove and 90 not upgraded.
+Need to get 101 kB of archives.
+After this operation, 43.0 kB of additional disk space will be used.
+Do you want to continue? [Y/n] Y
+Get:1 http://archive.ubuntu.com/ubuntu bionic-updates/universe amd64 gnupg-agent all 2.2.4-1ubuntu1.2 [4,880 B]
+Get:2 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 software-properties-common all 0.96.24.32.13 [10.0 kB]
+Get:3 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 software-properties-gtk all 0.96.24.32.13 [62.8 kB]
+Get:4 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 python3-software-properties all 0.96.24.32.13 [23.8 kB]
+Fetched 101 kB in 0s (234 kB/s)                        
+Selecting previously unselected package gnupg-agent.
+(Reading database ... 244063 files and directories currently installed.)
+Preparing to unpack .../gnupg-agent_2.2.4-1ubuntu1.2_all.deb ...
+Unpacking gnupg-agent (2.2.4-1ubuntu1.2) ...
+Preparing to unpack .../software-properties-common_0.96.24.32.13_all.deb ...
+Unpacking software-properties-common (0.96.24.32.13) over (0.96.24.32.12) ...
+Preparing to unpack .../software-properties-gtk_0.96.24.32.13_all.deb ...
+Unpacking software-properties-gtk (0.96.24.32.13) over (0.96.24.32.12) ...
+Preparing to unpack .../python3-software-properties_0.96.24.32.13_all.deb ...
+Unpacking python3-software-properties (0.96.24.32.13) over (0.96.24.32.12) ...
+Processing triggers for mime-support (3.60ubuntu1) ...
+Processing triggers for desktop-file-utils (0.23-1ubuntu3.18.04.2) ...
+Processing triggers for libglib2.0-0:amd64 (2.56.4-0ubuntu0.18.04.6) ...
+Processing triggers for man-db (2.8.3-2ubuntu0.1) ...
+Processing triggers for shared-mime-info (1.9-2) ...
+Setting up python3-software-properties (0.96.24.32.13) ...
+Processing triggers for gnome-menus (3.13.3-11ubuntu1.1) ...
+Processing triggers for dbus (1.12.2-1ubuntu1.1) ...
+Setting up gnupg-agent (2.2.4-1ubuntu1.2) ...
+Processing triggers for hicolor-icon-theme (0.17-2) ...
+Setting up software-properties-common (0.96.24.32.13) ...
+Setting up software-properties-gtk (0.96.24.32.13) ...
+jsatorb@jsatorb1-xubuntu~/JSatOrb/repos-cs/git$curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+OK
+jsatorb@jsatorb1-xubuntu~/JSatOrb/repos-cs/git$sudo apt-key fingerprint 0EBFCD88
+pub   rsa4096 2017-02-22 [SCEA]
+      9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88
+uid           [ unknown] Docker Release (CE deb) <docker@docker.com>
+sub   rsa4096 2017-02-22 [S]
+
+jsatorb@jsatorb1-xubuntu~/JSatOrb/repos-cs/git$cd jsatorb-docker/
+jsatorb@jsatorb1-xubuntu~/JSatOrb/repos-cs/git/jsatorb-docker(dev)$sudo add-apt-repository \
+>     "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+>     $(lsb_release -cs) \
+>     stable"
+Hit:1 http://archive.ubuntu.com/ubuntu bionic InRelease
+Get:2 http://archive.ubuntu.com/ubuntu bionic-updates InRelease [88.7 kB]                                                                                                          
+Get:3 https://download.docker.com/linux/ubuntu bionic InRelease [64.4 kB]                                                                                                          
+Get:4 http://archive.ubuntu.com/ubuntu bionic-backports InRelease [74.6 kB]                                                                                                        
+Hit:5 https://packages.microsoft.com/repos/vscode stable InRelease                                                               
+Get:7 http://archive.ubuntu.com/ubuntu bionic-security InRelease [88.7 kB]                                                       
+Hit:8 https://deb.nodesource.com/node_11.x bionic InRelease                                                                     
+Get:9 https://download.docker.com/linux/ubuntu bionic/stable amd64 Packages [12.1 kB]                                           
+Hit:6 http://mirrors.edge.kernel.org/ubuntu xenial InRelease                                                      
+Get:10 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 DEP-11 Metadata [306 kB]                        
+Get:11 http://archive.ubuntu.com/ubuntu bionic-updates/universe amd64 DEP-11 Metadata [279 kB]                
+Get:12 http://archive.ubuntu.com/ubuntu bionic-updates/multiverse amd64 DEP-11 Metadata [2,468 B]             
+Get:13 http://archive.ubuntu.com/ubuntu bionic-backports/universe amd64 DEP-11 Metadata [7,972 B]       
+Get:14 http://archive.ubuntu.com/ubuntu bionic-security/main amd64 DEP-11 Metadata [43.8 kB]            
+Get:15 http://archive.ubuntu.com/ubuntu bionic-security/universe amd64 DEP-11 Metadata [49.2 kB]
+Get:16 http://archive.ubuntu.com/ubuntu bionic-security/multiverse amd64 DEP-11 Metadata [2,464 B]
+Fetched 1,019 kB in 1s (743 kB/s)              
+Reading package lists... Done
+jsatorb@jsatorb1-xubuntu~/JSatOrb/repos-cs/git/jsatorb-docker(dev)$ll
+total 28
+drwxrwxr-x  3 jsatorb jsatorb 4096 Jun 15 11:40 ./
+drwxrwxr-x 18 jsatorb jsatorb 4096 Jun 10 12:06 ../
+drwxrwxr-x  8 jsatorb jsatorb 4096 Jun 15 11:40 .git/
+-rw-rw-r--  1 jsatorb jsatorb   21 Jun 12 10:29 .gitignore
+-rw-rw-r--  1 jsatorb jsatorb 8305 Jun 15 12:11 README.md
+jsatorb@jsatorb1-xubuntu~/JSatOrb/repos-cs/git/jsatorb-docker(dev)$sudo apt-get update
+Hit:1 http://archive.ubuntu.com/ubuntu bionic InRelease
+Hit:2 http://archive.ubuntu.com/ubuntu bionic-updates InRelease                                                                                                                    
+Hit:3 http://archive.ubuntu.com/ubuntu bionic-backports InRelease                                                                                                                  
+Hit:4 https://download.docker.com/linux/ubuntu bionic InRelease                                                                                                                    
+Hit:5 http://archive.ubuntu.com/ubuntu bionic-security InRelease                                                                                                                   
+Hit:6 https://deb.nodesource.com/node_11.x bionic InRelease                                                                                                                        
+Hit:7 https://packages.microsoft.com/repos/vscode stable InRelease                                                                
+Hit:8 http://mirrors.edge.kernel.org/ubuntu xenial InRelease             
+Reading package lists... Done
+jsatorb@jsatorb1-xubuntu~/JSatOrb/repos-cs/git/jsatorb-docker(dev)$sudo apt-get install docker-ce docker-ce-cli containerd.io
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following packages were automatically installed and are no longer required:
+  libann0 libcdt5 libcgraph6 libgts-0.7-5 libgts-bin libgvc6 libgvpr2 liblab-gamut1 libpathplan4
+Use 'sudo apt autoremove' to remove them.
+The following additional packages will be installed:
+  aufs-tools cgroupfs-mount pigz
+The following NEW packages will be installed:
+  aufs-tools cgroupfs-mount containerd.io docker-ce docker-ce-cli pigz
+0 upgraded, 6 newly installed, 0 to remove and 90 not upgraded.
+Need to get 85.3 MB of archives.
+After this operation, 381 MB of additional disk space will be used.
+Do you want to continue? [Y/n] Y
+Get:1 http://archive.ubuntu.com/ubuntu bionic/universe amd64 pigz amd64 2.4-1 [57.4 kB]
+Get:2 https://download.docker.com/linux/ubuntu bionic/stable amd64 containerd.io amd64 1.2.13-2 [21.4 MB]
+Get:3 http://archive.ubuntu.com/ubuntu bionic/universe amd64 aufs-tools amd64 1:4.9+20170918-1ubuntu1 [104 kB]
+Get:4 http://archive.ubuntu.com/ubuntu bionic/universe amd64 cgroupfs-mount all 1.4 [6,320 B]
+Get:5 https://download.docker.com/linux/ubuntu bionic/stable amd64 docker-ce-cli amd64 5:19.03.11~3-0~ubuntu-bionic [41.2 MB]
+Get:6 https://download.docker.com/linux/ubuntu bionic/stable amd64 docker-ce amd64 5:19.03.11~3-0~ubuntu-bionic [22.5 MB]                                                          
+Fetched 85.3 MB in 8s (10.5 MB/s)                                                                                                                                                  
+Selecting previously unselected package pigz.
+(Reading database ... 244067 files and directories currently installed.)
+Preparing to unpack .../0-pigz_2.4-1_amd64.deb ...
+Unpacking pigz (2.4-1) ...
+Selecting previously unselected package aufs-tools.
+Preparing to unpack .../1-aufs-tools_1%3a4.9+20170918-1ubuntu1_amd64.deb ...
+Unpacking aufs-tools (1:4.9+20170918-1ubuntu1) ...
+Selecting previously unselected package cgroupfs-mount.
+Preparing to unpack .../2-cgroupfs-mount_1.4_all.deb ...
+Unpacking cgroupfs-mount (1.4) ...
+Selecting previously unselected package containerd.io.
+Preparing to unpack .../3-containerd.io_1.2.13-2_amd64.deb ...
+Unpacking containerd.io (1.2.13-2) ...
+Selecting previously unselected package docker-ce-cli.
+Preparing to unpack .../4-docker-ce-cli_5%3a19.03.11~3-0~ubuntu-bionic_amd64.deb ...
+Unpacking docker-ce-cli (5:19.03.11~3-0~ubuntu-bionic) ...
+Selecting previously unselected package docker-ce.
+Preparing to unpack .../5-docker-ce_5%3a19.03.11~3-0~ubuntu-bionic_amd64.deb ...
+Unpacking docker-ce (5:19.03.11~3-0~ubuntu-bionic) ...
+Setting up aufs-tools (1:4.9+20170918-1ubuntu1) ...
+Setting up containerd.io (1.2.13-2) ...
+Created symlink /etc/systemd/system/multi-user.target.wants/containerd.service → /lib/systemd/system/containerd.service.
+Processing triggers for ureadahead (0.100.0-21) ...
+Setting up cgroupfs-mount (1.4) ...
+Processing triggers for libc-bin (2.27-3ubuntu1) ...
+Processing triggers for systemd (237-3ubuntu10.38) ...
+Processing triggers for man-db (2.8.3-2ubuntu0.1) ...
+Setting up docker-ce-cli (5:19.03.11~3-0~ubuntu-bionic) ...
+Setting up pigz (2.4-1) ...
+Setting up docker-ce (5:19.03.11~3-0~ubuntu-bionic) ...
+Created symlink /etc/systemd/system/multi-user.target.wants/docker.service → /lib/systemd/system/docker.service.
+Created symlink /etc/systemd/system/sockets.target.wants/docker.socket → /lib/systemd/system/docker.socket.
+Processing triggers for ureadahead (0.100.0-21) ...
+Processing triggers for systemd (237-3ubuntu10.38) ...

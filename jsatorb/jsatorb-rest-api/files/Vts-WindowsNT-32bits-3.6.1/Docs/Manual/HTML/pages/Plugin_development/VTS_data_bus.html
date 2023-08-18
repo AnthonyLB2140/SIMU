@@ -1,0 +1,451 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Provider / Subscriber Data Bus &mdash; VTS 3.6.0-9030 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="VTS 3.6.0-9030 documentation" href="../../index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> VTS
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Introduction/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../General/index.html">General</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Files_used_by_VTS/index.html">Files used by VTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Starting_VTS/index.html">Starting VTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VTS_applications_user_manuals/index.html">VTS applications user manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Plugin development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Data_generators_in_VTS/index.html">Data generator integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../About/index.html">About</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">VTS</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Provider / Subscriber Data Bus</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/pages/Plugin_development/VTS_data_bus.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="provider-subscriber-data-bus">
+<span id="vts-data-bus"></span><h1>Provider / Subscriber Data Bus<a class="headerlink" href="#provider-subscriber-data-bus" title="Permalink to this headline">¶</a></h1>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The Provider / Subscriber mechanism is available starting from protocol version 2.0</p>
+</div>
+<p>The VTS Synchronization protocol integrates a data Provider / Subscriber mechanism.
+Clients can act on this bus as data providers and/or data subscribers. Some clients may ask for parameters and/or provide some.</p>
+<p>When a client requires some data, identified by a parameter name, it can request for this data on the VTS Data Bus. The other clients, connected on this bus, are then informed of this request. If some of these clients can provide the requested parameter, they start emitting this parameter on the bus. By doing so, they become providers.</p>
+<p>When a parameter is no longer needed (all the clients that were using it disconnected, for example), the providers are informed of this fact so that they can stop pushing the data on the bus.</p>
+<p>On the other hand, when a new provider arrives on the data bus, it informs other clients of its arrival by declaring itself as a provider. By doing so, other clients can then ask for the parameters they require.</p>
+<div class="section" id="bus-overview">
+<h2>Bus overview<a class="headerlink" href="#bus-overview" title="Permalink to this headline">¶</a></h2>
+<p>The VTS Data Bus is designed to allow any client to connect to it, subscribe to parameters or provide some.</p>
+<p>Each client on this bus is identified by their VTS ID (Synchronization protocol ID). Even though we talk about <em>ProviderID</em> or <em>SubscriberID</em>, these ID are both the VTS ID no matter if the client provides and/or subscribes to parameters.</p>
+<p>The providers or subscribers do not need to know how the parameters are transmitted on the VTS Data Bus. The bus ensures that all subscribers will receive the parameters and that all providers will receive the requests.</p>
+<p>In order to send data over the VTS data bus, providers shall use the <code class="docutils literal"><span class="pre">DATA</span></code> command, like any other data.</p>
+<div class="section" id="protocol-rules">
+<h3>Protocol rules<a class="headerlink" href="#protocol-rules" title="Permalink to this headline">¶</a></h3>
+<p>The VTS Data Bus is based on the VTS Synchronization protocol. Thus, the latter’s rules apply to the former’s.</p>
+<p>The following rules are added:</p>
+<ul class="simple">
+<li>Parameters name can be letters, numbers and underscores.</li>
+<li>Parameters values must be encoded as JSON values (scalars, strings, arrays of objects).</li>
+</ul>
+</div>
+<div class="section" id="data-transmission">
+<h3>Data transmission<a class="headerlink" href="#data-transmission" title="Permalink to this headline">¶</a></h3>
+<p>The VTS Data Bus relies on the Broker to ensure the transmission of the data and commands. The Broker acts as a broadcaster.</p>
+<p>When a provider acknowledge a parameter request, it must stores internally this request by <strong>storing a SubscriberID/ParameterName token</strong>.
+When a subscriber unsubscribes from a parameter, all the concerned providers should <strong>remove the corresponding SubscriberID/ParameterName token</strong>.
+Each time the concerned parameter is updated, the provider should push its value on the data bus as long as at least one token concerns it.</p>
+</div>
+</div>
+<div class="section" id="json-format">
+<span id="jsonformatchapter"></span><h2>JSON format<a class="headerlink" href="#json-format" title="Permalink to this headline">¶</a></h2>
+<p>In order to transmit structured data of any kind, some commands require their payload to be represented as inline <code class="docutils literal"><span class="pre">JSON</span></code> data. This format is commonly used to represent structured and hierarchical information with a key/value principle.</p>
+<p>Example of JSON:</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+   <span class="nt">&quot;key1&quot;</span><span class="p">:</span> <span class="s2">&quot;value1&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;key2&quot;</span><span class="p">:</span> <span class="mi">-42</span><span class="p">,</span>
+   <span class="nt">&quot;key3&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+   <span class="nt">&quot;key4&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="mi">42</span><span class="p">,</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="mf">1.0</span> <span class="p">],</span>
+   <span class="nt">&quot;key5&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;subkey1&quot;</span><span class="p">:</span> <span class="s2">&quot;value1&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;subkey2&quot;</span><span class="p">:</span> <span class="s2">&quot;value2&quot;</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In this example we declare an object (between <code class="docutils literal"><span class="pre">{</span></code> and <code class="docutils literal"><span class="pre">}</span></code>):</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">key1</span></code> stores a characters string <code class="docutils literal"><span class="pre">&quot;value1&quot;</span></code>,</li>
+<li><code class="docutils literal"><span class="pre">key2</span></code> stores an integer <code class="docutils literal"><span class="pre">-42</span></code>,</li>
+<li><code class="docutils literal"><span class="pre">key3</span></code> stores a floating point value,</li>
+<li><code class="docutils literal"><span class="pre">key4</span></code> stores an array of values (containing <code class="docutils literal"><span class="pre">42</span></code>, <code class="docutils literal"><span class="pre">&quot;str&quot;</span></code> and <code class="docutils literal"><span class="pre">1.0</span></code>) because these values are between <code class="docutils literal"><span class="pre">[</span></code> and <code class="docutils literal"><span class="pre">]</span></code>,</li>
+<li><code class="docutils literal"><span class="pre">key5</span></code> stores an object (because of <code class="docutils literal"><span class="pre">{</span></code> and <code class="docutils literal"><span class="pre">}</span></code>) which has itself two key/value pairs (<code class="docutils literal"><span class="pre">subkey1</span></code> and <code class="docutils literal"><span class="pre">subkey2</span></code>).</li>
+</ul>
+<p>Using this syntax, if we want to transmit two parameters called <code class="docutils literal"><span class="pre">PARAM1</span></code> and <code class="docutils literal"><span class="pre">PARAM2</span></code>, we can write the following JSON :</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+   <span class="nt">&quot;PARAM1&quot;</span><span class="p">:</span> <span class="s2">&quot;some value&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;PARAM2&quot;</span><span class="p">:</span> <span class="s2">&quot;some other value&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In order to transmit this JSON data, <strong>it must be inlined and the quotes must be escaped</strong>:</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span>{ \&quot;PARAM1\&quot;: \&quot;some value\&quot;, \&quot;PARAM2\&quot;: \&quot;some other value\&quot; }
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Inlining the JSON data is required as long as it contains a quote <code class="docutils literal"><span class="pre">&quot;</span></code>.</p>
+</div>
+</div>
+<div class="section" id="commands">
+<h2>Commands<a class="headerlink" href="#commands" title="Permalink to this headline">¶</a></h2>
+<p>The VTS Data Bus protocol relies on the VTS Synchronization protocol. All the Data Bus commands are transmitted as <code class="docutils literal"><span class="pre">CMD</span></code> messages.
+The keyword <code class="docutils literal"><span class="pre">BUS</span></code> informs the Broker and the Data Bus clients that a command is a Data Bus command.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD BUS CommandName &lt;Argument&gt; &lt;Argument&gt; &lt;...&gt;
+</pre></div>
+</div>
+<p>The command names are <strong>case insensitive</strong>.</p>
+<div class="section" id="subscribe-command">
+<h3>Subscribe Command<a class="headerlink" href="#subscribe-command" title="Permalink to this headline">¶</a></h3>
+<p>This command allows a client to declare itself interested by a set of parameters, identified by their name.
+All the providers on the data bus that can provide some or all of these parameters are informed of this request and can start pushing the parameters values on the data bus.</p>
+<p>When a provider takes into account a new subscription, it shall push on the bus the last known value of the requested parameter.
+By doing this the data bus can provide constants parameters only when needed, and ensures all the subscribers will receive them.</p>
+<div class="section" id="syntax">
+<h4>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h4>
+<p>The <code class="docutils literal"><span class="pre">Subscribe</span></code> command is as follow:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD BUS Subscribe &lt;SubscriberID&gt; &lt;AUTO,ProviderID&gt; <span class="s2">&quot;Comma-separated parameters names list&quot;</span>
+</pre></div>
+</div>
+<p>where :</p>
+<ul class="simple">
+<li><em>SubscriberID</em>: ID of the requesting client.</li>
+<li><em>AUTO</em>: means that all the clients that can provide some of the requested parameters should start pushing the parameters values on the bus,</li>
+<li><em>ProviderID</em>: means that only the provider with this ID is asked to transmit the requested parameters, if ever it can provide these parameters.</li>
+</ul>
+</div>
+<div class="section" id="example">
+<h4>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h4>
+<p>The following command is an example of a client (id #123) that subscribes to the parameters <code class="docutils literal"><span class="pre">PARAM1</span></code> and <code class="docutils literal"><span class="pre">PARAM2</span></code> without specifying which provider should provide them:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD BUS Subscribe <span class="m">123</span> AUTO <span class="s2">&quot;PARAM1,PARAM2&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="unsubscribe-command">
+<h3>Unsubscribe Command<a class="headerlink" href="#unsubscribe-command" title="Permalink to this headline">¶</a></h3>
+<p>This command allows a client to inform all the providers on the bus that it is no more interested in some parameters, identified by their name.
+All the providers on the data bus must take that fact into account. Potentially, if some parameters are not requested anymore by any client, the providers can stop emitting them on the bus.</p>
+<div class="section" id="id1">
+<h4>Syntax<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<p>The <code class="docutils literal"><span class="pre">Unsubscribe</span></code> command is as follow:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD Bus Unsubscribe &lt;SubscriberID&gt; &lt;AUTO,ProviderID&gt; <span class="s2">&quot;comma-separated parameters names list&quot;</span>
+</pre></div>
+</div>
+<p>where:</p>
+<ul class="simple">
+<li><em>SubscriberID</em>: ID of the requesting client.</li>
+<li><em>AUTO</em>: means that all the clients that were providing the given parameters for this specific SubscriberID should remove that subscriber from their list of subscribers.</li>
+<li><em>ProviderID</em>: means that the specific provider with this ID must remove the subscriber identified by the SubscriberID from their its list of subscribers.</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h4>Example<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<p>The following command is an example of a client (id #123) that unsubscribes from the parameters <code class="docutils literal"><span class="pre">PARAM1</span></code> and <code class="docutils literal"><span class="pre">PARAM2</span></code> from all the concerned providers:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD BUS Unsubscribe <span class="m">123</span> AUTO <span class="s2">&quot;PARAM1,PARAM2&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="newprovider-command">
+<h3>NewProvider Command<a class="headerlink" href="#newprovider-command" title="Permalink to this headline">¶</a></h3>
+<p>This allows a client to inform all other clients on the bus that a new provider is now available.</p>
+<p>Other clients may use this information to subscribe to new parameters.</p>
+<div class="section" id="id3">
+<h4>Syntax<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<p>The <code class="docutils literal"><span class="pre">NewProvider</span></code> command is as follow:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD BUS NewProvider &lt;ProviderID&gt;
+</pre></div>
+</div>
+<p>where:</p>
+<ul class="simple">
+<li><em>ProviderID</em>: ID of the new provider.</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h4>Example<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<p>The following command is an example of a client (id #123) that declares itself as a provider on the bus:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD BUS NewProvider <span class="m">123</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="describe-command">
+<h3>Describe Command<a class="headerlink" href="#describe-command" title="Permalink to this headline">¶</a></h3>
+<p>This command allows a client to ask for information about a set of parameters. <em>The nature of the description is let free and independent of the data bus.</em></p>
+<p>All providers concerned by this request shall return a <code class="docutils literal"><span class="pre">Description</span></code> command in response.</p>
+<p>This request can be sent to all providers, or to a specific provider (refered to by its ID).</p>
+<div class="section" id="id5">
+<h4>Syntax<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<p>The <code class="docutils literal"><span class="pre">Describe</span></code> command respects the following syntax:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD BUS Describe &lt;SubscriberID&gt; &lt;AUTO,ProviderID&gt; <span class="s2">&quot;comma-separated parameters names list&quot;</span>
+</pre></div>
+</div>
+<p>where:</p>
+<ul class="simple">
+<li><em>SubscriberID</em>: ID of the requesting client.</li>
+<li><em>AUTO</em>: means that all the clients that can provide information about the requested parameters shall answer,</li>
+<li><em>ProviderID</em>: means that only the provider with this ID is asked to give information about the requested parameters, if ever it can provide any information.</li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h4>Example<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<p>The following command is an example of a client (id #123) that asks for information about the parameters <code class="docutils literal"><span class="pre">PARAM1</span></code> and <code class="docutils literal"><span class="pre">PARAM2</span></code> from all the concerned providers:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD BUS Describe <span class="m">123</span> AUTO <span class="s2">&quot;PARAM1,PARAM2&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="description-command">
+<h3>Description Command<a class="headerlink" href="#description-command" title="Permalink to this headline">¶</a></h3>
+<p>This allows is used to transmit <strong>constant</strong> information about a set of parameters. <em>The nature of the description is let free and independent of the data bus.</em></p>
+<p>This commands is usually sent in response to a <code class="docutils literal"><span class="pre">Describe</span></code> command.</p>
+<p>In order to transmit any kind of parameters, the <code class="docutils literal"><span class="pre">Description</span></code> command payload is stored as inlined JSON data. Please refer to <a class="reference internal" href="#jsonformatchapter"><span class="std std-ref">JSON format</span></a>.</p>
+<div class="section" id="id7">
+<h4>Syntax<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
+<p>The <code class="docutils literal"><span class="pre">Description</span></code> command respects the following syntax:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD BUS Description &lt;ProviderID&gt; <span class="s2">&quot;Inlined-JSON-Data&quot;</span>
+</pre></div>
+</div>
+<p>where:</p>
+<ul class="simple">
+<li><em>ProviderID</em>: ID of the transmitting provider.</li>
+</ul>
+<p>The payload has to be represented as an inline JSON object where each key/value pair correspond to the description of a parameter.</p>
+</div>
+<div class="section" id="id8">
+<h4>Example<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
+<p>The following command is an example of a provider (id #123) that gives a description of two parameters <code class="docutils literal"><span class="pre">PARAM1</span></code> and <code class="docutils literal"><span class="pre">PARAM2</span></code>.</p>
+<p>The payload contains the following JSON data:</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+   <span class="nt">&quot;PARAM1&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;desc&quot;</span><span class="p">:</span> <span class="s2">&quot;some description&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;limit&quot;</span><span class="p">:</span> <span class="mf">3.14159</span>
+   <span class="p">},</span>
+   <span class="nt">&quot;PARAM2&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;another info&quot;</span><span class="p">,</span> <span class="mi">789</span> <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>With this data inlined and its quotes escaped, we get the following command:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD BUS Description <span class="m">123</span> <span class="s2">&quot;{ \&quot;PARAM1\&quot;: { \&quot;desc\&quot;: \&quot;some description\&quot;, \&quot;limit\&quot;: 3.14159 }, \&quot;PARAM2\&quot;: [ \&quot;another info\&quot;, 789 ] }&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright VTS Team.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'3.6.0-9030',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

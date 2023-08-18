@@ -1,0 +1,107 @@
+PrestoPlot® Sofware License ===========================
+
+Please read attentively the provisions of this License before downloading the
+SOFTWARE. The use of the SOFTWARE by the Licensee means that the latter has
+agreed with the provisions of this License. The SOFTWARE, subject of this
+License, registered at the Agence pour la Protection des Programmes (
+(FR.001.150020 .000.R.P.2006.000.10800), is co-owned by CNES and BELSPO, joint
+holders of the economic rights of the software.
+
+The CNES has delegated the BELSPO to ensure the exploitation of the said
+SOFTWARE.
+
+CNES is also the owner of the French trademark registered under n°3372859 and
+the Community trademark registered under n°4818506.
+
+As a work, the SOFTWARE is protected by the French Code of intellectual
+property (article L111-1 and next of the Code). On the SOFTWARE, CNES grants a
+non-exclusive free License to the Licensee, who can be a physical or a moral
+person.
+
+LANGUAGE OF THE LICENSE AND APPLICABLE LAW
+------------------------------------------
+
+The License is established in French and English language. In the case of a
+dispute, the French version is the one that prevails.
+
+This License is governed by French law. If a dispute in connection with the
+interpretation or performance of the Licencse, the dispute shall be brought
+before the French competent court.
+
+DURATION OF THE LICENSE
+-----------------------
+
+The License is granted for a period of ten (10) years, renewable by tacit
+agreement. In any case, the total duration of this License shall not exceed the
+duration of the legal protection of copyright.
+
+TERRITORY
+---------
+
+The present License is granted worldwide. However, due to the sensitive nature
+of any product originating from the space sector, the Licensee agrees
+imperatively to strictly comply with French and European export control
+regulations.
+
+RIGHTS CONCEDED
+---------------
+
+CNES grants the Licensee a non-exclusive and free right to use the SOFTWARE,
+provided in executable form with its documentation. This non-exclusive right of
+use consists entirely in the implementation of the program to obtain the
+requested operation.
+
+CNES grants Licensee the non-exclusive right to sublicense the SOFTWARE free of
+charge. The Licensee is not authorized to make copies of the SOFTWARE, other
+than a backup if it is necessary to preserve the use of the SOFTWARE.
+
+LICENSEE’S OBLIGATIONS
+----------------------
+
+These rights are granted subject to the following conditions:
+
+    * The Licensee shall not commercially exploit the SOFTWARE as such.
+      However, the Licensee may sell products incorporating the SOFTWARE,
+      and services based on the SOFTWARE.
+
+    * The Licensee shall not adapt, transform, modify or translate the
+      SOFTWARE.
+
+    * The Licensee agrees to mention and maintain all CNES property and
+      copyright notices on all media of the SOFTWARE. In case of publications,
+      communications or presentations, the Licensee agrees to quote the CNES
+      (Centre National d'Etudes Spatiales).
+
+    * The Licensee shall not use the SOFTWARE in such a way as to damage the
+      image of CNES, and in particular its scientific and technical
+      reputation.
+
+    * The Licensee undertakes to ensure that its sub-licensees comply with all
+      the provisions of to its sub-licensees. If any of these obligations are
+      not complied with, the Licensee shall immediately become a counterfeiter
+      and may be sued for counterfeit.
+
+GARANTEE
+--------
+
+The Licensee uses the SOFTWARE as it is provided herein at his own expense,
+risks, without any guarantee from CNES. Any guarantee of any kind such as
+guarantee against counterfeit is here excluded. CNES cannot guarantee that the
+SOFTWARE is free from bugs and defaults, and has no obligation of correcting
+any anomalies of any kind nor any deficiencies of the SOFTWARE. CNES cannot
+guarantee that the SOFTWARE is consistent with the Licensee's needs.
+
+In the same way, CNES is not responsible for any loss of profit or revenue, or
+data, or any direct or indirect damage, which could arise from the use of the
+SOFTWARE or the inability to use the SOFTWARE. The Licensee accepts that CNES
+cannot be sued.
+
+RESILIATION
+-----------
+
+The License automatically terminates if Licensee breaches the terms and
+conditions of this License. In such event, Licensee shall not be entitled to
+any refund whatsoever. The Licensee shall return the SOFTWARE to CNES and shall
+not retain any copy of it, without prejudice to any damages that may be claimed
+by the Licensee as compensation for any loss it may have suffered as a result
+of such breach.

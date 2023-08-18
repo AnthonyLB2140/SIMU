@@ -1,0 +1,23 @@
+<SensorTarget>
+ <TargetAltitude Altitude="[ALTSENSORSTATION]"/>
+</SensorTarget>
+<Sensor Name="Default">
+ <SensorProp>
+  <SensorElliptical HalfAngleX="[HALFANGLESTATION]" HalfAngleY="[HALFANGLESTATION]"/>
+  <SensorGraphics Range="10000" VolumeColor="0.717647 0 1" VolumeOpacity="10" ContourColor="0.717647 0 1"/>
+ </SensorProp>
+ <Geometry>
+  <Position>
+   <Value>
+    <Fixed Data="0 0 0"/>
+   </Value>
+  </Position>
+  <Orientation>
+   <Quaternion>
+    <Value>
+     <Fixed Data="1 0 0 0"/>
+    </Value>
+   </Quaternion>
+  </Orientation>
+ </Geometry>
+</Sensor>

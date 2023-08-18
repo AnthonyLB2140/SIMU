@@ -1,0 +1,52 @@
+.. _ZenithView_user_manual:
+
+ZenithView user manual
+==================================================================================
+
+The ZenithView client application displays half of the celestial sphere as seen from a specific ground station.
+
+
+.. _ZenithView_user_manual#Introduction:
+
+Introduction
+----------------------------------------------------------------------------------
+
+The ZenithView application displays a Lambert azimuthal equal-area projection of the celestial sphere as seen from a specific ground station (centered on it). 
+Project entities (such as satellites and celestial bodies) are projected into the celestial sphere according to their position relative to the station.
+
+.. figure:: /_images/ZenithView.jpg
+   :align: center
+
+   ZenithView client application
+
+
+.. _ZenithView_user_manual#Configuration_in_VTS:
+
+Configuration in VTS
+----------------------------------------------------------------------------------
+
+The entities and properties defined in the VTS configuration utility will be displayed in ZenithView.
+
+
+.. _ZenithView_user_manual#Application_parameters_in_VTS:
+
+Application parameters in VTS
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When adding ZenithView as a VTS client application, some parameters can be set by clicking on the ZenithView entry in the VTS project tree.
+
+.. list-table::
+   :header-rows: 1
+   
+   * - Parameter
+     - Description
+   * - Scene Reference
+     - This combo box allows you to select a ground station from the list of ground stations defined in the VTS project tree. The selected ground station will become the scene reference in the ZenithView instance. By default, the first ground station from the VTS project tree is selected as a scene reference.
+   * - Project on horizon when outside the view
+     - If true, entities whose projection are outside the limits of the current view (i.e. a satellite not visible from the ground station) will be displayed on the horizon of the view.
+   * - Projection field of view
+     - The field of view of the projection in degrees.
+
+
+Since ZenithView shares its parameters with SkyView, please refer to :ref:`SkyView user manual <SkyView_user_manual#Application_parameters_in_VTS>` for more detail on the application parameters in common.
+

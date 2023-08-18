@@ -1,0 +1,42 @@
+# -----------------------------------------------------------------------------
+# JSatOrb Module REST requests: Date Conversion
+# -----------------------------------------------------------------------------
+# These requests are sent from Visual studio code, using the REST client for
+# Visual Studio Code extension 
+# (https://marketplace.visualstudio.com/items?itemName=humao.rest-client).
+# -----------------------------------------------------------------------------
+# How to use: 
+#  - in Visual studio code, install the REST client extension,
+#  - open this file,
+#  - launch the JSatOrb REST API server,
+#  - click on the "Send request" link above each request,
+#  - the REST API response should be displayed in a separated Response window.
+# -----------------------------------------------------------------------------
+# To separate two distinct requests, add a line with '###' between them.
+# -----------------------------------------------------------------------------
+
+
+## Send a request to convert an ISO-8601 UTC date into Julian days (JD)
+POST http://localhost:8000/dateconversion HTTP/1.1
+content-type: application/json
+
+{
+    "header": {
+        "dateToConvert": "2020-04-07T16:53:16", 
+        "targetFormat": "JD"
+    }
+}
+
+###
+
+## Send a request to convert an ISO-8601 UTC date into Modified Julian days (MJD)
+POST http://localhost:8000/dateconversion HTTP/1.1
+content-type: application/json
+
+{
+    "header": {
+        "dateToConvert": "2020-04-07T16:53:16", 
+        "targetFormat": "MJD"
+    }
+}
+

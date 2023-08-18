@@ -1,0 +1,111 @@
+Licence d’utilisation du logiciel PrestoPlot®
+=============================================
+
+Veuillez lire attentivement les termes et conditions de cette Licence avant de
+télécharger le LOGICIEL. L’utilisation du LOGICIEL par le Licencié signifie que
+ce dernier a accepté les termes et conditions de la présente Licence.
+
+Le LOGICIEL, objet de la présente Licence, déposé à l’Agence pour la Protection
+des Programmes (FR.001.150020 .000.R.P.2006.000.10800), est détenu en
+co-propriété par le CNES et le BELSPO, conjointement titulaires des droits
+patrimoniaux du logiciel.
+
+Le CNES a délégation du BELSPO pour assurer la valorisation dudit logiciel.
+
+Le CNES est par ailleurs propriétaire de la marque française enregistrée sous
+le n°3372859 et de la marque communautaire enregistrée sous le n°4818506.
+
+Le LOGICIEL en tant qu’œuvre est protégé par le code de la propriété
+intellectuelle au titre des dispositions L111-1 et suivants du code.
+
+Le CNES concède une Licence gratuite non exclusive sur le LOGICIEL au Licencié,
+qui peut être une personne physique ou morale.
+
+LANGAGE DE LA LICENCE ET LOI APPLICABLE
+---------------------------------------
+
+La Licence est établie en français et en anglais. En cas de litige, la version
+française prévaudra.
+
+La Licence est soumise au droit français. Si un différend survient à l’occasion
+de l’interprétation ou de l’exécution de la Licence, le litige sera porté devant
+le Tribunal compétent.
+
+DUREE DE LA LICENCE
+-------------------
+
+La Licence est accordée pour une durée de dix (10) ans
+renouvelable par tacite reconduction. En tout état de cause, la présente
+Licence ne pourra avoir une durée totale supérieure à celle de la protection
+légale du droit d’auteur.
+
+TERRITOIRE
+----------
+
+La Licence est accordée pour le monde
+entier. Cependant, les produits issus du secteur spatial étant « sensibles »,
+le Licencié s’engage à respecter impérativement la législation française
+concernant les autorisations d’exportation.
+
+DROITS CONCEDES
+---------------
+
+Le CNES concède gratuitement au Licencié un droit non exclusif et gratuit
+d’utilisation sur le LOGICIEL, fourni en exécutable avec sa documentation. Ce
+droit non exclusif d’utilisation consiste exhaustivement dans la mise en œuvre
+du programme en vue d’obtenir l’opération demandée. Le CNES concède au Licencié
+le droit non exclusif de sous-licencier gratuitement le LOGICIEL. Le licencié
+n’est pas autorisé à effectuer des copies du LOGICIEL, autre qu’une copie de
+sauvegarde si cela est nécessaire pour préserver l’utilisation du LOGICIEL.
+
+OBLIGATIONS DU LICENCIE
+-----------------------
+ Ces droits sont accordés sous réserve du respect des conditions suivantes :
+
+    * Le Licencié s’interdit toute exploitation commerciale du LOGICIEL en tant
+      que tel. En revanche, le licencié pourra vendre des produits intégrant le
+      LOGICIEL, ainsi que des services s’appuyant sur le LOGICIEL.
+
+    * Le Licencié s’interdit d’effectuer toute adaptation, transformation,
+      modification ou traduction du LOGICIEL.
+
+    * Le Licencié s’engage à mentionner et à conserver en permanence toutes les
+      mentions de propriété et de copyright du CNES sur tous les supports du
+      LOGICIEL. En cas de publications, de communications ou de présentations
+      le Licencié s’engage à citer le CNES (Centre National d’Etudes Spatiales).
+
+    * Le Licencié s’interdit d’utiliser le LOGICIEL de manière à nuire à l’image
+      du CNES, et en particulier à sa réputation scientifique et technique.
+
+    * Le Licencié s’engage à faire respecter l’ensemble des dispositions de la
+      présente Licence à ses sous-licenciés.
+
+Si l’une quelconque de ces obligations n’était pas respectée, le Licencié
+deviendrait immédiatement contrefacteur et serait susceptible d’être poursuivi
+en contrefaçon.
+
+GARANTIE
+--------
+
+Le Licencié utilise le LOGICIEL à ses propres frais et risques. Le CNES ne donne
+aucune sorte de garantie au Licencié, y compris contre l’action des tiers.
+
+Le CNES ne peut garantir que le LOGICIEL est exempt de bogues, erreurs, défauts
+ou omissions et n’a aucune obligation de corriger ces éventuelles déficiences,
+quelles qu’elles soient. Le CNES ne peut garantir l’adéquation du LOGICIEL aux
+besoins du Licencié.
+
+Le CNES ne saurait être tenu pour responsable de quelque dommage que ce soit,
+direct ou indirect, matériel ou immatériel, y compris d’éventuelles pertes de
+profit, de revenu ou de données, résultant de l’utilisation du LOGICIEL ou de
+l’incapacité à l’utiliser, ni poursuivi à ce sujet.
+
+RESILIATION
+-----------
+
+La Licence prend fin automatiquement si le Licencié viole les termes et
+conditions de la présente Licence. En ce cas, le Licencié ne pourra prétendre
+à quelque remboursement que ce soit. Le Licencié devra retourner le LOGICIEL
+au CNES et n’en conserver aucune copie, sans préjudice de tous dommages et
+intérêts qui pourraient lui être demandés par le Titulaire en réparation du
+préjudice qu’il aura éventuellement subi du fait de cette violation.

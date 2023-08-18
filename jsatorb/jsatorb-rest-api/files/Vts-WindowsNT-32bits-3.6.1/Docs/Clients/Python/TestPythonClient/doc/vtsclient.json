@@ -1,0 +1,27 @@
+{
+   "launcher":{  
+      "positionals":[ "launcher.py" ]
+   },
+   "client":{  
+      "positionals":[ "minimalClient.py" ]
+   },
+   "winnt":{  
+      "environment":{  
+         "PATH":"C:/msys64/mingw64/bin;${PATH}"
+      },
+      "launcher":{  
+         "executable":"python3.exe"
+      },
+      "client":{  
+         "executable":"python3.exe"
+      }
+   },
+   "linux":{  
+      "launcher":{  
+         "executable":"python"
+      },
+      "client":{  
+         "executable":"python"
+      }
+   }
+}

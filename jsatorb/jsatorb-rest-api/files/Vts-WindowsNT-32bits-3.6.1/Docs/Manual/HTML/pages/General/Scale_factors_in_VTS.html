@@ -1,0 +1,292 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Scale factors in VTS &mdash; VTS 3.6.0-9030 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="VTS 3.6.0-9030 documentation" href="../../index.html"/>
+        <link rel="up" title="General" href="index.html"/>
+        <link rel="next" title="Clusters in VTS" href="Cluster_in_VTS.html"/>
+        <link rel="prev" title="Physical masks in VTS" href="Masks_in_VTS.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> VTS
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction/index.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">General</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Conventions_in_VTS.html">Conventions in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Date_formats_in_VTS.html">Date formats in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Data_sources_in_VTS.html">Data sources in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Position_of_objects_in_VTS.html">Position of objects in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Orientation_of_objects_in_VTS.html">Orientation of objects in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Examples_for_position_and_orientation_of_objects_in_VTS.html">Examples for position and orientation of objects in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Backwards_compatibility_in_VTS.html">Backward compatibility in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Object_paths_in_VTS.html">Object paths in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Central_bodies_in_VTS.html">Central bodies in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Structure_of_satellites_in_VTS.html">Structure of satellites in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sensors_in_VTS.html">Sensors in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Masks_in_VTS.html">Physical masks in VTS</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Scale factors in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cluster_in_VTS.html">Clusters in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scenario_in_VTS.html">Scenario in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Manage_window_geometry.html">Window Geometry Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mission_events_in_VTS.html">Mission events in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="POIs_and_ROIs_in_VTS.html">POIs and ROIs in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Other_visualisable_objects.html">Other visualisable objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scripts_and_macros_in_VTS.html">Scripts and macros in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="VTS_Broker.html">VTS Broker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Files_used_by_VTS/index.html">Files used by VTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Starting_VTS/index.html">Starting VTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VTS_applications_user_manuals/index.html">VTS applications user manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Plugin_development/index.html">Plugin development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Data_generators_in_VTS/index.html">Data generator integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../About/index.html">About</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">VTS</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">General</a> &raquo;</li>
+        
+      <li>Scale factors in VTS</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/pages/General/Scale_factors_in_VTS.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="scale-factors-in-vts">
+<span id="id1"></span><h1>Scale factors in VTS<a class="headerlink" href="#scale-factors-in-vts" title="Permalink to this headline">¶</a></h1>
+<p>Scale factors in VTS can be applied to central bodies or satellites of a project, for Celestia and client applications that support scale factors. This feature allows easy visualization of both the satellite’s attitude and its orbital position. All satellite components are affected by the satellite’s scale factor. Note that when a central body’s scale factor is different than 1, the computations for sensor-body intersection will be erroneous in clients affected by the scale factor.</p>
+<p>The scale factor for central bodies and satellites can be dynamically adjusted in the <span class="xref std std-ref">View Properties tab</span> of the Broker, using the <strong>Body scale</strong> and <strong>Satellite scale</strong> properties.</p>
+<div class="figure align-center" id="id2">
+<img alt="../../_images/FacteurEchelleDefault.png" src="../../_images/FacteurEchelleDefault.png" />
+<p class="caption"><span class="caption-text">Scale factor 1 for Earth and the project’s satellite</span></p>
+</div>
+<div class="figure align-center" id="id3">
+<img alt="../../_images/FacteurEchelleCustom.png" src="../../_images/FacteurEchelleCustom.png" />
+<p class="caption"><span class="caption-text">Scale factor 0.75 for Earth and 500 000 for the project’s satellite</span></p>
+</div>
+<p>Scale factors also allow for easy visualization of motion for the whole solar system. The <strong>Solar system scale</strong> property in the <span class="xref std std-ref">*View Properties* tab</span> of the Broker allows dynamically setting the scale factor of the whole solar system. Note that the Sun is not affected by this scale factor. Scale factors can be set for the whole solar system and for independent central bodies within in, e.g. to decrease the size of the gas giants.</p>
+<div class="figure align-center" id="id4">
+<img alt="../../_images/FacteurEchelleSolSys.png" src="../../_images/FacteurEchelleSolSys.png" />
+<p class="caption"><span class="caption-text">Scaled solar system</span></p>
+</div>
+<p>The scale factor editor in the <a class="reference internal" href="Scenario_in_VTS.html#scenario-in-vts-view-properties-editor"><span class="std std-ref">view properties editor</span></a> allows editing the scale factor as follows:</p>
+<ul class="simple">
+<li>by directly entering a numerical value in the text field</li>
+<li>by moving the slider left/right to increase/decrease the factor</li>
+<li>by setting the factor to 1 using the <code class="docutils literal"><span class="pre">x1</span></code> button</li>
+<li>by setting the factor to 100 000 using the <code class="docutils literal"><span class="pre">x1e5</span></code> button (satellites only)</li>
+</ul>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Cluster_in_VTS.html" class="btn btn-neutral float-right" title="Clusters in VTS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Masks_in_VTS.html" class="btn btn-neutral" title="Physical masks in VTS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright VTS Team.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'3.6.0-9030',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

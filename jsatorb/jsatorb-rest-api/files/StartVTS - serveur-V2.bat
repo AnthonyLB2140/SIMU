@@ -1,0 +1,1 @@
+cd C:\Vts-WindowsNT-32bits-3.6.1\ && startVTS --batch --project \\192.168.192.200\files\default_Sat\default_Sat.vts

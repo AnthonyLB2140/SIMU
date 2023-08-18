@@ -1,0 +1,31 @@
+# -----------------------------------------------------------------------------
+# JSatOrb project: Backend Dockerfile ignore rules
+# -----------------------------------------------------------------------------
+# This file should be copied and run from the JSatOrb gir repositories 
+# root folder. See jsatorb-docker/README.md documentation file for details.
+# -----------------------------------------------------------------------------
+
+# Ignore everything ...
+**
+
+# ... except those files ...
+!Dockerfile
+
+# ... and those directories.
+!jsatorb-common
+!jsatorb-coverage-service
+!jsatorb-date-conversion
+!jsatorb-docker
+!jsatorb-eclipse-service
+!jsatorb-frontend
+!jsatorb-rest-api
+!jsatorb-visibility-service
+
+# Ignore unnecessary files in allowed directories.
+**/.git*
+**/.vscode
+**/target
+**/test*
+**/__pycache__
+**/**/__pycache__
+

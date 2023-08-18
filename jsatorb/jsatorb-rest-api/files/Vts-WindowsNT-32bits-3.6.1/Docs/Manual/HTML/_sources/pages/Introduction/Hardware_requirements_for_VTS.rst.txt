@@ -1,0 +1,57 @@
+.. _Hardware_requirements_for_VTS:
+
+Hardware requirements for VTS
+==================================================================================
+
+This page describes the hardware requirements for proper operation of the VTS toolkit. 
+
+
+.. _Hardware_requirements_for_VTS#Recommended_system_requirements:
+
+Recommended system requirements
+----------------------------------------------------------------------------------
+
+- Core i5 processor or better
+- 4 GB RAM memory
+- Video card (nVidia is recommended for Celestia) with 1 GB memory
+- 1 GB free disk space
+
+For nVidia video cards, prefer midrange cards : GeForce [23456]50 series.
+
+Here are some example systems on which VTS would run very smoothly:
+
+=========== =============================================== =============================================
+Component   Laptop                                          Desktop
+=========== =============================================== =============================================
+Processor   3rd gen Intel Core i7-3610M (3.30GHz, 6MB)      3rd gen Intel Core i7-3770 (3.40GHz, 8MB)
+Memory      Dual-channel SDRAM DDR3 4 GB, 1600 MHz          Dual-channel SDRAM DDR3 8 GB, 1600 MHz
+Video       NVIDIA GeForce GT 650M 2 GB                     NVIDIA GeForce GT 640 1 GB
+Hard drive  SATA 1TB 5400 rd/min                            SATA 1TB 7200 rd/min
+=========== =============================================== =============================================
+
+
+.. _Hardware_requirements_for_VTS#Minimal_system_requirements:
+
+Minimal system requirements
+----------------------------------------------------------------------------------
+
+- 1GHz processor
+- Dedicated video card with 128 MB memory (nVidia GeForce 5000 or equivalent), embedded video card for modern processors (Intel HD Graphics 3000)
+- 512 MB memory
+- 500 MB free disk space
+
+Such a system will run VTS, but won't handle the more realistic rendering options in Celestia.
+
+
+.. _Hardware_requirements_for_VTS#Video_card_drivers:
+
+Video card drivers
+----------------------------------------------------------------------------------
+
+In order to get the best performance from a machine, video card drivers should be kept up-to-date. This will solve the majority of display problems encountered while using Celestia.
+
+Driver updates are available on the website of the card's chipset maker (nVidia, ATI or Intel), or on the website of the system maker for some laptops.
+
+**Issues with Celestia and sensor swath:** if Celestia closes forcefully while running a visualization with sensor swath enabled, it may be due to outdated graphics card drivers. If drivers are up-to-date and the problem persists, with an Intel chipset, it may be because the chipset is incompatible with the rendering of sensor swath items. Sensor swath must then be disabled for the project (see http://www.opengl.org/wiki/FAQ#Why_is_my_GL_version_only_1.4_or_lower.3F).
+
+

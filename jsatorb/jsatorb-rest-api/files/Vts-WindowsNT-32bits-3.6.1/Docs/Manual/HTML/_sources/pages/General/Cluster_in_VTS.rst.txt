@@ -1,0 +1,12 @@
+.. _Cluster_in_VTS:
+
+Clusters in VTS
+==================================================================================
+
+In VTS, a cluster represents a population of objects. The objects aren't directly exposed to user
+in the configurator.
+
+Each object consists of a name and an orbit file.
+
+A cluster is attached to a central body which will be used as a reference frame to position the different objects.
+

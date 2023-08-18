@@ -1,0 +1,592 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Client applications in VTS &mdash; VTS 3.6.0-9030 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="VTS 3.6.0-9030 documentation" href="../../index.html"/>
+        <link rel="up" title="Plugin development" href="index.html"/>
+        <link rel="next" title="Application IDs in VTS" href="Application_IDs_in_VTS.html"/>
+        <link rel="prev" title="Plugin development" href="index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> VTS
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../General/index.html">General</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Files_used_by_VTS/index.html">Files used by VTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Starting_VTS/index.html">Starting VTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VTS_applications_user_manuals/index.html">VTS applications user manuals</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Plugin development</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Client applications in VTS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#architecture-overview">Architecture overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#initialization-sequence">Initialization Sequence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#files-and-directory-structure">Files and directory structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#client-configuration-file">Client configuration file</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#the-environment-key">The <em>environment</em> key</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#injected-environment-variable">Injected environment variable</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#os-specific-section">OS specific section</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#application-specific-section">Application specific section</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#application-launchers">Application launchers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#executing-application-launchers">Executing application launchers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#preparing-application-environnement">Preparing application environnement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#building-the-client-application-s-command-line">Building the client application’s command line</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#application-launchers-examples">Application launchers examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#application-cleaners">Application cleaners</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Application_IDs_in_VTS.html">Application IDs in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Synchronization_protocol_for_VTS_clients.html">Synchronization protocol for VTS clients</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Description_of_application_properties.html">Description of application properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="VTS_project_file_format.html">VTS project file format</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Data_generators_in_VTS/index.html">Data generator integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../About/index.html">About</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">VTS</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Plugin development</a> &raquo;</li>
+        
+      <li>Client applications in VTS</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/pages/Plugin_development/Client_applications_in_VTS.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="client-applications-in-vts">
+<span id="id1"></span><h1>Client applications in VTS<a class="headerlink" href="#client-applications-in-vts" title="Permalink to this headline">¶</a></h1>
+<p>VTS is designed to interact with <strong>client applications</strong>. Client applications are started by VTS Broker and can communicate with it using the <a class="reference internal" href="Synchronization_protocol_for_VTS_clients.html#synchronization-protocol-for-vts-clients"><span class="std std-ref">Synchronization protocol for VTS clients</span></a>. This chapter describes VTS’s client application architecture.</p>
+<div class="section" id="architecture-overview">
+<span id="client-applications-in-vts-architecture-overview"></span><h2>Architecture overview<a class="headerlink" href="#architecture-overview" title="Permalink to this headline">¶</a></h2>
+<p>A VTS project defines a set of entites (such as satellites, ephemeris, 3D models) and the client applications used to visualize them.</p>
+<p>Client applications can be configured in the VTS configuration utility.</p>
+<div class="figure align-center" id="id2">
+<img alt="../../_images/ConfigurationProjet.png" src="../../_images/ConfigurationProjet.png" />
+<p class="caption"><span class="caption-text">Project configuration</span></p>
+</div>
+<p>Multiple instaces of the same application can be started by VTS, each instance has a unique <strong>Application ID</strong>.</p>
+<p>Upon visualization startup, the Broker starts the <strong>application launchers</strong> for each instance of a client applications defined in the project file with the <em>AutoStarted</em> parameter.</p>
+<p>Application launchers receive VTS parameters (such as the path to the project file and its application ID) and may perform any task in order to prepare the client application environment. The Broker uses the application luncher output to starts each client applications with the specified arguments.</p>
+<div class="figure align-center" id="id3">
+<img alt="../../_images/LancementApps.png" src="../../_images/LancementApps.png" />
+<p class="caption"><span class="caption-text">Visualization startup</span></p>
+</div>
+</div>
+<div class="section" id="initialization-sequence">
+<span id="client-applications-in-vts-initialization-equence"></span><h2>Initialization Sequence<a class="headerlink" href="#initialization-sequence" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>The Broker reads the VTS project file and detects the list of client application instances to be started.</li>
+<li>The Broker executes the corresponding application launchers for each client application instance.</li>
+<li>The application launchers perform any task required to execute the client application and return the command line for application startup on standard ouput.</li>
+<li>The Broker executes all client application instances.</li>
+<li>Clients connect to the Broker on its socket and send the initialization message to indicate they are ready.</li>
+<li>The Broker sends the commands for the initial states of the application declared in the <em>myAppVtsConf.ini</em> file, with default values or user-defined values from the VTS project.</li>
+<li>Clients communicate with the Broker according the the synchronization protocol described in the <a class="reference internal" href="Synchronization_protocol_for_VTS_clients.html#synchronization-protocol-for-vts-clients"><span class="std std-ref">Synchronization protocol for VTS clients</span></a> chapter.</li>
+</ol>
+</div>
+<div class="section" id="files-and-directory-structure">
+<span id="client-applications-in-vts-files-and-directory-structure"></span><h2>Files and directory structure<a class="headerlink" href="#files-and-directory-structure" title="Permalink to this headline">¶</a></h2>
+<p>VTS automatically detects client applications based on the following:</p>
+<ul class="simple">
+<li>The application folder must be located in the <code class="docutils literal"><span class="pre">Apps/</span></code> folder of the VTS installation directory. The application folder name must start with an uppercase letter. This name will be used as the application’s name.</li>
+<li>The <code class="docutils literal"><span class="pre">bin</span></code> subfolder of the application folder should contain:
+- the client application executable
+- the application launcher executable: its name must start by <code class="docutils literal"><span class="pre">launcher</span></code> followed by the application name (case-insensitive), see the dedicated chapter below.
+- The application cleaner executable: its name must start by <code class="docutils literal"><span class="pre">cleaner</span></code> followed by the application name (case-insensitive), see the dedicated chapter below.</li>
+<li>The <code class="docutils literal"><span class="pre">doc</span></code> subfolder of the application folder should contain:
+- a <code class="docutils literal"><span class="pre">vtsclient.json</span></code> configuration file.
+- a <code class="docutils literal"><span class="pre">README</span></code> file (its contents will be displayed in the VTS configuration utility).
+- a text file with its name starting by the application name and followed by <code class="docutils literal"><span class="pre">VtsConf.ini</span></code>. If present, this file must contain a description of the application’s view properties (appearing in the view properties editor and initial properties editor for the application).
+- an icon file with <code class="docutils literal"><span class="pre">.png</span></code> or <code class="docutils literal"><span class="pre">.ico</span></code> file extension. If present, this icon will be used in the <em>Applications</em> tab of the Broker. If not present, the application executable’s icon will be used instead.</li>
+</ul>
+<p>Example for the Celestia client application:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="16%" />
+<col width="13%" />
+<col width="60%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td rowspan="7">Apps</td>
+<td rowspan="7">Celestia</td>
+<td rowspan="3">bin</td>
+<td>celestia.exe</td>
+</tr>
+<tr class="row-even"><td>launcherCelestia.exe</td>
+</tr>
+<tr class="row-odd"><td>cleanerCelestia.bat</td>
+</tr>
+<tr class="row-even"><td rowspan="4">doc</td>
+<td>README</td>
+</tr>
+<tr class="row-odd"><td>celestiaVtsConf.ini</td>
+</tr>
+<tr class="row-even"><td>vtsclient.json</td>
+</tr>
+<tr class="row-odd"><td>icon.png</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="client-configuration-file">
+<h2>Client configuration file<a class="headerlink" href="#client-configuration-file" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal"><span class="pre">vtsclient.json</span></code> configuration file enables advanced options to specify the process environment and the executables to be used.</p>
+<p>File structure overview:</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span>{
+   &quot;environment&quot;:
+   {
+      &quot;VARIABLE&quot;: &quot;value&quot;,
+      &quot;VARIABLE_FROM_ENV&quot;: &quot;${EXISTING_ENV_VARIABLE}&quot;
+      ...
+   },
+   &quot;winnt&quot; :
+   {
+      &quot;environment&quot;:
+      {
+         &quot;VARIABLE&quot;: &quot;winnt_value&quot;,
+         &quot;PATH&quot;: &quot;C:/Python;${PATH}&quot;
+         ...
+      },
+      &quot;launcher&quot;:
+      {
+         &quot;environment&quot;:
+         {
+            &quot;VARIABLE&quot;: &quot;winnt_launcher_value&quot;
+         },
+         &quot;executable&quot;: &quot;launcher.exe&quot;,
+         &quot;positionals&quot;: [ &quot;file.txt&quot;],
+         &quot;optionals&quot;: [&quot;--option&quot;, &quot;value&quot;]
+      },
+      &quot;client&quot;:
+      {
+         &quot;environment&quot;:
+         {
+            &quot;VARIABLE&quot;: &quot;winnt_application_value&quot;
+         },
+         &quot;executable&quot;: &quot;python.exe&quot;,
+         &quot;positionals&quot;: [&quot;launcher.py&quot;],
+         &quot;optionals&quot;: [&quot;--option&quot;, &quot;value&quot;]
+      },
+      &quot;cleaner&quot;:
+      {
+      }
+   },
+   &quot;linux&quot; :
+   {
+   }
+}
+</pre></div>
+</div>
+<div class="section" id="the-environment-key">
+<h3>The <em>environment</em> key<a class="headerlink" href="#the-environment-key" title="Permalink to this headline">¶</a></h3>
+<p>The system environment is inherited by all processes. Their environment can be modified by inserting a key corresponding to the variable name and a value.</p>
+<ul class="simple">
+<li>Define a new variable with a given value</li>
+<li>Define a new variable with the value of an existing variable. The following syntax is used: <code class="docutils literal"><span class="pre">${VARIABLE}</span></code>. Notice that this syntax is not OS-specific (as it is interpreted by VTS). However, the path separator is specific to the OS (‘;’ on Windows and ‘:’ on Linux).</li>
+<li>Overload an existing variable at any level: global (<em>root</em>), OS-specific (<code class="docutils literal"><span class="pre">winnt</span></code>, <code class="docutils literal"><span class="pre">linux</span></code>) or process-specific (<code class="docutils literal"><span class="pre">launcher</span></code>, <code class="docutils literal"><span class="pre">client</span></code>, <code class="docutils literal"><span class="pre">cleaner</span></code>)</li>
+<li>An injected environment variable (see below) can be used as a value</li>
+</ul>
+</div>
+<div class="section" id="injected-environment-variable">
+<h3>Injected environment variable<a class="headerlink" href="#injected-environment-variable" title="Permalink to this headline">¶</a></h3>
+<p>This variable are auto injected to a process environment.</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">VTS_WORKING_DIR</span></code>: points to the <code class="docutils literal"><span class="pre">bin/</span></code> subfolder of the application folder by default. This is the current directory of the process (equivalent to <code class="docutils literal"><span class="pre">$PWD</span></code>). A relative path will be relative to this folder. Modifying this variable will force the process current folder.</li>
+<li><code class="docutils literal"><span class="pre">VTS_ROOT_DIR</span></code>: points to the VTS root folder.</li>
+<li><code class="docutils literal"><span class="pre">VTS_LIBS_DIR</span></code>: points to the <code class="docutils literal"><span class="pre">Apps/Libs</span></code> folder.</li>
+<li><code class="docutils literal"><span class="pre">VTS_APPLICATION_ID</span></code>: is the client application ID.</li>
+<li><code class="docutils literal"><span class="pre">VTS_APPLICATION_TITLE</span></code>: is the client application title ( <code class="docutils literal"><span class="pre">#&lt;ID&gt;</span> <span class="pre">-</span> <span class="pre">&lt;label&gt;</span></code>, the ID is dynamic, the label can be defined on the application configuration panel).</li>
+</ul>
+</div>
+<div class="section" id="os-specific-section">
+<h3>OS specific section<a class="headerlink" href="#os-specific-section" title="Permalink to this headline">¶</a></h3>
+<p>The following objects are used to describe a process by OS:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">winnt</span></code>: Windows</li>
+<li><code class="docutils literal"><span class="pre">linux</span></code>: Linux</li>
+</ul>
+</div>
+<div class="section" id="application-specific-section">
+<h3>Application specific section<a class="headerlink" href="#application-specific-section" title="Permalink to this headline">¶</a></h3>
+<p>The following objects are used to describe a process by application:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">launcher</span></code>: application launcher executable</li>
+<li><code class="docutils literal"><span class="pre">client</span></code>: client application executable</li>
+<li><code class="docutils literal"><span class="pre">cleaner</span></code>: application cleaner executable</li>
+</ul>
+<p>An application specific section can contain:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">environment</span></code> object</li>
+<li><code class="docutils literal"><span class="pre">executable</span></code> key: the value must be an executable file. It can be an abolute file path, or relative to the <code class="docutils literal"><span class="pre">VTS_WORKING_DIR</span></code>, or found in the <code class="docutils literal"><span class="pre">PATH</span></code>.</li>
+<li><code class="docutils literal"><span class="pre">positionals</span></code> array key: can contain parameters passed as first arguments on the command line. Can be used to pass a script file to an interpreter as python or java.</li>
+<li><code class="docutils literal"><span class="pre">optionals</span></code> array key: can contain parameters passed as last arguments on the command line.</li>
+</ul>
+<p>For specific needs an additional option can change the behaviour of launchers output interpretation:</p>
+<ul>
+<li><p class="first"><code class="docutils literal"><span class="pre">launcher-output</span></code> key: the value defines the launcher output mode and can be one of the following:</p>
+<blockquote>
+<div><ul class="simple">
+<li><code class="docutils literal"><span class="pre">ARGUMENTS</span></code> (default): launcher output is used as application arguments</li>
+<li><code class="docutils literal"><span class="pre">LOG</span></code>: launcher output is only used for logging</li>
+<li><code class="docutils literal"><span class="pre">DISABLED</span></code>: launcher is not started</li>
+<li><code class="docutils literal"><span class="pre">LEGACY</span></code>: launcher output is used as application arguments and the first argument must be the application ID</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="application-launchers">
+<span id="client-applications-in-vts-application-launchers"></span><h2>Application launchers<a class="headerlink" href="#application-launchers" title="Permalink to this headline">¶</a></h2>
+<p>An application launcher is an executable intended for preparing the application’s environnement and to specify how the application should be started. To these ends, the launcher can analyse the VTS project file in order to pre-process visualization data, generate scripts or even copy and move files. The only mandatory output of a launcher is the command line arguments to be passed to its client application.</p>
+<div class="section" id="executing-application-launchers">
+<span id="client-applications-in-vts-executing-application-launchers"></span><h3>Executing application launchers<a class="headerlink" href="#executing-application-launchers" title="Permalink to this headline">¶</a></h3>
+<p>Launchers are started by the Broker with the following command-line arguments:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">[</span>POSITIONALS<span class="o">]</span> --project &lt;projectFile.vts&gt; --appid &lt;appID&gt; <span class="o">[</span>OPTIONALS<span class="o">]</span> <span class="o">[</span>BROKER_OPTIONS<span class="o">]</span>
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="32%" />
+<col width="68%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Argument</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">[POSITIONALS]</span></code></td>
+<td>positional options specified in the <code class="docutils literal"><span class="pre">vtsclient.json</span></code> file</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">--project</span> <span class="pre">&lt;projectFile.vts&gt;</span></code></td>
+<td>absolute path to the VTS project file</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">--appid</span> <span class="pre">&lt;appID&gt;</span></code></td>
+<td>client application ID, which uniquely identifies the application
+instance during the visualization (as many instances of the same
+application may exsist)</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">[OPTIONALS]</span></code></td>
+<td>additional options specified in the <code class="docutils literal"><span class="pre">vtsclient.json</span></code> file</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">[BROKER_OPTIONS]</span></code></td>
+<td><p class="first">optional Broker arguments:</p>
+<ul class="last simple">
+<li><code class="docutils literal"><span class="pre">--serverport</span> <span class="pre">&lt;port&gt;</span></code>: server port number.
+See <a class="reference internal" href="Synchronization_protocol_for_VTS_clients.html#synchronization-protocol-for-vts-clients-connecting-to-the-broker"><span class="std std-ref">Connecting to the Broker</span></a> for more information</li>
+<li><code class="docutils literal"><span class="pre">--datadir</span>&#160; <span class="pre">&lt;dataDir&gt;</span></code> directory containing project data files
+if different from project file’s directory
+Relative file names must be resolved with this data directory.
+This is used by VTS when in read-only mode.</li>
+<li><code class="docutils literal"><span class="pre">--tempdir</span> <span class="pre">&lt;tempDir&gt;</span></code> temporary directory where launcher and
+application data should reside.
+This is used by VTS when in read-only mode</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="preparing-application-environnement">
+<span id="client-applications-in-vts-preparing-the-client-application"></span><h3>Preparing application environnement<a class="headerlink" href="#preparing-application-environnement" title="Permalink to this headline">¶</a></h3>
+<p>The launcher should setup the client application’s environment. This may include setting up configuration files, moving or copying project data files, or even converting data files into application-specific file formats (e.g. CIC/CCSDS files into <em>.xyz</em> or <em>.q</em> files for Celestia).</p>
+<p>This step can be ommited if no specific task is needed to execute the client application.</p>
+</div>
+<div class="section" id="building-the-client-application-s-command-line">
+<span id="client-applications-in-vts-building-the-client-application-s-command-line"></span><h3>Building the client application’s command line<a class="headerlink" href="#building-the-client-application-s-command-line" title="Permalink to this headline">¶</a></h3>
+<p>The launcher can provide the command line arguments for its client application. These will be appended to the application command line by the Broker. To return the command line arguments to the Broker, the launcher must print them on its standard output. Only the command line arguments may be printed to standard output. However, informational messages may be printed to standard error and will be logged by the Broker.</p>
+<p>NOTE: since VTS 3.2 returning a command line argument is not mandatory anymore. See client configuration file described above.</p>
+<p>Example of lines printed to standard ouput by applications launchers are shown below.</p>
+<p><strong>Celestia launcher</strong>:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="m">0</span> --dir <span class="s2">&quot;C:/users/VTS/Apps/Celestia/bin&quot;</span> --conf <span class="s2">&quot;celestia.cfg&quot;</span> --url <span class="s2">&quot;C:/users/VTS/Apps/Celestia/bin/extras_0/VTS/CubeSat.celx&quot;</span> --extrasdir <span class="s2">&quot;C:/users/VTS/Apps/Celestia/bin/extras_0&quot;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>The first field is mandatory and is the ID for the Celestia instance given as input to the launcher</li>
+<li>The following fields are the actual command line arguments for Celestia, and are standard arguments handled by the Celestia executable</li>
+</ul>
+<p><strong>SurfaceView launcher</strong>:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="m">1</span> <span class="s2">&quot;C:/MyProject/visu.vts&quot;</span> <span class="m">1</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>The first field is mandatory and is the ID for the Celestia instance given as input to the launcher</li>
+<li>The second field is the absolute path to the project file, also given as input to the launcher, and required by the SurfaceView client application</li>
+<li>The third field is the client application ID given as input to the launcher, and required by the SurfaceView client application</li>
+</ul>
+</div>
+<div class="section" id="application-launchers-examples">
+<span id="client-applications-in-vts-application-launcher-examples"></span><h3>Application launchers examples<a class="headerlink" href="#application-launchers-examples" title="Permalink to this headline">¶</a></h3>
+<p>The following scripts implement minimal launchers that directly return and empty command line argument for the client application.
+Only the client application ID is printed (mandatory).</p>
+<ul class="simple">
+<li>DOS Batch Programming:</li>
+</ul>
+<div class="highlight-dosbatch"><div class="highlight"><pre><span></span><span class="p">@</span><span class="c1">rem Input parameter %1 is the path to the VTS project file</span>
+<span class="p">@</span><span class="c1">rem Input parameter %2 is the client application ID</span>
+
+<span class="p">@</span><span class="c1">rem Mandatory client application ID output:</span>
+<span class="p">@</span><span class="k">echo</span> <span class="nv">%2</span>
+
+<span class="p">@</span><span class="c1">rem End of file</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Shell Script:</li>
+</ul>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
+<span class="c1"># Input parameter $1 is the path to the VTS project file</span>
+<span class="c1"># Input parameter $2 is the client application ID</span>
+
+<span class="c1"># Mandatory client application ID output:</span>
+<span class="nb">echo</span> <span class="nv">$2</span>
+
+<span class="c1"># End of file</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="application-cleaners">
+<span id="client-applications-in-vts-application-cleaners"></span><h2>Application cleaners<a class="headerlink" href="#application-cleaners" title="Permalink to this headline">¶</a></h2>
+<p>A <strong>Clear all client application data caches</strong> action is available from the <a class="reference internal" href="../VTS_applications_user_manuals/VTS_configuration_utility_user_manual.html#vts-configuration-utility-user-manual-settings-dialog"><span class="std std-ref">Configurator settings menu</span></a>. Each client application can provide a cleaner that removes all temporary files which could be let after many visualization runs. The executable will be started with the <em>–clear</em> option, as other options could appear in the future.</p>
+<ul class="simple">
+<li>Example for Celestia cleaner under Windows, launched by :</li>
+</ul>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>Apps/Celestia/bin/cleanerCelestia.bat --clear
+</pre></div>
+</div>
+<ul class="simple">
+<li>This cleaner removes all temporary folders containing 3D models and data files duplicated and generated for each run. It removes all the <em>extras_</em> temporary folders :</li>
+</ul>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>@echo off
+<span class="k">for</span> %%p in <span class="o">(</span>%*<span class="o">)</span> <span class="k">do</span> <span class="o">(</span>
+   @rem Remove temporary folders
+   <span class="k">if</span> <span class="s2">&quot;%%p&quot;</span><span class="o">==</span><span class="s2">&quot;--clear&quot;</span> <span class="o">(</span>
+      <span class="k">for</span> /d %%a in <span class="o">(</span>%~dp0/extras_*<span class="o">)</span> <span class="k">do</span> rd /s /q <span class="s2">&quot;%%a&quot;</span>
+
+      @rem Return success
+      <span class="nb">exit</span> /B <span class="m">0</span>
+   <span class="o">)</span>
+<span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Application_IDs_in_VTS.html" class="btn btn-neutral float-right" title="Application IDs in VTS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Plugin development" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright VTS Team.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'3.6.0-9030',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

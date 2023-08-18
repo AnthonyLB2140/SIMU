@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project Revision="4110">
+ <General Name="SMOS" StartDateTime="54922 0.000000" EndDateTime="54922 129.999997"/>
+ <MetaData Description="Sample project"/>
+ <StartOptions TimeRatio="1" SysTimeSynced="0" Paused="0" Looped="0" Minimized="0" Hidden="0" AutoClosed="0"/>
+ <BrokerOptions WindowMode="Undocked" Collapsed="1" AlwaysOnTop="1" XPos="0" YPos="480" Width="640" Height="80" ActiveTab="0"/>
+ <TimelineOptions>
+  <TimelineScenario Name="Scenario" Pos="0" Size="23"/>
+ </TimelineOptions>
+ <ToBeUsedApps>
+  <Application Name="Celestia" Id="1"/>
+ </ToBeUsedApps>
+ <Entities>
+  <Body Name="Earth" ParentPath="Sol">
+   <Prop2d>
+    <SymbolFile Name=""/>
+   </Prop2d>
+   <EphemerisMode Mode="Default"/>
+  </Body>
+  <Satellite Name="SMOS" ParentPath="Sol/Earth">
+   <CommonProp>
+    <OrbitPath Color="0.564706 0 0.00784314"/>
+   </CommonProp>
+   <Prop2d>
+    <SymbolFile Name=""/>
+   </Prop2d>
+   <Component Name="SMOS">
+    <Graphics3d>
+     <File3ds Name="Models/SMOS-Main.3ds"/>
+     <Radius Value="3"/>
+     <LightSensitive Value="1"/>
+     <Use3dsCoords Value="1" MeshScale="1"/>
+     <RotationCenter X="2" Y="0" Z="0"/>
+    </Graphics3d>
+    <Geometry>
+     <Position>
+      <Value>
+       <File Name="Data/SMOS_OEM_POSITION.TXT"/>
+      </Value>
+     </Position>
+     <Orientation>
+      <Quaternion>
+       <Value>
+        <File Name="Data/SMOS_AEM_ATTITUDE.TXT"/>
+       </Value>
+      </Quaternion>
+     </Orientation>
+    </Geometry>
+    <Component Name="Gs">
+     <Graphics3d>
+      <File3ds Name="Models/Proteus_Gs4.3ds"/>
+      <Radius Value="9.7"/>
+      <LightSensitive Value="1"/>
+      <Use3dsCoords Value="1" MeshScale="1"/>
+      <RotationCenter X="0.855" Y="0" Z="0"/>
+     </Graphics3d>
+     <Geometry>
+      <Position>
+       <Value>
+        <Fixed Data="0 0 0"/>
+       </Value>
+      </Position>
+      <Orientation>
+       <AxisAngle>
+        <Axis>
+         <Value>
+          <Fixed Data="0 1 0"/>
+         </Value>
+        </Axis>
+        <Angle>
+         <Value>
+          <File Name="Data/SMOS_MEM_ANGLE_GS.TXT"/>
+         </Value>
+        </Angle>
+       </AxisAngle>
+      </Orientation>
+     </Geometry>
+    </Component>
+    <Component Name="Antenne A1">
+     <Graphics3d>
+      <File3ds Name="Models/SMOS-A1.3ds"/>
+      <Radius Value="1.1707"/>
+      <LightSensitive Value="1"/>
+      <Use3dsCoords Value="1" MeshScale="1"/>
+      <RotationCenter X="2.252" Y="0" Z="0.649"/>
+     </Graphics3d>
+     <Geometry>
+      <Position>
+       <Value>
+        <Fixed Data="0 0 0"/>
+       </Value>
+      </Position>
+      <Orientation>
+       <AxisAngle>
+        <Axis>
+         <Value>
+          <Fixed Data="0 -1 0"/>
+         </Value>
+        </Axis>
+        <Angle>
+         <Value>
+          <File Name="Data/SMOS_MEM_ANTENNEA.TXT"/>
+         </Value>
+        </Angle>
+       </AxisAngle>
+      </Orientation>
+     </Geometry>
+     <Component Name="Antenne A2">
+      <Graphics3d>
+       <File3ds Name="Models/SMOS-A2.3ds"/>
+       <Radius Value="1.2093"/>
+       <LightSensitive Value="1"/>
+       <Use3dsCoords Value="1" MeshScale="1"/>
+       <RotationCenter X="2.369" Y="0" Z="1.763"/>
+      </Graphics3d>
+      <Geometry>
+       <Position>
+        <Value>
+         <Fixed Data="0 0 0"/>
+        </Value>
+       </Position>
+       <Orientation>
+        <AxisAngle>
+         <Axis>
+          <Value>
+           <Fixed Data="0 1 0"/>
+          </Value>
+         </Axis>
+         <Angle>
+          <Value>
+           <File Name="Data/SMOS_MEM_ANTENNEBC.TXT"/>
+          </Value>
+         </Angle>
+        </AxisAngle>
+       </Orientation>
+      </Geometry>
+      <Component Name="Antenne A3">
+       <Graphics3d>
+        <File3ds Name="Models/SMOS-A3.3ds"/>
+        <Radius Value="1.1075"/>
+        <LightSensitive Value="1"/>
+        <Use3dsCoords Value="1" MeshScale="1"/>
+        <RotationCenter X="2.252" Y="0" Z="2.876"/>
+       </Graphics3d>
+       <Geometry>
+        <Position>
+         <Value>
+          <Fixed Data="0 0 0"/>
+         </Value>
+        </Position>
+        <Orientation>
+         <AxisAngle>
+          <Axis>
+           <Value>
+            <Fixed Data="0 -1 0"/>
+           </Value>
+          </Axis>
+          <Angle>
+           <Value>
+            <File Name="Data/SMOS_MEM_ANTENNEBC.TXT"/>
+           </Value>
+          </Angle>
+         </AxisAngle>
+        </Orientation>
+       </Geometry>
+      </Component>
+     </Component>
+    </Component>
+    <Component Name="Antenne B1">
+     <Graphics3d>
+      <File3ds Name="Models/SMOS-B1.3ds"/>
+      <Radius Value="1.313"/>
+      <LightSensitive Value="1"/>
+      <Use3dsCoords Value="1" MeshScale="1"/>
+      <RotationCenter X="2.252" Y="0.562" Z="-0.325"/>
+     </Graphics3d>
+     <Geometry>
+      <Position>
+       <Value>
+        <Fixed Data="0 0 0"/>
+       </Value>
+      </Position>
+      <Orientation>
+       <AxisAngle>
+        <Axis>
+         <Value>
+          <Fixed Data="0 0.5 0.721125"/>
+         </Value>
+        </Axis>
+        <Angle>
+         <Value>
+          <File Name="Data/SMOS_MEM_ANTENNEA.TXT"/>
+         </Value>
+        </Angle>
+       </AxisAngle>
+      </Orientation>
+     </Geometry>
+     <Component Name="Antenne B2">
+      <Graphics3d>
+       <File3ds Name="Models/SMOS-B2.3ds"/>
+       <Radius Value="1.389"/>
+       <LightSensitive Value="1"/>
+       <Use3dsCoords Value="1" MeshScale="1"/>
+       <RotationCenter X="2.369" Y="1.527" Z="-0.882"/>
+      </Graphics3d>
+      <Geometry>
+       <Position>
+        <Value>
+         <Fixed Data="0 0 0"/>
+        </Value>
+       </Position>
+       <Orientation>
+        <AxisAngle>
+         <Axis>
+          <Value>
+           <Fixed Data="0 -0.5 -0.721125"/>
+          </Value>
+         </Axis>
+         <Angle>
+          <Value>
+           <File Name="Data/SMOS_MEM_ANTENNEBC.TXT"/>
+          </Value>
+         </Angle>
+        </AxisAngle>
+       </Orientation>
+      </Geometry>
+      <Component Name="Antenne B3">
+       <Graphics3d>
+        <File3ds Name="Models/SMOS-B3.3ds"/>
+        <Radius Value="1.1822"/>
+        <LightSensitive Value="1"/>
+        <Use3dsCoords Value="1" MeshScale="1"/>
+        <RotationCenter X="2.252" Y="2.491" Z="-1.438"/>
+       </Graphics3d>
+       <Geometry>
+        <Position>
+         <Value>
+          <Fixed Data="0 0 0"/>
+         </Value>
+        </Position>
+        <Orientation>
+         <AxisAngle>
+          <Axis>
+           <Value>
+            <Fixed Data="0 0.5 0.721125"/>
+           </Value>
+          </Axis>
+          <Angle>
+           <Value>
+            <File Name="Data/SMOS_MEM_ANTENNEBC.TXT"/>
+           </Value>
+          </Angle>
+         </AxisAngle>
+        </Orientation>
+       </Geometry>
+      </Component>
+     </Component>
+    </Component>
+    <Component Name="Antenne C1">
+     <Graphics3d>
+      <File3ds Name="Models/SMOS-C1.3ds"/>
+      <Radius Value="1.402"/>
+      <LightSensitive Value="1"/>
+      <Use3dsCoords Value="1" MeshScale="1"/>
+      <RotationCenter X="2.252" Y="-0.562" Z="-0.325"/>
+     </Graphics3d>
+     <Geometry>
+      <Position>
+       <Value>
+        <Fixed Data="0 0 0"/>
+       </Value>
+      </Position>
+      <Orientation>
+       <AxisAngle>
+        <Axis>
+         <Value>
+          <Fixed Data="0 0.5 -0.721125"/>
+         </Value>
+        </Axis>
+        <Angle>
+         <Value>
+          <File Name="Data/SMOS_MEM_ANTENNEA.TXT"/>
+         </Value>
+        </Angle>
+       </AxisAngle>
+      </Orientation>
+     </Geometry>
+     <Component Name="Antenne C2">
+      <Graphics3d>
+       <File3ds Name="Models/SMOS-C2.3ds"/>
+       <Radius Value="1.4316"/>
+       <LightSensitive Value="1"/>
+       <Use3dsCoords Value="1" MeshScale="1"/>
+       <RotationCenter X="2.369" Y="-1.527" Z="-0.882"/>
+      </Graphics3d>
+      <Geometry>
+       <Position>
+        <Value>
+         <Fixed Data="0 0 0"/>
+        </Value>
+       </Position>
+       <Orientation>
+        <AxisAngle>
+         <Axis>
+          <Value>
+           <Fixed Data="0 -0.5 0.721125"/>
+          </Value>
+         </Axis>
+         <Angle>
+          <Value>
+           <File Name="Data/SMOS_MEM_ANTENNEBC.TXT"/>
+          </Value>
+         </Angle>
+        </AxisAngle>
+       </Orientation>
+      </Geometry>
+      <Component Name="Antenne C3">
+       <Graphics3d>
+        <File3ds Name="Models/SMOS-C3.3ds"/>
+        <Radius Value="1.1822"/>
+        <LightSensitive Value="1"/>
+        <Use3dsCoords Value="1" MeshScale="1"/>
+        <RotationCenter X="2.252" Y="-2.491" Z="-1.438"/>
+       </Graphics3d>
+       <Geometry>
+        <Position>
+         <Value>
+          <Fixed Data="0 0 0"/>
+         </Value>
+        </Position>
+        <Orientation>
+         <AxisAngle>
+          <Axis>
+           <Value>
+            <Fixed Data="0 0.5 -0.721125"/>
+           </Value>
+          </Axis>
+          <Angle>
+           <Value>
+            <File Name="Data/SMOS_MEM_ANTENNEBC.TXT"/>
+           </Value>
+          </Angle>
+         </AxisAngle>
+        </Orientation>
+       </Geometry>
+      </Component>
+     </Component>
+    </Component>
+   </Component>
+   <Events/>
+  </Satellite>
+ </Entities>
+ <Events/>
+ <States>
+  <Instant Time="0" Label="Initial state">
+   <AppState Id="1">
+    <Command Str="CMD PROP WindowGeometry 2 3 640 480"/>
+    <Command Str="CMD PROP CameraDesc bodyfixed Sol/Earth/SMOS_ref/SMOS_Axes nil 0.000000001726659 0.000000000349651 -0.000000002001960 -0.334819102228852 -0.646970865813778 0.661173600281252 -0.179372326176791 0.279252678155899"/>
+    <Command Str="CMD PROP SelectObject Sol/Earth/SMOS_ref/SMOS"/>
+    <Command Str="CMD STRUCT OrbitWindow &quot;Sol/Earth/SMOS&quot; 1 1"/>
+   </AppState>
+  </Instant>
+  <Instant Time="21640.0012153134" Label="">
+   <AppState Id="1">
+    <Command Str="CMD PROP WindowGeometry 2 3 640 480"/>
+    <Command Str="CMD PROP CameraDesc bodyfixed Sol/Earth/SMOS_ref/SMOS_Axes nil 0.000000001327463 -0.000000000250861 -0.000000002585019 -0.204826725878393 0.716013157641178 0.651330943291954 0.145393658832077 0.279252678155899"/>
+    <Command Str="CMD PROP SelectObject Sol/Earth/SMOS_ref/SMOS"/>
+    <Command Str="CMD STRUCT OrbitWindow &quot;Sol/Earth/SMOS&quot; 1 1"/>
+   </AppState>
+  </Instant>
+ </States>
+</Project>

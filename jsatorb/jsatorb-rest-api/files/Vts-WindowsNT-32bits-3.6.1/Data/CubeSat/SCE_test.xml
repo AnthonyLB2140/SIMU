@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scenario>
+  <TabbedPane name="TabbedPane">
+    <Panel name="Initial_Orbit">
+      <Orbit name="Orbit">
+        <AbsoluteDate name="Date">
+          <String name="date">01/01/2010 12h00m00s</String>
+          <String name="scale">UTC</String>
+        </AbsoluteDate>
+        <Frame name="Frame">
+          <String name="name">GCRF</String>
+        </Frame>
+        <String name="typeOfParameters">Keplerian</String>
+        <KeplerianParameters name="Keplerian_Parameters">
+          <Real name="a" unit="km">7.2027E3</Real>
+          <Real name="e">6.50784E-2</Real>
+          <Real name="i" unit="deg">4.59164E1</Real>
+          <Real name="raan" unit="deg">1.439341E2</Real>
+          <Real name="pa" unit="deg">-2.15885E1</Real>
+          <String name="typeOfAnomaly">true</String>
+          <Real name="anomaly" unit="deg">6.64091195316685E0</Real>
+          <Real name="mu" unit="km^3/s^2">3.986004415E5</Real>
+        </KeplerianParameters>
+      </Orbit>
+    </Panel>
+    <Panel name="Earth_Features">
+      <OneAxisEllipsoid name="Earth_Shape">
+        <Real name="sma" unit="km">6.3781363E3</Real>
+        <Real name="flatness">3.3536E-3</Real>
+        <Frame name="frame">
+          <String name="name">ITRF</String>
+        </Frame>
+        <String name="name">Earth Shape</String>
+      </OneAxisEllipsoid>
+      <FramesConfiguration name="Customized_frame_configuration_(GCRF_--&gt;_CIRF_--&gt;_TIRF_--&gt;_ITRF)">
+        <String name="type">iers2010</String>
+        <String name="mode">custom</String>
+        <Boolean name="tidesCorrectionPolarMotion">false</Boolean>
+        <Boolean name="librationCorrectionPolarMotion">false</Boolean>
+        <Boolean name="spCorrection">false</Boolean>
+        <Boolean name="eopsForPolarMotion">false</Boolean>
+        <Boolean name="tidesCorrectionDiurnalRotation">false</Boolean>
+        <Boolean name="librationCorrectionDiurnalRotation">false</Boolean>
+        <Boolean name="precNutCorrection">true</Boolean>
+        <Boolean name="precNutConstantRotation">false</Boolean>
+        <String name="precNutInterpOption">interpolated</String>
+        <Boolean name="eopsForNutation">false</Boolean>
+        <Boolean name="eopsCorrection">false</Boolean>
+      </FramesConfiguration>
+    </Panel>
+    <Panel name="Vehicle:">
+      <Vehicle name="Vehicle:">
+        <MassProperties name="massProperties">
+          <Real name="dryMass" unit="kg">1.0E2</Real>
+        </MassProperties>
+        <Boolean name="hasPropulsiveProperties">true</Boolean>
+        <PropulsiveProperties name="PropulsiveProperties">
+          <Real name="ergMass" unit="kg">2.0E2</Real>
+          <ComponentList name="listOfEngines">
+            <!--Amount of items-->
+            <Integer name="nbItems">1</Integer>
+            <ComponentListItem name="Item_1">
+              <Engine name="Engine">
+                <String name="name">Engine1</String>
+                <Real name="isp" unit="s">3.0E2</Real>
+                <Real name="thrust" unit="N">1.0E2</Real>
+              </Engine>
+            </ComponentListItem>
+          </ComponentList>
+          <ComponentList name="listOfTanks">
+            <!--Amount of items-->
+            <Integer name="nbItems">1</Integer>
+            <ComponentListItem name="Item_1">
+              <FuelTank name="Fuel_Tank">
+                <String name="name">Fuel Tank1</String>
+                <Real name="propMass" unit="kg">2.0E2</Real>
+              </FuelTank>
+            </ComponentListItem>
+          </ComponentList>
+        </PropulsiveProperties>
+        <Boolean name="hasAerodynamicProperties">true</Boolean>
+        <AerodynamicProperties name="AerodynamicProperties">
+          <Real name="dragCoefficient">2.0E0</Real>
+          <Real name="liftCoefficient">1.0E-2</Real>
+        </AerodynamicProperties>
+        <Boolean name="hasRadiativeProperties">true</Boolean>
+        <RadiativeProperties name="RadiativeProperties">
+          <Real name="absorptionCoefficient">1.0E0</Real>
+          <Real name="specularCoefficient">0.0E0</Real>
+          <Real name="diffuseCoefficient">0.0E0</Real>
+          <Boolean name="withIRCoefficients">true</Boolean>
+          <Real name="absorptionCoefficientIR">1.0E0</Real>
+          <Real name="specularCoefficientIR">0.0E0</Real>
+          <Real name="diffuseCoefficientIR">0.0E0</Real>
+        </RadiativeProperties>
+        <Shape name="VehicleShape">
+          <String name="shapeType">Sphere</String>
+          <String name="shapeDefinitionType">Surface</String>
+          <Real name="surface" unit="m^2">5.0E0</Real>
+          <Boolean name="withSolarPanels">true</Boolean>
+          <Real name="panelSx" unit="m^2">1.0E0</Real>
+          <Real name="panelSy" unit="m^2">0.0E0</Real>
+          <Real name="panelSz" unit="m^2">0.0E0</Real>
+        </Shape>
+      </Vehicle>
+    </Panel>
+    <Panel name="Forces_Scenario">
+      <EarthPotentialForceModel name="Earth_Potential">
+        <String name="attractionModel">balmino</String>
+        <String name="potentialFileName">GRIM4_S4</String>
+        <Integer name="zonal">0</Integer>
+        <Integer name="tesseral">0</Integer>
+      </EarthPotentialForceModel>
+      <ThirdBodyForceModel name="Third_Body">
+        <Boolean name="thirdBody">false</Boolean>
+      </ThirdBodyForceModel>
+      <AeroForceModel name="Atmospheric_Force">
+        <Boolean name="aeroForce">true</Boolean>
+        <String name="atmosphericModel">MSISE2000</String>
+        <String name="solarActivityType">Real</String>
+        <Real name="multiplicativeFactor">1.0E0</Real>
+      </AeroForceModel>
+      <SRPForceModel name="Solar_Radiation_Pressure">
+        <Boolean name="srp">true</Boolean>
+        <Real name="referenceDistance" unit="m">1.4959787E11</Real>
+        <Real name="referencePressure" unit="N/m^2">4.5605E-6</Real>
+        <Real name="multiplicativeFactor">1.0E0</Real>
+      </SRPForceModel>
+      <RediffusedSRPForceModel name="Rediffused_Solar_Radiation_Pressure">
+        <Boolean name="srpRediffused">true</Boolean>
+        <Boolean name="albedo">true</Boolean>
+        <Real name="multiplicativeFactAlbedo">1.0E0</Real>
+        <Boolean name="infrared">true</Boolean>
+        <Real name="multiplicativeFactInfrared">1.0E0</Real>
+      </RediffusedSRPForceModel>
+      <OceanTidesForceModel name="Ocean_Tides">
+        <Boolean name="oceanTides">false</Boolean>
+      </OceanTidesForceModel>
+      <TerrestrialTidesForceModel name="Terrestrial_Tides">
+        <Boolean name="terrestrialTides">false</Boolean>
+      </TerrestrialTidesForceModel>
+      <String name="ephemeridesType">JPL</String>
+    </Panel>
+    <Panel name="Maneuvers">
+      <String name="dateMode">external</String>
+      <AbsoluteDate name="referenceDate">
+        <String name="date">01/01/2000 00h00m00s</String>
+        <String name="scale">UTC</String>
+      </AbsoluteDate>
+      <AbsoluteDate name="externalDate">
+        <String name="date">01/01/2010 12h00m00s</String>
+        <String name="scale">UTC</String>
+      </AbsoluteDate>
+      <ComponentList name="ManCustom">
+        <!--Amount of items-->
+        <Integer name="nbItems">1</Integer>
+        <ComponentListItem name="Item_1">
+          <Maneuver name="Maneuver">
+            <String name="typeMan">Continuous</String>
+            <String name="name">Maneuver1</String>
+            <ConstantManeuver name="Constant_maneuver">
+              <Frame name="frame">
+                <String name="frameType">Local Orbital Frame</String>
+                <String name="lofType">LVLH</String>
+              </Frame>
+              <AxisCoordinates name="thrustDir">
+                <String name="type">Custom - Angular coordinates</String>
+                <Real name="alpha" unit="deg">0.0E0</Real>
+                <Real name="beta" unit="deg">0.0E0</Real>
+              </AxisCoordinates>
+              <EventSelector name="thrustStart">
+                <String name="eventType">Relative date</String>
+                <RelativeDateDetector name="eventData">
+                  <DateOffset name="relativeDate">0j00h00m50s</DateOffset>
+                  <String name="actionData">STOP</String>
+                  <Real name="maxCheck" unit="s">1.0E10</Real>
+                  <Real name="threshold" unit="s">1.0E-9</Real>
+                </RelativeDateDetector>
+              </EventSelector>
+              <String name="Stop_maneuver:__">event</String>
+              <EventSelector name="thrustEnd">
+                <String name="eventType">Relative date</String>
+                <RelativeDateDetector name="eventData">
+                  <DateOffset name="relativeDate">0j00h01m00s</DateOffset>
+                  <String name="actionData">STOP</String>
+                  <Real name="maxCheck" unit="s">1.0E10</Real>
+                  <Real name="threshold" unit="s">1.0E-9</Real>
+                </RelativeDateDetector>
+              </EventSelector>
+            </ConstantManeuver>
+            <String name="engine">Engine1</String>
+            <String name="fuelTank">Fuel Tank1</String>
+          </Maneuver>
+        </ComponentListItem>
+      </ComponentList>
+    </Panel>
+    <Panel name="Attitude_Laws">
+      <String name="dateMode">external</String>
+      <AbsoluteDate name="referenceDate">
+        <String name="date">01/01/2000 00h00m00s</String>
+        <String name="scale">UTC</String>
+      </AbsoluteDate>
+      <AbsoluteDate name="externalDate">
+        <String name="date">01/01/2010 12h00m00s</String>
+        <String name="scale">UTC</String>
+      </AbsoluteDate>
+      <AttitudeLawList name="lawList">
+        <ComponentList name="AttitudeLaw">
+          <!--Amount of items-->
+          <Integer name="nbItems">1</Integer>
+          <ComponentListItem name="Item_1">
+            <String name="lawName">DefaultLaw</String>
+            <String name="lawType">LOF</String>
+            <LOFAttitudeLaw name="LOF_Att._Law:">
+              <String name="lawEvol">Constant</String>
+              <String name="LOF">LVLH</String>
+              <Frame name="Inertial">
+                <String name="name">GCRF</String>
+              </Frame>
+              <Boolean name="biasAngles">false</Boolean>
+            </LOFAttitudeLaw>
+          </ComponentListItem>
+        </ComponentList>
+      </AttitudeLawList>
+      <String name="Mode:">Simple</String>
+      <String name="Simple_Law:">DefaultLaw</String>
+    </Panel>
+    <Panel name="Integrator">
+      <String name="End_propagation">Duration</String>
+      <Real name="Duration_" unit="s">6.01E1</Real>
+      <Real name="Stop_altitude" unit="km">1.0E2</Real>
+      <String name="Altitude_type">Geodetic</String>
+      <Frame name="Propagation_frame">
+        <String name="name">GCRF</String>
+      </Frame>
+      <String name="Type:">Runge-Kutta (4th order)</String>
+      <Real name="Timestep_(fixed):_" unit="s">1.0E0</Real>
+    </Panel>
+    <Panel name="Events">
+      <String name="dateMode">custom</String>
+      <AbsoluteDate name="referenceDate">
+        <String name="date">01/01/2000 00h00m00s</String>
+        <String name="scale">UTC</String>
+      </AbsoluteDate>
+      <AbsoluteDate name="externalDate">
+        <String name="date">01/01/2010 12h00m00s</String>
+        <String name="scale">UTC</String>
+      </AbsoluteDate>
+      <ComponentList name="EventsSequence">
+        <!--Amount of items-->
+        <Integer name="nbItems">1</Integer>
+        <ComponentListItem name="Item_1">
+          <EventSelector name="event">
+            <String name="eventType">Absolute date</String>
+            <DateDetector name="eventData">
+              <AbsoluteDate name="eventDate">
+                <String name="date">01/01/2000 00h00m00s</String>
+                <String name="scale">UTC</String>
+              </AbsoluteDate>
+              <String name="actionData">CONTINUE</String>
+              <Real name="maxCheck" unit="s">1.0E10</Real>
+              <Real name="threshold" unit="s">1.0E-9</Real>
+            </DateDetector>
+          </EventSelector>
+        </ComponentListItem>
+      </ComponentList>
+    </Panel>
+    <Panel name="Output">
+      <Real name="Frequency" unit="s">6.0E1</Real>
+      <String name="Inertial_Output_Frame">EME2000</String>
+      <String name="Local_Output_Frame">LVLH</String>
+      <String name="Time_scale">UTC</String>
+      <TabbedPane name="Plots" />
+    </Panel>
+  </TabbedPane>
+</Scenario>
+

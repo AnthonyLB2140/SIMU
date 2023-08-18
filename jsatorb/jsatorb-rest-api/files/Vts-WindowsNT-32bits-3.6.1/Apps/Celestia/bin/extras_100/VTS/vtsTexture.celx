@@ -1,0 +1,41 @@
+-- auto-generated script for alternate body textures in VTS
+
+hasAltTexture = true
+
+layerTable = {
+   Sol_Earth_TimedLayer = {
+      isVisible = false,
+      position = 0,
+      getAltTexture = function ( jd1950 )
+         if( jd1950 > 21994.9166666667 ) then
+            return "Sol_Earth_TimedLayer_11"
+         elseif( jd1950 > 21994.9166666667 ) then
+            return "Sol_Earth_TimedLayer_11"
+         elseif( jd1950 > 21994.8333333333 ) then
+            return "Sol_Earth_TimedLayer_10"
+         elseif( jd1950 > 21994.75 ) then
+            return "Sol_Earth_TimedLayer_9"
+         elseif( jd1950 > 21994.6666666667 ) then
+            return "Sol_Earth_TimedLayer_8"
+         elseif( jd1950 > 21994.5833333333 ) then
+            return "Sol_Earth_TimedLayer_7"
+         elseif( jd1950 > 21994.5 ) then
+            return "Sol_Earth_TimedLayer_6"
+         elseif( jd1950 > 21994.4166666667 ) then
+            return "Sol_Earth_TimedLayer_5"
+         elseif( jd1950 > 21994.3333333333 ) then
+            return "Sol_Earth_TimedLayer_4"
+         elseif( jd1950 > 21994.25 ) then
+            return "Sol_Earth_TimedLayer_3"
+         elseif( jd1950 > 21994.1666666667 ) then
+            return "Sol_Earth_TimedLayer_2"
+         elseif( jd1950 > 21994.0833333333 ) then
+            return "Sol_Earth_TimedLayer_1"
+         elseif( jd1950 > 21994 ) then
+            return "Sol_Earth_TimedLayer_0"
+         else
+            return ""
+         end
+      end
+   },
+}

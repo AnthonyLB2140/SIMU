@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project Revision="4322">
+ <General Name="" StartDateTime="56958 46907.251222" EndDateTime="57096 3667.185602"/>
+ <MetaData Description=""/>
+ <StartOptions TimeRatio="50000" SysTimeSynced="0" Paused="0" Looped="0" Minimized="0" Hidden="0" AutoClosed="0"/>
+ <BrokerOptions WindowMode="Undocked" Collapsed="0" AlwaysOnTop="0" XPos="-5" YPos="505" Width="1094" Height="368" ActiveTab="1"/>
+ <TimelineOptions>
+  <TimelineScenario Name="Scenario" Pos="0" Size="23"/>
+ </TimelineOptions>
+ <ToBeUsedApps>
+  <Application Name="Celestia" Id="0"/>
+  <Application Name="2dWin" Id="1"/>
+ </ToBeUsedApps>
+ <Entities>
+  <Body Name="67C-G" ParentPath="Sol">
+   <Texture>
+    <TextureFixedFile Name="Models/67C-G/topo_RMOC_77.png"/>
+   </Texture>
+   <Prop2d>
+    <SymbolFile Name="Models/Moon.png"/>
+   </Prop2d>
+   <Graphics3d>
+    <File3ds Name="Models/67C-G/CSHP_DV_042_01_______00077.3ds"/>
+    <Radius Value="2.565"/>
+    <LightSensitive Value="1"/>
+    <Use3dsCoords Value="1" MeshScale="1000"/>
+    <RotationCenter X="0" Y="0" Z="0"/>
+   </Graphics3d>
+   <EphemerisMode Mode="User"/>
+   <Geometry>
+    <Position>
+     <Value>
+      <File Name="Models/CORB_DV_042_01_______00077.ROS.txt"/>
+     </Value>
+    </Position>
+    <Orientation>
+     <Quaternion>
+      <Value>
+       <File Name="Models/CATT_DV_042_01_______00077.ROS.txt"/>
+      </Value>
+     </Quaternion>
+    </Orientation>
+   </Geometry>
+   <GroupPointsOfInterest>
+    <PointOfInterest Name="newPOI">
+     <CoordinatesFile Name="site_nominal.mpm"/>
+     <Graphics Color="0.633661 1 0" Opacity="100" PointSize="2"/>
+    </PointOfInterest>
+   </GroupPointsOfInterest>
+  </Body>
+  <Satellite Name="Rosetta" ParentPath="Sol/67C-G">
+   <CommonProp>
+    <OrbitPath Color="1 1 0.498039"/>
+   </CommonProp>
+   <Prop2d>
+    <SymbolFile Name="Models/rosetta/rosetta1.bmp"/>
+   </Prop2d>
+   <Component Name="Rosetta">
+    <Graphics3d>
+     <File3ds Name="Models/rosetta/rosetta-orbiterOnly.3ds"/>
+     <Radius Value="5"/>
+     <LightSensitive Value="1"/>
+     <Use3dsCoords Value="1" MeshScale="1"/>
+     <RotationCenter X="0" Y="0" Z="0"/>
+    </Graphics3d>
+    <Geometry>
+     <Position>
+      <Value>
+       <File Name="Data/OEM_EME2000_ROS_004_01____P__00076.txt">
+        <ColorFile Name="Data/MEM_COLOR_ROS_004_01____P__00076.txt"/>
+       </File>
+      </Value>
+     </Position>
+     <Orientation>
+      <Quaternion>
+       <Value>
+        <File Name="Data/AEM_EME2000_ORBITER_ROS_P76_concatene.txt"/>
+       </Value>
+      </Quaternion>
+     </Orientation>
+    </Geometry>
+    <SensorSatellite>
+     <Sensor Name="RF">
+      <SensorProp>
+       <SensorAttributes SensorType="ELLIPTICAL" HalfAngleX="1.0472" HalfAngleY="1.0472"/>
+       <SensorGraphics Range="10000" VolumeColor="0 0.581827 1" VolumeOpacity="60" ContourColor="0 0.581827 1">
+        <SensorTrace Duration="-1" Opacity="60"/>
+       </SensorGraphics>
+      </SensorProp>
+      <Geometry>
+       <Position>
+        <Value>
+         <Fixed Data="0 0 0"/>
+        </Value>
+       </Position>
+       <Orientation>
+        <AltAzCoordinate>
+         <Value>
+          <Fixed Data="90 0"/>
+         </Value>
+        </AltAzCoordinate>
+       </Orientation>
+      </Geometry>
+     </Sensor>
+    </SensorSatellite>
+   </Component>
+   <Events/>
+  </Satellite>
+  <Satellite Name="Philae" ParentPath="Sol/67C-G">
+   <CommonProp>
+    <OrbitPath Color="1 0 0.571832"/>
+   </CommonProp>
+   <Prop2d>
+    <SymbolFile Name="Models/rosetta/philae.bmp"/>
+   </Prop2d>
+   <Component Name="Philae">
+    <Graphics3d>
+     <File3ds Name="Models/rosetta/philae3.3ds"/>
+     <Radius Value="1"/>
+     <LightSensitive Value="1"/>
+     <Use3dsCoords Value="0" MeshScale="1"/>
+     <RotationCenter X="0" Y="0" Z="0"/>
+    </Graphics3d>
+    <Geometry>
+     <Position>
+      <Value>
+       <File Name="Data/OEM_EME2000_LAN_DL_004_01____P__00076.txt"/>
+      </Value>
+     </Position>
+     <Orientation>
+      <Quaternion>
+       <Value>
+        <Fixed Data="1 0 0 0"/>
+       </Value>
+      </Quaternion>
+     </Orientation>
+    </Geometry>
+    <SensorSatellite>
+     <Sensor Name="RF">
+      <SensorProp>
+       <SensorAttributes SensorType="ELLIPTICAL" HalfAngleX="1.0472" HalfAngleY="1.0472"/>
+       <SensorGraphics Range="10000" VolumeColor="0 1 0.985168" VolumeOpacity="60" ContourColor="0 1 0.985168">
+        <SensorTrace Duration="-1" Opacity="60"/>
+       </SensorGraphics>
+      </SensorProp>
+      <Geometry>
+       <Position>
+        <Value>
+         <Fixed Data="0 0 0"/>
+        </Value>
+       </Position>
+       <Orientation>
+        <AltAzCoordinate>
+         <Value>
+          <Fixed Data="90 0"/>
+         </Value>
+        </AltAzCoordinate>
+       </Orientation>
+      </Geometry>
+     </Sensor>
+    </SensorSatellite>
+   </Component>
+   <Events/>
+  </Satellite>
+ </Entities>
+ <Events/>
+ <States>
+  <Instant Time="0" Label="Initial state">
+   <AppState Id="0">
+    <Command Str="CMD PROP WindowGeometry 640 25 998 829"/>
+    <Command Str="CMD PROP CameraDesc bodyfixed Sol/67C-G/67C-G_Eme2000Axes nil 0.000024344363370 0.000000414548931 0.000011504126997 -0.778862866968866 -0.215563700272449 0.489798661933848 -0.327113858759276 0.279252678155899"/>
+    <Command Str="CMD STRUCT OrbitWindow &quot;Sol/67C-G/Rosetta&quot; 50000 50000"/>
+    <Command Str="CMD STRUCT QswAxesVisible &quot;Sol/67C-G/Rosetta&quot; true"/>
+    <Command Str="CMD STRUCT AimContourVisible &quot;Sol/67C-G/Rosetta/RF&quot; false"/>
+    <Command Str="CMD STRUCT AimVolumeVisible &quot;Sol/67C-G/Rosetta/RF&quot; false"/>
+    <Command Str="CMD STRUCT AimContourVisible &quot;Sol/67C-G/Philae/RF&quot; false"/>
+    <Command Str="CMD STRUCT AimVolumeVisible &quot;Sol/67C-G/Philae/RF&quot; false"/>
+   </AppState>
+   <AppState Id="1">
+    <Command Str="CMD PROP WindowGeometry 0 25 640 480"/>
+    <Command Str="CMD STRUCT OrbitWindow &quot;Sol/67C-G/Rosetta&quot; 48 48"/>
+   </AppState>
+  </Instant>
+ </States>
+</Project>

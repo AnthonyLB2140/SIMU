@@ -1,0 +1,38 @@
+SurfaceView
+
+The SurfaceView application is a 2D world map projection of a celestial body.
+
+Parameter description
+
+- Scene Reference: allows you to select which body will be used as the scene reference.
+
+- Cartesian precision display: number of digits displayed after the comma for cartesian coordinates (limited to 10).
+
+- Geographic precision display: number of digits displayed after the comma for geographic coordinates (limited to 10).
+
+- Map Projection: allows you to select the world map projection.
+
+- WGS84: if true, the WGS84 ellipsoidal coordinate system will be used for the Earth. Otherwise SurfaceView will use an spherical coordiante system.
+
+- Target framerate: the application framerate per second. Higher values improve accuracy but slow down the application.
+
+- Track sampling resolution: sampling resolution of object's tracks (satellites, bodies, etc.). Decrease this value to improve track accuracy at the expense of performance degradation.
+
+- Sensor geometry section count: the number of points making up the outline polygon of the aiming sensor surface.
+
+- Sensor coverage significant threshold: the sensor swath is composed by a sequence of instantaneous sensor aiming surfaces, a surface is retained when it exceeds this significant threshold of novelty.
+
+- Sensor coverage merging threshold: the sensor swath is composed by many polygons which are merged together when they exceeds this fusion threshold of area in common.
+
+- Sensor coverage nadir optimization: allows you to optimize the performance of coverage missions for satellites pointing nadir at the cost of reducing the accuracy. This allows you to simulate long and perfomance-expensive missions displaying coverage overlap.
+
+- Station-satellite links text font: font used for the link between station and satellite.
+
+- Station-satellite links text format: determines the format of the string for the link between station and satellite:
+    ${elevation} represents the elevation angle,
+    ${azimuth} represents the azimuth angle,
+    ${distance} represents the distance between the station and the satellite.
+  Example:
+    El:${elevation}° Az:${azimuth}° (${distance} km)  El:16.5151° Az:-3.79313° (1798.12 km)
+
+Please refer to the SurfaceView User Manual for more detail.

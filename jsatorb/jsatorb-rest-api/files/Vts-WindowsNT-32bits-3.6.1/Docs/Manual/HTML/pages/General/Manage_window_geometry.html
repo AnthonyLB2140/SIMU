@@ -1,0 +1,342 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Window Geometry Manager &mdash; VTS 3.6.0-9030 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="VTS 3.6.0-9030 documentation" href="../../index.html"/>
+        <link rel="up" title="General" href="index.html"/>
+        <link rel="next" title="Mission events in VTS" href="Mission_events_in_VTS.html"/>
+        <link rel="prev" title="Scenario in VTS" href="Scenario_in_VTS.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> VTS
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction/index.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">General</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Conventions_in_VTS.html">Conventions in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Date_formats_in_VTS.html">Date formats in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Data_sources_in_VTS.html">Data sources in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Position_of_objects_in_VTS.html">Position of objects in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Orientation_of_objects_in_VTS.html">Orientation of objects in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Examples_for_position_and_orientation_of_objects_in_VTS.html">Examples for position and orientation of objects in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Backwards_compatibility_in_VTS.html">Backward compatibility in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Object_paths_in_VTS.html">Object paths in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Central_bodies_in_VTS.html">Central bodies in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Structure_of_satellites_in_VTS.html">Structure of satellites in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sensors_in_VTS.html">Sensors in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Masks_in_VTS.html">Physical masks in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scale_factors_in_VTS.html">Scale factors in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cluster_in_VTS.html">Clusters in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scenario_in_VTS.html">Scenario in VTS</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Window Geometry Manager</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#change-the-order-of-stacked-windows">Change the order of stacked windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#contextual-menu-actions">Contextual menu actions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#arrange-client-applications-windows">Arrange client applications windows</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Mission_events_in_VTS.html">Mission events in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="POIs_and_ROIs_in_VTS.html">POIs and ROIs in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Other_visualisable_objects.html">Other visualisable objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scripts_and_macros_in_VTS.html">Scripts and macros in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="VTS_Broker.html">VTS Broker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Files_used_by_VTS/index.html">Files used by VTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Starting_VTS/index.html">Starting VTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VTS_applications_user_manuals/index.html">VTS applications user manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Plugin_development/index.html">Plugin development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Data_generators_in_VTS/index.html">Data generator integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../About/index.html">About</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">VTS</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">General</a> &raquo;</li>
+        
+      <li>Window Geometry Manager</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/pages/General/Manage_window_geometry.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="window-geometry-manager">
+<span id="id1"></span><h1>Window Geometry Manager<a class="headerlink" href="#window-geometry-manager" title="Permalink to this headline">¶</a></h1>
+<p>VTS client applications can be arranged via the Window Geometry Manager. This tool is available by clicking on the <em>Manage window geometry</em> button (<img alt="icon" src="../../_images/window-manager.png" />) from the <strong>Scenario Editor</strong> tab or from the <strong>VTS Broker</strong>.</p>
+<div class="figure align-center" id="id2">
+<img alt="../../_images/WindowGeometryButton.png" src="../../_images/WindowGeometryButton.png" />
+<p class="caption"><span class="caption-text">Window Geometry Manager button in the Scenario Editor tab (left) and the Broker (right)</span></p>
+</div>
+<p>The Window Geometry Manager is divided into four sections :</p>
+<div class="figure align-center" id="id3">
+<img alt="../../_images/WindowGeometryInterface.png" src="../../_images/WindowGeometryInterface.png" />
+<p class="caption"><span class="caption-text">Window Geometry Manager interface</span></p>
+</div>
+<ul class="simple">
+<li>The left section (red) contains the list of all VTS client application defined in the VTS project or used during the visualization as dynamic application.</li>
+<li>The top-right section (violet) is used to display information and help about the tool.</li>
+<li>The middle-right section (green) shows the system’s screen configuration as detected by VTS and the position of each client application window. A grid is displayed to help arrange the position of the windows. The resolution of the grid can be configured via VTS’s <strong>Settings dialog</strong>.</li>
+<li>The bottom-right section (blue) contains options to arrange client application windows automatically. There are as many <strong>Fullscreen</strong> buttons as screens detected and they are ordered from the top-left screen to the bottom-right screen.</li>
+</ul>
+<div class="section" id="change-the-order-of-stacked-windows">
+<h2>Change the order of stacked windows<a class="headerlink" href="#change-the-order-of-stacked-windows" title="Permalink to this headline">¶</a></h2>
+<p>The order of stacked window can be change by dragging up and down application items in the list in the left section. The feature can fail if a client application doesn’t implement the “CMD SERVICE ActivateWindow” protocol command.</p>
+<p>Clicking on an application item will also raise or activate the corresponding application.</p>
+</div>
+<div class="section" id="contextual-menu-actions">
+<h2>Contextual menu actions<a class="headerlink" href="#contextual-menu-actions" title="Permalink to this headline">¶</a></h2>
+<p>A right click on the left section list will show the available actions :</p>
+<ul class="simple">
+<li><em>Activate all windows</em>: raise and activate all applications (needs <a class="reference internal" href="../Plugin_development/Description_of_application_properties.html#description-of-application-properties-application-properties-guidelines"><span class="std std-ref">“ActivateWindow”</span></a> protocol command implementation)</li>
+<li><em>Activate selected windows</em>: raise and activate selected application (needs <a class="reference internal" href="../Plugin_development/Description_of_application_properties.html#description-of-application-properties-application-properties-guidelines"><span class="std std-ref">“ActivateWindow”</span></a> protocol command implementation)</li>
+<li><em>Toggle always on top</em>: Change the state property for the always on top flag (needs the <a class="reference internal" href="../Plugin_development/Description_of_application_properties.html#description-of-application-properties-application-properties-guidelines"><span class="std std-ref">“AlwaysOnTop”</span></a> application property implementation)</li>
+<li><em>Toggle frameless</em>: Change the state property for the always on top flag (needs the <a class="reference internal" href="../Plugin_development/Description_of_application_properties.html#description-of-application-properties-application-properties-guidelines"><span class="std std-ref">“Frameless”</span></a> application property implementation)</li>
+</ul>
+<p>The <strong>order of stacked windows</strong> can be change by dragging up and down application items in the list in the left section. The feature can fail if a client application doesn’t implement the <a class="reference internal" href="../Plugin_development/Description_of_application_properties.html#description-of-application-properties-application-properties-guidelines"><span class="std std-ref">“ActivateWindow” protocol command</span></a>.</p>
+</div>
+<div class="section" id="arrange-client-applications-windows">
+<h2>Arrange client applications windows<a class="headerlink" href="#arrange-client-applications-windows" title="Permalink to this headline">¶</a></h2>
+<p>In order to organize the visualization, it requires two actions:</p>
+<ul class="simple">
+<li>Area selection: select an area in one of the screen grids. A preview of the selected area will be briefly displayed in the screen. The entire screen can be selected using the corresponding <strong>Fullscreen</strong> button.</li>
+<li>Application selection: select an application from the list. Multiple applications can be selected using <code class="docutils literal"><span class="pre">Ctrl</span></code> key while clicking.</li>
+</ul>
+<p>When both and <strong>area</strong> and an <strong>one or more applications</strong> are selected, the geometry of the selected application(s) will be modified to cover the selected area.</p>
+<p>If several applications are selected they will be overlapped in the order of the selection. They can also be arranged in an horizontal or vertical layout proportionnaly using the <strong>Layout</strong> buttons. Clicking  one more time will remove the layout (windows will return to the overlapped layout).</p>
+<p>An example is shown below:</p>
+<div class="figure align-center">
+<img alt="../../_images/WindowGeometryInterfaceUsage_1.png" src="../../_images/WindowGeometryInterfaceUsage_1.png" />
+</div>
+<p>Click the <strong>Fullscreen</strong> “2” button and then select applications #1, #2 and #3. Applications windows are shown overlapped on screen 2.</p>
+<div class="figure align-center">
+<img alt="../../_images/WindowGeometryInterfaceUsage_2.png" src="../../_images/WindowGeometryInterfaceUsage_2.png" />
+</div>
+<p>Click vertical layout button to arrange windows vertically.</p>
+<div class="figure align-center">
+<img alt="../../_images/WindowGeometryInterfaceUsage_3.png" src="../../_images/WindowGeometryInterfaceUsage_3.png" />
+</div>
+<p>Click horizontal layout button to arrange windows horizontally.</p>
+<div class="figure align-center">
+<img alt="../../_images/WindowGeometryInterfaceUsage_4.png" src="../../_images/WindowGeometryInterfaceUsage_4.png" />
+</div>
+<p>Click cascade layout button to arrange windows horizontally.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The “cascade layout”, not visible in the above screenshots, will try to arrange windows as a cascade. It might fail if some applications don’t implement the <a class="reference internal" href="../Plugin_development/Description_of_application_properties.html#description-of-application-properties-application-properties-guidelines"><span class="std std-ref">“ActivateWindow” protocol command</span></a>.</p>
+</div>
+<div class="figure align-center">
+<img alt="../../_images/WindowGeometryInterfaceUsage_5.png" src="../../_images/WindowGeometryInterfaceUsage_5.png" />
+</div>
+<p>Click <strong>OK</strong> to save or <strong>Cancel</strong> to revert changes and close the Window Geometry Manager.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Mission_events_in_VTS.html" class="btn btn-neutral float-right" title="Mission events in VTS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Scenario_in_VTS.html" class="btn btn-neutral" title="Scenario in VTS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright VTS Team.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'3.6.0-9030',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

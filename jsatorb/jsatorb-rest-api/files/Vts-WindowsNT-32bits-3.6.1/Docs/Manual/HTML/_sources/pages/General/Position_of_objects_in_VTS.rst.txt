@@ -1,0 +1,69 @@
+.. _Position_of_objects_in_VTS:
+
+Position of objects in VTS
+==================================================================================
+
+The position of an object in VTS is defined as a translation from the object's reference frame towards its location. The position can be fixed, sampled, or streamed. This section is dedicated to the contents of position data, no matter its source. For a definition of the various data sources, see the :ref:`Data sources in VTS <Data_sources_in_VTS>` section.
+
+
+.. _Position_of_objects_in_VTS#Reference_frames:
+
+Reference frames
+----------------------------------------------------------------------------------
+Each object in VTS has its position defined in a reference frame. For example, the position of solar arrays is relative to the satellite frame.
+
+An object is located at the origin of its reference frame when its position vector is null.
+
+Reference frames for the positions of various object types are defined in the table below:
+
++-----------------------+--------------------------------------------------------------------------+
+| Object type           | Reference frame                                                          |
++=======================+==========================================================================+
+| Central body          | Parent object's frame                                                    |
++-----------------------+--------------------------------------------------------------------------+
+| Ground station        | Central body's local frame                                               |
++-----------------------+--------------------------------------------------------------------------+
+| Satellite             | When a satellite orbits around a celestial body, two reference frames are|
+|                       | supported, depending on data input type :                                |
+|                       |                                                                          |
+|                       | - EME2000 (Earth Mean Equator at epoch J2000)                            |
+|                       | - Central body's local frame (only MEM files with lat/long/alt)          |
+|                       |                                                                          |
+|                       | When another satellite is defined as the center of the reference frame,  |
+|                       | the following frame types are available (also applied to orientation)    |
+|                       |                                                                          |
+|                       | - EME2000                                                                |
+|                       | - BodyFixed                                                              |
+|                       | - TNW                                                                    |
+|                       | - QSW                                                                    |
++-----------------------+--------------------------------------------------------------------------+
+| Component             | - Satellite's frame for a top-level component                            |
+|                       | - Parent component's frame for components of other levels                |
++-----------------------+--------------------------------------------------------------------------+
+| Satellite sensor      | - Satellite's frame for a top-level sensor                               |
+|                       | - Parent component's rotation center for sensors attached to a component |
++-----------------------+--------------------------------------------------------------------------+
+| Ground station sensor | Ground station's frame                                                   |
++-----------------------+--------------------------------------------------------------------------+
+
+.. _Position_of_objects_in_VTS#Position_of_satellite_components:
+
+Position of satellite components
+----------------------------------------------------------------------------------
+The position for a top-level component is defined in the satellite's frame. The position for a sub-component, i.e. a component not directly attached to a satellite but rather to another component, is defined in its parent component's frame.
+
+When a component is translated or rotated, all its sub-components are translated and rotated as well. This can be illustrated by the operation of a robotic arm: each segment is animated locally relative to the previous segment.
+
+There is a special case to the relative position of sub-components, when using 3D files containing the position of sub-components relative to the satellite's frame. This case is discussed in section :ref:`3D file format in VTS <3D_file_format_in_VTS>`.
+
+
+.. _Position_of_objects_in_VTS#See_also:
+
+See also
+----------------------------------------------------------------------------------
+
+- :ref:`Conventions in VTS <Conventions_in_VTS>`
+- :ref:`3D file format in VTS <3D_file_format_in_VTS>`
+- :ref:`Examples for position and orientation of objects in VTS <Examples_for_position_and_orientation_of_objects_in_VTS>`
+
+

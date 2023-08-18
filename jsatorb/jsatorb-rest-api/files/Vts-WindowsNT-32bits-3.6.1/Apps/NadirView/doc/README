@@ -1,0 +1,30 @@
+NadirView
+
+The NadirView application displays a rectangular star chart centered nadir.
+
+Parameter description:
+
+- Scene Reference: allows you to select which satellite will be used as the scene reference.
+
+- Cartesian precision display: number of digits displayed after the comma for cartesian coordinates (limited to 10).
+
+- Geographic precision display: number of digits displayed after the comma for geographic coordinates (limited to 10).
+
+- Map Projection: allows you to select the celestial sphere projection.
+
+- Min visible star count: the minimum number of stars displayed.
+
+- Loaded star count from catalog: the number of stars to load from the specified star catalog.
+
+- Target framerate: the application framerate per second. Higher values improve accuracy but slow down the application.
+
+- Track sampling resolution: sampling resolution of object's tracks (satellites, bodies, etc.). Decrease this value to improve track accuracy at the expense of performance degradation.
+
+- Sensor geometry section count: the number of points making up the outline polygon of the aiming sensor surface.
+
+- Sensor coverage significant threshold (%): the sensor swath is composed by a sequence of instantaneous sensor aiming surfaces, a surface is retained when it exceeds this significant threshold of novelty.
+
+- Sensor coverage merging threshold (%): the sensor swath is composed by many polygons which are merged together when they exceeds this fusion threshold of area in common.
+
+
+Please refer to the NadirView User Manual for more detail.

@@ -1,0 +1,262 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Overview of VTS &mdash; VTS 3.6.0-9030 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="VTS 3.6.0-9030 documentation" href="../../index.html"/>
+        <link rel="up" title="Introduction" href="index.html"/>
+        <link rel="next" title="VTS Quick Start" href="VTS_Quick_Start.html"/>
+        <link rel="prev" title="Introduction" href="index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> VTS
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Introduction</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Overview of VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="VTS_Quick_Start.html">VTS Quick Start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Software_requirements_for_VTS.html">Software requirements for VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Hardware_requirements_for_VTS.html">Hardware requirements for VTS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../General/index.html">General</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Files_used_by_VTS/index.html">Files used by VTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Starting_VTS/index.html">Starting VTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VTS_applications_user_manuals/index.html">VTS applications user manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Plugin_development/index.html">Plugin development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Data_generators_in_VTS/index.html">Data generator integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../About/index.html">About</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">VTS</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Introduction</a> &raquo;</li>
+        
+      <li>Overview of VTS</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/pages/Introduction/Overview_of_VTS.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="overview-of-vts">
+<span id="id1"></span><h1>Overview of VTS<a class="headerlink" href="#overview-of-vts" title="Permalink to this headline">¶</a></h1>
+<p>VTS is a visualization toolkit for space data. Its primary goal is to animate satellites in both 2D and 3D environments. Its architecture also allows it to be extended with any number of compatible applications.</p>
+<p>The toolkit comes with a configuration utility, which allows the definition of the elements in the visualization: 3D models, geometry and mobile parts of the satellites, data sources for all positions, attitudes, angle of rotations, etc. It also allows configuration for satellite sensors and ground stations, for the visualization scenario, and for the applications involved in the visualization.
+VTS then uses this configuration to run the animation. It handles starting and synchronizing all the chosen applications. Its core element, the <em>Broker</em>, offers functionality for navigating in visualization time, controlling 3D cameras and defining a range of other display attributes. It also broadcasts visualization settings associated with each scenario state to client applications.</p>
+<p>VTS is designed in a way that allows connected applications to control the visualization time (eg. time ticks from a simulator, time navigation in a plotting software, etc.). As for the visualization data, they can be provided either through files or network streams (which are broadcasted to all clients).
+The synchronization protocol for client applications is specific to VTS; however the data files are based on a CCSDS standard, allowing direct compatibility with all tools handling this european format.</p>
+<p>On the technical side, VTS relies on Celestia as its default 3D visualization tool. Celestia is free software, well known for its performance and the realism of its rendering. All of Celestia’s many features are thus available to VTS users.
+As for portability, the toolkit is written using C++ and the Qt framework, ensuring stable behavior across Linux and Windows platforms.
+Lastly, available client applications come from a variety of origins. As an example, the PrestoPlot plotting tool is fully interfaced with VTS.</p>
+<p>With these characteristics, VTS becomes an essential tool for all data production activities in the satellites flight dynamics field. It enables graphical validation of behaviors and attitude strategies, and can be used as a practical exchange support for all actors in satellite AOCS and space mechanics.</p>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="VTS_Quick_Start.html" class="btn btn-neutral float-right" title="VTS Quick Start" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright VTS Team.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'3.6.0-9030',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

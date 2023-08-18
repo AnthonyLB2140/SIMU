@@ -1,0 +1,5 @@
+realClientName = "Celestia"
+serverPort = 8888
+celestiaAppId = 100
+visibilityLinks = {}
+visualizers = {}

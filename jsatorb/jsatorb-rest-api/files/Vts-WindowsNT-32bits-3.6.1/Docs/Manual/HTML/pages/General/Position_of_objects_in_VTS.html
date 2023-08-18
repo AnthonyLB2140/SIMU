@@ -1,0 +1,349 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Position of objects in VTS &mdash; VTS 3.6.0-9030 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="VTS 3.6.0-9030 documentation" href="../../index.html"/>
+        <link rel="up" title="General" href="index.html"/>
+        <link rel="next" title="Orientation of objects in VTS" href="Orientation_of_objects_in_VTS.html"/>
+        <link rel="prev" title="Data sources in VTS" href="Data_sources_in_VTS.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> VTS
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction/index.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">General</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Conventions_in_VTS.html">Conventions in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Date_formats_in_VTS.html">Date formats in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Data_sources_in_VTS.html">Data sources in VTS</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Position of objects in VTS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#reference-frames">Reference frames</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#position-of-satellite-components">Position of satellite components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#see-also">See also</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Orientation_of_objects_in_VTS.html">Orientation of objects in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Examples_for_position_and_orientation_of_objects_in_VTS.html">Examples for position and orientation of objects in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Backwards_compatibility_in_VTS.html">Backward compatibility in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Object_paths_in_VTS.html">Object paths in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Central_bodies_in_VTS.html">Central bodies in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Structure_of_satellites_in_VTS.html">Structure of satellites in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sensors_in_VTS.html">Sensors in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Masks_in_VTS.html">Physical masks in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scale_factors_in_VTS.html">Scale factors in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cluster_in_VTS.html">Clusters in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scenario_in_VTS.html">Scenario in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Manage_window_geometry.html">Window Geometry Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mission_events_in_VTS.html">Mission events in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="POIs_and_ROIs_in_VTS.html">POIs and ROIs in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Other_visualisable_objects.html">Other visualisable objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scripts_and_macros_in_VTS.html">Scripts and macros in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="VTS_Broker.html">VTS Broker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Files_used_by_VTS/index.html">Files used by VTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Starting_VTS/index.html">Starting VTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VTS_applications_user_manuals/index.html">VTS applications user manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Plugin_development/index.html">Plugin development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Data_generators_in_VTS/index.html">Data generator integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../About/index.html">About</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">VTS</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">General</a> &raquo;</li>
+        
+      <li>Position of objects in VTS</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/pages/General/Position_of_objects_in_VTS.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="position-of-objects-in-vts">
+<span id="id1"></span><h1>Position of objects in VTS<a class="headerlink" href="#position-of-objects-in-vts" title="Permalink to this headline">¶</a></h1>
+<p>The position of an object in VTS is defined as a translation from the object’s reference frame towards its location. The position can be fixed, sampled, or streamed. This section is dedicated to the contents of position data, no matter its source. For a definition of the various data sources, see the <a class="reference internal" href="Data_sources_in_VTS.html#data-sources-in-vts"><span class="std std-ref">Data sources in VTS</span></a> section.</p>
+<div class="section" id="reference-frames">
+<span id="position-of-objects-in-vts-reference-frames"></span><h2>Reference frames<a class="headerlink" href="#reference-frames" title="Permalink to this headline">¶</a></h2>
+<p>Each object in VTS has its position defined in a reference frame. For example, the position of solar arrays is relative to the satellite frame.</p>
+<p>An object is located at the origin of its reference frame when its position vector is null.</p>
+<p>Reference frames for the positions of various object types are defined in the table below:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="76%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Object type</th>
+<th class="head">Reference frame</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Central body</td>
+<td>Parent object’s frame</td>
+</tr>
+<tr class="row-odd"><td>Ground station</td>
+<td>Central body’s local frame</td>
+</tr>
+<tr class="row-even"><td>Satellite</td>
+<td><p class="first">When a satellite orbits around a celestial body, two reference frames are
+supported, depending on data input type :</p>
+<ul class="simple">
+<li>EME2000 (Earth Mean Equator at epoch J2000)</li>
+<li>Central body’s local frame (only MEM files with lat/long/alt)</li>
+</ul>
+<p>When another satellite is defined as the center of the reference frame,
+the following frame types are available (also applied to orientation)</p>
+<ul class="last simple">
+<li>EME2000</li>
+<li>BodyFixed</li>
+<li>TNW</li>
+<li>QSW</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td>Component</td>
+<td><ul class="first last simple">
+<li>Satellite’s frame for a top-level component</li>
+<li>Parent component’s frame for components of other levels</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td>Satellite sensor</td>
+<td><ul class="first last simple">
+<li>Satellite’s frame for a top-level sensor</li>
+<li>Parent component’s rotation center for sensors attached to a component</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td>Ground station sensor</td>
+<td>Ground station’s frame</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="position-of-satellite-components">
+<span id="position-of-objects-in-vts-position-of-satellite-components"></span><h2>Position of satellite components<a class="headerlink" href="#position-of-satellite-components" title="Permalink to this headline">¶</a></h2>
+<p>The position for a top-level component is defined in the satellite’s frame. The position for a sub-component, i.e. a component not directly attached to a satellite but rather to another component, is defined in its parent component’s frame.</p>
+<p>When a component is translated or rotated, all its sub-components are translated and rotated as well. This can be illustrated by the operation of a robotic arm: each segment is animated locally relative to the previous segment.</p>
+<p>There is a special case to the relative position of sub-components, when using 3D files containing the position of sub-components relative to the satellite’s frame. This case is discussed in section <a class="reference internal" href="../Files_used_by_VTS/3D_file_format_in_VTS.html#d-file-format-in-vts"><span class="std std-ref">3D file format in VTS</span></a>.</p>
+</div>
+<div class="section" id="see-also">
+<span id="position-of-objects-in-vts-see-also"></span><h2>See also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="Conventions_in_VTS.html#conventions-in-vts"><span class="std std-ref">Conventions in VTS</span></a></li>
+<li><a class="reference internal" href="../Files_used_by_VTS/3D_file_format_in_VTS.html#d-file-format-in-vts"><span class="std std-ref">3D file format in VTS</span></a></li>
+<li><a class="reference internal" href="Examples_for_position_and_orientation_of_objects_in_VTS.html#examples-for-position-and-orientation-of-objects-in-vts"><span class="std std-ref">Examples for position and orientation of objects in VTS</span></a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Orientation_of_objects_in_VTS.html" class="btn btn-neutral float-right" title="Orientation of objects in VTS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Data_sources_in_VTS.html" class="btn btn-neutral" title="Data sources in VTS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright VTS Team.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'3.6.0-9030',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

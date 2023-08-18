@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project Revision="4110">
+ <General Name="" StartDateTime="55276 0.000000" EndDateTime="55277 81260.150400"/>
+ <MetaData Description="Sample project"/>
+ <StartOptions TimeRatio="1" SysTimeSynced="0" Paused="0" Looped="0" Minimized="0" Hidden="0" AutoClosed="0"/>
+ <TimelineOptions>
+  <TimelineScenario Name="Scenario" Pos="0" Size="23"/>
+ </TimelineOptions>
+ <ToBeUsedApps>
+  <Application Name="2dWin" Id="0"/>
+  <Application Name="Celestia" Id="1"/>
+ </ToBeUsedApps>
+ <Entities>
+  <Body Name="Earth" ParentPath="Sol">
+   <Prop2d>
+    <SymbolFile Name=""/>
+   </Prop2d>
+   <EphemerisMode Mode="Default"/>
+   <GroupGroundStations>
+    <GroundStation Name="Toulouse">
+     <Prop2d>
+      <SymbolFile Name=""/>
+     </Prop2d>
+     <LatLongAlt>
+      <Value>
+       <Fixed Data="43.38 1.22 0"/>
+      </Value>
+     </LatLongAlt>
+     <SensorStation>
+      <SensorTarget>
+       <TargetAltitude Altitude="1000"/>
+      </SensorTarget>
+      <Sensor Name="Default">
+       <SensorProp>
+        <SensorAttributes SensorType="ELLIPTICAL" HalfAngleX="0.174533" HalfAngleY="0.174533"/>
+        <SensorGraphics Range="10000" VolumeColor="0.752941 0.752941 0.752941" VolumeOpacity="60" ContourColor="0.717647 0 1"/>
+       </SensorProp>
+       <Geometry>
+        <Position>
+         <Value>
+          <Fixed Data="0 0 0"/>
+         </Value>
+        </Position>
+        <Orientation>
+         <Quaternion>
+          <Value>
+           <Fixed Data="1 0 0 0"/>
+          </Value>
+         </Quaternion>
+        </Orientation>
+       </Geometry>
+      </Sensor>
+     </SensorStation>
+    </GroundStation>
+    <GroundStation Name="Clarksburg">
+     <Prop2d>
+      <SymbolFile Name=""/>
+     </Prop2d>
+     <LatLongAlt>
+      <Value>
+       <Fixed Data="39.2183 -77.2702 0"/>
+      </Value>
+     </LatLongAlt>
+     <SensorStation>
+      <SensorTarget>
+       <TargetAltitude Altitude="1000"/>
+      </SensorTarget>
+      <Sensor Name="Default">
+       <SensorProp>
+        <SensorAttributes SensorType="ELLIPTICAL" HalfAngleX="0.174533" HalfAngleY="0.174533"/>
+        <SensorGraphics Range="10000" VolumeColor="0.752941 0.752941 0.752941" VolumeOpacity="60" ContourColor="1 1 0.498039"/>
+       </SensorProp>
+       <Geometry>
+        <Position>
+         <Value>
+          <Fixed Data="0 0 0"/>
+         </Value>
+        </Position>
+        <Orientation>
+         <Quaternion>
+          <Value>
+           <Fixed Data="1 0 0 0"/>
+          </Value>
+         </Quaternion>
+        </Orientation>
+       </Geometry>
+      </Sensor>
+     </SensorStation>
+    </GroundStation>
+    <GroundStation Name="Perth">
+     <Prop2d>
+      <SymbolFile Name=""/>
+     </Prop2d>
+     <LatLongAlt>
+      <Value>
+       <Fixed Data="-31.8065 115.888 23.6"/>
+      </Value>
+     </LatLongAlt>
+     <SensorStation>
+      <SensorTarget>
+       <TargetAltitude Altitude="1000"/>
+      </SensorTarget>
+      <Sensor Name="Default">
+       <SensorProp>
+        <SensorAttributes SensorType="ELLIPTICAL" HalfAngleX="0.174533" HalfAngleY="0.174533"/>
+        <SensorGraphics Range="10000" VolumeColor="0.752941 0.752941 0.752941" VolumeOpacity="60" ContourColor="1 0.666667 0"/>
+       </SensorProp>
+       <Geometry>
+        <Position>
+         <Value>
+          <Fixed Data="0 0 0"/>
+         </Value>
+        </Position>
+        <Orientation>
+         <Quaternion>
+          <Value>
+           <Fixed Data="1 0 0 0"/>
+          </Value>
+         </Quaternion>
+        </Orientation>
+       </Geometry>
+      </Sensor>
+     </SensorStation>
+    </GroundStation>
+    <GroundStation Name="Kourou">
+     <Prop2d>
+      <SymbolFile Name=""/>
+     </Prop2d>
+     <LatLongAlt>
+      <Value>
+       <Fixed Data="5.15972 -52.6503 0"/>
+      </Value>
+     </LatLongAlt>
+     <SensorStation>
+      <SensorTarget>
+       <TargetAltitude Altitude="1000"/>
+      </SensorTarget>
+      <Sensor Name="Default">
+       <SensorProp>
+        <SensorAttributes SensorType="ELLIPTICAL" HalfAngleX="0.174533" HalfAngleY="0.174533"/>
+        <SensorGraphics Range="10000" VolumeColor="0.752941 0.752941 0.752941" VolumeOpacity="60" ContourColor="0.333333 0.666667 1"/>
+       </SensorProp>
+       <Geometry>
+        <Position>
+         <Value>
+          <Fixed Data="0 0 0"/>
+         </Value>
+        </Position>
+        <Orientation>
+         <Quaternion>
+          <Value>
+           <Fixed Data="1 0 0 0"/>
+          </Value>
+         </Quaternion>
+        </Orientation>
+       </Geometry>
+      </Sensor>
+     </SensorStation>
+    </GroundStation>
+   </GroupGroundStations>
+  </Body>
+  <Satellite Name="CubeSat" ParentPath="Sol/Earth">
+   <CommonProp>
+    <OrbitPath Color="0 0.976471 0.145098"/>
+   </CommonProp>
+   <Prop2d>
+    <SymbolFile Name=""/>
+   </Prop2d>
+   <Component Name="CubeSat">
+    <Graphics3d>
+     <File3ds Name="Models/Cube_body.3ds"/>
+     <Radius Value="2"/>
+     <LightSensitive Value="1"/>
+     <Use3dsCoords Value="1" MeshScale="1"/>
+     <RotationCenter X="0" Y="0" Z="0"/>
+    </Graphics3d>
+    <Geometry>
+     <Position>
+      <Value>
+       <Stream Id="pos" Mode="INTERPOL"/>
+      </Value>
+     </Position>
+     <Orientation>
+      <Quaternion>
+       <Value>
+        <Stream Id="quat" Mode="INTERPOL"/>
+       </Value>
+      </Quaternion>
+     </Orientation>
+    </Geometry>
+    <Component Name="GS">
+     <Graphics3d>
+      <File3ds Name="Models/Cube_gs.3ds"/>
+      <Radius Value="13.5"/>
+      <LightSensitive Value="1"/>
+      <Use3dsCoords Value="1" MeshScale="1"/>
+      <RotationCenter X="0" Y="0" Z="0"/>
+     </Graphics3d>
+     <Geometry>
+      <Position>
+       <Value>
+        <Fixed Data="0 0 0"/>
+       </Value>
+      </Position>
+      <Orientation>
+       <AxisAngle>
+        <Axis>
+         <Value>
+          <Fixed Data="0 1 0"/>
+         </Value>
+        </Axis>
+        <Angle>
+         <Value>
+          <Stream Id="angle" Mode="INTERPOL"/>
+         </Value>
+        </Angle>
+       </AxisAngle>
+      </Orientation>
+     </Geometry>
+    </Component>
+    <Component Name="directionLune">
+     <Graphics3d>
+      <File3ds Name="Models/vector-white.3ds"/>
+      <Radius Value="6"/>
+      <LightSensitive Value="0"/>
+      <Use3dsCoords Value="0" MeshScale="1"/>
+      <RotationCenter X="0" Y="0" Z="0"/>
+     </Graphics3d>
+     <Geometry>
+      <Position>
+       <Value>
+        <Fixed Data="0 0 0"/>
+       </Value>
+      </Position>
+      <Orientation>
+       <Direction>
+        <Value>
+         <Stream Id="dir" Mode="INTERPOL"/>
+        </Value>
+       </Direction>
+      </Orientation>
+     </Geometry>
+    </Component>
+    <Component Name="reQuat">
+     <Graphics3d>
+      <File3ds Name="Models/axis.3ds"/>
+      <Radius Value="2"/>
+      <LightSensitive Value="0"/>
+      <Use3dsCoords Value="0" MeshScale="1"/>
+      <RotationCenter X="0" Y="0" Z="0"/>
+     </Graphics3d>
+     <Geometry>
+      <Position>
+       <Value>
+        <Fixed Data="1 1 1"/>
+       </Value>
+      </Position>
+      <Orientation>
+       <Quaternion>
+        <Value>
+         <Stream Id="quat" Mode="INTERPOL"/>
+        </Value>
+       </Quaternion>
+      </Orientation>
+     </Geometry>
+    </Component>
+    <Component Name="directionSoleil">
+     <Graphics3d>
+      <File3ds Name="Models/vector-yellow.3ds"/>
+      <Radius Value="6"/>
+      <LightSensitive Value="0"/>
+      <Use3dsCoords Value="0" MeshScale="1"/>
+      <RotationCenter X="0" Y="0" Z="0"/>
+     </Graphics3d>
+     <Geometry>
+      <Position>
+       <Value>
+        <Fixed Data="0 0 0"/>
+       </Value>
+      </Position>
+      <Orientation>
+       <Direction>
+        <Value>
+         <Stream Id="dirSol" Mode="INTERPOL"/>
+        </Value>
+       </Direction>
+      </Orientation>
+     </Geometry>
+    </Component>
+    <SensorSatellite>
+     <Sensor Name="Sensor">
+      <SensorProp>
+       <SensorAttributes SensorType="RECTANGULAR" HalfAngleX="0.872665" HalfAngleY="0.349066"/>
+       <SensorGraphics Range="10000" VolumeColor="1 0.286275 0.00392157" VolumeOpacity="60" ContourColor="1 0.921569 0.0235294">
+        <SensorTrace Duration="-1" Opacity="60"/>
+       </SensorGraphics>
+      </SensorProp>
+      <Geometry>
+       <Position>
+        <Value>
+         <Fixed Data="0 0 0"/>
+        </Value>
+       </Position>
+       <Orientation>
+        <Quaternion>
+         <Value>
+          <Fixed Data="1 0 0 0"/>
+         </Value>
+        </Quaternion>
+       </Orientation>
+      </Geometry>
+     </Sensor>
+    </SensorSatellite>
+   </Component>
+   <Events/>
+  </Satellite>
+ </Entities>
+ <Events/>
+ <States>
+  <Instant Time="0" Label="Initial state">
+   <AppState Id="0">
+    <Command Str="CMD PROP WindowGeometry 0 500 1280 400"/>
+    <Command Str="CMD STRUCT OrbitWindow &quot;Sol/Earth/CubeSat&quot; 1 1"/>
+   </AppState>
+   <AppState Id="1">
+    <Command Str="CMD PROP WindowGeometry 0 0 1280 500"/>
+    <Command Str="CMD PROP CameraDesc bodyfixed Sol/Earth nil -0.003871735998903 0.003430614833885 -0.002908927301526 -0.475429378632364 -0.321538155743252 -0.801054816824307 -0.169974412124437 0.292898327112198"/>
+    <Command Str="CMD PROP SelectObject Sol/Earth/CubeSat_ref/CubeSat"/>
+    <Command Str="CMD STRUCT OrbitWindow &quot;Sol/Earth/CubeSat&quot; 1 1"/>
+   </AppState>
+  </Instant>
+ </States>
+</Project>

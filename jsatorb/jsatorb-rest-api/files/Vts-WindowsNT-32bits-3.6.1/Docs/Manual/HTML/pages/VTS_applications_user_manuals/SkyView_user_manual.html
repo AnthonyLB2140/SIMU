@@ -1,0 +1,327 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>SkyView user manual &mdash; VTS 3.6.0-9030 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="VTS 3.6.0-9030 documentation" href="../../index.html"/>
+        <link rel="up" title="VTS applications user manuals" href="index.html"/>
+        <link rel="next" title="SensorView user manual" href="SensorView_user_manual.html"/>
+        <link rel="prev" title="SurfaceView user manual" href="SurfaceView_user_manual.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> VTS
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../General/index.html">General</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Files_used_by_VTS/index.html">Files used by VTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Starting_VTS/index.html">Starting VTS</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">VTS applications user manuals</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="VTS_configuration_utility_user_manual.html">VTS configuration utility user manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Broker_user_manual.html">Broker user manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SurfaceView_user_manual.html">SurfaceView user manual</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">SkyView user manual</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration-in-vts">Configuration in VTS</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#application-parameters-in-vts">Application parameters in VTS</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#satellite-frame-axes">Satellite frame axes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="SensorView_user_manual.html">SensorView user manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NadirView_user_manual.html">NadirView user manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ZenithView_user_manual.html">ZenithView user manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Celestia_user_manual.html">Celestia user manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InfoBox_user_manual.html">InfoBox user manual</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Plugin_development/index.html">Plugin development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Data_generators_in_VTS/index.html">Data generator integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../About/index.html">About</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">VTS</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">VTS applications user manuals</a> &raquo;</li>
+        
+      <li>SkyView user manual</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/pages/VTS_applications_user_manuals/SkyView_user_manual.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="skyview-user-manual">
+<span id="id1"></span><h1>SkyView user manual<a class="headerlink" href="#skyview-user-manual" title="Permalink to this headline">¶</a></h1>
+<p>The SkyView client application displays a rectangular start chart centered on a specific satellite.</p>
+<div class="section" id="introduction">
+<span id="skyview-user-manual-introduction"></span><h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>SkyView displays a 2D star chart based on the equirectangular projection of the celestial sphere and centered on a specific satellite. Project entities (such as satellites and celestial bodies) are projected into the celestial sphere according to their position relatie to the satellite.</p>
+<div class="figure align-center" id="id2">
+<img alt="../../_images/SkyView.png" src="../../_images/SkyView.png" />
+<p class="caption"><span class="caption-text">SkyView client application</span></p>
+</div>
+</div>
+<div class="section" id="configuration-in-vts">
+<span id="skyview-user-manual-configuration-in-vts"></span><h2>Configuration in VTS<a class="headerlink" href="#configuration-in-vts" title="Permalink to this headline">¶</a></h2>
+<p>The entities and properties defined in the VTS configuration utility will be displayed in SkyView.</p>
+<div class="section" id="application-parameters-in-vts">
+<span id="skyview-user-manual-application-parameters-in-vts"></span><h3>Application parameters in VTS<a class="headerlink" href="#application-parameters-in-vts" title="Permalink to this headline">¶</a></h3>
+<p>When adding SkyView as a VTS client application, some parameters can be set by clicking on the SkyView entry in the VTS project tree.</p>
+<p>Since SkyView shares some parameters with SurfaceView, only SkyView specific parameters will be described here. Please refer to <a class="reference internal" href="SurfaceView_user_manual.html#surfaceview-user-manual-application-parameters-in-vts"><span class="std std-ref">SurfaceView user manual</span></a> for more detail on the application parameters in common.
+:</p>
+<div class="figure align-center" id="id3">
+<img alt="../../_images/SkyViewApplicationParameters.png" src="../../_images/SkyViewApplicationParameters.png" />
+<p class="caption"><span class="caption-text">SkyView application parameters.</span></p>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Scene Reference</td>
+<td>This combo box allows you to select a satellite from the list of satellites defined in the VTS project tree. The selected satellite will become the scene reference in the SkyView instance. By default, the first satellite from the VTS project tree is selected as a scene reference.</td>
+</tr>
+<tr class="row-odd"><td>Min visible star count</td>
+<td>Minimum number of stars displayed at any time or zoom level.</td>
+</tr>
+<tr class="row-even"><td>Loaded star count from catalog</td>
+<td>Number of stars to load from the specified star catalog.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="satellite-frame-axes">
+<span id="skyview-user-manual-satellite-frame-axes"></span><h2>Satellite frame axes<a class="headerlink" href="#satellite-frame-axes" title="Permalink to this headline">¶</a></h2>
+<p>The intersection of a satellite frame axes with the visualization plan can be enabled through the satellites proprerties.
+The following frame axes can be represented:</p>
+<ul class="simple">
+<li>EME2000 inertial frame axes,</li>
+<li>QSW frame axes,</li>
+<li>Satellite frame axes.</li>
+</ul>
+<p>Axes are represented by crosses (red, green and blue) followed by the axe name: <code class="docutils literal"><span class="pre">&lt;SatelliteName&gt;_&lt;AxisName&gt;</span></code>.</p>
+<ul class="simple">
+<li>EME2000: Xeme2000 (red), Yeme2000 (green), Zeme2000 (blue),</li>
+<li>QSW: Q (red), S (green), W (blue),</li>
+<li>Satellite: Xsat (red), Ysat (green), Zsat (blue).</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="SensorView_user_manual.html" class="btn btn-neutral float-right" title="SensorView user manual" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="SurfaceView_user_manual.html" class="btn btn-neutral" title="SurfaceView user manual" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright VTS Team.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'3.6.0-9030',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

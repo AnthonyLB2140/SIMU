@@ -1,0 +1,6 @@
+Refaire un test sur un nouveau flow avec une inject et un persist IN puis un inject et un persist OUT , le tout sur un nouveau fichier de stockage .
+Les fichier persistance.json devrais alors être effacé , dans le conteneur.
+Il faut alors les y remettre en utlisant la commande:
+(depuis le repertoir ou ce trouve le fichier)
+docker cp ./nomdufichier.json ccc_nodered:/usr/src/node-red/
+les noeuds devraient alors fonctionner normalement 

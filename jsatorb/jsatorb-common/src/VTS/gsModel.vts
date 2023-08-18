@@ -1,0 +1,16 @@
+<GroundStation Name="[NAMESTATION]">
+ <Prop2d>
+  <Icon Anchor="CENTER" Size="SMALL" Opacity="100">
+   <Font Size="MEDIUM" Color="1 1 0"/>
+   <ImageLayer Type="Default"/>
+  </Icon>
+ </Prop2d>
+ <LatLongAlt>
+  <Value>
+   <Fixed Data="[LATSTATION] [LONGSTATION] [ALTSTATION]"/>
+  </Value>
+ </LatLongAlt>
+ <SensorStation>
+  [SENSORGS]
+ </SensorStation>
+</GroundStation>

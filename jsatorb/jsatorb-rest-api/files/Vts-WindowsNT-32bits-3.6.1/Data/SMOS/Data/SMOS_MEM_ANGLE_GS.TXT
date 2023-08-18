@@ -1,0 +1,62 @@
+CIC_MEM_VERS = 1.0
+CREATION_DATE  = 1996-11-04T17:22:31
+ORIGINATOR     = CNES
+ 
+META_START
+
+COMMENT Cic infos
+COMMENT Info generated from c:/Documents and Settings/mjt/Desktop/ephemeris.cic
+COMMENT
+COMMENT Labels SATELLITE POSITION SATELLITE VELOCITY
+COMMENT Units km km/s
+COMMENT Agate infos
+COMMENT Bulletin Initial en parametres : MOSAIQ (MOYEN)
+COMMENT Date : 21/03/2012 a  00:00:00.000000 ; date julienne :  22725.0000000
+COMMENT Demi gd axe =    7072.000 km
+COMMENT Excentricite =  0.000012
+COMMENT Inclinaison =  82.00000 deg
+COMMENT Petit omega =   0.00000 deg
+COMMENT Grand omega =   0.00000 deg
+COMMENT Hlo vraie NA =  12.07060 h
+COMMENT Anomalie moyenne =   0.40500 deg
+COMMENT Altitude apogee/perigee =   693.775 /   693.951 km
+
+COMMENT Variations moyennes (dues au J2 seulement) :
+COMMENT pomm  -3.1347052 deg/jour
+COMMENT gomm  -0.9660956 deg/jour
+COMMENT amm   14.5887853  tr/jour
+
+COMMENT Periode orbitale =   5918.67 secondes ;  1.6441 heures
+COMMENT Pulsation orbite =0.00106 rad/s
+COMMENT Periode nodale   =   5925.89 secondes ;  1.6461 heures
+
+COMMENT Date de debut de simulation : 10/07/2014 a  00:00:00.000 ; date julienne :  23566.0000000
+COMMENT Date de fin de simulation : 11/07/2014 a  00:00:00.000 ; date julienne :  23567.0000000
+COMMENT Pas de simulation :  10.000 s
+COMMENT Duree du calcul   :   1.00000 jours
+
+COMMENT Definition du repere orbital local (eq. QSW) :
+COMMENT x = normal au rayon vecteur (a  z), vers la vitesse (x = y vectoriel z)
+COMMENT y = parallele au moment cinetique (normale positive a l'orbite)
+COMMENT z = geocentrique ascendante
+
+OBJECT_NAME = Rosetta
+OBJECT_ID = Rosetta
+
+USER_DEFINED_PROTOCOL = CIC
+USER_DEFINED_CONTENT = ROTATION_ANGLE_SA_1
+
+TIME_SYSTEM = UTC
+
+META_STOP
+
+2009-04-01T00:00:00 0
+2009-04-01T00:01:00 40
+2009-04-01T00:02:00 100
+2009-04-01T00:03:00 180
+2009-04-01T00:04:00 -50
+2009-04-01T00:05:00 0
+2009-04-01T00:06:00 90
+2009-04-01T00:07:00 180
+2009-04-01T00:08:00 270
+

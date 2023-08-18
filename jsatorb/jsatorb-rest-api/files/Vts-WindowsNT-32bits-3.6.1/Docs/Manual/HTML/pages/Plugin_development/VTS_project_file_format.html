@@ -1,0 +1,402 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>VTS project file format &mdash; VTS 3.6.0-9030 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="VTS 3.6.0-9030 documentation" href="../../index.html"/>
+        <link rel="up" title="Plugin development" href="index.html"/>
+        <link rel="next" title="Data generator integration" href="../Data_generators_in_VTS/index.html"/>
+        <link rel="prev" title="Description of application properties" href="Description_of_application_properties.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> VTS
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../General/index.html">General</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Files_used_by_VTS/index.html">Files used by VTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Starting_VTS/index.html">Starting VTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VTS_applications_user_manuals/index.html">VTS applications user manuals</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Plugin development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Client_applications_in_VTS.html">Client applications in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Application_IDs_in_VTS.html">Application IDs in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Synchronization_protocol_for_VTS_clients.html">Synchronization protocol for VTS clients</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Description_of_application_properties.html">Description of application properties</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">VTS project file format</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#notation">Notation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#file-format-schema">File format schema</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#definition">Definition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#generating-vts-projects-from-the-xsd">Generating VTS projects from the XSD</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Data_generators_in_VTS/index.html">Data generator integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../About/index.html">About</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">VTS</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Plugin development</a> &raquo;</li>
+        
+      <li>VTS project file format</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/pages/Plugin_development/VTS_project_file_format.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="vts-project-file-format">
+<span id="id1"></span><h1>VTS project file format<a class="headerlink" href="#vts-project-file-format" title="Permalink to this headline">¶</a></h1>
+<p>A VTS project file describes all the elements of a visualization. It is written in XML format for clarity. Its name must end with the <em>.vts</em> extension.</p>
+<div class="section" id="notation">
+<span id="vts-project-file-format-notation"></span><h2>Notation<a class="headerlink" href="#notation" title="Permalink to this headline">¶</a></h2>
+<p>The sections below are structured as a tree representing the XML tags contained in a VTS project file.</p>
+<p>Section names follow this nomenclature:</p>
+<ul class="simple">
+<li>Tags written as <em>&lt;Tag&gt;</em> may contain other tags.</li>
+<li>Tags written as <em>&lt;Tag/&gt;</em> are self-contained (they may not contain other tags).</li>
+<li>Tags written as <em>&lt;**Tag*</em>&gt;* are generic tags which are used in various contexts.</li>
+</ul>
+<p>Generic tags are indicated under the sections of tags they may be child of. However, they are only fully described in separate sections outside of the main structure.</p>
+</div>
+<div class="section" id="file-format-schema">
+<span id="vts-project-file-format-file-format-schema"></span><h2>File format schema<a class="headerlink" href="#file-format-schema" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="definition">
+<span id="vts-project-file-format-definition"></span><h3>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">¶</a></h3>
+<p>Starting from VTS 3.2, each release of VTS comes with its <strong>validation schema</strong> file. Theses files can be found in the <em>VTS/Docs/Schemas</em> folder.
+A validation schema consist of an XML representation of how the VTS project file (also XML) must be organized.
+VTS validation schemas use the standard <strong>XML Schema Definition</strong> syntax (known as XSD).</p>
+</div>
+<div class="section" id="generating-vts-projects-from-the-xsd">
+<span id="vts-project-file-format-generating-vts-projects-from-the-xsd"></span><h3>Generating VTS projects from the XSD<a class="headerlink" href="#generating-vts-projects-from-the-xsd" title="Permalink to this headline">¶</a></h3>
+<p>Since the VTS Schema are described using the standard XML Schema Definition, it is recognized and understood by many software and libraries.
+In particular, VTS schemas can be used to automatically generate valid VTS projects using almost any modern programming languages.
+The following chapters describe how to generate a VTS project using <em>Python</em> and <em>C#</em>.</p>
+<div class="section" id="vts-project-generation-with-python">
+<span id="vts-project-file-format-vts-project-generation-with-python"></span><h4>VTS project generation with Python<a class="headerlink" href="#vts-project-generation-with-python" title="Permalink to this headline">¶</a></h4>
+<p>In order to generate a VTS project with Python, one can use <em>PyXB</em>. PyXB is a set of Python commands capable of generating a Python library from a XSD that:</p>
+<ul class="simple">
+<li>gives access to a memory representation of the VTS project file,</li>
+<li>can read a VTS project to this memory representation,</li>
+<li>can write a VTS project from this memory representation.</li>
+</ul>
+<p>Using this library one can easily create a project and, for example, add programmatically satellites, components, bodies, layers of any kind, etc.</p>
+<div class="section" id="installing-pyxb">
+<span id="vts-project-file-format-installing-pyxb"></span><h5>Installing PyXB<a class="headerlink" href="#installing-pyxb" title="Permalink to this headline">¶</a></h5>
+<p>Python 2.7 or 3.x must be available on the computer. We assume the PATH environment variable is set to its directory.</p>
+<p>Download PyXB (and unzip if necessary) anywhere on the computer.</p>
+<p>PyXB can be found here: <a class="reference external" href="https://github.com/pabigot/pyxb">https://github.com/pabigot/pyxb</a> (use <strong>git clone</strong> or download it as a ZIP).</p>
+</div>
+<div class="section" id="generating-a-library-from-the-xsd-using-pyxb">
+<span id="vts-project-file-format-generating-a-library-from-the-xsd-using-pyxb"></span><h5>Generating a library from the XSD using PyXB<a class="headerlink" href="#generating-a-library-from-the-xsd-using-pyxb" title="Permalink to this headline">¶</a></h5>
+<p>Open a terminal in the PyXB folder and execute <strong>python setup.py install</strong></p>
+<p>Go to the <strong>PyXB/build/scripts*</strong> folder and run <strong>python pyxbgen -m VTSProject -u &lt;path to VTSProject-xxx.xsd&gt;</strong></p>
+<p>This will output the file <strong>VTSProject.py</strong></p>
+</div>
+<div class="section" id="usage-example-of-the-generated-library">
+<span id="vts-project-file-format-usage-example-of-the-generated-library"></span><h5>Usage example of the generated library<a class="headerlink" href="#usage-example-of-the-generated-library" title="Permalink to this headline">¶</a></h5>
+<p>The following example shows how to:</p>
+<ul class="simple">
+<li>Open a project “CubeSat.vts”,</li>
+<li>Change its Start Time using a MJD Date,</li>
+<li>Create a hundred new satellites with “Sol/Earth” as parent,</li>
+<li>Write a new project file with all these changes.</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyxb</span>
+<span class="kn">import</span> <span class="nn">VTSProject</span>
+
+<span class="n">xml</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;CubeSat.vts&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">project</span> <span class="o">=</span> <span class="n">VTSProject</span><span class="o">.</span><span class="n">CreateFromDocument</span><span class="p">(</span><span class="n">xml</span><span class="p">)</span>
+
+<span class="n">project</span><span class="o">.</span><span class="n">General</span><span class="o">.</span><span class="n">StartDateTime</span> <span class="o">=</span> <span class="n">VTSProject</span><span class="o">.</span><span class="n">MJDDateTimeType</span><span class="p">(</span><span class="s2">&quot;55277 81261.150400&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">):</span>
+    <span class="n">sat</span> <span class="o">=</span> <span class="n">VTSProject</span><span class="o">.</span><span class="n">SatelliteType</span><span class="p">()</span>
+    <span class="n">sat</span><span class="o">.</span><span class="n">Name</span> <span class="o">=</span> <span class="s2">&quot;sat_&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">sat</span><span class="o">.</span><span class="n">ParentPath</span> <span class="o">=</span> <span class="s2">&quot;Sol/Earth&quot;</span>
+    <span class="n">project</span><span class="o">.</span><span class="n">Entities</span><span class="o">.</span><span class="n">Satellite</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sat</span><span class="p">)</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;CubeSatModified.vts&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+<span class="n">pyxb</span><span class="o">.</span><span class="n">RequireValidWhenGenerating</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">project</span><span class="o">.</span><span class="n">toxml</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="vts-project-generation-with-c">
+<span id="vts-project-file-format-vts-project-generation-with-c"></span><h4>VTS project generation with C#<a class="headerlink" href="#vts-project-generation-with-c" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="generating-a-library-from-the-xsd-using-visual-studio-community">
+<span id="vts-project-file-format-generating-a-library-from-the-xsd-using-visual-studio-community"></span><h5>Generating a library from the XSD using Visual Studio Community<a class="headerlink" href="#generating-a-library-from-the-xsd-using-visual-studio-community" title="Permalink to this headline">¶</a></h5>
+<p>Install <strong>Visual Studio Community 2017</strong>.</p>
+<p>Open the <strong>Developer Command Prompt</strong> and go to the XSD folder.</p>
+<p>Enter the command <strong>xsd &lt;name of the XSD file&gt; /classes</strong>.</p>
+<p>This will output the source file <strong>&lt;name of this input XSD&gt;.cs</strong>.</p>
+</div>
+<div class="section" id="vts-project-file-format-usage-example-of-the-generated-library-c">
+<span id="id2"></span><h5>Usage example of the generated library<a class="headerlink" href="#vts-project-file-format-usage-example-of-the-generated-library-c" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-csharp"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.IO</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Linq</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Text</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Xml</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Xml.Schema</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Xml.Serialization</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">ConsoleApp</span>
+<span class="p">{</span>
+    <span class="k">class</span> <span class="nc">Program</span>
+    <span class="p">{</span>
+        <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">XmlSerializer</span> <span class="n">serializer</span> <span class="p">=</span> <span class="k">new</span> <span class="n">XmlSerializer</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">Project</span><span class="p">));</span>
+            <span class="n">Project</span> <span class="n">project</span><span class="p">;</span>
+
+            <span class="n">XmlSchemaSet</span> <span class="n">sc</span> <span class="p">=</span> <span class="k">new</span> <span class="n">XmlSchemaSet</span><span class="p">();</span>
+            <span class="n">sc</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">null</span><span class="p">,</span> <span class="s">@&quot;VTSProject-3.2.xsd&quot;</span><span class="p">);</span>
+
+            <span class="n">XmlReaderSettings</span> <span class="n">settings</span> <span class="p">=</span> <span class="k">new</span> <span class="n">XmlReaderSettings</span><span class="p">();</span>
+            <span class="n">settings</span><span class="p">.</span><span class="n">ValidationType</span> <span class="p">=</span> <span class="n">ValidationType</span><span class="p">.</span><span class="n">Schema</span><span class="p">;</span>
+            <span class="n">settings</span><span class="p">.</span><span class="n">ValidationFlags</span> <span class="p">=</span>
+                <span class="n">System</span><span class="p">.</span><span class="n">Xml</span><span class="p">.</span><span class="n">Schema</span><span class="p">.</span><span class="n">XmlSchemaValidationFlags</span><span class="p">.</span><span class="n">ReportValidationWarnings</span> <span class="p">|</span>
+                <span class="n">System</span><span class="p">.</span><span class="n">Xml</span><span class="p">.</span><span class="n">Schema</span><span class="p">.</span><span class="n">XmlSchemaValidationFlags</span><span class="p">.</span><span class="n">ProcessSchemaLocation</span><span class="p">;</span>
+            <span class="n">settings</span><span class="p">.</span><span class="n">Schemas</span> <span class="p">=</span> <span class="n">sc</span><span class="p">;</span>
+            <span class="n">settings</span><span class="p">.</span><span class="n">ValidationEventHandler</span> <span class="p">+=</span> <span class="k">new</span> <span class="n">ValidationEventHandler</span><span class="p">(</span><span class="n">ValidationCallBack</span><span class="p">);</span>
+
+            <span class="kt">string</span> <span class="n">xml</span> <span class="p">=</span> <span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">File</span><span class="p">.</span><span class="n">ReadAllText</span><span class="p">(</span><span class="s">@&quot;CubeSat.vts&quot;</span><span class="p">);</span>
+            <span class="k">using</span> <span class="p">(</span><span class="n">XmlReader</span> <span class="n">reader</span> <span class="p">=</span> <span class="n">XmlReader</span><span class="p">.</span><span class="n">Create</span><span class="p">(</span><span class="k">new</span> <span class="n">StringReader</span><span class="p">(</span><span class="n">xml</span><span class="p">),</span> <span class="n">settings</span><span class="p">))</span>
+            <span class="p">{</span>
+                <span class="n">project</span> <span class="p">=</span> <span class="p">(</span><span class="n">Project</span><span class="p">)</span><span class="n">serializer</span><span class="p">.</span><span class="n">Deserialize</span><span class="p">(</span><span class="n">reader</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="n">FileStream</span> <span class="n">fout</span> <span class="p">=</span> <span class="k">new</span> <span class="n">FileStream</span><span class="p">(</span><span class="s">@&quot;CubeSat.out.vts&quot;</span><span class="p">,</span> <span class="n">FileMode</span><span class="p">.</span><span class="n">Create</span><span class="p">);</span>
+            <span class="n">serializer</span><span class="p">.</span><span class="n">Serialize</span><span class="p">(</span><span class="n">fout</span><span class="p">,</span> <span class="p">(</span><span class="kt">object</span><span class="p">)</span><span class="n">project</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Display any validation errors.</span>
+        <span class="k">private</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">ValidationCallBack</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">ValidationEventArgs</span> <span class="n">e</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Validation Error: {0}&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">.</span><span class="n">Message</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Data_generators_in_VTS/index.html" class="btn btn-neutral float-right" title="Data generator integration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Description_of_application_properties.html" class="btn btn-neutral" title="Description of application properties" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright VTS Team.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'3.6.0-9030',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

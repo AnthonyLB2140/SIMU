@@ -1,0 +1,4144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- VTS Project File Format - Version 3.2 -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" vc:maxVersion="1.1" vc:minVersion="1.0"
+  xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning">
+
+  <!-- ColorType -->
+  <xs:simpleType name="ColorType">
+    <xs:annotation>
+      <xs:documentation>Represents a color (text string made of 3 float values between 0 and 1: R, G, B).</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:annotation>
+        <xs:documentation>3 floats separated by at least one space (with one float = (0?\.[0-9]*|[01]\.?|1\.0*)).</xs:documentation>
+      </xs:annotation>
+      <xs:pattern value="(0?\.[0-9]+|[01]\.?|1\.0*)\s+(0?\.[0-9]+|[01]\.?|1\.0*)\s+(0?\.[0-9]+|[01]\.?|1\.0*)" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- MJD format -->
+  <xs:simpleType name="MJDDateTimeType">
+    <xs:annotation>
+      <xs:documentation>
+        Represents a date in the Modified Julian Day format.
+        Example for May 17th, 2011, 16h22: 55698 58920.000000
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:annotation>
+        <xs:documentation>At least one integer value, followed by a space then by a float value.</xs:documentation>
+      </xs:annotation>
+      <xs:pattern value="[0-9]+\s+[0-9]*\.?[0-9]+"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- ISO format -->
+  <xs:simpleType name="ISODateTimeType">
+    <xs:annotation>
+      <xs:documentation>
+        Represents a date in the ISO 8601 format. Forced UTC.
+        Example for May 17th, 2011, 16h22: 2011-05-17T16:22:00.000Z
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:annotation>
+        <xs:documentation>Common format is: aaaa-mm-ddThh:mi:ssZ</xs:documentation>
+      </xs:annotation>
+      <xs:pattern
+        value="([1-9]\d{3}-((0[1-9]|1[0-2])-(0[1-9]|1\d|2[0-8])|(0[13-9]|1[0-2])-(29|30)|(0[13578]|1[02])-31)|([1-9]\d(0[48]|[2468][048]|[13579][26])|([2468][048]|[13579][26])00)-02-29)T([01]\d|2[0-3]):[0-5]\d:[0-5]\d\.\d{3}Z"
+      />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- JD1950 format -->
+  <xs:simpleType name="JD1950DateTimeType">
+    <xs:annotation>
+      <xs:documentation>
+        Represents a date in the JD1950 format (CNES Julian day).
+        Example for May 17th, 2011, 16h22: 22416.6819444444
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:double"/>
+  </xs:simpleType>
+
+  <!-- DateTimeType -->
+  <xs:simpleType name="DateTimeType">
+    <xs:annotation>
+      <xs:documentation>Represents any of the three date/time types available: MJD, ISO or JD1950.</xs:documentation>
+    </xs:annotation>
+    <xs:union memberTypes="MJDDateTimeType ISODateTimeType JD1950DateTimeType"/>
+  </xs:simpleType>
+
+  <!-- DurationType -->
+  <xs:simpleType name="DurationType">
+    <xs:annotation>
+      <xs:documentation>
+        Durations can be expressed in hours, days, minutes, etc.
+        Please refer to the documentation associated to the attributes of type DurationType.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:double"/>
+  </xs:simpleType>
+
+  <!-- StyleType -->
+  <xs:simpleType name="StyleType">
+    <xs:annotation>
+      <xs:documentation>
+        Style of a path/line.
+      </xs:documentation>
+    </xs:annotation>
+
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SolidLine"/>
+      <xs:enumeration value="DashLine"/>
+      <xs:enumeration value="DotLine"/>
+      <xs:enumeration value="DashDotLine"/>
+      <xs:enumeration value="DashDotDotLine"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- ImageSourceType -->
+  <xs:simpleType name="ImageSourceType">
+    <xs:annotation>
+      <xs:documentation>
+        Enumeration of all available icon sources representing an entity.
+      </xs:documentation>
+    </xs:annotation>
+
+    <xs:restriction base="xs:string">
+      <!-- Default -->
+      <xs:enumeration value="Default">
+        <xs:annotation>
+          <xs:documentation>Use the default icon that corresponds to the entity type.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+
+      <!-- Custom -->
+      <xs:enumeration value="Custom">
+        <xs:annotation>
+          <xs:documentation>Use a custom icon, unrelated to the entity type.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- FilePathType -->
+  <xs:simpleType name="FilePathType">
+    <xs:restriction base="xs:string"> </xs:restriction>
+  </xs:simpleType>
+
+  <!-- ListOfUnsignedInt -->
+  <xs:simpleType name="ListOfUnsignedInt">
+    <xs:annotation>
+      <xs:documentation>
+        Represents a list of unsigned int
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:annotation>
+        <xs:documentation>Common format is a suite of number</xs:documentation>
+      </xs:annotation>
+      <xs:pattern
+        value="(\d ?)*"
+      />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- RotationSequenceType -->
+  <xs:simpleType name="RotationSequenceType">
+    <xs:annotation>
+      <xs:documentation>
+        Represents the rotation sequence in the case of an Euler Angle.
+        The sequence is described as a number with 3 digits (1, 2 or 3).
+        Each digit correspond to an axis (1: Rx, 2: Ry, 3: Rz).
+        The order of the successive rotation correspond to the position of the digit.
+        For example: "313" correspond to the rotation sequence "Rz - Rx' - Rz''".
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[1-3]{3}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- StreamModeType -->
+  <xs:simpleType name="StreamModeType">
+    <xs:annotation>
+      <xs:documentation>
+        Enumeration of all the available streaming modes.
+      </xs:documentation>
+    </xs:annotation>
+
+    <xs:restriction base="xs:string">
+      <!-- INTERPOL -->
+      <xs:enumeration value="INTERPOL">
+        <xs:annotation>
+          <xs:documentation>
+            Time is interpoled/smoothed between each TIME command.
+            This mode introduces a delay (typically 2 seconds) in visualization time in order to realize the interpolation.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+
+      <!-- EXTRAPOL -->
+      <xs:enumeration value="EXTRAPOL">
+        <xs:annotation>
+          <xs:documentation>
+            No used yet.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+
+      <!-- DIRECT -->
+      <xs:enumeration value="DIRECT">
+        <xs:annotation>
+          <xs:documentation>
+            Time is not interpoled. No delay is introduced in this mode.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- BrokerWindowModeType -->
+  <xs:simpleType name="BrokerWindowModeType">
+    <xs:annotation>
+      <xs:documentation>Enumeration of the different Broker docking modes.</xs:documentation>
+    </xs:annotation>
+
+    <xs:restriction base="xs:string">
+      <!-- DockedOnTop -->
+      <xs:enumeration value="DockedOnTop">
+        <xs:annotation>
+          <xs:documentation>The Broker must be docked on the top side of the desktop.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+
+      <!-- DockedOnBottom -->
+      <xs:enumeration value="DockedOnBottom">
+        <xs:annotation>
+          <xs:documentation>The Broker must be docked on the bottom side of the desktop.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+
+      <!-- Undocked -->
+      <xs:enumeration value="Undocked">
+        <xs:annotation>
+          <xs:documentation>The Broker is undocked.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- DateFormatType -->
+  <xs:simpleType name="DateFormatType">
+    <xs:annotation>
+      <xs:documentation>Enumeration of the different date modes available.</xs:documentation>
+    </xs:annotation>
+
+    <xs:restriction base="xs:string">
+      <!-- ISODate -->
+      <xs:enumeration value="ISODate">
+        <xs:annotation>
+          <xs:documentation>
+            Date is expressed in ISO 8601 format.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+
+      <!-- MJDDate -->
+      <xs:enumeration value="MJDDate">
+        <xs:annotation>
+          <xs:documentation>
+            Date is expressed in Modified Julian Day format.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+
+      <!-- JD1950Date -->
+      <xs:enumeration value="JD1950Date">
+        <xs:annotation>
+          <xs:documentation>
+            Date is expressed in CNES Julian Day format.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+
+      <!-- RelativeDate -->
+      <xs:enumeration value="RelativeDate">
+        <xs:annotation>
+          <xs:documentation>
+            Date is expressed relatively to the project start date.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- TimelineModeType -->
+  <xs:simpleType name="TimelineModeType">
+    <xs:annotation>
+      <xs:documentation>Enumeration of the graphical representation of files in the Timeline.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <!-- DEFAULT -->
+      <xs:enumeration value="DEFAULT"/>
+
+      <!-- Normal -->
+      <xs:enumeration value="Normal">
+        <xs:annotation>
+          <xs:documentation>
+            Each value is displayed as a rectangle extending from the date of the value to the date of the next value.
+            Rectangles of identical color indicate identical value.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+
+      <!-- Block -->
+      <xs:enumeration value="Block">
+        <xs:annotation>
+          <xs:documentation>
+            The whole file is displayed as a single rectangle.
+            This display mode is used for files with more than 300 lines or bigger than 500Kb, so as not to overload the timeline.
+            When the file contents have not been read, the block is colored in gray and no tooltip is available.
+            Otherwise, the block is colored and tooltips are available.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+
+      <!-- Event -->
+      <xs:enumeration value="Event">
+        <xs:annotation>
+          <xs:documentation>
+            Each value is displayed as a diamond at the date of the value.
+            Diamonds of identical color indicate identical value.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+
+      <!-- Interval -->
+      <xs:enumeration value="Interval">
+        <xs:annotation>
+          <xs:documentation>
+            Identical to Normal mode, except that "neutral" values (0 for real or integer data) are not displayed.
+            This mode offers better contrast to visualize the contents of files with on/off status, such as in/out of eclipse status for a satellite, etc.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+
+      <!-- Gradient -->
+      <xs:enumeration value="Gradient">
+        <xs:annotation>
+          <xs:documentation>
+            The whole file is displayed as a single rectangle filled with a color gradient indicating the value variations in the file.
+            This mode offers better visualization of the evolution of values in a file, but may not be suited to files of dimension greater than 1.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+
+      <!-- Color -->
+      <xs:enumeration value="Color">
+        <xs:annotation>
+          <xs:documentation>
+            Identical to Normal mode, except that the color of each rectangle is derived by interpreting the corresponding value as a color.
+            This mode allows displaying the contents of color files, and is only available for data which may be interpreted as a color, i.e. files of real or integer data of dimension 3 or 4.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+
+      <!-- Graph -->
+      <xs:enumeration value="Graph">
+        <xs:annotation>
+          <xs:documentation>
+            All values are displayed as a graph.
+            This is a preview of the content of the file and may not replace a proper plotter software such as PrestoPlot.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- CatalogModeType -->
+  <xs:simpleType name="CatalogModeType">
+    <xs:annotation>
+      <xs:documentation>
+        Define the specific star catalog mode that will be used in client applications.
+      </xs:documentation>
+    </xs:annotation>
+
+    <xs:restriction base="xs:string">
+      <!-- Builtin -->
+      <xs:enumeration value="Builtin">
+        <xs:annotation>
+          <xs:documentation>
+            Use the default star catalog of client applications.
+            This mode will notify client applications to use their built-in star catalog.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+
+      <!-- Catalog -->
+      <xs:enumeration value="Catalog">
+        <xs:annotation>
+          <xs:documentation>
+            Use the star catalog from VTS to provide external data to client applications.
+            This mode will notify client applications to use the star catalog provided with VTS (see Hipparcos Catalog provided with VTS for more information).
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+
+      <!-- Custom -->
+      <xs:enumeration value="Custom">
+        <xs:annotation>
+          <xs:documentation>
+            Use a custom star catalog to overload catalog in client applications.
+            Allows to specify a custom star catalog file.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- EphemerisModeType -->
+  <xs:simpleType name="EphemerisModeType">
+    <xs:annotation>
+      <xs:documentation>
+        Enumeration of all the possible ephemeris origins.
+        Refer to the VTS manual chapter "Central bodies in VTS".
+      </xs:documentation>
+    </xs:annotation>
+
+    <xs:restriction base="xs:string">
+      <!-- Default -->
+      <xs:enumeration value="Default">
+        <xs:annotation>
+          <xs:documentation>
+            Client applications select the ephemeris of the central body.
+            They can use their own calculation or shipped data, or or VTS ephemeris catalog.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+
+      <!-- Catalog -->
+      <xs:enumeration value="Catalog">
+        <xs:annotation>
+          <xs:documentation>
+            Client applications use the VTS ephemeris catalog data in this mode.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+
+      <!-- User -->
+      <xs:enumeration value="User">
+        <xs:annotation>
+          <xs:documentation>
+            User defined ephemeris catalog.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- URLType -->
+  <xs:simpleType name="URLType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <!-- ProjectionType -->
+  <xs:simpleType name="ProjectionType">
+    <xs:annotation>
+      <xs:documentation>Enumeration of all the available projections.</xs:documentation>
+    </xs:annotation>
+
+    <xs:restriction base="xs:string">
+      <!-- equirectangular -->
+      <xs:enumeration value="equirectangular">
+        <xs:annotation>
+          <xs:documentation>
+            Equirctangular projection.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+
+      <!-- polar -->
+      <xs:enumeration value="polar">
+        <xs:annotation>
+          <xs:documentation>
+            Polar projection.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+
+      <!-- mercator -->
+      <xs:enumeration value="mercator">
+        <xs:annotation>
+          <xs:documentation>
+            Mercator projection.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+
+      <!-- azimuthal -->
+      <xs:enumeration value="azimuthal">
+        <xs:annotation>
+          <xs:documentation>
+            Lambert azimuthal equal-area projection.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- TimelineOptionGroup -->
+  <xs:attributeGroup name="TimelineOptionAttributeGroup">
+    <!-- Pos -->
+    <xs:attribute name="Pos" type="xs:unsignedInt" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Row position in the timeline.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+
+    <!-- Size -->
+    <xs:attribute name="Size" type="xs:integer" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Row height in the timeline (pixels).
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+
+  <!-- AnchorType -->
+  <xs:simpleType name="AnchorType">
+    <xs:annotation>
+      <xs:documentation>
+        Contains all the possible anchors that define an icon center.
+      </xs:documentation>
+    </xs:annotation>
+
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="TOP_LEFT"/>
+      <xs:enumeration value="TOP_CENTER"/>
+      <xs:enumeration value="TOP_RIGHT"/>
+      <xs:enumeration value="LEFT_CENTER"/>
+      <xs:enumeration value="CENTER"/>
+      <xs:enumeration value="RIGHT_CENTER"/>
+      <xs:enumeration value="BOTTOM_LEFT"/>
+      <xs:enumeration value="BOTTOM_CENTER"/>
+      <xs:enumeration value="BOTTOM_RIGHT"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- SizeType -->
+  <xs:simpleType name="SizeType">
+    <xs:annotation>
+      <xs:documentation>
+        Defines a predefined size from values between 9x9 pixels and 129x129 pixels.
+        The values are odd so the positioning of the center pixel is accurate according to the real coordinates.
+      </xs:documentation>
+    </xs:annotation>
+
+    <xs:restriction base="xs:string">
+      <!-- SMALLER -->
+      <xs:enumeration value="SMALLER">
+        <xs:annotation>
+          <xs:documentation>
+            9x9 pixels.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+
+      <!-- SMALL -->
+      <xs:enumeration value="SMALL">
+        <xs:annotation>
+          <xs:documentation>
+            17x17 pixels.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+
+      <!-- MEDIUM -->
+      <xs:enumeration value="MEDIUM">
+        <xs:annotation>
+          <xs:documentation>
+            25x25 pixels.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+
+      <!-- BIG -->
+      <xs:enumeration value="BIG">
+        <xs:annotation>
+          <xs:documentation>
+            33x33 pixels.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+
+      <!-- BIGGER -->
+      <xs:enumeration value="BIGGER">
+        <xs:annotation>
+          <xs:documentation>
+            49x49 pixels.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+
+      <!-- VERYBIGGER -->
+      <xs:enumeration value="VERYBIGGER">
+        <xs:annotation>
+          <xs:documentation>
+            65x65 pixels.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+
+      <!-- VERYVERYBIGGER -->
+      <xs:enumeration value="VERYVERYBIGGER">
+        <xs:annotation>
+          <xs:documentation>
+            129x129 pixels.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- ShapeType -->
+  <xs:simpleType name="ShapeType">
+    <xs:annotation>
+      <xs:documentation>Enumeration of all available geometrical shapes for events decoration.</xs:documentation>
+    </xs:annotation>
+
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="DIAMOND"/>
+      <xs:enumeration value="CROSS"/>
+      <xs:enumeration value="V_CROSS"/>
+      <xs:enumeration value="SQUARE"/>
+      <xs:enumeration value="CIRCLE"/>
+      <xs:enumeration value="CIRCULAR_TARGET"/>
+      <xs:enumeration value="SQUARE_TARGET"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- PercentageType -->
+  <xs:simpleType name="PercentageType">
+    <xs:annotation>
+      <xs:documentation>
+        Integer in the [0,100] range (percentage).
+      </xs:documentation>
+    </xs:annotation>
+
+    <xs:restriction base="xs:unsignedInt">
+      <xs:minInclusive value="0"/>
+      <xs:maxInclusive value="100"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- [SensorEllipticalType] -->
+  <xs:complexType name="SensorEllipticalType">
+    <xs:annotation>
+      <xs:documentation>Defines an Elliptical sensor shape.</xs:documentation>
+    </xs:annotation>
+    <!-- HalfAngleX -->
+    <xs:attribute name="HalfAngleX" type="xs:double" use="required">
+      <xs:annotation>
+        <xs:documentation>Aperture half-angle around X.
+                      Refer to the VTS manual chapter "Sensors in VTS".</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <!-- HalfAngleY-->
+    <xs:attribute name="HalfAngleY" type="xs:double" use="required">
+      <xs:annotation>
+        <xs:documentation>Aperture half-angle around Y.
+                      Refer to the VTS manual chapter "Sensors in VTS".</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <!-- [SensorEllipticalType] -->
+
+  <!-- [SensorRectangularType] -->
+  <xs:complexType name="SensorRectangularType">
+    <xs:annotation>
+      <xs:documentation>Defines a Rectangular sensor shape.</xs:documentation>
+    </xs:annotation>
+    <!-- HalfAngleX -->
+    <xs:attribute name="HalfAngleX" type="xs:double" use="required">
+      <xs:annotation>
+        <xs:documentation>Aperture half-angle around X.
+                      Refer to the VTS manual chapter "Sensors in VTS".</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <!-- HalfAngleY-->
+    <xs:attribute name="HalfAngleY" type="xs:double" use="required">
+      <xs:annotation>
+        <xs:documentation>Aperture half-angle around Y.
+                      Refer to the VTS manual chapter "Sensors in VTS".</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <!-- [SensorRectangularType] -->
+
+  <!-- [SensorAzimuthElevationType] -->
+  <xs:complexType name="SensorAzimuthElevationType">
+    <xs:annotation>
+      <xs:documentation>Defines an Azimuth-Elevation sensor shape.</xs:documentation>
+    </xs:annotation>
+    <!-- MinAzimuth -->
+    <xs:attribute name="MinAzimuth" type="xs:double" use="required">
+      <xs:annotation>
+        <xs:documentation>Minimum Azimuth.
+                      Refer to the VTS manual chapter "Sensors in VTS".</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <!-- MaxAzimuth-->
+    <xs:attribute name="MaxAzimuth" type="xs:double" use="required">
+      <xs:annotation>
+        <xs:documentation>Maximum Azimuth.
+                      Refer to the VTS manual chapter "Sensors in VTS".</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <!-- MinElevation-->
+    <xs:attribute name="MinElevation" type="xs:double" use="required">
+      <xs:annotation>
+        <xs:documentation>Minimum Elevation.
+                      Refer to the VTS manual chapter "Sensors in VTS".</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <!-- MaxElevation-->
+    <xs:attribute name="MaxElevation" type="xs:double" use="required">
+      <xs:annotation>
+        <xs:documentation>Maximum Elevation.
+                      Refer to the VTS manual chapter "Sensors in VTS".</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <!-- [SensorAzimuthElevationType] -->
+
+  <!-- [S_SUN] -->
+  <xs:complexType name="SunType">
+    <xs:sequence>
+      <!-- [_S_PROP2D] -->
+      <xs:element name="Prop2d" type="Prop2dType" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            Defines the 2D properties of the Sun (icon displayed in the VTS configuration utility and
+            in OmniView).
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!-- [_S_PROP2D] -->
+
+      <!-- [_S_TRACK] -->
+      <xs:element name="Track" type="TrackType"/>
+      <!-- [_S_TRACK] -->
+
+      <!-- [_S_VISIBILITYCIRCLE] -->
+      <xs:element name="VisibilityCircle" type="VisibilityCircleType"/>
+      <!-- [_S_VISIBILITYCIRCLE] -->
+    </xs:sequence>
+  </xs:complexType>
+  <!-- [S_SUN] -->
+
+  <!-- [S_BODY] -->
+  <xs:complexType name="BodyType">
+    <xs:sequence>
+      <!-- [S_USEWGS84] -->
+      <xs:element name="UseWGS84" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            Applicable only to the Earth body. When this element is present, the client applications must use
+            (when available) the WGS84 coordinate system.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!-- [S_USEWGS84] -->
+
+      <!-- [_S_PROP2D] -->
+      <xs:element name="Prop2d" type="Prop2dType" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            Defines the 2D properties of the body (icon displayed in the VTS configuration utility and
+            in OmniView).
+            If this tag is not available and the central body is a standard VTS central body, then its
+            default 2D properties are used.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!-- [_S_PROP2D] -->
+
+      <!-- [_S_TRACK] -->
+      <xs:element name="Track" type="TrackType"/>
+      <!-- [_S_TRACK] -->
+
+      <!-- [_S_VISIBILITYCIRCLE] -->
+      <xs:element name="VisibilityCircle" type="VisibilityCircleType"/>
+      <!-- [_S_VISIBILITYCIRCLE] -->
+
+      <!-- [_S_GRAPHICS3D] -->
+      <xs:element name="Graphics3d" type="Graphics3dType" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            Defines the 3D graphic properties of a central body, i.e. its 3D model, radius, etc.
+            If this tag is not available and the central body is a standard VTS central body, then its
+            default 3D graphic properties are used.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!-- [_S_GRAPHICS3D] -->
+
+      <!-- [S_EPHMODE] -->
+      <xs:element name="EphemerisMode" minOccurs="1" maxOccurs="1">
+        <xs:complexType>
+          <!-- Mode -->
+          <xs:attribute name="Mode" type="EphemerisModeType" use="required">
+            <xs:annotation>
+              <xs:documentation>
+                Defines the ephemeris mode of the body.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:complexType>
+      </xs:element>
+      <!-- [S_EPHMODE] -->
+
+      <!-- [_S_GEOMETRY] -->
+      <xs:element name="Geometry" type="GeometryType" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            Defines the position and orientation of a central body.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!-- [_S_GEOMETRY] -->
+
+      <!-- [S_LAYERS] -->
+      <xs:element name="Layers" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            The textures of a body defines its appearance in the 2D and 3D views.
+            A body can have many textures (zero or more) organized as stacked layers.
+            Refer to the VTS manual chapter "Body layers".
+          </xs:documentation>
+        </xs:annotation>
+
+        <xs:complexType>
+          <xs:choice maxOccurs="unbounded">
+            <!-- [S_BUILTINLAYER] -->
+            <xs:element name="BuiltinLayer" type="BuiltinLayerType">
+              <xs:annotation>
+                <xs:documentation>
+                  Defines a texture layer of type "Built-in".
+                  When this type of layer is specified, each client application must use its own data, when available.
+                  For example, Celestia has built-in textures for all planets of the solar system and some of their natural satellites.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <!-- [S_BUILTINLAYER] -->
+
+            <!-- [S_TEXTURELAYER] -->
+            <xs:element name="TextureLayer" type="TextureLayerType">
+              <xs:annotation>
+                <xs:documentation>
+                  Defines a fixed texture layer, for the specified projection.
+                  All clients that use this projection should take this layer into account.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <!-- [S_TEXTURELAYER] -->
+
+            <!-- [S_TIMEDTEXTURELAYER] -->
+            <xs:element name="TimedTextureLayer" type="TimedTextureLayerType">
+              <xs:annotation>
+                <xs:documentation>
+                  Defines a timed texture layer, for the specified projection.
+                  All clients that use this projection should take this layer into account.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <!-- [S_TIMEDTEXTURELAYER] -->
+
+            <!-- [S_CYCLICTIMEDTEXTURELAYER] -->
+            <xs:element name="CyclicTimedTextureLayer" type="CyclicTimedTextureLayerType">
+              <xs:annotation>
+                <xs:documentation>
+                  Defines a cyclic timed texture layer, for the specified projection.
+                  All clients that use this projection should take this layer into account.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <!-- [S_CYCLICTIMEDTEXTURELAYER] -->
+
+            <!-- [S_LOCALTILEMAPLAYER] -->
+            <xs:element name="LocalTileMapLayer" type="LocalTileMapLayerType">
+              <xs:annotation>
+                <xs:documentation>
+                  Defines a local tiled map texture layer, for the specified projection.
+                  All clients that use this projection should take this layer into account.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <!-- [S_LOCALTILEMAPLAYER] -->
+
+            <!-- [S_WMSTILEMAPLAYER] -->
+            <xs:element name="WMSTileMapLayer" type="WMSTileMapLayerType">
+              <xs:annotation>
+                <xs:documentation>
+                  Defines a remote tiled map texture layer (WMS or WMTS), for the specified projection.
+                  All clients that use this projection should take this layer into account.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <!-- [S_WMSTILEMAPLAYER] -->
+          </xs:choice>
+        </xs:complexType>
+      </xs:element>
+      <!-- [S_LAYERS] -->
+
+      <!-- [S_GROUPGROUNDSTATIONS] -->
+      <xs:element name="GroupGroundStations" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            Contains the list of all ground stations on a central body.
+          </xs:documentation>
+        </xs:annotation>
+
+        <xs:complexType>
+          <xs:sequence>
+            <!-- [S_GROUNDSTATION] -->
+            <xs:element name="GroundStation" type="GroundStationType" minOccurs="0"
+              maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>
+                  Defines a ground station of a central body.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <!-- [S_GROUNDSTATION] -->
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!-- [S_GROUPGROUNDSTATIONS] -->
+
+      <!-- [S_GROUPPOINTSOFINTEREST] -->
+      <xs:element name="GroupPointsOfInterest" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            Contains the list of all points of interest on a central body.
+          </xs:documentation>
+        </xs:annotation>
+
+        <xs:complexType>
+          <xs:sequence>
+            <!-- [S_POINTOFINTEREST] -->
+            <xs:element name="PointOfInterest" type="PointOfInterestType" minOccurs="0"
+              maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>
+                  Defines a point of interest (POI) of a central body.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <!-- [S_POINTOFINTEREST] -->
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!-- [S_GROUPPOINTSOFINTEREST] -->
+
+      <!-- [S_GROUPREGIONSOFINTEREST] -->
+      <xs:element name="GroupRegionsOfInterest" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            Contains the list of all regions of interest on a central body.
+          </xs:documentation>
+        </xs:annotation>
+
+        <xs:complexType>
+          <xs:choice maxOccurs="unbounded">
+            <!-- [S_REGIONOFINTEREST] -->
+            <xs:element name="RegionOfInterest" type="RegionOfInterestType">
+              <xs:annotation>
+                <xs:documentation>
+                  Defines a region of interest (ROI) of a central body.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <!-- [S_REGIONOFINTEREST] -->
+
+            <!-- [S_LINEOFINTEREST] -->
+            <xs:element name="LineOfInterest" type="LineOfInterestType">
+              <xs:annotation>
+                <xs:documentation>
+                  Defines a line of interest (LOI) of a central body.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <!-- [S_LINEOFINTEREST] -->
+          </xs:choice>
+        </xs:complexType>
+      </xs:element>
+      <!-- [S_GROUPREGIONSOFINTEREST] -->
+    </xs:sequence>
+
+    <!-- Name -->
+    <xs:attribute name="Name" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Central body name.
+          Refer to the VTS manual chapter "Central bodies in VTS".
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+
+    <!-- ParentPath -->
+    <xs:attribute name="ParentPath" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Path to the body's parent.
+          Refer to the VTS manual chapter "Object paths in VTS".
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+
+  </xs:complexType>
+  <!-- [S_BODY] -->
+
+  <xs:attributeGroup name="LayerNameGroup">
+    <!-- LayerName -->
+    <xs:attribute name="Name" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Name of the layer.
+          Refer to the VTS manual chapter "Texture of a body".
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+
+  <!-- LayerProjectionAttribute -->
+  <xs:attributeGroup name="LayerProjectionNameGroup">
+    <xs:attribute name="ProjectionName" type="ProjectionType" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Projection the must be used with the layer.
+          Refer to the VTS manual chapter "Texture of a body".
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+
+  <!-- [S_BUILTINLAYER] -->
+  <xs:complexType name="BuiltinLayerType">
+    <!-- LayerNameGroup -->
+    <xs:attributeGroup ref="LayerNameGroup"/>
+  </xs:complexType>
+  <!-- [S_BUILTINLAYER] -->
+
+  <!-- [S_TEXTURELAYER] -->
+  <xs:complexType name="TextureLayerType">
+    <!-- LayerNameGroup -->
+    <xs:attributeGroup ref="LayerNameGroup"/>
+
+    <!-- TexturePath -->
+    <xs:attribute name="TexturePath" type="FilePathType" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Path to the texture file.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+
+    <!-- LayerProjectionNameGroup -->
+    <xs:attributeGroup ref="LayerProjectionNameGroup"/>
+  </xs:complexType>
+  <!-- [S_TEXTURELAYER] -->
+
+  <!-- [S_TIMEDTEXTURELAYER] -->
+  <xs:complexType name="TimedTextureLayerType">
+    <!-- LayerNameGroup -->
+    <xs:attributeGroup ref="LayerNameGroup"/>
+
+    <!-- TexturePath -->
+    <xs:attribute name="TexturePath" type="FilePathType" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          File name that must point to a CIC/CCSDS file in MEM format defining the textures to use,
+          and its path must be relative to the project folder.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+
+    <!-- LayerProjectionNameGroup -->
+    <xs:attributeGroup ref="LayerProjectionNameGroup"/>
+  </xs:complexType>
+  <!-- [S_TIMEDTEXTURELAYER] -->
+
+  <!-- [S_CYCLICTIMEDTEXTURELAYER] -->
+  <xs:complexType name="CyclicTimedTextureLayerType">
+    <!-- LayerNameGroup -->
+    <xs:attributeGroup ref="LayerNameGroup"/>
+
+    <!-- TexturePath -->
+    <xs:attribute name="TexturePath" type="FilePathType" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          File name that must point to a CIC/CCSDS file in MEM format defining the textures to use,
+          and its path must be relative to the project folder.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+
+    <!-- Epoch -->
+    <xs:attribute name="Epoch" type="DateTimeType" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          The epoch of the cycle. Must be prior to the start date of the project.
+          Refer to the VTS manual chapter "Textures of a body".
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+
+    <!-- Period -->
+    <xs:attribute name="Period" type="DurationType" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          The period of the cycle expressed in fractional days.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+
+    <!-- LayerProjectionNameGroup -->
+    <xs:attributeGroup ref="LayerProjectionNameGroup"/>
+  </xs:complexType>
+  <!-- [S_CYCLICTIMEDTEXTURELAYER] -->
+
+  <!-- [S_LOCALTILEMAPLAYER] -->
+  <xs:complexType name="LocalTileMapLayerType">
+    <!-- LayerNameGroup -->
+    <xs:attributeGroup ref="LayerNameGroup"/>
+
+    <!-- TexturePath -->
+    <xs:attribute name="TexturePath" type="FilePathType" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Path to the texture file.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+
+    <!-- LayerProjectionNameGroup -->
+    <xs:attributeGroup ref="LayerProjectionNameGroup"/>
+  </xs:complexType>
+  <!-- [S_LOCALTILEMAPLAYER] -->
+
+  <!-- [S_WMSTILEMAPLAYER] -->
+  <xs:complexType name="WMSTileMapLayerType">
+    <!-- LayerNameGroup -->
+    <xs:attributeGroup ref="LayerNameGroup"/>
+
+    <!-- Url -->
+    <xs:attribute name="Url" type="URLType" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Url of a remote Web Map Service (WMS) or Web Tile Map Service (WMTS).
+          This Url must correspond to a complete and valid tile request (GetMap or GetTile, depending on the service type).
+          Refer to the VTS manual chapter "Textures of a body / Tile Map textures".
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+
+    <!-- LayerProjectionNameGroup -->
+    <xs:attributeGroup ref="LayerProjectionNameGroup"/>
+  </xs:complexType>
+  <!-- [S_WMSTILEMAPLAYER] -->
+
+  <!-- [S_GROUNDSTATION] -->
+  <xs:complexType name="GroundStationType">
+    <xs:sequence>
+      <!-- [_S_PROP2D] -->
+      <xs:element name="Prop2d" type="Prop2dType" minOccurs="0" maxOccurs="1"/>
+      <!-- [_S_PROP2D] -->
+
+      <!-- [S_LATLONGALT] -->
+      <xs:element name="LatLongAlt" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            Defines the geographical coordinates of a ground station: latitude, longitude and altitude on its central body.
+          </xs:documentation>
+        </xs:annotation>
+
+        <xs:complexType>
+          <xs:sequence>
+            <!-- [_S_VALUE] -->
+            <xs:element name="Value" type="ValueType">
+              <xs:annotation>
+                <xs:documentation>
+                  Defines the value of the coordinates of a ground station on its central body.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <!-- [_S_VALUE] -->
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!-- [S_LATLONGALT] -->
+
+      <!-- [S_SENSORSTATION] -->
+      <xs:element name="SensorStation" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            Defines a ground station sensor.
+          </xs:documentation>
+        </xs:annotation>
+
+        <xs:complexType>
+          <xs:sequence>
+            <!-- [S_SENSORTARGET] -->
+            <xs:element name="SensorTarget" minOccurs="1" maxOccurs="1">
+              <xs:annotation>
+                <xs:documentation>
+                  Defines the target of a ground station sensor.
+                </xs:documentation>
+              </xs:annotation>
+
+              <xs:complexType>
+                <xs:choice>
+                  <!-- [S_TARGETENTITY] -->
+                  <xs:element name="TargetEntity" minOccurs="0" maxOccurs="1">
+                    <xs:annotation>
+                      <xs:documentation>
+                        Defines a satellite's altitude as the target of a ground station sensor.
+                      </xs:documentation>
+                    </xs:annotation>
+
+                    <xs:complexType>
+                      <!-- Name -->
+                      <xs:attribute name="Name" type="xs:string" use="required">
+                        <xs:annotation>
+                          <xs:documentation>
+                            Full name of the target satellite.
+                            Refer to the VTS manual chapter "Object paths in VTS".
+                          </xs:documentation>
+                        </xs:annotation>
+                      </xs:attribute>
+                    </xs:complexType>
+                  </xs:element>
+                  <!-- [S_TARGETENTITY] -->
+
+                  <!-- [S_TARGETALTITUDE] -->
+                  <xs:element name="TargetAltitude" minOccurs="0" maxOccurs="1">
+                    <xs:annotation>
+                      <xs:documentation>
+                        Defines a fixed altitude as the target of a ground station sensor.
+                      </xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                      <!-- Altitude -->
+                      <xs:attribute name="Altitude" type="xs:double" use="required">
+                        <xs:annotation>
+                          <xs:documentation>
+                            Target altitude in kilometers.
+                          </xs:documentation>
+                        </xs:annotation>
+                      </xs:attribute>
+                    </xs:complexType>
+                  </xs:element>
+                  <!-- [S_TARGETALTITUDE] -->
+                </xs:choice>
+              </xs:complexType>
+            </xs:element>
+            <!-- [S_SENSORTARGET] -->
+
+            <!-- [_S_SENSOR] -->
+            <xs:element name="Sensor" type="SensorType" minOccurs="1" maxOccurs="1">
+              <xs:annotation>
+                <xs:documentation>
+                  Defines a sensor attached to a ground station.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <!-- [_S_SENSOR] -->
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!-- [S_SENSORSTATION] -->
+
+      <!-- [S_STATIONSENSORS] -->
+      <xs:element name="Sensors" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            Group that contains the secondary sensors attached to a ground station.
+          </xs:documentation>
+        </xs:annotation>
+
+        <xs:complexType>
+          <xs:sequence>
+            <!-- [S_SENSORSTATION] -->
+            <xs:element name="SensorStation" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>
+                  Defines a ground station sensor.
+                </xs:documentation>
+              </xs:annotation>
+
+              <xs:complexType>
+                <xs:sequence>
+                  <!-- [_S_SENSOR] -->
+                  <xs:element name="Sensor" type="SensorType" minOccurs="1" maxOccurs="1">
+                    <xs:annotation>
+                      <xs:documentation>
+                        Defines a sensor attached to a ground station.
+                      </xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <!-- [_S_SENSOR] -->
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <!-- [S_SENSORSTATION] -->
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!-- [S_STATIONSENSORS] -->
+    </xs:sequence>
+
+    <!-- Name -->
+    <xs:attribute name="Name" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Ground station name.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <!-- [S_GROUNDSTATION] -->
+
+  <!-- [S_POINTOFINTEREST] -->
+  <xs:complexType name="PointOfInterestType">
+    <xs:sequence>
+      <!-- [S_POICOORDINATESFILE] -->
+      <xs:element name="CoordinatesFile">
+        <xs:annotation>
+          <xs:documentation>
+            Contains the coordinates file name of a POI.
+          </xs:documentation>
+        </xs:annotation>
+
+        <xs:complexType>
+          <!-- Name -->
+          <xs:attribute name="Name" type="FilePathType" use="required">
+            <xs:annotation>
+              <xs:documentation>
+                Name of the CIC/CCSDS file.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:complexType>
+      </xs:element>
+      <!-- [S_POICOORDINATESFILE] -->
+
+      <!-- [S_LAYEREDICON] -->
+      <xs:element name="Icon" type="IconType" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            Defines the icon associated to this POI.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!-- [S_LAYEREDICON] -->
+    </xs:sequence>
+
+    <!-- Name -->
+    <xs:attribute name="Name" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          POI name.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <!-- [S_POINTOFINTEREST] -->
+
+  <!-- [_S_COMPONENT_] -->
+  <xs:complexType name="ComponentType">
+    <xs:annotation>
+      <xs:documentation>
+        Defines a satellite component. Some properties of the satellite itself are described in its top-level
+        component (not visible in the GUI).
+        This tag is recursive, i.e. it may contain any number of children Component tags, which may themselves
+        contain more Component tags.
+        This allows describing an arbitrarily complex satellite structure.
+        Refer to the Structure of satellites in VTS chapter for more information.
+      </xs:documentation>
+    </xs:annotation>
+
+    <xs:sequence>
+      <!-- [_S_GRAPHICS3D] -->
+      <xs:element name="Graphics3d" type="Graphics3dType" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            Defines the 3D graphic properties of a satellite component.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!-- [_S_GRAPHICS3D] -->
+
+      <!-- [_S_GEOMETRY] -->
+      <xs:element name="Geometry" type="GeometryType" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            Defines the geometric properties of an object, i.e. its position and orientation.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!-- [_S_GEOMETRY] -->
+
+      <!-- [_S_COMPONENT_] -->
+      <xs:element name="Component" type="ComponentType" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>
+            Children components of this component.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!-- [_S_COMPONENT_] -->
+
+      <!-- [S_SENSORSATELLITE] -->
+      <xs:element name="SensorSatellite" type="SensorSatelliteType" minOccurs="0"
+        maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>
+            Defines a satellite sensor.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!-- [S_SENSORSATELLITE] -->
+    </xs:sequence>
+
+    <!-- Name -->
+    <xs:attribute name="Name" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Component name.
+          The top-level component's name is not used: the satellite's name is used instead.
+          Refer to the VTS manual chapter "Structure of satellites in VTS".
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <!-- [_S_COMPONENT_] -->
+
+  <!-- [S_SENSORSATELLITE] -->
+  <xs:complexType name="SensorSatelliteType">
+    <xs:sequence>
+      <!-- [_S_SENSOR] -->
+      <xs:element name="Sensor" type="SensorType">
+        <xs:annotation>
+          <xs:documentation>
+            Defines a sensor attached to a satellite component.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!-- [_S_SENSOR] -->
+    </xs:sequence>
+  </xs:complexType>
+  <!-- [S_SENSORSATELLITE] -->
+
+  <!-- [_S_SENSOR] -->
+  <xs:complexType name="SensorType">
+    <xs:annotation>
+      <xs:documentation>
+        Defines a sensor, either attached to a ground station or to a satellite component.
+      </xs:documentation>
+    </xs:annotation>
+
+    <xs:sequence>
+      <!-- [S_SENSORPROP] -->
+      <xs:element name="SensorProp" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            Contains the properties of a sensor, both physical and graphic.
+          </xs:documentation>
+        </xs:annotation>
+
+        <xs:complexType>
+          <xs:sequence>
+
+            <xs:choice minOccurs="1" maxOccurs="1">
+              <!-- [S_SENSORELLIPTICAL] -->
+              <xs:element name="SensorElliptical" type="SensorEllipticalType" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                  <xs:documentation>Defines an elliptical sensor.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <!-- [S_SENSORELLIPTICAL] -->
+              <!-- [S_SENSORRECTANGULAR] -->
+              <xs:element name="SensorRectangular" type="SensorRectangularType" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                  <xs:documentation>Defines a rectangular sensor.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <!-- [S_SENSORRECTANGULAR] -->
+              <!-- [S_SENSORAZIMUTHELEVATION] -->
+              <xs:element name="SensorAzimuthElevation" type="SensorAzimuthElevationType" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                  <xs:documentation>Defines an Azimuth-Elevation sensor (GRAVES radar).</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <!-- [S_SENSORAZIMUTHELEVATION] -->
+            </xs:choice>
+
+            <!-- [S_SENSORGRAPH] -->
+            <xs:element name="SensorGraphics" minOccurs="1" maxOccurs="1">
+              <xs:annotation>
+                <xs:documentation>
+                  Defines the graphic properties of a sensor, i.e. its appearance in client applications.
+                  Refer to the VTS manual chapter "Sensors in VTS".
+                </xs:documentation>
+              </xs:annotation>
+
+              <xs:complexType>
+                <xs:sequence>
+
+                  <!-- [S_SENSORCONTOUR] -->
+                  <xs:element name="SensorContour">
+                  <xs:complexType>
+                  <xs:sequence>
+                     <!-- [S_LINESTYLE] -->
+                     <xs:element name="LineStyle" type="LineStyleType" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                        <xs:documentation>
+                           Customization of the contour (color, style and width)
+                        </xs:documentation>
+                        </xs:annotation>
+                     </xs:element>
+                     <!-- [S_LINESTYLE] -->
+                  </xs:sequence>
+                  </xs:complexType>
+                  <!-- no attribute -->
+                  </xs:element>
+                  <!-- [S_SENSORCONTOUR] -->
+   
+                  <!-- [S_SENSORTRACE] -->
+                  <xs:element name="SensorTrace" minOccurs="0" maxOccurs="1">
+                    <xs:annotation>
+                      <xs:documentation>
+                        Defines graphic properties specific to the sensor swath trace for both 2D and 3D applications.
+                      </xs:documentation>
+                    </xs:annotation>
+
+                    <xs:complexType>
+                      <xs:choice minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                          <xs:documentation>
+                            If empty, the sensor swath color is defined as the satellite's orbit path color (be it a fixed color or the color from a color file attached to a Position value).
+                            Refer to the VTS manual chapter "Graphic properties of a satellite sensor".
+                          </xs:documentation>
+                        </xs:annotation>
+
+                        <!-- [S_FIXEDCOLOR] -->
+                        <xs:element name="FixedColor">
+                          <xs:annotation>
+                            <xs:documentation>
+                              Defines a CIC/CCSDS color file for the color of the sensor swath in client applications.
+                              Refer to the VTS manual chapter "Graphic properties of a satellite sensor".
+                            </xs:documentation>
+                          </xs:annotation>
+                          <xs:complexType>
+                            <!-- Value -->
+                            <xs:attribute name="Value" type="ColorType" use="required">
+                              <xs:annotation>
+                                <xs:documentation>
+                                  Color for the sensor swath.
+                                  Three real numbers for (red, green, blue) in the [0,1] range (no unit).
+                                </xs:documentation>
+                              </xs:annotation>
+                            </xs:attribute>
+                          </xs:complexType>
+                        </xs:element>
+                        <!-- [S_FIXEDCOLOR] -->
+
+                        <!-- [S_COLORFILE] -->
+                        <xs:element name="ColorFile" type="ColorFileType">
+                          <xs:annotation>
+                            <xs:documentation>
+                              Defines a CIC/CCSDS color file for the color of the sensor swath in client applications.
+                              Refer to the VTS manual chapter "Graphic properties of a satellite sensor".
+                            </xs:documentation>
+                          </xs:annotation>
+                        </xs:element>
+                        <!-- [S_COLORFILE] -->
+                      </xs:choice>
+
+                      <!-- Duration -->
+                      <xs:attribute name="Duration" type="DurationType" use="required">
+                        <xs:annotation>
+                          <xs:documentation>
+                            Duration of the sensor swath trace. Expressed in HOURS.
+                            A null trace duration displays the instantaneous sensor swath in client applications (without residual display).
+                          </xs:documentation>
+                        </xs:annotation>
+                      </xs:attribute>
+
+                      <!-- Opacity -->
+                      <xs:attribute name="Opacity" type="xs:unsignedInt" use="required">
+                        <xs:annotation>
+                          <xs:documentation>
+                            Opacity of the sensor swath.
+                            Integer in the [0,100] range (percentage).
+                          </xs:documentation>
+                        </xs:annotation>
+                      </xs:attribute>
+
+                    </xs:complexType>
+                  </xs:element>
+                  <!-- [S_SENSORTRACE] -->
+                </xs:sequence>
+
+                <!-- Range -->
+                <xs:attribute name="Range" type="xs:double" use="required">
+                  <xs:annotation>
+                    <xs:documentation>
+                      Maximum display distance of the sensor volume in 3D (kilometers).
+                    </xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+
+                <!-- VolumeColor -->
+                <xs:attribute name="VolumeColor" type="ColorType" use="required">
+                  <xs:annotation>
+                    <xs:documentation>
+                      Color of the sensor volume in 3D.
+                      Must be present, but currently unused.
+                    </xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+
+                <!-- VolumeOpacity -->
+                <xs:attribute name="VolumeOpacity" type="PercentageType" use="required">
+                  <xs:annotation>
+                    <xs:documentation>
+                      Opacity of the sensor volume in 3D.
+                      Must be present, but currently unused.
+                    </xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+
+              </xs:complexType>
+            </xs:element>
+            <!-- [S_SENSORGRAPH] -->
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!-- [S_SENSORPROP] -->
+
+      <!-- [_S_GEOMETRY] -->
+      <xs:element name="Geometry" type="GeometryType" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            Defines the position and orientation of a sensor.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!-- [_S_GEOMETRY] -->
+
+      <!-- [S_GROUPMASKS] -->
+      <xs:element name="GroupMasks" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            Contains the three categories of masks: points, lines and surfaces.
+          </xs:documentation>
+        </xs:annotation>
+
+        <xs:complexType>
+          <xs:sequence>
+            <!-- [S_MASKSURFACE] -->
+            <xs:element name="MaskSurface" type="MaskSurfaceType" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  Defines the properties of a surface mask (coordinates file).
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <!-- [S_MASKSURFACE] -->
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!-- [S_GROUPMASKS] -->
+    </xs:sequence>
+
+    <!-- Name -->
+    <xs:attribute name="Name" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Sensor name.
+          Refer to the VTS manual chapter "Sensors in VTS".
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <!-- [_S_SENSOR] -->
+
+  <!-- [S_MASKCOORDINATESFILE] -->
+  <xs:complexType name="MaskCoordinatesFileType">
+    <xs:annotation>
+      <xs:documentation>
+        Contains the coordinates file name of a Mask (azimuth / elevation).
+      </xs:documentation>
+    </xs:annotation>
+
+    <!-- Name -->
+    <xs:attribute name="Name" type="FilePathType" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Name of the CIC/CCSDS file.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <!-- [S_MASKCOORDINATESFILE] -->
+
+  <!-- [S_MASKSURFACE] -->
+  <xs:complexType name="MaskSurfaceType">
+    <xs:annotation>
+      <xs:documentation>
+        Defines the properties of a surface mask (coordinates file).
+      </xs:documentation>
+    </xs:annotation>
+
+    <xs:sequence>
+      <!-- [S_MASKCOORDINATESFILE] -->
+      <xs:element name="CoordinatesFile" type="MaskCoordinatesFileType">
+        <xs:annotation>
+          <xs:documentation>
+            Contains the coordinates file name of the surface.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!-- [S_MASKCOORDINATESFILE] -->
+    </xs:sequence>
+
+    <!-- Name -->
+    <xs:attribute name="Name" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Name of this mask.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+
+    <!-- OutlineColor -->
+    <xs:attribute name="OutlineColor" type="ColorType" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Color of the outline of this surface.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+
+    <!-- OutlineThickness -->
+    <xs:attribute name="OutlineThickness" type="xs:unsignedInt" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Thickness of the outline of this surface.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+
+    <!-- FillColor -->
+    <xs:attribute name="FillColor" type="ColorType" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Color of the inside of this surface.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+
+    <!-- FillOpacity -->
+    <xs:attribute name="FillOpacity" type="xs:unsignedInt" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Opacity of the inside of the surface.
+          Integer in the [0,100] range (percentage).
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <!-- [S_MASKSURFACE] -->
+
+  <!-- [S_ROICOORDINATESFILE] -->
+  <xs:complexType name="ROICoordinatesFileType">
+    <xs:annotation>
+      <xs:documentation>
+        Contains the coordinates file name of a ROI or LOI.
+      </xs:documentation>
+    </xs:annotation>
+
+    <!-- Name -->
+    <xs:attribute name="Name" type="FilePathType" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Name of the CIC/CCSDS file.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <!-- [S_ROICOORDINATESFILE] -->
+
+  <!-- [S_REGIONOFINTEREST] -->
+  <xs:complexType name="RegionOfInterestType">
+    <xs:sequence>
+      <!-- [S_ROICOORDINATESFILE] -->
+      <xs:element name="CoordinatesFile" type="ROICoordinatesFileType">
+        <xs:annotation>
+          <xs:documentation>
+            Contains the coordinates file name of the ROI.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!-- [S_ROICOORDINATESFILE] -->
+
+      <!-- [S_ROIGRAPHICS] -->
+      <xs:element name="Graphics">
+        <xs:annotation>
+          <xs:documentation>
+            Contains the graphics properties of a ROI.
+          </xs:documentation>
+        </xs:annotation>
+
+        <xs:complexType>
+          <!-- Color -->
+          <xs:attribute name="Color" type="ColorType" use="required">
+            <xs:annotation>
+              <xs:documentation>
+                Color of the ROI.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+
+          <!-- FillOpacity -->
+          <xs:attribute name="FillOpacity" type="PercentageType" use="required">
+            <xs:annotation>
+              <xs:documentation>
+                Opacity of the ROI surface.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:complexType>
+      </xs:element>
+      <!-- [S_ROIGRAPHICS] -->
+    </xs:sequence>
+
+    <!-- Name -->
+    <xs:attribute name="Name" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          ROI name.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+
+  </xs:complexType>
+  <!-- [S_REGIONOFINTEREST] -->
+
+  <!-- [S_LINEOFINTEREST] -->
+  <xs:complexType name="LineOfInterestType">
+    <xs:sequence>
+      <!-- [S_ROICOORDINATESFILE] -->
+      <xs:element name="CoordinatesFile" type="ROICoordinatesFileType">
+        <xs:annotation>
+          <xs:documentation>
+            Contains the coordinates file name of the LOI.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!-- [S_ROICOORDINATESFILE] -->
+
+      <!-- [S_ROIGRAPHICS] -->
+      <xs:element name="Graphics">
+        <xs:annotation>
+          <xs:documentation>
+            Contains the graphics properties of a LOI.
+          </xs:documentation>
+        </xs:annotation>
+
+        <xs:complexType>
+          <!-- Color -->
+          <xs:attribute name="Color" type="ColorType" use="required">
+            <xs:annotation>
+              <xs:documentation>
+                Color of the LOI.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:complexType>
+      </xs:element>
+      <!-- [S_ROIGRAPHICS] -->
+    </xs:sequence>
+
+    <!-- Name -->
+    <xs:attribute name="Name" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          LOI name.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+
+  </xs:complexType>
+  <!-- [S_LINEOFINTEREST] -->
+
+  <!-- [_S_TRACK] -->
+  <xs:complexType name="TrackType">
+    <xs:sequence>
+      <!-- [S_LINESTYLE] -->
+      <xs:element name="LineStyle" type="LineStyleType" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            Customization of the track (color, style and width)
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!-- [S_LINESTYLE] -->
+    </xs:sequence>
+    <!-- no attribute -->
+  </xs:complexType>
+  <!-- [_S_TRACK] -->
+
+  <!-- [_S_TRACK] -->
+  <xs:complexType name="VisibilityCircleType">
+    <xs:sequence>
+      <!-- [S_LINESTYLE] -->
+      <xs:element name="LineStyle" type="LineStyleType" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            Customization of the contour (color, style and width)
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!-- [S_LINESTYLE] -->
+      <!-- [S_FILLSTYLE] -->
+      <xs:element name="FillStyle" type="FillStyleType" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            Customization of the surface (color, opacity).
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!-- [S_FILLSTYLE] -->
+    </xs:sequence>
+    <!-- no attribute -->
+  </xs:complexType>
+  <!-- [_S_TRACK] -->
+
+  <!-- [S_LINESTYLE] -->
+  <xs:complexType name="LineStyleType">
+    <!-- Color -->
+    <xs:attribute name="Color" type="ColorType" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Color of the line.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+
+    <!-- Style -->
+    <xs:attribute name="Style" type="StyleType" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Style of the line.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+
+    <!-- Width -->
+    <xs:attribute name="Width" type="xs:unsignedInt" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Thickness of the line.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <!-- [S_LINESTYLE] -->
+
+  <!-- [S_FILLSTYLE] -->
+  <xs:complexType name="FillStyleType">
+    <!-- Color -->
+    <xs:attribute name="Color" type="ColorType" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Color of the surface.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+
+    <!-- Opacity -->
+    <xs:attribute name="Opacity" type="xs:unsignedInt" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Opacity of the surface.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <!-- [S_FILLSTYLE] -->
+
+  <!-- [_S_PROP2D] -->
+  <xs:complexType name="Prop2dType">
+    <xs:sequence>
+      <!-- [S_LAYEREDICON] -->
+      <xs:element name="Icon" type="IconType" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            Icon associated to the entity (displayed in the VTS configuration utility and in OmniView).
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!-- [S_LAYEREDICON] -->
+    </xs:sequence>
+    <!-- no attribute -->
+  </xs:complexType>
+  <!-- [_S_PROP2D] -->
+
+  <!-- [S_LAYEREDICON] -->
+  <xs:complexType name="IconType">
+    <xs:annotation>
+      <xs:documentation>
+        Defines a layered icon type. Layered icons are composed of one to many stacked icon layers that
+        can be either simple icons or shapes. Defines also the font properties of the label associated
+        with this icon.
+      </xs:documentation>
+    </xs:annotation>
+
+    <xs:sequence>
+      <!-- [S_ICONFONT] -->
+      <xs:element name="Font">
+        <xs:complexType>
+          <!-- Size -->
+          <xs:attribute name="Size" type="xs:unsignedInt" use="required">
+            <xs:annotation>
+              <xs:documentation>
+                Font size of the label associated to this icon.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+
+          <!-- Color -->
+          <xs:attribute name="Color" type="ColorType" use="required">
+            <xs:annotation>
+              <xs:documentation>
+                Color of the label associated to this icon.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:complexType>
+      </xs:element>
+      <!-- [S_ICONFONT] -->
+
+      <!-- Layers -->
+      <xs:choice>
+        <!-- [S_ICONSHAPELAYER] -->
+        <xs:element name="ShapeLayer">
+          <xs:annotation>
+            <xs:documentation>
+              Defines a geometrical shape layer.
+            </xs:documentation>
+          </xs:annotation>
+
+          <xs:complexType>
+            <!-- Shape -->
+            <xs:attribute name="Shape" type="ShapeType" use="required">
+              <xs:annotation>
+                <xs:documentation>
+                  Shape name.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+
+            <!-- Color -->
+            <xs:attribute name="Color" type="ColorType" use="required">
+              <xs:annotation>
+                <xs:documentation>
+                  Color of the shape.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+
+            <!-- Fill -->
+            <xs:attribute name="Fill" type="xs:boolean" use="required">
+              <xs:annotation>
+                <xs:documentation>
+                  Tells if the shape is to be filled or not.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+          </xs:complexType>
+        </xs:element>
+        <!-- [S_ICONSHAPELAYER] -->
+
+        <!-- [S_ICONIMAGELAYER] -->
+        <xs:element name="ImageLayer">
+          <xs:annotation>
+            <xs:documentation>
+              Defines an icon layer.
+            </xs:documentation>
+          </xs:annotation>
+
+          <xs:complexType>
+            <xs:sequence>
+              <!-- [S_FILE] -->
+              <xs:element name="File" type="FileType" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                  <xs:documentation>
+                    Name of the icon file.
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <!-- [S_FILE] -->
+            </xs:sequence>
+
+            <!-- Type -->
+            <xs:attribute name="Type" type="ImageSourceType" use="required">
+              <xs:annotation>
+                <xs:documentation>
+                  If the type of the icon layer is Default, the entity icon (i.e., its 2D symbol file) is used for the icon layer and the tag may not contain another tag.
+                  If the type of the icon layer is Custom, an icon file must be provided for the icon layer through the File tag.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+          </xs:complexType>
+        </xs:element>
+        <!-- [S_ICONIMAGELAYER] -->
+      </xs:choice>
+      <!-- Layers -->
+    </xs:sequence>
+
+    <!-- Anchor -->
+    <xs:attribute name="Anchor" type="AnchorType" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Defines the position of the icon center.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+
+    <!-- Size -->
+    <xs:attribute name="Size" type="SizeType" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Size of the icon (amongst a set of predefined sizes).
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+
+    <!-- Opacity -->
+    <xs:attribute name="Opacity" type="PercentageType" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Opacity of the icon.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+
+  </xs:complexType>
+  <!-- [S_LAYEREDICON] -->
+
+  <!-- [S_DECORATION] -->
+  <xs:complexType name="DecorationType">
+    <xs:sequence>
+      <!-- [S_LAYEREDICON] -->
+      <xs:element name="Icon" type="IconType" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            Layered icon associated to this decoration.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!-- [S_LAYEREDICON] -->
+    </xs:sequence>
+
+    <!-- Type -->
+    <xs:attribute name="Type" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Event type full name.
+          Refer to the VTS manual chapter "Mission events in VTS / Event type".
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+
+  </xs:complexType>
+  <!-- [S_DECORATION] -->
+
+  <xs:group name="EventsGroup">
+    <xs:sequence>
+      <!-- [S_DECORATION] -->
+      <xs:element name="Decoration" type="DecorationType" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>
+            May contain any number of Shape or Icon decoration layer tags.
+            They should be ordered from back to front, meaning that the last layer tag in the list will be the topmost
+            layer of the decoration.
+            Refer to the VTS manual chapter "Configuring event types".
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!-- [S_DECORATION] -->
+    </xs:sequence>
+  </xs:group>
+
+  <!-- [_S_EVENTS] -->
+  <xs:complexType name="EventsType">
+    <xs:group ref="EventsGroup"/>
+  </xs:complexType>
+  <!-- [_S_EVENTS] -->
+
+  <xs:complexType name="EventsWithFilesType">
+    <xs:sequence>
+      <!-- [S_FILE] -->
+      <xs:element name="File" type="FileType" minOccurs="0" maxOccurs="unbounded"/>
+      <!-- [S_FILE] -->
+
+      <xs:group ref="EventsGroup"/>
+
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- [_S_GRAPHICS3D] -->
+  <xs:complexType name="Graphics3dType">
+    <xs:annotation>
+      <xs:documentation>
+        Defines the 3D graphic properties of a central body, i.e. its 3D model, radius, etc.
+      </xs:documentation>
+    </xs:annotation>
+
+    <xs:sequence>
+      <!-- [S_FILE3DS] -->
+      <xs:element name="File3ds" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            Defines the 3D file in 3DS format containing the 3D model of an object, for use in 3D views.
+          </xs:documentation>
+        </xs:annotation>
+
+        <xs:complexType>
+          <!-- Name -->
+          <xs:attribute name="Name" type="FilePathType" use="required">
+            <xs:annotation>
+              <xs:documentation>
+                3DS file name. Must be relative to the project folder.
+                The file must be in 3ds format.
+                Refer to the VTS manual chapter "3D file format in VTS".
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:complexType>
+      </xs:element>
+      <!-- [S_FILE3DS] -->
+
+      <!-- [S_RADIUS] -->
+      <xs:element name="Radius" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            Defines the bounding sphere radius of the 3D model of an object.
+          </xs:documentation>
+        </xs:annotation>
+
+        <xs:complexType>
+          <!-- Value -->
+          <xs:attribute name="Value" type="xs:double" use="required">
+            <xs:annotation>
+              <xs:documentation>
+                Object radius (kilometers ou meters).
+                If attached to a central body, the radius is expressed in kilometers.
+                If attached to a satellite or component, the radius is expressed in meters.
+                Refer to the VTS manual chapter "3D file format in VTS".
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:complexType>
+      </xs:element>
+      <!-- [S_RADIUS] -->
+
+      <!-- [S_LIGHTSENSITIVE] -->
+      <xs:element name="LightSensitive" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            Defines whether or not to shade an object in 3D views.
+          </xs:documentation>
+        </xs:annotation>
+
+        <xs:complexType>
+          <!-- Value -->
+          <xs:attribute name="Value" type="xs:boolean" use="required">
+            <xs:annotation>
+              <xs:documentation>
+                Object light sensitivity.
+                When True (1), object shading is enabled. Otherwise, object shading is disabled.
+                Refer to the VTS manual chapter "3D properties of a satellite".
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:complexType>
+      </xs:element>
+      <!-- [S_LIGHTSENSITIVE] -->
+
+      <!-- [S_USE3DSCOORDS] -->
+      <xs:element name="Use3dsCoords" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            Defines whether or not to use the coordinates system from the 3DS file of an object in 3D views.
+          </xs:documentation>
+        </xs:annotation>
+
+        <xs:complexType>
+          <!-- Value -->
+          <xs:attribute name="Value" type="xs:boolean" use="required">
+            <xs:annotation>
+              <xs:documentation>
+                Usage of 3DS coordinates.
+                A value of 1 enables usage of 3DS coordinates. A value of 0 disables usage of 3DS coordinates.
+                Refer to the VTS manual chapter "3D file format in VTS".
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+
+          <!-- MeshScale -->
+          <xs:attribute name="MeshScale" type="xs:double" use="required">
+            <xs:annotation>
+              <xs:documentation>
+                Scaling factor for 3DS coordinates.
+                The scale factor applies to the default mesh coordinates unit, the meter. Thus:
+                - A value of 1 defines coordinates in meters
+                - A value of 0.001 defines coordinates in millimeters
+                - A value of 1000 defines coordinates in kilometers
+                Refer to the VTS manual chapter "3D file format in VTS".
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:complexType>
+      </xs:element>
+      <!-- [S_USE3DSCOORDS] -->
+
+      <!-- [S_AXESPOSITION] -->
+      <xs:element name="AxesPosition" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            Allows to specify the position of the axes, such as the satellite reference frame or the sun direction,
+            in the 3D views.
+          </xs:documentation>
+        </xs:annotation>
+
+        <xs:complexType>
+          <!-- Value -->
+          <xs:attribute name="Value" use="required">
+            <xs:annotation>
+              <xs:documentation>
+                Position of the axes in the 3D views.
+                Any other value will generate an error. This option has no effect for subparts.
+                Refer to the VTS manual chapter "3D properties of a satellite".
+              </xs:documentation>
+            </xs:annotation>
+
+            <xs:simpleType>
+              <xs:restriction base="xs:integer">
+                <!-- 0 -->
+                <xs:enumeration value="0">
+                  <xs:annotation>
+                    <xs:documentation>
+                      Render the axes at the origin of the model reference frame.
+                    </xs:documentation>
+                  </xs:annotation>
+                </xs:enumeration>
+
+                <!-- 1 -->
+                <xs:enumeration value="1">
+                  <xs:annotation>
+                    <xs:documentation>
+                      Render the axes at its center of gravity.
+                    </xs:documentation>
+                  </xs:annotation>
+                </xs:enumeration>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+        </xs:complexType>
+      </xs:element>
+      <!-- [S_AXESPOSITION] -->
+
+      <!-- [S_ROTATIONCENTER] -->
+      <xs:element name="RotationCenter" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            Defines the position of the rotation center of an object.
+            Refer to the VTS manual chapter "Orientation of objects in VTS / Rotation center".
+          </xs:documentation>
+        </xs:annotation>
+
+        <xs:complexType>
+          <!-- X -->
+          <xs:attribute name="X" type="xs:double" use="required">
+            <xs:annotation>
+              <xs:documentation>
+                X coordinate of the rotation center.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+
+          <!-- Y -->
+          <xs:attribute name="Y" type="xs:double" use="required">
+            <xs:annotation>
+              <xs:documentation>
+                Y coordinate of the rotation center.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+
+          <!-- Z -->
+          <xs:attribute name="Z" type="xs:double" use="required">
+            <xs:annotation>
+              <xs:documentation>
+                Z coordinate of the rotation center.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:complexType>
+      </xs:element>
+      <!-- [S_ROTATIONCENTER] -->
+    </xs:sequence>
+  </xs:complexType>
+  <!-- [_S_GRAPHICS3D] -->
+
+  <!-- [_S_GEOMETRY] -->
+  <xs:complexType name="GeometryType">
+    <xs:annotation>
+      <xs:documentation>
+        Defines the geometric properties of an object, i.e. its position and orientation.
+      </xs:documentation>
+    </xs:annotation>
+
+    <xs:sequence>
+      <!-- [S_POSITION] -->
+      <xs:element name="Position" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            Defines the position of an object.
+            Refer to the VTS manual chapter "Position of objects in VTS".
+          </xs:documentation>
+        </xs:annotation>
+
+        <xs:complexType>
+          <xs:sequence>
+            <!-- [_S_VALUE] -->
+            <xs:element name="Value" type="ValueType">
+              <xs:annotation>
+                <xs:documentation>
+                  Defines the value of the position data.
+                  For a fixed position value, the Fixed tag must contain a character string of three real numbers,
+                  defining the values for the X, Y and Z components of the position vector.
+                  The unit for a position value depends on the context: kilometers for a body or a satellite,
+                  meters for a satellite component or sensor.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <!-- [_S_VALUE] -->
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!-- [S_POSITION] -->
+
+      <!-- [S_ORIENTATION] -->
+      <xs:element name="Orientation" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            Defines the orientation of an object.
+            Refer to the VTS manual chaper "Orientation of objects in VTS".
+          </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:choice>
+            <!-- [S_QUATERNION] -->
+            <xs:element name="Quaternion">
+              <xs:annotation>
+                <xs:documentation>
+                  Defines the orientation of an object as a quaternion.
+                  Refer to the VTS manual chapter "Orientation of objects in VTS".
+                </xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:sequence>
+                  <!-- [_S_VALUE] -->
+                  <xs:element name="Value" type="ValueType">
+                    <xs:annotation>
+                      <xs:documentation>
+                        Defines the value of the quaternion data.
+                        For a fixed quaternion value, the Fixed tag must contain a character string of four real numbers,
+                        defining the four components of the quaternion.
+                        By convention, the first component must be the real part of the quaternion.
+                      </xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <!-- [_S_VALUE] -->
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <!-- [S_QUATERNION] -->
+
+            <!-- [S_EULERANGLE] -->
+            <xs:element name="EulerAngle">
+              <xs:annotation>
+                <xs:documentation>
+                  Defines the orientation of an object as three Euler angles.
+                  Refer to the VTS manual chapter "Orientation of objects in VTS".
+                </xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:sequence>
+                  <!-- [_S_VALUE] -->
+                  <xs:element name="Value" type="ValueType">
+                    <xs:annotation>
+                      <xs:documentation>
+                        Defines the value of the Euler angles data.
+                        For fixed Euler angles values, the Fixed tag must contain a character string of three real numbers,
+                        defining the three rotations around the Z, X' and Z'' axes.
+                        This rotation sequence can be changed through the RotationSequence attribute.
+                        The angles are expressed in degrees.
+                      </xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <!-- [_S_VALUE] -->
+                </xs:sequence>
+
+                <!-- RotationSequence -->
+                <xs:attribute name="RotationSequence" type="RotationSequenceType" use="optional"
+                  default="313">
+                  <xs:annotation>
+                    <xs:documentation>
+                      Defines the rotation sequence of the Euler angles.
+                    </xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+
+              </xs:complexType>
+            </xs:element>
+            <!-- [S_EULERANGLE] -->
+
+            <!-- [S_AXISANGLE] -->
+            <xs:element name="AxisAngle">
+              <xs:annotation>
+                <xs:documentation>
+                  Defines the orientation of an object as an angle of rotation around an axis.
+                  Refer to the VTS manual chapter "Orientation of objects in VTS".
+                </xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:sequence>
+                  <!-- [S_AXIS] -->
+                  <xs:element name="Axis">
+                    <xs:annotation>
+                      <xs:documentation>
+                        Defines the axis of rotation for an axis and angle orientation.
+                      </xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                      <xs:sequence>
+                        <!-- [_S_VALUE] -->
+                        <xs:element name="Value" type="ValueType">
+                          <xs:annotation>
+                            <xs:documentation>
+                              Defines the value of the rotation axis data.
+                              For a fixed rotation axis value, the Fixed tag must contain a character string of three real numbers,
+                              defining the three X, Y and Z components of the rotation axis.
+                            </xs:documentation>
+                          </xs:annotation>
+                        </xs:element>
+                        <!-- [_S_VALUE] -->
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                  <!-- [S_AXIS] -->
+
+                  <!-- [S_ANGLE] -->
+                  <xs:element name="Angle">
+                    <xs:annotation>
+                      <xs:documentation>
+                        Defines the angle of rotation for an axis and angle orientation.
+                      </xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                      <xs:sequence>
+                        <!-- [_S_VALUE] -->
+                        <xs:element name="Value" type="ValueType">
+                          <xs:annotation>
+                            <xs:documentation>
+                              Defines the value of the rotation angle data.
+                              For a fixed rotation angle value, the Fixed tag must contain a character string of one real number,
+                              defining the rotation angle.
+                            </xs:documentation>
+                          </xs:annotation>
+                        </xs:element>
+                        <!-- [_S_VALUE] -->
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                  <!-- [S_ANGLE] -->
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <!-- [S_AXISANGLE] -->
+
+            <!-- [S_DIRECTION] -->
+            <xs:element name="Direction">
+              <xs:annotation>
+                <xs:documentation>
+                  Defines the orientation of an object along a direction vector.
+                  Refer to the VTS manual chapter "Orientation of objects in VTS".
+                </xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:sequence>
+                  <!-- [_S_VALUE] -->
+                  <xs:element name="Value" type="ValueType">
+                    <xs:annotation>
+                      <xs:documentation>
+                        Defines the value of the direction data.
+                        For a fixed direction value, the Fixed tag must contain a character string of three real number,
+                        defining the X, Y and Z components of the direction vector.
+                      </xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <!-- [_S_VALUE] -->
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <!-- [S_DIRECTION] -->
+
+            <!-- [S_ALTAZCOORD] -->
+            <xs:element name="AltAzCoordinate">
+              <xs:annotation>
+                <xs:documentation>
+                  Defines the orientation of an object as an azimuth and elevation.
+                  Refer to the VTS manual chapter "Orientation of objects in VTS".
+                </xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:sequence>
+                  <!-- [_S_VALUE] -->
+                  <xs:element name="Value" type="ValueType">
+                    <xs:annotation>
+                      <xs:documentation>
+                        Defines the values for the azimuth and elevation data.
+                        For a fixed direction value, the Fixed tag must contain a character string of two real number,
+                        defining the azimuth and elevation.
+                        Both the azimuth and elevation angles are expressed in degrees.
+                      </xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <!-- [_S_VALUE] -->
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <!-- [S_ALTAZCOORD] -->
+          </xs:choice>
+        </xs:complexType>
+      </xs:element>
+      <!-- [S_ORIENTATION] -->
+    </xs:sequence>
+
+    <!-- no attribute -->
+  </xs:complexType>
+  <!-- [_S_GEOMETRY] -->
+
+  <!-- [S_FILE] -->
+  <xs:complexType name="FileType">
+    <xs:annotation>
+      <xs:documentation>
+        Defines a CIC/CCSDS file.
+      </xs:documentation>
+    </xs:annotation>
+
+    <xs:sequence>
+      <!-- [S_COLORFILE] -->
+      <xs:element name="ColorFile" type="ColorFileType" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            Defines a CIC/CCSDS file to provide the color associated with some sampled data.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!-- [S_COLORFILE] -->
+    </xs:sequence>
+
+    <!-- Name -->
+    <xs:attribute name="Name" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Name of the CIC/CCSDS file. Must be relative to the project folder.
+          Refer to the VTS manual chapters "Data sources in VTS" and "CIC/CCSDS data files in VTS".
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <!-- [S_FILE] -->
+
+  <!-- [_S_VALUE] -->
+  <xs:complexType name="ValueType">
+    <xs:annotation>
+      <xs:documentation>
+        Defines the values for some project data.
+      </xs:documentation>
+    </xs:annotation>
+
+    <xs:choice minOccurs="1" maxOccurs="1">
+      <!-- [S_FIXED] -->
+      <xs:element name="Fixed">
+        <xs:annotation>
+          <xs:documentation>
+            Defines a fixed value for some data. The fixed value is stored as an attribute to the Fixed tag.
+          </xs:documentation>
+        </xs:annotation>
+
+        <xs:complexType>
+          <!-- Data -->
+          <xs:attribute name="Data" type="xs:string" use="required">
+            <xs:annotation>
+              <xs:documentation>
+                Fixed value for the data.
+                The actual format and unit of the Data attribute depend on the context in which the parent Value tag is used.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:complexType>
+      </xs:element>
+      <!-- [S_FIXED] -->
+
+      <!-- [S_FILE] -->
+      <xs:element name="File" type="FileType">
+        <xs:annotation>
+          <xs:documentation>
+            Defines a CIC/CCSDS file containing sampled values for some data.
+            The actual format and unit of the file data attribute depend on the context in which the parent Value tag is used.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!-- [S_FILE] -->
+
+      <!-- [S_STREAM] -->
+      <xs:element name="Stream">
+        <xs:annotation>
+          <xs:documentation>
+            Defines a visualization stream for the values of some data.
+          </xs:documentation>
+        </xs:annotation>
+
+        <xs:complexType>
+          <!-- Id -->
+          <xs:attribute name="Id" type="xs:string" use="required">
+            <xs:annotation>
+              <xs:documentation>
+                Stream identifier.
+                Refer to the VTS manual chapters "Data sources in VTS" and "Synchronization protocol for VTS clients".
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+
+          <!-- Mode -->
+          <xs:attribute name="Mode" type="StreamModeType" use="required">
+            <xs:annotation>
+              <xs:documentation>
+                Stream mode.
+                Refer to the VTS manual chapters "Data sources in VTS" and "Synchronization protocol for VTS clients".
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:complexType>
+      </xs:element>
+      <!-- [S_STREAM] -->
+    </xs:choice>
+  </xs:complexType>
+  <!-- [_S_VALUE] -->
+
+  <!-- [S_COLORFILE] -->
+  <xs:complexType name="ColorFileType">
+    <!-- Name -->
+    <xs:attribute name="Name" type="FilePathType" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Color file for the sensor swath.
+          Refer to the VTS manual chapter "Graphic properties of a satellite sensor".
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <!-- [S_COLORFILE] -->
+
+  <!-- [S_TIMELINEFILE] -->
+  <xs:complexType name="TimelineFileType">
+    <!-- Name -->
+    <xs:attribute name="Name" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Name of the CIC/CCSDS file.
+          The file path must be relative to the project folder.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+
+    <!-- TimelineOptionAttributeGroup -->
+    <xs:attributeGroup ref="TimelineOptionAttributeGroup"/>
+
+    <!-- Badges -->
+    <xs:attribute name="Badges" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Name of badges assigned to the file.
+          Badges' name will be separated by the ";" character.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+
+    <!-- Mode -->
+    <xs:attribute name="Mode" type="TimelineModeType" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Display mode of the file in the timeline.
+          The specified display mode must be compatible with the contents of the CIC/CCSDS file. Otherwise, it will not be applied.
+          Refer to the VTS manual chapter "Scenario in VTS / Graphical representation of files".
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+
+    <!-- Overlay -->
+    <xs:attribute name="Overlay" type="xs:boolean" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Flag to use an associated color file as a color overlay in the Timeline.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <!-- [S_TIMELINEFILE] -->
+
+  <!-- [S_APPLICATION] -->
+  <xs:complexType name="ApplicationType">
+    <xs:sequence>
+      <!-- [S_SPECIFICARGS] -->
+      <xs:element name="SpecificArgs" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            Defines additional command-line parameters for an application.
+            These parameters are automatically passed to client applications upon startup.
+          </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <!-- Args -->
+          <xs:attribute name="Args" type="xs:string" use="required">
+            <xs:annotation>
+              <xs:documentation>
+                Parameters list. Stored as is in the project file.
+                Refer to the VTS manual chapter "Application launchers".
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:complexType>
+      </xs:element>
+      <!-- [S_SPECIFICARGS] -->
+    </xs:sequence>
+
+    <!-- Name -->
+    <xs:attribute name="Name" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Application name. Used by the VTS Broker to build the path to the application's executable.
+          Refer to the VTS manual chapter "Application launchers".
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+
+    <!-- Id -->
+    <xs:attribute name="Id" type="xs:unsignedInt" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Unique application identifier. Used by the VTS Broker to identify clients upon connection and during the visualization.
+          Refer to the VTS manual chapter "Application IDs in VTS".
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+
+    <!-- Label -->
+    <xs:attribute name="Label" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Application label. Used as an alternative name for an application during the visualization.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+
+    <!-- AutoStarted -->
+    <xs:attribute name="AutoStarted" type="xs:boolean" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Automaticaly start the application when Broker starts.
+          If the parameter AutoStarted is set to one, the application is automaticaly started by the Broker.
+          Refer to the VTS manual chapter "VTS Broker".
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <!-- [S_APPLICATION] -->
+
+  <!-- [S_SATELLITE] -->
+  <xs:complexType name="SatelliteType">
+    <xs:annotation>
+      <xs:documentation>
+        Defines a satellite for the visualization. Satellites are the main visualization entities in VTS.
+        Refer to the VTS manual chapter "Structure of satellites in VTS".
+      </xs:documentation>
+    </xs:annotation>
+
+    <xs:sequence>
+      <!-- [S_COMMONPROP] -->
+      <xs:element name="CommonProp" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            Contains property tags for a satellite.
+            The path length is defined as a dynamic property available in the scenario.
+          </xs:documentation>
+        </xs:annotation>
+
+        <xs:complexType>
+          <xs:sequence>
+            <!-- [S_ORBITPATH] -->
+            <xs:element name="OrbitPath">
+              <xs:complexType>
+                <!-- Color -->
+                <xs:attribute name="Color" type="ColorType" use="required">
+                  <xs:annotation>
+                    <xs:documentation>
+                      Orbit path color.
+                    </xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+
+                <!-- PenStyle -->
+                <xs:attribute name="PenStyle" type="StyleType" use="required">
+                  <xs:annotation>
+                    <xs:documentation>
+                      Style of orbit path.
+                    </xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+
+                <!-- PenWidth -->
+                <xs:attribute name="PenWidth" type="xs:unsignedInt" use="required">
+                  <xs:annotation>
+                    <xs:documentation>
+                      Width of orbit path.
+                    </xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+              </xs:complexType>
+            </xs:element>
+            <!-- [S_ORBITPATH] -->
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!-- [S_COMMONPROP] -->
+
+      <!-- [_S_PROP2D] -->
+      <xs:element name="Prop2d" type="Prop2dType" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            Defines the 2D properties of a satellite, i.e. the icon displayed in the VTS configuration utility
+            and for projections in SurfaceView.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!-- [_S_PROP2D] -->
+
+      <!-- [_S_TRACK] -->
+      <xs:element name="LineStyle" type="LineStyleType" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            Defines the ground track of the satellite.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!-- [_S_TRACK] -->
+
+      <!-- [_S_VISIBILITYCIRCLE] -->
+      <xs:element name="VisibilityCircle" type="VisibilityCircleType" minOccurs="0" maxOccurs="1">
+
+        <xs:annotation>
+          <xs:documentation>
+            Defines the visibility circle the of the satellite.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!-- [_S_VISIBILITYCIRCLE] -->
+
+      <!-- [S_POSITIONALCOVARIANCE] -->
+      <xs:element name="PositionalCovariance" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            Defines a positional covariance information (file, fixed, etc.).
+          </xs:documentation>
+        </xs:annotation>
+
+        <xs:complexType>
+          <xs:sequence>
+            <!-- [_S_VALUE] -->
+            <xs:element name="Value" type="ValueType">
+              <xs:annotation>
+                <xs:documentation>
+                  Defines the value of the positional covariance information.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <!-- [_S_VALUE] -->
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!-- [S_POSITIONALCOVARIANCE] -->
+
+      <!-- [_S_COMPONENT_] -->
+      <xs:element name="Component" type="ComponentType" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            Defines the root component of the satellite.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!-- [_S_COMPONENT_] -->
+
+      <!-- [_S_EVENTS] -->
+      <xs:element name="Events" type="EventsWithFilesType" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            Defines the mission events attached to the satellite.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!-- [_S_EVENTS] -->
+    </xs:sequence>
+
+    <!-- Name -->
+    <xs:attribute name="Name" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Name of the satellite.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+
+    <!-- ParentPath -->
+    <xs:attribute name="ParentPath" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Full path to the satellite's parent.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+
+  </xs:complexType>
+  <!-- [S_SATELLITE] -->
+  <!-- [S_CLUSTERPOPULATION] -->
+  <xs:complexType name="ClusterPopulationType">
+    <xs:annotation>
+      <xs:documentation>
+        Defines the orientation of an object along a direction vector.
+        Refer to the VTS manual chapter "Orientation of objects in VTS".
+      </xs:documentation>
+    </xs:annotation>
+      
+    <xs:sequence minOccurs="0" maxOccurs="unbounded">
+      <!-- Object -->
+      <xs:element name="Object">
+      <xs:complexType>
+        <!-- Name -->
+        <xs:attribute name="Name" type="xs:string" use="required">
+          <xs:annotation>
+            <xs:documentation>
+              Name of the object
+            </xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <!-- Orbit -->
+        <xs:attribute name="Orbit" type="xs:string" use="required">
+          <xs:annotation>
+            <xs:documentation>
+              Path to the orbit file relative to the project folder
+            </xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    
+    <!-- Radius -->
+    <xs:attribute name="Radius" type="xs:double" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Approximate radius in kilometers of the each element in the cluster
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <!-- [S_CLUSTERPOPULATION] -->
+  <!-- [S_CLUSTER] -->
+  <xs:complexType name="ClusterType">
+    <xs:annotation>
+      <xs:documentation>
+        Defines a cluster for the visualization. A cluster is a collection of objects.
+        Refer to the VTS manual chapter "Structure of clusters in VTS".
+      </xs:documentation>
+    </xs:annotation>
+    
+    <!-- Population -->
+    <xs:sequence minOccurs="0" maxOccurs="1">
+      <xs:element name="Population" type="ClusterPopulationType"/>
+    </xs:sequence>
+    
+    <!-- Radius -->
+    <xs:attribute name="Radius" type="xs:double" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Approximate radius in kilometers of the cluster
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    
+     <!-- ParentPath -->
+    <xs:attribute name="ParentPath" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Full path to the cluster's parent.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    
+    <!-- Name -->
+    <xs:attribute name="Name" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Name of the cluster
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    
+  </xs:complexType>
+  <!-- [S_CLUSTERTYPE] -->
+  
+  <!-- [S_COMMAND] -->
+  <xs:complexType name="CommandType">
+    <xs:annotation>
+      <xs:documentation>
+        Defines a property command for a client application.
+      </xs:documentation>
+    </xs:annotation>
+
+    <!-- Str -->
+    <xs:attribute name="Str" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Property command.
+          Refer to the VTS manual chapter "Synchronization protocol for VTS clients".
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <!-- [S_COMMAND] -->
+
+  <!-- [S_APPSTATE] -->
+  <xs:complexType name="AppStateType">
+    <xs:sequence minOccurs="0" maxOccurs="unbounded">
+      <!-- [S_COMMAND] -->
+      <xs:element name="Command" type="CommandType" minOccurs="0" maxOccurs="unbounded"/>
+      <!-- [S_COMMAND] -->
+    </xs:sequence>
+
+    <!-- Id -->
+    <xs:attribute name="Id" type="xs:unsignedInt" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Client application ID.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <!-- [S_APPSTATE] -->
+
+  <!-- [S_INSTANT] -->
+  <xs:complexType name="InstantType">
+    <xs:annotation>
+      <xs:documentation>
+        Defines a visualization state from the project scenario.
+        It aggregates view properties for all client applications of the visualization.
+      </xs:documentation>
+    </xs:annotation>
+
+    <xs:sequence>
+      <!-- [S_APPSTATE] -->
+      <xs:element name="AppState" type="AppStateType" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>
+            Contains a list of properties for a specific client application.
+            Each Instant tag must contain as many AppState tags as there are client applications in the project.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!-- [S_APPSTATE] -->
+    </xs:sequence>
+
+    <!-- Time -->
+    <xs:attribute name="Time" type="MJDDateTimeType" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Date of the visualization state.
+          Refer to the VTS manual chapter "Date formats in VTS".
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+
+    <!-- TimeRatio -->
+    <xs:attribute name="TimeRatio" type="xs:double" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Time ratio to apply from the state date in UseStateTimeRatio mode.
+          Refer to the VTS manual chapter "Time management in the Broker".
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+
+    <!-- Label -->
+    <xs:attribute name="Label" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Visualization state label in the project timeline.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+
+  </xs:complexType>
+  <!-- [S_INSTANT] -->
+
+  <!-- [S_PROJECT] -->
+  <xs:complexType name="ProjectType">
+    <xs:sequence>
+      <!-- [S_GENERAL] -->
+      <xs:element name="General" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Defines the general parameters of the project.</xs:documentation>
+        </xs:annotation>
+
+        <xs:complexType>
+          <!-- Name -->
+          <xs:attribute name="Name" type="xs:string" use="required">
+            <xs:annotation>
+              <xs:documentation>
+                Project name.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+
+          <!-- StartDateTime -->
+          <xs:attribute name="StartDateTime" type="DateTimeType" use="required">
+            <xs:annotation>
+              <xs:documentation>
+                Visualization start date.
+                Refer to the VTS manual chapter "Date formats in VTS".
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+
+          <!-- EndDateTime -->
+          <xs:attribute name="EndDateTime" type="DateTimeType" use="required">
+            <xs:annotation>
+              <xs:documentation>
+                Visualization end date.
+                Refer to the VTS manual chapter "Date formats in VTS".
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:complexType>
+      </xs:element>
+      <!-- [S_GENERAL] -->
+
+      <!-- [S_METADATA] -->
+      <xs:element name="MetaData">
+        <xs:complexType>
+          <xs:sequence>
+            <!-- [S_DESCRIPTION] -->
+            <xs:element name="Description" type="xs:string">
+              <xs:annotation>
+                <xs:documentation>
+                  Description/Information about the project.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <!-- [S_DESCRIPTION] -->
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!-- [S_METADATA] -->
+
+      <!-- [S_MONITORCONFIGURATION] -->
+      <xs:element name="MonitorConfiguration">
+        <xs:annotation>
+          <xs:documentation>
+            Save monitor configuration on project save
+          </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <!-- [S_MONITOR] -->
+            <xs:element name="Monitor" maxOccurs="unbounded" minOccurs="0">
+              <xs:complexType>
+                <!-- X -->
+                <xs:attribute name="X" use="required">
+                  <xs:annotation>
+                    <xs:documentation>
+                      Top position of window in pixel
+                    </xs:documentation>
+                  </xs:annotation>
+                  <xs:simpleType>
+                    <xs:restriction base="xs:integer"></xs:restriction>
+                  </xs:simpleType>
+                </xs:attribute>
+
+                <!-- Y -->
+                <xs:attribute name="Y" use="required">
+                  <xs:annotation>
+                    <xs:documentation>
+                      Left position of window in pixel
+                    </xs:documentation>
+                  </xs:annotation>
+                  <xs:simpleType>
+                    <xs:restriction base="xs:integer"></xs:restriction>
+                  </xs:simpleType>
+                </xs:attribute>
+
+                <!-- Height -->
+                <xs:attribute name="Height" use="required">
+                  <xs:annotation>
+                    <xs:documentation>
+                      Heigth of window in pixel
+                    </xs:documentation>
+                  </xs:annotation>
+                  <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                      <xs:minInclusive value="0"/>
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:attribute>
+
+                <!-- Width -->
+                <xs:attribute name="Width" use="required">
+                  <xs:annotation>
+                    <xs:documentation>
+                      Width of window in pixel
+                    </xs:documentation>
+                  </xs:annotation>
+                  <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                      <xs:minInclusive value="0"/>
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:attribute>
+
+              </xs:complexType>
+            </xs:element>
+            <!-- [S_MONITOR] -->
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!-- [S_MONITORCONFIGURATION] -->
+
+      <!-- [S_STARTOPTIONS] -->
+      <xs:element name="StartOptions">
+        <xs:annotation>
+          <xs:documentation>
+            Defines the initial parameters for the Broker at the start of the visualization.
+          </xs:documentation>
+        </xs:annotation>
+
+        <xs:complexType>
+          <!-- TimeRatio -->
+          <xs:attribute name="TimeRatio" use="required">
+            <xs:annotation>
+              <xs:documentation>
+                Time ratio at the start of the visualization (positive floating point number).
+                Refer to the Broker manual chapter "Time management".
+              </xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+              <xs:restriction base="xs:double">
+                <xs:minInclusive value="0.0"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+
+          <!-- UseStateTimeRatio -->
+          <xs:attribute name="UseStateTimeRatio" type="xs:boolean" use="required">
+            <xs:annotation>
+              <xs:documentation>
+                Change time ratio at each state according to a prevously saved value.
+                Refer to the Broker manual chapter "Time management".
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+
+          <!-- SysTimeSynced -->
+          <xs:attribute name="SysTimeSynced" type="xs:boolean" use="required">
+            <xs:annotation>
+              <xs:documentation>
+                Synchronization of visualization time with system time.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+
+          <!-- Paused -->
+          <xs:attribute name="Paused" type="xs:boolean" use="required">
+            <xs:annotation>
+              <xs:documentation>
+                Pause time at the start of the visualization.
+                Refer to the Broker manual chapter "Time management".
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+
+          <!-- Looped -->
+          <xs:attribute name="Looped" type="xs:boolean" use="required">
+            <xs:annotation>
+              <xs:documentation>
+                Loop playback for the visualization.
+                Refer to the Broker manual chapter "Time management".
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+
+          <!-- Minimized -->
+          <xs:attribute name="Minimized" type="xs:boolean" use="required">
+            <xs:annotation>
+              <xs:documentation>
+                Minimize the Broker window at the start of the visualization.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+
+          <!-- Hidden -->
+          <xs:attribute name="Hidden" type="xs:boolean" use="required">
+            <xs:annotation>
+              <xs:documentation>
+                Hide the Broker window at the start of the visualization.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+
+          <!-- AutoClosed -->
+          <xs:attribute name="AutoClosed" type="xs:boolean" use="required">
+            <xs:annotation>
+              <xs:documentation>
+                Automatically close the Broker once visualization has reached its end date.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:complexType>
+      </xs:element>
+      <!-- [S_STARTOPTIONS] -->
+      
+      <!-- [S_TIMESHIFTINGOPTIONS -->
+      <xs:element name="Timeshifting">
+        <xs:annotation>
+          <xs:documentation>
+            Automatically close the Broker once visualization has reached its end date.
+          </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <!-- TimeRatio -->
+          <xs:attribute name="Enabled" type="xs:boolean" use="required">
+          <xs:annotation>
+              <xs:documentation>
+                User activation for the timeshifting
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:complexType>
+      </xs:element>
+      <!-- [S_TIMESHIFTINGOPTIONS -->
+
+      <!-- [S_BROKEROPTIONS] -->
+      <xs:element name="BrokerOptions" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            Defines the display mode of the Broker and some of its window parameters.
+          </xs:documentation>
+        </xs:annotation>
+
+        <xs:complexType>
+          <!-- WindowMode -->
+          <xs:attribute name="WindowMode" type="BrokerWindowModeType" use="required">
+            <xs:annotation>
+              <xs:documentation>
+                Window mode for the Broker.
+                Refer to the Broker manual chapter "Display modes".
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+
+          <!-- Collapsed -->
+          <xs:attribute name="Collapsed" type="xs:boolean" use="required">
+            <xs:annotation>
+              <xs:documentation>
+                Compact mode for the Broker window (when undocked).
+                Refer to the Broker manual chapter "Display modes".
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+
+          <!-- AlwaysOnTop -->
+          <xs:attribute name="AlwaysOnTop" type="xs:boolean" use="required">
+            <xs:annotation>
+              <xs:documentation>
+                Broker window always on top of other windows.
+                Refer to the Broker manual chapter "Display modes".
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+
+          <!-- XPos -->
+          <xs:attribute name="XPos" type="xs:integer" use="required">
+            <xs:annotation>
+              <xs:documentation>
+                X coordinate of the Broker screen position.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+
+          <!-- YPos -->
+          <xs:attribute name="YPos" type="xs:integer" use="required">
+            <xs:annotation>
+              <xs:documentation>
+                Y coordinate of the Broker screen position.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+
+          <!-- Width -->
+          <xs:attribute name="Width" type="xs:unsignedInt" use="required">
+            <xs:annotation>
+              <xs:documentation>
+                Width of the Broker window.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+
+          <!-- Height -->
+          <xs:attribute name="Height" type="xs:unsignedInt" use="required">
+            <xs:annotation>
+              <xs:documentation>
+                Height of the Broker window.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+
+          <!-- ActiveTab -->
+          <xs:attribute name="ActiveTab" type="xs:unsignedInt" use="required">
+            <xs:annotation>
+              <xs:documentation>
+                Tab number of the default Broker tab (in full display mode).
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+
+          <!-- HiddenTabs -->
+          <xs:attribute name="HiddenTabs" type="ListOfUnsignedInt" use="required">
+            <xs:annotation>
+              <xs:documentation>
+                List of tab number .
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:complexType>
+      </xs:element>
+      <!-- [S_BROKEROPTIONS] -->
+
+      <!-- [S_TIMELINEOPTIONS] -->
+      <xs:element name="TimelineOptions">
+        <xs:annotation>
+          <xs:documentation>
+            Defines the display parameters for the project's timeline, i.e. the view properties, date format,
+            and display modes for data files loaded in the timeline in the VTS configuration utility or Broker.
+            Refer to the VTS manual chapter "Scenario in VTS / Timeline".
+          </xs:documentation>
+        </xs:annotation>
+
+        <xs:complexType>
+          <xs:sequence>
+            <!-- [S_TIMELINEBADGE] -->
+            <xs:element name="TimelineBadge" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>
+                  Defines the badges available in the timeline.
+                </xs:documentation>
+              </xs:annotation>
+
+              <xs:complexType>
+                <!-- Name -->
+                <xs:attribute name="Name" use="required">
+                  <xs:annotation>
+                    <xs:documentation>
+                      Name of the badge.
+                      Must not contain a ";" character.
+                    </xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+
+                <!-- Color -->
+                <xs:attribute name="Color" type="ColorType" use="required">
+                  <xs:annotation>
+                    <xs:documentation>
+                      Color for the badge.
+                      Three real numbers for (red, green, blue) in the [0,1] range (no unit).
+                    </xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+              </xs:complexType>
+            </xs:element>
+            <!-- [S_TIMELINEBADGE] -->
+
+            <!-- [S_TIMELINESCENARIO] -->
+            <xs:element name="TimelineScenario" minOccurs="0" maxOccurs="1">
+              <xs:annotation>
+                <xs:documentation>
+                  Defines the display scenario parameters in the timeline.
+                </xs:documentation>
+              </xs:annotation>
+
+              <xs:complexType>
+                <!-- Name -->
+                <xs:attribute name="Name" use="required">
+                  <xs:annotation>
+                    <xs:documentation>
+                      Must be "Scenario".
+                    </xs:documentation>
+                  </xs:annotation>
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:pattern value="Scenario"/>
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:attribute>
+
+                <!-- TimelineOptionAttributeGroup -->
+                <xs:attributeGroup ref="TimelineOptionAttributeGroup"/>
+              </xs:complexType>
+            </xs:element>
+            <!-- [S_TIMELINESCENARIO] -->
+
+            <!-- [S_TIMELINEEVENTS] -->
+            <xs:element name="TimelineEvents" minOccurs="0" maxOccurs="1">
+              <xs:annotation>
+                <xs:documentation>
+                  Defines the events for a satellite display parameters in the timeline.
+                  This row is automatically filled with existing events attached to a satellite by the VTS Configuration Tool.
+                </xs:documentation>
+              </xs:annotation>
+
+              <xs:complexType>
+                <!-- Name -->
+                <xs:attribute name="Name" use="required">
+                  <xs:annotation>
+                    <xs:documentation>
+                      Must be "Events for &lt;existing satellite name&gt;".
+                    </xs:documentation>
+                  </xs:annotation>
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:pattern value="Events for .+"/>
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:attribute>
+
+                <!-- TimelineOptionAttributeGroup -->
+                <xs:attributeGroup ref="TimelineOptionAttributeGroup"/>
+
+                <!-- Badges -->
+                <xs:attribute name="Badges" type="xs:string" use="required">
+                  <xs:annotation>
+                    <xs:documentation>
+                      Name of badges assigned to the file.
+                      Badges' name will be separated by the ";" character.
+                    </xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+              </xs:complexType>
+            </xs:element>
+            <!-- [S_TIMELINEEVENTS] -->
+
+            <!-- [S_TIMELINEFILE] -->
+            <xs:element name="TimelineFile" type="TimelineFileType" minOccurs="0"
+              maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>
+                  Defines the display parameters of a CIC/CCSDS file in the project's timeline.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <!-- [S_TIMELINEFILE] -->
+
+            <!-- [S_TIMELINESCRIPT] -->
+            <xs:element name="TimelineScript" minOccurs="0" maxOccurs="1">
+              <xs:annotation>
+                <xs:documentation>
+                  Defines the display parameters of a script file in the project's timeline.
+                </xs:documentation>
+              </xs:annotation>
+
+              <xs:complexType>
+                <!-- Name -->
+                <xs:attribute name="Name" type="xs:string" use="required">
+                  <xs:annotation>
+                    <xs:documentation>
+                      Name of the script file.
+                      The file path must be relative to the project folder.
+                    </xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+
+                <!-- TimelineOptionAttributeGroup -->
+                <xs:attributeGroup ref="TimelineOptionAttributeGroup"/>
+
+                <!-- Badges -->
+                <xs:attribute name="Badges" type="xs:string" use="required">
+                  <xs:annotation>
+                    <xs:documentation>
+                      Name of badges assigned to the file.
+                      Badges' name will be separated by the ";" character.
+                    </xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+              </xs:complexType>
+            </xs:element>
+            <!-- [S_TIMELINESCRIPT] -->
+
+            <!-- [S_TIMELINESTREAM] -->
+            <xs:element name="TimelineStream" minOccurs="0" maxOccurs="1">
+              <xs:annotation>
+                <xs:documentation>
+                  Defines a stream display parameters in the timeline.
+                </xs:documentation>
+              </xs:annotation>
+
+              <xs:complexType>
+                <!-- Name -->
+                <xs:attribute name="Name" use="required">
+                  <xs:annotation>
+                    <xs:documentation>
+                      Must be "Stream &lt;existing stream id&gt;".
+                    </xs:documentation>
+                  </xs:annotation>
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:pattern value="Stream .+"/>
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:attribute>
+
+                <!-- TimelineOptionAttributeGroup -->
+                <xs:attributeGroup ref="TimelineOptionAttributeGroup"/>
+
+                <!-- Badges -->
+                <xs:attribute name="Badges" type="xs:string" use="required">
+                  <xs:annotation>
+                    <xs:documentation>
+                      Name of badges assigned to the file.
+                      Badges' name will be separated by the ";" character.
+                    </xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+              </xs:complexType>
+            </xs:element>
+            <!-- [S_TIMELINESTREAM] -->
+          </xs:sequence>
+
+          <!-- ProjectLocked -->
+          <xs:attribute name="ProjectLocked" type="xs:boolean" use="required">
+            <xs:annotation>
+              <xs:documentation>
+                Display the whole project (even across project limits changes).
+                Refer to the VTS manual chapter "Scenario in VTS / Timeline toolbar" (Reset View button).
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+
+          <!-- CursorLocked -->
+          <xs:attribute name="CursorLocked" type="xs:boolean" use="required">
+            <xs:annotation>
+              <xs:documentation>
+                Follow the time cursor as it moves along with visualization time.
+                Refer to the VTS manual chapter "Scenario in VTS / Timeline toolbar" (Follow Cursor button).
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+
+          <!-- CursorRatio -->
+          <xs:attribute name="CursorRatio" type="xs:integer" use="required">
+            <xs:annotation>
+              <xs:documentation>
+                Location for the time cursor in Follow cursor mode (in % of the timeline width).
+                Refer to the VTS manual chapter "Scenario in VTS / Timeline toolbar" (Follow Cursor button).
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+
+          <!-- ViewStart -->
+          <xs:attribute name="ViewStart" type="DateTimeType" use="required">
+            <xs:annotation>
+              <xs:documentation>
+                Date at the leftmost side of the timeline.
+                Refer to the VTS manual chapter "Date formats in VTS".
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+
+          <!-- ViewSpan -->
+          <xs:attribute name="ViewSpan" type="DurationType" use="required">
+            <xs:annotation>
+              <xs:documentation>
+                Width of the timeline.
+                Duration expressed in HOURS.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+
+          <!-- DateFormat -->
+          <xs:attribute name="DateFormat" type="DateFormatType" use="required">
+            <xs:annotation>
+              <xs:documentation>
+                Date format for the timeline.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+
+          <!-- NoBadgeFilter -->
+          <xs:attribute name="NoBadgeFiltered" type="xs:boolean" use="required">
+            <xs:annotation>
+              <xs:documentation>
+                Define if a filter on timeline file without badge is activated.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+
+          <!-- BadgeFilter -->
+          <xs:attribute name="BadgeFiltered" type="xs:string" use="required">
+            <xs:annotation>
+              <xs:documentation>
+                Define the list of every badge filtered in the Timeline separated by a ";".
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:complexType>
+      </xs:element>
+      <!-- [S_TIMELINEOPTIONS] -->
+
+      <!-- [S_SKY] -->
+      <xs:element name="Sky">
+        <xs:annotation>
+          <xs:documentation>
+            Defines the sky properties.
+          </xs:documentation>
+        </xs:annotation>
+
+        <xs:complexType>
+          <xs:sequence>
+            <!-- [S_SUN] -->
+            <xs:element name="Sun" type="SunType">
+              <xs:annotation>
+                <xs:documentation>
+                  Defines the properties of the Sun in the client applications.
+                  Note that the sun uses default properties of client applications which means that properties such as
+                  its 3D model or texture cannot be modified.
+                  However, the icon, track and the terminator properties can be modified
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <!-- [S_SUN] -->
+
+            <!-- [S_STARCATALOG] -->
+            <xs:element name="StarCatalog">
+              <xs:annotation>
+                <xs:documentation>
+                  Defines the properties of the stars catalog associated with the project.
+                  Note however that some client applications may still use their built-in star catalog, so please refer
+                  to the specific client application manual to check.
+                </xs:documentation>
+              </xs:annotation>
+
+              <xs:complexType>
+                <xs:sequence>
+                  <!-- [_S_TRACK] -->
+                  <xs:element name="Track" type="TrackType"/>
+                  <!-- [_S_TRACK] -->
+
+                  <!-- [S_STARCATALOGFILE] -->
+                  <xs:element name="StarCatalogFile" minOccurs="0" maxOccurs="1">
+                    <xs:complexType>
+                      <!-- Name -->
+                      <xs:attribute name="Name" type="xs:string" use="required">
+                        <xs:annotation>
+                          <xs:documentation>
+                            Path to the star catalog file.
+                          </xs:documentation>
+                        </xs:annotation>
+                      </xs:attribute>
+                    </xs:complexType>
+                  </xs:element>
+                  <!-- [S_STARCATALOGFILE] -->
+                </xs:sequence>
+
+                <!-- CatalogMode -->
+                <xs:attribute name="CatalogMode" type="CatalogModeType" use="required">
+                  <xs:annotation>
+                    <xs:documentation>
+                      Define the specific star catalog that will be used in client applications.
+                    </xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+
+              </xs:complexType>
+            </xs:element>
+            <!-- [S_STARCATALOG] -->
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!-- [S_SKY] -->
+
+      <!-- [S_TOBEUSEDAPPS] -->
+      <xs:element name="ToBeUsedApps">
+        <xs:annotation>
+          <xs:documentation>
+            Lists all project client applications which are launched at the start of the visualization.
+            Refer to the VTS manual chapters "VTS Broker" and "Client applications in VTS".
+          </xs:documentation>
+        </xs:annotation>
+
+        <xs:complexType>
+          <xs:sequence>
+            <!-- [S_APPLICATION] -->
+            <xs:element name="Application" type="ApplicationType" minOccurs="0"
+              maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>
+                  Defines a client application for the visualization.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <!-- [S_APPLICATION] -->
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!-- [S_TOBEUSEDAPPS] -->
+
+      <!-- [S_ENTITIES] -->
+      <xs:element name="Entities" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            Contains all entities of the visualization: satellites, ground stations, sensors, etc.
+          </xs:documentation>
+        </xs:annotation>
+
+        <xs:complexType>
+          <xs:sequence>
+            <!-- [S_BODY] -->
+            <xs:element name="Body" type="BodyType" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>
+                  Defines a central body for the visualization.
+                  Central bodies are VTS entities around which visualized satellites orbit.
+                  When using standard VTS client applications such as Celestia or SurfaceView, a central body
+                  must reference a known object from VTS's default list, or provide the data required for its
+                  display, position and orientation.
+                  Refer to the VTS manual chapter "Central bodies in VTS".
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <!-- [S_BODY] -->
+
+            <!-- [S_SATELLITE] -->
+            <xs:element name="Satellite" type="SatelliteType" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>
+                  Contains all the satellites of the project.
+                  Satellites are the main visualization entities in VTS.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <!-- [S_SATELLITE] -->
+            <!-- [S_CLUSTER] -->
+  
+            <!-- [S_SCLUSTER] -->
+            <xs:element name="Cluster" type="ClusterType" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>
+                  Contains all the clusters of the project.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <!-- [S_SATELLITE] -->
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!-- [S_ENTITIES] -->
+
+      <!-- [_S_EVENTS] -->
+      <xs:element name="Events" type="EventsType" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            Defines the default event decorations for all entities of the project.
+            These decorations may be overridden on a per-entity basis: Mission events of a satellite section above.
+            This tag may only contain Decoration tags. It may not contain File tags, since events must be attached to an entity.
+            Refer to the VTS manual chapter "Mission events in VTS".
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!-- [_S_EVENTS] -->
+
+      <!-- [S_IGNOREDFILES] -->
+      <xs:element name="IgnoredFiles" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            Contains a list of CIC/CCSDS project files which should not be displayed in the project timeline.
+          </xs:documentation>
+        </xs:annotation>
+
+        <xs:complexType>
+          <xs:sequence>
+            <!-- [S_FILE] -->
+            <xs:element name="File" type="FileType" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>
+                  Defines a CIC/CCSDS project file which should not be displayed in the project timeline.
+                  Only files referenced by the project inside Value tags may be specified here.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <!-- [S_FILE] -->
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!-- [S_IGNOREDFILES] -->
+
+      <!-- [S_ADDITIONALFILES] -->
+      <xs:element name="AdditionalFiles" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            Contains a list of CIC/CCSDS files to display in the project timeline.
+          </xs:documentation>
+        </xs:annotation>
+
+        <xs:complexType>
+          <xs:sequence>
+            <!-- [S_FILE] -->
+            <xs:element name="File" type="FileType" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>
+                  Defines a CIC/CCSDS file to display in the project timeline.
+                  These files should not be referenced by the project inside Value tags (since files referenced by the project
+                  are automatically displayed in the project timeline -- unless ignored).
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <!-- [S_FILE] -->
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!-- [S_ADDITIONALFILES] -->
+
+      <!-- [S_SCRIPTFILES] -->
+      <xs:element name="ScriptFiles" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            Contains a list of CIC/CCSDS files that contains commands (from the VTS synchronization protocol),
+            which are sent by the Broker to client applications during visualization.
+            Refer to the VTS manual chapter "Scripts and macros in VTS".
+          </xs:documentation>
+        </xs:annotation>
+
+        <xs:complexType>
+          <xs:sequence>
+            <!-- [S_FILE] -->
+            <xs:element name="File" type="FileType" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>
+                  Define a CIC/CCSDS files that contains commands.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <!-- [S_FILE] -->
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!-- [S_SCRIPTFILES] -->
+
+      <!-- [S_STATES] -->
+      <xs:element name="States" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            Contains a list of visualization states which compose the project scenario.
+            Refer to the VTS manual chapter "Scenario in VTS".
+          </xs:documentation>
+        </xs:annotation>
+
+        <xs:complexType>
+          <xs:sequence>
+            <!-- [S_INSTANT] -->
+            <xs:element name="Instant" type="InstantType" minOccurs="1" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>
+                  Defines a visualization state from the project scenario. It aggregates view properties for all client
+                  applications of the visualization.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <!-- [S_INSTANT] -->
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!-- [S_STATES] -->
+    </xs:sequence>
+
+    <!-- Revision -->
+    <xs:attribute name="Revision" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Revision number range for which this schema applies.
+          Refer to the the VTS manual chapter "Backwards compatibility in VTS".
+        </xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:nonNegativeInteger">
+          <xs:minExclusive value="6841"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+  <!-- [S_PROJECT] -->
+
+  <!-- [S_PROJECT] -->
+  <xs:element name="Project" type="ProjectType">
+    <xs:annotation>
+      <xs:documentation>
+        This element is the root of the project.
+        It defines the revision number of the VTS configuration tool used to generate the file.
+        This revision number is used to guarantee backward-compatibility of project files.
+        The current format of this tag has been introduced at revision r1168.
+        If not found, the XML reader will attempt loading the project file with an older schema.
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <!-- [S_PROJECT] -->
+
+</xs:schema>

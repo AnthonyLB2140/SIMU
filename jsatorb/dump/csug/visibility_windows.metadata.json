@@ -1,0 +1,1 @@
+{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_"}],"uuid":"985c030a30684d91ac7a3e55b24649a1","collectionName":"visibility_windows","type":"collection"}

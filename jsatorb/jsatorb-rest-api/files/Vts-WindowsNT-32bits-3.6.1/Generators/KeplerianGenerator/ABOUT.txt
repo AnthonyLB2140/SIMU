@@ -1,0 +1,2 @@
+The Keplerian Generator relies on the Orekit library [https://www.orekit.org/].
+It is located under the Orekit/ folder.

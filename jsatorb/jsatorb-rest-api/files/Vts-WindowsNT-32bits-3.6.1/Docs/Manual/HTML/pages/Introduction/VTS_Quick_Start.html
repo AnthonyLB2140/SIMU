@@ -1,0 +1,335 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>VTS Quick Start &mdash; VTS 3.6.0-9030 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="VTS 3.6.0-9030 documentation" href="../../index.html"/>
+        <link rel="up" title="Introduction" href="index.html"/>
+        <link rel="next" title="Software requirements for VTS" href="Software_requirements_for_VTS.html"/>
+        <link rel="prev" title="Overview of VTS" href="Overview_of_VTS.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> VTS
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Introduction</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Overview_of_VTS.html">Overview of VTS</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">VTS Quick Start</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installing-the-toolkit">Installing the toolkit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#starting-the-toolkit">Starting the toolkit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#opening-an-existing-project">Opening an existing project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#starting-the-visualization">Starting the visualization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#interacting-with-the-broker">Interacting with the Broker</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#start-of-a-visualization">Start of a visualization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#end-of-a-visualization">End of a visualization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#time-management">Time management</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Software_requirements_for_VTS.html">Software requirements for VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Hardware_requirements_for_VTS.html">Hardware requirements for VTS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../General/index.html">General</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Files_used_by_VTS/index.html">Files used by VTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Starting_VTS/index.html">Starting VTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VTS_applications_user_manuals/index.html">VTS applications user manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Plugin_development/index.html">Plugin development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Data_generators_in_VTS/index.html">Data generator integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../About/index.html">About</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">VTS</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Introduction</a> &raquo;</li>
+        
+      <li>VTS Quick Start</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/pages/Introduction/VTS_Quick_Start.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="vts-quick-start">
+<span id="id1"></span><h1>VTS Quick Start<a class="headerlink" href="#vts-quick-start" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="installing-the-toolkit">
+<span id="vts-quick-start-installing-the-toolkit"></span><h2>Installing the toolkit<a class="headerlink" href="#installing-the-toolkit" title="Permalink to this headline">¶</a></h2>
+<p>The VTS toolkit comes as a zip archive. To install it, simply decompress it in a folder. This installation folder will be referred to as <code class="docutils literal"><span class="pre">VTS/</span></code> throughout this manual.</p>
+</div>
+<div class="section" id="starting-the-toolkit">
+<span id="vts-quick-start-starting-the-toolkit"></span><h2>Starting the toolkit<a class="headerlink" href="#starting-the-toolkit" title="Permalink to this headline">¶</a></h2>
+<p>The VTS toolkit can be started by double-clicking the <code class="docutils literal"><span class="pre">startVTS.exe</span></code> executable file under Windows, or by running the command <code class="docutils literal"><span class="pre">./startVTS</span></code> under Linux.</p>
+<p>The main window that opens is the configuration utility. It is used to create a project and define its elements: satellites, sensors, ground stations, and client applications. This quick start guide will only cover opening and launching an existing project. If the directory containing the executable file doesn’t allow writing, a warning message appears  in the notification area.</p>
+</div>
+<div class="section" id="opening-an-existing-project">
+<span id="vts-quick-start-opening-an-existing-project"></span><h2>Opening an existing project<a class="headerlink" href="#opening-an-existing-project" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Click the <code class="docutils literal"><span class="pre">Open</span> <span class="pre">project</span></code> <img alt="VTSOpen" src="../../_images/Vts_open.png" /> button in the toolbar, or in the <code class="docutils literal"><span class="pre">File</span></code> menu.</li>
+<li>The <code class="docutils literal"><span class="pre">Open</span> <span class="pre">Project</span> <span class="pre">File</span></code> dialog opens. Select the <code class="docutils literal"><span class="pre">Cubesat.vts</span></code> project file located under <code class="docutils literal"><span class="pre">VTS/Data/CubeSat/</span></code> and click <code class="docutils literal"><span class="pre">Open</span></code>.</li>
+<li>The project is loaded into the project tree.</li>
+</ul>
+</div>
+<div class="section" id="starting-the-visualization">
+<span id="vts-quick-start-starting-the-visualization"></span><h2>Starting the visualization<a class="headerlink" href="#starting-the-visualization" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>To start the project visualization, click the <code class="docutils literal"><span class="pre">Run</span></code> <img alt="VTSControlPlay" src="../../_images/Vts_control_play_blue.png" /> button in the toolbar, or in the <code class="docutils literal"><span class="pre">Project</span></code> menu.</li>
+<li>The <em>Broker</em> window opens, with all the client applications defined for the project: the 2D window, Celestia, PrestoPlot, etc.</li>
+</ul>
+</div>
+<div class="section" id="interacting-with-the-broker">
+<span id="vts-quick-start-interacting-with-the-broker"></span><h2>Interacting with the Broker<a class="headerlink" href="#interacting-with-the-broker" title="Permalink to this headline">¶</a></h2>
+<p>The Broker is the core application of the visualization phase. It starts the client applications, regulates the visualization time, sends user commands to the client applications, and much more.</p>
+<div class="section" id="start-of-a-visualization">
+<span id="vts-quick-start-start-of-a-visualization"></span><h3>Start of a visualization<a class="headerlink" href="#start-of-a-visualization" title="Permalink to this headline">¶</a></h3>
+<p>When visualization is started from the <a class="reference internal" href="../VTS_applications_user_manuals/VTS_configuration_utility_user_manual.html#vts-configuration-utility-user-manual"><span class="std std-ref">VTS configuration utility</span></a>, the Broker starts all the <a class="reference internal" href="../Plugin_development/Client_applications_in_VTS.html#client-applications-in-vts"><span class="std std-ref">client applications</span></a> defined in the VTS project. During this initialization phase, the Broker displays the <em>Initializing</em> message in the text fields of the time control area. Time does not start flowing until all client applications have signaled they are ready.</p>
+<p>Upon connection of the various client applications, the Broker’s tabs are populated with commands and information regarding these applications.</p>
+<p>Visualization automatically starts to play with time ratio 1 once initialization is finished, unless specified otherwise in the VTS project.</p>
+</div>
+<div class="section" id="end-of-a-visualization">
+<span id="vts-quick-start-end-of-a-visualization"></span><h3>End of a visualization<a class="headerlink" href="#end-of-a-visualization" title="Permalink to this headline">¶</a></h3>
+<p>The visualization can be stopped directly by clicking the top-right cross button to close the Broker. It also stops once all client applications have been closed by the user, or if the VTS configuration utility is closed (if the visualization was started from there).</p>
+</div>
+<div class="section" id="time-management">
+<span id="vts-quick-start-time-management"></span><h3>Time management<a class="headerlink" href="#time-management" title="Permalink to this headline">¶</a></h3>
+<p>Controls and information regarding time are available in all Broker display modes. The following interface allows interacting with visualization time:</p>
+<div class="figure align-center" id="id2">
+<img alt="../../_images/02_brokerMinimize.png" src="../../_images/02_brokerMinimize.png" />
+<p class="caption"><span class="caption-text">Time control areas</span></p>
+</div>
+<div class="section" id="time-controls">
+<span id="vts-quick-start-time-controls"></span><h4>Time controls<a class="headerlink" href="#time-controls" title="Permalink to this headline">¶</a></h4>
+<p>The buttons in area (1) control time in all client applications:</p>
+<ul class="simple">
+<li><strong>Time Loop</strong>: Toggles loop playback for the visualization.</li>
+<li><strong>Restart</strong>: Resets time to the project’s start date. The play/pause status remains unchanged.</li>
+<li><strong>Play/Pause</strong>: Plays/pauses the time flow. Pausing does not prevent interaction with the visualized entities in the client applications, or navigation in visualization time using the timeline.</li>
+<li><strong>Reverse Time</strong>: Every click on this button inverts the time flow direction. The time ratio remains unchanged.</li>
+<li><strong>Use Scenario State Time Ratio</strong>: When this button is unchecked, the user have a full control over the time ratio. When the button is checked, every time the time bar crosses a state, the state time ratio is applied to the visualization. The modification of the time ratio value is only  applied when the <code class="docutils literal"><span class="pre">Use</span> <span class="pre">Scenario</span> <span class="pre">State</span> <span class="pre">Time</span> <span class="pre">Ratio</span></code> is toggled from <code class="docutils literal"><span class="pre">OFF</span></code> to <code class="docutils literal"><span class="pre">ON</span></code>.</li>
+<li><strong>Slower</strong>: Decreases the time ratio. Two clicks on this button result in a 5 times slower time flow. The current time ratio is displayed next to this button.</li>
+<li><strong>Faster</strong>: Increases the time ratio. Two clicks on this button result in a 5 times faster time flow.</li>
+</ul>
+</div>
+<div class="section" id="timeline">
+<span id="vts-quick-start-timeline"></span><h4>Timeline<a class="headerlink" href="#timeline" title="Permalink to this headline">¶</a></h4>
+<p>The timeline (2) displays the visualization’s time range. Dragging the cursor controls the visualization’s current time. While moving the cursor, the current time is kept updated in all client applications synchronously. For finer or coarser-grained time control, the timeline can be zoomed in/out using the mouse wheel.</p>
+</div>
+<div class="section" id="current-time">
+<span id="vts-quick-start-current-time"></span><h4>Current time<a class="headerlink" href="#current-time" title="Permalink to this headline">¶</a></h4>
+<p>A text area (3) displays the current visualization time.
+The default format is the ISO time format (date and time in UTC).
+The arrow button circles through other available time formats: CNES julian day (JD1950, fractional days, with reference date January 1st, 1950) and modified julian day (MJD, days and seconds, reference date November 17th, 1858).
+The <code class="docutils literal"><span class="pre">Edit</span> <span class="pre">date...</span></code> button pops up a dialog in which the current visualization time can be accurately defined (in all of the above time formats).</p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Software_requirements_for_VTS.html" class="btn btn-neutral float-right" title="Software requirements for VTS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Overview_of_VTS.html" class="btn btn-neutral" title="Overview of VTS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright VTS Team.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'3.6.0-9030',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

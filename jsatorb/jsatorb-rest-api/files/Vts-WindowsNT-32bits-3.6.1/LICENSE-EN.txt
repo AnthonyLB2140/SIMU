@@ -1,0 +1,100 @@
+VTS SOFTWARE License
+====================
+
+Please read attentively the provisions of this Licence before downloading the
+SOFTWARE. The use of the SOFTWARE by the Licensee means the latter has agreed
+with the provisions of this Licence.
+
+The SOFTWARE as described thereof, property of the CNES and named "VTS"
+(Visualisation Tool for Space data) has been registered at the "Agence pour la
+Protection des Programmes" (119 rue de Flandres, 75019 Paris) on 3rd April 2012
+under the number 350009.
+
+CNES grants a non-exclusive free Licence on the SOFTWARE to the Licensee,
+who can be a physical or legal person.
+
+LANGUAGE OF THE LICENCE AND APPLICABLE LAW
+------------------------------------------
+
+The Licence is established in French and English. In the case of a dispute,
+the French version will prevail.
+
+This Licence is governed by French law. If any dispute should arise,
+litigation shall be brought before the applicable courts.
+
+DURATION OF THE LICENCE
+-----------------------
+
+The Licence shall last for ten (10) years renewable by tacit recondition.
+
+In any case, this License will not have a total length greater than the legal
+protection of copyright.
+
+TERRITORY
+---------
+
+The present Licence is granted worldwide. However, due to the sensitive nature
+of products for the space industry, the Licensee agrees imperatively to strictly
+respect French legislation regarding export licences.
+
+RIGHTS CONCEDED
+---------------
+
+On the SOFTWARE, furnished in executable code with its documentation, CNES
+grants to the Licensee a non exclusive right to use the SOFTWARE free of charge.
+This non exclusive right to use the SOFTWARE is defined as the execution of the
+program to obtain the requested operation.
+
+CNES grants to the Licensee a non exclusive right to grant sub licences free of
+charge.
+
+The Licensee is not authorized to make copies of the SOFTWARE, other than a
+backup if it is necessary to preserve the use of the SOFTWARE.
+
+LICENSEE’S OBLIGATIONS
+----------------------
+
+The rights thereof conceded are submitted to several conditions:
+
+* The Licensee promises to abstain from any commercial use of the SOFTWARE as
+  such. However he is authorized to supply services including the SOFTWARE.
+
+* The Licensee has no right to adapt, to transform, to modify or to translate
+  the SOFTWARE.
+
+* On each copy of the SOFTWARE must be maintained the mention of the Licence and
+  the copyright CNES. In case of publications, communications or presentations,
+  the Licensee promises to mention CNES (Centre National d’Etudes Spatiales).
+
+* The Licensee must not use the SOFTWARE in a detrimental way for the image of
+  the CNES, especially to its scientific and technical reputation.
+
+* The Licensee promises to enforce all provisions of this License to its
+  sub-licensees.
+
+If the Licensee do not respect all these conditions, he would immediately become
+a counterfeiter and could be sued for counterfeit.
+
+GUARANTEE
+---------
+
+The Licensee uses the SOFTWARE as it is provided herein at his own expense and
+risks, without warranty of any kind from CNES.
+
+CNES can not guarantee the SOFTWARE is exempt from bugs, errors, defects or
+omissions and has no obligation of fixing anomalies of any kind nor any defects
+of the SOFTWARE. CNES can not guarantee that the SOFTWARE meet the Licensee’s
+needs.
+
+In the same way, CNES is not responsible for any loss of profit, revenue, data
+or any direct or indirect damage, resulting from the use of the SOFTWARE or the
+inability to use the SOFTWARE. The Licensee accepts CNES can not be sued about
+this.
+
+RESILIATION
+-----------
+
+If the licensee doesn’t respect agreement’s provisions, without prejudice to all
+damages on CNES’s behalf, this license ends immediately. In that case, the
+Licensee will send back the SOFTWARE and all its copies to CNES and the Licensee
+will not be able to ask for any kind of compensation.

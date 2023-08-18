@@ -1,0 +1,664 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Description of application properties &mdash; VTS 3.6.0-9030 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="VTS 3.6.0-9030 documentation" href="../../index.html"/>
+        <link rel="up" title="Plugin development" href="index.html"/>
+        <link rel="next" title="VTS project file format" href="VTS_project_file_format.html"/>
+        <link rel="prev" title="Synchronization protocol for VTS clients" href="Synchronization_protocol_for_VTS_clients.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> VTS
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../General/index.html">General</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Files_used_by_VTS/index.html">Files used by VTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Starting_VTS/index.html">Starting VTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VTS_applications_user_manuals/index.html">VTS applications user manuals</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Plugin development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Client_applications_in_VTS.html">Client applications in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Application_IDs_in_VTS.html">Application IDs in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Synchronization_protocol_for_VTS_clients.html">Synchronization protocol for VTS clients</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Description of application properties</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#application-properties-file-format">Application properties file format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#section-list">Section list</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#property-declaration">Property declaration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#available-property-types">Available property types</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#basic-types">Basic types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vts-types">VTS types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#qt-types">Qt types</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#available-propagation-modes">Available propagation modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#available-cameras">Available cameras</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#usage-in-the-vts-synchronization-protocol">Usage in the VTS synchronization protocol</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#application-properties-guidelines">Application properties guidelines</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="VTS_project_file_format.html">VTS project file format</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Data_generators_in_VTS/index.html">Data generator integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../About/index.html">About</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">VTS</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Plugin development</a> &raquo;</li>
+        
+      <li>Description of application properties</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/pages/Plugin_development/Description_of_application_properties.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="description-of-application-properties">
+<span id="id1"></span><h1>Description of application properties<a class="headerlink" href="#description-of-application-properties" title="Permalink to this headline">¶</a></h1>
+<p>The VTS toolkit relies on a command mechanism to control client applications from the Broker in a centralized way. This mechanism is used to send view properties commands upon activation of a new scenario state.</p>
+<p>Client applications may describe view properties which will be displayed in the <a class="reference internal" href="../General/Scenario_in_VTS.html#scenario-in-vts-view-properties-editor"><span class="std std-ref">view properties editor</span></a> of the VTS configuration toolkit or of the Broker. Initial properties sent to clients upon connection may also be described.</p>
+<p>3D client applications may also declare compatible cameras available in the <span class="xref std std-ref">*3D Cameras* tab</span> of the Broker. It is the client application’s responsibility to ensure it is compatible with the cameras it declares to have available.</p>
+<div class="section" id="application-properties-file-format">
+<span id="description-of-application-properties-application-properties-file-format"></span><h2>Application properties file format<a class="headerlink" href="#application-properties-file-format" title="Permalink to this headline">¶</a></h2>
+<p>The applications properties file must be located in the <strong>doc</strong> subfolder of the application folder with the following name: <em>&lt;application name&gt;VtsConf.ini</em></p>
+<p>This file is in standard INI format. It must be composed of sections with uppercase names. Properties in each section are stored in associative arrays with keys prefixed by a number, in order to preserve the order of declarations when displaying the properties in VTS. Array keys must be written in lowercase.</p>
+<p><strong>Important:</strong> array keys in a single section are numbered from 1 to N. The section must hold the “size = N” statement.</p>
+</div>
+<div class="section" id="section-list">
+<span id="description-of-application-properties-section-list"></span><h2>Section list<a class="headerlink" href="#section-list" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><strong>[INITIAL]</strong>: Initial properties for the application. These properties are configured in the application’s pane in the <em>Structure</em> tab of the VTS configuration utility. The propagation mode must be set to <em>INITIAL</em> for all properties in this section.</li>
+<li><strong>[SPECIFIC]</strong>: Specific properties for the application.</li>
+<li><strong>[BODY]</strong>: Structural properties for central bodies.</li>
+<li><strong>[SUN]</strong>: Specific properties for the Sun.</li>
+<li><strong>[COMPONENT]</strong>: Structural properties for satellite components. These will be available for the root component of a satellite and for all of its subparts.</li>
+<li><strong>[SATELLITE]</strong>: Structural properties for satellites.</li>
+<li><strong>[SENSOR]</strong>: Structural properties for satellite sensors.</li>
+<li><strong>[STATION]</strong>: Structural properties for ground stations.</li>
+<li><strong>[CAMERAS]</strong>: Compatible cameras for the application.</li>
+<li><strong>[ROI]</strong> and <strong>[POI]</strong>: Properties for regions and points of interest.</li>
+<li><strong>[LAYER]</strong>: Properties for layers.</li>
+</ul>
+</div>
+<div class="section" id="property-declaration">
+<span id="description-of-application-properties-property-declaration"></span><h2>Property declaration<a class="headerlink" href="#property-declaration" title="Permalink to this headline">¶</a></h2>
+<p>Each property must be declared with the following required fields:</p>
+<ul class="simple">
+<li><strong>name</strong>: Name of the property. This name must be unique within the current INI section. It will be used as command name in the <a class="reference internal" href="Synchronization_protocol_for_VTS_clients.html#synchronization-protocol-for-vts-clients"><span class="std std-ref">VTS synchronization protocol</span></a>.</li>
+<li><strong>type</strong>: Property data type. This may be a basic type, a Qt type, or a VTS type. See below for further details.</li>
+<li><strong>defaultValue</strong>: Default value for the property.</li>
+<li><strong>propagation</strong>: Propagation mode for the property. See below for further details.</li>
+<li><strong>label</strong>: Label of the property, displayed in the view properties editor.</li>
+</ul>
+<p>Below is an example of an application properties file:</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[INITIAL]</span>
+
+<span class="c1">; XMLFile</span>
+<span class="na">1/name</span> <span class="o">=</span> <span class="s">XMLFile</span>
+<span class="na">1/type</span> <span class="o">=</span> <span class="s">DataFile_t</span>
+<span class="na">1/defaultValue</span> <span class="o">=</span> <span class="s">&quot;Data/ft.xml&quot;</span>
+<span class="na">1/propagation</span> <span class="o">=</span> <span class="s">INITIAL</span>
+<span class="na">1/label</span> <span class="o">=</span> <span class="s">Transfer Function File</span>
+
+<span class="na">size</span> <span class="o">=</span> <span class="s">1</span>
+
+
+<span class="k">[SPECIFIC]</span>
+
+<span class="c1">; WindowGeometry</span>
+<span class="na">1/name</span> <span class="o">=</span> <span class="s">WindowGeometry</span>
+<span class="na">1/type</span> <span class="o">=</span> <span class="s">QRect</span>
+<span class="na">1/defaultValue</span> <span class="o">=</span> <span class="s">@Rect(0 0 640 480)</span>
+<span class="na">1/propagation</span> <span class="o">=</span> <span class="s">MANUAL</span>
+<span class="na">1/label</span> <span class="o">=</span> <span class="s">Window geometry</span>
+
+<span class="na">size</span> <span class="o">=</span> <span class="s">1</span>
+
+
+<span class="k">[SATELLITE]</span>
+
+<span class="c1">; SatelliteScale</span>
+<span class="na">1/name</span> <span class="o">=</span> <span class="s">SatelliteScale</span>
+<span class="na">1/type</span> <span class="o">=</span> <span class="s">SatelliteScale_t</span>
+<span class="na">1/defaultValue</span> <span class="o">=</span> <span class="s">1.0</span>
+<span class="na">1/propagation</span> <span class="o">=</span> <span class="s">MANUAL</span>
+<span class="na">1/label</span> <span class="o">=</span> <span class="s">Satellite scale</span>
+
+<span class="na">size</span> <span class="o">=</span> <span class="s">1</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="available-property-types">
+<span id="description-of-application-properties-available-property-types"></span><h2>Available property types<a class="headerlink" href="#available-property-types" title="Permalink to this headline">¶</a></h2>
+<p>There are three categories of property types: basic types, VTS types, and Qt types.</p>
+<div class="section" id="basic-types">
+<span id="description-of-application-properties-basic-types"></span><h3>Basic types<a class="headerlink" href="#basic-types" title="Permalink to this headline">¶</a></h3>
+<p>The table below lists the available basic types:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="34%" />
+<col width="28%" />
+<col width="21%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Type</th>
+<th class="head">Description</th>
+<th class="head">Example</th>
+<th class="head">Editor</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>bool</td>
+<td>Boolean value</td>
+<td>true, false</td>
+<td>Checkbox</td>
+</tr>
+<tr class="row-odd"><td>int</td>
+<td>Integer number</td>
+<td>42</td>
+<td>Text box</td>
+</tr>
+<tr class="row-even"><td>double</td>
+<td>Real number</td>
+<td>1.618</td>
+<td>Text box</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="vts-types">
+<span id="description-of-application-properties-vts-types"></span><h3>VTS types<a class="headerlink" href="#vts-types" title="Permalink to this headline">¶</a></h3>
+<p>VTS types are convenience types handled by VTS.</p>
+<p>The table below lists the available VTS types:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="7%" />
+<col width="27%" />
+<col width="11%" />
+<col width="55%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Type</th>
+<th class="head">Description</th>
+<th class="head">Example</th>
+<th class="head">Editor</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Color_t</td>
+<td>RGB color</td>
+<td>#00ff00</td>
+<td>Color coded on an hexadecimal string, no alpha channel</td>
+</tr>
+<tr class="row-odd"><td>EntityScale_t</td>
+<td>Scale factor for a celestial body (double)</td>
+<td>0.5</td>
+<td>Slider with a zoom factor of 1000</td>
+</tr>
+<tr class="row-even"><td>SatelliteScale_t</td>
+<td>Scale factor for a satellite (double)</td>
+<td>1000</td>
+<td>Slider with a zoom factor of 100</td>
+</tr>
+<tr class="row-odd"><td>EntityRange_t</td>
+<td>Interval of real values [0,1]</td>
+<td>0.75</td>
+<td>Slider with min value 0, max value 1, default value 30%</td>
+</tr>
+<tr class="row-even"><td>DataFile_t</td>
+<td>Relative path to a data file in the project folder</td>
+<td>“Data/config.xml”</td>
+<td>Text field with browse button and copy dialog if the selected file is outside the project folder</td>
+</tr>
+<tr class="row-odd"><td>ExternalFile_t</td>
+<td>Absolute path to a data file (portability of the project may break on other machines)</td>
+<td>“C:/Generate/today.oem”</td>
+<td>Text field with browse button allowing absolute paths</td>
+</tr>
+<tr class="row-even"><td>CameraDesc_t</td>
+<td>Camera description for Celestia</td>
+<td>N/A</td>
+<td>Specific camera editor</td>
+</tr>
+<tr class="row-odd"><td>TimeWindow_t</td>
+<td>Time distribution before and after a dated event. Durations should be in hours.</td>
+<td>5 1</td>
+<td>Slider setting the total duration distribution bewteen before and after the event. Changing the “before” or “after” duration modifies the total duration but not the distribution.</td>
+</tr>
+<tr class="row-even"><td>Font_t</td>
+<td>Font</td>
+<td>Arial,12,-1,5,50,0,0,0,0,0</td>
+<td>Font described in a string: &lt;family&gt;,&lt;pointSizeF&gt;,&lt;pixelSize&gt;,&lt;styleHint&gt;,&lt;weight&gt;,&lt;style&gt;,&lt;underline&gt;,&lt;strikeOut&gt;,&lt;fixedPitch&gt;,&lt;rawMode&gt;</td>
+</tr>
+<tr class="row-odd"><td>ProjectNamedObject_t</td>
+<td>Named object defined in the project</td>
+<td>Sol/Earth/CubeSat</td>
+<td>Drop-down list containing object defined in the project.</td>
+</tr>
+<tr class="row-even"><td>CelestiaNamedObject_t</td>
+<td>Named object defined in Celestia</td>
+<td>Sol/Earth/CubeSat_ref/CubeSat_Axes</td>
+<td>Drop-down list containing object defined in the project. It can also contain a object selected from Celestia, like a star for example.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="qt-types">
+<span id="description-of-application-properties-qt-types"></span><h3>Qt types<a class="headerlink" href="#qt-types" title="Permalink to this headline">¶</a></h3>
+<p>Qt types are those handled by the QVariant class from the Qt library.</p>
+<p>The table below lists the available Qt types:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="38%" />
+<col width="23%" />
+<col width="29%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Type</th>
+<th class="head">Description</th>
+<th class="head">Example</th>
+<th class="head">Editor</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>QString</td>
+<td>Character string</td>
+<td>“Sol/Earth”</td>
+<td>Text box</td>
+</tr>
+<tr class="row-odd"><td>QStringList</td>
+<td>List of character strings (comma-separated)</td>
+<td>“SurfaceView”, “Celestia”</td>
+<td>Text box</td>
+</tr>
+<tr class="row-even"><td>QRect</td>
+<td>Rectangle (integer coordinates)</td>
+<td>&#64;Rect(0 0 640 480)</td>
+<td>Spin boxes (X, Y, width, height)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="available-propagation-modes">
+<span id="description-of-application-properties-available-propagation-modes"></span><h2>Available propagation modes<a class="headerlink" href="#available-propagation-modes" title="Permalink to this headline">¶</a></h2>
+<p>The following propagation modes are available:</p>
+<ul class="simple">
+<li><strong>MANUAL</strong>: The property may be set independently for each scenario state. Its value may be propagated across states with the propagation buttons in the view properties editor.</li>
+<li><strong>AUTO</strong>: The property has a unique value for all scenario states. Its value is automatically propagated across the whole scenario upon modification. Its name is displayed in italics in the view properties editor. This propagation mode should be used in rare cases where the property should remain consistent during the whole project, for example the visibility of a toolbar.</li>
+<li><strong>INITIAL</strong>: The property is sent to the client application upon startup and may not be altered dynamically nor resent. This propagation mode must be used only for properties in the <em>INITIAL</em> section.</li>
+</ul>
+</div>
+<div class="section" id="available-cameras">
+<span id="description-of-application-properties-available-cameras"></span><h2>Available cameras<a class="headerlink" href="#available-cameras" title="Permalink to this headline">¶</a></h2>
+<p>The <em>[CAMERAS]</em> section lists VTS cameras available in the client application. Refer to the <span class="xref std std-ref">*3D Cameras* tab</span> section in the <a class="reference internal" href="../VTS_applications_user_manuals/Broker_user_manual.html#broker-user-manual"><span class="std std-ref">Broker user manual</span></a> chapter for a description of all VTS cameras. For each available camera, several orientations must be implemented.</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[CAMERAS]</span>
+<span class="na">1/type</span> <span class="o">=</span> <span class="s">Body_Synchronous</span>
+<span class="na">2/type</span> <span class="o">=</span> <span class="s">Body_Inertial</span>
+<span class="na">size</span> <span class="o">=</span> <span class="s">2</span>
+</pre></div>
+</div>
+<p>The following VTS cameras may be declared:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="31%" />
+<col width="46%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Target entity</th>
+<th class="head">Camera name</th>
+<th class="head">Corresponding Broker cameras</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td rowspan="4">Central body</td>
+<td>Body_Synchronous</td>
+<td>Fixed in Earth frame:
+<code class="docutils literal"><span class="pre">North</span> <span class="pre">pole</span></code> and
+<code class="docutils literal"><span class="pre">South</span> <span class="pre">pole</span></code></td>
+</tr>
+<tr class="row-odd"><td>Body_Inertial</td>
+<td><code class="docutils literal"><span class="pre">Inertial</span></code></td>
+</tr>
+<tr class="row-even"><td>Body_Goto</td>
+<td><code class="docutils literal"><span class="pre">Goto</span></code></td>
+</tr>
+<tr class="row-odd"><td>Body_Center</td>
+<td><code class="docutils literal"><span class="pre">Center</span></code></td>
+</tr>
+<tr class="row-even"><td rowspan="8">Satellite</td>
+<td>Satellite_Inertial</td>
+<td>Inertial cameras</td>
+</tr>
+<tr class="row-odd"><td>Satellite_Sun</td>
+<td>Sun and Body cameras :
+<code class="docutils literal"><span class="pre">View</span> <span class="pre">from</span> <span class="pre">Sun</span></code> and
+<code class="docutils literal"><span class="pre">View</span> <span class="pre">toward</span> <span class="pre">Sun</span></code></td>
+</tr>
+<tr class="row-even"><td>Satellite_SatFrame</td>
+<td>Satellite frame cameras</td>
+</tr>
+<tr class="row-odd"><td>Satellite_QswFrame</td>
+<td>Sun and Body cameras :
+<code class="docutils literal"><span class="pre">View</span> <span class="pre">from</span> <span class="pre">Body</span></code> and
+<code class="docutils literal"><span class="pre">View</span> <span class="pre">toward</span> <span class="pre">Body</span></code>
+QSW frame cameras</td>
+</tr>
+<tr class="row-even"><td>Satellite_TnwFrame</td>
+<td>TNW frame cameras</td>
+</tr>
+<tr class="row-odd"><td>Satellite_Orbit</td>
+<td>Miscellaneous cameras :
+<code class="docutils literal"><span class="pre">Orbit</span></code></td>
+</tr>
+<tr class="row-even"><td>Satellite_Goto</td>
+<td>Miscellaneous cameras :
+<code class="docutils literal"><span class="pre">Goto</span></code></td>
+</tr>
+<tr class="row-odd"><td>Satellite_Center</td>
+<td>Miscellaneous cameras :
+<code class="docutils literal"><span class="pre">Center</span></code></td>
+</tr>
+<tr class="row-even"><td>Sensor</td>
+<td>Sensor_SensorView</td>
+<td><code class="docutils literal"><span class="pre">Sensors</span></code></td>
+</tr>
+</tbody>
+</table>
+<p>Refer to the <a class="reference internal" href="Synchronization_protocol_for_VTS_clients.html#synchronization-protocol-for-vts-clients-cmd-camera-commands"><span class="std std-ref">*CMD CAMERA* commands</span></a> section in the <a class="reference internal" href="Synchronization_protocol_for_VTS_clients.html#synchronization-protocol-for-vts-clients"><span class="std std-ref">Synchronization protocol for VTS clients</span></a> chapter for more information on the corresponding camera messages sent to client applications.</p>
+</div>
+<div class="section" id="usage-in-the-vts-synchronization-protocol">
+<span id="description-of-application-properties-usage-in-the-vts-synchronization-protocol"></span><h2>Usage in the VTS synchronization protocol<a class="headerlink" href="#usage-in-the-vts-synchronization-protocol" title="Permalink to this headline">¶</a></h2>
+<p>Properties and cameras declared in the INI file are used by the VTS synchronization protocol to generate commands for client applications. Properties in the <em>[INITIAL]</em> and <em>[SPECIFIC]</em> sections are translated into <strong>PROP</strong> commands, while those in entity-specific sections (<em>[BODY]</em>, <em>[COMPONENT]</em>, <em>[SATELLITE]</em>, and <em>[SENSOR]</em>) are translated into <strong>STRUCT</strong> commands. Cameras in the <em>[CAMERAS]</em> section result in corresponding <strong>CAMERA</strong> commands being sent.</p>
+<p>Specific properties:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD PROP &lt;PropertyName&gt; &lt;PropertyValue&gt;
+</pre></div>
+</div>
+<p>For example:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD PROP WindowGeometry <span class="m">0</span> <span class="m">1</span> <span class="m">640</span> <span class="m">480</span>
+</pre></div>
+</div>
+<p>Structural properties:
+.. code-block:: bash</p>
+<blockquote>
+<div>CMD STRUCT &lt;PropertyName&gt; &lt;EntityFullName&gt; &lt;PropertyValue&gt;</div></blockquote>
+<p>For example:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD STRUCT AimContourVisible <span class="s2">&quot;Sol/Earth/CubeSat/Sensor&quot;</span> <span class="nb">true</span>
+</pre></div>
+</div>
+<p>Cameras:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD CAMERA &lt;CameraType&gt; &lt;CameraParameters&gt;
+</pre></div>
+</div>
+<p>Note that the <em>CameraType</em> parameter is not identical to the camera name listed in the <em>[CAMERAS]</em> section of the INI file.</p>
+<p>For example:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD CAMERA CameraSensorView <span class="s2">&quot;Sol/Earth/CubeSat_ref/CubeSat/Sensor_sens_ref/Sensor&quot;</span> <span class="m">0</span>.872665 <span class="m">0</span>.349066
+</pre></div>
+</div>
+</div>
+<div class="section" id="application-properties-guidelines">
+<span id="description-of-application-properties-application-properties-guidelines"></span><h2>Application properties guidelines<a class="headerlink" href="#application-properties-guidelines" title="Permalink to this headline">¶</a></h2>
+<p>For a better integration and taking advantage of all VTS features, here are some recommended properties an application should take into account (property declaration in the ini file and protocol command implementation):</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Property</th>
+<th class="head">Section</th>
+<th class="head">Type</th>
+<th class="head">Default value</th>
+<th class="head">MANUAL</th>
+<th class="head">Description</th>
+<th class="head">Received command</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>WindowGeometry</td>
+<td>SPECIFIC</td>
+<td>QRect</td>
+<td>&#64;Rect(0 0 640 480)</td>
+<td>MANUAL</td>
+<td>Sets the window geometry of an application</td>
+<td>CMD PROP WindowGeometry 0 0 640 480</td>
+</tr>
+<tr class="row-odd"><td>AlwaysOnTop</td>
+<td>SPECIFIC</td>
+<td>bool</td>
+<td>true/false</td>
+<td>MANUAL</td>
+<td>Sets the always on top property of an application</td>
+<td>CMD PROP AlwaysOnTop false</td>
+</tr>
+<tr class="row-even"><td>Frameless</td>
+<td>SPECIFIC</td>
+<td>bool</td>
+<td>true/false</td>
+<td>MANUAL</td>
+<td>Sets the frameless property of an application</td>
+<td>CMD PROP Frameless false</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="VTS_project_file_format.html" class="btn btn-neutral float-right" title="VTS project file format" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Synchronization_protocol_for_VTS_clients.html" class="btn btn-neutral" title="Synchronization protocol for VTS clients" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright VTS Team.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'3.6.0-9030',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

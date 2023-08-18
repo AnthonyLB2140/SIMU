@@ -1,0 +1,9 @@
+realClientName = "Celestia"
+serverPort = 8888
+celestiaAppId = 2
+visibilityLinks = {}
+visibilityLinks[ 1 ] = { "Sol/Earth/CubeSat", "Sol/Earth/Toulouse", "Sol/Earth" }
+visibilityLinks[ 2 ] = { "Sol/Earth/CubeSat", "Sol/Earth/Clarksburg", "Sol/Earth" }
+visibilityLinks[ 3 ] = { "Sol/Earth/CubeSat", "Sol/Earth/Perth", "Sol/Earth" }
+visibilityLinks[ 4 ] = { "Sol/Earth/CubeSat", "Sol/Earth/Kourou", "Sol/Earth" }
+visualizers = {}

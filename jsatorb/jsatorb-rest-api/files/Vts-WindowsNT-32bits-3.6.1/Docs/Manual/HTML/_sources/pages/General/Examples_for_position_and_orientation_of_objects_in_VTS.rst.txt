@@ -1,0 +1,144 @@
+.. _Examples_for_position_and_orientation_of_objects_in_VTS:
+
+Examples for position and orientation of objects in VTS
+==================================================================================
+
+This section illustrates the positioning and orientation of an object with regards to its parent satellite. Relevant definitions can be found in the :ref:`Position of objects in VTS <Position_of_objects_in_VTS>` and :ref:`Orientation of objects in VTS <Orientation_of_objects_in_VTS>` sections.
+
+
+.. _Examples_for_position_and_orientation_of_objects_in_VTS#Methodology:
+
+Methodology 
+----------------------------------------------------------------------------------
+In order to fully understand the mechanisms at hand in the 3D views of VTS for the display of satellites and their parts (components, sensors, etc.), the following parameters will be analyzed:
+
+- Position relative to the satellite (or in a more general way, relative to the parent object)
+- Orientation, with the following parameters:
+   - Center of rotation
+   - Axis of rotation
+   - Angle of rotation
+
+The position and orientation (be it quaternion, Euler angles, axis and angle, etc.) of an object can be defined in the *Position/orientation* dialog of the object. For components, the center of rotation can be defined in the *3D Properties* dialog. Refer to the :ref:`VTS configuration utility user manual <VTS_configuration_utility_user_manual>` for more details.
+
+The 3D object used for this demonstration is the 3-axes trihedral usually used in VTS to materialize reference frames. The X, Y, and Z axes are respectively colored in red, green, and blue. This object represents here the satellite or any parent object. The length of each axis is one meter.
+Then, the same model is used, scaled down and tarnished, to represent the object positioned by the transformations described below.
+
+.. figure:: /_images/LegendeAxis.jpg
+   :align: center
+   
+   Materialization of the axes of the reference frame
+
+.. _Examples_for_position_and_orientation_of_objects_in_VTS#List_of_tests:
+
+List of tests 
+----------------------------------------------------------------------------------
+
+=========== =================================== ==================== ====================== ====================== ==================
+Number      Designation                         Position             Center of rotation     Axis of rotation       Angle of rotation
+=========== =================================== ==================== ====================== ====================== ==================
+1           No modification                     X=0 Y=0 Z=0          X=0 Y=0 Z=0            X=0 Y=1 Z=0            0\ |deg|
+2           Single translation                  X=1 Y=0 Z=0          X=0 Y=0 Z=0            X=0 Y=1 Z=0            0\ |deg|
+3           Single rotation                     X=0 Y=0 Z=0          X=0 Y=0 Z=0            X=0 Y=1 Z=0            30\ |deg|
+4           Translation and rotation            X=1 Y=0 Z=0          X=0 Y=0 Z=0            X=0 Y=1 Z=0            30\ |deg|
+5           Offset rotation                     X=0 Y=0 Z=0          X=1 Y=0 Z=0            X=0 Y=1 Z=0            30\ |deg|
+6           Translation and offset rotation     X=1 Y=0 Z=0          X=1 Y=0 Z=0            X=0 Y=1 Z=0            30\ |deg|
+=========== =================================== ==================== ====================== ====================== ==================
+
+.. _Examples_for_position_and_orientation_of_objects_in_VTS#Illustration_of_the_result:
+
+Illustration of the result 
+----------------------------------------------------------------------------------
+.. figure:: /_images/ExemplePositionOrientationVTS.jpg
+   :align: center
+   
+   Examples of various positions and orientations
+
+
+.. _Examples_for_position_and_orientation_of_objects_in_VTS#Description_of_the_result:
+
+Description of the result 
+----------------------------------------------------------------------------------
+
+.. _Examples_for_position_and_orientation_of_objects_in_VTS#Case_1:_no_modification:
+
+.. |deg| unicode:: 0xB0
+
+Case 1: no modification 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- Position: X=0 Y=0 Z=0
+- Center of rotation: X=0 Y=0 Z=0
+- Axis of rotation: X=0 Y=1 Z=0
+- Angle of rotation: 0\ |deg|
+
+The position and the angle of rotation are null. In this case, the object is at the same position and is aligned with its reference frame. It should be noted that since the angle of rotation is null, the axis and center of rotation have no influence.
+
+
+.. _Examples_for_position_and_orientation_of_objects_in_VTS#Case_2:_single_translation:
+
+Case 2: single translation 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- Position: X=1 Y=0 Z=0
+- Center of rotation: X=0 Y=0 Z=0
+- Axis of rotation: X=0 Y=1 Z=0
+- Angle of rotation: 0\ |deg|
+
+In this case, the position of the object has been modified. Its value defines a position 1 meter forward along the X axis. The object is now centered at the end of the X axis of the reference frame.
+
+
+.. _Examples_for_position_and_orientation_of_objects_in_VTS#Case_3:_single_rotation:
+
+Case 3: single rotation 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- Position: X=0 Y=0 Z=0
+- Center of rotation: X=0 Y=0 Z=0
+- Axis of rotation: X=0 Y=1 Z=0
+- Angle of rotation: 30\ |deg|
+
+The object's position vector is null and its center is located at the origin of its reference frame.
+
+A single rotation has been applied. The center of rotation is null. The axis of rotation is 0 1 0, i.e. the rotation is counterclockwise around the Y axis (as if *screwing* in the direction of the axis). The diagram shows that the Y axis is shared by the two objects, while the X and Z axes have rotated 30\ |deg|. The direction of the rotation can also be observed, clockwise when looking in the direction of the axis of rotation.
+
+
+.. _Examples_for_position_and_orientation_of_objects_in_VTS#Case_4:_translation_and_rotation:
+
+Case 4: translation and rotation 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- Position: X=1 Y=0 Z=0
+- Center of rotation: X=0 Y=0 Z=0
+- Axis of rotation: X=0 Y=1 Z=0
+- Angle of rotation: 30\ |deg|
+
+This case combines both cases. It illustrates the order in which the transformations are applied: **the object is first rotated, then translated to its position**.
+
+
+.. _Examples_for_position_and_orientation_of_objects_in_VTS#Case_5:_offset_rotation:
+
+Case 5: offset rotation 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- Position: X=0 Y=0 Z=0
+- Center of rotation: X=1 Y=0 Z=0
+- Axis of rotation: X=0 Y=1 Z=0
+- Angle of rotation: 30\ |deg|
+
+For a single rotation, the origin of the reference frame is used as rotation center. The rotation center can be modified so that the object is rotated around another point (e.g. for solar arrays). The coordinates of the center of rotation are 1 0 0. The object is rotated 30\ |deg| around an axis located at the end of the red X axis, and directed along the green Y axis.
+Note that this rotation axis is not displayed on the diagram, hence the object appearing as if *translated* and not only rotated, due to the rotation center being offset.
+
+
+.. _Examples_for_position_and_orientation_of_objects_in_VTS#Case_6:_translation_and_offset_rotation:
+
+Case 6: translation and offset rotation 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- Position: X=1 Y=0 Z=0
+- Center of rotation: X=1 Y=0 Z=0
+- Axis of rotation: X=0 Y=1 Z=0
+- Angle of rotation: 30\ |deg|
+
+This example adds a translation of 1 meter along the X axis on top of the transformations of case 5. The diagram confirms that rotation occurs before translation.
+
+

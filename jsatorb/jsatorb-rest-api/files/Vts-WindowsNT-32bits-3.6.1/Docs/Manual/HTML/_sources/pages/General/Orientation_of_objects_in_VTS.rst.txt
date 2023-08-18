@@ -1,0 +1,173 @@
+.. _Orientation_of_objects_in_VTS:
+
+Orientation of objects in VTS
+==================================================================================
+
+The orientation of an object in VTS is defined as a rotation from the object's reference frame towards its attitude. The orientation can be fixed, sampled, or streamed. This section is dedicated to the contents of orientation data, no matter its source. For a definition of the various data sources, see the :ref:`Data sources in VTS <Data_sources_in_VTS>` section.
+
+
+.. _Orientation_of_objects_in_VTS#Reference_frames:
+
+Reference frames
+----------------------------------------------------------------------------------
+Each object in VTS has its orientation defined in a reference frame. For example, satellites around Earth use reference frame EME2000.
+
+An object is aligned with the axes of its reference frame when its rotation vector is null.
+In the case of a satellite defined by a 3D file (see the :ref:`3D file format in VTS <3D_file_format_in_VTS>` section), the X axis of the 3D mesh is aligned with the X axis of the EME2000 frame. The same applies for the Y and Z axes.
+
+Reference frames for the orientations of various object types are defined in the table below:
+
++-----------------------+----------------------------------------------------------------------------------+
+| Object type           | Reference frame                                                                  |
++=======================+==================================================================================+
+| Central body          | Parent object's frame                                                            |
++-----------------------+----------------------------------------------------------------------------------+
+| Ground station        | \-Z : body center +X : towards geographic North pole                             |
+|                       | At poles : undefined                                                             |
++-----------------------+----------------------------------------------------------------------------------+
+| Ground station sensor | Ground station's frame                                                           |
++-----------------------+----------------------------------------------------------------------------------+
+| Satellite             | When a satellite orbits around a celestial body:                                 |
+|                       |                                                                                  |
+|                       | - EME2000, Earth Mean Equator at epoch J2000                                     |
+|                       |                                                                                  |
+|                       | When another satellite is defined as the center of the reference frame,          |
+|                       | the following frame types are available (also applied to position)               |
+|                       |                                                                                  |
+|                       | - EME2000                                                                        |
+|                       | - BodyFixed                                                                      |
+|                       | - TNW                                                                            |
+|                       | - QSW                                                                            |
++-----------------------+----------------------------------------------------------------------------------+
+| Component             | Satellite's frame for a top-level component                                      |
+|                       | Parent component's frame for components of other levels                          |
++-----------------------+----------------------------------------------------------------------------------+
+| Satellite sensor      | Satellite's frame for a top-level sensor, component frame for sub-level sensors. |
+|                       | Aligned with the satellite's frame and the sensor points along the Z axis.       |
+|                       | Parent component's frame for a sensor attached to a component                    |
++-----------------------+----------------------------------------------------------------------------------+
+
+.. _Orientation_of_objects_in_VTS#Rotation_center:
+
+Rotation center 
+----------------------------------------------------------------------------------
+The rotation center defines the point around which a 3D object is rotated. It depends on the object type, and is defined in the table below:
+
++-----------------------+----------------------------------+---------------------------------------------------------------+
+| Object type           | Rotation center                  | Reference frame for the rotation center                       |
++=======================+==================================+===============================================================+
+| Central body          | Central body's center            | Central body's frame                                          |
++-----------------------+----------------------------------+---------------------------------------------------------------+
+| Ground station        | Ground station's position        | Central body's frame                                          |
++-----------------------+----------------------------------+---------------------------------------------------------------+
+| Ground station sensor | Sensor's position                | Ground station's frame                                        |
++-----------------------+----------------------------------+---------------------------------------------------------------+
+| Satellite             | Center of gravity (user-defined) | Satellite's frame                                             |
++-----------------------+----------------------------------+---------------------------------------------------------------+
+| Component             | Rotation center (user-defined)   | Component's frame                                             |
++-----------------------+----------------------------------+---------------------------------------------------------------+
+| Satellite sensor      | Sensor's position                | Satellite's frame for a top-level sensor                      |
+|                       |                                  | Parent component's frame for a sensor attached to a component |
++-----------------------+----------------------------------+---------------------------------------------------------------+
+
+.. _Orientation_of_objects_in_VTS#Orientation_types:
+
+Orientation types 
+----------------------------------------------------------------------------------
+In VTS, an orientation can be defined by several types of rotations in the reference frame.
+
+
+.. _Orientation_of_objects_in_VTS#Quaternion:
+
+Quaternion 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+A quaternion defines a rotation from an object's reference frame towards its local frame.
+
+The convention used for a quaternion sets its real part as the first component.
+
+A null rotation is defined by the following quaternion:
+
+.. code-block:: c
+
+   1.0 0.0 0.0 0.0
+
+All orientations can be reached. Quaternions are normalized by VTS. An all-zeroes value (0 0 0 0) is invalid.
+
+
+.. _Orientation_of_objects_in_VTS#Euler_angles:
+
+Euler angles 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Euler angles define a sequence of three rotations from an object's reference frame towards its local frame.
+
+The convention used for Euler angles defines the order of rotations ``Z``, ``X'``, ``Z''`` as:
+
+- Precession around axis ``Z`` of the reference frame
+- Nutation around axis ``X'`` of the frame resulting from the precession
+- Intrinsic rotation around axis ``Z''`` of the frame resulting from the two previous rotations
+
+Angles are expressed in degrees.
+
+All orientations can be reached. There is no invalid value.
+
+
+.. _Orientation_of_objects_in_VTS#Axis_and_angle:
+
+Axis and angle 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Axis and angle rotations allow easy definition of the orientation of objects physically rotating around an axis, e.g. solar arrays.
+
+The rotation axis must be defined, i.e. non null (0 0 0). Its coordinates are expressed in the object's reference frame.
+
+The rotation angle in degrees is applied to the object around the rotation axis, in the counterclockwise direction. A positive angle implies a counterclockwise rotation around the axis ; convention dictates that this corresponds to *screwing* along the direction of the axis, i.e. in clockwise direction while looking along the direction of the axis.
+
+
+.. _Orientation_of_objects_in_VTS#Direction:
+
+Direction 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+A direction defines a rotation so that the ``X`` axis of the object points in the specified direction. It should be noted that this kind of orientation leaves a degree of freedom (3rd rotation of the Euler angles), and should thus only be used for solids of revolution around the ``X`` axis (e.g. a vector along the ``X`` axis).
+
+
+.. _Orientation_of_objects_in_VTS#Azimuth_and_elevation:
+
+Azimuth and elevation 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Azimuth and elevation define a sequence of two rotations, first around axis ``Z`` then around axis ``-Y'`` (resulting of the previous rotation). If both rotations are null, the object points towards ``X``. As for the direction orientation, this kind of orientation leaves a degree of freedom around the aim axis. Notice that in this orientation mode, conventions for sensor orientations pointing toward ``+Z`` is changed for pointing towards ``+X``.
+
+
+.. _Orientation_of_objects_in_VTS#Validity_domains:
+
+Validity domains 
+----------------------------------------------------------------------------------
+The different kinds of orientations are not relevant for all object types. The table below lists the valid orientation kinds for all object types. It should be noted that combinations marked as not relevant are still available in VTS, so that they may be used should the need arise. Combinations marked with a dash are however not possible to use with VTS.
+
++----------------------+----------------------+----------------------------+-------------------------+-------------------------------------+---------------------------------+
+| **Object type**      | **Quaternion**       | **Euler angles**           | **Axis and angle**      | **Direction**                       | **Azimuth elevation**           |
++======================+======================+============================+=========================+=====================================+=================================+
+| **Central body**     | **Yes**              | Possible                   | No                      | No                                  | No                              |
+|                      | *E.g.: Comet*        |                            |                         |                                     |                                 |
++----------------------+----------------------+----------------------------+-------------------------+-------------------------------------+---------------------------------+
+| **Satellite**        | **Yes**              | Possible                   | No                      | No                                  | No                              |
+|                      | *E.g.: Attitude*     |                            |                         |                                     |                                 |
++----------------------+----------------------+----------------------------+-------------------------+-------------------------------------+---------------------------------+
+| **Component**        | **Yes**              | **Yes**                    | **Yes**                 | **Yes**                             | **Yes**                         |
+|                      | *E.g.: Mobile part*  | *E.g.: Onboard instrument* | *E.g.: Solar arrays*    | *E.g.: Representation of a vector*  | *E.g.: Direction of an antenna* |
++----------------------+----------------------+----------------------------+-------------------------+-------------------------------------+---------------------------------+
+| **Satellite sensor** | **Yes**              | **Yes**                    | No                      | **Yes**                             | **Yes**                         |
+|                      | *Ex.: Star tracker*  | *Ex.: Star tracker*        |                         |                                     |                                 |
++----------------------+----------------------+----------------------------+-------------------------+-------------------------------------+---------------------------------+
+
+**NB:** Currently, the orientation of ground stations and ground station sensors cannot be modified.
+
+
+.. _Orientation_of_objects_in_VTS#See_also:
+
+See also 
+----------------------------------------------------------------------------------
+
+- :ref:`Examples for position and orientation of objects in VTS <Examples_for_position_andOrientation_of_objects_in_VTS>`
+- :ref:`Conventions in VTS <Conventions_in_VTS>`
+- :ref:`3D file format in VTS <3D_file_format_in_VTS>`
+
+

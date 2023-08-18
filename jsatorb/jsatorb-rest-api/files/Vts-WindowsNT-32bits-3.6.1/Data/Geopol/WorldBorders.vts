@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project Revision="7287">
+ <General Name="" StartDateTime="57958 51512.430000" EndDateTime="57958 55112.430000"/>
+ <MetaData>
+  <Description></Description>
+ </MetaData>
+ <MonitorConfiguration>
+  <Monitor X="0" Y="0" Height="1032" Width="1920"/>
+  <Monitor X="0" Y="-1200" Height="1200" Width="1920"/>
+ </MonitorConfiguration>
+ <StartOptions TimeRatio="1" UseStateTimeRatio="0" SysTimeSynced="0" Paused="0" Looped="0" Minimized="0" Hidden="0" AutoClosed="0"/>
+ <TimelineOptions ProjectLocked="1" CursorLocked="0" CursorRatio="0" ViewStart="33282 0.000000" ViewSpan="0" DateFormat="ISODate">
+  <TimelineScenario Name="Scenario" Pos="0" Size="23"/>
+ </TimelineOptions>
+ <Sky>
+  <Sun>
+   <Prop2d>
+    <Icon Anchor="CENTER" Size="MEDIUM" Opacity="100">
+     <Font Size="MEDIUM" Color="1 1 1"/>
+     <ImageLayer Type="Default"/>
+    </Icon>
+   </Prop2d>
+   <Track Color="0.862745 0.862745 0" PenStyle="SolidLine" PenWidth="2"/>
+   <VisibilityCircle ContourColor="0.501961 0.501961 0" FillColor="0 0 0" FillOpacity="50"/>
+  </Sun>
+  <StarCatalog CatalogMode="Builtin">
+   <Track Color="1 1 1" PenStyle="DotLine" PenWidth="1"/>
+  </StarCatalog>
+ </Sky>
+ <ToBeUsedApps>
+  <Application Name="SurfaceView" Id="0" AutoStarted="1"/>
+ </ToBeUsedApps>
+ <Entities>
+  <Body Name="Earth" ParentPath="Sol">
+   <UseWGS84/>
+   <Prop2d>
+    <Icon Anchor="CENTER" Size="MEDIUM" Opacity="100">
+     <Font Size="MEDIUM" Color="1 1 1"/>
+     <ImageLayer Type="Default"/>
+    </Icon>
+   </Prop2d>
+   <Track Color="1 0.451499 0" PenStyle="SolidLine" PenWidth="2"/>
+   <VisibilityCircle ContourColor="1 0.900832 0" FillColor="1 0.950423 0.499992" FillOpacity="60"/>
+   <EphemerisMode Mode="Default"/>
+   <Layers>
+    <BuiltinLayer Name="defaultLayer"/>
+   </Layers>
+   <GroupRegionsOfInterest>
+    <RegionOfInterest Name="WorldBorders">
+     <CoordinatesFile Name="Data/World_medres.txt"/>
+     <Graphics Color="0.686275 0.760784 1" FillOpacity="40"/>
+    </RegionOfInterest>
+   </GroupRegionsOfInterest>
+  </Body>
+ </Entities>
+ <Events/>
+ <States>
+  <Instant Time="33282 0" TimeRatio="1" Label="Initial state">
+   <AppState Id="0">
+    <Command Str="CMD PROP WindowGeometry 0 0 640 483"/>
+    <Command Str="CMD PROP ProjectionCenter &quot;-3.55445e-5 0.211502 0.281507 0.93596&quot;"/>
+   </AppState>
+  </Instant>
+ </States>
+</Project>

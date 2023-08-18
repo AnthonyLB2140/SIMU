@@ -1,0 +1,1 @@
+{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_"}],"uuid":"e8a5c086760a46f889d8e03d767b0c77","collectionName":"satpos","type":"collection"}

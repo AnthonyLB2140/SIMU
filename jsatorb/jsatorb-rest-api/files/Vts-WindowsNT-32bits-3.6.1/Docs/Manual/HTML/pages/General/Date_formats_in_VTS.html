@@ -1,0 +1,367 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Date formats in VTS &mdash; VTS 3.6.0-9030 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="VTS 3.6.0-9030 documentation" href="../../index.html"/>
+        <link rel="up" title="General" href="index.html"/>
+        <link rel="next" title="Data sources in VTS" href="Data_sources_in_VTS.html"/>
+        <link rel="prev" title="Conventions in VTS" href="Conventions_in_VTS.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> VTS
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction/index.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">General</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Conventions_in_VTS.html">Conventions in VTS</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Date formats in VTS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#formats-list">Formats list</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#entering-a-date">Entering a date</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Data_sources_in_VTS.html">Data sources in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Position_of_objects_in_VTS.html">Position of objects in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Orientation_of_objects_in_VTS.html">Orientation of objects in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Examples_for_position_and_orientation_of_objects_in_VTS.html">Examples for position and orientation of objects in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Backwards_compatibility_in_VTS.html">Backward compatibility in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Object_paths_in_VTS.html">Object paths in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Central_bodies_in_VTS.html">Central bodies in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Structure_of_satellites_in_VTS.html">Structure of satellites in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sensors_in_VTS.html">Sensors in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Masks_in_VTS.html">Physical masks in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scale_factors_in_VTS.html">Scale factors in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cluster_in_VTS.html">Clusters in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scenario_in_VTS.html">Scenario in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Manage_window_geometry.html">Window Geometry Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mission_events_in_VTS.html">Mission events in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="POIs_and_ROIs_in_VTS.html">POIs and ROIs in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Other_visualisable_objects.html">Other visualisable objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scripts_and_macros_in_VTS.html">Scripts and macros in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="VTS_Broker.html">VTS Broker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Files_used_by_VTS/index.html">Files used by VTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Starting_VTS/index.html">Starting VTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VTS_applications_user_manuals/index.html">VTS applications user manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Plugin_development/index.html">Plugin development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Data_generators_in_VTS/index.html">Data generator integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../About/index.html">About</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">VTS</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">General</a> &raquo;</li>
+        
+      <li>Date formats in VTS</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/pages/General/Date_formats_in_VTS.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="date-formats-in-vts">
+<span id="id1"></span><h1>Date formats in VTS<a class="headerlink" href="#date-formats-in-vts" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="formats-list">
+<span id="date-formats-in-vts-formats-list"></span><h2>Formats list<a class="headerlink" href="#formats-list" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="13%" />
+<col width="28%" />
+<col width="14%" />
+<col width="10%" />
+<col width="18%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Date format</th>
+<th class="head">Abbreviation</th>
+<th class="head">Example: May 17th, 2011, 16h22</th>
+<th class="head">Distance to JD1950</th>
+<th class="head">Leap seconds</th>
+<th class="head">Usage in VTS</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>CNES Julian day</td>
+<td>JD1950</td>
+<td>22416.6819444444</td>
+<td>0</td>
+<td>Yes</td>
+<td><ul class="first last simple">
+<li>Synchronization protocol</li>
+<li>Display</li>
+<li>Project file</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td>Modified julian day</td>
+<td>MJD</td>
+<td>55698 58920.000000</td>
+<td>33282</td>
+<td>Yes</td>
+<td><ul class="first last simple">
+<li>CIC/CCSDS files</li>
+<li>Display</li>
+<li>Project file</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td>Calendar date</td>
+<td>ISO</td>
+<td>2011.05.17 16:22:00</td>
+<td>NA</td>
+<td>Yes</td>
+<td>Display</td>
+</tr>
+<tr class="row-odd"><td>ISO 8601 date (forced UTC)</td>
+<td>ISO</td>
+<td>2011-05-17T16:22:00.000Z</td>
+<td>NA</td>
+<td>Yes</td>
+<td>Project file</td>
+</tr>
+<tr class="row-even"><td>Celestia Julian day</td>
+<td>jjCEL</td>
+<td>2455699.181944</td>
+<td>2433282.5</td>
+<td>No</td>
+<td>Celestia data files</td>
+</tr>
+<tr class="row-odd"><td>Project-relative date</td>
+<td>relative</td>
+<td><em>with project start</em>: May 15th, 2011, 12h39
+186180.000 s</td>
+<td>variable</td>
+<td>Yes</td>
+<td>Display</td>
+</tr>
+</tbody>
+</table>
+<p>The internal date representation in VTS uses the reference date of JD1950, and is expressed with two fields for days and seconds (like MJD).</p>
+<p>VTS uses the time system UTC both for display and internal calculations.</p>
+</div>
+<div class="section" id="entering-a-date">
+<span id="date-formats-in-vts-entering-a-date"></span><h2>Entering a date<a class="headerlink" href="#entering-a-date" title="Permalink to this headline">¶</a></h2>
+<p>When a date needs to be specified anywhere in VTS, the same user interface is used. The date can be entered in the <em>JD1950</em>, <em>MJD</em> and <em>ISO</em> formats.</p>
+<div class="figure align-center" id="id2">
+<img alt="../../_images/EnterDateVTS.png" src="../../_images/EnterDateVTS.png" />
+<p class="caption"><span class="caption-text">Date dialog in VTS</span></p>
+</div>
+<p>The dialog also contains 3 buttons :</p>
+<ul class="simple">
+<li>The first button allows to copy the date in the clipboard with a specific format.</li>
+<li>The second button pastes a date from the clipboard.</li>
+<li>The third button sets the date to the current date.</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Data_sources_in_VTS.html" class="btn btn-neutral float-right" title="Data sources in VTS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Conventions_in_VTS.html" class="btn btn-neutral" title="Conventions in VTS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright VTS Team.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'3.6.0-9030',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

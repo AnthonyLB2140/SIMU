@@ -1,0 +1,23 @@
+CIC_MEM_VERS 	= 1.0
+COMMENT ephemeris
+CREATION_DATE = 2023-06-28T09:00:29.897
+ORIGINATOR = CNES
+
+META_START
+
+COMMENT Misc columns :
+OBJECT_NAME = Sat
+OBJECT_ID = Sat
+USER_DEFINED_PROTOCOL = NONE
+USER_DEFINED_CONTENT = OEF
+USER_DEFINED_SIZE = 1
+USER_DEFINED_TYPE = STRING
+USER_DEFINED_UNIT = [n/a]
+TIME_SYSTEM = UTC
+
+META_STOP
+
+2023-06-27T08:07:25.000 "Event #1: Propagation start event" 
+2023-06-28T10:29:21.534 "Constant thrust maneuver Continuous maneuver start: Date (2023-06-28T10:29:58.534)" 
+2023-06-28T10:29:23.534 "Constant thrust maneuver Continuous maneuver end: Date (2023-06-28T10:30:00.534)" 
+2023-06-28T10:29:24.534 "Event #2: Propagation end event on duration (94919.53439998627s)" 

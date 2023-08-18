@@ -1,0 +1,11 @@
+node:17) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 2370)
+(node:17) UnhandledPromiseRejectionWarning: TypeError: Cannot read property 'jdsatepoch' of undefined
+    at Object.propagate (/data/node_modules/satellite.js/dist/propagate/propagate.js:24:1)
+    at createSatObject (/data/node_modules/node-red-contrib-satellites/satellites.js:39:32)
+    at /data/node_modules/node-red-contrib-satellites/satellites.js:181:45
+    at Array.forEach (<anonymous>)
+    at /data/node_modules/node-red-contrib-satellites/satellites.js:180:37
+    at runMicrotasks (<anonymous>)
+    at runNextTicks (internal/process/task_queues.js:60:5)
+    at processImmediate (internal/timers.js:437:9)
+

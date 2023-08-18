@@ -1,0 +1,261 @@
+# -----------------------------------------------------------------------------
+# JSatOrb Module REST requests: Mission data management
+# -----------------------------------------------------------------------------
+# These requests are sent from Visual studio code, using the REST client for
+# Visual Studio Code extension 
+# (https://marketplace.visualstudio.com/items?itemName=humao.rest-client).
+# -----------------------------------------------------------------------------
+# How to use: 
+#  - in Visual studio code, install the REST client extension,
+#  - open this file,
+#  - launch the JSatOrb REST API server,
+#  - click on the "Send request" link above each request,
+#  - the REST API response should be displayed in a separated Response window.
+# -----------------------------------------------------------------------------
+# To separate two distinct requests, add a line with '###' between them.
+# -----------------------------------------------------------------------------
+
+
+## Send a request to store a mission data set into a file
+POST http://localhost:8000/missiondata/Mission-Test-01 HTTP/1.1
+content-type: application/json
+
+{
+  "header": {
+    "mission": "Mission-Test-01",
+    "celestialBody": "EARTH",
+    "timeStart": "2011-12-01T16:43:45",
+    "timeEnd": "2011-12-02T16:43:45",
+    "step": "10"
+  },
+  "satellites": [
+    {"name": "KepSat",
+    "type": "keplerian",
+    "sma": 7000000,
+    "ecc": 0.007014455530245822,
+    "inc": 51,
+    "pa": 0,
+    "raan": 0,
+    "meanAnomaly": 0
+    },
+    {"name": "CartSat",
+    "type": "cartesian",
+    "x": -6142438.668,
+    "y": 3492467.560,
+    "z": -25767.25680,
+    "vx": 505.8479685,
+    "vy": 942.7809215,
+    "vz": 7435.922231
+    },
+    {
+    "name": "ISS",
+    "type": "tle",
+    "color": "#f44295",
+    "line1": "1 33442U 98067BL  11334.54829407  .13008691  12713-4  15349-3 0  3986",
+    "line2": "2 33442 051.6268 036.9885 0007699 292.6234 072.1768 16.49476607 40751"
+    }
+  ],
+  "constellations": [
+      {"name": "ISAE nanosat fleet",
+      "satellites": [
+          "KepSat",
+          "CartSat"
+        ]
+      }
+  ],
+  "groundStations": [
+    {"name": "isae",
+    "latitude": 43,
+    "longitude": 1.5,
+    "altitude": 150,
+    "elevation": 12
+    },
+    {"name": "cayenne",
+    "latitude": 4.5,
+    "longitude": -52.9,
+    "altitude": 0,
+    "elevation": 12
+    }
+  ],
+  "options": {
+    "CARTESIAN": {},
+    "KEPLERIAN": {},
+    "ATTITUDE": {"law": "POINTING_CENTRAL"},
+    "ECLIPSE": {}
+  }
+}
+
+###
+
+## Send a request to store a mission data used to test the VTS visualization
+POST http://localhost:8000/missiondata/test-VTS HTTP/1.1
+content-type: application/json
+
+{
+  "header": {
+    "mission": "test-VTS",
+    "celestialbody": "EARTH",
+    "timeStart": "2011-12-01T16:43:45",
+    "timeEnd": "2011-12-02T16:43:45",
+    "step": "10"
+  },
+  "satellites": [
+    {"name": "KepSat",
+    "type": "keplerian",
+    "sma": 7000000,
+    "ecc": 0.007014455530245822,
+    "inc": 51,
+    "pa": 0,
+    "raan": 0,
+    "meanAnomaly": 0
+    },
+    {"name": "CartSat",
+    "type": "cartesian",
+    "x": -6142438.668,
+    "y": 3492467.560,
+    "z": -25767.25680,
+    "vx": 505.8479685,
+    "vy": 942.7809215,
+    "vz": 7435.922231
+    }
+  ],
+  "constellations": [],
+  "groundStations": [
+    {"name": "sydney",
+    "latitude": -33.8678500,
+    "longitude": 151.2073200,
+    "altitude": 58,
+    "elevation": 12
+    }
+  ],
+  "options": {
+    "CARTESIAN": {},
+    "KEPLERIAN": {},
+    "ATTITUDE": {"law": "POINTING_CENTRAL"},
+    "ECLIPSE": {}
+  }
+}
+
+###
+
+## Send a request to get back a stored mission data set
+GET http://localhost:8000/missiondata/Mission-Test-01 HTTP/1.1
+content-type: application/json
+
+###
+
+## Send a request to get a list of stored mission data set
+GET http://localhost:8000/missiondata/list HTTP/1.1
+content-type: application/json
+
+###
+
+## Send a request to duplicate a stored mission data file under another name
+POST http://localhost:8000/missiondata/duplicate HTTP/1.1
+content-type: application/json
+
+{
+  "header": {
+    "srcMission": "Mission-Test-01",
+    "destMission": "Duplicated-Mission-Test-01"
+  }
+}
+
+###
+
+## Send a request to check if the file containing a stored mission data set exists
+GET http://localhost:8000/missiondata/check/Mission-Test-01 HTTP/1.1
+content-type: application/json
+
+###
+
+## Send a request to delete a stored mission data set file
+DELETE http://localhost:8000/missiondata/Duplicated-Mission-Test-01 HTTP/1.1
+content-type: application/json
+
+###
+
+# -----------------------------------------------------------------------------
+# MISSION EXAMPLES: SUN-SYNCHRONOUS AND MARS MISSION DATA SET SAVE REQUESTS 
+# -----------------------------------------------------------------------------
+
+## Send a request for an Sun-synchronous orbit
+POST http://localhost:8000/missiondata/Mission-Sun-synchronous HTTP/1.1
+content-type: application/json
+
+{
+  "header": {
+    "mission": "Mission-Sun-synchronous",
+    "celestialBody": "EARTH",
+    "timeStart": "2010-01-01T12:00:00",
+    "timeEnd": "2010-01-02T12:00:00",
+    "step": "10"
+  },
+  "constellation": [
+  ],
+  "satellites": [
+    {"name": "SunSynchronous",
+    "type": "keplerian",
+    "sma": 7000000,
+    "ecc": 0.0,
+    "inc": 97.8736,
+    "pa": 0,
+    "raan": 0,
+    "meanAnomaly": 0
+    }
+  ],
+  "constellations": [],
+  "groundStations": [
+    {"name": "isae",
+    "latitude": 43,
+    "longitude": 1.5,
+    "altitude": 150,
+    "elevation": 12
+    }
+  ],
+  "options": {
+    "CARTESIAN": {},
+    "KEPLERIAN": {},
+    "LLA": {},
+    "ATTITUDE": {"law": "LOF_LVLH"},
+    "VISIBILITY": {},
+    "ECLIPSE": {}
+  }
+}
+
+###
+
+## Send a request for a Martian orbit
+POST http://localhost:8000/missiondata/Mission-Mars HTTP/1.1
+content-type: application/json
+
+{
+  "header": {
+    "mission": "Mission-Mars",
+    "celestialBody": "MARS",
+    "timeStart": "2020-04-19T11:29:10.811",
+    "timeEnd":  "2020-04-20T11:29:10.811",
+    "step": "60"
+  },
+  "satellites": [
+    {"name": "MarsOrbiter",
+    "type": "keplerian",
+    "sma": 6000938.817624505,
+    "ecc": 0.02,
+    "inc": 0,
+    "pa": 0,
+    "raan": 0,
+    "meanAnomaly": 0
+    }
+  ],
+  "groundStations": [
+  ],
+  "options": {
+    "CARTESIAN": {},
+    "KEPLERIAN": {},
+    "LLA": {},
+    "ATTITUDE": {"law": "POINTING_CENTRAL"},
+    "VISIBILITY": {},
+    "ECLIPSE": {}
+  }
+}

@@ -1,0 +1,40 @@
+CIC_MEM_VERS = 1.0
+CREATION_DATE = 2012-11-16T10:17:31
+ORIGINATOR = SPACEBEL
+
+META_START
+
+USER_DEFINED_PROTOCOL = NONE
+USER_DEFINED_CONTENT = EARTH_TEXTURE_CYCLIC
+USER_DEFINED_SIZE = 1
+USER_DEFINED_TYPE = STRING
+USER_DEFINED_UNIT = [n/a]
+
+TIME_SYSTEM = UTC
+
+META_STOP
+
+0     0 "Textures/plancton_00.jpg"
+0  7200 "Textures/plancton_01.jpg"
+0 14400 "Textures/plancton_02.jpg"
+0 21600 "Textures/plancton_03.jpg"
+0 28800 "Textures/plancton_04.jpg"
+0 36000 "Textures/plancton_05.jpg"
+0 43200 "Textures/plancton_06.jpg"
+0 50400 "Textures/plancton_07.jpg"
+0 57600 "Textures/plancton_08.jpg"
+0 64800 "Textures/plancton_09.jpg"
+0 72000 "Textures/plancton_10.jpg"
+0 79200 "Textures/plancton_11.jpg"
+1     0 "Textures/plancton_11.jpg"
+1  7200 "Textures/plancton_10.jpg"
+1 14400 "Textures/plancton_09.jpg"
+1 21600 "Textures/plancton_08.jpg"
+1 28800 "Textures/plancton_07.jpg"
+1 36000 "Textures/plancton_06.jpg"
+1 43200 "Textures/plancton_05.jpg"
+1 50400 "Textures/plancton_04.jpg"
+1 57600 "Textures/plancton_03.jpg"
+1 64800 "Textures/plancton_02.jpg"
+1 72000 "Textures/plancton_01.jpg"
+1 79200 "Textures/plancton_00.jpg"

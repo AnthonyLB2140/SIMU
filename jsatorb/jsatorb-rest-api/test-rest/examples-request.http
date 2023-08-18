@@ -1,0 +1,98 @@
+# -----------------------------------------------------------------------------
+# JSatOrb Module REST requests: File generator
+# -----------------------------------------------------------------------------
+# These requests are sent from Visual studio code, using the REST client for
+# Visual Studio Code extension 
+# (https://marketplace.visualstudio.com/items?itemName=humao.rest-client).
+# -----------------------------------------------------------------------------
+# How to use: 
+#  - in Visual studio code, install the REST client extension,
+#  - open this file,
+#  - launch the JSatOrb REST API server,
+#  - click on the "Send request" link above each request,
+#  - the REST API response should be displayed in a separated Response window.
+# -----------------------------------------------------------------------------
+# To separate two distinct requests, add a line with '###' between them.
+# -----------------------------------------------------------------------------
+
+
+## Send a complete request for an Sun-synchronous orbit
+POST http://localhost:8000/vts HTTP/1.1
+content-type: application/json
+
+{
+  "header": {
+    "mission": "Mission-Sun-Synchronous",
+    "celestialBody": "EARTH",
+    "timeStart": "2010-01-01T12:00:00",
+    "timeEnd": "2010-01-02T12:00:00",
+    "step": "10"
+  },
+  "constellation": [
+  ],
+  "satellites": [
+    {"name": "SunSynchronous",
+    "type": "keplerian",
+    "sma": 7000000,
+    "ecc": 0.0,
+    "inc": 97.8736,
+    "pa": 0,
+    "raan": 0,
+    "meanAnomaly": 0
+    }
+  ],
+  "constellations": [],
+  "groundStations": [
+    {"name": "isae",
+    "latitude": 43,
+    "longitude": 1.5,
+    "altitude": 150,
+    "elevation": 12
+    }
+  ],
+  "options": {
+    "CARTESIAN": {},
+    "KEPLERIAN": {},
+    "LLA": {},
+    "ATTITUDE": {"law": "LOF_LVLH"},
+    "VISIBILITY": {},
+    "ECLIPSE": {}
+  }
+}
+
+###
+
+## Send a request for a Martian orbit
+POST http://localhost:8000/vts HTTP/1.1
+content-type: application/json
+
+{
+  "header": {
+    "mission": "Mission-Mars",
+    "celestialBody": "MARS",
+    "timeStart": "2020-04-19T11:29:10.811",
+    "timeEnd":  "2020-04-20T11:29:10.811",
+    "step": "60"
+  },
+  "satellites": [
+    {"name": "MarsOrbiter",
+    "type": "keplerian",
+    "sma": 6000938.817624505,
+    "ecc": 0.02,
+    "inc": 0,
+    "pa": 0,
+    "raan": 0,
+    "meanAnomaly": 0
+    }
+  ],
+  "groundStations": [
+  ],
+  "options": {
+    "CARTESIAN": {},
+    "KEPLERIAN": {},
+    "LLA": {},
+    "ATTITUDE": {"law": "POINTING_CENTRAL"},
+    "VISIBILITY": {},
+    "ECLIPSE": {}
+  }
+}

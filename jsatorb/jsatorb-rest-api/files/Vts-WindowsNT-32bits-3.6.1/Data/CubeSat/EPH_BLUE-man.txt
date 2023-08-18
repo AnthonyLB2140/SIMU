@@ -1,0 +1,7 @@
+#<AM-acces:COL-V2.0>
+<INIT:
+Logiciel="JPSIMU"
+VERSION="V11.6.2"
+<COL:
+>
+>

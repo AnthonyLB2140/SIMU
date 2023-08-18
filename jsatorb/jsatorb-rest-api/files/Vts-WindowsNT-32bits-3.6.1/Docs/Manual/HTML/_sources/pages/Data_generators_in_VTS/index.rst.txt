@@ -1,0 +1,136 @@
+Data generator integration
+==========================
+
+.. _Data_generators_in_VTS:
+
+The VTS toolkit is conceived to allow generic integration of data generator applications to provide CIC/CCSDS data to a VTS visualization. Data generator applications must provide a number of interfaces in order to fully integrate with the toolkit. This chapter describes the interfaces to implement for new data generator applications.
+
+
+.. figure:: /_images/GenPosition.png
+	:align: center
+
+	*Position generation*
+
+
+.. _Data_generators_in_VTS#Generators_folder_hierarchy_and_nomenclature:
+
+Generators folder hierarchy and nomenclature
+--------------------------------------------
+
+Data generator applications must follow the following folder hierarchy and nomenclature:
+
+- The generator folder must be located in the **Generators** folder of the VTS toolkit. The new generator folder name must start with an uppercase letter. This name will be used as the generator application's name.
+- The generator executable must be located in the **bin** subfolder of the generator folder.
+- The generator executable must have the same name as the generator folder (case-insensitive). On a Windows platform the executable must have the *.exe* or *.bat* file extension. On a Linux platform the name can be suffixed by *.sh*, *.lnx* or might not be suffixed.
+- The **doc** subfolder of the generator folder may contain a text file with its name starting by the application name and followed by *VtsConf.ini*. If present, this file must contain the generator capacities for generating data.
+
+Sample folder hierarchy for the Keplerian Generator :
+
++--------------+--------------------------+--------+--------------------------------------+
+| Generators   | KeplerianGenerator       | bin    | kepleriangenerator.exe               |
+|              |                          +--------+--------------------------------------+
+|              |                          | doc    | kepleriangeneratorVtsConf.ini        |
++--------------+--------------------------+--------+--------------------------------------+
+
+If the generator is installed outside the VTS toolkit, a proxy script file (.bat, .sh) file can be used to start the external generator application.
+
+
+
+.. _Data_generators_in_VTS#Data_generation_capacities:
+
+Data generation capacities
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If the configuration file (xxxVtsConf.ini) doesn't exist, the generator is handled as a position data generator. If it exists, it can contain the keys listed in the table below (note the default values are false except for the "GenPosition" key which is true by default). A data generator can declare several keys according to its generating capabilities.
+
++---------------+---------------+---------+-----------------------------------------------------------------+
+| Key           | Value         | Default | Usage                                                           |
++===============+===============+=========+=================================================================+
+| GenPosition   | true or false | true    | Generate position data                                          |
++---------------+---------------+---------+-----------------------------------------------------------------+
+| GenQuaternion | true or false | false   | Generate quaternion data                                        |
++---------------+---------------+---------+-----------------------------------------------------------------+
+| GenEuler      | true or false | false   | Generate euler angle data (see CCSDS documentation)             |
++---------------+---------------+---------+-----------------------------------------------------------------+
+| GenAxis       | true or false | false   | Generate axis data (X, Y, Z)                                    |
++---------------+---------------+---------+-----------------------------------------------------------------+
+| GenAngle      | true or false | false   | Generate angle data (degree or radian, see CCSDS documentation) |
++---------------+---------------+---------+-----------------------------------------------------------------+
+| GenDirection  | true or false | false   | Generate direction data (X, Y, Z)                               |
++---------------+---------------+---------+-----------------------------------------------------------------+
+| GenAltAz      | true or false | false   | Generate altitude/azimuth data                                  |
++---------------+---------------+---------+-----------------------------------------------------------------+
+
+
+.. _Data_generators_in_VTS#Command_line_parameters:
+
+Command line parameters
+^^^^^^^^^^^^^^^^^^^^^^^
+
+When the data generator is available in VTS, it will be started with the following command line parameters :
+
+
+- *--vtsgentype [RequestedGenerationType]* with [RequestedGenerationType] equal to "GenPosition", "GenQuaternion", "GenEuler", "GenAxis", "GenAngle", "GenDirection" or "GenAltAz" corresponding to the current generating capability requested
+- *--vtsdefaultfile [DefaultOutputFilePath]* with [DefaultOutputFilePath] equal to the current output file path selected in VTS
+- *--vtsmjddates [[StartDate] [EndDate]]* with [[StartDate] [EndDate]] as two string parameters, and each date encoded in MJD dates defining the current project dates
+
+
+.. _Data_generators_in_VTS#Optional_standard_output_reply:
+
+Optional standard output reply
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When the generating process has ended, the generator may print to standard output a different output file than the provided [DefaultOutputFilePath]. All standard output is processed by VTS seeking a line containing a string starting with "outputvtsfile=" followed by a file path. This file path will be used to update the file entry in the VTS interface. The file path may contain spaces.
+
+
+.. _Data_generators_in_VTS#Orbit_propagation_with_the_Keplerian_Generator:
+
+Orbit propagation with the Keplerian Generator
+----------------------------------------------
+
+.. figure:: /_images/Propagateur.png
+	:align: center
+
+	*Keplerian Generator*
+
+The Keplerian Generator allows automatic generation of CIC/CCSDS files containing position ephemerides for an elliptical keplerian orbit, in a defined time range. Positions are computed in the EME2000 reference frame.
+
+The Keplerian Generator relies on the `Orekit <https://www.orekit.org/>`_ library to compute the ephemerides. Please refer to this library's documentation for further information on how the computations are performed.
+
+.. note::  Java 8 runtime environment (JRE 1.8.0) must be installed on your system in order to use the Keplerian Generator. Older Java versions (at lease >v1.4) may also work but are not tested. Only the the 32bit JRE is supported on Windows.
+
+.. _Data_generators_in_VTS#Using_the_Keplerian_Generator:
+
+Using the Keplerian Generator
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To generate an orbit ephemerides file, all orbital parameters in the *Classic elliptical keplerian orbit* area must be filled in. Note that only elliptical orbits are currently supported, i.e. orbits with eccentricity strictly below 1.
+
+The start and end dates for the CIC/CCSDS file must also be defined in the *Date configuration* area, as well as the time interval between two position values (in seconds).
+
+Clicking the **Generate** button prompts the user for the output file location and name, then generates the orbit data. The output data file can then be used to define the position of a satellite in the VTS configuration utility.
+
+
+.. _Data_generators_in_VTS#Orbit_propagation_with_the_TLE2CCSDS_Generator:
+
+Orbit propagation with the TLE2CCSDS Generator
+----------------------------------------------
+
+.. figure:: /_images/TLE2CCSDS.png
+	:align: center
+
+	*TLE2CCSDS Generator*
+
+The TLE2CCSDS Generator allows generation of CIC/CCSDS files containing position and velocity ephemerides for a '''two-line element set (TLE)''', in a defined time range. Positions are computed in the EME2000 reference frame. TLE data can be found on http://www.celestrak.com/.
+
+
+.. _Data_generators_in_VTS#Using_the_TLE2CCSDS_Generator:
+
+Using the TLE2CCSDS Generator
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To generate an orbit ephemerides file, fill the TLE data fields with the orbital elements. A simple way to fill the TLE data fields is to copy the two data line and pasting them into one of the two TLE data fields.
+
+The start and end dates for the CIC/CCSDS file must also be defined in the *Date configuration* area, as well as the time interval between two position values (in seconds).
+
+Select an output file and click the **Generate** button to generate the orbit data. The output data file can then be used to define the position of a satellite in the VTS configuration utility.

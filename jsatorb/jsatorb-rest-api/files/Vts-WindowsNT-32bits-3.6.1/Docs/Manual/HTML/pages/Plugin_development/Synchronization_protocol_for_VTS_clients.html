@@ -1,0 +1,3611 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Synchronization protocol for VTS clients &mdash; VTS 3.6.0-9030 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="VTS 3.6.0-9030 documentation" href="../../index.html"/>
+        <link rel="up" title="Plugin development" href="index.html"/>
+        <link rel="next" title="Description of application properties" href="Description_of_application_properties.html"/>
+        <link rel="prev" title="Application IDs in VTS" href="Application_IDs_in_VTS.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> VTS
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../General/index.html">General</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Files_used_by_VTS/index.html">Files used by VTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Starting_VTS/index.html">Starting VTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VTS_applications_user_manuals/index.html">VTS applications user manuals</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Plugin development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Client_applications_in_VTS.html">Client applications in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Application_IDs_in_VTS.html">Application IDs in VTS</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Synchronization protocol for VTS clients</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#message-syntax">Message syntax</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#connecting-to-the-broker">Connecting to the Broker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#messages-received-by-the-broker">Messages received by the Broker</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#init-message-connection-to-the-broker"><em>INIT</em> message: connection to the Broker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#time-messages"><em>TIME</em> messages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cmd-messages"><em>CMD</em> messages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fwd-messages"><em>FWD</em> messages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#data-messages"><em>DATA</em> messages</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#common-messages-received-by-client-applications">Common messages received by client applications</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#synchronization-protocol-for-vts-clients-cmd-event-time-messages"><em>TIME</em> messages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6"><em>CMD</em> messages</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#messages-received-by-celestia">Messages received by Celestia</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id15"><em>CMD PROP</em> commands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id16"><em>CMD STRUCT</em> commands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#scriptable-cmd-camera-commands">Scriptable <em>CMD CAMERA</em> commands</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#messages-received-by-surfaceview">Messages received by SurfaceView</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cmd-prop-initial-commands"><em>CMD PROP</em> initial commands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cmd-prop-specific-commands"><em>CMD PROP</em> specific commands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id17"><em>CMD STRUCT</em> commands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id23"><em>CMD SERVICE</em> messages</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#real-time-vts">Real-time VTS</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#time-synchronization-with-an-external-time-source">Time synchronization with an external time source</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#supplying-real-time-data">Supplying real-time data</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#sample-session">Sample session</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Description_of_application_properties.html">Description of application properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="VTS_project_file_format.html">VTS project file format</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Data_generators_in_VTS/index.html">Data generator integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../About/index.html">About</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">VTS</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Plugin development</a> &raquo;</li>
+        
+      <li>Synchronization protocol for VTS clients</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/pages/Plugin_development/Synchronization_protocol_for_VTS_clients.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="synchronization-protocol-for-vts-clients">
+<span id="id1"></span><h1>Synchronization protocol for VTS clients<a class="headerlink" href="#synchronization-protocol-for-vts-clients" title="Permalink to this headline">¶</a></h1>
+<p>Once all client application launchers have successfully terminated, the Broker starts all client applications with their respective command-line arguments. Client applications must then connect to the Broker via TCP. Once connection has been established, the VTS synchronization protocol is used for communication between the Broker and its clients.</p>
+<div class="section" id="message-syntax">
+<span id="synchronization-protocol-for-vts-clients-message-syntax"></span><h2>Message syntax<a class="headerlink" href="#message-syntax" title="Permalink to this headline">¶</a></h2>
+<p>Messages must abide by the following syntax rules in order to be correctly parsed by VTS and standard client applications:</p>
+<ol class="arabic simple">
+<li>Sent messages must be followed by a terminating newline character (<code class="docutils literal"><span class="pre">\n</span></code>)</li>
+<li>Message fields which contain whitespace (spaces, tabs) must be quoted using double quotes (e.g. <code class="docutils literal"><span class="pre">&quot;field</span> <span class="pre">with</span> <span class="pre">whitespace&quot;</span></code>)</li>
+<li>Literal quotes in message fields must be escaped with a backslash (e.g. <code class="docutils literal"><span class="pre">&quot;field</span> <span class="pre">with</span> <span class="pre">\&quot;literal</span> <span class="pre">quotes\&quot;&quot;</span></code>)</li>
+<li>Literal backslashes in message fields must be escaped with an additional backslash (e.g. <code class="docutils literal"><span class="pre">&quot;C:\\path\\to\\file&quot;</span></code>)</li>
+</ol>
+</div>
+<div class="section" id="connecting-to-the-broker">
+<span id="synchronization-protocol-for-vts-clients-connecting-to-the-broker"></span><h2>Connecting to the Broker<a class="headerlink" href="#connecting-to-the-broker" title="Permalink to this headline">¶</a></h2>
+<p>In order to engage communication with the Broker, <strong>client applications must connect to a socket server setup by the Broker</strong>.</p>
+<ul class="simple">
+<li>By default, the Broker server port is 8888. In this case, the launchers are started with no specific port option.</li>
+<li>If VTS is configured for open ports scanning, the launchers are started with a <code class="docutils literal"><span class="pre">--serverport</span> <span class="pre">&lt;portNum&gt;</span></code> option in command line. See the chapter <em>Broker Options</em> of the section <a class="reference internal" href="../VTS_applications_user_manuals/VTS_configuration_utility_user_manual.html#vts-configuration-utility-user-manual"><span class="std std-ref">VTS configuration utility user manual</span></a> for more information.</li>
+</ul>
+</div>
+<div class="section" id="messages-received-by-the-broker">
+<span id="synchronization-protocol-for-vts-clients-messages-received-by-the-broker"></span><h2>Messages received by the Broker<a class="headerlink" href="#messages-received-by-the-broker" title="Permalink to this headline">¶</a></h2>
+<p>This section describes the commands client applications may send to the Broker.</p>
+<div class="section" id="init-message-connection-to-the-broker">
+<span id="synchronization-protocol-for-vts-clients-init-message-connection-to-the-broker"></span><h3><em>INIT</em> message: connection to the Broker<a class="headerlink" href="#init-message-connection-to-the-broker" title="Permalink to this headline">¶</a></h3>
+<p>Once connected to the server, client applications must sent the following initialization command to engage communication:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>INIT &lt;Name&gt; &lt;ClientType&gt; <span class="o">[</span>ProtocolVersion<span class="o">]</span> <span class="o">[</span>ClientId<span class="o">]</span>
+</pre></div>
+</div>
+<p>The parameters for this command are described below:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Required</th>
+<th class="head">Description</th>
+<th class="head">Format (unit)</th>
+<th class="head">See also</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Name</td>
+<td>Yes</td>
+<td>Name of the client</td>
+<td>Character string</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>ClientType</td>
+<td>Yes</td>
+<td>Time behavior of the client</td>
+<td>CONSTRAINT or REGULATING</td>
+<td><span class="xref std std-ref">Real-time VTS</span></td>
+</tr>
+<tr class="row-even"><td>ProtocolVersion</td>
+<td>Optional (default: 1.0)</td>
+<td>Synchronization protocol version</td>
+<td>Integer.Integer</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>ClientId</td>
+<td>Optional (auto attribution of an external ID if not provided)</td>
+<td>Unique client ID</td>
+<td>Integer</td>
+<td>Application IDs in VTS</td>
+</tr>
+</tbody>
+</table>
+<p>Commands can be sent by the client before INIT, but no TIME or DATA paquets will be received until the INIT message is sent to the Broker.</p>
+<p>Below are some sample <em>INIT</em> commands:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>INIT PrestoPlot CONSTRAINT <span class="m">1</span>.0 <span class="m">2</span>
+</pre></div>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>INIT Simulator REGULATING
+</pre></div>
+</div>
+</div>
+<div class="section" id="time-messages">
+<span id="synchronization-protocol-for-vts-clients-time-messages"></span><h3><em>TIME</em> messages<a class="headerlink" href="#time-messages" title="Permalink to this headline">¶</a></h3>
+<p>Client applications may set the visualization date and time ratio. This is used for example when drag-and-dropping a satellite in the SurfaceView client application.</p>
+<p><em>TIME</em> commands have the following syntax:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>TIME &lt;TimeJD1950&gt; <span class="o">[</span>TimeRatio<span class="o">]</span>
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Required</th>
+<th class="head">Description</th>
+<th class="head">Format (unit)</th>
+<th class="head">See also</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>TimeJD1950</td>
+<td>Yes</td>
+<td>Visualization date in JD1950 format</td>
+<td>Real number</td>
+<td>Date formats in VTS</td>
+</tr>
+<tr class="row-odd"><td>TimeRatio</td>
+<td>Optional</td>
+<td>Time ratio</td>
+<td>Real number</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<p>The date must be provided in JD1950 format. The time ratio defines the speed ratio between visualization time and wall-clock time. If it is not provided, the current time ratio is kept.</p>
+<p>For example, the following messages set the visualization date to July 9th, 2016 at 00:00:03, with a time ratio of 10 compared to real time (10 seconds of visualization time pass with each second of wall-clock time):</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>TIME <span class="m">24296</span>.000042 <span class="m">10</span>.00000
+</pre></div>
+</div>
+<p>Only clients with <em>CONSTRAINT</em> time behavior may provide a time ratio. For <em>REGULATING</em> clients, the actual time ratio is computed by the Broker.</p>
+</div>
+<div class="section" id="cmd-messages">
+<span id="synchronization-protocol-for-vts-clients-cmd-messages"></span><h3><em>CMD</em> messages<a class="headerlink" href="#cmd-messages" title="Permalink to this headline">¶</a></h3>
+<p>Command messages allow some level of control over the visualization.
+They are divided in several categories:</p>
+<ul class="simple">
+<li><em>CMD TIME</em> commands alter the flow of time (but do not modify the visualization date or time ratio: refer to the <em>TIME</em> messages above for this)</li>
+<li><em>CMD SERVICE</em> commands control various aspects of the visualization unrelated to time</li>
+<li><em>CMD TIMELINE</em> commands deal with the CIC/CCSDS files displayed in the timeline</li>
+<li><em>CMD EVENT</em> commands deal with CIC/CCSDS mission event files for the visualization</li>
+</ul>
+<div class="section" id="cmd-time-messages">
+<span id="synchronization-protocol-for-vts-clients-cmd-time-messages"></span><h4><em>CMD TIME</em> messages<a class="headerlink" href="#cmd-time-messages" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="pause-command">
+<span id="synchronization-protocol-for-vts-clients-pause-command"></span><h5><em>PAUSE</em> command<a class="headerlink" href="#pause-command" title="Permalink to this headline">¶</a></h5>
+<p>The <em>PAUSE</em> command stops the time flow in the Broker. This is equivalent to pressing the <strong>Pause</strong> button in the Broker’s GUI.</p>
+<p>This command has the following syntax:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD TIME PAUSE
+</pre></div>
+</div>
+<p>When paused, the Broker keeps sending <em>TIME</em> messages with the current visualization date (even though it remains constant).</p>
+</div>
+<div class="section" id="play-command">
+<span id="synchronization-protocol-for-vts-clients-play-command"></span><h5><em>PLAY</em> command<a class="headerlink" href="#play-command" title="Permalink to this headline">¶</a></h5>
+<p>The <em>PLAY</em> command resumes the time flow in the Broker. This is equivalent to pressing the <strong>Play</strong> button in the Broker’s GUI.</p>
+<p>This command has the following syntax:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD TIME PLAY
+</pre></div>
+</div>
+</div>
+<div class="section" id="increasetimeratio-command">
+<span id="synchronization-protocol-for-vts-clients-increasetimeratio-command"></span><h5><em>IncreaseTimeRatio</em> command<a class="headerlink" href="#increasetimeratio-command" title="Permalink to this headline">¶</a></h5>
+<p>The <em>IncreaseTimeRatio</em> command increases the time ratio in the Broker. The increase depends on the current time ratio. The predefined time ratio sequence is: 1x, 2x, 5x, 10x, 20x, 50x, 100x, etc.
+This is equivalent to pressing the corresponding button in the Broker’s GUI.</p>
+<p>This command has the following syntax:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD TIME IncreaseTimeRatio
+</pre></div>
+</div>
+</div>
+<div class="section" id="decreasetimeratio-command">
+<span id="synchronization-protocol-for-vts-clients-decreasetimeratio-command"></span><h5><em>DecreaseTimeRatio</em> command<a class="headerlink" href="#decreasetimeratio-command" title="Permalink to this headline">¶</a></h5>
+<p>The <em>DecreaseTimeRatio</em> command decreases the time ratio in the Broker. It is the opposite of the <em>IncreaseTimeRatio</em> command.
+This is equivalent to pressing the corresponding button in the Broker’s GUI.</p>
+<p>This command has the following syntax:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD TIME DecreaseTimeRatio
+</pre></div>
+</div>
+</div>
+<div class="section" id="settimeratio-command">
+<span id="synchronization-protocol-for-vts-clients-settimeratio-command"></span><h5><em>SetTimeRatio</em> command<a class="headerlink" href="#settimeratio-command" title="Permalink to this headline">¶</a></h5>
+<p>The <em>SetTimeRatio</em> command sets a custom time ratio in the Broker. It is redundant with the <em>[TimeRatio]</em> parameter of the <em>TIME</em> message, but does not require a visualization date to be provided.</p>
+<p>This command has the following syntax:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD TIME SetTimeRatio &lt;TimeRatio&gt;
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Required</th>
+<th class="head">Description</th>
+<th class="head">Format (unit)</th>
+<th class="head">See alos</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>TimeRatio</td>
+<td>Yes</td>
+<td>Time ratio</td>
+<td>Real number</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<p>For example, the following commands set a visualization time ratio 10x slower than wall-clock time:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD TIME SetTimeRatio <span class="m">0</span>.1
+</pre></div>
+</div>
+</div>
+<div class="section" id="reverttime-command">
+<span id="synchronization-protocol-for-vts-clients-reverttime-command"></span><h5><em>RevertTime</em> command<a class="headerlink" href="#reverttime-command" title="Permalink to this headline">¶</a></h5>
+<p>The <em>RevertTime</em> command reverses the time flow direction. This is equivalent to pressing the corresponding button in the Broker’s GUI.</p>
+<p>This command has the following syntax:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD TIME RevertTime
+</pre></div>
+</div>
+</div>
+<div class="section" id="timemodechangedto-command">
+<span id="synchronization-protocol-for-vts-clients-timemodechangedto-command"></span><h5><em>TimeModeChangedTo</em> command<a class="headerlink" href="#timemodechangedto-command" title="Permalink to this headline">¶</a></h5>
+<p>The <em>TimeModeChangedTo</em> command specifies de time mode currently in use. It can be useful for client to adapt their behavior according the mode.</p>
+<p>This command has the following syntax:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD TIME TimeModeChangedTo &lt;mode&gt;
+</pre></div>
+</div>
+<p>The mode can be “STANDALONE”, “REGULATED”, “SYSTIME” or “RECORDING”.</p>
+</div>
+</div>
+<div class="section" id="cmd-service-messages">
+<h4><em>CMD SERVICE</em> messages<a class="headerlink" href="#cmd-service-messages" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="autoclose-command">
+<span id="synchronization-protocol-for-vts-clients-autoclose-command"></span><h5><em>AUTOCLOSE</em> command<a class="headerlink" href="#autoclose-command" title="Permalink to this headline">¶</a></h5>
+<p>The <em>AUTOCLOSE</em> command instructs the Broker to close the visualization session. All client applications are disconnected, clients started by the Broker are terminated, and the Broker itself exits.</p>
+<p>This command has the following syntax:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD SERVICE AUTOCLOSE
+</pre></div>
+</div>
+</div>
+<div class="section" id="autorestart-command">
+<span id="synchronization-protocol-for-vts-clients-autorestart-command"></span><h5><em>AUTORESTART</em> command<a class="headerlink" href="#autorestart-command" title="Permalink to this headline">¶</a></h5>
+<p>The <em>AUTORESTART</em> command instructs the Broker to restart the visualization session. The Broker does the AUTOCLOSE process and then :</p>
+<ul class="simple">
+<li>Restarts itself with the same project file if the –externalRestart has not been set</li>
+<li>Closes with a special return code otherwise (i.e. it will be restart by the configuration utility)</li>
+</ul>
+<p>This command has the following syntax:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD SERVICE AUTOCLOSE
+</pre></div>
+</div>
+</div>
+<div class="section" id="request-replies">
+<span id="synchronization-protocol-for-vts-clients-request-replies"></span><h5>Request replies<a class="headerlink" href="#request-replies" title="Permalink to this headline">¶</a></h5>
+<p>These commands are sent in reply of requests from the Broker. Refer to the <a class="reference internal" href="#synchronization-protocol-for-vts-clients-requests"><span class="std std-ref">paragraph below</span></a> for more information on the various Broker requests.</p>
+</div>
+<div class="section" id="storecommand-command">
+<span id="synchronization-protocol-for-vts-clients-storecommand-command"></span><h5><em>StoreCommand</em> command<a class="headerlink" href="#storecommand-command" title="Permalink to this headline">¶</a></h5>
+<p>The <em>StoreCommand</em> command is sent in reply to a <a class="reference internal" href="#synchronization-protocol-for-vts-clients-savestate-request"><span class="std std-ref">SaveState request</span></a> or <a class="reference internal" href="#synchronization-protocol-for-vts-clients-savewindow-request"><span class="std std-ref">SaveWindow request</span></a> context save request. It instructs the Broker to store a view property command for the application into the current scenario state.</p>
+<p>This command has the following syntax:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD SERVICE StoreCommand &lt;ViewPropertyCommand&gt;
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Required</th>
+<th class="head">Description</th>
+<th class="head">Format (unit)</th>
+<th class="head">See also</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ViewPropertyCommand</td>
+<td>Yes</td>
+<td>Command for setting a view property of the application</td>
+<td>Character string</td>
+<td>CMD PROP commands, CMD STRUCT commands</td>
+</tr>
+</tbody>
+</table>
+<p>Commands stored through a <em>StoreCommand</em> command will be sent back to the client application when the scenario state they are stored in becomes active. For more information on the project scenario, refer to the <a class="reference internal" href="../General/Scenario_in_VTS.html#scenario-in-vts"><span class="std std-ref">Scenario in VTS</span></a> chapter.</p>
+</div>
+<div class="section" id="savestatefinished-command">
+<span id="synchronization-protocol-for-vts-clients-savestatefinished-command"></span><h5><em>SaveStateFinished</em> command<a class="headerlink" href="#savestatefinished-command" title="Permalink to this headline">¶</a></h5>
+<p>The <em>SaveStateFinished</em> command instructs the Broker that all <a class="reference internal" href="#synchronization-protocol-for-vts-clients-storecommand-command"><span class="std std-ref">StoreCommand command</span></a> (see above) in reply to a <a class="reference internal" href="#synchronization-protocol-for-vts-clients-savestate-request"><span class="std std-ref">SaveState request</span></a> or <a class="reference internal" href="#synchronization-protocol-for-vts-clients-savewindow-request"><span class="std std-ref">SaveWindow request</span></a> context save request have been sent by the client application.</p>
+<p>This command has the following syntax:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD SERVICE SaveStateFinished
+</pre></div>
+</div>
+</div>
+<div class="section" id="synchronized-command">
+<span id="synchronization-protocol-for-vts-clients-synchronized-command"></span><h5><em>Synchronized</em> command<a class="headerlink" href="#synchronized-command" title="Permalink to this headline">¶</a></h5>
+<p>The <em>Synchronized</em> command is sent by clients in reply to a <a class="reference internal" href="#synchronization-protocol-for-vts-clients-synchrorequested-request"><span class="std std-ref">SynchroRequested request</span></a>, to indicate that the client is synchronized and ready for screen capture.</p>
+<p>This command has the following syntax:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD SERVICE Synchronized
+</pre></div>
+</div>
+<p>The recording of high quality movies in VTS requires client applications to ensure that once a <em>Synchronized</em> command has been issued, the visualized scene in the sender will remain frozen until the next <em>TIME</em> or <em>CMD TIME PLAY</em> message received from the Broker. Refer to the <a class="reference internal" href="../VTS_applications_user_manuals/Broker_user_manual.html#broker-user-manual-recording-movies"><span class="std std-ref">Recording movies</span></a> section in the <a class="reference internal" href="../VTS_applications_user_manuals/Broker_user_manual.html#broker-user-manual"><span class="std std-ref">Broker user manual</span></a> chapter for more information on movies in VTS.</p>
+</div>
+<div class="section" id="capturearea-command">
+<span id="synchronization-protocol-for-vts-clients-capturearea-command"></span><h5><em>CaptureArea</em> command<a class="headerlink" href="#capturearea-command" title="Permalink to this headline">¶</a></h5>
+<p>The <em>CaptureArea</em> command instructs the Broker to take a screenshot of a desktop area.</p>
+<p>This command has the following syntax:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD SERVICE CaptureArea &lt;X&gt; &lt;Y&gt; &lt;Width&gt; &lt;Height&gt; &lt;ImagePath&gt;
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Required</th>
+<th class="head">Description</th>
+<th class="head">Format (unit)</th>
+<th class="head">See also</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>X</td>
+<td>Yes</td>
+<td>X coordinate of the area top left corner</td>
+<td>Integer</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>Y</td>
+<td>Yes</td>
+<td>Y coordinate of the area top left corner</td>
+<td>Integer</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Width</td>
+<td>Yes</td>
+<td>Width of the captured area</td>
+<td>Integer</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>Height</td>
+<td>Yes</td>
+<td>Height of the captured area</td>
+<td>Integer</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>ImagePath</td>
+<td>Yes</td>
+<td>Image path</td>
+<td>Character string</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="startapplication-command">
+<span id="synchronization-protocol-for-vts-clients-startapplication-command"></span><h5><em>StartApplication</em> command<a class="headerlink" href="#startapplication-command" title="Permalink to this headline">¶</a></h5>
+<p>The <em>StartApplication</em> command instructs the Broker to start a new instance of the specified client application.</p>
+<p>This command has the following syntax:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD SERVICE StartApplication &lt;ApplicationName&gt; <span class="o">[</span>ApplicationId<span class="o">]</span>
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Required</th>
+<th class="head">Description</th>
+<th class="head">Format (unit)</th>
+<th class="head">See also</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ApplicationName</td>
+<td>Yes</td>
+<td>Application name</td>
+<td>Character string</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>ApplicationId</td>
+<td>Optional (default: -1)</td>
+<td>Application ID</td>
+<td>Positive or null integer</td>
+<td>Application IDs in VTS</td>
+</tr>
+</tbody>
+</table>
+<p>The provided application name must match that of a client application available to VTS. If the provided application ID is already used amongst already connected clients, the clients is restarted if it is in a sleeping state. If the ID is known and the application is running, the application is not restarted.</p>
+</div>
+<div class="section" id="stopapplication-command">
+<span id="synchronization-protocol-for-vts-clients-stopapplication-command"></span><h5><em>StopApplication</em> command<a class="headerlink" href="#stopapplication-command" title="Permalink to this headline">¶</a></h5>
+<p>The <em>StopApplication</em> command instructs the Broker to stop a running client application.</p>
+<p>This command has the following syntax:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD SERVICE StopApplication &lt;ApplicationId&gt;
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Required</th>
+<th class="head">Description</th>
+<th class="head">Format (unit)</th>
+<th class="head">See also</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ApplicationId</td>
+<td>Yes (default: -1)</td>
+<td>Application ID</td>
+<td>Positive or null integer</td>
+<td>Application IDs in VTS</td>
+</tr>
+</tbody>
+</table>
+<p>The provided application ID must match that of a running client application. If the provided application ID is not used by any application or if the client application is already stopped, the command has no effect.</p>
+<p>Please note that external applications (not launched by the Broker) cannot be stopped using this command.</p>
+</div>
+</div>
+<div class="section" id="cmd-timeline-messages">
+<span id="synchronization-protocol-for-vts-clients-cmd-timeline-messages"></span><h4><em>CMD TIMELINE</em> messages<a class="headerlink" href="#cmd-timeline-messages" title="Permalink to this headline">¶</a></h4>
+<p><em>CMD TIMELINE</em> messages allow client applications to add, remove or reload CIC/CCSDS files to the timeline.</p>
+<div class="section" id="loadfile-command">
+<span id="synchronization-protocol-for-vts-clients-cmd-timeline-loadfile-command"></span><h5><em>LoadFile</em> command<a class="headerlink" href="#loadfile-command" title="Permalink to this headline">¶</a></h5>
+<p>The <em>LoadFile</em> command instructs the Broker to load a new CIC/CCSDS file, and display it in the timeline. If the specified file is already present in the timeline, this command has no effect.</p>
+<p>This command has the following syntax:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD TIMELINE LoadFile &lt;FilePath&gt;
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Required</th>
+<th class="head">Description</th>
+<th class="head">Format (unit)</th>
+<th class="head">See also</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>FilePath</td>
+<td>Yes</td>
+<td>Absolute or project-relative path to a CIC/CCSDS file in OEM, AEM or MEM format</td>
+<td>Character string</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="reloadfile-command">
+<span id="synchronization-protocol-for-vts-clients-cmd-timeline-reloadfile-command"></span><h5><em>ReloadFile</em> command<a class="headerlink" href="#reloadfile-command" title="Permalink to this headline">¶</a></h5>
+<p>The <em>ReloadFile</em> command instructs the Broker to reload an already loaded CIC/CCSDS file. If the specified file is not present in the timeline, this command has no effect.</p>
+<p>This command has the following syntax:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD TIMELINE ReloadFile &lt;FilePath&gt;
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Required</th>
+<th class="head">Description</th>
+<th class="head">Format (unit)</th>
+<th class="head">See also</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>FilePath</td>
+<td>Yes</td>
+<td>Absolute or project-relative path to a CIC/CCSDS file in OEM, AEM or MEM format</td>
+<td>Character string</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="unloadfile-command">
+<span id="synchronization-protocol-for-vts-clients-cmd-timeline-unloadfile-command"></span><h5><em>UnloadFile</em> command<a class="headerlink" href="#unloadfile-command" title="Permalink to this headline">¶</a></h5>
+<p>The <em>UnloadFile</em> command instructs the Broker to unload an already loaded CIC/CCSDS file from the timeline.</p>
+<p>This command has the following syntax:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD TIMELINE UnloadFile &lt;FilePath&gt;
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Required</th>
+<th class="head">Description</th>
+<th class="head">Format (unit)</th>
+<th class="head">See also</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>FilePath</td>
+<td>Yes</td>
+<td>Absolute or project-relative path to a CIC/CCSDS file in OEM, AEM or MEM format</td>
+<td>Character string</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<p>Note that the specified file must have been loaded previously via a <code class="docutils literal"><span class="pre">CMD</span> <span class="pre">TIMELINE</span> <span class="pre">LoadFile</span></code> command.
+Files added in the VTS configuration utility may not be removed via the <code class="docutils literal"><span class="pre">CMD</span> <span class="pre">TIMELINE</span> <span class="pre">UnloadFile</span></code> command: they can only be removed from the VTS configuration utility or the Broker itself.</p>
+</div>
+</div>
+<div class="section" id="cmd-event-messages">
+<h4><em>CMD EVENT</em> messages<a class="headerlink" href="#cmd-event-messages" title="Permalink to this headline">¶</a></h4>
+<p><em>CMD EVENT</em> messages allow client applications to add, remove or reload CIC/CCSDS mission event files attached to project entities. The Broker will process these commands and forward them to all clients (except the sender client).</p>
+<div class="section" id="synchronization-protocol-for-vts-clients-cmd-event-loadfile-command">
+<span id="id2"></span><h5><em>LoadFile</em> command<a class="headerlink" href="#synchronization-protocol-for-vts-clients-cmd-event-loadfile-command" title="Permalink to this headline">¶</a></h5>
+<p>The <em>LoadFile</em> command instructs the Broker to load a new CIC/CCSDS event file, and attach it to a project satellite.</p>
+<p>This command has the following syntax:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD EVENT LoadFile &lt;EventFilePath&gt; &lt;SatelliteFullName&gt;
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="7%" />
+<col width="52%" />
+<col width="13%" />
+<col width="15%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Required</th>
+<th class="head">Description</th>
+<th class="head">Format (unit)</th>
+<th class="head">See also</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>EventFilePath</td>
+<td>Yes</td>
+<td>Absolute or project-relative path to a CIC/CCSDS event file in MEM format</td>
+<td>Character string</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>SatelliteFullName</td>
+<td>Yes</td>
+<td>Full name of the satellite to attach the event file to</td>
+<td>Character string</td>
+<td>Object paths in VTS</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="synchronization-protocol-for-vts-clients-cmd-event-reloadfile-command">
+<span id="id3"></span><h5><em>ReloadFile</em> command<a class="headerlink" href="#synchronization-protocol-for-vts-clients-cmd-event-reloadfile-command" title="Permalink to this headline">¶</a></h5>
+<p>The <em>ReloadFile</em> command instructs the Broker to reload an already loaded CIC/CCSDS event file. If the specified file is not an already loaded event file, this command has no effect.</p>
+<p>This command has the following syntax:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD EVENT ReloadFile &lt;EventFilePath&gt;
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="8%" />
+<col width="59%" />
+<col width="14%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Required</th>
+<th class="head">Description</th>
+<th class="head">Format (unit)</th>
+<th class="head">See also</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>EventFilePath</td>
+<td>Yes</td>
+<td>Absolute or project-relative path to a CIC/CCSDS event file in MEM format</td>
+<td>Character string</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="synchronization-protocol-for-vts-clients-cmd-event-unloadfile-command">
+<span id="id4"></span><h5><em>UnloadFile</em> command<a class="headerlink" href="#synchronization-protocol-for-vts-clients-cmd-event-unloadfile-command" title="Permalink to this headline">¶</a></h5>
+<p>The <em>UnloadFile</em> command instructs the Broker to unload and detach an already loaded CIC/CCSDS event file from all project satellites. Events from this file are no longer attached to any satellite.</p>
+<p>This command has the following syntax:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD EVENT UnloadFile &lt;EventFilePath&gt;
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="8%" />
+<col width="59%" />
+<col width="14%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">Required</th>
+<th class="head">Description</th>
+<th class="head">Format (unit)</th>
+<th class="head">See also</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>EventFilePath</td>
+<td>Yes</td>
+<td>Absolute or project-relative path to a CIC/CCSDS event file in MEM format</td>
+<td>Character string</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<p>Note that the specified file must have been loaded previously via a <code class="docutils literal"><span class="pre">CMD</span> <span class="pre">EVENT</span> <span class="pre">LoadFile</span></code> command.
+Event files configured in the VTS configuration utility may not be removed via the <code class="docutils literal"><span class="pre">CMD</span> <span class="pre">EVENT</span> <span class="pre">UnloadFile</span></code> command: they can only be removed from the VTS configuration utility itself.</p>
+</div>
+</div>
+</div>
+<div class="section" id="fwd-messages">
+<span id="synchronization-protocol-for-vts-clients-fwd-messages"></span><h3><em>FWD</em> messages<a class="headerlink" href="#fwd-messages" title="Permalink to this headline">¶</a></h3>
+<p><em>FWD</em> messages provide inter-client communication, by forwarding messages from one client to another.</p>
+<p>These messages have the following syntax:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>FWD &lt;RecipientId&gt; &lt;Message&gt;
+</pre></div>
+</div>
+<p>table</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="8%" />
+<col width="30%" />
+<col width="32%" />
+<col width="20%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Required</th>
+<th class="head">Description</th>
+<th class="head">Format (unit)</th>
+<th class="head">See also</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>RecipientId</td>
+<td>Yes</td>
+<td>Application ID of the recipient</td>
+<td>ALL character string
+Positive or null integer</td>
+<td>Application IDs in VTS</td>
+</tr>
+<tr class="row-odd"><td>Message</td>
+<td>Yes</td>
+<td>Message to forward to the recipient</td>
+<td>Character string (may contain spaces)</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<p>The recipient ID must be an existing client application ID for the current visualization. If the ID is not registered in the Broker, the command is bufferised and will be send when an application connect with this exact ID.</p>
+<p>Client application IDs are displayed in the <span class="xref std std-ref">*Applications* tab</span> of the Broker.
+The <em>ALL</em> character string may be used instead of a numerical ID to broadcast the message to all clients (except the sender).</p>
+<p>The transferred message may contain spaces. It will be transferred as is to the recipient(s).</p>
+<p>Below are a few sample forward messages:</p>
+<ul class="simple">
+<li>Hide solar arrays in all 3D clients displaying them (the clients must implement the <em>Visible</em> structural property for the command to have any effect):</li>
+</ul>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>FWD ALL CMD STRUCT Visible <span class="s2">&quot;Sol/Earth/CubeSat/GS&quot;</span> <span class="nb">true</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Reset view position and zoom level in client ID 0 (for this command to have any effect, client ID 0 must be a SurfaceView client application):</li>
+</ul>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>FWD <span class="m">0</span> CMD PROP ViewInfos Default
+</pre></div>
+</div>
+</div>
+<div class="section" id="data-messages">
+<span id="synchronization-protocol-for-vts-clients-data-messages"></span><h3><em>DATA</em> messages<a class="headerlink" href="#data-messages" title="Permalink to this headline">¶</a></h3>
+<p><em>DATA</em> messages are described in the <a class="reference internal" href="#synchronization-protocol-for-vts-clients-real-time-vts"><span class="std std-ref">Real-time VTS</span></a> section below. They provide data for streamed values.</p>
+</div>
+</div>
+<div class="section" id="common-messages-received-by-client-applications">
+<span id="synchronization-protocol-for-vts-clients-common-messages-received-by-client-applications"></span><h2>Common messages received by client applications<a class="headerlink" href="#common-messages-received-by-client-applications" title="Permalink to this headline">¶</a></h2>
+<p>Some messages received by clients from the Broker are common across all client applications. This section describes those messages. Application-specific messages are described further below.</p>
+<p>Messages received by client applications are categorized as follows:</p>
+<ul class="simple">
+<li><em>TIME</em> messages concern time synchronization</li>
+<li><em>CMD</em> messages control various aspects of the visualization</li>
+<li><em>DATA</em> messages provide values for streamed data</li>
+</ul>
+<p>Some commands have similar syntax as commands received by the Broker described in the above section.</p>
+<div class="section" id="synchronization-protocol-for-vts-clients-cmd-event-time-messages">
+<span id="id5"></span><h3><em>TIME</em> messages<a class="headerlink" href="#synchronization-protocol-for-vts-clients-cmd-event-time-messages" title="Permalink to this headline">¶</a></h3>
+<p>Time messages synchronize client applications with the current visualization date. Client applications must handle these messages in order to properly synchronize with VTS.</p>
+<p>When no <em>REGULATING</em> client is connected, the Broker broadcasts the current visualization date to all clients at a rate of 2 Hertz.</p>
+<p>These messages have the following syntax:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>TIME &lt;TimeJD1950&gt; &lt;TimeRatio&gt;
+</pre></div>
+</div>
+<p>Parameters are the same as those described in the <a class="reference internal" href="#synchronization-protocol-for-vts-clients-time-messages"><span class="std std-ref">*TIME* messages</span></a> paragraph of the <a class="reference internal" href="#synchronization-protocol-for-vts-clients-messages-received-by-the-broker"><span class="std std-ref">Messages received by the Broker</span></a> section above, except that the time ratio is always provided.</p>
+<p>Client applications which interpolate date between time ticks sent by the Broker may use the date provided in <em>TIME</em> messages to synchronize their interpolation loop.</p>
+<p>Note that when the visualization is paused, the time ratio is set to 0.</p>
+</div>
+<div class="section" id="id6">
+<h3><em>CMD</em> messages<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>Command messages control various aspects of the visualization for clients. They are divided in several categories:</p>
+<ul class="simple">
+<li><em>CMD TIME</em> commands inform about alterations to the flow of time (but do not provide the visualization date or time ratio: refer to the <em>TIME</em> messages above for this)</li>
+<li><em>CMD SERVICE</em> commands control various aspects of the visualization unrelated to time</li>
+<li><em>CMD EVENT</em> commands deal with CIC/CCSDS mission event files for the visualization</li>
+<li><em>CMD CAMERA</em> commands define the camera position and target for client applications handling camera commands</li>
+<li><em>CMD PROP</em> commands set new values for specific view properties of client applications</li>
+<li><em>CMD STRUCT</em> commands set new values for structural view properties of client applications</li>
+</ul>
+<div class="section" id="id7">
+<h4><em>CMD TIME</em> messages<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id8">
+<h5><em>PAUSE</em> command<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h5>
+<p>The <em>PAUSE</em> command informs client applications that visualization is paused. Clients may then stop all animation of the visualization scene, while still letting the user interact with their GUI.</p>
+<p>This command has the following syntax:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD TIME PAUSE
+</pre></div>
+</div>
+<p>Visualization date is still sent by the Broker when the visualization is paused. However it remains constant, and the time ratio is set to 0.</p>
+</div>
+<div class="section" id="id9">
+<h5><em>PLAY</em> command<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h5>
+<p>The <em>PLAY</em> command informs client applications that visualization has resumed from pause.</p>
+<p>This command has the following syntax:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD TIME PLAY
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id10">
+<h4><em>CMD SERVICE</em> messages<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="initialization-commands">
+<span id="synchronization-protocol-for-vts-clients-initialization-commands"></span><h5>Initialization commands<a class="headerlink" href="#initialization-commands" title="Permalink to this headline">¶</a></h5>
+<p>Upon connection (after reception of the <em>INIT</em> messages), the Broker sends several initialization commands to inform client applications of the main objects for the visualization.</p>
+</div>
+<div class="section" id="initcentralbody-command">
+<span id="synchronization-protocol-for-vts-clients-initcentralbody-command"></span><h5><em>InitCentralBody</em> command<a class="headerlink" href="#initcentralbody-command" title="Permalink to this headline">¶</a></h5>
+<p>The <em>InitCentralBody</em> command informs client applications of a central body used in the visualization. This may be used by client applications to trigger specific initialization for this central body.
+One such command is sent for each central body of the visualization.</p>
+<p>This command has the following syntax:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD SERVICE InitCentralBody &lt;CentralBodyName&gt; &lt;FullParentPath&gt;
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Description</th>
+<th class="head">Format (unit)</th>
+<th class="head">See also</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>CentralBodyName</td>
+<td>Name of a central body</td>
+<td>Character string</td>
+<td>Object paths in VTS</td>
+</tr>
+<tr class="row-odd"><td>FullParentPath</td>
+<td>Full path to the body’s parent</td>
+<td>Character string</td>
+<td>Object paths in VTS</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="initsatellite-command">
+<span id="synchronization-protocol-for-vts-clients-initsatellite-command"></span><h5><em>InitSatellite</em> command<a class="headerlink" href="#initsatellite-command" title="Permalink to this headline">¶</a></h5>
+<p>The <em>InitSatellite</em> command informs client applications of a satellite taking part in the visualization. This may be used by client applications to trigger specific initialization for this satellite.
+One such command is sent for each satellite of the visualization.</p>
+<p>This command has the following syntax:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD SERVICE InitSatellite &lt;SatelliteName&gt; &lt;FullParentPath&gt;
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Description</th>
+<th class="head">Format (unit)</th>
+<th class="head">See also</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>SatelliteName</td>
+<td>Name of a satellite</td>
+<td>Character string</td>
+<td>Object paths in VTS</td>
+</tr>
+<tr class="row-odd"><td>FullParentPath</td>
+<td>Full path to the satellite’s parent (should be a central body)</td>
+<td>Character string</td>
+<td>Object paths in VTS</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="requests">
+<span id="synchronization-protocol-for-vts-clients-requests"></span><h5>Requests<a class="headerlink" href="#requests" title="Permalink to this headline">¶</a></h5>
+<p>Requests are special commands for which the Broker expects replies from client applications within a defined time frame. Refer to the <a class="reference internal" href="#synchronization-protocol-for-vts-clients-request-replies"><span class="std std-ref">Request replies</span></a> paragraph above for more information on request replies.</p>
+</div>
+<div class="section" id="savestate-request">
+<span id="synchronization-protocol-for-vts-clients-savestate-request"></span><h5><em>SaveState</em> request<a class="headerlink" href="#savestate-request" title="Permalink to this headline">¶</a></h5>
+<p>The <em>SaveState</em> request informs client applications that a scenario state context save is ongoing, and instructs them to send commands for the view properties declared in their INI files back to the Broker.</p>
+<p>This request has the following syntax:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD SERVICE SaveState
+</pre></div>
+</div>
+<p>Client applications should reply using <a class="reference internal" href="#synchronization-protocol-for-vts-clients-storecommand-command"><span class="std std-ref">*StoreCommand* commands</span></a> described above. Once all properties have been sent back, a <a class="reference internal" href="#synchronization-protocol-for-vts-clients-savestatefinished-command"><span class="std std-ref">*SaveStateFinished* command</span></a> should be issued to inform the Broker that the context save is complete.</p>
+<p><strong>Note:</strong> Once the <em>SaveState</em> request has been issued by the Broker, client applications are expected to send all <em>StoreCommand</em> commands and the <em>SaveStateFinished</em> command within ‘<em>3 seconds</em>’. Beyond this time frame, the context save will time out for clients which have not responded.</p>
+<p>Refer to the <a class="reference internal" href="../General/Scenario_in_VTS.html#scenario-in-vts-timeline-toolbar"><span class="std std-ref">Timeline toolbar</span></a> section of the <a class="reference internal" href="../General/Scenario_in_VTS.html#scenario-in-vts"><span class="std std-ref">Scenario in VTS</span></a> chapter for more information on scenario state context save actions.</p>
+<p>Note that this request does not concern the special <em>WindowGeometry</em> property. This property should only be sent in reply to a <a class="reference internal" href="#synchronization-protocol-for-vts-clients-savewindow-request"><span class="std std-ref">*SaveWindow* request</span></a> (see below).</p>
+</div>
+<div class="section" id="savewindow-request">
+<span id="synchronization-protocol-for-vts-clients-savewindow-request"></span><h5><em>SaveWindow</em> request<a class="headerlink" href="#savewindow-request" title="Permalink to this headline">¶</a></h5>
+<p>The <em>SaveWindow</em> request informs client applications that a window position and geometry context save is ongoing, and instructs them to send back to the Broker the corresponding <a class="reference internal" href="#synchronization-protocol-for-vts-clients-storecommand-command"><span class="std std-ref">*StoreCommand* command</span></a>.</p>
+<p>This request has the following syntax:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD SERVICE SaveWindow
+</pre></div>
+</div>
+<p>Client applications should reply with a single <em>StoreCommand</em> command for the specific <em>WindowGeometry</em> property command. The value for this property is application-specific, e.g. <em>CMD SERVICE StoreCommand CMD PROP WindowGeometry 0 480 640 480</em>.</p>
+<p><strong>Note:</strong> Once the <em>SaveWindow</em> request has been issued by the Broker, client applications are expected to send back a <em>StoreCommand</em> command for the <em>WindowGeometry</em> property within <strong>1 second</strong>. Beyond this time frame, the context save will time out for clients which have not responded.</p>
+<p>Refer to the <a class="reference internal" href="../General/Scenario_in_VTS.html#scenario-in-vts-timeline-toolbar"><span class="std std-ref">Timeline toolbar</span></a> section of the <a class="reference internal" href="../General/Scenario_in_VTS.html#scenario-in-vts"><span class="std std-ref">Scenario in VTS</span></a> chapter for more information on window position and geometry context save actions.</p>
+</div>
+<div class="section" id="synchrorequested-request">
+<span id="synchronization-protocol-for-vts-clients-synchrorequested-request"></span><h5><em>SynchroRequested</em> request<a class="headerlink" href="#synchrorequested-request" title="Permalink to this headline">¶</a></h5>
+<p>The <em>SynchroRequested</em> request instructs client applications that they should freeze the visualization at the last transmitted visualization date. This request is transmitted when a movie recording is ongoing in the Broker. Refer to the <a class="reference internal" href="../VTS_applications_user_manuals/Broker_user_manual.html#broker-user-manual-recording-movies"><span class="std std-ref">Recording movies</span></a> section in the <a class="reference internal" href="../VTS_applications_user_manuals/Broker_user_manual.html#broker-user-manual"><span class="std std-ref">Broker user manual</span></a> chapter for more information on movies in VTS.</p>
+<p>This request has the following syntax:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD SERVICE SynchroRequested
+</pre></div>
+</div>
+<p>Client applications should reply with the <a class="reference internal" href="#synchronization-protocol-for-vts-clients-synchronized-command"><span class="std std-ref">*Synchronized* command</span></a> once they are synchronized with the current visualization date. The Broker will capture a movie frame once all client applications have replied (or timed out).</p>
+<p><strong>Note:</strong> Once the <em>SynchroRequested</em> request has been issued by the Broker, client applications are expected to send back a <em>Synchronized</em> command within <strong>500 milliseconds</strong>. Beyond this time frame, the synchronization request will time out for clients which have not responded.</p>
+</div>
+<div class="section" id="other-commands">
+<span id="synchronization-protocol-for-vts-clients-other-commands"></span><h5>Other commands<a class="headerlink" href="#other-commands" title="Permalink to this headline">¶</a></h5>
+</div>
+<div class="section" id="activatewindow-command">
+<span id="synchronization-protocol-for-vts-clients-activatewindow-command"></span><h5><em>ActivateWindow</em> command<a class="headerlink" href="#activatewindow-command" title="Permalink to this headline">¶</a></h5>
+<p>The <em>ActivateWindow</em> command instructs an application to raise its window if it’s minimized and move to the front of other applications. This command should be implemented to enable one of the <a class="reference internal" href="../General/Manage_window_geometry.html#window-geometry-manager"><span class="std std-ref">Window Geometry Manager</span></a> feature.</p>
+<p>This command has the following syntax:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD SERVICE ActivateWindow
+</pre></div>
+</div>
+</div>
+<div class="section" id="takescreenshot-command">
+<span id="synchronization-protocol-for-vts-clients-takescreenshot-command"></span><h5><em>TakeScreenshot</em> command<a class="headerlink" href="#takescreenshot-command" title="Permalink to this headline">¶</a></h5>
+<p>The <em>TakeScreenshot</em> command instructs client applications to take a screenshot of the visualization scene. This may be used within scripts to save an image of the visualization at specific dates.</p>
+<p>This command has the following syntax:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD SERVICE TakeScreenshot &lt;Filename&gt;
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Description</th>
+<th class="head">Format (unit)</th>
+<th class="head">See also</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Filename</td>
+<td>Name of the image file to save the screenshot to</td>
+<td>Character string</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<p>The file path must be relative to the project folder.</p>
+</div>
+</div>
+<div class="section" id="id11">
+<h4><em>CMD EVENT</em> messages<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
+<p><em>CMD EVENT</em> messages instruct client applications to add, remove or reload CIC/CCSDS mission event files attached to project entities.</p>
+<div class="section" id="synchronization-protocol-for-vts-clients-cmd-event-loadfile-command2">
+<span id="id12"></span><h5><em>LoadFile</em> command<a class="headerlink" href="#synchronization-protocol-for-vts-clients-cmd-event-loadfile-command2" title="Permalink to this headline">¶</a></h5>
+<p>The <em>LoadFile</em> command instructs client applications to load a new CIC/CCSDS event file, and attach it to a project satellite.</p>
+<p>This command has the same syntax and parameters as the <a class="reference internal" href="#synchronization-protocol-for-vts-clients-cmd-event-loadfile-command2"><span class="std std-ref">*LoadFile* command</span></a> received by the Broker. Refer to it for details.</p>
+<p><em>LoadFile</em> commands may be sent upon connection of a new client, to instruct it to load mission event files which were loaded by other client applications before it joined the visualization.</p>
+</div>
+<div class="section" id="synchronization-protocol-for-vts-clients-cmd-event-reloadfile-command2">
+<span id="id13"></span><h5><em>ReloadFile</em> command<a class="headerlink" href="#synchronization-protocol-for-vts-clients-cmd-event-reloadfile-command2" title="Permalink to this headline">¶</a></h5>
+<p>The <em>ReloadFile</em> command instructs client applications to reload an already loaded CIC/CCSDS event file.</p>
+<p>This command has the same syntax and parameters as the <a class="reference internal" href="#synchronization-protocol-for-vts-clients-cmd-timeline-reloadfile-command"><span class="std std-ref">*ReloadFile* command</span></a> received by the Broker. Refer to it for details.</p>
+</div>
+<div class="section" id="synchronization-protocol-for-vts-clients-cmd-event-unloadfile-command2">
+<span id="id14"></span><h5><em>UnloadFile</em> command<a class="headerlink" href="#synchronization-protocol-for-vts-clients-cmd-event-unloadfile-command2" title="Permalink to this headline">¶</a></h5>
+<p>The <em>UnloadFile</em> command instructs client applications to unload and detach an already loaded CIC/CCSDS event file from all project satellites. Events from this file should no longer be attached to any satellite.</p>
+<p>This command has the same syntax and parameters as the <a class="reference internal" href="#synchronization-protocol-for-vts-clients-cmd-timeline-unloadfile-command"><span class="std std-ref">*UnloadFile* command</span></a> received by the Broker. Refer to it for details.</p>
+</div>
+</div>
+<div class="section" id="cmd-camera-commands">
+<span id="synchronization-protocol-for-vts-clients-cmd-camera-commands"></span><h4><em>CMD CAMERA</em> commands<a class="headerlink" href="#cmd-camera-commands" title="Permalink to this headline">¶</a></h4>
+<p><em>CMD CAMERA</em> messages instruct client applications to change the visualization camera. Only messages corresponding to cameras declared in the client application’s INI file may be received.</p>
+<p>These commands have the following syntax:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD CAMERA &lt;CameraName&gt; &lt;CameraParameters&gt;
+</pre></div>
+</div>
+<p>The list below describes available cameras:</p>
+<ul>
+<li><dl class="first docutils">
+<dt><strong>Synchronous</strong></dt>
+<dd><p class="first">Generic camera attached to a reference frame, pointing to the target object from the given frame axis.
+This is the camera used by VTS for INI camera types Body_Synchronous, Body_Inertial, Satellite_Inertial, Satellite_Sun, Satellite_SatFrame, Satellite_QswFrame, and Satellite_TnwFrame.</p>
+<dl class="last docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li><strong>objName</strong>: Celestia full name of the target object (e.g.: “Sol/Earth/CubeSat_ref/CubeSat”)</li>
+<li><strong>refObjectName</strong>: Celestia full name of the reference frame to attach to (e.g.: “Sol/Earth/CubeSat_ref/CubeSat_Eme2000Axes”, “Sol/Earth/CubeSat_ref/CubeSat_SunDir”)</li>
+<li><strong>direction</strong>: frame axis from which to point to the object (X, -X, Y, -Y, Z, -Z or XYZ)</li>
+<li><strong>distanceFactor</strong> (optional): distance factor along the direction (relative to the default distance)</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>Goto</strong></dt>
+<dd><p class="first">Go to the target object and attach to its reference frame.
+This is the camera used by VTS for INI camera types Body_Goto and Satellite_Goto.</p>
+<dl class="last docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li><strong>objName</strong>: name of the target object (e.g.: “Earth”)</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>Center</strong></dt>
+<dd><p class="first">Point towards the target object. The camera remains at its current location, attached to its current reference frame.
+This is the camera used by VTS for INI camera types Body_Center and Satellite_Center.</p>
+<dl class="last docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li><strong>objName</strong>: name of the target object (e.g.: “CubeSat”)</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>CameraOrbitSat</strong></dt>
+<dd><p class="first">Position the camera along the normal vector of the target object’s orbital plane, pointing along that vector, so that the full orbit path of the target object can be seen.
+This is the camera used by VTS for INI camera type Satellite_Orbit.</p>
+<dl class="last docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li><strong>objName</strong>: name of the target object (e.g.: “CubeSat”)</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>CameraSensorView</strong></dt>
+<dd><p class="first">Position the camera from the target sensor’s point of view, pointing along its aim direction. The field of view should be adjusted to match the sensor.
+This is the camera used by VTS for INI camera type Sensor_SensorView.</p>
+<dl class="last docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li><strong>sensorName</strong>: Celestia full name of the target sensor (e.g.: “Sol/Earth/CubeSat_ref/CubeSat/Sensor_sens_ref/Sensor”)</li>
+<li><strong>halfAngleOnX</strong> and <strong>halfAngleOnY</strong> (real number, in radians): aperture half-angles of the target sensor</li>
+<li><strong>up</strong> (optional, “X” or “Y”): UP vector for the camera</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>CameraAzimuthElevation</strong></dt>
+<dd><p class="first">This command is specific to a sensor defined with azimuth and elevation angles constaints alternatively to the CameraSensorView command. It sets the camera from the target sensor’s point of view, pointing along its aim direction.</p>
+<dl class="last docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li><strong>sensorName</strong>: Celestia full name of the target sensor (e.g.: “Sol/Earth/Station_ref/Station/Sensor_sens_ref”)</li>
+<li><strong>minAzimuth</strong>, <strong>maxAzimuth</strong>, <strong>minElevation</strong> and <strong>maxElevation</strong> (real number, in radians): aperture angles of the azimuth-elevation sensor</li>
+<li><strong>up</strong> (optional, “X” or “Y”): UP vector for the camera</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>WindowSensorView</strong></dt>
+<dd><p class="first">Same as CameraSensorView, except that the window is resized to fit exactly the sensor.</p>
+<dl class="last docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li><strong>sensorName</strong>: Celestia full name of the target sensor (e.g.: “Sol/Earth/CubeSat_ref/CubeSat/Sensor_sens_ref/Sensor”)</li>
+<li><strong>halfAngleOnX</strong> and <strong>halfAngleOnY</strong> (real number, in radians): aperture half-angles of the target sensor</li>
+<li><strong>width</strong> (integer number, in pixels): final width of the window. Height depends on sensor ratio.</li>
+<li><strong>up</strong> (optional, “X” or “Y”): UP vector for the camera.</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Refer to the <a class="reference internal" href="Description_of_application_properties.html#description-of-application-properties-available-cameras"><span class="std std-ref">Available cameras</span></a> section of the <a class="reference internal" href="Description_of_application_properties.html#description-of-application-properties"><span class="std std-ref">Description of application properties</span></a> chapter for more information on camera capability declarations for client applications.</p>
+</div>
+<div class="section" id="cmd-prop-commands">
+<h4><em>CMD PROP</em> commands<a class="headerlink" href="#cmd-prop-commands" title="Permalink to this headline">¶</a></h4>
+<p><em>CMD PROP</em> commands set new values for specific properties of a client application. These properties are declared in the <em>[SPECIFIC]</em> section of the application’s INI file.</p>
+<p>Refer to the <a class="reference internal" href="Description_of_application_properties.html#description-of-application-properties"><span class="std std-ref">Description of application properties</span></a> chapter for more information on application properties.
+These properties include for example the equatorial grid in Celestia or the zoom level and view position in SurfaceView.</p>
+<p>These commands have the following syntax:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD PROP &lt;PropertyName&gt; &lt;PropertyValue&gt;
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Description</th>
+<th class="head">Format (unit)</th>
+<th class="head">See also</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>PropertyName</td>
+<td>Property name</td>
+<td>Character string</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>PropertyValue</td>
+<td>Property value</td>
+<td>Property-specific (may be composed of several space-separated fields)</td>
+<td>Messages received by Celestia and Messages received by SurfaceView</td>
+</tr>
+</tbody>
+</table>
+<p><em>CMD PROP</em> commands are sent upon modification of specific properties in the view properties editor of the Broker, and when a scenario state becomes active and its view properties are restored.</p>
+<p>Below are some sample <em>CMD PROP</em> commands:</p>
+<ul class="simple">
+<li>Enable the equatorial grid in Celestia</li>
+</ul>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD PROP equatorialgrid <span class="nb">true</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Reset the view position and zoom level in SurfaceView</li>
+</ul>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD PROP ViewInfos Default
+</pre></div>
+</div>
+</div>
+<div class="section" id="cmd-struct-commands">
+<h4><em>CMD STRUCT</em> commands<a class="headerlink" href="#cmd-struct-commands" title="Permalink to this headline">¶</a></h4>
+<p><em>CMD STRUCT</em> commands set new values for structural properties of a client application. These properties are declared in the entity sections of the application’s INI file.</p>
+<p>Refer to the <a class="reference internal" href="Description_of_application_properties.html#description-of-application-properties"><span class="std std-ref">Description of application properties</span></a> chapter for more information on application properties.</p>
+<p>These commands have the following syntax:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD STRUCT &lt;PropertyName&gt; &lt;EntityFullName&gt; &lt;PropertyValue&gt;
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Description</th>
+<th class="head">Format (unit)</th>
+<th class="head">See also</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>PropertyName</td>
+<td>Property name</td>
+<td>Character string</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>EntityFullName</td>
+<td>Full name of a target entity for the property</td>
+<td>Character string</td>
+<td>Object paths in VTS</td>
+</tr>
+<tr class="row-even"><td>PropertyValue</td>
+<td>Property value</td>
+<td>Property-specific (may be composed of several space-separated fields)</td>
+<td>Messages received by Celestia and Messages received by SurfaceView</td>
+</tr>
+</tbody>
+</table>
+<p>Below are some sample <em>CMD STRUCT</em> commands:</p>
+<ul class="simple">
+<li>Set the scale factor for Earth in Celestia</li>
+</ul>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD STRUCT BodyScale <span class="s2">&quot;Sol/Earth&quot;</span> <span class="m">0</span>.8
+</pre></div>
+</div>
+<ul class="simple">
+<li>Disable the sensor footprint in SurfaceView</li>
+</ul>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD STRUCT AimContourVisible <span class="s2">&quot;Sol/Earth/CubeSat/Sensor&quot;</span> <span class="nb">false</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="messages-received-by-celestia">
+<span id="synchronization-protocol-for-vts-clients-messages-received-by-celestia"></span><h2>Messages received by Celestia<a class="headerlink" href="#messages-received-by-celestia" title="Permalink to this headline">¶</a></h2>
+<p>Apart from the common messages described above, Celestia handles the commands corresponding to properties declared in its INI configuration file.</p>
+<div class="section" id="id15">
+<h3><em>CMD PROP</em> commands<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="59%" />
+<col width="41%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">Antialiasing</span> <span class="pre">Samples</span></code></th>
+<th class="head"><strong>Name</strong>
+<code class="docutils literal"><span class="pre">AntialiasingSamples</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">INITIAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">1</span></code></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><strong>Parameters format</strong>
+<code class="docutils literal"><span class="pre">0/1/2/4/8</span></code></td>
+</tr>
+<tr class="row-even"><td colspan="2">Antialiasing setting for Celestia.</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="65%" />
+<col width="35%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong>
+<code class="docutils literal"><span class="pre">Sensor</span> <span class="pre">view</span> <span class="pre">camera</span> <span class="pre">offset</span></code></th>
+<th class="head"><strong>Name</strong>
+<code class="docutils literal"><span class="pre">SensorCameraOffset</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong>
+<code class="docutils literal"><span class="pre">INITIAL</span></code></td>
+<td><strong>Default value</strong>
+<code class="docutils literal"><span class="pre">1</span></code></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><strong>Parameters format</strong>
+<code class="docutils literal"><span class="pre">Positive</span> <span class="pre">real</span> <span class="pre">number</span> <span class="pre">(meters)</span></code></td>
+</tr>
+<tr class="row-even"><td colspan="2">Position offset of the sensor view camera.</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="60%" />
+<col width="40%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong>
+<code class="docutils literal"><span class="pre">Sensor</span> <span class="pre">geometry</span> <span class="pre">section</span> <span class="pre">count</span></code></th>
+<th class="head"><strong>Name</strong>
+<code class="docutils literal"><span class="pre">SensorGeometrySectionCount</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong>
+<code class="docutils literal"><span class="pre">INITIAL</span></code></td>
+<td><strong>Default value</strong>
+<code class="docutils literal"><span class="pre">128</span></code></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><strong>Parameters format</strong>
+<code class="docutils literal"><span class="pre">Positive</span> <span class="pre">real</span> <span class="pre">number</span></code></td>
+</tr>
+<tr class="row-even"><td colspan="2">Number of points making up the outline polygon</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="69%" />
+<col width="31%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong>
+<code class="docutils literal"><span class="pre">Sensor</span> <span class="pre">view</span> <span class="pre">camera</span> <span class="pre">offset</span></code></th>
+<th class="head"><strong>Name</strong>
+<code class="docutils literal"><span class="pre">SensorSwathResolution</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong>
+<code class="docutils literal"><span class="pre">INITIAL</span></code></td>
+<td><strong>Default value</strong>
+<code class="docutils literal"><span class="pre">1</span></code></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><strong>Parameters format</strong>
+<code class="docutils literal"><span class="pre">Positive</span> <span class="pre">real</span> <span class="pre">number(s)</span></code></td>
+</tr>
+<tr class="row-even"><td colspan="2">Interval between two instantaneous sensor aiming surfaces</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="71%" />
+<col width="29%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong>
+<code class="docutils literal"><span class="pre">Window</span> <span class="pre">geometry</span></code></th>
+<th class="head"><strong>Name</strong>
+<code class="docutils literal"><span class="pre">WindowGeometry</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong>
+<code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong>
+<code class="docutils literal"><span class="pre">0,0,640,480</span></code></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><strong>Parameters format</strong>
+<code class="docutils literal"><span class="pre">4</span> <span class="pre">integers</span> <span class="pre">(pixels)</span></code></td>
+</tr>
+<tr class="row-even"><td colspan="2">Window position and size (x, y, width, height)</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="68%" />
+<col width="32%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong>
+<code class="docutils literal"><span class="pre">Equatorial</span> <span class="pre">grid</span></code></th>
+<th class="head"><strong>Name</strong>
+<code class="docutils literal"><span class="pre">equatorialgrid</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong>
+<code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong>
+<code class="docutils literal"><span class="pre">false</span></code></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><strong>Parameters format</strong>
+<code class="docutils literal"><span class="pre">Boolean</span></code></td>
+</tr>
+<tr class="row-even"><td colspan="2">Display of the celestial equatorial grid</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="79%" />
+<col width="21%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong>
+<code class="docutils literal"><span class="pre">Camera</span> <span class="pre">parameters</span></code></th>
+<th class="head"><strong>Name</strong>
+<code class="docutils literal"><span class="pre">CameraDesc</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong>
+<code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong>
+<code class="docutils literal"><span class="pre">Default</span></code></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><strong>Parameters format</strong>
+<code class="docutils literal"><span class="pre">Character</span> <span class="pre">string</span></code></td>
+</tr>
+<tr class="row-even"><td colspan="2">Camera description (target, reference frame, position, field of view)</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="74%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong>
+<code class="docutils literal"><span class="pre">Selected</span> <span class="pre">object</span></code></th>
+<th class="head"><strong>Name</strong>
+<code class="docutils literal"><span class="pre">SelectObject</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong>
+<code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong>
+<code class="docutils literal"><span class="pre">&quot;Sol/Earth&quot;</span></code></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><strong>Parameters format</strong>
+<code class="docutils literal"><span class="pre">Character</span> <span class="pre">string</span></code></td>
+</tr>
+<tr class="row-even"><td colspan="2">Selected object in the 3D view (Celestia full name)</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="56%" />
+<col width="44%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong>
+<code class="docutils literal"><span class="pre">Satellite</span> <span class="pre">labels</span></code></th>
+<th class="head"><strong>Name</strong>
+<code class="docutils literal"><span class="pre">SatelliteLabelsVisible</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong>
+<code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong>
+<code class="docutils literal"><span class="pre">true</span></code></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><strong>Parameters format</strong>
+<code class="docutils literal"><span class="pre">Boolean</span> <span class="pre">(false</span> <span class="pre">or</span> <span class="pre">true)</span></code></td>
+</tr>
+<tr class="row-even"><td colspan="2">Visibility of all satellite labels</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="61%" />
+<col width="39%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong>
+<code class="docutils literal"><span class="pre">Solar</span> <span class="pre">system</span> <span class="pre">scale</span></code></th>
+<th class="head"><strong>Name</strong>
+<code class="docutils literal"><span class="pre">SolarSystemScale</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong>
+<code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong>
+<code class="docutils literal"><span class="pre">1</span></code></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><strong>Parameters format</strong>
+<code class="docutils literal"><span class="pre">Positive</span> <span class="pre">real</span> <span class="pre">number</span></code></td>
+</tr>
+<tr class="row-even"><td colspan="2">Scale factor for the solar system</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="60%" />
+<col width="40%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong>
+<code class="docutils literal"><span class="pre">Window</span> <span class="pre">menu</span></code></th>
+<th class="head"><strong>Name</strong>
+<code class="docutils literal"><span class="pre">WindowMenus</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong>
+<code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong>
+<code class="docutils literal"><span class="pre">false</span></code></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><strong>Parameters format</strong>
+<code class="docutils literal"><span class="pre">Boolean</span> <span class="pre">(false</span> <span class="pre">or</span> <span class="pre">true)</span></code></td>
+</tr>
+<tr class="row-even"><td colspan="2">Display of the menu bar</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="73%" />
+<col width="27%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong>
+<code class="docutils literal"><span class="pre">Window</span> <span class="pre">text</span></code></th>
+<th class="head"><strong>Name</strong>
+<code class="docutils literal"><span class="pre">WindowText</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong>
+<code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong>
+<code class="docutils literal"><span class="pre">true</span></code></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><strong>Parameters format</strong>
+<code class="docutils literal"><span class="pre">Boolean</span> <span class="pre">(false</span> <span class="pre">or</span> <span class="pre">true)</span></code></td>
+</tr>
+<tr class="row-even"><td colspan="2">Display of text information on the current object</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="65%" />
+<col width="35%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong>
+<code class="docutils literal"><span class="pre">Ambient</span> <span class="pre">Light</span></code></th>
+<th class="head"><strong>Name</strong>
+<code class="docutils literal"><span class="pre">AmbientLight</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong>
+<code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong>
+<code class="docutils literal"><span class="pre">0.3</span></code></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><strong>Parameters format</strong>
+<code class="docutils literal"><span class="pre">Real</span> <span class="pre">number</span> <span class="pre">within</span> <span class="pre">[0,1]</span></code></td>
+</tr>
+<tr class="row-even"><td colspan="2">Amount of articifial ambient light</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id16">
+<h3><em>CMD STRUCT</em> commands<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="central-body-properties">
+<span id="synchronization-protocol-for-vts-clients-celestia-central-body-properties"></span><h4>Central body properties<a class="headerlink" href="#central-body-properties" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">Body</span> <span class="pre">scale</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">BodyScale</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">1.</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Positive</span> <span class="pre">real</span> <span class="pre">number</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Scale factor for the central body</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">EME2000</span> <span class="pre">inertial</span> <span class="pre">frame</span> <span class="pre">axes</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">Eme2000AxesVisible</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">false</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Boolean</span> <span class="pre">(false</span> <span class="pre">or</span> <span class="pre">true)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Display of the EME2000 inertial reference frame</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">Body</span> <span class="pre">frame</span> <span class="pre">axes</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">FrameAxesVisible</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">false</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Boolean</span> <span class="pre">(false</span> <span class="pre">or</span> <span class="pre">true)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Display of the local body frame</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">Planetographic</span> <span class="pre">grid</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">PlanetographicGridVisible</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">false</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Boolean</span> <span class="pre">(false</span> <span class="pre">or</span> <span class="pre">true)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Display of the planetographic grid</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">All</span> <span class="pre">stations</span> <span class="pre">visibility</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">AllStationVisible</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">true</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Boolean</span> <span class="pre">(false</span> <span class="pre">or</span> <span class="pre">true)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Display of all the ground stations</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">All</span> <span class="pre">POI</span> <span class="pre">visibility</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">AllPoiVisible</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">true</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Boolean</span> <span class="pre">(false</span> <span class="pre">or</span> <span class="pre">true)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Display of all Points of Interest</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">All</span> <span class="pre">ROI</span> <span class="pre">visibility</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">AllRoiVisible</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">true</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Boolean</span> <span class="pre">(false</span> <span class="pre">or</span> <span class="pre">true)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Display of all Regions of Interest</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="satellite-and-subpart-properties">
+<span id="synchronization-protocol-for-vts-clients-satellite-and-subpart-properties"></span><h4>Satellite and subpart properties<a class="headerlink" href="#satellite-and-subpart-properties" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">Component</span> <span class="pre">visibility</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">Visible</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">true</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Boolean</span> <span class="pre">(false</span> <span class="pre">or</span> <span class="pre">true)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Visibility of the object</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="satellite-properties">
+<span id="synchronization-protocol-for-vts-clients-celestia-satellite-properties"></span><h4>Satellite properties<a class="headerlink" href="#satellite-properties" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">Satellite</span> <span class="pre">scale</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">SatelliteScale</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">1.</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Positive</span> <span class="pre">real</span> <span class="pre">number</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Scale factor for the whole satellite</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">Orbit</span> <span class="pre">path</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">TrackVisible</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">true</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Boolean</span> <span class="pre">(false</span> <span class="pre">or</span> <span class="pre">true)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Display of the satellite’s orbit path</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">Orbit</span> <span class="pre">time</span> <span class="pre">window</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">TrackWindow</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">2</span> <span class="pre">hours,</span> <span class="pre">2</span> <span class="pre">hours</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">2</span> <span class="pre">positive</span> <span class="pre">real</span> <span class="pre">numers</span> <span class="pre">(hours)</span> <span class="pre">Duration</span> <span class="pre">before</span> <span class="pre">event,</span> <span class="pre">duration</span> <span class="pre">after</span> <span class="pre">event,</span> <span class="pre">in</span> <span class="pre">hours</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Duration of the satellite’s orbit path before and after the satellite</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">EME2000</span> <span class="pre">inertial</span> <span class="pre">frame</span> <span class="pre">axes</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">Eme2000AxesVisible</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">false</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Boolean</span> <span class="pre">(false</span> <span class="pre">or</span> <span class="pre">true)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Display of the EME2000 inertial reference frame</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">QSW</span> <span class="pre">local</span> <span class="pre">frame</span> <span class="pre">axes</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">QswAxesVisible</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">false</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Boolean</span> <span class="pre">(false</span> <span class="pre">or</span> <span class="pre">true)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Display of the QSW local orbital frame</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">TNW</span> <span class="pre">local</span> <span class="pre">frame</span> <span class="pre">axes</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">TnwAxesVisible</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">false</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Boolean</span> <span class="pre">(false</span> <span class="pre">or</span> <span class="pre">true)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Display of the TNW local orbital frame</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">Satellite</span> <span class="pre">frame</span> <span class="pre">axes</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">FrameAxesVisible</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">true</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Boolean</span> <span class="pre">(false</span> <span class="pre">or</span> <span class="pre">true)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Display of the local satellite frame</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">Sun</span> <span class="pre">direction</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">SunDirectionVisible</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">false</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Boolean</span> <span class="pre">(false</span> <span class="pre">or</span> <span class="pre">true)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Display of the Sun direction vector</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">Body</span> <span class="pre">direction</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">BodyDirectionVisible</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">false</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Boolean</span> <span class="pre">(false</span> <span class="pre">or</span> <span class="pre">true)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Display of the satellite body direction vector</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">Velocity</span> <span class="pre">vector</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">VelocityVectorVisible</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">false</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Boolean</span> <span class="pre">(false</span> <span class="pre">or</span> <span class="pre">true)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Display of the satellite velocity vector</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="sensor-properties">
+<span id="synchronization-protocol-for-vts-clients-celestia-sensor-properties"></span><h4>Sensor properties<a class="headerlink" href="#sensor-properties" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">Sensor</span> <span class="pre">contour</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">AimContourVisible</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">true</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Boolean</span> <span class="pre">(false</span> <span class="pre">or</span> <span class="pre">true)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Display of the sensor base contour</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">Sensor</span> <span class="pre">volume</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">AimVolumeVisible</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">true</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Boolean</span> <span class="pre">(false</span> <span class="pre">or</span> <span class="pre">true)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Display of the sensor volume</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">Sensor</span> <span class="pre">axis</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">AimAxisVisible</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">false</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Boolean</span> <span class="pre">(false</span> <span class="pre">or</span> <span class="pre">true)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Display of the sensor aim axis</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">Sensor</span> <span class="pre">swath</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">AimTraceVisible</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">false</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Boolean</span> <span class="pre">(false</span> <span class="pre">or</span> <span class="pre">true)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Display of the sensor swath trace</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="poi-properties">
+<span id="synchronization-protocol-for-vts-clients-celestia-roi-properties"></span><h4>POI properties<a class="headerlink" href="#poi-properties" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">POI</span> <span class="pre">visibility</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">PoiVisible</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">true</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Boolean</span> <span class="pre">(false</span> <span class="pre">or</span> <span class="pre">true)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Display the point of interest</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">Text</span> <span class="pre">visibility</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">PoiTextVisible</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">true</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Boolean</span> <span class="pre">(false</span> <span class="pre">or</span> <span class="pre">true)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Display the point of interest’s text</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">POI</span> <span class="pre">icon</span> <span class="pre">color</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">PoiIconColor</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Color</span> <span class="pre">(i.e.</span> <span class="pre">#ffffff)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>Modify the point of interest’s color</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<p>The <em>POI icon color</em> command is only available via the VTS protocol :</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD STRUCT PoiIconColor &lt;POIFullName&gt; &lt;color&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="roi-properties">
+<h4>ROI properties<a class="headerlink" href="#roi-properties" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">ROI</span> <span class="pre">visibility</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">RoiVisible</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">true</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Boolean</span> <span class="pre">(false</span> <span class="pre">or</span> <span class="pre">true)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Display the region of interest</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">Text</span> <span class="pre">visibility</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">RoiTextVisible</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">true</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Boolean</span> <span class="pre">(false</span> <span class="pre">or</span> <span class="pre">true)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Display the region of interest’s text</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">ROI</span> <span class="pre">contour</span> <span class="pre">color</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">RoiContourColor</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Color</span> <span class="pre">(i.e.</span> <span class="pre">#ffffff)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>Modify the region of interest’s color</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<p>The <em>ROI contour color</em> command is only available via the VTS protocol :</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD STRUCT RoiContourColor &lt;ROIFullName&gt; &lt;color&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="scriptable-cmd-camera-commands">
+<span id="synchronization-protocol-for-vts-clients-scriptable-cmd-camera-commands"></span><h3>Scriptable <em>CMD CAMERA</em> commands<a class="headerlink" href="#scriptable-cmd-camera-commands" title="Permalink to this headline">¶</a></h3>
+<p>Scriptable <em>CMD CAMERA</em> commands are not used by the Broker, but they can be used inside VTS scripts (refer to the <a class="reference internal" href="../General/Scripts_and_macros_in_VTS.html#scripts-and-macros-in-vts"><span class="std std-ref">Scripts and macros in VTS</span></a> chapter for more information).</p>
+<p>These commands have the following syntax:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD CAMERA &lt;CameraName&gt; &lt;CameraParameters&gt;
+</pre></div>
+</div>
+<p>The table below describes available cameras:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="50%" />
+<col width="40%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Camera name</th>
+<th class="head">Parameters (unit)</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>CreateMultiView</td>
+<td>X Y: where X is the number of views horizontaly and Y the number of views verticaly</td>
+<td>Creates multi viewports, each viewport has a scriptable camera.</td>
+</tr>
+<tr class="row-odd"><td>SelectView</td>
+<td>X Y: coordinates of the viewport to control in MultiView mode</td>
+<td>Select a viewport, the next command will only affct this viewpot.</td>
+</tr>
+<tr class="row-even"><td>SetFov</td>
+<td>angle: Field Of View angle in randians</td>
+<td>Changes the current camera field of view</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="messages-received-by-surfaceview">
+<span id="synchronization-protocol-for-vts-clients-messages-received-by-surfaceview"></span><h2>Messages received by SurfaceView<a class="headerlink" href="#messages-received-by-surfaceview" title="Permalink to this headline">¶</a></h2>
+<p>Apart from the common messages described above, SurfaceView handles the following commands corresponding to properties declared in its INI configuration file.</p>
+<div class="section" id="cmd-prop-initial-commands">
+<span id="synchronization-protocol-for-vts-clients-cmd-prop-initial-commands"></span><h3><em>CMD PROP</em> initial commands<a class="headerlink" href="#cmd-prop-initial-commands" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">Scene</span> <span class="pre">reference</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">SceneReference</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">INITIAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">&quot;Default&quot;</span> <span class="pre">(First</span> <span class="pre">defined</span> <span class="pre">body</span> <span class="pre">in</span> <span class="pre">the</span> <span class="pre">project)</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Character</span> <span class="pre">string</span> <span class="pre">(internal</span> <span class="pre">format)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Body name as a scene reference defining which body’s surface will be visible in SurfaceView</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">Map</span> <span class="pre">Projection</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">MapProjection</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">INITIAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">Equirectangular</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Character</span> <span class="pre">string</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Projection name amongst the implemented projections</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">Target</span> <span class="pre">framerate</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">TargetFramerate</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">INITIAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">10</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Positive</span> <span class="pre">integer</span> <span class="pre">number</span> <span class="pre">(Hz)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Update frequency of the visualization. A high value will produce smoother animation but will consume more CPU time</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">Track</span> <span class="pre">sampling</span> <span class="pre">resolution</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">TrackSamplingResolution</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">INITIAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">100</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Positive</span> <span class="pre">integer</span> <span class="pre">number</span> <span class="pre">(seconds)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>A low value will increase track accuracy at the expense of application’s performance.</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">Sensor</span> <span class="pre">geometry</span> <span class="pre">section</span> <span class="pre">count</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">SensorGeometrySectionCount</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">INITIAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">128</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Positiveinteger</span> <span class="pre">number</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Number of points making up the outline polygon</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">Sensor</span> <span class="pre">coverage</span> <span class="pre">significant</span> <span class="pre">threshold</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">SensorCoverageSignificantThreshold</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">INITIAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">5.</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Positive</span> <span class="pre">real</span> <span class="pre">number</span> <span class="pre">(%)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Minimal percentage of new coverage</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">Sensor</span> <span class="pre">coverage</span> <span class="pre">merging</span> <span class="pre">threshold</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">SensorCoverageMergingThreshold</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">INITIAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">90.</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Positive</span> <span class="pre">real</span> <span class="pre">number</span> <span class="pre">(%)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Minimal percentage for merging polygons</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">Sensor</span> <span class="pre">coverage</span> <span class="pre">nadir</span> <span class="pre">optimization</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">SensorCoverageNadirOptimization</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">INITIAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">.</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Boolean</span> <span class="pre">(false</span> <span class="pre">or</span> <span class="pre">true)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Section Coverage swath of the SurfaceView user manual. Enable the sensor coverage nadir optimization</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="cmd-prop-specific-commands">
+<span id="synchronization-protocol-for-vts-clients-cmd-prop-specific-commands"></span><h3><em>CMD PROP</em> specific commands<a class="headerlink" href="#cmd-prop-specific-commands" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">Window</span> <span class="pre">geometry</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">WindowGeometry</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">0,0,640,480</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">4</span> <span class="pre">integers</span> <span class="pre">(pixels)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Window position and size (x, y, width, height)</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">View</span> <span class="pre">parameters</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">ViewInfos</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">&quot;Default&quot;</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Character</span> <span class="pre">string</span> <span class="pre">(internal</span> <span class="pre">format)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>View position and zoom level</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">Projection</span> <span class="pre">center</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">ProjectionCenter</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">0</span> <span class="pre">0</span></code> or <code class="docutils literal"><span class="pre">1</span> <span class="pre">0</span> <span class="pre">0</span> <span class="pre">0</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">2</span> <span class="pre">real</span> <span class="pre">numbers</span> <span class="pre">(latitude</span> <span class="pre">longitude)</span></code> or <code class="docutils literal"><span class="pre">4</span> <span class="pre">real</span> <span class="pre">numbers</span> <span class="pre">(quaternion</span> <span class="pre">for</span> <span class="pre">polar</span> <span class="pre">projection)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Center of the projection</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id17">
+<h3><em>CMD STRUCT</em> commands<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="sun-properties">
+<span id="synchronization-protocol-for-vts-clients-sun-properties"></span><h4>Sun properties<a class="headerlink" href="#sun-properties" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">Sub-solar</span> <span class="pre">point</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">SubEntityPointVisible</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">true</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Boolean</span> <span class="pre">(false</span> <span class="pre">or</span> <span class="pre">true)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Display of the sub-solar point</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">Terminator</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">VisibilityCircleVisible</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">true</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Boolean</span> <span class="pre">(false</span> <span class="pre">or</span> <span class="pre">true)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Display of the day-night terminator</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">Track</span> <span class="pre">visibility</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">TrackVisible</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">true</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Boolean</span> <span class="pre">(false</span> <span class="pre">or</span> <span class="pre">true)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Display of the Sun track</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">Track</span> <span class="pre">time</span> <span class="pre">window</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">TrackWindow</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">2</span> <span class="pre">hours,</span> <span class="pre">2</span> <span class="pre">hours</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">2</span> <span class="pre">positive</span> <span class="pre">real</span> <span class="pre">numers</span> <span class="pre">(hours)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Duration of the Sun track before and after the current position of the Sun icon</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="synchronization-protocol-for-vts-clients-surfaceview-central-body-properties">
+<span id="id18"></span><h4>Central body properties<a class="headerlink" href="#synchronization-protocol-for-vts-clients-surfaceview-central-body-properties" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">Sub-entity</span> <span class="pre">point</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">SubEntityPointVisible</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">true</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Boolean</span> <span class="pre">(false</span> <span class="pre">or</span> <span class="pre">true)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Display of the sub-entity point</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">Visibility</span> <span class="pre">circle</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">VisibilityCircleVisible</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">true</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Boolean</span> <span class="pre">(false</span> <span class="pre">or</span> <span class="pre">true)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Display of the visibility circle of this body on the scene reference (no effect on the scene reference)</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">Track</span> <span class="pre">visibility</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">TrackVisible</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">true</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Boolean</span> <span class="pre">(false</span> <span class="pre">or</span> <span class="pre">true)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Display of the track (no effect on the scene reference)</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">Track</span> <span class="pre">time</span> <span class="pre">window</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">TrackWindow</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">2</span> <span class="pre">hours,</span> <span class="pre">2</span> <span class="pre">hours</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">2</span> <span class="pre">positive</span> <span class="pre">real</span> <span class="pre">numers</span> <span class="pre">(hours)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Duration of the track before and after the current position of the sub-object icon</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">Planetographic</span> <span class="pre">grid</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">PlanetographicGridVisible</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">false</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Boolean</span> <span class="pre">(false</span> <span class="pre">or</span> <span class="pre">true)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Display of the planetographic grid</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">Terminator</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">TerminatorVisible</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">false</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Boolean</span> <span class="pre">(false</span> <span class="pre">or</span> <span class="pre">true)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Display the area where the body is visible on other bodies</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">All</span> <span class="pre">stations</span> <span class="pre">visibility</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">AllStationVisible</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">true</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Boolean</span> <span class="pre">(false</span> <span class="pre">or</span> <span class="pre">true)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Display of all Ground Stations</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">All</span> <span class="pre">sensor</span> <span class="pre">station</span> <span class="pre">contours</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">AllSensorStationContourVisible</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">true</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Boolean</span> <span class="pre">(false</span> <span class="pre">or</span> <span class="pre">true)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Display of all sensor station contours</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">All</span> <span class="pre">sensor</span> <span class="pre">station</span> <span class="pre">surfaces</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">AllSensorStationSurfaceVisible</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">true</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Boolean</span> <span class="pre">(false</span> <span class="pre">or</span> <span class="pre">true)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Display of all sensor station surfaces</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">All</span> <span class="pre">POI</span> <span class="pre">visibility</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">AllPoiVisible</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">true</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Boolean</span> <span class="pre">(false</span> <span class="pre">or</span> <span class="pre">true)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Display of all Points of Interest</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">All</span> <span class="pre">POI</span> <span class="pre">text</span> <span class="pre">visibility</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">AllPoiTextVisible</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">true</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Boolean</span> <span class="pre">(false</span> <span class="pre">or</span> <span class="pre">true)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Display of all POI text</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">All</span> <span class="pre">ROI</span> <span class="pre">visibility</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">AllRoiVisible</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">true</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Boolean</span> <span class="pre">(false</span> <span class="pre">or</span> <span class="pre">true)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Display of all Regionsof Interest</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">All</span> <span class="pre">ROI</span> <span class="pre">text</span> <span class="pre">visibility</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">AllRoiTextVisible</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">true</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Boolean</span> <span class="pre">(false</span> <span class="pre">or</span> <span class="pre">true)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Display of all ROI text</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">All</span> <span class="pre">ROI</span> <span class="pre">contour</span> <span class="pre">visibility</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">AllRoiContourVisible</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">true</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Boolean</span> <span class="pre">(false</span> <span class="pre">or</span> <span class="pre">true)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Display of all ROI contours</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">All</span> <span class="pre">ROI</span> <span class="pre">fill</span> <span class="pre">visibility</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">AllRoiFillVisible</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">true</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Boolean</span> <span class="pre">(false</span> <span class="pre">or</span> <span class="pre">true)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Display of all ROI filled surfaces</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="layer-properties">
+<span id="synchronization-protocol-for-vts-clients-layer-properties"></span><h4>Layer properties<a class="headerlink" href="#layer-properties" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">Layer</span> <span class="pre">visibility</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">LayerVisible</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">true</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Layer</span> <span class="pre">name</span> <span class="pre">(string)</span> <span class="pre">Visibility</span> <span class="pre">Boolean</span> <span class="pre">(false</span> <span class="pre">or</span> <span class="pre">true)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Display of a layer</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">Layer</span> <span class="pre">opacity</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">LayerOpacity</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">1.0</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Layer</span> <span class="pre">name</span> <span class="pre">(string)</span> <span class="pre">Opacity</span> <span class="pre">(EntityRange_t)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Opacity of a layer</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="synchronization-protocol-for-vts-clients-surfaceview-satellite-properties">
+<span id="id19"></span><h4>Satellite properties<a class="headerlink" href="#synchronization-protocol-for-vts-clients-surfaceview-satellite-properties" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">Track</span> <span class="pre">visibility</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">TrackVisible</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">true</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Boolean</span> <span class="pre">(false</span> <span class="pre">or</span> <span class="pre">true)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Display of the satellite’s orbit path</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">Track</span> <span class="pre">time</span> <span class="pre">window</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">TrackWindow</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">2</span> <span class="pre">hours,</span> <span class="pre">2</span> <span class="pre">hours</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">2</span> <span class="pre">positive</span> <span class="pre">real</span> <span class="pre">numers</span> <span class="pre">(hours)</span> <span class="pre">Duration</span> <span class="pre">before</span> <span class="pre">event,</span> <span class="pre">duration</span> <span class="pre">after</span> <span class="pre">event,</span> <span class="pre">in</span> <span class="pre">hours</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Duration of the satellite’s orbit path before and after the satellite</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">Visible</span> <span class="pre">events</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">VisibleEvents</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">&quot;*&quot;</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Character</span> <span class="pre">string</span> <span class="pre">list</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>List of visible event types</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="synchronization-protocol-for-vts-clients-surfaceview-sensor-properties">
+<span id="id20"></span><h4>Sensor properties<a class="headerlink" href="#synchronization-protocol-for-vts-clients-surfaceview-sensor-properties" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">Sensor</span> <span class="pre">footprint</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">AimContourVisible</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">true</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Boolean</span> <span class="pre">(false</span> <span class="pre">or</span> <span class="pre">true)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Display of the sensor footprint (intersection with the central body)</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">Sensor</span> <span class="pre">swath</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">AimTraceVisible</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">true</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Boolean</span> <span class="pre">(false</span> <span class="pre">or</span> <span class="pre">true)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Display of the sensor swath trace</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="synchronization-protocol-for-vts-clients-poi-properties">
+<span id="id21"></span><h4>POI properties<a class="headerlink" href="#synchronization-protocol-for-vts-clients-poi-properties" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">POI</span> <span class="pre">visibility</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">PoiVisible</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">true</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Boolean</span> <span class="pre">(false</span> <span class="pre">or</span> <span class="pre">true)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Display the point of interest</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">Text</span> <span class="pre">visibility</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">PoiTextVisible</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">true</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Boolean</span> <span class="pre">(false</span> <span class="pre">or</span> <span class="pre">true)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Display the label of the point of interest</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="synchronization-protocol-for-vts-clients-surfaceview-roi-properties">
+<span id="id22"></span><h4>ROI properties<a class="headerlink" href="#synchronization-protocol-for-vts-clients-surfaceview-roi-properties" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">ROI</span> <span class="pre">visibility</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">RoiVisible</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">true</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Boolean</span> <span class="pre">(false</span> <span class="pre">or</span> <span class="pre">true)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Display the region of interest</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">Text</span> <span class="pre">visibility</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">RoiTextVisible</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">true</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Boolean</span> <span class="pre">(false</span> <span class="pre">or</span> <span class="pre">true)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Display the label of the region of interest</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">Contour</span> <span class="pre">visibility</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">RoiContourVisible</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">true</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Boolean</span> <span class="pre">(false</span> <span class="pre">or</span> <span class="pre">true)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Display the ROI contour</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Label</strong> <code class="docutils literal"><span class="pre">Fill</span> <span class="pre">visibility</span></code></th>
+<th class="head"><strong>Name</strong> <code class="docutils literal"><span class="pre">RoiFillVisible</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Propagation mode</strong> <code class="docutils literal"><span class="pre">MANUAL</span></code></td>
+<td><strong>Default value</strong> <code class="docutils literal"><span class="pre">true</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Parameters format</strong> <code class="docutils literal"><span class="pre">Boolean</span> <span class="pre">(false</span> <span class="pre">or</span> <span class="pre">true)</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Display the ROI fill</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="id23">
+<h3><em>CMD SERVICE</em> messages<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="createroi-command">
+<span id="synchronization-protocol-for-vts-clients-createroi-command"></span><h4><em>CreateROI</em> command<a class="headerlink" href="#createroi-command" title="Permalink to this headline">¶</a></h4>
+<p>The <em>CreateROI</em> command instructs SurfaceView to instantiate a new Region in the specified body, and correpsonding to the specified coordinates.</p>
+<p>This command has the following syntax:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>CMD SERVICE CreateROI &lt;ROIName&gt; &lt;BodyName&gt; &lt;Coordinates&gt;
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="7%" />
+<col width="70%" />
+<col width="13%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Required</th>
+<th class="head">Description</th>
+<th class="head">Format (unit)</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ROIName</td>
+<td>Yes</td>
+<td>Name given to the new ROI.</td>
+<td>Character string</td>
+</tr>
+<tr class="row-odd"><td>BodyName</td>
+<td>Yes</td>
+<td>Full name of the receiving body. (ex: “Sol/Earth”)</td>
+<td>Character string</td>
+</tr>
+<tr class="row-even"><td>Coordinates</td>
+<td>Yes</td>
+<td>Space-separated list of comma-separated Lat/Long coordinnates. (ex: “15,2 -1,-15 -15,1 -1,15”)</td>
+<td>Character string</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="real-time-vts">
+<span id="synchronization-protocol-for-vts-clients-real-time-vts"></span><h2>Real-time VTS<a class="headerlink" href="#real-time-vts" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="time-synchronization-with-an-external-time-source">
+<span id="synchronization-protocol-for-vts-clients-time-synchronization-with-an-external-time-source"></span><h3>Time synchronization with an external time source<a class="headerlink" href="#time-synchronization-with-an-external-time-source" title="Permalink to this headline">¶</a></h3>
+<p>By default, the VTS Broker regulates the flow of visualization time for all client applications. This is the <strong>playback</strong> visualization mode: visualization data is read from CIC/CCSDS data files and time flow can be fully controlled (play/pause, time ratio, flow direction, etc.).</p>
+<p>The <strong>real-time</strong> visualization mode allows VTS to synchronize with an external time source.
+Upon connection to the Broker, a client wishing to control the visualization time may declare itself as <em>REGULATING</em> (as described in the <a class="reference internal" href="#synchronization-protocol-for-vts-clients-init-message-connection-to-the-broker"><span class="std std-ref">*INIT* message: connection to the Broker</span></a> section above). The Broker then switches to real-time mode:</p>
+<ul class="simple">
+<li>time control buttons and commands are disabled</li>
+<li>visualization date is received from the regulating client</li>
+</ul>
+<p>Note that several regulating clients may not connect to the Broker simultaneously.</p>
+<p>The regulating client must send <em>TIME</em> messages to the Broker to set the visualization date, as described in the <span class="xref std std-ref">*TIME* messages</span> section above, e.g.:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>TIME <span class="m">22105</span>.5468754
+</pre></div>
+</div>
+<p>To ensure good quality of synchronization for the visualization date, a <em>TIME</em> message should be sent every second of wall-clock time. Increasing the rate will not necessarily increase the quality of synchronization, due to communication delays and congestion which are better smoothed out by interpolation at a synchronization rate of 1Hz. Decreasing the rate is discouraged as it may lead to misleadingly inaccurate interpolation in client applications.</p>
+<p>The VTS Broker estimates the current visualization date based on the <em>TIME</em> messages received from the regulating client, and relays the visualization date to all constrained clients, similarly to what happend in <em>playback</em> mode.</p>
+<p>To ensure correct interpolation of streamed data, the Broker may introduce a delay between the moment it receives the current visualization date from the regulating client and the moment it relays it to constrained clients. This delay is based on the refresh rate of <em>Stream</em> data: it is computed as twice the maximum refresh rate of all <em>INTERPOL</em> mode streamed data. For example, if all streamed data values from a simulator are broadcasted every second, the Broker will introduce a 2-seconds delay in visualization time. However, if all streamed data are in <em>DIRECT</em> mode, no delay is introduced.</p>
+<p>Lastly, it should be noted that it is important for the visualization date sent by the regulating client to be recent, i.e. it must be a good representation of the regulating client’s clock. The Broker uses the system time at packet reception to relate system time to regulating client time.</p>
+</div>
+<div class="section" id="supplying-real-time-data">
+<span id="synchronization-protocol-for-vts-clients-supplying-real-time-data"></span><h3>Supplying real-time data<a class="headerlink" href="#supplying-real-time-data" title="Permalink to this headline">¶</a></h3>
+<p>Besides visualization date, data values may also be supplied by a client application. This is the purpose of <em>DATA</em> messages:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>DATA &lt;ProviderID&gt; &lt;JD1950 date&gt; &lt;data ID&gt; <span class="s2">&quot;&lt;data value&gt;&quot;</span>
+</pre></div>
+</div>
+<p>For example:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>DATA <span class="m">123</span> <span class="m">20447</span>.000174 pos <span class="s2">&quot;-6538.3475061863419 2703.5361504162843 197.30707005759857&quot;</span>
+DATA <span class="m">123</span> <span class="m">20447</span>.000174 quat <span class="s2">&quot;0.22339793344197931 0.65359251975872334 0.53489502701655522 0.48661842497202529&quot;</span>
+DATA <span class="m">123</span> <span class="m">20447</span>.000174 angle <span class="s2">&quot;0.175&quot;</span>
+</pre></div>
+</div>
+<p>The sections below describe the parameters to a <em>DATA</em> message.</p>
+<p>Note that previous versions of VTS required <em>DATA</em> messages to provide a protocol version number. Since this version number is now specified in the <em>INIT</em> message, they should no longer be provided with <em>DATA</em> messages. In order to retain compatibility with previously written clients, the Broker still handles a version number in <em>DATA</em> messages.</p>
+<div class="section" id="data-provider-id">
+<span id="synchronization-protocol-for-vts-clients-data-value-date"></span><h4>Data Provider ID<a class="headerlink" href="#data-provider-id" title="Permalink to this headline">¶</a></h4>
+<p>The Provider ID field corresponds to the ID of the client application that provides the data.</p>
+<p>This field can be used by data consumers in order to distinguish data sources, as two different providers might provide the same parameters.</p>
+</div>
+<div class="section" id="data-value-date">
+<h4>Data value date<a class="headerlink" href="#data-value-date" title="Permalink to this headline">¶</a></h4>
+<p>The <em>&lt;JD1950 date&gt;</em> field provides the recording date of the data value. In most cases, this date is the same as the sending date of the message.</p>
+<p>Due to the visualization date delay introduced by the Broker, clients receive data messages slightly in advance. This allows them to store the values and interpolate data for the current visualization date (as opposed to extrapolation were no future data values available).</p>
+</div>
+<div class="section" id="data-identifier">
+<span id="synchronization-protocol-for-vts-clients-data-identifier"></span><h4>Data identifier<a class="headerlink" href="#data-identifier" title="Permalink to this headline">¶</a></h4>
+<p>The <em>&lt;data ID&gt;</em> field provides the unique identifier of the data. This ID is matched with the <em>Stream ID</em> set for streamed data in the VTS configuration utility. Refer to the <a class="reference internal" href="../General/Data_sources_in_VTS.html#data-sources-in-vts"><span class="std std-ref">Data sources in VTS</span></a> chapter for further information on streamed data configuration.</p>
+</div>
+<div class="section" id="data-value">
+<span id="synchronization-protocol-for-vts-clients-data-value"></span><h4>Data value<a class="headerlink" href="#data-value" title="Permalink to this headline">¶</a></h4>
+<p>The <em>&lt;data value&gt;</em> field provides the value for the data at the given date. The value must be quoted, no matter its dimension (scalar value, vector, etc.). The unit for the value depends on the data type, e.g.:</p>
+<ul class="simple">
+<li>Position of a satellite: kilometers</li>
+<li>Position of a satellite subpart: meters</li>
+<li>Quaternion: no unit</li>
+<li>Angle: degrees</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="sample-session">
+<span id="synchronization-protocol-for-vts-clients-sample-session"></span><h2>Sample session<a class="headerlink" href="#sample-session" title="Permalink to this headline">¶</a></h2>
+<p>This example shows the messages sent by a regulating client defining a square equatorial orbit (don’t try this at home!), at 100x wall-clock time:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="72%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Sending date</th>
+<th class="head">Message</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>T0</td>
+<td>INIT example REGULATING</td>
+</tr>
+<tr class="row-odd"><td>T0</td>
+<td>TIME 23000.000000</td>
+</tr>
+<tr class="row-even"><td>T0</td>
+<td>DATA 23000.000000 pos “10000 0 0”</td>
+</tr>
+<tr class="row-odd"><td>T0+1s</td>
+<td>TIME 23000.001157</td>
+</tr>
+<tr class="row-even"><td>T0+1s</td>
+<td>DATA 23000.001157 pos “0 10000 0”</td>
+</tr>
+<tr class="row-odd"><td>T0+2s</td>
+<td>TIME 23000.002315</td>
+</tr>
+<tr class="row-even"><td>T0+2s</td>
+<td>DATA 23000.002315 pos “-10000 0 0”</td>
+</tr>
+<tr class="row-odd"><td>T0+3s</td>
+<td>TIME 23000.003472</td>
+</tr>
+<tr class="row-even"><td>T0+3s</td>
+<td>DATA 23000.003472 pos “0 -10000 0”</td>
+</tr>
+<tr class="row-odd"><td>T0+4s</td>
+<td>TIME 23000.004630</td>
+</tr>
+<tr class="row-even"><td>T0+4s</td>
+<td>DATA 23000.004630 pos “10000 0 0”</td>
+</tr>
+<tr class="row-odd"><td>T0+5s</td>
+<td>TIME 23000.005787</td>
+</tr>
+<tr class="row-even"><td>T0+5s</td>
+<td>DATA 23000.005787 pos “0 10000 0”</td>
+</tr>
+<tr class="row-odd"><td>T0+6s</td>
+<td>Etc.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Description_of_application_properties.html" class="btn btn-neutral float-right" title="Description of application properties" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Application_IDs_in_VTS.html" class="btn btn-neutral" title="Application IDs in VTS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright VTS Team.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'3.6.0-9030',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

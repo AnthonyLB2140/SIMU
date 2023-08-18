@@ -1,0 +1,75 @@
+.. _SkyView_user_manual:
+
+SkyView user manual
+==================================================================================
+
+The SkyView client application displays a rectangular start chart centered on a specific satellite.
+
+
+.. _SkyView_user_manual#Introduction:
+
+Introduction 
+----------------------------------------------------------------------------------
+
+SkyView displays a 2D star chart based on the equirectangular projection of the celestial sphere and centered on a specific satellite. Project entities (such as satellites and celestial bodies) are projected into the celestial sphere according to their position relatie to the satellite.
+
+.. figure:: /_images/SkyView.png
+   :align: center
+   
+   SkyView client application
+
+
+
+.. _SkyView_user_manual#Configuration_in_VTS:
+
+Configuration in VTS 
+----------------------------------------------------------------------------------
+
+The entities and properties defined in the VTS configuration utility will be displayed in SkyView.
+
+
+.. _SkyView_user_manual#Application_parameters_in_VTS:
+
+Application parameters in VTS 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When adding SkyView as a VTS client application, some parameters can be set by clicking on the SkyView entry in the VTS project tree.
+
+Since SkyView shares some parameters with SurfaceView, only SkyView specific parameters will be described here. Please refer to :ref:`SurfaceView user manual <SurfaceView_user_manual#Application_parameters_in_VTS>` for more detail on the application parameters in common.
+:
+
+.. figure:: /_images/SkyViewApplicationParameters.png
+   :align: center
+   
+   SkyView application parameters.
+
+.. list-table::
+   :header-rows: 1
+   
+   * - Parameter
+     - Description
+   * - Scene Reference
+     - This combo box allows you to select a satellite from the list of satellites defined in the VTS project tree. The selected satellite will become the scene reference in the SkyView instance. By default, the first satellite from the VTS project tree is selected as a scene reference.
+   * - Min visible star count
+     - Minimum number of stars displayed at any time or zoom level.
+   * - Loaded star count from catalog
+     - Number of stars to load from the specified star catalog.
+
+
+.. _SkyView_user_manual#Satellite_frame_axes:
+
+Satellite frame axes 
+----------------------------------------------------------------------------------
+The intersection of a satellite frame axes with the visualization plan can be enabled through the satellites proprerties.
+The following frame axes can be represented:
+
+- EME2000 inertial frame axes,
+- QSW frame axes,
+- Satellite frame axes.
+
+Axes are represented by crosses (red, green and blue) followed by the axe name: ``<SatelliteName>_<AxisName>``.
+
+
+- EME2000: Xeme2000 (red), Yeme2000 (green), Zeme2000 (blue),
+- QSW: Q (red), S (green), W (blue),
+- Satellite: Xsat (red), Ysat (green), Zsat (blue).

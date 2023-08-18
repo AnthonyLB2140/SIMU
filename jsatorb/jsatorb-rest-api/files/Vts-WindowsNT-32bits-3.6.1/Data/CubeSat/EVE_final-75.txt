@@ -1,0 +1,12 @@
+#<AM-acces:COL-V2.0>
+<INIT:
+Logiciel="JPSIMU"
+VERSION="V11.6.2"
+<COL:
+  1 : EVENT ~ (Event code)
+>
+>
+ Event #1: Propagation start event
+ Impulsive maneuver Maneuver1 start: Relative date (0j00h15m00s)
+ Impulsive maneuver Maneuver1 end: Relative date (0j00h15m00s)
+ Event #2: Propagation end event on geodetic altitude (75.0km)

@@ -1,0 +1,166 @@
+.. _Celestia_user_manual:
+
+Celestia user manual
+==================================================================================
+
+The main 3D client application in VTS is Celestia. Celestia is open-source software, developed, amongst others, by Chris Laurel.
+
+VTS relies on the latest source version of Celestia (http://www.shatters.net/celestia). It is interfaced with VTS through LUA scripts.
+
+
+.. _Celestia_user_manual#Integration_with_VTS:
+
+Integration with VTS
+----------------------------------------------------------------------------------
+Celestia is fully integrated with VTS. All of Celestia's features related to the visualization of satellites within the perimeter of VTS are available directly from the Broker.  These features are described in detail in the :ref:`Messages received by Celestia <Synchronization_protocol_for_VTS_clients#Messages_received_by_Celestia>` section of the :ref:`Synchronization protocol for VTS clients <Synchronization_protocol_for_VTS_clients>` chapter, and in the :ref:`*3D Cameras* tab <Broker_user_manual#3D_Cameras_tab>` section of the :ref:`Broker user manual <Broker_user_manual>` chapter.
+
+
+.. _Celestia_user_manual#Navigating_in_Celestia:
+
+Navigating in Celestia
+----------------------------------------------------------------------------------
+The main navigation controls in Celestia are:
+
+- Left click + mouse move: camera pointing
+- Right click + mouse move: rotation around the selected object
+- Mouse wheel: zoom in/out on the selected object
+- Shift + left click + mouse move: change field of view
+- Left/right arrow keys: camera roll
+
+All controls are described in Celestia's *Help* menu (the menu bar must be enabled in the Broker).
+
+If Celestia is used inside a virtual machine (VirtualBox, VMware, etc.), one should disable mouse integration in order to have correct mouse move handling.
+
+
+.. _Celestia_user_manual#Specific_application_parameters_in_VTS:
+
+Specific application parameters in VTS
+----------------------------------------------------------------------------------
+
+When adding Celestia as a VTS client application, some parameters can be set by clicking on the Celestia entry in the VTS project tree:
+
+.. figure:: /_images/CelestiaApplicationParameters.png
+   :align: center
+
+   Celestia application parameters
+
+- **Sensor view camera offset**: The sensor camera view, accessible through 3D Camera tab in the Broker, sets the camera position at the sensor position plus an offset in meters to avoid some artifacts or obstructions of sight. This offset moves the camera along the Z axis.
+- **Sensor geometry section count**: Number of points making up the outline polygon of the aiming sensor surface. Performance and display accuracy depend on this parameter.
+
+One the one hand, performance may be affected by a too high setting and a long residual trace. On the other hand, accuracy is better with a high setting when the satellite attitude has a large angle with the nadir.
+
+If you want to focus on sensor swath accuracy: increase the SensorGeometrySectionCount parameter and favor a short residual trace.
+If you want to view long missions coverage: lower the SensorGeometrySectionCount parameter with a long residual trace.
+
+- **Sensor swath resolution**: Change the interval (in seconds) between two instantaneous sensor aiming surfaces.
+
+Use a small value for an agile satellite, but affects the performance.
+Use a high value for a long coverage mission with good performance.
+
+.. figure:: /_images/DefaultSensorSwathResolution.png
+   :align: center
+
+   The default setting creates a lot of overlapping traces
+
+
+.. figure:: /_images/MatchingSensorSwathResolution.png
+   :align: center
+
+   A matching value between sensor width and satellite speed gives a better appearance
+
+- **Antialiasing samples**: Set the level of multisample antialiasing.  Not all 3D graphics hardware support antialiasing, through most newer graphics chipsets do. Larger values will result in smoother edges with a cost in rendering speed. 4 is a sensible setting for recent, higher-end graphics hardware; 2 is probably better for mid-range graphics hardware. 0 or 1 values disables antialiasing.
+
+- **Force legacy 3DS reader**: When activated, the Celestia legacy 3D model reader is used. If a 3DS file can't be read, try another reader by disabling this option.
+
+.. _Celestia_user_manual#Specific_poperties_in_VTS:
+
+Specific properties  in VTS
+---------------------------------------------------------------------------------
+
+Each entity defined in the VTS project can have specific properties in the Celestia application.
+They are available in the Scenario Editor panel for the Celestia application : 
+
+.. figure:: /_images/CelestiaProperties.png
+   :align: center
+
+   Configuration of entity properties for Celestia
+
+
+Umbra and Penumbra cone
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. figure:: /_images/CelestiaUmbraPenumbra.png
+   :align: center
+
+   Earth's umbra and penumbra during a lunar eclipse
+
+
+
+Available only for body entities, their umbra and penumbra cone can be displayed in celestia.
+For each cone, can be configured:
+
+- **{Umbra|Penumbra} cone visibility**:
+                 Either the cone is displayed or not (hidden by default)
+
+- **{Umbra|Penumbra} cone color**: 
+            The cone color
+
+- **{Umbra|Penumbra} cone extent**: 
+             The cone extent (in km)from the center of the body (400000 km by default).
+             The cone will be contained in the sphere center on the body center and of radius equal to the extent. 
+
+.. figure:: /_images/CelestiaUmbraPenumbraProperties.png
+   :align: center
+
+   Configuration of the umbra and penumbra cone for the Earth entity
+
+
+.. note::
+   The solar or lunar eclipse are not perfectlty matching with the informations given by the IMCCE whether CNES or Celestia ephemeris are used.
+   E.g. for the total the lunar eclipse on the 26/05/2021:
+
+   - IMCCE forecast are available at : https://promenade.imcce.fr/fr/images/ecl/LE2021May26T.pdf
+
+   - The U1 event happens about 2 min 43 s later with CNES ephemeris
+   
+   - The U1 event happens about 1 min 45 s later with Celestia ephemerds
+
+Clusters
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In Celestia, the population of a cluster is represented by an icon.
+
+.. figure:: /_images/CelestiaCluster.png
+   :align: center
+
+   A cluster in celestia
+
+
+It can be configured in terms of appearance and visibility.
+
+.. figure:: /_images/CelestiaClusterConfiguration.png
+   :align: center
+
+   Cluster configuration
+
+
+- **Cluster visibility**:
+            String describing the visibility. Accepted values are:
+
+            - all : all objects are displayed
+
+            - none : no object is displayed
+
+            - all except obj1, obj2n, ..., objN : all objects are visible except those designated by name in the comma separated list
+
+            - none except obj1, obj2n, ..., objN : all objects are hidden except those designated by name in the comma separated list
+
+
+Celestial bodies texture layers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Celestia handles all texture layers except web tile map layers. As layer transparency is not supported, the cloud map is used to store the first fixed texture layer which handles transparency. In order to use it, you might make the first layer invisible.
+
+- **Top layer overlay**:
+                 The top layer texture used as "cloud map" is displayed or not (hidden by default)
+

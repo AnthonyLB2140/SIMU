@@ -1,0 +1,51 @@
+.. _Other_visualisable_objects:
+
+Other visualisable objects
+==================================================================================
+
+.. _Other_visualisable_objects#Positional_covariance_ellipsoid:
+
+Ellipsoid (Positional covariance of a satellite)
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+The positional covariance can displayed in the 3D view as an ellipsoid representing the uncertainty of an orbit state. It can be defined as a fixed value or as a CIC/CCSDS OEM or MEM file as 3 real values in kilometers. Different reference frames are available (EME2000, BodyFixed, TNW, QSW), relative to the current satellite.
+
+Graphic properties such as visibility, color, transparency, scale can be configured in the scenario state editor.
+
+.. figure:: /_images/PositionalCovarianceEllipsoid.png
+   :align: center
+
+   Positional covariance ellipsoid in Celestia
+
+.. _Other_visualisable_objects#Grid_Visualizer:
+
+Grid
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+A grid displays 3 different planes (XY, YZ, XZ) and can be attached to a satellite. It is defined with a grid size (Xmin, Ymin, Xmax, Ymax for each plane) and a cell size (spacing between lines defined as width and height). All units are in kilometers. 
+
+The visualizer is attached to its parent entity, and aligned to the a reference frame defined by a center entity and a frame type (EME2000, BodyFixed, TNW, QSW).
+
+Graphic properties such as visibility, labels, color, transparency, can be configured in the scenario state editor. 
+
+.. figure:: /_images/VisualizerGrid.png
+   :align: center
+
+   A grid aligned on the TNW frame of a satellite
+
+.. _Other_visualisable_objects#SphericalShell_Visualizer:
+
+Spherical Shell
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+A spherical shell is a generalization of an annulus to three dimensions. It is the region of a ball between two concentric spheres of differing radii. It is defined with 3 dimensions [latitude min, latitude max] in degrees, [longitude min, longitude max] in degrees, [altitude min, altitude max] in kilometers, and a step size for the grid cells for each dimension.
+
+The visualizer is attached to its parent entity, and aligned to the a reference frame defined by a center entity and a frame type (EME2000, BodyFixed, TNW, QSW).
+
+Graphic properties such as visibility, labels, color, transparency, can be configured in the scenario state editor. 
+
+.. figure:: /_images/VisualizerSphericalShell.png
+   :align: center
+
+   A spherical shell centered on a satellite defined with a fixed position at the center of the Earth in a body fixed frame
+

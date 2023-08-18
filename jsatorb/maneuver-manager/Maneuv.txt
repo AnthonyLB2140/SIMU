@@ -1,0 +1,7 @@
+Relative DATE, Dx, Dy, Dz, contdura
+55.00108790397644
+0
+0
+1
+10
+

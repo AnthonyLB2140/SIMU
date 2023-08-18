@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OutputList>
+  <String name="OutputVariable">DATE</String>
+  <String name="OutputVariable">TIME</String>
+  <String name="OutputVariable">A</String>
+</OutputList>
+

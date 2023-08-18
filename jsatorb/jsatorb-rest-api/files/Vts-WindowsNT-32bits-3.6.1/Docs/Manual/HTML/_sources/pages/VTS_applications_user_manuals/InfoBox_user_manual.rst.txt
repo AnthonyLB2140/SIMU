@@ -1,0 +1,120 @@
+.. _InfoBox_user_manual:
+
+InfoBox user manual
+==================================================================================
+
+The InfoBox plugin allows to display the simulation date and time and can also display data loaded from a CIC file.
+
+
+.. _InfoBox_user_manual#System_requirements:
+
+System requirements 
+----------------------------------------------------------------------------------
+
+The InfoBox application displays a half-transparent overlayed window so the display can be placed over other applications.
+Most systems are compatible with transparent windows, as long as :
+
+- the window manager supports Compositing,
+- an advanced drawing API is available (XRender or OpenGL),
+- advanced "desktop effects" are enabled.
+
+Under RedHat 6.5, desktop effects can be enabled through the System Configuration Panel (see General > Appearance > Desktop > Desktop Effects > Enable desktop Effects). XRender or OpenGL can be chosen within the Advanced Options tab.
+
+.. _InfoBox_user_manual#Configuration_in_the_VTS_configuration_utility:
+
+Configuration in the VTS configuration utility 
+----------------------------------------------------------------------------------
+
+The InfoBox application can be included in a VTS project from the Applications item (right click, Add Application, Infobox).
+
+.. figure:: /_images/InfoboxApplication.png
+   :align: center
+
+   InfoBox application in the VTS project tree
+
+.. _InfoBox_user_manual#InfoBox_parameters_in_VTS:
+
+InfoBox parameters in VTS 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When adding InfoBox as a VTS client application, the following parameters can be set by clicking on the InfoBox entry in the VTS project tree:
+
+.. figure:: /_images/InfoboxApplicationParameters.png
+   :align: center
+
+   InfoBox application parameters
+
+- **Time format**: Determines the format of the time. By default, the value is "hh:mm::ss".
+- **Date format**: Determines the format of the date. By default, the value is "yyyy-MM-dd".
+- **Time standard**: Defines the time standard used for the time. By default, the value is "UTC" but the user can choose "TAI" to add leap seconds.
+- **Mode format**: Determines the format of the string for the time standard and the potential shifts. By default, the value is "${mode}${hour} (${second}s)" where ${mode} represents the time standard, ${hour} and ${second} represents a shift in hour and second. It means that if the application was set up with the UTC time standard with +4 hours shift and -12 seconds shift, it will show "UTC+4 (-12s)".
+- **Hour shift**: Shifts the displayed time by X hours according to the time standard. By default, the value is 0.
+- **Second shift**: Shifts the displayed time by X seconds according to the time standard. By default, the value is 0.
+
+
+
+.. _InfoBox_user_manual#Using_InfoBox:
+
+Using InfoBox 
+----------------------------------------------------------------------------------
+
+.. _InfoBox_user_manual#Structure_of_the_InfoBox_display:
+
+Structure of the InfoBox display 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Once the visualization is launched, the time and date of the simulation are displayed. The InfoBox display can be moved or closed with the help of the icons placed at the top-left of the display.
+
+.. figure:: /_images/InfoboxSimple.png
+   :align: center
+
+   InfoBox application
+
+
+The background is transparent so the display can be placed over other applications such as SurfaceView or Celestia.
+
+.. figure:: /_images/InfoboxOverCelestia.png
+   :align: center
+
+   InfoBox over the Celestia application
+
+.. _InfoBox_user_manual#Specific_properties_of_the_InfoBox_application:
+
+Specific properties of the InfoBox application 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The following InfoBox properties can be modified during the simulation:
+
+.. figure:: /_images/InfoboxBroker.png
+   :align: center
+
+   Specific InfoBox properties
+
+- **Window geometry**: The size of the window.
+- **Base color**: Determines the base color of the display elements.
+- **Dynamic color file**: Allows to dynamically change the color of the display elements by a CIC color file.
+- **Data file**: Allows to display additional information from a CIC data file (see below).
+- **Display # previous data lines**: Determines how many previous data lines should be displayed.
+- **Display # following data lines**: Determines how many following data lines should be displayed.
+
+And for each display elements, there are these properties:
+
+- **visibility**: Determine the visibility of the corresponding element in the display.
+- **dynamic color**: If set, the corresponding element will take its color from the CIC color file.
+- **font**: Determines the font of the specified element.
+
+.. _InfoBox_user_manual#Displaying_a_CIC_data_file:
+
+Displaying a CIC data file 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When a CIC data file is specified, the data is displayed according to the simulation time. In the following image, 4 lines are displayed and the current line is emphasized in a bold font. 
+
+.. figure:: /_images/InfoboxDataFile.png
+   :align: center
+
+   InfoBox displaying data from a CIC data file
+
+When the special value ``EVENTS <satellite full name>`` (e.g. ``EVENTS Sol/Earth/CubeSat``) is used for the ``Data file`` property, the events attached to the specified satellite are displayed instead of a CIC data file.
+
+

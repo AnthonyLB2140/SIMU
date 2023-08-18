@@ -1,0 +1,9 @@
+Modify "Earth" "Sol"
+{
+	Texture "BMNG.ctx"
+	HazeColor [ 1 1 1 ]
+	HazeDensity 0.25
+	SpecularTexture "JestrSpecular PNG.ctx"
+	SpecularColor [ 0.35 0.5 0.55 ]
+	SpecularPower 15.0
+}

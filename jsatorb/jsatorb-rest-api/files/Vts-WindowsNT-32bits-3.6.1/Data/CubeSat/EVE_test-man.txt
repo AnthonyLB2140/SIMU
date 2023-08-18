@@ -1,0 +1,15 @@
+#<AM-acces:COL-V2.0>
+<INIT:
+Logiciel="JPSIMU"
+VERSION="V11.6.2"
+<COL:
+  1 : EVENT ~ (Event code)
+  2 : DATE ~cal (date)
+  3 : TIME ~s (duration since initial conditions)
+  4 : A ~km (semi-major axis)
+>
+>
+ Event #1: Propagation start event                                        2010-01-01T12:00:00.000        0.00000000000000e+00        7.20270000000000e+03
+ Constant thrust maneuver Maneuver1 start: Relative date (0j00h02m30s)    2010-01-01T12:02:30.000        1.50000000000000e+02        7.20269967776638e+03
+ Constant thrust maneuver Maneuver1 end: Relative date (0j00h03m20s)      2010-01-01T12:03:20.000        2.00000000000000e+02        7.23733847878829e+03
+ Event #3: Propagation end event on duration (300.1s)                     2010-01-01T12:05:00.100        3.00100000000000e+02        7.23733834569531e+03

@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project Revision="9032">
+ <General Name="" StartDateTime="60009 54000.000000" EndDateTime="60009 57480.000000"/>
+ <MetaData>
+  <Description>Sample project</Description>
+ </MetaData>
+ <MonitorConfiguration>
+  <Monitor X="0" Y="0" Height="1030" Width="1920"/>
+ </MonitorConfiguration>
+ <StartOptions TimeRatio="1" UseStateTimeRatio="0" SysTimeSynced="0" Paused="0" Looped="0" Minimized="0" Hidden="0" AutoClosed="0"/>
+ <Timeshifting Enabled="0"/>
+ <BrokerOptions WindowMode="Undocked" Collapsed="1" AlwaysOnTop="1" XPos="0" YPos="480" Width="640" Height="80" ActiveTab="0" HiddenTabs=""/>
+ <TimelineOptions ProjectLocked="1" CursorLocked="0" CursorRatio="0" ViewStart="33282 0.000000" ViewSpan="0" DateFormat="ISODate" NoBadgeFiltered="0" BadgeFiltered="">
+  <TimelineScenario Name="Scenario" Pos="0" Size="23"/>
+ </TimelineOptions>
+ <Sky>
+  <Sun>
+   <Prop2d>
+    <Icon Anchor="CENTER" Size="MEDIUM" Opacity="100">
+     <Font Size="8" Color="1 1 1"/>
+     <ImageLayer Type="Default"/>
+    </Icon>
+   </Prop2d>
+   <Track>
+    <LineStyle Color="0.862745 0.862745 0" Style="SolidLine" Width="1"/>
+   </Track>
+   <VisibilityCircle>
+    <LineStyle Color="0.501961 0.501961 0" Style="SolidLine" Width="1"/>
+    <FillStyle Color="0 0 0" Opacity="50"/>
+   </VisibilityCircle>
+  </Sun>
+  <StarCatalog CatalogMode="Builtin">
+   <Track>
+    <LineStyle Color="1 1 1" Style="DotLine" Width="1"/>
+   </Track>
+  </StarCatalog>
+ </Sky>
+ <ToBeUsedApps>
+  <Application Name="SurfaceView" Id="0" Label="" AutoStarted="1"/>
+  <Application Name="Celestia" Id="1" Label="" AutoStarted="1"/>
+ </ToBeUsedApps>
+ <Entities>
+  <Body Name="Earth" ParentPath="Sol">
+   <Prop2d>
+    <Icon Anchor="CENTER" Size="MEDIUM" Opacity="100">
+     <Font Size="8" Color="1 1 1"/>
+     <ImageLayer Type="Default"/>
+    </Icon>
+   </Prop2d>
+   <Track>
+    <LineStyle Color="0 0.136828 1" Style="SolidLine" Width="1"/>
+   </Track>
+   <VisibilityCircle>
+    <LineStyle Color="0 1 0.0231632" Style="SolidLine" Width="1"/>
+    <FillStyle Color="0.499992 1 0.511574" Opacity="60"/>
+   </VisibilityCircle>
+   <EphemerisMode Mode="Default"/>
+   <Layers>
+    <BuiltinLayer Name="BuiltinLayer"/>
+   </Layers>
+   <GroupGroundStations>
+    <GroundStation Name="Toulouse">
+     <Prop2d>
+      <Icon Anchor="CENTER" Size="SMALL" Opacity="100">
+       <Font Size="8" Color="1 1 0"/>
+       <ImageLayer Type="Default"/>
+      </Icon>
+     </Prop2d>
+     <LatLongAlt>
+      <Value>
+       <Fixed Data="43.38 1.22 0"/>
+      </Value>
+     </LatLongAlt>
+     <SensorStation>
+      <SensorTarget>
+       <TargetAltitude Altitude="1000"/>
+      </SensorTarget>
+      <Sensor Name="Default">
+       <SensorProp>
+        <SensorElliptical HalfAngleX="0.174533" HalfAngleY="0.174533"/>
+        <SensorGraphics Range="10000" VolumeColor="0.717647 0 1" VolumeOpacity="10">
+         <SensorContour>
+          <LineStyle Color="0.717647 0 1" Style="SolidLine" Width="1"/>
+         </SensorContour>
+        </SensorGraphics>
+       </SensorProp>
+       <Geometry>
+        <Position>
+         <Value>
+          <Fixed Data="0 0 0"/>
+         </Value>
+        </Position>
+        <Orientation>
+         <Quaternion>
+          <Value>
+           <Fixed Data="1 0 0 0"/>
+          </Value>
+         </Quaternion>
+        </Orientation>
+       </Geometry>
+      </Sensor>
+     </SensorStation>
+    </GroundStation>
+    <GroundStation Name="Clarksburg">
+     <Prop2d>
+      <Icon Anchor="CENTER" Size="SMALL" Opacity="100">
+       <Font Size="8" Color="1 1 0"/>
+       <ImageLayer Type="Default"/>
+      </Icon>
+     </Prop2d>
+     <LatLongAlt>
+      <Value>
+       <Fixed Data="39.2183 -77.2702 0"/>
+      </Value>
+     </LatLongAlt>
+     <SensorStation>
+      <SensorTarget>
+       <TargetAltitude Altitude="1000"/>
+      </SensorTarget>
+      <Sensor Name="Default">
+       <SensorProp>
+        <SensorElliptical HalfAngleX="0.174533" HalfAngleY="0.174533"/>
+        <SensorGraphics Range="10000" VolumeColor="1 1 0.498039" VolumeOpacity="10">
+         <SensorContour>
+          <LineStyle Color="1 1 0.498039" Style="SolidLine" Width="1"/>
+         </SensorContour>
+        </SensorGraphics>
+       </SensorProp>
+       <Geometry>
+        <Position>
+         <Value>
+          <Fixed Data="0 0 0"/>
+         </Value>
+        </Position>
+        <Orientation>
+         <Quaternion>
+          <Value>
+           <Fixed Data="1 0 0 0"/>
+          </Value>
+         </Quaternion>
+        </Orientation>
+       </Geometry>
+      </Sensor>
+     </SensorStation>
+    </GroundStation>
+    <GroundStation Name="Perth">
+     <Prop2d>
+      <Icon Anchor="CENTER" Size="SMALL" Opacity="100">
+       <Font Size="8" Color="1 1 0"/>
+       <ImageLayer Type="Default"/>
+      </Icon>
+     </Prop2d>
+     <LatLongAlt>
+      <Value>
+       <Fixed Data="-31.8065 115.888 23.6"/>
+      </Value>
+     </LatLongAlt>
+     <SensorStation>
+      <SensorTarget>
+       <TargetAltitude Altitude="1000"/>
+      </SensorTarget>
+      <Sensor Name="Default">
+       <SensorProp>
+        <SensorElliptical HalfAngleX="0.174533" HalfAngleY="0.174533"/>
+        <SensorGraphics Range="10000" VolumeColor="1 0.666667 0" VolumeOpacity="10">
+         <SensorContour>
+          <LineStyle Color="1 0.666667 0" Style="SolidLine" Width="1"/>
+         </SensorContour>
+        </SensorGraphics>
+       </SensorProp>
+       <Geometry>
+        <Position>
+         <Value>
+          <Fixed Data="0 0 0"/>
+         </Value>
+        </Position>
+        <Orientation>
+         <Quaternion>
+          <Value>
+           <Fixed Data="1 0 0 0"/>
+          </Value>
+         </Quaternion>
+        </Orientation>
+       </Geometry>
+      </Sensor>
+     </SensorStation>
+    </GroundStation>
+    <GroundStation Name="Kourou">
+     <Prop2d>
+      <Icon Anchor="CENTER" Size="SMALL" Opacity="100">
+       <Font Size="8" Color="1 1 0"/>
+       <ImageLayer Type="Default"/>
+      </Icon>
+     </Prop2d>
+     <LatLongAlt>
+      <Value>
+       <Fixed Data="5.15972 -52.6503 0"/>
+      </Value>
+     </LatLongAlt>
+     <SensorStation>
+      <SensorTarget>
+       <TargetAltitude Altitude="1000"/>
+      </SensorTarget>
+      <Sensor Name="Default">
+       <SensorProp>
+        <SensorElliptical HalfAngleX="0.174533" HalfAngleY="0.174533"/>
+        <SensorGraphics Range="10000" VolumeColor="0.333333 0.666667 1" VolumeOpacity="10">
+         <SensorContour>
+          <LineStyle Color="0.333333 0.666667 1" Style="SolidLine" Width="1"/>
+         </SensorContour>
+        </SensorGraphics>
+       </SensorProp>
+       <Geometry>
+        <Position>
+         <Value>
+          <Fixed Data="0 0 0"/>
+         </Value>
+        </Position>
+        <Orientation>
+         <Quaternion>
+          <Value>
+           <Fixed Data="1 0 0 0"/>
+          </Value>
+         </Quaternion>
+        </Orientation>
+       </Geometry>
+      </Sensor>
+     </SensorStation>
+    </GroundStation>
+   </GroupGroundStations>
+   <GroupRegionsOfInterest>
+    <RegionOfInterest Name="Redland">
+     <CoordinatesFile Name="Redland.txt"/>
+     <Graphics Color="0 1 0.624826" FillOpacity="40"/>
+    </RegionOfInterest>
+    <RegionOfInterest Name="Blueland">
+     <CoordinatesFile Name="Blueland.txt"/>
+     <Graphics Color="0.89984 1 0" FillOpacity="40"/>
+    </RegionOfInterest>
+   </GroupRegionsOfInterest>
+  </Body>
+  <Satellite Name="CubeSat" ParentPath="Sol/Earth">
+   <Track>
+    <LineStyle Color="0 0.976471 0.145098" Style="SolidLine" Width="2"/>
+   </Track>
+   <Prop2d>
+    <Icon Anchor="CENTER" Size="MEDIUM" Opacity="100">
+     <Font Size="8" Color="1 1 1"/>
+     <ImageLayer Type="Default"/>
+    </Icon>
+   </Prop2d>
+   <VisibilityCircle>
+    <LineStyle Color="0.504005 1 0" Style="SolidLine" Width="1"/>
+    <FillStyle Color="0.751995 1 0.499992" Opacity="60"/>
+   </VisibilityCircle>
+   <EclipseCircle>
+    <LineStyle Color="0 0.391165 1" Style="DashLine" Width="1"/>
+    <FillStyle Color="0.499992 0.695583 1" Opacity="60"/>
+   </EclipseCircle>
+   <Component Name="CubeSat">
+    <Graphics3d>
+     <File3ds Name="Models/Cube_body.3ds"/>
+     <Radius Value="2"/>
+     <LightSensitive Value="1"/>
+     <Use3dsCoords Value="1" MeshScale="1"/>
+     <AxesPosition Value="1"/>
+     <RotationCenter X="0" Y="0" Z="0"/>
+    </Graphics3d>
+    <Geometry>
+     <Position>
+      <Value>
+       <File Name="VTS_EPH_BLUE-man.txt">
+        <ColorFile Name="Data/CUBESAT_COLOR.TXT"/>
+       </File>
+      </Value>
+     </Position>
+     <Orientation>
+      <EulerAngle>
+       <Value>
+        <File Name="VTS_ATT_BLUE-man.txt"/>
+       </Value>
+      </EulerAngle>
+     </Orientation>
+    </Geometry>
+    <Component Name="GS">
+     <Graphics3d>
+      <File3ds Name="Models/Cube_gs.3ds"/>
+      <Radius Value="13.5"/>
+      <LightSensitive Value="1"/>
+      <Use3dsCoords Value="1" MeshScale="1"/>
+      <AxesPosition Value="1"/>
+      <RotationCenter X="0" Y="0" Z="0"/>
+     </Graphics3d>
+     <Geometry>
+      <Position>
+       <Value>
+        <Fixed Data="0 0 0"/>
+       </Value>
+      </Position>
+      <Orientation>
+       <AxisAngle>
+        <Axis>
+         <Value>
+          <Fixed Data="0 1 0"/>
+         </Value>
+        </Axis>
+        <Angle>
+         <Value>
+          <File Name="Data/CUBESAT_MEM_GS_ANGLE.TXT"/>
+         </Value>
+        </Angle>
+       </AxisAngle>
+      </Orientation>
+     </Geometry>
+    </Component>
+    <SensorSatellite>
+     <Sensor Name="Sensor">
+      <SensorProp>
+       <SensorRectangular HalfAngleX="0.872665" HalfAngleY="0.349066"/>
+       <SensorGraphics Range="10000" VolumeColor="1 0.286275 0.00392157" VolumeOpacity="60">
+        <SensorContour>
+         <LineStyle Color="1 0.921569 0.0235294" Style="SolidLine" Width="1"/>
+        </SensorContour>
+        <SensorTrace Duration="0" Opacity="60"/>
+       </SensorGraphics>
+      </SensorProp>
+      <Geometry>
+       <Position>
+        <Value>
+         <Fixed Data="0 0 0"/>
+        </Value>
+       </Position>
+       <Orientation>
+        <Quaternion>
+         <Value>
+          <Fixed Data="1 0 0 0"/>
+         </Value>
+        </Quaternion>
+       </Orientation>
+      </Geometry>
+     </Sensor>
+    </SensorSatellite>
+   </Component>
+   <Events>
+    <File Name="VTS_EVE_BLUE-man.txt"/>
+   </Events>
+  </Satellite>
+ </Entities>
+ <Events/>
+ <States>
+  <Instant Time="33282 0" TimeRatio="1" Label="Initial state">
+   <AppState Id="0">
+    <Command Str="CMD STRUCT TrackWindow &quot;Sol/Earth/CubeSat&quot; 1 1"/>
+   </AppState>
+   <AppState Id="1">
+    <Command Str="CMD PROP WindowGeometry 640 0 640 480"/>
+    <Command Str="CMD PROP CameraDesc bodyfixed &quot;Sol/Earth/CubeSat_ref/CubeSat_Axes&quot; nil -0.000000003171002 0.000000003171003 -0.000000003171001 -0.424708231299357 -0.820473203810102 -0.339851179380057 0.175919939489229 0.279938668012619"/>
+    <Command Str="CMD PROP SelectObject &quot;Sol/Earth/CubeSat_ref/CubeSat&quot;"/>
+    <Command Str="CMD STRUCT TrackWindow &quot;Sol/Earth/CubeSat&quot; 1 1"/>
+   </AppState>
+  </Instant>
+ </States>
+</Project>

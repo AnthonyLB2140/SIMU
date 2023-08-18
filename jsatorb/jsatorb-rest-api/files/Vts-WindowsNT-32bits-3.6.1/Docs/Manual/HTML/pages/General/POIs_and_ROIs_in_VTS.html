@@ -1,0 +1,342 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>POIs and ROIs in VTS &mdash; VTS 3.6.0-9030 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="VTS 3.6.0-9030 documentation" href="../../index.html"/>
+        <link rel="up" title="General" href="index.html"/>
+        <link rel="next" title="Other visualisable objects" href="Other_visualisable_objects.html"/>
+        <link rel="prev" title="Mission events in VTS" href="Mission_events_in_VTS.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> VTS
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction/index.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">General</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Conventions_in_VTS.html">Conventions in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Date_formats_in_VTS.html">Date formats in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Data_sources_in_VTS.html">Data sources in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Position_of_objects_in_VTS.html">Position of objects in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Orientation_of_objects_in_VTS.html">Orientation of objects in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Examples_for_position_and_orientation_of_objects_in_VTS.html">Examples for position and orientation of objects in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Backwards_compatibility_in_VTS.html">Backward compatibility in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Object_paths_in_VTS.html">Object paths in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Central_bodies_in_VTS.html">Central bodies in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Structure_of_satellites_in_VTS.html">Structure of satellites in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sensors_in_VTS.html">Sensors in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Masks_in_VTS.html">Physical masks in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scale_factors_in_VTS.html">Scale factors in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cluster_in_VTS.html">Clusters in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scenario_in_VTS.html">Scenario in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Manage_window_geometry.html">Window Geometry Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mission_events_in_VTS.html">Mission events in VTS</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">POIs and ROIs in VTS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cic-ccsds-poi-and-roi-file-format">CIC/CCSDS POI and ROI file format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sample-poi-file">Sample POI file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sample-roi-file">Sample ROI file</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Other_visualisable_objects.html">Other visualisable objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scripts_and_macros_in_VTS.html">Scripts and macros in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="VTS_Broker.html">VTS Broker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Files_used_by_VTS/index.html">Files used by VTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Starting_VTS/index.html">Starting VTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VTS_applications_user_manuals/index.html">VTS applications user manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Plugin_development/index.html">Plugin development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Data_generators_in_VTS/index.html">Data generator integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../About/index.html">About</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">VTS</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">General</a> &raquo;</li>
+        
+      <li>POIs and ROIs in VTS</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/pages/General/POIs_and_ROIs_in_VTS.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="pois-and-rois-in-vts">
+<span id="id1"></span><h1>POIs and ROIs in VTS<a class="headerlink" href="#pois-and-rois-in-vts" title="Permalink to this headline">¶</a></h1>
+<p>POIs and ROIs in VTS are files defining Points and Regions of Interest for the visualization. They are displayed in 2D and 3D applications that support them. Both SurfaceView and Celestia support displaying POIs and ROIs.</p>
+<div class="section" id="cic-ccsds-poi-and-roi-file-format">
+<span id="pois-and-rois-in-vts-cic-ccsds-poi-and-roi-file-format"></span><h2>CIC/CCSDS POI and ROI file format<a class="headerlink" href="#cic-ccsds-poi-and-roi-file-format" title="Permalink to this headline">¶</a></h2>
+<p>POIs and ROIs are defined in CIC/CCSDS files in MPM format. For more information on the CIC/CCSDS file format, refer to the <a class="reference internal" href="../Files_used_by_VTS/CIC-CCSDS_data_files_in_VTS.html#cic-ccsds-data-files-in-vts"><span class="std std-ref">CIC-CCSDS data files in VTS</span></a> chapter.</p>
+<p>A CIC/CCSDS POI or ROI file must have the following characteristics:</p>
+<ul class="simple">
+<li>The <code class="docutils literal"><span class="pre">USER_DEFINED_PROTOCOL</span></code> must be <code class="docutils literal"><span class="pre">NONE</span></code>.</li>
+<li>The <code class="docutils literal"><span class="pre">USER_DEFINED_CONTENT</span></code> may be arbitrary.</li>
+<li>The <code class="docutils literal"><span class="pre">USER_DEFINED_SIZE</span></code> must be <code class="docutils literal"><span class="pre">2</span></code>, or <code class="docutils literal"><span class="pre">3</span></code> for POIs only.</li>
+<li>The <code class="docutils literal"><span class="pre">USER_DEFINED_TYPE</span></code> must be <code class="docutils literal"><span class="pre">REAL</span></code>, or <code class="docutils literal"><span class="pre">STRING</span></code> for POIs only with a size of 3.</li>
+<li>The <code class="docutils literal"><span class="pre">USER_DEFINED_UNIT</span></code> must be <code class="docutils literal"><span class="pre">[deg]</span></code>, or <code class="docutils literal"><span class="pre">n/a</span></code> for POIs only with a size of 3.</li>
+</ul>
+<p>The data values in the file are coordinates in latitude/longitude.</p>
+<p>In ROI files, the special data value <code class="docutils literal"><span class="pre">180</span> <span class="pre">180</span></code> is interpreted as a separator and will create a new polygon with the following sequence of coordinates.</p>
+<p>A single POI file may define multiple points of interest. In POI files with 3 columns, the last column defines a label for the corresponding coordinates.</p>
+</div>
+<div class="section" id="sample-poi-file">
+<span id="pois-and-rois-in-vts-sample-poi-file"></span><h2>Sample POI file<a class="headerlink" href="#sample-poi-file" title="Permalink to this headline">¶</a></h2>
+<p>The following is a sample CIC/CCSDS POI file:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">CIC_MPM_VERS</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">CREATION_DATE</span> <span class="o">=</span> <span class="mi">2014</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">23</span><span class="n">T15</span><span class="p">:</span><span class="mi">25</span><span class="p">:</span><span class="mf">04.268055</span>
+<span class="n">ORIGINATOR</span> <span class="o">=</span> <span class="n">VTS</span>
+
+<span class="n">META_START</span>
+
+<span class="n">USER_DEFINED_PROTOCOL</span> <span class="o">=</span> <span class="n">NONE</span>
+<span class="n">USER_DEFINED_CONTENT</span> <span class="o">=</span> <span class="n">POINTS</span> <span class="n">OF</span> <span class="n">INTEREST</span>
+<span class="n">USER_DEFINED_SIZE</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">USER_DEFINED_TYPE</span> <span class="o">=</span> <span class="n">STRING</span>
+<span class="n">USER_DEFINED_UNIT</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span><span class="o">/</span><span class="n">a</span><span class="p">]</span>
+
+<span class="n">META_STOP</span>
+
+<span class="mf">48.861348</span>   <span class="mf">2.345248</span>    <span class="s2">&quot;Siege social&quot;</span>
+<span class="mf">48.843445</span>   <span class="mf">2.390097</span>    <span class="n">DLA</span>
+<span class="mf">43.561948</span>   <span class="mf">1.481500</span>    <span class="n">CST</span>
+<span class="mf">5.208395</span>    <span class="o">-</span><span class="mf">52.775477</span>  <span class="n">CSG</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sample-roi-file">
+<span id="pois-and-rois-in-vts-sample-roi-file"></span><h2>Sample ROI file<a class="headerlink" href="#sample-roi-file" title="Permalink to this headline">¶</a></h2>
+<p>The following is a sample CIC/CCSDS ROI file containing two polygons:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">CIC_MPM_VERS</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">CREATION_DATE</span> <span class="o">=</span> <span class="mi">2014</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">23</span><span class="n">T15</span><span class="p">:</span><span class="mi">25</span><span class="p">:</span><span class="mf">04.268055</span>
+<span class="n">ORIGINATOR</span> <span class="o">=</span> <span class="n">VTS</span>
+
+<span class="n">META_START</span>
+
+<span class="n">USER_DEFINED_PROTOCOL</span> <span class="o">=</span> <span class="n">NONE</span>
+<span class="n">USER_DEFINED_CONTENT</span> <span class="o">=</span> <span class="n">REGION</span> <span class="n">OF</span> <span class="n">INTEREST</span>
+<span class="n">USER_DEFINED_SIZE</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">USER_DEFINED_TYPE</span> <span class="o">=</span> <span class="n">REAL</span>
+<span class="n">USER_DEFINED_UNIT</span> <span class="o">=</span> <span class="p">[</span><span class="n">deg</span><span class="p">]</span>
+
+<span class="n">META_STOP</span>
+
+<span class="o">-</span><span class="mi">30</span> <span class="mi">30</span>
+<span class="mi">30</span> <span class="mi">30</span>
+<span class="mi">0</span> <span class="mi">0</span>
+<span class="mi">180</span> <span class="mi">180</span>
+<span class="mi">0</span> <span class="mi">0</span>
+<span class="o">-</span><span class="mi">25</span> <span class="o">-</span><span class="mi">25</span>
+<span class="mi">25</span> <span class="o">-</span><span class="mi">25</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Other_visualisable_objects.html" class="btn btn-neutral float-right" title="Other visualisable objects" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Mission_events_in_VTS.html" class="btn btn-neutral" title="Mission events in VTS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright VTS Team.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'3.6.0-9030',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

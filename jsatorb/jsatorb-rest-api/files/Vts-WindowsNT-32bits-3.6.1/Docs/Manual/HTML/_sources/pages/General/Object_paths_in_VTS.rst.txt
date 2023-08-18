@@ -1,0 +1,95 @@
+.. _Object_paths_in_VTS:
+
+Object paths in VTS
+==================================================================================
+
+The various objects displayed by VTS can all be addressed according to a naming scheme. For practical reasons, this naming scheme is directly derived from the one used by Celestia.
+
+
+.. _Object_paths_in_VTS#Allowed_characters:
+
+Allowed characters
+----------------------------------------------------------------------------------
+Since VTS use the *slash* character as a separator, it cannot be used in objects' identifiers. 
+
+The following characters are forbidden and will prevent VTS to start the visualization:
+
+- Slash ``/``
+- Antislash ``\``
+
+.. |deg| unicode:: 0xB0
+
+More generally, other characters than the following are considered unsafe:
+
+- Letters, both lowercase and uppercase
+- Digits : 0, 1, 2, etc.
+- Space
+- Dot ``.``, comma ``,`` colon ``:``, and semicolon ``;``
+- Dash ``-``
+- Underscore ``_``
+- Degree |deg|
+- Percent ``%``
+- Dollar ``$``
+- At ``@``
+- Amperstand ``&``
+- Parenthesis ``(`` and ``)``
+- Pipe ``|``
+- Equal sign ``=`` and plus sign ``+``
+
+
+.. _Object_paths_in_VTS#Definitions:
+
+Definitions
+----------------------------------------------------------------------------------
+The table below lists all the definitions used to identify objects in VTS:
+
+=============================================== ================================================ ================================================
+Identifier                                      Description                                      Examples
+=============================================== ================================================ ================================================
+name                                            Name of the object                               ``Earth``
+                                                                                                 ``GS``
+----------------------------------------------- ------------------------------------------------ ------------------------------------------------
+fullName                                        Full identifier of object                        ``Sol/Earth``
+                                                                                                 ``Sol/Earth/CubeSat/GS``
+----------------------------------------------- ------------------------------------------------ ------------------------------------------------
+parentPath                                      Identifier of the object's parent                ``Sol``
+                                                                                                 ``Sol/Earth/CubeSat``
+----------------------------------------------- ------------------------------------------------ ------------------------------------------------
+celestiaRefName                                 Name of the object's reference in Celestia       ``Earth``
+                                                                                                 ``GS_ref``
+----------------------------------------------- ------------------------------------------------ ------------------------------------------------
+celestiaParentFullName                          Path to the object's parent in Celestia          ``Sol``
+                                                                                                 ``Sol/Earth/CubeSat_ref/CubeSat``
+----------------------------------------------- ------------------------------------------------ ------------------------------------------------
+celestiaFullRefName                             Full path to the object's reference in Celestia  ``Sol/Earth``
+                                                                                                 ``Sol/Earth/CubeSat_ref/CubeSat/GS_ref``
+----------------------------------------------- ------------------------------------------------ ------------------------------------------------
+celestiaFullName                                Full path to the object in Celestia              ``Sol/Earth``
+                                                                                                 ``Sol/Earth/CubeSat_ref/CubeSat/GS_ref/GS``
+=============================================== ================================================ ================================================
+
+.. _Object_paths_in_VTS#Complex_names_for_Points_and_Regions:
+
+Complex names for Points and Regions
+----------------------------------------------------------------------------------
+In order to easily differentiate many points and regions in the VTS configuration utility, it is possible to use a special naming rule ("complex names"). 
+When a point or a region has pipes in its name (eg: ``Europe|France|Point1``), the name is interpreted as a hierarchical naming, and only the last part of the name is displayed in OmniView. This allows the user to easily differentiate many points in the VTS configuration utility, without cluttering the OmniView display.
+
+
+.. _Object_paths_in_VTS#Central_body_of_an_object:
+
+Central body of an object
+----------------------------------------------------------------------------------
+Objects orbiting Earth are identified starting with the full path to Earth, i.e. ``Sol/Earth``.
+
+
+.. _Object_paths_in_VTS#Usage:
+
+Usage
+----------------------------------------------------------------------------------
+The object name (*name*) and the path to its parent (*parentPath*) are the two main elements visible to VTS users. They can be found most notably in:
+
+- The :ref:`VTS project file format <VTS_project_file_format>`
+- The :ref:`Synchronization protocol for VTS clients <Synchronization_protocol_for_VTS_clients>`
+
+

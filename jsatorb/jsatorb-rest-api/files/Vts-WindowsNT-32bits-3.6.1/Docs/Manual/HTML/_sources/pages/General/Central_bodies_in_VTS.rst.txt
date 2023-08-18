@@ -1,0 +1,138 @@
+.. _Central_bodies_in_VTS:
+
+Central bodies in VTS
+==================================================================================
+
+Central bodies are celestial objects (such as planets, moons or comets) that can
+be used to define a mission. They support multiple features such as
+**region of interests**, **ground stations** and **map layers**. Satellites
+defined in a VTS project must orbit one of the defined celestial bodies.
+
+.. _Central_bodies_in_VTS#Categories_of_bodies:
+
+Categories of bodies
+----------------------------------------------------------------------------------
+
+All celestial bodies share the same properties in VTS, but a distinction is made
+between bodies *supported* by VTS and *custom* bodies.
+
+For **supported celestial bodies** there is no need to define its ephemerides as
+they are "known" and configured by VTS.
+
+For **custom celestial bodies**, the ephemerides and properties (such as its
+radius) must be defined by the user.
+
+The table below lists the *supported* celestial bodies. All other celestial bodies
+are considered *custom* celestial bodies.
+
++----------------+-----------------------+
+| Celestial body | Parent body (Catalog) |
++================+=======================+
+| Sun (Sol)      |                       |
++----------------+-----------------------+
+| Mercury        | Sol                   |
++----------------+-----------------------+
+| Venus          | Sol                   |
++----------------+-----------------------+
+| Earth          | Sol                   |
++----------------+-----------------------+
+| Moon           | Sol/Earth             |
++----------------+-----------------------+
+| Mars           | Sol                   |
++----------------+-----------------------+
+| Jupiter        | Sol                   |
++----------------+-----------------------+
+| Saturn         | Sol                   |
++----------------+-----------------------+
+| Uranus         | Sol                   |
++----------------+-----------------------+
+| Neptune        | Sol                   |
++----------------+-----------------------+
+
+.. _Central_bodies_in_VTS#Bodies_definition:
+
+Bodies definition
+----------------------------------------------------------------------------------
+
+Central bodies ephemerides are defined in their **parent body**'s reference frame.
+
+For supported bodies, if the parent body is different from the Catalog (see table
+above), the ephemerides must be specified by the user.
+
+.. warning::
+   The Moon uses Earth-centered ephemerides in catalog mode. Defining the
+   Moon as a central body also requires defining the Earth in the project.
+   If required, the Moon can be attached to the Sun by specifying custom ephemerides.
+
+Existing natural bodies may also be partially supported: some celestial bodies
+can be supported out of the box by Celestia but not in other VTS applications.
+In this case, VTS will try to use existing features (such as textures) but
+will not use default ephemerides.
+
+.. _Central_bodies_in_VTS#Origin_of_ephemeris:
+
+Origin of ephemeris
+----------------------------------------------------------------------------------
+
+
+.. _Central_bodies_in_VTS#Default_ephemeris_mode:
+
+Default ephemeris mode
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Client applications choose their default mode to select the central bodies
+ephemerides. They can use their own calculation or shipped data, or VTS ephemerides
+catalog. This option can be also used for application that don't animate the central
+body or if this information is not relevant for them.
+
+In this mode Celestia uses its own calculation, and SurfaceView uses catalog
+ephemerides files.
+
+.. figure:: /_images/DefaultEphemerisMode.png
+   :align: center
+
+   Ephemeris source in default mode
+
+
+
+.. _Central_bodies_in_VTS#Catalog_ephemeris_mode:
+
+Catalog ephemeris mode
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Client applications use the VTS ephemeris catalog data in this mode. The
+ephemeris catalog contains CIC files describing the position and the orientation
+of the solar system planets between 01/01/1950 and 31/12/2100. Position files
+contain one point per day and orientation files contain 6 point per day. These
+files are provided by CNES.
+
+.. figure:: /_images/CatalogEphemerisMode.png
+   :align: center
+
+   Catalog ephemeris mode
+
+
+.. _Central_bodies_in_VTS#Custom_ephemeris_mode:
+
+Custom ephemeris mode
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Redefine the ephemerides of an existing Celestia body or define the ephemerides
+of a body not available in Celestia. Custom ephemerides must be defined if the
+current body is not available in Celestia.
+
+.. figure:: /_images/CustomEphemerisMode.png
+   :align: center
+
+   Custom ephemeris mode
+
+
+.. _Central_bodies_in_VTS#Central_body_frame:
+
+Central body frame
+----------------------------------------------------------------------------------
+
+Coordinates of a central body are expressed in the heliocentric EME2000 frame.
+
+North Pole of a central body is always the rotation North. It is used to display
+body axes and the planetographic grid.

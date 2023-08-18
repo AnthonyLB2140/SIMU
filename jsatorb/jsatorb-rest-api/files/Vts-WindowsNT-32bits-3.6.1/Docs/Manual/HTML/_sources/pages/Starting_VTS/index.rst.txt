@@ -1,0 +1,41 @@
+.. _Starting_VTS:
+
+Starting VTS
+==================================================================================
+
+.. _Starting_VTS#Starting_the_VTS_configuration_utility:
+
+Starting the VTS configuration utility
+----------------------------------------------------------------------------------
+
+The VTS toolkit can by started by double-clicking the ``startVTS.exe`` file under Windows, or by executing the ``./startVTS`` command under Linux.
+This displays the main window of the VTS configuration utility. It allows creating a project by setting up the entities to be visualized: satellites, sensors, ground stations, and client applications.
+
+If the launcher is executed from the command line with the ``--project <ProjectFile.vts>`` argument, the VTS configuration utility automatically loads the given project on startup.
+
+
+.. _Starting_VTS#Starting_the_visualization_from_the_command_line:
+
+Starting the visualization from the command line
+----------------------------------------------------------------------------------
+
+The visualization can be started automatically from the command line via the launcher. The Broker then opens and starts the visualization, without going through the VTS configuration utility.
+
+In batch mode, the following arguments are mandatory:
+
+- ``--batch`` instructs the launcher to start the Broker directly
+- ``--project <ProjectFile.vts>`` specifies the project file to load. The path can be either relative or absolute.
+
+Other command-line arguments for the Broker can also be given in batch mode.
+
+Sample command line: ``startVTS.exe --batch --project C:\Project\CubeSat.vts``
+
+On Linux only, the version of VTS can be obtained with the command: ``./startVTS.exe --version``
+
+
+.. _Starting_VTS#Troubleshooting_a_crash_of_VTS:
+
+Troubleshooting a crash of VTS
+----------------------------------------------------------------------------------
+
+If the execution of VTS has a problem, an email could be sent to the Spacebel contact (vts-team@spacebel.fr). The environment being really important to understand, the VTS user can generate the log of environment by clicking on the tab ``Help->System Information...`` from the main interface.  It will produce a ``vtsdiag.log`` in the VTS root project that can be attached to the email.

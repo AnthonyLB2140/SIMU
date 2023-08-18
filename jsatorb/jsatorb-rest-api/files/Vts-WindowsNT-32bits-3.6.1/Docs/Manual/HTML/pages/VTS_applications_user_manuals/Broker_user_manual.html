@@ -1,0 +1,866 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Broker user manual &mdash; VTS 3.6.0-9030 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="VTS 3.6.0-9030 documentation" href="../../index.html"/>
+        <link rel="up" title="VTS applications user manuals" href="index.html"/>
+        <link rel="next" title="SurfaceView user manual" href="SurfaceView_user_manual.html"/>
+        <link rel="prev" title="VTS configuration utility user manual" href="VTS_configuration_utility_user_manual.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> VTS
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../General/index.html">General</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Files_used_by_VTS/index.html">Files used by VTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Starting_VTS/index.html">Starting VTS</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">VTS applications user manuals</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="VTS_configuration_utility_user_manual.html">VTS configuration utility user manual</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Broker user manual</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#command-line-options">Command-line options</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#project-file-vts">–project &lt;File.vts&gt;</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#specificargs-appidname-specificargs">–specificargs &lt;appIdName&gt; &lt;SpecificArgs&gt;</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datadir-datadirectory">–datadir &lt;dataDirectory&gt;</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tempdir-tempdirectory">–tempdir &lt;tempDirectory&gt;</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#port">–port</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#close">–close</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#closeifprojectappsend">–closeIfProjectAppsEnd</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#restart">–restart</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#externalrestart">–externalRestart</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stdout">–stdout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nocheckvalidity">–nocheckvalidity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#logdir-logdirectory">–logdir &lt;logDirectory&gt;</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#start-of-a-visualization">Start of a visualization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#end-of-a-visualization">End of a visualization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#broker-menu">Broker menu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#display-modes">Display modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#time-management">Time management</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#time-controls">Time controls</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#timeline">Timeline</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#time-information">Time information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#timeshifting">Timeshifting</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#interacting-with-client-applications">Interacting with client applications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#timeline-tab"><em>Timeline</em> tab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#view-properties-tab"><em>View Properties</em> tab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#events-tab"><em>Events</em> tab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#d-cameras-tab"><em>3D Cameras</em> tab</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#central-bodies">Central bodies</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#satellites">Satellites</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tracking-shot">Tracking shot</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#applications-tab"><em>Applications</em> tab</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#managing-client-applications">Managing client applications</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#promoting-a-dynamic-application-into-a-project-application">Promoting a dynamic application into a project application</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#server-tab"><em>Server</em> tab</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#log-tab"><em>Log</em> tab</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#clients-tab"><em>Clients</em> tab</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#received-packets-and-sent-packets-tabs"><em>Received packets</em> and <em>Sent packets</em> tabs</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#recording-movies">Recording movies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#other-interactions">Other interactions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#image-capture">Image capture</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#area-capture">Area capture</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#capture-by-application">Capture by application</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="SurfaceView_user_manual.html">SurfaceView user manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SkyView_user_manual.html">SkyView user manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SensorView_user_manual.html">SensorView user manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NadirView_user_manual.html">NadirView user manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ZenithView_user_manual.html">ZenithView user manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Celestia_user_manual.html">Celestia user manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InfoBox_user_manual.html">InfoBox user manual</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Plugin_development/index.html">Plugin development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Data_generators_in_VTS/index.html">Data generator integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../About/index.html">About</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">VTS</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">VTS applications user manuals</a> &raquo;</li>
+        
+      <li>Broker user manual</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/pages/VTS_applications_user_manuals/Broker_user_manual.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="broker-user-manual">
+<span id="id1"></span><h1>Broker user manual<a class="headerlink" href="#broker-user-manual" title="Permalink to this headline">¶</a></h1>
+<p>The Broker is the core application of the visualization phase. It starts the client applications, regulates the visualization time, sends user commands to the client applications, and much more.</p>
+<div class="section" id="command-line-options">
+<span id="broker-user-manual-command-line-arguments"></span><h2>Command-line options<a class="headerlink" href="#command-line-options" title="Permalink to this headline">¶</a></h2>
+<p>The Broker is started by the VTS configuration utility when the <strong>Run</strong> button is clicked.</p>
+<p>It can also be started from the command line, either directly or through the <em>startVTS</em> binary. The latter uses the following syntax:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>startVTS --batch <span class="o">[</span>Broker options<span class="o">]</span>
+</pre></div>
+</div>
+<p>When started from the command line, the following options can be specified:</p>
+<div class="section" id="project-file-vts">
+<span id="broker-user-manual-project-file-vts"></span><h3>–project &lt;File.vts&gt;<a class="headerlink" href="#project-file-vts" title="Permalink to this headline">¶</a></h3>
+<p>This option tells the Broker which VTS project file to load and visualize.</p>
+<p>Example:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>broker --project C:<span class="se">\P</span>roject<span class="se">\C</span>ubeSat.vts
+</pre></div>
+</div>
+</div>
+<div class="section" id="specificargs-appidname-specificargs">
+<span id="broker-user-manual-specificargs-appidname-specificargs"></span><h3>–specificargs &lt;appIdName&gt; &lt;SpecificArgs&gt;<a class="headerlink" href="#specificargs-appidname-specificargs" title="Permalink to this headline">¶</a></h3>
+<p>This option defines additional arguments which will be passed on to client applications upon startup.</p>
+<p>Client applications can be identified in several ways:</p>
+<ul>
+<li><p class="first">The application ID (1, 2, etc.)</p>
+</li>
+<li><dl class="first docutils">
+<dt>The application name (“Celestia”, “SurfaceView”, etc.)</dt>
+<dd><ul class="first last simple">
+<li>If no number is specified, then the given arguments will be passed on to all clients with the given name (i.e. all instances of Celestia, SurfaceView, etc.)</li>
+<li>If an additional number is specified (“Celestia:1”, “PrestoPlot:3”, etc.), then the given arguments will only be passed on to the n-th instance of the application</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Examples:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>broker --project C:<span class="se">\P</span>roject<span class="se">\C</span>ubeSat.vts --specificArgs <span class="m">1</span> <span class="s2">&quot;--someOption&quot;</span>
+broker --project C:<span class="se">\P</span>roject<span class="se">\C</span>ubeSat.vts --specificArgs Celestia <span class="s2">&quot;--url exampleUrl&quot;</span>
+broker --project C:<span class="se">\P</span>roject<span class="se">\C</span>ubeSat.vts --specificArgs SurfaceView:2 <span class="s2">&quot;--colorLayer&quot;</span>
+</pre></div>
+</div>
+<p>The <em>–specificArgs</em> arguments must be specified after the <em>–project</em> option on the command line.</p>
+</div>
+<div class="section" id="datadir-datadirectory">
+<span id="broker-user-manual-datadir-datadirectory"></span><h3>–datadir &lt;dataDirectory&gt;<a class="headerlink" href="#datadir-datadirectory" title="Permalink to this headline">¶</a></h3>
+<p>Use an alternate data directory for the project’s data: file names referenced by the project will be resolved from this directory instead of the project file’s directory.</p>
+<p>Example:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>broker --project project-without-data.vts --datadir /path/to/project/data
+</pre></div>
+</div>
+<p>This is used internally by VTS when the project file’s directory is read-only. The project is then run from a temporary directory, using the data located in the original project file’s directory.</p>
+</div>
+<div class="section" id="tempdir-tempdirectory">
+<span id="broker-user-manual-tempdir-tempdirectory"></span><h3>–tempdir &lt;tempDirectory&gt;<a class="headerlink" href="#tempdir-tempdirectory" title="Permalink to this headline">¶</a></h3>
+<p>Start the Broker in read-only mode, meaning it will not write to its installation directory. It may still write to project files outside its installation directory.</p>
+<p>In this mode, application data for the visualization and changes to a project file located inside the installation directory will be written to the specified temporary directory instead. It the directory is <code class="docutils literal"><span class="pre">&quot;&quot;</span></code>, the Broker will create one.</p>
+<p>Example:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>broker --tempdir /tmp
+</pre></div>
+</div>
+<p>This is used internally by VTS when its installation directory is read-only, or when the configuration utility has been started with the <em>–readonly</em> option.</p>
+</div>
+<div class="section" id="port">
+<span id="broker-user-manual-port"></span><h3>–port<a class="headerlink" href="#port" title="Permalink to this headline">¶</a></h3>
+<p>Force the Broker to use a specific port number to start its server. By default, the port 8888 is used.</p>
+<p>Example:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>broker --port <span class="m">9999</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="close">
+<span id="broker-user-manual-close"></span><h3>–close<a class="headerlink" href="#close" title="Permalink to this headline">¶</a></h3>
+<p>The Broker is started as a client and try to connect to an already running Broker, according to the –port option. When connected, the AUTOCLOSE command is send and the Broker closes.</p>
+<p>Example:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>broker --close --port <span class="m">9999</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="closeifprojectappsend">
+<span id="broker-user-manual-closeifprojectappsend"></span><h3>–closeIfProjectAppsEnd<a class="headerlink" href="#closeifprojectappsend" title="Permalink to this headline">¶</a></h3>
+<p>This option programs the Broker shutoff when all client applications are closed, regardless dynamic or external applications connected.</p>
+<p>Example:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>broker --closeIfProjectAppsEnd
+</pre></div>
+</div>
+</div>
+<div class="section" id="restart">
+<span id="broker-user-manual-restart"></span><h3>–restart<a class="headerlink" href="#restart" title="Permalink to this headline">¶</a></h3>
+<p>The Broker is started as a client and try to connect to an already running Broker, according to the –port option. When connected, the AUTORESTART command is send and the Broker restarts or closes, depending on if the option –externalrestart has been specified.</p>
+<p>Example:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>broker --restart
+</pre></div>
+</div>
+</div>
+<div class="section" id="externalrestart">
+<span id="broker-user-manual-externalrestart"></span><h3>–externalRestart<a class="headerlink" href="#externalrestart" title="Permalink to this headline">¶</a></h3>
+<p>This infrastructure option tells the Broker to not restart itself when it receives an ANTORESTART command. Instead, it closes with a special exit code. This option is used by the configuration utility.</p>
+<p>Example:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>broker --project C:<span class="se">\P</span>roject<span class="se">\C</span>ubeSat.vts --externalRestart
+</pre></div>
+</div>
+</div>
+<div class="section" id="stdout">
+<span id="broker-user-manual-stdout"></span><h3>–stdout<a class="headerlink" href="#stdout" title="Permalink to this headline">¶</a></h3>
+<p>This option tells the Broker to write every information message to the standard output instead of the logger tab.</p>
+<p>Example:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>broker --project C:<span class="se">\P</span>roject<span class="se">\C</span>ubeSat.vts --stdout
+</pre></div>
+</div>
+</div>
+<div class="section" id="nocheckvalidity">
+<h3>–nocheckvalidity<a class="headerlink" href="#nocheckvalidity" title="Permalink to this headline">¶</a></h3>
+<p>This option disables the project validity check. This option can improve the startup speed of a project visualization but should be used only with a valid project.</p>
+<p>Example:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>broker --project C:<span class="se">\P</span>roject<span class="se">\C</span>ubeSat.vts --nocheckvalidity
+</pre></div>
+</div>
+</div>
+<div class="section" id="logdir-logdirectory">
+<h3>–logdir &lt;logDirectory&gt;<a class="headerlink" href="#logdir-logdirectory" title="Permalink to this headline">¶</a></h3>
+<p>This option redirects log get by the Broker (which means log from the Broker or from applications during the visualization) in a specific directory. This specific directory has to exist before using the option.</p>
+<p>Example:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>broker --project C:<span class="se">\P</span>roject<span class="se">\C</span>ubeSat.vts --logdir C:<span class="se">\P</span>roject<span class="se">\L</span>ogs
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="start-of-a-visualization">
+<span id="broker-user-manual-start-of-a-visualization"></span><h2>Start of a visualization<a class="headerlink" href="#start-of-a-visualization" title="Permalink to this headline">¶</a></h2>
+<p>When a visualization is started from the <a class="reference internal" href="VTS_configuration_utility_user_manual.html#vts-configuration-utility-user-manual"><span class="std std-ref">VTS configuration utility</span></a>, the Broker starts all the <a class="reference internal" href="../Plugin_development/Client_applications_in_VTS.html#client-applications-in-vts"><span class="std std-ref">client applications</span></a> defined in the VTS project. During this initialization phase, the Broker displays the <em>Initializing</em> message in the text fields of the time control area. Time does not start flowing until all client applications have signaled they are ready.</p>
+<p>Upon connection of the various client applications, the Broker’s tabs are populated with commands and information regarding these applications.</p>
+<p>Visualization automatically starts to play with time ratio 1 once initialization is finished, unless specified otherwise in the VTS project.</p>
+</div>
+<div class="section" id="end-of-a-visualization">
+<span id="broker-user-manual-end-of-a-visualization"></span><h2>End of a visualization<a class="headerlink" href="#end-of-a-visualization" title="Permalink to this headline">¶</a></h2>
+<p>The visualization can be stopped directly by clicking the top-right cross button to close the Broker. It also stops once all client applications have been closed by the user, or if the VTS configuration utility is closed (if the visualization was started from there).</p>
+</div>
+<div class="section" id="broker-menu">
+<span id="broker-user-manual-broker-menu"></span><h2>Broker menu<a class="headerlink" href="#broker-menu" title="Permalink to this headline">¶</a></h2>
+<p>The Broker menu can be reached through the gears icon in the top-left corner of the Broker.</p>
+<div class="figure align-center" id="id2">
+<img alt="../../_images/10_startRecording.png" src="../../_images/10_startRecording.png" />
+<p class="caption"><span class="caption-text">Broker menu</span></p>
+</div>
+<p>It offers the following options:</p>
+<ul>
+<li><p class="first"><strong>Dock on top of screen</strong> / <strong>Dock on bottom of screen</strong> / <strong>Enable always on top</strong>: Control special Broker display modes (refer to the <a class="reference internal" href="#broker-user-manual-display-modes"><span class="std std-ref">Display modes</span></a> section below for more information)</p>
+</li>
+<li><p class="first"><strong>Save Broker position</strong>: Save the Broker window state and position, so that it can be restored at the next startup of project visualization. The Broker is guaranteed not to disappear in the case of a change of the desktop geometry. If the Broker monitor is no longer available, the Broker window will move itself inside the closest available monitor.</p>
+</li>
+<li><p class="first"><strong>Record movie</strong>: Record a movie (refer to the <a class="reference internal" href="#broker-user-manual-recording-movies"><span class="std std-ref">Recording movies</span></a> section below for more information)</p>
+</li>
+<li><p class="first"><strong>Capture area</strong>: Save an image of a screen area</p>
+</li>
+<li><p class="first"><strong>Capture all applications</strong>: Request all application to capture itself into an image</p>
+</li>
+<li><p class="first"><strong>Capture application</strong>: Request an application to capture itself into an image</p>
+</li>
+<li><p class="first"><strong>Add application</strong>: Start a new dynamic client application (refer to the <span class="xref std std-ref">*Applications* tab</span> section below for more information)</p>
+</li>
+<li><dl class="first docutils">
+<dt><strong>Run macro</strong>: Run a CIC/CCSDS macro file (refer to the <a class="reference internal" href="../General/Scripts_and_macros_in_VTS.html#scripts-and-macros-in-vts"><span class="std std-ref">Scripts and macros in VTS</span></a> chapter for more information)</dt>
+<dd><ul class="first last simple">
+<li><strong>Choose macro…</strong>: Browse for a CIC/CCSDS macro file to run</li>
+<li><strong>Project macros</strong>: Run a CIC/CCSDS macro file found in the <em>Macros</em> subfolder of the project folder</li>
+<li><strong>VTS macros</strong>: Run a CIC/CCSDS macro found in the <em>Apps/Broker/macros</em> subfolder of the VTS installation folder</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first"><strong>Quit</strong>: Close the visualization</p>
+</li>
+</ul>
+</div>
+<div class="section" id="display-modes">
+<span id="broker-user-manual-display-modes"></span><h2>Display modes<a class="headerlink" href="#display-modes" title="Permalink to this headline">¶</a></h2>
+<p>The Broker can either display itself in compact or full mode. In compact mode, only time control buttons are displayed and the Broker is pinned in the foreground (always on top of other windows). In full mode, the tabbed interface is displayed, allowing access to the scenario timeline, all client commands, and information on the state of the visualization.
+By default, at the start of a visualization, the Broker is in compact mode. The <strong>Unfold</strong> arrow button allows switching to full mode.</p>
+<div class="figure align-center" id="id3">
+<img alt="../../_images/01_brokerMinimize.png" src="../../_images/01_brokerMinimize.png" />
+<p class="caption"><span class="caption-text">Compact display mode</span></p>
+</div>
+<div class="figure align-center" id="id4">
+<img alt="../../_images/03_brokerMaximize.png" src="../../_images/03_brokerMaximize.png" />
+<p class="caption"><span class="caption-text">Full display mode</span></p>
+</div>
+<p>The gears menu in the top-left corner of the Broker offers the following options:</p>
+<ul class="simple">
+<li><strong>Dock on top of screen</strong> : dock the Broker in compact mode at the top of the current screen</li>
+<li><strong>Dock on bottom of screen</strong> : dock the Broker in compact mode at the bottom of the current screen</li>
+<li><strong>Enable always on top</strong> : whether or not the Broker window should remain always on top of other windows (enabled by default in compact mode)</li>
+</ul>
+<div class="figure align-center" id="id5">
+<img alt="../../_images/BrokerDocked.png" src="../../_images/BrokerDocked.png" />
+<p class="caption"><span class="caption-text">Docked display mode</span></p>
+</div>
+</div>
+<div class="section" id="time-management">
+<span id="broker-user-manual-time-management"></span><h2>Time management<a class="headerlink" href="#time-management" title="Permalink to this headline">¶</a></h2>
+<p>Controls and information regarding time are available in all Broker display modes. The following interface allows interacting with visualization time:</p>
+<div class="figure align-center" id="id6">
+<img alt="../../_images/02_brokerMinimize.png" src="../../_images/02_brokerMinimize.png" />
+<p class="caption"><span class="caption-text">Visualization time interaction areas</span></p>
+</div>
+<div class="section" id="time-controls">
+<span id="broker-user-manual-time-controls"></span><h3>Time controls<a class="headerlink" href="#time-controls" title="Permalink to this headline">¶</a></h3>
+<p>The buttons in area (1) control time in all client applications:</p>
+<ul class="simple">
+<li><strong>Time Loop</strong>: Toggles loop playback for the visualization.</li>
+<li><strong>Restart</strong>: Resets time to the project’s start date. The play/pause status remains unchanged.</li>
+<li><strong>Play/Pause</strong>: Plays/pauses the time flow. Pausing does not prevent interaction with the visualized entities in the client applications, or navigation in visualization time using the timeline.</li>
+<li><strong>Reverse Time</strong>: Every click on this button inverts the time flow direction. The time ratio remains unchanged.</li>
+<li><strong>Use Scenario State Time Ratio</strong>: When this button is unchecked, the user have a full control over the time ratio. When the button is checked, every time the time bar crosses a state, the state time ratio is applied to the visualization. The modification of the time ratio value is only  applied when the “Use Scenario State Time Ratio” is toggled from OFF to ON.</li>
+<li><strong>Slower</strong>: Decreases the time ratio. Two clicks on this button result in a 5 times slower time flow. The current time ratio is displayed next to this button.</li>
+<li><strong>Faster</strong>: Increases the time ratio. Two clicks on this button result in a 5 times faster time flow.</li>
+</ul>
+</div>
+<div class="section" id="timeline">
+<span id="broker-user-manual-timeline"></span><h3>Timeline<a class="headerlink" href="#timeline" title="Permalink to this headline">¶</a></h3>
+<p>The timeline (2) displays the visualization’s time range. Dragging the cursor controls the visualization’s current time. While moving the cursor, the current time is kept updated in all client applications synchronously. For finer or coarser-grained time control, the timeline can be zoomed in/out using the mouse wheel.</p>
+</div>
+<div class="section" id="time-information">
+<span id="broker-user-manual-time-information"></span><h3>Time information<a class="headerlink" href="#time-information" title="Permalink to this headline">¶</a></h3>
+<p>A text area (3) displays the current visualization time. The default format is the ISO time format (date and time in UTC). The arrow button circles through other available time formats: CNES julian day (JD1950, fractional days, with reference date January 1st, 1950), modified julian day (MJD, days and seconds, reference date November 17th, 1858) and proect-relative (Project, seconds, reference project start date). The <strong>Edit date…</strong> button pops up a dialog in which the current visualization time can be accurately defined (in all of the above time formats).</p>
+<p>Refer to the <a class="reference internal" href="../General/Date_formats_in_VTS.html#date-formats-in-vts"><span class="std std-ref">Date formats in VTS</span></a> for further information on dates.</p>
+</div>
+<div class="section" id="timeshifting">
+<span id="broker-user-manual-timeshifting"></span><h3>Timeshifting<a class="headerlink" href="#timeshifting" title="Permalink to this headline">¶</a></h3>
+<p>Timeshifting is a feature which allows the user the go back in time while the scenario is running and then catch up on the current time.
+This feature is only enabled on project containing data which are streamed. It has to be activated during <a class="reference internal" href="VTS_configuration_utility_user_manual.html#vts-configuration-utility-user-manual-configuring-timeshifting"><span class="std std-ref">the configuration phase of the project</span></a>.
+Once activated, the streamed data are stored to be resent to all connected clients during the playback phase. To enter in the playback phase, the following actions are possible:</p>
+<ul class="simple">
+<li>Press the <strong>Pause</strong> button</li>
+<li>Enter a date which is before the current date of the scenario</li>
+<li>Drag the time cursor to an earlier date</li>
+</ul>
+<p>To catch up on the current time of the scenario, users can increase the current time ratio while playback or drag the time cursor to current date of the scenario</p>
+</div>
+</div>
+<div class="section" id="interacting-with-client-applications">
+<span id="broker-user-manual-interacting-with-client-applications"></span><h2>Interacting with client applications<a class="headerlink" href="#interacting-with-client-applications" title="Permalink to this headline">¶</a></h2>
+<p>The <em>Timeline</em> tab displays graphical information on the progress of the visualization.</p>
+<p>The <em>View Properties</em> and <em>3D Cameras</em> tabs allow interacting with client applications. Available actions are hierarchised according to the project structure, for each application.</p>
+<p>The <em>Events</em> tab allows controlling the visibility of events in client applications. Event types are displayed in a tree structure for applications that support events.</p>
+<p>The <em>Applications</em> tab allows managing the Broker’s client applications.</p>
+<p>The <em>Server</em> tab displays information, warning and error messages from the Broker or its client applications, provides a log of all messages received by the Broker and sent to its clients, and displays some technical information on all currently connected clients.</p>
+</div>
+<div class="section" id="timeline-tab">
+<span id="broker-user-manual-timeline-tab"></span><h2><em>Timeline</em> tab<a class="headerlink" href="#timeline-tab" title="Permalink to this headline">¶</a></h2>
+<p>The <em>Timeline</em> tab displays graphical information on the progress of the visualization.</p>
+<div class="figure align-center" id="id7">
+<img alt="../../_images/BrokerTimeline.png" src="../../_images/BrokerTimeline.png" />
+<p class="caption"><span class="caption-text">Project timeline</span></p>
+</div>
+<p>The contents of the timeline are described in the <a class="reference internal" href="../General/Scenario_in_VTS.html#scenario-in-vts-timeline"><span class="std std-ref">Timeline</span></a> section of the <a class="reference internal" href="../General/Scenario_in_VTS.html#scenario-in-vts"><span class="std std-ref">Scenario in VTS</span></a> chapter.</p>
+</div>
+<div class="section" id="view-properties-tab">
+<span id="broker-user-manual-view-properties-tab"></span><h2><em>View Properties</em> tab<a class="headerlink" href="#view-properties-tab" title="Permalink to this headline">¶</a></h2>
+<p>The <em>View Properties</em> tab allows interacting with client applications and defining the properties of all project scenario states.</p>
+<div class="figure align-center" id="id8">
+<img alt="../../_images/BrokerViewProperties.png" src="../../_images/BrokerViewProperties.png" />
+<p class="caption"><span class="caption-text">Client application view properties</span></p>
+</div>
+<p>The contents of this tab are described in the <a class="reference internal" href="../General/Scenario_in_VTS.html#scenario-in-vts-view-properties-editor"><span class="std std-ref">View properties editor</span></a> section of the <a class="reference internal" href="../General/Scenario_in_VTS.html#scenario-in-vts"><span class="std std-ref">Scenario in VTS</span></a> chapter.</p>
+</div>
+<div class="section" id="events-tab">
+<span id="broker-user-manual-events-tab"></span><h2><em>Events</em> tab<a class="headerlink" href="#events-tab" title="Permalink to this headline">¶</a></h2>
+<p>The <em>Events</em> tab allows controlling the visibility of mission events in client applications that support them.</p>
+<div class="figure align-center" id="id9">
+<img alt="../../_images/BrokerOngletEvents.png" src="../../_images/BrokerOngletEvents.png" />
+<p class="caption"><span class="caption-text">Mission events visibility</span></p>
+</div>
+<ul class="simple">
+<li>The list of client applications allows selecting the target client when setting the visibility of mission events.</li>
+<li>The event type hierarchy displays all event types and allows setting the visibility of an event type for all satellites or for each satellite individually. The value indicated in parentheses is the number of events of the corresponding event type in all event files.</li>
+<li>The visibility status of all event types is maintained in the scenario states, and is hence saved between states and visualization sessions.</li>
+<li>Mission events are also displayed in the <em>Timeline</em> tab, for each satellite.</li>
+</ul>
+<p>For more information on events in VTS, refer to the <a class="reference internal" href="../General/Mission_events_in_VTS.html#mission-events-in-vts"><span class="std std-ref">Mission events in VTS</span></a> chapter.</p>
+</div>
+<div class="section" id="d-cameras-tab">
+<span id="broker-user-manual-3d-cameras-tab"></span><h2><em>3D Cameras</em> tab<a class="headerlink" href="#d-cameras-tab" title="Permalink to this headline">¶</a></h2>
+<p>The <em>3D Cameras</em> tab allows interacting with standard visualization cameras in 3D applications. The various cameras are displayed in a hierarchical fashion for all visualization entities, and each column corresponds to a specific instance of a currently running 3D client application.</p>
+<p>Cameras are positionned relatively to a reference frame axis, such as EME2000 axes, satellite axes, etc. The parameter “Display axes at…” of the section “3D properties of a satellite” also select if the camera is attached to the satellite local frame axis or to its center of gravity.</p>
+<div class="figure align-center" id="id10">
+<img alt="../../_images/04_brokerCameras.png" src="../../_images/04_brokerCameras.png" />
+<p class="caption"><span class="caption-text">Camera controls</span></p>
+</div>
+<div class="section" id="central-bodies">
+<span id="broker-user-manual-central-bodies"></span><h3>Central bodies<a class="headerlink" href="#central-bodies" title="Permalink to this headline">¶</a></h3>
+<p>Central bodies such as <strong>Earth</strong> are top-level entities of the visualized project. All central bodies defined in the project appear in the hierarchy. Available actions are:</p>
+<ul class="simple">
+<li>‘<em>Fixed in *Body</em> frame*’: The camera is positioned in the body’s local frame, pointed at the body.</li>
+<li><strong>Inertial</strong>: The camera is positioned in an inertial frame attached to the body, pointed at the body. Expanding this item allows positioning the camera on all axes of the inertial frame.</li>
+<li><strong>Body frame</strong>: The camera is positioned in the body’s local frame, pointed at the body. Expanding this item allows positioning the camera on all axes of the body frame.</li>
+<li><strong>Goto</strong>: The camera is pointed at the body, travelled so that it occupies as much space as possible in the 3D window, and attached to the body’s local frame. The UP vector of the camera is undefined.</li>
+<li><strong>Center</strong>: The camera is simply pointed at the body. Its reference frame is unchanged. The UP vector of the camera is undefined.</li>
+<li><strong>North pole</strong>: The camera is positioned above the North pole of the body, pointed towards it, and attached to the body’s local frame. The UP vector of the camera is along the Y axis of the local frame.</li>
+<li><strong>South pole</strong>: The camera is positioned above the South pole of the body, pointed towards it, and attached to the body’s local frame. The UP vector of the camera is along the -Y axis of the local frame.</li>
+<li><strong>Ground Stations</strong>: The camera is pointing from or towards a ground station. This entry is available only if a ground stations is configured as targeting a satellite altitude (see the <a class="reference internal" href="VTS_configuration_utility_user_manual.html#vts-configuration-utility-user-manual-configuring-a-ground-station"><span class="std std-ref">Configuring a ground station</span></a> section).</li>
+</ul>
+</div>
+<div class="section" id="satellites">
+<span id="broker-user-manual-satellites"></span><h3>Satellites<a class="headerlink" href="#satellites" title="Permalink to this headline">¶</a></h3>
+<p>Satellites are top-level entities of the visualized project. All satellites defined in the project appear in the hierarchy. Available actions are:</p>
+<ul>
+<li><p class="first"><strong>Inertial cameras</strong>: The camera is positioned in an inertial frame attached to the satellite, pointed at the satellite. Expanding this item allows positioning the camera on all axes of the inertial frame.</p>
+</li>
+<li><p class="first">‘<em>Sun and *Body</em> cameras*’: The camera is positioned in a Sun/body-synchronous frame attached to the satellite, pointed at the satellite. Expanding this item allows positioning the camera so that it points towards the Sun/body. The UP vector of the camera is undefined.</p>
+</li>
+<li><p class="first"><strong>Satellite frame cameras</strong>: The camera is positioned in the satellite’s local frame, pointed at the satellite. Expanding this item allows positioning the camera on all axes of the satellite frame.</p>
+</li>
+<li><p class="first"><strong>QSW frame cameras</strong>: The camera is positioned in the QSW local orbital frame, pointed at the satellite. Expanding this action allows positioning the camera on all axes of the QSW frame.</p>
+</li>
+<li><p class="first"><strong>TNW frame cameras</strong>: The camera is positioned in the TNW local orbital frame, pointed at the satellite. Expanding this action allows positioning the camera on all axes of the TNW frame.</p>
+</li>
+<li><dl class="first docutils">
+<dt><strong>Miscellaneous cameras</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>Orbit</strong>: The camera is positioned at a distance of the satellite’s central body, pointed towards the body in a direction normal to the satellite’s velocity, so that the orbit of the satellite can be observed. The UP vector of the camera is aligned on the Z axis of the central body’s local frame. Hold the CTRL key while clicking to observe the scene from the opposite side of the body.</li>
+<li><strong>Goto</strong>: The camera is pointed at the satellite, travelled so that it occupies as much space as possible in the 3D window, and attached to the satellite’s local frame. The UP vector of the camera is undefined.</li>
+<li><strong>Center</strong>: The camera is simply pointed at the satellite. Its reference frame remains unchanged. The UP vector of the camera is undefined.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first"><strong>Sensors</strong>: These cameras are only available when sensors are attached to the satellite. The camera is positioned at the location of the sensor (plus an offset which can be set in the application parameters), pointed in the direction of its aim vector. Expanding the action allows selecting each sensor of the satellite. The UP vector of the camera is the X axis of the sensor. Hold the CTRL key while clicking to use the Y axis as the UP vector.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="tracking-shot">
+<span id="broker-user-manual-tracking-shot"></span><h3>Tracking shot<a class="headerlink" href="#tracking-shot" title="Permalink to this headline">¶</a></h3>
+<p>The <em>tracking</em> node allows you to perform camera animations in an object frame. The animation will be saved in the current state. It is recommended to create a state beforehand in order to fix the position and orientation of the camera, then another state in which the animation properties will be saved.</p>
+<ol class="arabic simple">
+<li>Create a state, setup a camera (preferably with a camera button and adjust with mouse) an save the state (<em>Save current state</em> button)</li>
+<li>Create a new state a moment later</li>
+<li>Click the <em>From</em> button: the tracking source position is set</li>
+<li>Move the camera using mouse or another preconfigured camera button <strong>in the same reference frame</strong> (don’t mix <em>Satellite frame</em> with <em>TNW frame</em> position for example)</li>
+<li>Click the <em>To</em> button: the tracking target position is set</li>
+<li>Set the <em>Go…</em> button: a dialog box shows up</li>
+<li>Configure the animation using the following parameters:</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><em>Duration</em>: Number of seconds the goto should take. Default is 5 seconds.</li>
+<li><em>Start interpolation</em>: The point in time during the goto (expressed as a percent number between 0 and 100), at which the observer should begin turning from the initial orientation to the final orientation. Default is 25.</li>
+<li><em>End interpolation</em>: The point in time during the goto (expressed as a percent number between 0 and 100) at which the observer should finish turning from the initial orientation to the final orientation. Default is 75.</li>
+<li><em>Acceleration time</em>: Indicates (as a percentage number between 0 and 100) how much of the time during the goto should be spent accelerating away from the initial position. It also represents the amount of time that will be spent decelerating towards the final position. The remainder of the time during the goto is spend cruising. Default is 25, minimum is 1 and maximum is 50.</li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="8">
+<li>Click on OK: the animation is played</li>
+<li>Click on the <em>Save current state</em> button to save the animation</li>
+<li>You can redo any step to modify the animation and save the changes</li>
+</ol>
+</div>
+</div>
+<div class="section" id="applications-tab">
+<span id="broker-user-manual-applications-tab"></span><h2><em>Applications</em> tab<a class="headerlink" href="#applications-tab" title="Permalink to this headline">¶</a></h2>
+<p>The <em>Applications</em> tab allows managing currently connected client applications, as well as starting new clients.</p>
+<div class="figure align-center" id="id11">
+<img alt="../../_images/BrokerApplications.png" src="../../_images/BrokerApplications.png" />
+<p class="caption"><span class="caption-text">Client applications</span></p>
+</div>
+<div class="section" id="managing-client-applications">
+<span id="broker-user-manual-managing-client-applications"></span><h3>Managing client applications<a class="headerlink" href="#managing-client-applications" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">To start a new instance of a client application, double-click its icon in the <em>Installed</em> list or drag-and-drop it into the right area of the window. Clients started this way are listed in the <em>Dynamic Applications</em> category.</p>
+</li>
+<li><p class="first">Clients not started by the Broker but connected to it are listed in the <em>External Applications</em> category.</p>
+</li>
+<li><dl class="first docutils">
+<dt>More details about a client can be displayed by clicking the arrow button next to each client.</dt>
+<dd><ul class="first last">
+<li><p class="first">To stop a client, click the red <strong>Stop</strong> button.</p>
+</li>
+<li><p class="first">To restart a stopped client, click the green <strong>Play</strong> button. A checkbox allows specifying whether or not to execute the client application’s launcher before restarting the application, in order to update the client’s data.</p>
+</li>
+<li><p class="first">To remove a dynamic application from the list, click the red cross button. The client will be stopped if it is currently running.</p>
+</li>
+<li><p class="first">To change application start options, ensure this application is promoted as a project application. The new options will be applied when you restart the broker. Options are:</p>
+<blockquote>
+<div><ul class="simple">
+<li><strong>Launch when the broker starts</strong>: The application is started just after the broker is started</li>
+<li><strong>Application Label</strong> : Title and label of the application</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="figure align-center" id="id12">
+<img alt="../../_images/BrokerApplicationsStart.png" src="../../_images/BrokerApplicationsStart.png" />
+<p class="caption"><span class="caption-text">Starting a client by drag-and-drop</span></p>
+</div>
+</div>
+<div class="section" id="promoting-a-dynamic-application-into-a-project-application">
+<span id="broker-user-manual-promoting-a-dynamic-application-into-a-project-application"></span><h3>Promoting a dynamic application into a project application<a class="headerlink" href="#promoting-a-dynamic-application-into-a-project-application" title="Permalink to this headline">¶</a></h3>
+<p>Dynamic applications can be promoted to project applications by drag-and-dropping their icons into the <em>Project Applications</em> list. When closing the Broker, a pop-up dialog will offer to save the changes made to the VTS project. If changes are saved, the promoted client will appear in the list of project applications in the VTS configuration utility and its view properties will be saved in the project scenario.</p>
+</div>
+</div>
+<div class="section" id="server-tab">
+<span id="broker-user-manual-server-tab"></span><h2><em>Server</em> tab<a class="headerlink" href="#server-tab" title="Permalink to this headline">¶</a></h2>
+<p>The <em>Server</em> tab displays information on the connection and communication of client applications with the Broker.</p>
+<div class="section" id="log-tab">
+<span id="broker-user-manual-log-tab"></span><h3><em>Log</em> tab<a class="headerlink" href="#log-tab" title="Permalink to this headline">¶</a></h3>
+<p>The <em>Log</em> tab displays the log of all messages emitted by the Broker or client applications during visualization. Since messages are collected from applications executed in different processes, the order in which the messages are displayed should not be taken as an accurate representation of the order in which the messages have actually been emitted.</p>
+<div class="figure align-center" id="id13">
+<img alt="../../_images/09_brokerLog.png" src="../../_images/09_brokerLog.png" />
+<p class="caption"><span class="caption-text">Logged messages</span></p>
+</div>
+<p>The color code of logged messages is as follows:</p>
+<ul class="simple">
+<li><strong>Blue</strong>: informational messages about the state of the visualization. Only emitted by the Broker.</li>
+<li><strong>Orange</strong>: warning messages. Only emitted by the Broker. These messages usually appear when an action fails, without causing the visualization to stop.</li>
+<li><strong>Red</strong>: error messages. Only emitted by the Broker. These messages usually appear when a client application crashes.</li>
+<li><strong>Grey</strong>: messages printed to the standard output of client applications. These messages are prefixed with the name of the client application that emitted them. They can be either informational, warning or error messages.</li>
+</ul>
+<p>Logged messages are also stored in a log file (broker.log). This file can be found in the “Apps/Logs” directory or in the temporary directory (if readonly is on).</p>
+<p><strong>Note:</strong> Always remember to send a copy of the message log to the VTS support team when an error occurs during visualization.</p>
+</div>
+<div class="section" id="clients-tab">
+<span id="broker-user-manual-clients-tab"></span><h3><em>Clients</em> tab<a class="headerlink" href="#clients-tab" title="Permalink to this headline">¶</a></h3>
+<p>The <em>Clients</em> tab displays the connection state of client applications.</p>
+<div class="figure align-center" id="id14">
+<img alt="../../_images/07_brokerServerClients.png" src="../../_images/07_brokerServerClients.png" />
+<p class="caption"><span class="caption-text">Connection state of client applications</span></p>
+</div>
+<ul class="simple">
+<li><strong>Server status</strong>: indicates the TCP port used by the Broker.</li>
+</ul>
+<p>The following information is available for each client:</p>
+<ul class="simple">
+<li><strong>Identifier</strong>: the client’s ID</li>
+<li><strong>Name</strong>: the client application’s name</li>
+<li><strong>Time type</strong>: the time behaviour of the client (<em>Constraint</em> or <em>Regulating</em>). Refer to the <a class="reference internal" href="../Plugin_development/Synchronization_protocol_for_VTS_clients.html#synchronization-protocol-for-vts-clients"><span class="std std-ref">Synchronization protocol for VTS clients</span></a> section for further information.</li>
+<li><strong>Socket</strong>: the socket ID for Broker-client communication.</li>
+<li><strong>Read</strong>: Number of incoming bytes that are waiting to be read from this client.</li>
+<li><strong>Write</strong>: Number of bytes that are waiting to be written to this client.</li>
+</ul>
+</div>
+<div class="section" id="received-packets-and-sent-packets-tabs">
+<span id="broker-user-manual-received-packets-and-sent-packets-tabs"></span><h3><em>Received packets</em> and <em>Sent packets</em> tabs<a class="headerlink" href="#received-packets-and-sent-packets-tabs" title="Permalink to this headline">¶</a></h3>
+<p>The <em>Received packets</em> and <em>Sent packets</em> tabs display the messages respectively received and sent by the Broker, from or to client applications.</p>
+<div class="figure align-center" id="id15">
+<img alt="../../_images/08_brokerServerPackets.png" src="../../_images/08_brokerServerPackets.png" />
+<p class="caption"><span class="caption-text">Messages received from clients</span></p>
+</div>
+<p><em>TIME</em> messages deal with time synchronization of clients, while <em>CMD</em> messages are related to client commands. All messages are displayed truncated when they are too long. Further information on these messages can be found in the <a class="reference internal" href="../Plugin_development/Synchronization_protocol_for_VTS_clients.html#synchronization-protocol-for-vts-clients"><span class="std std-ref">Synchronization protocol for VTS clients</span></a> section.</p>
+<p>The <strong>TIME</strong>, <strong>CMD</strong> and <strong>DATA</strong> checkboxes allow enabling or disabling the display of these classes of messages in the list.</p>
+</div>
+</div>
+<div class="section" id="recording-movies">
+<span id="broker-user-manual-recording-movies"></span><h2>Recording movies<a class="headerlink" href="#recording-movies" title="Permalink to this headline">¶</a></h2>
+<p>Movies can be recorded by the Broker during visualization. When recording a movie, client applications are synchronized frame by frame and an image is captured at each frame. The output movie is set at a framerate of 25 images per second.</p>
+<p>Note that recording a movie is not possible when the Broker is in real-time mode. For more information on real-time mode, refer to the <a class="reference internal" href="../Plugin_development/Synchronization_protocol_for_VTS_clients.html#synchronization-protocol-for-vts-clients-real-time-vts"><span class="std std-ref">Real-time VTS</span></a> section of the <a class="reference internal" href="../Plugin_development/Synchronization_protocol_for_VTS_clients.html#synchronization-protocol-for-vts-clients"><span class="std std-ref">Synchronization protocol for VTS clients</span></a> chapter.</p>
+<p>To start recording a movie, click the <strong>Record movie</strong> entry in the Broker’s action menu:</p>
+<div class="figure align-center" id="id16">
+<img alt="../../_images/10_startRecording.png" src="../../_images/10_startRecording.png" />
+<p class="caption"><span class="caption-text">Recording a movie</span></p>
+</div>
+<p>A configuration dialog pops up and visualization is paused. Interaction with the Broker is disabled while the dialog is opened, which means that the visualization must be correctly configured before starting the recording.</p>
+<div class="figure align-center" id="id17">
+<img alt="../../_images/11_recordingSettings.png" src="../../_images/11_recordingSettings.png" />
+<p class="caption"><span class="caption-text">Recording settings</span></p>
+</div>
+<p>The following parameters must be provided:</p>
+<ul>
+<li><p class="first"><strong>Output file</strong>: Name of the movie output file. The file extension will be either <em>.avi</em> (MPEG-4) or <em>.mpg</em> (MPEG-2). For correct integration of the recorded movie within Microsoft PowerPoint, the <em>.mpg</em> format must be selected.</p>
+</li>
+<li><p class="first"><strong>Preset</strong>: List of standard movie definitions. A <em>Custom</em> definition allows manual specification of the movie width and height.</p>
+</li>
+<li><p class="first"><strong>Width</strong>, <strong>Height</strong>: Movie definition (the mouse wheel may be used on these fields for faster adjustment of the values). For technical reasons linked to the requirements of the encoding codec of the movie, these values must be multiples of 8. If not, they will be automatically rounded up to the nearest multiple of 8 at the start of the recording.</p>
+</li>
+<li><p class="first"><strong>X offset</strong>, <strong>Y offset</strong>: Position of the recorded area (the mouse wheel may be used on these fields for faster adjustment of the values).</p>
+</li>
+<li><dl class="first docutils">
+<dt><strong>Overlay</strong>: An overlay could be added on the movie to show an image in the foreground.</dt>
+<dd><ul class="first last simple">
+<li><strong>Standard</strong> combobox: A list of standard logos. You can also put your own image files in the Apps/Broker/overlays directory.</li>
+<li><strong>Custom image file</strong>: Path of an image to be used as an overlay for the movie. If not path is given, the movie will not contain any overlay.</li>
+<li><strong>Anchor</strong>: Anchor of the image in the recording area. By clicking on the icon, it shows the different possibilities for anchors.</li>
+<li><strong>X offset</strong>, <strong>Y offset</strong>: Position of the image from the anchor position in the recording area.</li>
+<li><strong>Side</strong>: The largest side of the image used for scaling</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first"><strong>Quality</strong> (<em>Low</em>, <em>Medium</em>, <em>High</em>): Quality factor determining the bitrate of the recording.</p>
+</li>
+<li><p class="first"><strong>Pause visualization when starting recording</strong>: Option allowing to start the recording paused at the current visualization time.</p>
+</li>
+</ul>
+<p><strong>Notes:</strong></p>
+<ul class="simple">
+<li>The movie bitrate is proportional to the movie definition.</li>
+<li>The quality factor increases or decreases the quality of the movie. A <em>Low</em> quality factor produces compression artifacts on moving parts in the video, but smaller file size. A <em>High</em> quality factor produces good quality video, but significant file size.</li>
+</ul>
+<p>The recording can be stopped with the <strong>Stop recording</strong> entry in the Broker’s action menu. The <em>Ctrl+R</em> keyboard shortcut can also be used when the Broker window is focused.</p>
+<div class="figure align-center" id="id18">
+<img alt="../../_images/12_captureZone.png" src="../../_images/12_captureZone.png" />
+<p class="caption"><span class="caption-text">Recording area</span></p>
+</div>
+<p>The screen area located within the red frame is recorded in the movie. The mouse pointer is not recorded. During the recording, it is advised not to move recorded windows and to use camera states rather than manual camera movements. Otherwise, since the movie is not recorded at real-time speed, camera movements may appear to be slower or faster than expected.</p>
+<div class="figure align-center" id="id19">
+<img alt="../../_images/14_movieWithOverlay.png" src="../../_images/14_movieWithOverlay.png" />
+<p class="caption"><span class="caption-text">Recording of a SurfaceView with an overlay at the bottom left of the recording area.</span></p>
+</div>
+<p>During the recording, additional information is displayed in the <em>Log</em> tab of the <em>Server</em> tab of the Broker:</p>
+<div class="figure align-center" id="id20">
+<img alt="../../_images/13_recordingInfos.png" src="../../_images/13_recordingInfos.png" />
+<p class="caption"><span class="caption-text">Recording information</span></p>
+</div>
+<ul class="simple">
+<li><strong>Bitrate</strong>: the current movie bitrate</li>
+<li><strong>Movie length</strong>: the current length of the recorded movie</li>
+<li><strong>Recording FPS</strong>: the current record framerate (this does not affect the output framerate)</li>
+</ul>
+</div>
+<div class="section" id="other-interactions">
+<span id="broker-user-manual-other-interactions"></span><h2>Other interactions<a class="headerlink" href="#other-interactions" title="Permalink to this headline">¶</a></h2>
+<p>The <em>Ctrl+Shift+C</em> keyboard shortcut copies to the clipboard the full path to the VTS project file.</p>
+</div>
+<div class="section" id="image-capture">
+<span id="broker-user-manual-image-capture"></span><h2>Image capture<a class="headerlink" href="#image-capture" title="Permalink to this headline">¶</a></h2>
+<p>Images can be captured by two different ways. On the one hand the Broker can capture the desktop by defining an area. This way, all applications can be captured, including the Broker. On the other hand, the Broker can request each application to capture itself. If the application handle the “TakeScreenshot” VTS protocol command, an image will be produced as definied in the application (usually without window decoration).</p>
+<div class="section" id="area-capture">
+<span id="broker-user-manual-area-capture"></span><h3>Area capture<a class="headerlink" href="#area-capture" title="Permalink to this headline">¶</a></h3>
+<p>To open the capture settings click the <strong>Capture Area</strong> entry in the in the Broker’s action menu:</p>
+<div class="figure align-center" id="id21">
+<img alt="../../_images/AreaCapture.png" src="../../_images/AreaCapture.png" />
+<p class="caption"><span class="caption-text">Area capture</span></p>
+</div>
+<p>The following parameters must be provided:</p>
+<ul class="simple">
+<li><strong>Output file</strong>: Name of the image output file.</li>
+<li><strong>Preset</strong>: List of standard definitions.</li>
+<li><strong>Width</strong>, <strong>Height</strong>: Image definition (the mouse wheel may be used on these fields for faster adjustment of the values).</li>
+<li><strong>X offset</strong>, <strong>Y offset</strong>: Position of the captured area.</li>
+<li><strong>Overlay</strong>: An overlay could be added on the cpature to show an image in the foreground. See the <a class="reference internal" href="#broker-user-manual-recording-movies"><span class="std std-ref">Recording Movies</span></a> section for more details.</li>
+<li><strong>add counter suffix to the filename</strong>: When checked, a counter will be added to the filename. Click on <strong>Reset</strong> to start it over.</li>
+</ul>
+<p>Click on the <strong>Capture</strong> button to capture the image. The settings window will briefly disappear during the image capture.</p>
+</div>
+<div class="section" id="capture-by-application">
+<span id="broker-user-manual-capture-by-application"></span><h3>Capture by application<a class="headerlink" href="#capture-by-application" title="Permalink to this headline">¶</a></h3>
+<p>Using the <strong>Capture All Applications</strong> or the <strong>Capture Application</strong> entry, a VTS protocol command “CMD SERVICE TakeScreenshot &lt;fileInProjectFolder&gt;” will be sent the concerned applications. Each application can handle this command in different ways. Captured images will be produced in the project folder.</p>
+<p>The <em>Ctrl+T</em> keyboard shortcut can also be used to send a <strong>Capture All Applications</strong> request when the Broker window is focused.</p>
+<p>This command might not be handled by some applications so this action is not guaranteed contrary to the area capture method. All applications bundled with VTS handle the TakeScreenshot command, excepting PrestoPlot. See the <a class="reference internal" href="../Plugin_development/Synchronization_protocol_for_VTS_clients.html#synchronization-protocol-for-vts-clients-takescreenshot-command"><span class="std std-ref">TakeScreenshot command</span></a> section of the <a class="reference internal" href="../Plugin_development/Synchronization_protocol_for_VTS_clients.html#synchronization-protocol-for-vts-clients"><span class="std std-ref">Synchronization protocol for VTS clients</span></a> chapter for more information about this command.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="SurfaceView_user_manual.html" class="btn btn-neutral float-right" title="SurfaceView user manual" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="VTS_configuration_utility_user_manual.html" class="btn btn-neutral" title="VTS configuration utility user manual" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright VTS Team.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'3.6.0-9030',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

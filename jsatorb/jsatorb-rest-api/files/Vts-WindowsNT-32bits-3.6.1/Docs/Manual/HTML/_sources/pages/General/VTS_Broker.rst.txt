@@ -1,0 +1,29 @@
+.. _VTS_Broker:
+
+VTS Broker
+==================================================================================
+
+The Broker is the core application during visualization of a VTS project.
+It controls and synchronizes all client applications in time.
+
+Client applications see the Broker as a "socket" server to which they connect and with which they communicate. Each client has a dedicated communication channel with the Broker. When an action or event within the Broker requires communication with its client applications, the Broker decides whether to broadcast the corresponding message to all clients or only to specific ones. Client-Broker communications follow a protocol based on text socket, described in more detail in the :ref:`Synchronization protocol for VTS clients <Synchronization_protocol_for_VTS_clients>` section.
+
+Messages from the Broker to its clients concern:
+
+- time synchronization
+- view controls
+- camera controls
+- events management
+- scripted commands
+- context saving
+- relayed messages from other clients
+
+Some messages expect reply messages from the clients. Refer to the :ref:`Synchronization protocol for VTS clients <Synchronization_protocol_for_VTS_clients>` chapter for more information.
+
+The Broker also has the responsibility of managing the life cycle of its clients (either configured in the VTS project or started by user interaction): spawning new clients, relaying client log messages to the user, displaying connection status about the clients, informing the user of client terminations (or crashes). External clients not started by the Broker obviously fall outside of this responsibility.
+
+.. figure:: /_images/VtsBrokerTime.png
+   :align: center
+
+   Basic synchronization between Broker and clients
+

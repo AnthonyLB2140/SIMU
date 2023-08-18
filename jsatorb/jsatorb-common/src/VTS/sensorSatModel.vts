@@ -1,0 +1,22 @@
+<Sensor Name="[SENSORNAMESAT]">
+ <SensorProp>
+  <SensorRectangular HalfAngleX="0.348" HalfAngleY="0.174"/>
+  <SensorGraphics Range="10000" VolumeColor="1 0.286275 0.00392157" VolumeOpacity="60" ContourColor="1 0.921569 0.0235294">
+   <SensorTrace Duration="60" Opacity="60"/>
+  </SensorGraphics>
+ </SensorProp>
+ <Geometry>
+  <Position>
+   <Value>
+    <Fixed Data="0 0 0"/>
+   </Value>
+  </Position>
+  <Orientation>
+   <Quaternion>
+    <Value>
+     <Fixed Data="1 0 0 0"/>
+    </Value>
+   </Quaternion>
+  </Orientation>
+ </Geometry>
+</Sensor>

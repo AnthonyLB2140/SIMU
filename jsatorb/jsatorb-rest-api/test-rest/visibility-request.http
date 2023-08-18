@@ -1,0 +1,134 @@
+# -----------------------------------------------------------------------------
+# JSatOrb Module REST requests: visibility
+# -----------------------------------------------------------------------------
+# These requests are sent from Visual studio code, using the REST client for
+# Visual Studio Code extension 
+# (https://marketplace.visualstudio.com/items?itemName=humao.rest-client).
+# -----------------------------------------------------------------------------
+# How to use: 
+#  - in Visual studio code, install the REST client extension,
+#  - open this file,
+#  - launch the JSatOrb REST API server,
+#  - click on the "Send request" link above each request,
+#  - the REST API response should be displayed in a separated Response window.
+# -----------------------------------------------------------------------------
+# To separate two distinct requests, add a line with '###' between them.
+# -----------------------------------------------------------------------------
+
+
+## Send a request to get the satellite ephemeris and get the satellite/ground 
+## station visibility segments (the JSON response content is Cesium formatted).
+POST http://localhost:8000/propagation/visibility HTTP/1.1
+content-type: application/json
+
+{
+  "header": {
+    "timeStart": "2011-12-01T16:43:45",
+    "timeEnd": "2011-12-02T16:43:45",
+    "step": "60"
+  },
+  "satellites": [
+    {"name": "Sat",
+    "type": "keplerian",
+    "sma": 6801682.16,
+    "ecc": 0.0012566,
+    "inc": 52.03041,
+    "pa": 128.74852,
+    "raan": 72.67830,
+    "meanAnomaly": 67.79703
+    }
+  ],
+  "groundStations": [
+      {"name": "TLS",
+      "latitude": "43.5",
+      "longitude": "1.5",
+      "altitude": "100",
+      "elevation": "5.0"
+      }
+  ]
+}
+
+###
+
+## Send a request to get the satellite ephemeris and get the satellite/ground 
+## station visibility segments (the JSON response content is Cesium formatted).
+POST http://localhost:8000/propagation/visibility HTTP/1.1
+content-type: application/json
+
+{
+  "header": {
+    "timeStart": "2008-09-15T16:43:45",
+    "step": 60,
+    "timeEnd": "2008-09-21T16:43:45"
+  },
+  "groundStations":[
+  	{	
+  		"name": "ISAE-SUPAERO",
+        "latitude": "22",
+        "longitude": "40",
+        "altitude": "150",
+        "elevation": "12"
+    },
+    {
+        "name": "TERRA-INCOGNITA",
+        "latitude": "44",
+        "longitude": "22",
+        "altitude": "800",
+        "elevation": "9"
+    }],
+  "satellites" : [
+        {
+      "name": "Lucien-Sat",
+      "type": "keplerian",
+      "sma": "7128137.0",
+      "ecc": "0.007014455530245822",
+      "inc": "98.55",
+      "pa": "90.0",
+      "raan": "5.191699999999999",
+      "meanAnomaly": "359.93"
+    },
+    {
+      "name": "Thibault-Sat",
+      "type": "cartesian",
+      "x": "-6142438.668",
+      "y": "3492467.560",
+      "z": "-25767.25680",
+      "vx": "505.8479685",
+      "vy": "942.7809215",
+      "vz": "7435.922231"
+    },
+    {
+      "name": "ISS (ZARYA)",
+      "type": "tle",
+      "line1": "1 25544U 98067A   08264.51782528 -.00002182  00000-0 -11606-4 0  2927",
+      "line2": "2 25544  51.6416 247.4627 0006703 130.5360 325.0288 15.72125391563537"
+    }
+  ]
+}
+
+###
+
+## Send a request to get the satellite ephemeris and get the satellite/ground 
+## ephemerids.
+POST http://localhost:8000/propagation/satellites HTTP/1.1
+content-type: application/json
+
+{
+  "header": {
+    "timeStart": "2010-09-15T16:43:45",
+    "step": 60,
+    "timeEnd": "2010-09-16T16:43:45"
+  },
+  "satellites" : [
+        {
+      "name": "Lucien-Sat",
+      "type": "keplerian",
+      "sma": "7128137.0",
+      "ecc": "0.007014455530245822",
+      "inc": "98.55",
+      "pa": "90.0",
+      "raan": "5.191699999999999",
+      "meanAnomaly": "359.93"
+    }
+  ]
+}

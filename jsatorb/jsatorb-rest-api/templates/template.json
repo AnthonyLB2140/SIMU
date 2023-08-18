@@ -1,0 +1,19 @@
+{
+  "meta": {
+    "OBJECT_NAME": "MonSuperSat",
+    "OBJECT_ID": "MonSuperSat",
+    "CENTER_NAME": "Earth",
+    "REF_FRAME": "EME2000",
+    "TIME_SYSTEM": "UTC",
+    "START_TIME": "1996-12-18T12:00:00.331",
+    "USEABLE_START_TIME": "1996-12-18T12:10:00.331",
+    "USEABLE_STOP_TIME": "1996-12-28T21:23:00.331",
+    "STOP_TIME": "1996-12-28T21:28:00.331",
+    "INTERPOLATION": "HERMITE",
+    "INTERPOLATION_DEGREE": 7
+
+  },
+  "data": [
+    { "epoch":"1996-12-18T12:00:00.331", "x":"2789.619" , "y":-280.045 , "z":-1746.755 , "ax":4.73372 , "ay":-2.49586 , "az":-1.04195 }
+  ]
+}

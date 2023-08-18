@@ -1,0 +1,68 @@
+.. _Data_description_for_VTS_projects:
+
+Data description for VTS projects
+==================================================================================
+
+.. _Data_description_for_VTS_projects#Hierarchy_of_a_project_folder:
+
+Hierarchy of a project folder
+----------------------------------------------------------------------------------
+A VTS project consists in a folder containing one or several project files (``.vts`` file extension), and a set of data files used by client applications during visualization. The project folder is the root folder containing the project file. 
+
+The project file contains the description in standard XML format of all the objects in the project. This description refers to data files as paths relative to the project folder. Portability concerns of project folders dictate that data files must reside within sub-folders of the project folder. Should the user select data files outside of the project folder, VTS will automatically offer to copy these files inside the project folder.
+
+**Remarks:**
+
+- It is recommended to create one folder per VTS project, so that modifying a data file for a given project will not silently affect other projects.
+- The project folder can be stored on any device (hard disk drive, USB stick, CD) and must not necessarily be located in a sub-folder of the main VTS folder.
+- Some client applications require the availability of data located in folders following a strict nomenclature. The README files for these applications describe their requirements.
+
+.. _Data_description_for_VTS_projects#2D_icons_and_textures:
+
+2D icons and textures
+----------------------------------------------------------------------------------
+Objects projected on the main surface in 2D views are displayed as icons. These icons may be in any of the following formats: *.bmp*, *.gif*, *.ico*, *.jpg*, *.mng*, *.pbm*, *.pgm*, *.png*, *.ppm*, *.svg*, *.svgz*, *.tga*, *.tif*, *.tiff*, *.xbm*, *.xpm*.
+Icon files are also used for event decorations. The same formats are supported.
+
+Custom textures for central bodies may also be in any of the above formats.
+
+
+.. _Data_description_for_VTS_projects#3D_models_and_textures:
+
+3D models and textures
+----------------------------------------------------------------------------------
+The description of a satellite refers to 3D model files.
+Refer to the :ref:`3D file format in VTS <3D_file_format_in_VTS>` chapter for more information.
+
+
+.. _Data_description_for_VTS_projects#Importing_2D_icons_and_3D_models_from_the_catalog:
+
+Importing 2D icons and 3D models from the catalog
+----------------------------------------------------------------------------------
+
+.. |importbutton| image:: /_images/CatalogImportButton.png
+
+VTS supplies a catalog of icons and 3D model. Clicking on the **import file from catalog** |importbutton| button next to an icon or model **browse...** button will open a dialog window. Validating the import will offer to copy these files inside the project folder. 
+
+Concerning 3D models, a folder contains only one 3DS file and its textures files. Importing the model will import all the files of the folder at once.
+
+.. figure:: /_images/Import2dCatalog.png
+   :align: center
+
+   Importing an icon from the catalog
+
+
+.. figure:: /_images/Import3dCatalog.png
+   :align: center
+
+   Importing a model from the catalog
+
+
+.. _Data_description_for_VTS_projects#The_CIC/CCSDS_file_format:
+
+The CIC/CCSDS file format
+----------------------------------------------------------------------------------
+This file format is used for various text data, e.g. position and attitude ephemerides.
+Refer to the :ref:`CIC/CCSDS data files in VTS <CIC-CCSDS_data_files_in_VTS>` chapter for more information.
+
+

@@ -1,0 +1,1 @@
+Rosetta is a robotic spacecraft built and launched by the European Space Agency to perform a detailed study of comet 67P/Churyumov–Gerasimenko. It is part of the ESA Horizon 2000 cornerstone missions and is the first mission designed to both orbit and land on a comet.

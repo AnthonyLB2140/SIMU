@@ -1,0 +1,280 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>CIC/CCSDS data files in VTS &mdash; VTS 3.6.0-9030 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="VTS 3.6.0-9030 documentation" href="../../index.html"/>
+        <link rel="up" title="Files used by VTS" href="index.html"/>
+        <link rel="next" title="Starting VTS" href="../Starting_VTS/index.html"/>
+        <link rel="prev" title="3D file format in VTS" href="3D_file_format_in_VTS.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> VTS
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../General/index.html">General</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Files used by VTS</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Data_description_for_VTS_projects.html">Data description for VTS projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3D_file_format_in_VTS.html">3D file format in VTS</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">CIC/CCSDS data files in VTS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#heterogeneous-data-units">Heterogeneous data units</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Starting_VTS/index.html">Starting VTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VTS_applications_user_manuals/index.html">VTS applications user manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Plugin_development/index.html">Plugin development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Data_generators_in_VTS/index.html">Data generator integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../About/index.html">About</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">VTS</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Files used by VTS</a> &raquo;</li>
+        
+      <li>CIC/CCSDS data files in VTS</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/pages/Files_used_by_VTS/CIC-CCSDS_data_files_in_VTS.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="cic-ccsds-data-files-in-vts">
+<span id="id1"></span><h1>CIC/CCSDS data files in VTS<a class="headerlink" href="#cic-ccsds-data-files-in-vts" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<span id="cic-ccsds-data-files-in-vts-references"></span><h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>The data files used by VTS and its client applications are written in the CIC/CCSDS format, a column-based text format derived from the CCSDS OEM, AEM and MPM formats.</p>
+<p>The CIC/CCSDS file format is described in the reference document <em>CIC Data Exchange Protocol V2.0</em> (DCT/DA/PA - 2009.0021267). This document is included in the VTS root directory. You will also find many examples of CIC/CCSDS files in the “Data” directory.</p>
+<p>Some features of the CIC/CCSDS file format:</p>
+<ul class="simple">
+<li>Standardized header depending on file type</li>
+<li>Data as timestamped lines</li>
+<li>MJD date format with 2 fields respectively for days and seconds (see the <a class="reference internal" href="../General/Date_formats_in_VTS.html#date-formats-in-vts"><span class="std std-ref">Date formats in VTS</span></a> section)</li>
+<li>Satellite position in kilometers</li>
+<li>Orientation as quaternions from EME2000 towards satellite local frame</li>
+<li>Heterogeneous data units within the same file</li>
+</ul>
+<p>VTS handles World Geodetic System (WGS84) in SurfaceView.</p>
+</div>
+<div class="section" id="heterogeneous-data-units">
+<span id="cic-ccsds-data-files-in-vts-heterogeneous-data-units"></span><h2>Heterogeneous data units<a class="headerlink" href="#heterogeneous-data-units" title="Permalink to this headline">¶</a></h2>
+<p>CCSDS files can store data with multiple units. This allows for the use of data such as Lat/Long/Alt (degrees, degrees, meters).
+When explicitly specified, the unit is defined in the <code class="docutils literal"><span class="pre">USER_DEFINED_UNIT</span></code> field of the CCSDS header, enclosed by square brackets.</p>
+<p>Multiple units can be defined by putting pipes between different units. The order of the units corresponds to the order of the data columns.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">USER_DEFINED_UNIT</span> <span class="o">=</span> <span class="o">[</span>deg<span class="p">|</span>deg<span class="p">|</span>m<span class="o">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Starting_VTS/index.html" class="btn btn-neutral float-right" title="Starting VTS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="3D_file_format_in_VTS.html" class="btn btn-neutral" title="3D file format in VTS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright VTS Team.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'3.6.0-9030',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

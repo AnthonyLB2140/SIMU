@@ -1,0 +1,26 @@
+.. _Structure_of_satellites_in_VTS:
+
+Structure of satellites in VTS
+==================================================================================
+
+The structure of satellites in VTS matches the organization of the elements composing a satellite.
+
+This structure can be found in:
+
+- the VTS configuration utility, in the tree hierarchy displayed in the left pane. Refer to the :ref:`VTS configuration utility user manual <VTS_configuration_utility_user_manual>` chapter.
+- the contents of the project file. Refer to the :ref:`VTS project file format <VTS_project_file_format>` chapter.
+- the *View Properties* and *3D Cameras* tabs of the Broker. Refer to the :ref:`Broker user manual <Broker_user_manual>` chapter.
+
+The structure can be described as follows:
+
+- A project contains central bodies and satellites
+- A satellite is composed of a main component which defines the body of the satellite.
+- A component may contain sensors.
+- A component may contain sub-components.
+- These sub-components may themselves contain sub-components.
+
+The naming scheme of objects relies on this structure, e.g. ``Sol/Earth/CubeSat/GS``. See also the chapter about :ref:`Object paths in VTS <Object_paths_in_VTS>`.
+
+**NB:** Throughout this documentation and the VTS GUI, satellite components are sometimes referred to as "subparts".
+
+

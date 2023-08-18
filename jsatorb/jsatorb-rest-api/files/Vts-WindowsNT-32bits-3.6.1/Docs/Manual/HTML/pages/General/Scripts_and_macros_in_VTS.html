@@ -1,0 +1,375 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Scripts and macros in VTS &mdash; VTS 3.6.0-9030 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="VTS 3.6.0-9030 documentation" href="../../index.html"/>
+        <link rel="up" title="General" href="index.html"/>
+        <link rel="next" title="VTS Broker" href="VTS_Broker.html"/>
+        <link rel="prev" title="Other visualisable objects" href="Other_visualisable_objects.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> VTS
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction/index.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">General</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Conventions_in_VTS.html">Conventions in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Date_formats_in_VTS.html">Date formats in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Data_sources_in_VTS.html">Data sources in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Position_of_objects_in_VTS.html">Position of objects in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Orientation_of_objects_in_VTS.html">Orientation of objects in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Examples_for_position_and_orientation_of_objects_in_VTS.html">Examples for position and orientation of objects in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Backwards_compatibility_in_VTS.html">Backward compatibility in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Object_paths_in_VTS.html">Object paths in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Central_bodies_in_VTS.html">Central bodies in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Structure_of_satellites_in_VTS.html">Structure of satellites in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sensors_in_VTS.html">Sensors in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Masks_in_VTS.html">Physical masks in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scale_factors_in_VTS.html">Scale factors in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cluster_in_VTS.html">Clusters in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scenario_in_VTS.html">Scenario in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Manage_window_geometry.html">Window Geometry Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mission_events_in_VTS.html">Mission events in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="POIs_and_ROIs_in_VTS.html">POIs and ROIs in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Other_visualisable_objects.html">Other visualisable objects</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Scripts and macros in VTS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cic-ccsds-script-and-macro-file-format">CIC/CCSDS script and macro file format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#command-recipient-specification">Command recipient specification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#command-contents">Command contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sample-script-file">Sample script file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sample-macro-file">Sample macro file</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="VTS_Broker.html">VTS Broker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Files_used_by_VTS/index.html">Files used by VTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Starting_VTS/index.html">Starting VTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VTS_applications_user_manuals/index.html">VTS applications user manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Plugin_development/index.html">Plugin development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Data_generators_in_VTS/index.html">Data generator integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../About/index.html">About</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">VTS</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">General</a> &raquo;</li>
+        
+      <li>Scripts and macros in VTS</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/pages/General/Scripts_and_macros_in_VTS.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="scripts-and-macros-in-vts">
+<span id="id1"></span><h1>Scripts and macros in VTS<a class="headerlink" href="#scripts-and-macros-in-vts" title="Permalink to this headline">¶</a></h1>
+<p>Scripts and macros in VTS are commands from the VTS synchronization protocol, which are sent by the Broker to client applications during visualization.</p>
+<p>Scripts are timestamped commands sent at predefined dates, while macros are non-timestamped commands sent in a batch upon macro execution.
+When the visualization date reaches the timestamp of a script command, the command is sent to all client applications specified in the recipient field of the script line.</p>
+<p>Scripts are displayed in the project timeline. Macros are listed in the Broker menu. For more information on how to use scripts and macros in VTS, refer to the <a class="reference internal" href="Scenario_in_VTS.html#scenario-in-vts-timeline"><span class="std std-ref">Timeline</span></a> section in the <a class="reference internal" href="Scenario_in_VTS.html#scenario-in-vts"><span class="std std-ref">Scenario in VTS</span></a> chapter, and the <a class="reference internal" href="../VTS_applications_user_manuals/Broker_user_manual.html#broker-user-manual-broker-menu"><span class="std std-ref">Broker menu</span></a> section in the <a class="reference internal" href="../VTS_applications_user_manuals/Broker_user_manual.html#broker-user-manual"><span class="std std-ref">Broker user manual</span></a> chapter.</p>
+<div class="section" id="cic-ccsds-script-and-macro-file-format">
+<span id="scripts-and-macros-in-vts-cic-ccsds-script-and-macro-file-format"></span><h2>CIC/CCSDS script and macro file format<a class="headerlink" href="#cic-ccsds-script-and-macro-file-format" title="Permalink to this headline">¶</a></h2>
+<p>Scripts are written as CIC/CCSDS files in MEM format. Macros are written as CIC/CCSDS files in MPM format. For more information on the CIC/CCSDS file format, refer to the <a class="reference internal" href="../Files_used_by_VTS/CIC-CCSDS_data_files_in_VTS.html#cic-ccsds-data-files-in-vts"><span class="std std-ref">CIC/CCSDS data files in VTS</span></a> chapter.</p>
+<p>A CIC/CCSDS script or macro file must have the following characteristics:</p>
+<ul class="simple">
+<li>The <code class="docutils literal"><span class="pre">USER_DEFINED_PROTOCOL</span></code> must be <code class="docutils literal"><span class="pre">NONE</span></code>.</li>
+<li>The <code class="docutils literal"><span class="pre">USER_DEFINED_CONTENT</span></code> must be <code class="docutils literal"><span class="pre">SCRIPT</span></code> for a script, <code class="docutils literal"><span class="pre">MACRO</span></code> for a macro.</li>
+<li>The <code class="docutils literal"><span class="pre">USER_DEFINED_SIZE</span></code> must be <code class="docutils literal"><span class="pre">2</span></code>. The first column (after the date in the case of scripts) must be the recipient specification for the command (see below). The second column must be the command to send (see below).</li>
+<li>The <code class="docutils literal"><span class="pre">USER_DEFINED_TYPE</span></code> must be <code class="docutils literal"><span class="pre">STRING</span></code>.</li>
+<li>The <code class="docutils literal"><span class="pre">USER_DEFINED_UNIT</span></code> must be <code class="docutils literal"><span class="pre">[n/a]</span></code>.</li>
+</ul>
+</div>
+<div class="section" id="command-recipient-specification">
+<span id="scripts-and-macros-in-vts-command-recipient-specification"></span><h2>Command recipient specification<a class="headerlink" href="#command-recipient-specification" title="Permalink to this headline">¶</a></h2>
+<p>The recipient for a script or macro command may be specified using any of the following:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">*</span></code> indicates that the command shall be sent to all clients</li>
+<li><code class="docutils literal"><span class="pre">broker</span></code> indicates that the command shall be sent to the Broker itself</li>
+<li><code class="docutils literal"><span class="pre">&lt;Name&gt;</span></code> indicates that the command shall be sent to all client applications with the specified name</li>
+<li><code class="docutils literal"><span class="pre">&lt;ID&gt;</span></code> indicates that the command shall be sent to the client with the specified ID</li>
+<li><code class="docutils literal"><span class="pre">&lt;Name&gt;:&lt;#&gt;</span></code> indicates that the command shall be sent to the <em>n</em>-th instance of the client application with the specified name</li>
+<li><code class="docutils literal"><span class="pre">:&lt;#&gt;</span></code> indicates that the command shall be sent to the <em>n</em>-th client application (using the order of the <strong>Applications</strong> tab of the Broker)</li>
+</ul>
+</div>
+<div class="section" id="command-contents">
+<span id="scripts-and-macros-in-vts-command-contents"></span><h2>Command contents<a class="headerlink" href="#command-contents" title="Permalink to this headline">¶</a></h2>
+<p>Refer to the <a class="reference internal" href="../Plugin_development/Synchronization_protocol_for_VTS_clients.html#synchronization-protocol-for-vts-clients"><span class="std std-ref">Synchronization protocol for VTS clients</span></a> chapter for full details on the syntax of commands, and for a list of available commands in the standard client applications.</p>
+<p>In order to allow “customized” commands to be sent to several client applications with a single line in a script or macro file, some special strings in script and macro file commands are automatically replaced before sending the command to clients:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">%APPNAME%</span></code> gets replaced with the recipient client application name and ID, in the following format: <code class="docutils literal"><span class="pre">&lt;Name&gt;-&lt;ID&gt;</span></code></li>
+<li><code class="docutils literal"><span class="pre">%DATE%</span></code> gets replaced with the sending date, in the following format: <code class="docutils literal"><span class="pre">yyyy-MM-dd--hh-mm-ss-zzz</span></code></li>
+<li><code class="docutils literal"><span class="pre">%COUNT%</span></code> gets replaced with a sequence number, counting from 0 and shared between all script files, macro files and client applications in the project</li>
+<li><code class="docutils literal"><span class="pre">%PROJECT%</span></code> gets replaced with the full path to the project folder</li>
+</ul>
+<p>Note that when taking screenshots in Celestia, the <code class="docutils literal"><span class="pre">%PROJECT%</span></code> string is required at the beginning of the screenshot name to store the screenshot in the project folder. Otherwise, Celestia stores the screenshot in the <code class="docutils literal"><span class="pre">Apps/Celestia/bin</span></code> directory of the main VTS folder.</p>
+</div>
+<div class="section" id="sample-script-file">
+<span id="scripts-and-macros-in-vts-sample-script-file"></span><h2>Sample script file<a class="headerlink" href="#sample-script-file" title="Permalink to this headline">¶</a></h2>
+<p>The following is a sample CIC/CCSDS MEM script file:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">CIC_MEM_VERS</span>   <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">CREATION_DATE</span>  <span class="o">=</span> <span class="mi">2014</span><span class="o">-</span><span class="mi">02</span><span class="o">-</span><span class="mi">18</span><span class="n">T16</span><span class="p">:</span><span class="mi">19</span><span class="p">:</span><span class="mi">51</span>
+<span class="n">ORIGINATOR</span>     <span class="o">=</span> <span class="n">VTS</span>
+
+<span class="n">META_START</span>
+
+<span class="n">OBJECT_NAME</span> <span class="o">=</span> <span class="n">SCRIPT_SCREENSHOT</span>
+<span class="n">OBJECT_ID</span>   <span class="o">=</span> <span class="n">SCR001</span>
+
+<span class="n">USER_DEFINED_PROTOCOL</span> <span class="o">=</span> <span class="n">NONE</span>
+<span class="n">USER_DEFINED_CONTENT</span> <span class="o">=</span> <span class="n">SCRIPT</span>
+<span class="n">USER_DEFINED_SIZE</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">USER_DEFINED_TYPE</span> <span class="o">=</span> <span class="n">STRING</span>
+<span class="n">USER_DEFINED_UNIT</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span><span class="o">/</span><span class="n">a</span><span class="p">]</span>
+
+<span class="n">TIME_SYSTEM</span> <span class="o">=</span> <span class="n">UTC</span>
+
+<span class="n">META_STOP</span>
+
+<span class="mi">55276</span>  <span class="mi">3000</span> <span class="n">celestia</span>   <span class="s2">&quot;CMD PROP equatorialgrid true&quot;</span>
+<span class="mi">55276</span>  <span class="mi">3001</span> <span class="o">*</span>          <span class="s2">&quot;CMD SERVICE TakeScreenshot %PROJECT%/%DATE%_%APPNAME%_%COUNT%&quot;</span>
+<span class="mi">55276</span>  <span class="mi">3002</span> <span class="n">celestia</span>   <span class="s2">&quot;CMD PROP equatorialgrid false&quot;</span>
+<span class="mi">55276</span>  <span class="mi">3003</span> <span class="o">*</span>          <span class="s2">&quot;CMD SERVICE TakeScreenshot %PROJECT%/%DATE%_%APPNAME%_%COUNT%&quot;</span>
+<span class="mi">55276</span>  <span class="mi">3004</span> <span class="mi">2</span><span class="n">dwin</span><span class="p">:</span><span class="mi">0</span>    <span class="s2">&quot;CMD STRUCT OrbitVisible </span><span class="se">\&quot;</span><span class="s2">Sol/Earth/CubeSat</span><span class="se">\&quot;</span><span class="s2"> false&quot;</span>
+<span class="mi">55276</span>  <span class="mi">3005</span> <span class="o">*</span>          <span class="s2">&quot;CMD SERVICE TakeScreenshot %PROJECT%/%DATE%_%APPNAME%_%COUNT%&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sample-macro-file">
+<span id="scripts-and-macros-in-vts-sample-macro-file"></span><h2>Sample macro file<a class="headerlink" href="#sample-macro-file" title="Permalink to this headline">¶</a></h2>
+<p>The following is a sample CIC/CCSDS MPM macro file:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">CIC_MPM_VERS</span>   <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">CREATION_DATE</span>  <span class="o">=</span> <span class="mi">2014</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">12</span><span class="n">T16</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mi">12</span>
+<span class="n">ORIGINATOR</span>     <span class="o">=</span> <span class="n">VTS</span>
+
+<span class="n">META_START</span>
+
+<span class="n">OBJECT_NAME</span> <span class="o">=</span> <span class="n">MACRO_4SPLIT</span>
+<span class="n">OBJECT_ID</span>   <span class="o">=</span> <span class="n">MAC001</span>
+
+<span class="n">USER_DEFINED_PROTOCOL</span> <span class="o">=</span> <span class="n">NONE</span>
+<span class="n">USER_DEFINED_CONTENT</span> <span class="o">=</span> <span class="n">MACRO</span>
+<span class="n">USER_DEFINED_SIZE</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">USER_DEFINED_TYPE</span> <span class="o">=</span> <span class="n">STRING</span>
+<span class="n">USER_DEFINED_UNIT</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span><span class="o">/</span><span class="n">a</span><span class="p">]</span>
+
+<span class="n">META_STOP</span>
+
+<span class="p">:</span><span class="mi">1</span> <span class="s2">&quot;CMD PROP WindowGeometry 0 0 640 480&quot;</span>
+<span class="p">:</span><span class="mi">2</span> <span class="s2">&quot;CMD PROP WindowGeometry 640 0 640 480&quot;</span>
+<span class="p">:</span><span class="mi">3</span> <span class="s2">&quot;CMD PROP WindowGeometry 0 480 640 480&quot;</span>
+<span class="p">:</span><span class="mi">4</span> <span class="s2">&quot;CMD PROP WindowGeometry 640 480 640 480&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="VTS_Broker.html" class="btn btn-neutral float-right" title="VTS Broker" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Other_visualisable_objects.html" class="btn btn-neutral" title="Other visualisable objects" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright VTS Team.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'3.6.0-9030',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

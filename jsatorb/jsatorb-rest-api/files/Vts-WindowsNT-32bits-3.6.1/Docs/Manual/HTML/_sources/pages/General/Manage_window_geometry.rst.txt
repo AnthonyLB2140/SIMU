@@ -1,0 +1,90 @@
+.. _Window_Geometry_Manager:
+
+Window Geometry Manager
+=======================
+
+.. |icon| image:: /_images/window-manager.png
+
+VTS client applications can be arranged via the Window Geometry Manager. This tool is available by clicking on the *Manage window geometry* button (|icon|) from the **Scenario Editor** tab or from the **VTS Broker**.
+
+.. figure:: /_images/WindowGeometryButton.png
+   :align: center
+
+   Window Geometry Manager button in the Scenario Editor tab (left) and the Broker (right)
+
+The Window Geometry Manager is divided into four sections : 
+
+.. figure:: /_images/WindowGeometryInterface.png
+   :align: center
+
+   Window Geometry Manager interface
+
+- The left section (red) contains the list of all VTS client application defined in the VTS project or used during the visualization as dynamic application.
+- The top-right section (violet) is used to display information and help about the tool.
+- The middle-right section (green) shows the system's screen configuration as detected by VTS and the position of each client application window. A grid is displayed to help arrange the position of the windows. The resolution of the grid can be configured via VTS's **Settings dialog**.
+- The bottom-right section (blue) contains options to arrange client application windows automatically. There are as many **Fullscreen** buttons as screens detected and they are ordered from the top-left screen to the bottom-right screen.
+
+
+Change the order of stacked windows
+-----------------------------------
+
+The order of stacked window can be change by dragging up and down application items in the list in the left section. The feature can fail if a client application doesn't implement the "CMD SERVICE ActivateWindow" protocol command.
+
+Clicking on an application item will also raise or activate the corresponding application.
+
+
+Contextual menu actions
+-----------------------
+
+A right click on the left section list will show the available actions :
+
+- *Activate all windows*: raise and activate all applications (needs :ref:`"ActivateWindow" <Description_of_application_properties#Application_properties_guidelines>` protocol command implementation)
+- *Activate selected windows*: raise and activate selected application (needs :ref:`"ActivateWindow" <Description_of_application_properties#Application_properties_guidelines>` protocol command implementation)
+- *Toggle always on top*: Change the state property for the always on top flag (needs the :ref:`"AlwaysOnTop" <Description_of_application_properties#Application_properties_guidelines>` application property implementation)
+- *Toggle frameless*: Change the state property for the always on top flag (needs the :ref:`"Frameless" <Description_of_application_properties#Application_properties_guidelines>` application property implementation)
+
+The **order of stacked windows** can be change by dragging up and down application items in the list in the left section. The feature can fail if a client application doesn't implement the :ref:`"ActivateWindow" protocol command <Description_of_application_properties#Application_properties_guidelines>`.
+
+
+Arrange client applications windows
+-----------------------------------
+
+In order to organize the visualization, it requires two actions:
+
+- Area selection: select an area in one of the screen grids. A preview of the selected area will be briefly displayed in the screen. The entire screen can be selected using the corresponding **Fullscreen** button.
+
+- Application selection: select an application from the list. Multiple applications can be selected using ``Ctrl`` key while clicking.
+
+When both and **area** and an **one or more applications** are selected, the geometry of the selected application(s) will be modified to cover the selected area.
+
+If several applications are selected they will be overlapped in the order of the selection. They can also be arranged in an horizontal or vertical layout proportionnaly using the **Layout** buttons. Clicking  one more time will remove the layout (windows will return to the overlapped layout).
+
+An example is shown below:
+
+.. figure:: /_images/WindowGeometryInterfaceUsage_1.png
+   :align: center
+
+Click the **Fullscreen** "2" button and then select applications #1, #2 and #3. Applications windows are shown overlapped on screen 2.
+
+.. figure:: /_images/WindowGeometryInterfaceUsage_2.png
+   :align: center
+
+Click vertical layout button to arrange windows vertically.
+   
+.. figure:: /_images/WindowGeometryInterfaceUsage_3.png
+   :align: center
+
+Click horizontal layout button to arrange windows horizontally.
+   
+.. figure:: /_images/WindowGeometryInterfaceUsage_4.png
+   :align: center
+
+Click cascade layout button to arrange windows horizontally.
+
+.. note::
+   The "cascade layout", not visible in the above screenshots, will try to arrange windows as a cascade. It might fail if some applications don't implement the :ref:`"ActivateWindow" protocol command <Description_of_application_properties#Application_properties_guidelines>`.
+
+.. figure:: /_images/WindowGeometryInterfaceUsage_5.png
+   :align: center
+
+Click **OK** to save or **Cancel** to revert changes and close the Window Geometry Manager.

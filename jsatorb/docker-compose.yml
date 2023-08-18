@@ -1,0 +1,132 @@
+################################################################################
+# CCC
+################################################################################
+
+version: "3.8"
+
+services:
+
+  # Mongo container
+  mongo:
+    container_name: ccc_mongo
+    image: anthonyeae/reposetoibien:monmongo
+    restart: always
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_DATABASE=csug
+    volumes:
+      - dbvolume:/data/db:delegated
+    network_mode: bridge
+
+
+#Mongo database export from Host to the Docker container:
+# One must create a dump folder in local host to back up the original mongodb database, in the jsatorb directory.
+# Type the following commands in jsatorb directory:
+#  docker-compose up
+#  docker cp dump ccc_mongo:/data/
+#  docker exec -it ccc_mongo /bin/bash
+#  cd /data
+#  mongorestore --drop --noIndexRestore --db csug /data/dump/csug/
+#  exit
+
+
+# -----------------------------------------------------------------------------
+# JSatOrb project: JSatOrb Docker composition
+# -----------------------------------------------------------------------------
+# This Docker-compose file deploy the 3 JSatOrb Docker containers:
+#   - JSatOrb's frontend container: 
+#     Nginx server containing the JSatOrb GUI JS/NodeJS (Typescript/Angular 8)
+#   - JSatOrb's backend container: 
+#     Anaconda3/Python 3.7 using Orekit Python wrapper
+#   - JSatOrb's Celstrak container (DockerHub: thib21/celestrak-json-proxy:dev)
+# -----------------------------------------------------------------------------
+# Notes:
+#   A bind-mount is needed for the backend container to store mission data sets
+#   As we run the container as the same user (uid:guid) that run the present 
+#   docker-compose script, it should be noted that in the container:
+#     - The user has no name
+#     - The user has no home directory
+#   Therefore, it explains why we have to map the Docker host folder
+#        /home/${USER}/JSatOrb/mission-data
+#   to the Docker backend container folder
+#        /JSatOrb/mission-data (with no /home/${USER} prefix)
+#
+# The bright side of this is that the backend mission data set files are 
+# written as the Docker host user in the Docker host 
+# /home/${USER}/JSatOrb/mission-data folder.
+# -----------------------------------------------------------------------------
+
+  # JSatOrb's backend container
+  backend:
+    container_name: jsatorb-backend-container
+    image: anthonyeae/reposetoibien:monjsat
+    ports:
+      - "8000:8000"
+    environment:
+     - PUID=1000
+     - PGID=1000
+    user: "1000:1000"
+    volumes:
+      - ./share/:/share:rw
+      - ".:/app:rw"
+      - "./data:/data:rw"  
+    restart: always
+    network_mode: bridge
+
+  # JSatOrb's frontend container
+  # Warning: JSatOrb's backend should serve on 8000.
+#  frontend:
+#    container_name: ccc_jsatorb-frontend
+#    depends_on:
+#      - backend
+#    image: jsatorb-frontend:prod
+#    ports:
+#      - "8080:80"
+#    volumes:
+#      - type: bind
+#        source: "/home/antoine/jsatorb/mission-data"
+#        target: "/jsatorb/mission-data"
+##      - ./share/:/share:rw
+#      - ".:/app:rw"
+#      - "./data:/data:rw"
+#    restart: always
+
+#   JSatOrb's Celestrak container
+  celestrak:
+    container_name: celestrak-json-proxy-container
+    image: anthonyeae/reposetoibien:moncelestrak
+    ports:
+      - "7777:7777"
+    restart: always
+
+  # Node-Red container
+  nodered:
+      container_name: ccc_nodered
+      build:
+          context: /home/anthony/.node-red
+      image: anthonyeae/reposetoibien:monnode
+      user: "1000:1000"
+      environment:
+          - NODE_OPTIONS=--max_old_space_size=512
+          - VIRTUAL_HOST=127.0.0.1
+          - VIRTUAL_PORT=1880
+          - VIRTUAL_NETWORK=nginx-proxy
+          - TZ=Europe/Amsterdam
+          - WAIT_HOSTS= mongo:27017
+      ports:
+          - "1880:1880"
+      volumes:
+          - /home/anthony/.node-red:/data:rw
+          - ".:/app:rw"
+          - ./log/nodered/:/log:rw
+##          - ./share/:/share:rw
+      links:
+          - mongo:mongo
+          - backend:backend
+      network_mode: bridge
+  #    environment:
+  #        - WAIT_HOSTS: mongo:27017     
+
+volumes:
+    dbvolume:

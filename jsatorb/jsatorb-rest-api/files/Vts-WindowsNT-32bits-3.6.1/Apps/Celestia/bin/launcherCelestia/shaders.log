@@ -1,0 +1,185 @@
+Vertex shader source:
+  1: #version 110
+  2: uniform float opacity;
+  3: uniform vec3 light0_diffuse;
+  4: 
+  5: void main(void)
+  6: {
+  7:     gl_FrontColor = vec4(light0_diffuse, opacity);
+  8:     gl_Position = ftransform();
+  9: }
+
+Fragment shader source:
+  1: #version 110
+  2: 
+  3: void main(void)
+  4: {
+  5:     gl_FragColor = gl_Color ;
+  6: }
+
+Vertex shader source:
+  1: #version 110
+  2: uniform vec3 light0_direction;
+  3: uniform vec3 light0_diffuse;
+  4: uniform vec3 light0_specular;
+  5: uniform vec3 light0_halfVector;
+  6: uniform vec3 eyePosition;
+  7: varying vec2 diffTexCoord;
+  8: uniform float textureOffset;
+  9: uniform vec3 atmosphereRadius;
+ 10: uniform float mieCoeff;
+ 11: uniform float mieH;
+ 12: uniform float mieK;
+ 13: uniform vec3 rayleighCoeff;
+ 14: uniform float rayleighH;
+ 15: uniform vec3 scatterCoeffSum;
+ 16: uniform vec3 invScatterCoeffSum;
+ 17: uniform vec3 extinctionCoeff;
+ 18: vec3 eyeDir = normalize(eyePosition - gl_Vertex.xyz);
+ 19: float NV = dot(gl_Normal, eyeDir);
+ 20: varying vec4 diffFactors;
+ 21: varying vec3 normal;
+ 22: varying vec3 lightHalfVec0;
+ 23: varying vec3 scatterEx;
+ 24: 
+ 25: void main(void)
+ 26: {
+ 27: float NL;
+ 28: normal = gl_Normal;
+ 29: NL = max(0.0, dot(gl_Normal, light0_direction));
+ 30: diffFactors.x = NL;
+ 31: lightHalfVec0 = light0_direction + eyeDir;
+ 32: diffTexCoord = gl_MultiTexCoord0.st + vec2(textureOffset, 0.0);
+ 33: {
+ 34:     float rq = dot(eyePosition, eyeDir);
+ 35:     float qq = dot(eyePosition, eyePosition) - atmosphereRadius.y;
+ 36:     float d = sqrt(rq * rq - qq);
+ 37:     vec3 atmEnter = eyePosition + min(0.0, (-rq + d)) * eyeDir;
+ 38:     vec3 atmLeave = gl_Vertex.xyz;
+ 39:     vec3 atmSamplePoint = (atmEnter + atmLeave) * 0.5;
+ 40:     vec3 atmSamplePointSun = atmEnter * 0.5 + atmLeave * 0.5;
+ 41:     rq = dot(atmSamplePointSun, light0_direction);
+ 42:     qq = dot(atmSamplePointSun, atmSamplePointSun) - atmosphereRadius.y;
+ 43:     d = sqrt(rq * rq - qq);
+ 44:     float distSun = -rq + d;
+ 45:     float distAtm = length(atmEnter - atmLeave);
+ 46:     float density = 0.0;
+ 47:     atmSamplePoint = atmEnter * 0.333 + atmLeave * 0.667;
+ 48:     float h = max(0.0, length(atmSamplePoint) - atmosphereRadius.z);
+ 49:     density += exp(-h * mieH);
+ 50:     atmSamplePoint = atmEnter * 0.667 + atmLeave * 0.333;
+ 51:     h = max(0.0, length(atmSamplePoint) - atmosphereRadius.z);
+ 52:     density += exp(-h * mieH);
+ 53:     vec3 sunColor = exp(-extinctionCoeff * density * distSun);
+ 54:     vec3 ex = exp(-extinctionCoeff * density * distAtm);
+ 55:     float cosTheta = dot(eyeDir, light0_direction);
+ 56:     float phMie = (1.0 - mieK * mieK) / ((1.0 - mieK * cosTheta) * (1.0 - mieK * cosTheta));
+ 57:     float phRayleigh = 1.0;
+ 58:     scatterEx = ex;
+ 59:     gl_FrontSecondaryColor.rgb = (phRayleigh * rayleighCoeff + phMie * mieCoeff) * invScatterCoeffSum * sunColor * (1.0 - exp(-scatterCoeffSum * density * distAtm));
+ 60: }
+ 61: gl_Position = ftransform();
+ 62: }
+
+Fragment shader source:
+  1: #version 110
+  2: uniform sampler2D diffTex;
+  3: varying vec2 diffTexCoord;
+  4: uniform vec3 ambientColor;
+  5: uniform float opacity;
+  6: varying vec4 diffFactors;
+  7: vec4 diff = vec4(ambientColor, opacity);
+  8: varying vec3 normal;
+  9: vec4 spec = vec4(0.0);
+ 10: uniform float shininess;
+ 11: varying vec3 lightHalfVec0;
+ 12: uniform vec3 lightcolor0;
+ 13: uniform vec3 lightspecColor0;
+ 14: varying vec3 scatterEx;
+ 15: 
+ 16: void main(void)
+ 17: {
+ 18: vec4 color;
+ 19: float NH;
+ 20: vec3 n = normalize(normal);
+ 21: diff.rgb += diffFactors.x * lightcolor0;
+ 22: NH = max(0.0, dot(n, normalize(lightHalfVec0)));
+ 23: spec.rgb += diffFactors.x * pow(NH, shininess) * lightspecColor0;
+ 24: color = texture2D(diffTex, diffTexCoord.st);
+ 25: gl_FragColor = color * diff + float(color.a) * spec;
+ 26: gl_FragColor.rgb = gl_FragColor.rgb * scatterEx + gl_SecondaryColor.rgb;
+ 27: }
+
+Vertex shader source:
+  1: #version 110
+  2: uniform vec3 light0_direction;
+  3: uniform vec3 light0_diffuse;
+  4: uniform vec3 eyePosition;
+  5: uniform vec3 atmosphereRadius;
+  6: uniform float mieCoeff;
+  7: uniform float mieH;
+  8: uniform float mieK;
+  9: uniform vec3 rayleighCoeff;
+ 10: uniform float rayleighH;
+ 11: uniform vec3 scatterCoeffSum;
+ 12: uniform vec3 invScatterCoeffSum;
+ 13: uniform vec3 extinctionCoeff;
+ 14: varying vec3 scatteredColor0;
+ 15: vec3 eyeDir = normalize(eyePosition - gl_Vertex.xyz);
+ 16: float NV = dot(gl_Normal, eyeDir);
+ 17: varying vec3 scatterEx;
+ 18: varying vec3 eyeDir_obj;
+ 19: 
+ 20: void main(void)
+ 21: {
+ 22: float NL;
+ 23: {
+ 24:     float rq = dot(eyePosition, eyeDir);
+ 25:     float qq = dot(eyePosition, eyePosition) - atmosphereRadius.y;
+ 26:     float d = sqrt(rq * rq - qq);
+ 27:     vec3 atmEnter = eyePosition + min(0.0, (-rq + d)) * eyeDir;
+ 28:     vec3 atmLeave = gl_Vertex.xyz;
+ 29:     vec3 atmSamplePoint = (atmEnter + atmLeave) * 0.5;
+ 30:     vec3 atmSamplePointSun = atmEnter * 0.5 + atmLeave * 0.5;
+ 31:     rq = dot(atmSamplePointSun, light0_direction);
+ 32:     qq = dot(atmSamplePointSun, atmSamplePointSun) - atmosphereRadius.y;
+ 33:     d = sqrt(rq * rq - qq);
+ 34:     float distSun = -rq + d;
+ 35:     float distAtm = length(atmEnter - atmLeave);
+ 36:     float density = 0.0;
+ 37:     atmSamplePoint = atmEnter * 0.333 + atmLeave * 0.667;
+ 38:     float h = max(0.0, length(atmSamplePoint) - atmosphereRadius.z);
+ 39:     density += exp(-h * mieH);
+ 40:     atmSamplePoint = atmEnter * 0.667 + atmLeave * 0.333;
+ 41:     h = max(0.0, length(atmSamplePoint) - atmosphereRadius.z);
+ 42:     density += exp(-h * mieH);
+ 43:     vec3 sunColor = exp(-extinctionCoeff * density * distSun);
+ 44:     vec3 ex = exp(-extinctionCoeff * density * distAtm);
+ 45:     scatterEx = ex;
+ 46:     scatteredColor0 = sunColor * (1.0 - exp(-scatterCoeffSum * density * distAtm));
+ 47: }
+ 48: eyeDir_obj = eyeDir;
+ 49: gl_Position = ftransform();
+ 50: }
+
+Fragment shader source:
+  1: #version 110
+  2: varying vec3 scatterEx;
+  3: varying vec3 eyeDir_obj;
+  4: uniform float mieK;
+  5: uniform float mieCoeff;
+  6: uniform vec3  rayleighCoeff;
+  7: uniform vec3  invScatterCoeffSum;
+  8: uniform vec3 light0_direction;
+  9: varying vec3 scatteredColor0;
+ 10: 
+ 11: void main(void)
+ 12: {
+ 13: vec3 color = vec3(0.0, 0.0, 0.0);
+ 14: vec3 V = normalize(eyeDir_obj);
+ 15:     float cosTheta = dot(V, light0_direction);
+ 16:     float phMie = (1.0 - mieK * mieK) / ((1.0 - mieK * cosTheta) * (1.0 - mieK * cosTheta));
+ 17:     float phRayleigh = 1.0;
+ 18:     color += (phRayleigh * rayleighCoeff + phMie * mieCoeff) * invScatterCoeffSum * scatteredColor0;
+ 19:     gl_FragColor = vec4(color, dot(scatterEx, vec3(0.333, 0.333, 0.333)));
+ 20: }

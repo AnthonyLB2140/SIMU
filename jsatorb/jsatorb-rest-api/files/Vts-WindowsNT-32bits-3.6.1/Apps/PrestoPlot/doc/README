@@ -1,0 +1,7 @@
+PrestoPlot for VTS
+
+PrestoPlot plugin for VTS allows you to display all data files used in the current project in PrestoPlot. 
+
+Additional data files (CIC files, .tab and .tsv) can also be plotted by putting them into the VTS Timeline or in a "PlotFiles" directory next to the current project file. 
+
+See "lincese.txt" file in PrestoPlot directory.

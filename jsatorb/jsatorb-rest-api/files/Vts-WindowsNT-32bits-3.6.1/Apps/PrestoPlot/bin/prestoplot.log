@@ -1,0 +1,230 @@
+# Encoding :	cp1252
+-load "//192.168.192.200/files/default_Sat/Data/Sat_OEM_POSITION.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/Sat_COLOR.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/Sat_AEM_ATTITUDE.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/PLEIADES1A_OEM_POSITION.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/PLEIADES1A_COLOR.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/PLEIADES1A_AEM_ATTITUDE.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/PLEIADES1B_OEM_POSITION.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/PLEIADES1B_COLOR.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/PLEIADES1B_AEM_ATTITUDE.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/PLEIADES-NEO3_OEM_POSITION.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/PLEIADES-NEO3_COLOR.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/PLEIADES-NEO3_AEM_ATTITUDE.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/PLEIADES-NEO4_OEM_POSITION.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/PLEIADES-NEO4_COLOR.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/PLEIADES-NEO4_AEM_ATTITUDE.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/BLUE1_OEM_POSITION.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/BLUE1_COLOR.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/BLUE1_AEM_ATTITUDE.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/BLUE2_OEM_POSITION.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/BLUE2_COLOR.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/BLUE2_AEM_ATTITUDE.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/RED1_OEM_POSITION.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/RED1_COLOR.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/RED1_AEM_ATTITUDE.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/RED2_OEM_POSITION.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/RED2_COLOR.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/RED2_AEM_ATTITUDE.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/Sat_MEM_LLA.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/Sat_MEM_VISIBILITY_IPEV_Ny_Alesund.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/Sat_MEM_VISIBILITY_IPEV_Dumont_DUrville.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/Sat_MEM_VISIBILITY_IPEV_BA_Concordia.TXT"
+##### ERROR #####
+# CCSDS Data Error :
+#  Error loading '//192.168.192.200/files/default_Sat/Data/Sat_MEM_VISIBILITY_Ariel_University.TXT'
+#  'unexpected end of file (line 17)'
+###################
+##### ERROR #####
+# CCSDS Data Error :
+#  Error loading '//192.168.192.200/files/default_Sat/Data/Sat_MEM_VISIBILITY_UPF_Faa.TXT'
+#  'unexpected end of file (line 17)'
+###################
+##### ERROR #####
+# CCSDS Data Error :
+#  Error loading '//192.168.192.200/files/default_Sat/Data/Sat_MEM_VISIBILITY_CNES_Toulouse.TXT'
+#  'unexpected end of file (line 17)'
+###################
+-load "//192.168.192.200/files/default_Sat/Data/Sat_MEM_VISIBILITY_NPI_Tromso.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/Sat_MEM_VISIBILITY_DGER_Station.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/Sat_MEM_VISIBILITY_Gao_Airport.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/Sat_MEM_VISIBILITY_Rostov.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/Sat_MEM_VISIBILITY_Kharkiv.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/Sat_MEM_VISIBILITY_Moscow.TXT"
+##### ERROR #####
+# CCSDS Data Error :
+#  Error loading '//192.168.192.200/files/default_Sat/Data/Sat_MEM_VISIBILITY_Lattakia.TXT'
+#  'unexpected end of file (line 17)'
+###################
+-load "//192.168.192.200/files/default_Sat/Data/Sat_MEM_VISIBILITY_Bagdad.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/Sat_MEM_VISIBILITY_Teheran.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/Sat_MEM_VISIBILITY_Kabul.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/Sat_MEM_VISIBILITY_Baikonur.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/Sat_MEM_VISIBILITY_Xinjiang_point.TXT"
+##### ERROR #####
+# CCSDS Data Error :
+#  Error loading '//192.168.192.200/files/default_Sat/Data/Sat_MEM_VISIBILITY_Beijing.TXT'
+#  'unexpected end of file (line 17)'
+###################
+##### ERROR #####
+# CCSDS Data Error :
+#  Error loading '//192.168.192.200/files/default_Sat/Data/Sat_MEM_VISIBILITY_Hainan_Naval.TXT'
+#  'unexpected end of file (line 17)'
+###################
+-load "//192.168.192.200/files/default_Sat/Data/Sat_MEM_VISIBILITY_CSUG.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/Sat_MEM_VISIBILITY_PuertollanoSR.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/Sat_MEM_VISIBILITY_MilanSR.TXT"
+##### ERROR #####
+# CCSDS Data Error :
+#  Error loading '//192.168.192.200/files/default_Sat/Data/Sat_MEM_VISIBILITY_AirLiquide_Global_Helium.TXT'
+#  'unexpected end of file (line 17)'
+###################
+##### ERROR #####
+# CCSDS Data Error :
+#  Error loading '//192.168.192.200/files/default_Sat/Data/Sat_MEM_VISIBILITY_Univ_Intl_Rabat.TXT'
+#  'unexpected end of file (line 17)'
+###################
+##### ERROR #####
+# CCSDS Data Error :
+#  Error loading '//192.168.192.200/files/default_Sat/Data/Sat_MEM_VISIBILITY_IPEV_Bretagne.TXT'
+#  'unexpected end of file (line 17)'
+###################
+##### ERROR #####
+# CCSDS Data Error :
+#  Error loading '//192.168.192.200/files/default_Sat/Data/Sat_MEM_VISIBILITY_Univ_Ouv_Catalogne.TXT'
+#  'unexpected end of file (line 17)'
+###################
+-load "//192.168.192.200/files/default_Sat/Data/Sat_MEM_VISIBILITY_TEST.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/PLEIADES1A_MEM_LLA.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/PLEIADES1A_MEM_VISIBILITY_IPEV_Ny_Alesund.TXT"
+##### ERROR #####
+# CCSDS Data Error :
+#  Error loading '//192.168.192.200/files/default_Sat/Data/PLEIADES1A_MEM_VISIBILITY_IPEV_Dumont_DUrville.TXT'
+#  'unexpected end of file (line 17)'
+###################
+-load "//192.168.192.200/files/default_Sat/Data/PLEIADES1A_MEM_VISIBILITY_IPEV_BA_Concordia.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/PLEIADES1A_MEM_VISIBILITY_Ariel_University.TXT"
+##### ERROR #####
+# CCSDS Data Error :
+#  Error loading '//192.168.192.200/files/default_Sat/Data/PLEIADES1A_MEM_VISIBILITY_UPF_Faa.TXT'
+#  'unexpected end of file (line 17)'
+###################
+##### ERROR #####
+# CCSDS Data Error :
+#  Error loading '//192.168.192.200/files/default_Sat/Data/PLEIADES1A_MEM_VISIBILITY_CNES_Toulouse.TXT'
+#  'unexpected end of file (line 17)'
+###################
+-load "//192.168.192.200/files/default_Sat/Data/PLEIADES1A_MEM_VISIBILITY_NPI_Tromso.TXT"
+##### ERROR #####
+# CCSDS Data Error :
+#  Error loading '//192.168.192.200/files/default_Sat/Data/PLEIADES1A_MEM_VISIBILITY_DGER_Station.TXT'
+#  'unexpected end of file (line 17)'
+###################
+##### ERROR #####
+# CCSDS Data Error :
+#  Error loading '//192.168.192.200/files/default_Sat/Data/PLEIADES1A_MEM_VISIBILITY_Gao_Airport.TXT'
+#  'unexpected end of file (line 17)'
+###################
+-load "//192.168.192.200/files/default_Sat/Data/PLEIADES1A_MEM_VISIBILITY_Rostov.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/PLEIADES1A_MEM_VISIBILITY_Kharkiv.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/PLEIADES1A_MEM_VISIBILITY_Moscow.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/PLEIADES1A_MEM_VISIBILITY_Lattakia.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/PLEIADES1A_MEM_VISIBILITY_Bagdad.TXT"
+##### ERROR #####
+# CCSDS Data Error :
+#  Error loading '//192.168.192.200/files/default_Sat/Data/PLEIADES1A_MEM_VISIBILITY_Teheran.TXT'
+#  'unexpected end of file (line 17)'
+###################
+-load "//192.168.192.200/files/default_Sat/Data/PLEIADES1A_MEM_VISIBILITY_Kabul.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/PLEIADES1A_MEM_VISIBILITY_Baikonur.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/PLEIADES1A_MEM_VISIBILITY_Xinjiang_point.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/PLEIADES1A_MEM_VISIBILITY_Beijing.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/PLEIADES1A_MEM_VISIBILITY_Hainan_Naval.TXT"
+##### ERROR #####
+# CCSDS Data Error :
+#  Error loading '//192.168.192.200/files/default_Sat/Data/PLEIADES1A_MEM_VISIBILITY_CSUG.TXT'
+#  'unexpected end of file (line 17)'
+###################
+-load "//192.168.192.200/files/default_Sat/Data/PLEIADES1A_MEM_VISIBILITY_PuertollanoSR.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/PLEIADES1A_MEM_VISIBILITY_MilanSR.TXT"
+##### ERROR #####
+# CCSDS Data Error :
+#  Error loading '//192.168.192.200/files/default_Sat/Data/PLEIADES1A_MEM_VISIBILITY_AirLiquide_Global_Helium.TXT'
+#  'unexpected end of file (line 17)'
+###################
+-load "//192.168.192.200/files/default_Sat/Data/PLEIADES1A_MEM_VISIBILITY_Univ_Intl_Rabat.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/PLEIADES1A_MEM_VISIBILITY_IPEV_Bretagne.TXT"
+##### ERROR #####
+# CCSDS Data Error :
+#  Error loading '//192.168.192.200/files/default_Sat/Data/PLEIADES1A_MEM_VISIBILITY_Univ_Ouv_Catalogne.TXT'
+#  'unexpected end of file (line 17)'
+###################
+##### ERROR #####
+# CCSDS Data Error :
+#  Error loading '//192.168.192.200/files/default_Sat/Data/PLEIADES1A_MEM_VISIBILITY_TEST.TXT'
+#  'unexpected end of file (line 17)'
+###################
+-load "//192.168.192.200/files/default_Sat/Data/PLEIADES1B_MEM_LLA.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/PLEIADES1B_MEM_VISIBILITY_IPEV_Ny_Alesund.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/PLEIADES1B_MEM_VISIBILITY_IPEV_Dumont_DUrville.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/PLEIADES1B_MEM_VISIBILITY_IPEV_BA_Concordia.TXT"
+##### ERROR #####
+# CCSDS Data Error :
+#  Error loading '//192.168.192.200/files/default_Sat/Data/PLEIADES1B_MEM_VISIBILITY_Ariel_University.TXT'
+#  'unexpected end of file (line 17)'
+###################
+##### ERROR #####
+# CCSDS Data Error :
+#  Error loading '//192.168.192.200/files/default_Sat/Data/PLEIADES1B_MEM_VISIBILITY_UPF_Faa.TXT'
+#  'unexpected end of file (line 17)'
+###################
+-load "//192.168.192.200/files/default_Sat/Data/PLEIADES1B_MEM_VISIBILITY_CNES_Toulouse.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/PLEIADES1B_MEM_VISIBILITY_NPI_Tromso.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/PLEIADES1B_MEM_VISIBILITY_DGER_Station.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/PLEIADES1B_MEM_VISIBILITY_Gao_Airport.TXT"
+##### ERROR #####
+# CCSDS Data Error :
+#  Error loading '//192.168.192.200/files/default_Sat/Data/PLEIADES1B_MEM_VISIBILITY_Rostov.TXT'
+#  'unexpected end of file (line 17)'
+###################
+-load "//192.168.192.200/files/default_Sat/Data/PLEIADES1B_MEM_VISIBILITY_Kharkiv.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/PLEIADES1B_MEM_VISIBILITY_Moscow.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/PLEIADES1B_MEM_VISIBILITY_Lattakia.TXT"
+##### ERROR #####
+# CCSDS Data Error :
+#  Error loading '//192.168.192.200/files/default_Sat/Data/PLEIADES1B_MEM_VISIBILITY_Bagdad.TXT'
+#  'unexpected end of file (line 17)'
+###################
+-load "//192.168.192.200/files/default_Sat/Data/PLEIADES1B_MEM_VISIBILITY_Teheran.TXT"
+##### ERROR #####
+# CCSDS Data Error :
+#  Error loading '//192.168.192.200/files/default_Sat/Data/PLEIADES1B_MEM_VISIBILITY_Kabul.TXT'
+#  'unexpected end of file (line 17)'
+###################
+-load "//192.168.192.200/files/default_Sat/Data/PLEIADES1B_MEM_VISIBILITY_Baikonur.TXT"
+##### ERROR #####
+# CCSDS Data Error :
+#  Error loading '//192.168.192.200/files/default_Sat/Data/PLEIADES1B_MEM_VISIBILITY_Xinjiang_point.TXT'
+#  'unexpected end of file (line 17)'
+###################
+##### ERROR #####
+# CCSDS Data Error :
+#  Error loading '//192.168.192.200/files/default_Sat/Data/PLEIADES1B_MEM_VISIBILITY_Beijing.TXT'
+#  'unexpected end of file (line 17)'
+###################
+-load "//192.168.192.200/files/default_Sat/Data/PLEIADES1B_MEM_VISIBILITY_Hainan_Naval.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/PLEIADES1B_MEM_VISIBILITY_CSUG.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/PLEIADES1B_MEM_VISIBILITY_PuertollanoSR.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/PLEIADES1B_MEM_VISIBILITY_MilanSR.TXT"
+-load "//192.168.192.200/files/default_Sat/Data/PLEIADES1B_MEM_VISIBILITY_AirLiquide_Global_Helium.TXT"
+##### ERROR #####
+# CCSDS Data Error :
+#  Error loading '//192.168.192.200/files/default_Sat/Data/PLEIADES1B_MEM_VISIBILITY_Univ_Intl_Rabat.TXT'
+#  'unexpected end of file (line 17)'
+###################
+##### ERROR #####
+# CCSDS Data Error :
+#  Error loading '//192.168.192.200/files/default_Sat/Data/PLEIADES1B_MEM_VISIBILITY_IPEV_Bretagne.TXT'
+#  'unexpected end of file (line 17)'
+###################
+-load "//192.168.192.200/files/default_Sat/Data/PLEIADES1B_MEM_VISIBILITY_Univ_Ouv_Catalogne.TXT"

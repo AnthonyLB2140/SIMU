@@ -1,0 +1,94 @@
+obs = celestia:getobserver()
+t = {} ;
+t.orbits = true ;
+t.cloudmaps = false ;
+t.constellations = false ;
+t.galaxies = true ;
+t.planets = true ;
+t.stars = true ;
+t.nightmaps = false ;
+t.eclipseshadows = true ;
+t.ringshadows = false ;
+t.comettails = false ;
+t.boundaries = false ;
+t.markers = true ;
+t.automag = true ;
+t.atmospheres = true ;
+t.grid = false ;
+t.smoothlines = false ;
+t.lightdelay = false ;
+t.partialtrajectories = false ;
+t.cloudshadows = false ;
+t.ecliptic = false ;
+t.equatorialgrid = false ;
+t.galacticgrid = false ;
+t.eclipticgrid = false ;
+t.horizontalgrid = false ;
+celestia:setrenderflags(t)
+t = {} ;
+t.city = false ;
+t.observatory = true ;
+t.landingsite = false ;
+t.crater = false ;
+t.vallis = false ;
+t.mons = false ;
+t.planum = false ;
+t.chasma = false ;
+t.patera = false ;
+t.mare = false ;
+t.rupes = false ;
+t.tessera = false ;
+t.regio = false ;
+t.chaos = false ;
+t.terra = false ;
+t.volcano = false ;
+t.astrum = false ;
+t.corona = false ;
+t.dorsum = false ;
+t.fossa = false ;
+t.catena = false ;
+t.mensa = false ;
+t.rima = false ;
+t.undae = false ;
+t.tholus = false ;
+t.reticulum = false ;
+t.planitia = false ;
+t.linea = false ;
+t.fluctus = false ;
+t.farrum = false ;
+t.insula = false ;
+t.other = false ;
+obs:setlocationflags(t)
+celestia:setminfeaturesize(1)
+t = {} ;
+t.planets = false
+t.moons = false
+t.spacecraft = true
+t.asteroids = false
+t.comets = false
+t.stars = false
+t.galaxies = false
+t.locations = true
+t.constellations = false
+t.i18nconstellations = false
+t.openclusters = false
+t.nebulae = false
+t.dwarfplanets = false
+t.minormoons = false
+t.globulars = false
+celestia:setlabelflags(t)
+t = {}
+t.Planet = false
+t.Moon = false
+t.Asteroid = false
+t.Comet = false
+t.Spacecraft = true
+t.Invisible = false
+t.Unknown = false
+t.DwarfPlanet = false
+t.MinorMoon = false
+t.Star = false
+celestia:setorbitflags(t)
+
+celestia:setsensorgeometrysegmentnumber(128)
+celestia:setsensorswathresolution(1/86400)

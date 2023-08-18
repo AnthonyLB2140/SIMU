@@ -1,0 +1,350 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Mission events in VTS &mdash; VTS 3.6.0-9030 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="VTS 3.6.0-9030 documentation" href="../../index.html"/>
+        <link rel="up" title="General" href="index.html"/>
+        <link rel="next" title="POIs and ROIs in VTS" href="POIs_and_ROIs_in_VTS.html"/>
+        <link rel="prev" title="Window Geometry Manager" href="Manage_window_geometry.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> VTS
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction/index.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">General</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Conventions_in_VTS.html">Conventions in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Date_formats_in_VTS.html">Date formats in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Data_sources_in_VTS.html">Data sources in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Position_of_objects_in_VTS.html">Position of objects in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Orientation_of_objects_in_VTS.html">Orientation of objects in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Examples_for_position_and_orientation_of_objects_in_VTS.html">Examples for position and orientation of objects in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Backwards_compatibility_in_VTS.html">Backward compatibility in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Object_paths_in_VTS.html">Object paths in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Central_bodies_in_VTS.html">Central bodies in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Structure_of_satellites_in_VTS.html">Structure of satellites in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sensors_in_VTS.html">Sensors in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Masks_in_VTS.html">Physical masks in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scale_factors_in_VTS.html">Scale factors in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cluster_in_VTS.html">Clusters in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scenario_in_VTS.html">Scenario in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Manage_window_geometry.html">Window Geometry Manager</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Mission events in VTS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#event-type">Event type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cic-ccsds-event-files">CIC/CCSDS event files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#event-decorations">Event decorations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="POIs_and_ROIs_in_VTS.html">POIs and ROIs in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Other_visualisable_objects.html">Other visualisable objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scripts_and_macros_in_VTS.html">Scripts and macros in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="VTS_Broker.html">VTS Broker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Files_used_by_VTS/index.html">Files used by VTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Starting_VTS/index.html">Starting VTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VTS_applications_user_manuals/index.html">VTS applications user manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Plugin_development/index.html">Plugin development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Data_generators_in_VTS/index.html">Data generator integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../About/index.html">About</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">VTS</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">General</a> &raquo;</li>
+        
+      <li>Mission events in VTS</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/pages/General/Mission_events_in_VTS.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mission-events-in-vts">
+<span id="id1"></span><h1>Mission events in VTS<a class="headerlink" href="#mission-events-in-vts" title="Permalink to this headline">¶</a></h1>
+<p>Mission events in VTS are timestampped punctual events attached to visualization entities. Currently, events may only be attached to satellites.</p>
+<p>Events are displayed in the project timeline and in compatible client applications. Currently, the only standard VTS client application with events capability is SurfaceView.</p>
+<p>An event is defined by its event type and timestamp. Text metadata may also be attached to an event.</p>
+<div class="section" id="event-type">
+<span id="mission-events-in-vts-event-type"></span><h2>Event type<a class="headerlink" href="#event-type" title="Permalink to this headline">¶</a></h2>
+<p>The event type is a category describing the event that occurs at the dates of instances of this type. For example, events of the <code class="docutils literal"><span class="pre">OEF/EARTH_IN_SENSOR_END</span> <span class="pre">(2)</span></code> event type are orbit events at the dates when the Earth leaves the field of view of the second star tracker.</p>
+<p>Event types in VTS are organized hierarchically. An event type full name includes the names of all its parent types, separated with slashes, e.g. <code class="docutils literal"><span class="pre">PASS/KRU/TC_EMISSION_END</span></code>.</p>
+</div>
+<div class="section" id="cic-ccsds-event-files">
+<span id="mission-events-in-vts-cic-ccsds-event-files"></span><h2>CIC/CCSDS event files<a class="headerlink" href="#cic-ccsds-event-files" title="Permalink to this headline">¶</a></h2>
+<p>Events are described in CIC/CCSDS files in MEM format. For more information on the CIC/CCSDS file format, refer to the <span class="xref std std-ref">CIC-CCSDS?data files in VTS</span> chapter.</p>
+<p>A CIC/CCSDS event file must have the following characteristics:</p>
+<ul class="simple">
+<li>The <code class="docutils literal"><span class="pre">USER_DEFINED_PROTOCOL</span></code> must be <code class="docutils literal"><span class="pre">NONE</span></code>.</li>
+<li>The <code class="docutils literal"><span class="pre">USER_DEFINED_CONTENT</span></code> is the top-level event type name for all events in the file. It will be implicitly prepended to the event type names found in the file.</li>
+<li>The <code class="docutils literal"><span class="pre">USER_DEFINED_SIZE</span></code> must be <code class="docutils literal"><span class="pre">1</span></code> or more. The first column (after the date) must be the event type full name (not including the top-level type, <em>USER_DEFINED_CONTENT</em>). All other columns will be used as text description/metadata for the event.</li>
+<li>The <code class="docutils literal"><span class="pre">USER_DEFINED_TYPE</span></code> must be <code class="docutils literal"><span class="pre">STRING</span></code>.</li>
+<li>The <code class="docutils literal"><span class="pre">USER_DEFINED_UNIT</span></code> must be <code class="docutils literal"><span class="pre">[n/a]</span></code>.</li>
+</ul>
+<p>The following is a sample CIC/CCSDS event file:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">CIC_MEM_VERS</span>   <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">CREATION_DATE</span>  <span class="o">=</span> <span class="mi">2013</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">18</span><span class="n">T16</span><span class="p">:</span><span class="mi">19</span><span class="p">:</span><span class="mi">51</span>
+<span class="n">ORIGINATOR</span>     <span class="o">=</span> <span class="n">PROTON</span>
+
+<span class="n">META_START</span>
+
+<span class="n">COMMENT</span> <span class="n">PROTON</span> <span class="n">OEF</span> <span class="n">file</span>
+<span class="n">COMMENT</span> <span class="n">Misc</span> <span class="n">columns</span><span class="p">:</span> <span class="n">PSO</span> <span class="n">Lat</span> <span class="n">Long</span> <span class="n">Cycle</span> <span class="n">Orbit</span>
+
+<span class="n">OBJECT_NAME</span> <span class="o">=</span> <span class="n">PLEIADES</span>
+<span class="n">OBJECT_ID</span>   <span class="o">=</span> <span class="n">PHR</span>
+
+<span class="n">USER_DEFINED_PROTOCOL</span> <span class="o">=</span> <span class="n">NONE</span>
+<span class="n">USER_DEFINED_CONTENT</span> <span class="o">=</span> <span class="n">OEF</span>
+<span class="n">USER_DEFINED_SIZE</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">USER_DEFINED_TYPE</span> <span class="o">=</span> <span class="n">STRING</span>
+<span class="n">USER_DEFINED_UNIT</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span><span class="o">/</span><span class="n">a</span><span class="p">]</span>
+
+<span class="n">TIME_SYSTEM</span> <span class="o">=</span> <span class="n">UTC</span>
+
+<span class="n">META_STOP</span>
+
+<span class="mi">56273</span> <span class="mf">0.000000</span>       <span class="s2">&quot;DAS_Update_TC_CHCOMRLDDAS&quot;</span>      <span class="s2">&quot;25.7&quot;</span>   <span class="s2">&quot;25.39&quot;</span>  <span class="s2">&quot;-26.5&quot;</span>  <span class="s2">&quot;8&quot;</span>  <span class="s2">&quot;272&quot;</span>
+<span class="mi">56273</span> <span class="mf">126.809000</span>     <span class="s2">&quot;AUS/0_DEG_AOS&quot;</span>                  <span class="s2">&quot;33.44&quot;</span>  <span class="s2">&quot;33.05&quot;</span>  <span class="s2">&quot;-28.48&quot;</span> <span class="s2">&quot;8&quot;</span>  <span class="s2">&quot;272&quot;</span>
+<span class="mi">56273</span> <span class="mf">282.221000</span>     <span class="s2">&quot;AUS/MAX_ELEVATION_PASS)&quot;</span>        <span class="s2">&quot;42.9&quot;</span>   <span class="s2">&quot;42.38&quot;</span>  <span class="s2">&quot;-31.3&quot;</span>  <span class="s2">&quot;8&quot;</span>  <span class="s2">&quot;272&quot;</span>
+<span class="mi">56273</span> <span class="mf">438.342000</span>     <span class="s2">&quot;AUS/0_DEG_LOS&quot;</span>                  <span class="s2">&quot;52.4&quot;</span>   <span class="s2">&quot;51.68&quot;</span>  <span class="s2">&quot;-34.89&quot;</span> <span class="s2">&quot;8&quot;</span>  <span class="s2">&quot;272&quot;</span>
+<span class="mi">56273</span> <span class="mf">453.909000</span>     <span class="s2">&quot;STH/0_DEG_AOS&quot;</span>                  <span class="s2">&quot;53.35&quot;</span>  <span class="s2">&quot;52.6&quot;</span>   <span class="s2">&quot;-35.32&quot;</span> <span class="s2">&quot;8&quot;</span>  <span class="s2">&quot;272&quot;</span>
+<span class="mi">56273</span> <span class="mf">510.640000</span>     <span class="s2">&quot;STH/PHYSICAL_AOS&quot;</span>               <span class="s2">&quot;56.8&quot;</span>   <span class="s2">&quot;55.95&quot;</span>  <span class="s2">&quot;-36.99&quot;</span> <span class="s2">&quot;8&quot;</span>  <span class="s2">&quot;272&quot;</span>
+<span class="mi">56273</span> <span class="mf">566.297000</span>     <span class="s2">&quot;STH/MAX_ELEVATION_PASS&quot;</span>         <span class="s2">&quot;60.18&quot;</span>  <span class="s2">&quot;59.21&quot;</span>  <span class="s2">&quot;-38.91&quot;</span> <span class="s2">&quot;8&quot;</span>  <span class="s2">&quot;272&quot;</span>
+<span class="mi">56273</span> <span class="mf">616.599000</span>     <span class="s2">&quot;KRN/0_DEG_AOS&quot;</span>                  <span class="s2">&quot;63.24&quot;</span>  <span class="s2">&quot;62.14&quot;</span>  <span class="s2">&quot;-40.93&quot;</span> <span class="s2">&quot;8&quot;</span>  <span class="s2">&quot;272&quot;</span>
+<span class="mi">56273</span> <span class="mf">663.121000</span>     <span class="s2">&quot;KRN/PHYSICAL_AOS&quot;</span>               <span class="s2">&quot;66.07&quot;</span>  <span class="s2">&quot;64.82&quot;</span>  <span class="s2">&quot;-43.15&quot;</span> <span class="s2">&quot;8&quot;</span>  <span class="s2">&quot;272&quot;</span>
+<span class="mi">56273</span> <span class="mf">678.672000</span>     <span class="s2">&quot;STH/PHYSICAL_LOS&quot;</span>               <span class="s2">&quot;67.01&quot;</span>  <span class="s2">&quot;65.71&quot;</span>  <span class="s2">&quot;-43.98&quot;</span> <span class="s2">&quot;8&quot;</span>  <span class="s2">&quot;272&quot;</span>
+<span class="mi">56273</span> <span class="mf">678.672000001</span>  <span class="s2">&quot;STH/0_DEG_LOS&quot;</span>                  <span class="s2">&quot;67.01&quot;</span>  <span class="s2">&quot;65.71&quot;</span>  <span class="s2">&quot;-43.98&quot;</span> <span class="s2">&quot;8&quot;</span>  <span class="s2">&quot;272&quot;</span>
+<span class="mi">56273</span> <span class="mf">769.656000</span>     <span class="s2">&quot;AUTONOMOUS_MODE_GAP/SUP_START&quot;</span>  <span class="s2">&quot;72.54&quot;</span>  <span class="s2">&quot;70.8&quot;</span>   <span class="s2">&quot;-50.17&quot;</span> <span class="s2">&quot;8&quot;</span>  <span class="s2">&quot;272&quot;</span>
+<span class="mi">56273</span> <span class="mf">780.478000</span>     <span class="s2">&quot;KRN/MAX_ELEVATION_PASS&quot;</span>         <span class="s2">&quot;73.2&quot;</span>   <span class="s2">&quot;71.39&quot;</span>  <span class="s2">&quot;-51.11&quot;</span> <span class="s2">&quot;8&quot;</span>  <span class="s2">&quot;272&quot;</span>
+<span class="mi">56273</span> <span class="mf">803.998000</span>     <span class="s2">&quot;EARTH_IN_SENSOR_START (3)&quot;</span>      <span class="s2">&quot;74.63&quot;</span>  <span class="s2">&quot;72.66&quot;</span>  <span class="s2">&quot;-53.34&quot;</span> <span class="s2">&quot;8&quot;</span>  <span class="s2">&quot;272&quot;</span>
+<span class="mi">56273</span> <span class="mf">808.998000</span>     <span class="s2">&quot;SUN_IN_SENSOR_START (3)&quot;</span>        <span class="s2">&quot;74.93&quot;</span>  <span class="s2">&quot;72.92&quot;</span>  <span class="s2">&quot;-53.85&quot;</span> <span class="s2">&quot;8&quot;</span>  <span class="s2">&quot;272&quot;</span>
+<span class="mi">56273</span> <span class="mf">872.998000</span>     <span class="s2">&quot;SUN_IN_SENSOR_END (3)&quot;</span>          <span class="s2">&quot;78.82&quot;</span>  <span class="s2">&quot;76.19&quot;</span>  <span class="s2">&quot;-62.02&quot;</span> <span class="s2">&quot;8&quot;</span>  <span class="s2">&quot;272&quot;</span>
+<span class="mi">56273</span> <span class="mf">875.835000</span>     <span class="s2">&quot;KRN/PHYSICAL_LOS&quot;</span>               <span class="s2">&quot;78.99&quot;</span>  <span class="s2">&quot;76.33&quot;</span>  <span class="s2">&quot;-62.47&quot;</span> <span class="s2">&quot;8&quot;</span>  <span class="s2">&quot;272&quot;</span>
+<span class="mi">56273</span> <span class="mf">908.478000</span>     <span class="s2">&quot;NPL/0_DEG_AOS&quot;</span>                  <span class="s2">&quot;80.98&quot;</span>  <span class="s2">&quot;77.86&quot;</span>  <span class="s2">&quot;-68.28&quot;</span> <span class="s2">&quot;8&quot;</span>  <span class="s2">&quot;272&quot;</span>
+<span class="mi">56273</span> <span class="mf">935.329000</span>     <span class="s2">&quot;NPL/PHYSICAL_AOS&quot;</span>               <span class="s2">&quot;82.61&quot;</span>  <span class="s2">&quot;79.&quot;</span>    <span class="s2">&quot;-74.17&quot;</span> <span class="s2">&quot;8&quot;</span>  <span class="s2">&quot;272&quot;</span>
+<span class="mi">56273</span> <span class="mf">942.531000</span>     <span class="s2">&quot;AUTONOMOUS_MODE_GAP/SUP_END&quot;</span>    <span class="s2">&quot;83.05&quot;</span>  <span class="s2">&quot;79.29&quot;</span>  <span class="s2">&quot;-75.95&quot;</span> <span class="s2">&quot;8&quot;</span>  <span class="s2">&quot;272&quot;</span>
+<span class="mi">56273</span> <span class="mf">944.742000</span>     <span class="s2">&quot;KRN/0_DEG_LOS&quot;</span>                  <span class="s2">&quot;83.18&quot;</span>  <span class="s2">&quot;79.37&quot;</span>  <span class="s2">&quot;-76.51&quot;</span> <span class="s2">&quot;8&quot;</span>  <span class="s2">&quot;272&quot;</span>
+<span class="mi">56273</span> <span class="mf">947.195000</span>     <span class="s2">&quot;SHADOW_PENOMBRA&quot;</span>                <span class="s2">&quot;83.33&quot;</span>  <span class="s2">&quot;79.47&quot;</span>  <span class="s2">&quot;-77.15&quot;</span> <span class="s2">&quot;8&quot;</span>  <span class="s2">&quot;272&quot;</span>
+<span class="mi">56273</span> <span class="mf">957.008000</span>     <span class="s2">&quot;PENOMBRA_LIGHT&quot;</span>                 <span class="s2">&quot;83.93&quot;</span>  <span class="s2">&quot;79.83&quot;</span>  <span class="s2">&quot;-79.82&quot;</span> <span class="s2">&quot;8&quot;</span>  <span class="s2">&quot;272&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="event-decorations">
+<span id="mission-events-in-vts-event-decorations"></span><h2>Event decorations<a class="headerlink" href="#event-decorations" title="Permalink to this headline">¶</a></h2>
+<p>Event decorations define the appearance of events in the project timeline and in compatible client applications.</p>
+<p>Each event type may have its own custom decoration, in order to be easily distinguishable from other event types. Note that all events of a single event type have the same appearance.</p>
+<p>Thanks to the hierarchy of event types, event decorations are inherited: all children type of an event type share the same decoration as their parent type. This inheritance mechanism can be overridden by specifically customizing the decoration of an event type.</p>
+<p>For more information on the specifics of event decoration configuration, refer to the <a class="reference internal" href="../VTS_applications_user_manuals/VTS_configuration_utility_user_manual.html#vts-configuration-utility-user-manual-configuring-event-types"><span class="std std-ref">Configuring event types</span></a> section of the <a class="reference internal" href="../VTS_applications_user_manuals/VTS_configuration_utility_user_manual.html#vts-configuration-utility-user-manual"><span class="std std-ref">VTS configuration utility user manual</span></a> chapter.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="POIs_and_ROIs_in_VTS.html" class="btn btn-neutral float-right" title="POIs and ROIs in VTS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Manage_window_geometry.html" class="btn btn-neutral" title="Window Geometry Manager" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright VTS Team.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'3.6.0-9030',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,1124 @@
+# VTS Revision History 
+
+All notable changes to this project will be documented in this file.
+
+-----------------------
+
+## [3.6.1] - 2021-12-16
+
+- Added: Satellite labels can now be hidden in Celestia
+- Added: Satellite spherical shell visualizer displayed in Celestia
+- Fixed: Crash when reading a VTS 3.3.1 project file
+- Fixed: Ground station sensor mask not displayed on ZenithView
+- Fixed: Station-Satellite visibility link not displayed in Celestia
+- Fixed: Unable to remove Link visualizer from the project
+- Fixed: Missing context-sensitive help for visualizers
+
+
+## [3.6.0] - 2021-11-23
+
+### General
+
+- Added: Satellite relative trajectories via Reference Frame configuration in the Position/Orientation panel
+- Added: New Visualizers at satellite level (Ellipsoid, Spherical Shell, Grid)
+- Added: Support for CIC data exchange protocol version V3.0 draft
+- Changed: Positional covariance must now be defined using visualizers
+
+### VTS
+
+- Fixed: Project file was marked as modified on open
+- Fixed: Missing files when exporting project file to archive
+- Fixed: Error messages displayed in the command line on exit
+- Fixed: Issues when configuring the Parent Body of the Moon
+- Fixed: VTS diag utility was not executed on some environments
+- Fixed: Crash when configuring an invalid cluster directory
+
+### Broker
+
+- Added: CNES and VTS logos can be used for Movie Recording and Image Capture
+- Added: New "Tracking Shot" mode to define custom camera travelling animations in the object frame
+- Added: New options for windows activation in the Window Geometry Manager
+- Added: Cascade layout in the Window Geometry Manager
+- Added: Client application read/write buffer size is displayed
+- Fixed: Changes to the timeline badges were not detected as project changes (save dialog was not displayed)
+- Fixed: Display issues when changing the order of timeline files
+- Fixed: External clients were not displayed on reconnect with the same application ID
+
+### Celestia
+
+- Fixed: Satellite sensor swath dissappear when activating umbra cone visibility
+
+-----------------------
+
+## [3.5.3] - 2021-05-03
+
+### VTS Configuration Tool
+
+- Fixed: Crash message reported after closing the VTS Configuration Tool
+
+### Broker
+
+- Fixed: File ordering displayed in the timeline 
+- Fixed: Modifying badges does not mark project as modified
+
+### InfoBox
+
+- Fixed: InfoBox automatically closed after a Broker crash under Linux
+
+-----------------------
+
+## [3.5.2] - 2021-03-17
+
+### Broker
+
+- Fixed: External applications not showing up after reconnection in the Applications tab
+
+-----------------------
+
+## [3.5.1] - 2021-01-19
+
+### General
+
+- Added: Application start options can now be changed from Broker
+- Changed: Satellite-Satellite links using geometric computation in OmniView
+- Fixed: Modified states display a star properly in real-time mode
+- Fixed: Visibility circles property display in OmniView
+- Fixed: Help not showing properly on Windows 10
+
+-----------------------
+
+## [3.5.0] - 2020-12-14
+
+### General
+
+- Added: Display of umbra and penumbra zones in 3D
+- Added: STREAM mode now support timeshifting (going back in time)
+- Added: VTS log is stored in a file
+- Added: Broker log is stored in a file
+- Added: Satellite-Satellite visibility links (visualizers)
+- Added: PrestoPlot models can now be stored with VTS
+- Added: Satellite eclipse zones displayed in 2D
+- Added: Icon caption fonts can be customized
+- Added: Visiblity circle and sensor width can be customized 
+- Added: Body frame cameras
+- Added: Support for clusters of objects
+- Added: Option to create a diagnostic file (Help/System Information)
+- Added: Option to migrate a project to last version (startVTS --migrate <project.vts>)
+- Fixed: Non blocking startVTS --batch
+- Fixed: Crash when closing an unsaved file
+- Fixed: VTS help open in default browser
+- Fixed: Entity filter available during visualization
+- Fixed: Issues with copy-paste ground station sensor
+
+### Broker
+
+- Fixed: VTS protocol messages can now be disabled
+- Fixed: Unexpected delay (2 seconds) being added to DIRECT mode
+- Fixed: Timeline files incorect ordering
+- Fixed: Timeline display issues when adding files via drag and drop
+- Fixed: Timeline bar display offset
+- Fixed: Undo/Redo issues with Timeline badges
+- Fixed: Issues with --stdout option
+
+### Celestia
+
+- Fixed: Crash on empty POI/ROI files
+- Fixed: Accent display issues
+- Fixed: Missing libraries
+- Fixed: Issues with read-only mode
+- Fixed: Orbit paths display issues
+
+### OmniView
+
+- Fixed: Crash with Plancton Cyclic scenario
+- Fixed: Crash when working outside the boundaries of a project
+- Fixed: ZenithView error on exit when using ground station visibility links
+- Fixed: Wrong visibility link displayed in ZenithView
+- Fixed: Issues with SensorSurface option
+- Fixed: Issues with ground station visibility
+
+### InfoBox
+
+- Fixed: Crash when using an empty color file
+
+-----------------------
+
+## [3.4.2] - 2020-03-03
+
+### General changes
+
+- Fixed: Ground station "Sensors Surface" property not working properly in OmniView applications
+- Fixed: Ground station visibility links invalid display in ZenithView
+- Fixed: Wrong style in User Manual [PDF] (only Windows package)
+
+-----------------------
+
+## [3.4.1] - 2020-02-10
+
+### General changes
+
+- Fixed: Error while reading TimelineScript and TimelineStream tags in project file
+- Fixed: Issue detecting JAVA installation for the KeplerianGenerator
+- Fixed: Error when closing ZenithView if Station-Satellite links are enabled
+- Fixed: Display issues on Windows 10 (non-native style)
+
+-----------------------
+
+## [3.4.0] - 2019-12-10
+
+### General changes
+
+- Added: CNES ephemeris for the Moon
+- Added: The Moon is now available as a central body
+- Added: Support for lunar missions (celestial bodies hierarchy)
+- Added: Timeline files can be tagged and filtered using "badges" (contextual menu)
+- Added: Mode "Synchronize with system time" can be dynamically disabled and re-enabled 
+- Added: Ground station sensors can be defined with Azimuth-Elevation constraints
+- Added: Enabled transparency for satellite orbit path using RGBA color files
+- Added: A new diagnostic tool is shipped with VTS
+- Changed: PrestoPlot upgraded from v18.07 to v19.11 (see PrestoPlot/Help/Version History)
+- Changed: VTS is now based on Qt5.12
+
+### VTS Configuration Tool
+
+- Added: Dates can now be copied/pasted in the project dates dialogs
+- Added: Button to set date to "now" in the project dates dialogs
+- Added: VERYSMALLER icon size
+- Fixed: Some states were not updated when renaming a satellite
+
+### Celestia
+
+- Added: Satellite-station visibility links are displayed in Celestia
+- Added: Inertial cameras for celestial bodies
+- Added: Orbit path support for celestial bodies
+- Added: New option to hide satellite and all its elements at once (sensor, orbit path, ...)
+- Fixed: Issues with Celestia window menu on Linux
+
+### OmniView
+
+- Added: View grid can be customized in OmniView applications
+- Added: Satellite-station visibility links can be customized
+- Added: Satellite-station visibility links can be displayed/hidden per satellite 
+- Added: New option to hide satellite and all its elements at once (sensor, orbit path, ...)
+
+-----------------------
+
+## [3.3.1] - 2019-04-01
+
+### VTS Configuration Tool
+
+- Fixed: States not showing as modified in the scenario editor
+- Fixed: Incorrect Timeline graph display for long lasting projects
+- Fixed: Incorrect "Change Date format" button behaviour in the scenario editor
+
+### Celestia
+
+- Fixed: Satellite not animated when using Celestia in real-time mode
+
+-----------------------
+
+## [3.3.0] - 2018-12-07
+
+### General changes
+
+- Added: Support for OBJ file format for 3D models
+- Changed: PrestoPlot upgraded to v18.07
+
+### VTS Configuration Tool
+
+- Added: Settings option to specify a custom editor for CIC data files
+- Added: Settings option to specify the grid resolution of the Window Geometry Manager
+- Added: Filter project entities by using Ctrl+F
+- Added: Filter application properties in State Editor by using Ctrl+F
+- Added: Applications label and icon are displayed in Project tree, Windows Geometry Manager and State Editor
+- Added: Window Geometry Manager multiple application selection
+- Added: Window Geometry Manager quick Layout buttons to arrange windows
+- Added: Window Geometry Manager shows a preview of the selected area
+- Changed: Deleted "Live edit" button in Window Geometry Manger (use Cancel button to restore original state)
+- Changed: "Synchronize with system time" option now ignores project dates
+- Changed: Leading and trailing whitespaces are removed from entities names
+- Fixed: Improved loading time for projects with a large number of states
+- Fixed: Issues with JD1950 = 0 as start date 
+- Fixed: Project archive did not contain customized event icon images
+- Fixed: Incorrect focus when double-click in log error messages
+- Fixed: Incorrect redirection when using context-sensitive help
+- Fixed: "Del" key did not delete map layers
+- Fixed: VTS start issues on Windows 10
+
+### Broker
+
+- Added: An image overlay can be added to record a film with VTS
+- Added: Filter application properties in State Editor by using Ctrl+F
+- Added: Application label and icon are displayed in the State Editor
+- Added: The state of checkboxes in Received and Sent packets can be saved
+- Fixed: Messages from Script/Macro files addressed to incorrect applications
+- Fixed: Issues while saving state of promoted dynamic applications
+- Fixed: Window Geometry Manager issue when Broker in Always on top mode
+- Fixed: Capture Image dialog issues on Linux
+- Fixed: Capture Image dialog issues with counter Reset button 
+- Fixed: Reset button did not have an effect while taking an Area screenshot
+- Fixed: Cancel button did not have an effect with Color dialog in the State Editor
+
+### OmniView
+
+- Changed: Toggle Ground Station Visibility now acts also on Ground Station Sensor
+- Fixed: Always on top mode issues
+- Fixed: Title bar was visible under Frameless mode on Linux
+- Fixed: Incorrect icon centering when using Anchor option
+- Fixed: Coordinates were not displayed while changing map projection center
+
+### InfoBox
+
+- Added: "Time standard" initial state to specify UTC or TAI display
+- Added: "Mode format" initial state to specify a custom display format
+- Added: "Second shift" initial state to specify a custom shift in seconds
+- Added: Custom fonts can be specified for each display block (Time, Date, Data and Shift)
+
+### Celestia
+
+- Added: Assimp library version 4.1.0
+- Changed: Antialiasing activated by default (sampling set to 2)
+- Changed: Upgraded compiler toolchain to MSVC 2015
+- Changed: Upgraded lua library version to 5.3.5
+- Changed: Upgraded luasocket library to 3.0
+
+### Plugin development
+
+- Added: A new client configuration JSON file enables advanced environment options 
+
+-----------------------
+
+## [3.2.0] - 2017-12-07
+
+### General changes
+
+- Added: New client application **ZenithView**
+- Added: New HTML version of the VTS user manual
+- Added: Project examples and data to display geopolitical borders
+- Added: Project examples and data to display unit sphere configuration
+- Added: PrestoPlot v17.07 (demo version) is now shipped with VTS
+
+### VTS Configuration Tool
+
+- Added: Context-sensitive help is now available and displayed in default browser
+- Added: Sensors can now be added to ground stations
+- Added: Station masks can now be added to ground stations
+- Added: Positional covariance can now be defined for satellites
+- Added: New window manager tool to simplify client applications windows placement
+- Added: Automatic placement of client applications windows adapts to changes in screen configuration
+- Changed: When an entity is renamed, states referencing the entity are renamed too
+- Fixed: An incorrect message was displayed when reloading a project
+- Fixed: Application list was not always sorted by application ID
+- Fixed: Ground station satellite targets were not displayed when copy-pasting a ground station
+- Fixed: Crash when loading a project with an unavailable client application
+- Fixed: Crash when loading a malformed CIC script file
+
+### OmniView applications 
+
+- Added: New "Frameless" and "Always on top" modes
+- Added: Enhaced projection of zone-like entities (Earth's terminator, ROI and sensors) in Polar projection
+- Fixed: Satelite-station visibility links were displayed in SensorView and SkyView
+- Fixed: Entities were displayed even if they were located behind a planet (from the reference point of view)
+
+### SurfaceView
+
+- Added: Ground station sensors are displayed in SurfaceView
+- Fixed: Satellite orbit trace was not displayed correctly in some data stream configurations
+- Fixed: Invalid elevation value displayed in satellite-station visibility links
+- Fixed: POI caption color was not taked into account
+
+### Celestia
+
+- Added: Ground station sensor are displayed in Celestia
+- Added: Labels "Sun" and "Body" are displayed along Satellite-to-Sun and Satellite-to-Body 3D vectors
+- Added: Positional covariance is displayed as a 3D ellipsoid around a satellite
+- Fixed: A memory leak concerning the display of satellite sensors
+- Fixed: Velocity vector was invalid in some data stream configurations
+- Fixed: Incomplete deployment of Qt libraries caused problems in some environments
+
+### Broker
+
+- Added: New protocol command to dynamically stop a running application
+- Added: The new window manager tool is also available in the Broker
+- Fixed: Some deprecated functions were used when recording movies
+- Fixed: Timeline display issues related to Qt5 migration
+- Fixed: Invalid application state when aborting visualization exit 
+- Fixed: Client application IP addresses displayed incorrectly
+- Fixed: Camera parameters dialogue had problems with some locales
+
+### InfoBox
+
+- Fixed: Application did not start if Broker port was other than default (8888) 
+
+### Plugin development
+
+- Added: New XML Schema Definition (XSD) describing the VTS project file format
+- Added: VTS is now shipped with code examples (in Python, Tcl and Java) to connect existing applications
+
+-----------------------
+
+## [3.1.1] - 2017-03-09
+
+### General changes
+
+- VTS is now based on Qt5.7.1
+- Added: Leap second at 2016/12/31
+
+### SurfaceView
+
+- Added: Station-Satellite visibility links are displayed
+- Added: Advanced tool to measure orthodromic distances 
+- Added: Orthodromic distance between two free coordinates
+- Added: Orthodromic distance between a free coordinate and an entity (POI/ROI)
+- Added: Orthodromic distance between entities (POI-POI/POI-ROI/ROI-ROI)
+- Added: A state property to show/hide the toolbar
+- Added: POI/ROI color can be dynamically modified using a protocol command
+- Improved: ROI tooltip can contain text from CCSDS meta comments
+- Improved: Cursor coordinates are always displayed
+- Improved: Zoom level limit of tile map layers
+- Improved: Layer's opacity support
+- Fixed: Position of events when changing the projection center
+
+### VTS Configuration Tool
+
+- Added: A map projection can be defined for each layer
+- Added: WMTS protocol support
+- Added: New wizard to define WMS/WMTS URLs 
+- Added: WMS/WMTS GetCapabitlites support 
+- Improved: WMS protocol support
+- Changed: "WMS Tile Map Layer" renamed in "Web Tile Map Layer"
+- Fixed: "Earth Tile Map local path" for bodies different than Earth
+
+### Broker
+
+- Added: Button to take screenshots of one or more client applications
+- Added: Option to close the Broker if no client application is running
+
+### Celestia
+
+- Added: New cameras Station to Satellite and Satellite to Station
+- Added: Support to enable/disable POI visibility
+
+-----------------------
+
+## [3.0.2] - 2016-10-08
+
+### General changes
+
+2dWin no longer exists and is generalized as **OmniView**
+
+- Changed: 2dWin is now called **SurfaceView**
+- Added: New client application **SkyView**
+- Added: New client application **SensorView**
+- Added: New client application **NadirView**
+- Added: New plotting tool client application **PrestoPlot** 4.6.0
+- Added: Texture **layers** can be used in client applications
+- Added: Satellites can be positioned with lat/long/alt CCSDS files
+- Added: VTS can be used in a **read-only** environment
+- Improved: VTS can be used on RedHat 5.3 64bits
+
+### OmniView
+
+- Improved: Using real position for terminator calculation instead of a point at infinity
+- Added: Ability to change the projection center
+- Added: Visibility circles of bodies displayed on the scene reference
+- Added: Visibility circle of a satellite
+- Added: Planetographic grid available
+- Added: Distance between two points with Shift+Click
+- Added: Ability to define a star catalogue 
+- Added: Default Hipparcos star catalogue containing 117957 stars
+- Added: Handles texture layers
+- Added: Satellite icon oriented according to speed vector
+- Fixed: Maximum zoom does not lead to undefined view
+
+### SurfaceView
+
+- Added: Ability to choose the central body displayed as the scene reference in initial states
+- Added: Ability to change the projection in initial states
+- Added: WGS84 flattening of the Earth took into account
+- Added: Different satellite frame axes can be displayed
+- Added: Mercator and polar projection
+
+### VTS Configuration Tool
+
+- Added: New entity icon sizes available
+- Added: Ability to have complex name separated by a pipe character for ROI/POI
+- Changed: "Altitude and azimuth" renamed as "elevation and azimuth".
+- Improved: Heterogeneous units allowed in CCSDS files
+- Improved: Focus on the next entity when deleting an entity
+- Improved: EntityRange_t widget interaction
+- Changed: POI, ROI and ground station names must be unique
+- Changed: Event files are not included in the project dates computation
+- Changed: In 3D graphics properties, "Center of Gravity" and "Reference Axes" are disabled when 3d graphics are not customized
+- Changed: Position files created for subparts and sensors are in MEM format
+- Fixed: Importing entities with custom 2d image
+- Fixed: Crash when zooming in the Timeline to a high level
+- Fixed: Compute date when data files has changed 
+- Fixed: No longer crash after a body deletion
+- Fixed: Error on central body with badly formed OEM header file
+- Fixed: XML Shape Events migration from 2.5 projects
+- Fixed: Crash when recording in real-time mode (forbidden use case)
+- Fixed: Timeline zoom reset when connecting a new client application
+- Fixed: Encoding standard used in zip archive export
+- Fixed: Undo after renaming ROIs or POIs
+- Fixed: Wrong focus when double-click on an error log
+- Fixed: Remote project files can be opened from right-click
+
+### Broker
+
+- Improved: Broker window can't be lost out of screen anymore
+- Added: Disable/Delete all states actions in the Timeline
+- Added: Ctrl+S to save all states
+
+### Celestia
+
+- Changed: Default position of satellite frame axes
+- Changed: Default camera defined when no satellite in the project
+- Fixed: Sun axes can be displayed again
+- Fixed: ROI and POI names can contain multiple spaces
+
+### Infobox
+
+- Fixed: Better handling of different encoding standards in file paths
+
+### Data Generator 
+
+- Improved: TLE Generator generates speed data in OEM files
+
+-----------------------
+
+## [2.7.1] - 2015-09-18
+
+### General changes
+
+- Changed: New Website: www.timeloop.fr
+- Changed: StartVTS executable is not TCL-dependent any more
+- Added: Sun as a central body
+- Improved: Loading time for projects with hundreds of satellites
+- Added: New InfoBox plugin, displays overlay text
+- Fixed: States time precision
+- Added: Warning when VTS is started in a read-only environment
+- Added: New relative date format
+- Improved: Time scale on every Timelines
+- Added: Leap second at 2015/06/30
+- Updated: CIC/CCSDS standard has changed (deprecated fields)
+- Fixed: No graph in the Timeline with very short files
+- Fixed: Incorrect Y-scale in the Timeline
+
+### VTS Configuration Tool
+
+- Added: Standardized interface with external data generators (Keplerian, TLE, etc.)
+- Added: Button to restore ignored files
+- Changed: Full path for recent files list
+- Improved: Better error finder (double-clic in the Logger tab)
+- Changed: Increase Timeline limits where files are not loaded
+- Fixed: Wrong fields order when using the Tab key
+- Fixed: Verify if names contain the slash character
+- Fixed: Timeline configuration (file order et display mode) was not always saved
+- Fixed: Uranus texture not available
+
+### Broker
+
+- Improved: Time ratio can be saved in states
+- Improved: Movie configuration is restored even if the Broker has been restarted
+- Added: Commands to restart a Broker from a script
+- Added: Button to save Timeline configuration (width, cursor position, etc.)
+- Improved: Sort applications in the 3D camera tab
+- Improved: project applications can stay unstarted at Broker's start
+- Added: Network command for loading files
+- Fixed: Do not record the configuration window at the beginning of movies
+- Fixed: Jump to the beginning of the project when "start in pause" projects are played
+- Improved: Ability to receive large data set in real-time mode
+
+### Celestia
+
+- Fixed: Celestia antialisating sample configuration
+- Changed: New default camera
+- Added: Option to display references axes at satellite's center of gravity
+- Improved: Subparts depth limitation has been removed
+- Fixed: Angles are now in degrees in the real-time protocol 
+
+### 2dWin
+
+- Added: Background image can be load from local tiles or WMS server (beta)
+- Improved: Many icons and ergonomic improvements (colors, texts, size, etc.)
+- Added: New sensor swath calculation mode for Nadir pointing projects
+- Improved: Ground stations can be hidden
+- Fixed: Bad rotation model outside of project dates in real-time modes
+- Fixed: Satellite do not disappear when data stream stops in real-time mode
+
+-----------------------
+
+## [2.6.0] - 2014-11-14
+
+### General changes
+
+- Added: Regions and Points of Interest are available in 2D and 3D
+- Added: An catalog ephemeris of the planets of the Solar System has been added to provide external data to client applications
+- Added: The orbit path length can be dynamically changed in a scenario
+- Added: A property (or a set of properties) can be reset to its default value via a contextual menu in the Timeline State Editor
+- Added: Quaternion can use FIRST or LAST convention
+- Added: Client applications can provide a cleaner that allow cleaning visualization data cache
+- Added: PrestoPlot can load CCSDS files through a new VTS protocol command (CMD LoadCcsdsFile)
+- Updated: Updated data of the Rosetta mission and high resolution Churyumov-Gerasimenko model
+- Updated: A new compatible version of PrestoPlot is available on the Spacebel website
+- Changed: All geographic coordinates are now expressed in latitude-longitude (ISO 6709)
+- Fixed: Dates  expressed in scientific notation are better handled
+- Improved: VTS is compatible with Linux 64 bits architectures
+- Improved: All orientation quaternions are normalized before used in the internal VTS API
+- Improved: Dated CIC files can contain multiple data lines at the same date
+- Improved: A lot of fix and improvement made to the VTS script engine
+- Improved: A lot of fix and improvement made to the CcsdsLib
+
+### VTS Configuration Tool
+
+- Added: A 2d symbol and 3d model catalog has been added to the Configurator
+- Added: The auto compute date option can be configured in the Configurator settings menu
+- Added: A project can be exported from the Configurator as a ZIP archive
+- Added: Event CIC files can be created from the Events HMI
+- Added: Fine tuning of the sensor swath in the Initial States
+- Added: -v/--version and -h/--help options are available on the command line under Linux
+- Changed: Satellite subpart can be oriented by Azimuth/Elevation
+- Changed: The Date and Time configuration panel has its own item in the project tree
+- Fixed: Alternative texture of cental bodies are now well imported 
+
+### Broker
+
+- Added: A new graph view of CIC files is available in the timeline
+- Added: The Broker TCP port can now be configured in the Configurator settings menu
+- Added: A new VTS macro mechanism is available in the Broker Menu
+- Added: The name of the project being viewed as been added to the Broker title bar
+- Added: Timeline actions in a contextual menu: Reset view, center cursor, follow cursor
+- Added: An alternative sensor camera view is available through a Ctrl + Click on the button that switches X and Y axes
+- Improved: The camera sensor button is now of the same color of the sensor volume
+- Improved: The selected display mode in the Timeline is now saved in the project file
+- Improved: Messages can be sent to an application ID with no connected client, messages are delivered when the client is connected
+- Improved: A client application manually closed by the user during a visualization can be stated again via the VTS protocol 
+- Improved: A maximum size for the data files loaded in the Timeline can be configured, allowing acceptable loading time and a good reactivity with big files.
+- Fixed: DATA messages won't be sent to a client before it sends a INIT message
+- Fixed: Timeline displaying a scrollbar when recording videos
+
+### Celestia
+
+- Added: A new multiview camera in Celestia is available in Camera Parameters in the Broker View Properties
+- Added: Celestia antialisating sample can be configured in the Initial States
+- Fixed: Viewing a high resolution model of 67GP will not crash under Linux
+- Fixed: DATA position and orientation messages are now interpreted when a real time simulation is paused
+
+### 2dWin
+
+- Added: The geographic coordinates of the cursor can be displayed and captured to clipboard by Ctrl + Click
+- Added: Sun terminator and subsolar point has been added to all central bodies
+- Fixed: Sensor swath won't disappear in some special cases
+
+-----------------------
+
+## [2.5.0] - 2014-03-06
+
+### General changes
+
+- MAJOR: VTS executes commands stored in script files. CMD SERVICE TakeScreenshot has been added.
+- User manual is written in English. Main executable is startVTS instead of lanceurAtelier
+- Sensors can be added to any subpart
+
+### VTS Configuration Tool
+
+- File display type in Timeline is saved. Color selection has been changed.
+- Euler rotation sequence can be changed
+- Added image file format for 2D icons
+- Bugfix: default opacity value was zero for sensor swath
+- Bugfix: conversion issue in time widget
+- Bugfix: event editor was writeable during visualization
+
+### 2dWin
+
+- Bugfix: sensor swath was cleared every day at midnight
+- Bugfix: fixed crash with specific args
+
+### Broker
+
+- New option specificArgs from command line
+- Timeline limits updated in real-time mode
+- Column with visualization time added in packet logs tab
+- SpecificArgs are automatically added to launchers returned command line
+- Bugfix: timeratio in system time mode cannot be different from 1
+- Bugfix: no white space simplification in protocol messages
+- Bugfix: remove Celestia special init commands from protocol
+- Bugfix: accept connexion from Telnet
+- Bugfix: default camera was not always available
+- Bugfix: state date can now be edited
+- Bugfix: escaped caracters are now accepted in CCSDS files
+
+### Celestia
+
+- Camera parameters can be adjusted manually
+- Bugfix: tiny differences in position had no effect
+- Bugfix: fixed confusion when many 3ds files with the same name
+
+### Data Propagator
+
+- Fixed crash when broker not available
+
+-----------------------
+
+## [2.4.0] - 2013-12-16
+
+### General changes
+
+- MAJOR: VTS can display time-based events in its timeline and in 2dWin
+- MAJOR: Sensors swathes are drawn in both 2D and 3D views
+
+### VTS Configuration Tool
+
+- One can now browse the project tree during the visualization
+- New interface for specific arguments and application parameters
+
+### 2dWin
+
+- Brighter default texture for Earth
+- Fixed gap between sensor footprint in 2dwin and Celestia
+
+### Broker
+
+- Improved stability with erroneous clients
+- Fixed problem with scale values in view properties
+- Space key pauses visualization
+
+### Celestia
+
+- Fixed mirror display with BMP textures
+
+### Plugins
+
+- Cosmographia: improved cameras (every camera from Celestia are available)
+
+-----------------------
+
+## [2.3.0] - 2013-07-09
+
+### General changes
+
+- View properties and 3D cameras lists are customizable for every plugin
+- Improved behaviour on touch devices (gestures, pinch, etc.)
+- MJD and ISO date format in project files
+- Fixed invisible messages when using VTS in batch mode
+- Fixed memory issues that potentially lead to a crash
+- Fixed errors on check validity
+
+### VTS Configuration Tool
+
+- Undo/redo changes (CTRL+Z)
+- Import dialog to copy entities from other project files
+- Copy/paste inside the project tree (CTRL+C)
+- Fixed crash when deleting a target satellite of a groundstation sensor
+- Improved behaviour on drag&drop files (.vts files only, Windows shortcut)
+- Warning if no intersection found in data files dates
+- Warning when loading a projet with states for an unknown application
+- Allow BMP file format for body textures
+- Restore window maximized state on startup 
+
+### 2dWin
+
+- Fixed time limits when dragging satellite
+- Use Euler sequence from CIC file when different than "313"
+
+### Broker
+
+- Client applications can now be launched dynamically
+- Possibility to record .mpg movies (PowerPoint compatibility)
+- Improved stability with erroneous clients
+- Relative paths in batch mode
+- Retrocompatibility with VTS old DATA protocol in real-time mode
+- Fixed status when creating a new state after a dirty state
+
+### Celestia
+
+- Remove _ref suffix from satellites label
+- Provide jpeg library to improve OS compatibility
+- Update source from Celestia repository
+- Fixed crash when using unknown body
+- Fixed labels flickering on some cameras
+
+### Real-Time
+
+- Improved date verification on check validity
+
+### Data Propagator
+
+- Fixed crash when an error occurs in CIC lib
+
+### Plugins
+
+- Cosmographia: doesn't start in fullscreen mode
+- Cosmographia: fixed crash on unknown objets
+- PrestoPlot: custom window title with application ID
+- PrestoPlot: compatibility with RHEL6
+- PrestoPlot: remove dataplot.ini mechanism (replaced by states)
+
+-----------------------
+
+## [2.2.0] - 2013-02-21
+
+### General changes
+
+- Added dynamic textures on central bodies
+- Improved overall performance for large data files
+- Improved optimization and robustness of the CCSDS library
+- Fixed confusion between UTC and local time in the widget date editor
+- Fixed crash when selecting an invalid CIC file
+- Added check of CIC files version
+- Other minor bugs fixes and enhancements
+
+### VTS Configuration Tool
+
+- Added menu entry to open project directory
+- Added trimming spaces at the beginning and end of file path
+- Improved error messages related to data files
+- Improved validating project dates
+- Removed conversion between degrees and radians
+- Removed options menu
+- Changed number of items in the recent files list increased to 15
+
+### 2dWin
+
+- Added ability to move a satellite using the mouse
+- Fixed model of rotation of the Earth
+- Fixed crash on a looped project
+
+### Broker
+
+- Added conservation of view properties during a view state change
+- Added ability to change time ration when visualization is paused
+- Improved server logs
+- Improved ergonomic design of video creation
+- Improved timeline manipulation
+- Improved robustness when a client application crash occurs
+- Fixed crash when a client application had no WindowGeometry tag in project file
+- Fixed crash when a DATA message was malformed
+- Fixed crash when the resolution of the video was not a multiple of 8
+- Fixed crash when closing the Broker during the initialization
+- Fixed camera buttons not functionnal after closing an app
+- Changed sending a time ratio of 0 when visualization is paused
+
+### Celestia
+
+- Added polar cameras
+- Added a scale factor button of 10e6 on satellite properties
+- Added ability to hide menus and overlay texts
+- Added ability to save ambiant light
+- Added central body axes and planetographic grid
+- Improved robustness of state restoration on an overloaded CPU
+- Removed Celestia native reference frames
+- Fixed ground station altitude on custom central bodies
+
+### Real-Time
+
+- Fixed velocity vector and camera blinking
+
+-----------------------
+
+## [2.1.1] - 2012-09-18
+
+### VTS Configuration Tool
+
+- Fixed crash when saving project after adding a sensor to a new satellite
+
+-----------------------
+
+## [2.1.0] - 2012-09-12
+
+### General changes
+
+- Integrated movie recorder module with applications synchronization
+- Improved internal CIC/CCSDS library
+
+### VTS Configuration Tool
+
+- Added CNES and VTS logo
+
+### Celestia
+
+- Fixed sensor view loading for initial state
+
+### Data
+
+- More complex CIC examples
+
+### Plugins
+
+- Improved cameras and properties support for Cosmographia
+- Fixed Play/Pause state when stop moving PrestoPlot time bar
+
+-----------------------
+
+## [2.0.0] - 2012-07-26
+
+Highlights
+
+- Added a new scenario editor that allows the creation of key dates for changing object properties, animating cameras, and positioning windows
+- Added a timeline that can display data files and events such as satellite modes
+- Added a save "visualization state" mechanism
+- Added new camera frames and new frame axis display
+- Added the ability to color orbit paths in 2D and 3D
+- Added the ability to connect in real time to a simulator or telemetry
+- Upgraded Qt version to 4.8.1 under Windows and 4.8.2 under Linux
+- See the shipped documentation for more details
+
+
+## [1.3.1] - 2012-06-06
+
+### General changes
+
+- Real-time data support
+- Linux Gnome support
+- Added specific args fields for plugins (i.e. PrestoPlot command line)
+
+### Broker
+
+- Hidden mode (XML only)
+
+-----------------------
+
+## [1.3.0] - 2012-02-27
+
+### General changes
+
+- Improved the software architecture with a complete rewrite of the code including a common structure between applications
+- Upgraded Qt version to 4.7.4 under Windows and 4.7.3 under Linux
+
+### VTS Configuration Tool
+
+- Added backward compatibility with all vts project files
+- Added 'start options' to control time at visualization start
+- Added ground station visibility configuration 
+- Added a MJD time format display
+- Added compatibility with commas as decimal separator in HMI under Windows
+- Added possibility to choose the unit for intrinsic dimensions of a 3ds file
+- Added prototype of a real-time connection with a position data stream (Ctrl+Shift+T, not documented)
+- Improved the project validity check and dates computation from data files before starting visualization
+- Fixed the locked file problem on a CIC file created within the ### VTS Configuration Tool
+- Fixed CIC files variables loaded as integer instead of real
+- Fixed last line of file CIC not taken into account if no newline at end of file
+- Changed ground stations to be displayed under their central body
+- Removed the configuration of the default camera (temporary)
+
+### 2dWin
+
+- Added the satellite's altitude in a tooltip when hovering over its icon
+- Added the ability to hide satellites and ground stations with icons in the toolbar
+- Added various sensor intersection cases with a central body
+- Improved performance when viewing full map under Windows
+- Fixed the user defined orientation of a central body 
+- Fixed the positioning of ground stations with out-of-range longitude ([-180,180]) and latitude ([-90.90])
+- Fixed a bug showing a sensor intersection when sensor direction is opposite to that of the central body
+
+### Broker
+
+- Added batch start of visualization
+- Added a warning displayed when selecting an out-of-bounds date
+- Added synchronization with system time
+- Added pause, loop, autoclose options
+- Added minimization of the window at startup
+- Improved time ratio display
+- Improved time slider resolution
+- Removed the ground stations camera tab (temporary)
+
+### Celestia
+
+- Added sensor cameras with custom field of view 
+- Added 'synchronous' and 'follow' camera motions
+- Added ground stations display on central bodies
+- Added center of gravity on custom central bodies
+- Improved display of rectangular sensors with shaded faces
+- Improved orbit camera with the up vector aligned on the Z vector of the central body's equatorial frame
+- Fixed the planetographic grid frame on a custom celestial body
+- Fixed the deformation of the satellite using a non-normalized quaternion 
+- Fixed the delay problem when changing current time with the time slider
+- Changed textures of the Earth to a higher definition
+- Changed sub parts interpolation from cubic to linear
+
+### Data Propagator
+
+- Changed units from radians to degrees and meters to kilometers
+- Improved error messages for JVM loading
+
+### Data
+
+- Added the Cubsat Molniya example
+- Added the Rosetta mission for the study of comet 67P/Churyumov-Gerasimenko
+
+-----------------------
+
+## [1.2.3] - 2011-04-20
+
+### VTS Configuration Tool
+
+- Added clickable links in the online updater
+
+### Broker
+
+- Changed the click behavior on station name in order to only select the station
+
+### Celestia
+
+- Fixed the global display ratio regression bug
+
+-----------------------
+
+## [1.2.2] - 2011-04-14
+
+### VTS Configuration Tool
+
+- Fixed color configuration for sensors
+- Added missing libs for Linux version
+- Added backward compatibility with older vts projects
+
+### 2dWin
+
+- Changed the terminator is only visible for the Earth
+- Fixed compatibility with jpg textures
+
+### Celestia
+
+- Fixed sensor intersection with bodies excluding the Earth
+- Upgraded Celestia sources from revision to 5151
+
+-----------------------
+
+## [1.2.1] - 2011-04-04
+
+### VTS Configuration Tool
+
+- Added central body configuration 
+- Added data sample for central body configuration
+- Added ability to configure sensor frustum transparency
+- Changed the orientation mode "direction" for sensors is disabled
+- Changed the stop visualization is temporary disabled
+- Changed the word "Earth" with "Central body" when applicable
+- Fixed bug on the cancel button when creating new CIC files
+- Upgraded VTS Compatibility with Windows 7
+- Upgraded Qt to version 4.7
+
+### Broker
+
+- Added ability to change central bodies and satellite scale factor
+- Added ability to change solar system scale factor
+- Fixed time calculation making time jump when activating pause or when reversing time
+- Fixed flickering of the broker window when switching between compact and full mode
+- Changed the time slider position is automatically set to zero at the end of the visualization
+- Changed Broker is automatically always on top when animation starts
+- Changed the message log is showed when a critical error occurs
+- Changed the broker is not closed when client applications crash
+- Improved log message more verbose
+
+### 2dWin
+
+- Added ability to hide satellites icons
+- Added textures from Celestia are used for known central bodies
+
+### Celestia
+
+- Added aim axis for sensors
+- Added ability to hide sensor frustum
+- Added face culling disabled for sensor drawing
+- Fixed loading satellite position from file
+- Fixed "goto" camera
+- Fixed Celestia window size
+- Fixed central body direction axis color
+- Changed Celestia grid disabled by default
+
+-----------------------
+
+## [1.2.0] - 2010-12-08
+
+### VTS Configuration Tool
+
+- Added configuration of sensors viewable in 2D and 3D
+- Added version management for .vts file backward compatibility
+- Added notification for newer version of VTS available for download
+- Added drag and drop of a .vts file to open a project 
+- Added storing window's position and size
+- Added dynamic configuration mecanism for VTS plugins
+- Upgraded Qt version from 4.5 to 4.6 under Linux
+
+### Broker
+
+- Changed the cameras control panel and the objects state control panel, for a more efficient one
+- Added new observer commands (go to and center view)
+- Added ability to adress commands to a specific application rather than all applications
+- Improved time control interface
+- Fixed Setting position and size for Celestia instances in a VTS project
+
+### 2dWin
+
+- Added conical and pyramidal sensor support
+- Fixed drag the view with the mouse when zoomed
+
+### Celestia
+
+- Added conical and pyramidal sensor support
+- Added ability to hide/show the satellite orbit and sensor trace
+- Upgraded Celestia sources from revision 5022 to 5083
+
+-----------------------
+
+## [1.1.0]
+
+### VTS Configuration Tool
+
+- Added an error check to validate the project
+- Added an error logger window 
+- Added a scaling factor that allows artificially increasing the size of the satellite
+- Added right click on the project tree to add or remove objects
+- Added a "create a new CCSDS file" button in components Geometry section
+- Added a new orientation mode "Direction" for components
+- Added the ability to redefine the size of a 3D object
+- Added ground station cameras definition
+- Changed the default application automatically added in a new project to include Celestia
+- Changed the default position mode for a satellite to use file mode instead of fixed position
+- Fixed project dates calculation
+- Upgraded bundled CCSDS library to version 1.0a (CNES julian dates format: [julian day(int)] [seconds of day(double)])
+- Upgraded Qt to version 4.6 
+
+### Broker
+
+- Added a real time synchronization with the client applications while moving the time slidebar
+- Added a compact and always on top mode for the user interface
+- Added a ground station cameras tab
+- Fixed client application launch. The simulation is paused until all applications are ready
+
+### 2dWin
+
+- Added a toolbar with zoom actions
+- Added ServiceText compatibility
+- Added text from ServiceText can be moved with mouse
+- Fixed preloading of some graphic items at the beginning of visualization
+- Fixed ground trace length to handle configured values
+- Fixed object position at the start of simulation
+
+### Celestia
+
+- Added new reference vectors: Earth direction and velocity
+- Improved orbit camera. The camera position is now proportional to the satellite altitude
+- Fixed camera bug when current simulation time is out of project bounds
+- Fixed texture bug while importing meshes from separate folders
+- Fixed velocity vector display
+- Upgraded Celestia sources from revision 4915 to 5022 
+
+Shadows
+
+- Added light direction matching with sun direction in simulation
+
+### Data Propagator
+
+- Added propagation of Keplerian orbits
+
+### ServiceText
+
+- Added reading CCSDS files and broadcasting data at the current date
+
+-----------------------
+
+## [1.0.0]
+
+* Initial release

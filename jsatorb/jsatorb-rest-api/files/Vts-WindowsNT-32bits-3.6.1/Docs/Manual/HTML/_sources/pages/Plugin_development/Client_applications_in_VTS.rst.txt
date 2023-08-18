@@ -1,0 +1,345 @@
+.. _Client_applications_in_VTS:
+
+Client applications in VTS
+==================================================================================
+
+VTS is designed to interact with **client applications**. Client applications are started by VTS Broker and can communicate with it using the :ref:`Synchronization protocol for VTS clients <Synchronization_protocol_for_VTS_clients>`. This chapter describes VTS's client application architecture.
+
+
+.. _Client_applications_in_VTS#Architecture_overview:
+
+Architecture overview
+----------------------------------------------------------------------------------
+A VTS project defines a set of entites (such as satellites, ephemeris, 3D models) and the client applications used to visualize them.
+
+Client applications can be configured in the VTS configuration utility. 
+
+.. figure:: /_images/ConfigurationProjet.png
+   :align: center
+
+   Project configuration
+
+Multiple instaces of the same application can be started by VTS, each instance has a unique **Application ID**.
+
+Upon visualization startup, the Broker starts the **application launchers** for each instance of a client applications defined in the project file with the *AutoStarted* parameter.
+
+Application launchers receive VTS parameters (such as the path to the project file and its application ID) and may perform any task in order to prepare the client application environment. The Broker uses the application luncher output to starts each client applications with the specified arguments.
+
+.. figure:: /_images/LancementApps.png
+   :align: center
+
+   Visualization startup
+
+
+.. _Client_applications_in_VTS#Initialization_equence:
+
+Initialization Sequence
+----------------------------------------------------------------------------------
+
+#. The Broker reads the VTS project file and detects the list of client application instances to be started.
+#. The Broker executes the corresponding application launchers for each client application instance.
+#. The application launchers perform any task required to execute the client application and return the command line for application startup on standard ouput.
+#. The Broker executes all client application instances.
+#. Clients connect to the Broker on its socket and send the initialization message to indicate they are ready.
+#. The Broker sends the commands for the initial states of the application declared in the *myAppVtsConf.ini* file, with default values or user-defined values from the VTS project.
+#. Clients communicate with the Broker according the the synchronization protocol described in the :ref:`Synchronization protocol for VTS clients <Synchronization_protocol_for_VTS_clients>` chapter.
+
+
+.. _Client_applications_in_VTS#Files_and_directory_structure:
+
+Files and directory structure
+----------------------------------------------------------------------------------
+
+VTS automatically detects client applications based on the following:
+
+- The application folder must be located in the ``Apps/`` folder of the VTS installation directory. The application folder name must start with an uppercase letter. This name will be used as the application's name.
+- The ``bin`` subfolder of the application folder should contain:
+  - the client application executable 
+  - the application launcher executable: its name must start by ``launcher`` followed by the application name (case-insensitive), see the dedicated chapter below.
+  - The application cleaner executable: its name must start by ``cleaner`` followed by the application name (case-insensitive), see the dedicated chapter below.
+- The ``doc`` subfolder of the application folder should contain:
+  - a ``vtsclient.json`` configuration file.
+  - a ``README`` file (its contents will be displayed in the VTS configuration utility).
+  - a text file with its name starting by the application name and followed by ``VtsConf.ini``. If present, this file must contain a description of the application's view properties (appearing in the view properties editor and initial properties editor for the application).
+  - an icon file with ``.png`` or ``.ico`` file extension. If present, this icon will be used in the *Applications* tab of the Broker. If not present, the application executable's icon will be used instead.
+
+Example for the Celestia client application:
+
++-------+----------+--------+-------------------------------------+
+| Apps  | Celestia | bin    | celestia.exe                        |
+|       |          |        +-------------------------------------+
+|       |          |        | launcherCelestia.exe                |
+|       |          |        +-------------------------------------+
+|       |          |        | cleanerCelestia.bat                 |
+|       |          +--------+-------------------------------------+
+|       |          | doc    | README                              |
+|       |          |        +-------------------------------------+
+|       |          |        | celestiaVtsConf.ini                 |
+|       |          |        +-------------------------------------+
+|       |          |        | vtsclient.json                      |
+|       |          |        +-------------------------------------+
+|       |          |        | icon.png                            |
++-------+----------+--------+-------------------------------------+
+
+
+Client configuration file
+----------------------------------------------------------------------------------
+
+The ``vtsclient.json`` configuration file enables advanced options to specify the process environment and the executables to be used.
+
+File structure overview:
+
+.. code-block:: json
+
+   {
+      "environment":
+      {
+         "VARIABLE": "value",
+         "VARIABLE_FROM_ENV": "${EXISTING_ENV_VARIABLE}"
+         ...
+      },
+      "winnt" :
+      {
+         "environment":
+         {
+            "VARIABLE": "winnt_value",
+            "PATH": "C:/Python;${PATH}"
+            ...
+         },
+         "launcher":
+         {
+            "environment":
+            {
+               "VARIABLE": "winnt_launcher_value"
+            },
+            "executable": "launcher.exe",
+            "positionals": [ "file.txt"],
+            "optionals": ["--option", "value"]
+         },
+         "client":
+         {
+            "environment":
+            {
+               "VARIABLE": "winnt_application_value"
+            },
+            "executable": "python.exe",
+            "positionals": ["launcher.py"],
+            "optionals": ["--option", "value"]
+         },
+         "cleaner":
+         {
+         }
+      },
+      "linux" :
+      {
+      }
+   }
+
+The *environment* key
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The system environment is inherited by all processes. Their environment can be modified by inserting a key corresponding to the variable name and a value.
+
+- Define a new variable with a given value
+- Define a new variable with the value of an existing variable. The following syntax is used: ``${VARIABLE}``. Notice that this syntax is not OS-specific (as it is interpreted by VTS). However, the path separator is specific to the OS (';' on Windows and ':' on Linux).
+- Overload an existing variable at any level: global (*root*), OS-specific (``winnt``, ``linux``) or process-specific (``launcher``, ``client``, ``cleaner``)
+- An injected environment variable (see below) can be used as a value
+
+Injected environment variable
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+This variable are auto injected to a process environment.
+
+- ``VTS_WORKING_DIR``: points to the ``bin/`` subfolder of the application folder by default. This is the current directory of the process (equivalent to ``$PWD``). A relative path will be relative to this folder. Modifying this variable will force the process current folder.
+- ``VTS_ROOT_DIR``: points to the VTS root folder.
+- ``VTS_LIBS_DIR``: points to the ``Apps/Libs`` folder.
+- ``VTS_APPLICATION_ID``: is the client application ID.
+- ``VTS_APPLICATION_TITLE``: is the client application title ( ``#<ID> - <label>``, the ID is dynamic, the label can be defined on the application configuration panel).
+
+OS specific section
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The following objects are used to describe a process by OS:
+
+- ``winnt``: Windows
+- ``linux``: Linux
+
+Application specific section
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The following objects are used to describe a process by application:
+
+- ``launcher``: application launcher executable
+- ``client``: client application executable
+- ``cleaner``: application cleaner executable
+
+An application specific section can contain:
+
+- ``environment`` object
+- ``executable`` key: the value must be an executable file. It can be an abolute file path, or relative to the ``VTS_WORKING_DIR``, or found in the ``PATH``.
+- ``positionals`` array key: can contain parameters passed as first arguments on the command line. Can be used to pass a script file to an interpreter as python or java.
+- ``optionals`` array key: can contain parameters passed as last arguments on the command line.
+
+For specific needs an additional option can change the behaviour of launchers output interpretation:
+
+- ``launcher-output`` key: the value defines the launcher output mode and can be one of the following:
+
+   - ``ARGUMENTS`` (default): launcher output is used as application arguments
+   - ``LOG``: launcher output is only used for logging
+   - ``DISABLED``: launcher is not started
+   - ``LEGACY``: launcher output is used as application arguments and the first argument must be the application ID
+
+
+.. _Client_applications_in_VTS#Application_launchers:
+
+Application launchers
+----------------------------------------------------------------------------------
+
+An application launcher is an executable intended for preparing the application's environnement and to specify how the application should be started. To these ends, the launcher can analyse the VTS project file in order to pre-process visualization data, generate scripts or even copy and move files. The only mandatory output of a launcher is the command line arguments to be passed to its client application.
+
+
+.. _Client_applications_in_VTS#Executing_application_launchers:
+
+Executing application launchers
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Launchers are started by the Broker with the following command-line arguments:
+
+.. code-block:: bash
+
+   [POSITIONALS] --project <projectFile.vts> --appid <appID> [OPTIONALS] [BROKER_OPTIONS]
+
+.. |connecting_to_the_broker| replace:: See :ref:`Connecting to the Broker <Synchronization_protocol_for_VTS_clients#Connecting_to_the_Broker>` for more information
+
++---------------------------------+----------------------------------------------------------------------+
+| Argument                        | Description                                                          |
++=================================+======================================================================+
+| ``[POSITIONALS]``               | positional options specified in the ``vtsclient.json`` file          | 
++---------------------------------+----------------------------------------------------------------------+
+| ``--project <projectFile.vts>`` | absolute path to the VTS project file                                |
++---------------------------------+----------------------------------------------------------------------+
+| ``--appid <appID>``             | client application ID, which uniquely identifies the application     |
+|                                 | instance during the visualization (as many instances of the same     |
+|                                 | application may exsist)                                              | 
++---------------------------------+----------------------------------------------------------------------+
+| ``[OPTIONALS]``                 | additional options specified in the ``vtsclient.json`` file          |
++---------------------------------+----------------------------------------------------------------------+
+| ``[BROKER_OPTIONS]``            | optional Broker arguments:                                           |
+|                                 |                                                                      |
+|                                 | - ``--serverport <port>``: server port number.                       |
+|                                 |   |connecting_to_the_broker|                                         |
+|                                 | - ``--datadir  <dataDir>`` directory containing project data files   | 
+|                                 |   if different from project file's directory                         |
+|                                 |   Relative file names must be resolved with this data directory.     |
+|                                 |   This is used by VTS when in read-only mode.                        |
+|                                 | - ``--tempdir <tempDir>`` temporary directory where launcher and     |
+|                                 |   application data should reside.                                    |
+|                                 |   This is used by VTS when in read-only mode                         |
++---------------------------------+----------------------------------------------------------------------+
+
+
+.. _Client_applications_in_VTS#Preparing_the_client_application:
+
+Preparing application environnement
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The launcher should setup the client application's environment. This may include setting up configuration files, moving or copying project data files, or even converting data files into application-specific file formats (e.g. CIC/CCSDS files into *.xyz* or *.q* files for Celestia).
+
+This step can be ommited if no specific task is needed to execute the client application.
+
+
+.. _Client_applications_in_VTS#Building_the_client_application's_command_line:
+
+Building the client application's command line
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The launcher can provide the command line arguments for its client application. These will be appended to the application command line by the Broker. To return the command line arguments to the Broker, the launcher must print them on its standard output. Only the command line arguments may be printed to standard output. However, informational messages may be printed to standard error and will be logged by the Broker.
+
+NOTE: since VTS 3.2 returning a command line argument is not mandatory anymore. See client configuration file described above.
+
+Example of lines printed to standard ouput by applications launchers are shown below.
+
+**Celestia launcher**:
+
+
+.. code-block:: bash
+
+    0 --dir "C:/users/VTS/Apps/Celestia/bin" --conf "celestia.cfg" --url "C:/users/VTS/Apps/Celestia/bin/extras_0/VTS/CubeSat.celx" --extrasdir "C:/users/VTS/Apps/Celestia/bin/extras_0"
+
+
+- The first field is mandatory and is the ID for the Celestia instance given as input to the launcher
+- The following fields are the actual command line arguments for Celestia, and are standard arguments handled by the Celestia executable
+
+
+**SurfaceView launcher**:
+
+
+.. code-block:: bash
+
+    1 "C:/MyProject/visu.vts" 1
+
+
+- The first field is mandatory and is the ID for the Celestia instance given as input to the launcher
+- The second field is the absolute path to the project file, also given as input to the launcher, and required by the SurfaceView client application
+- The third field is the client application ID given as input to the launcher, and required by the SurfaceView client application
+
+
+.. _Client_applications_in_VTS#Application_launcher_examples:
+
+Application launchers examples
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The following scripts implement minimal launchers that directly return and empty command line argument for the client application. 
+Only the client application ID is printed (mandatory).
+
+- DOS Batch Programming:
+
+.. code-block:: dosbatch
+
+   @rem Input parameter %1 is the path to the VTS project file
+   @rem Input parameter %2 is the client application ID
+
+   @rem Mandatory client application ID output:
+   @echo %2
+
+   @rem End of file
+
+
+- Shell Script:
+
+.. code-block:: bash
+
+   #!/bin/sh
+   # Input parameter $1 is the path to the VTS project file
+   # Input parameter $2 is the client application ID
+
+   # Mandatory client application ID output:
+   echo $2
+
+   # End of file
+
+
+.. _Client_applications_in_VTS#Application_cleaners:
+
+Application cleaners
+----------------------------------------------------------------------------------
+
+A **Clear all client application data caches** action is available from the :ref:`Configurator settings menu <VTS_configuration_utility_user_manual#Settings_dialog>`. Each client application can provide a cleaner that removes all temporary files which could be let after many visualization runs. The executable will be started with the *--clear* option, as other options could appear in the future.
+
+
+- Example for Celestia cleaner under Windows, launched by :
+
+
+.. code-block:: bash
+
+   Apps/Celestia/bin/cleanerCelestia.bat --clear
+
+
+- This cleaner removes all temporary folders containing 3D models and data files duplicated and generated for each run. It removes all the *extras_* temporary folders :
+
+
+.. code-block:: bash
+
+   @echo off
+   for %%p in (%*) do (
+      @rem Remove temporary folders
+      if "%%p"=="--clear" (
+         for /d %%a in (%~dp0/extras_*) do rd /s /q "%%a"
+
+         @rem Return success
+         exit /B 0
+      )
+   )

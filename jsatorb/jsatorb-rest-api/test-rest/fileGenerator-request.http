@@ -1,0 +1,284 @@
+# -----------------------------------------------------------------------------
+# JSatOrb Module REST requests: File generator
+# -----------------------------------------------------------------------------
+# These requests are sent from Visual studio code, using the REST client for
+# Visual Studio Code extension 
+# (https://marketplace.visualstudio.com/items?itemName=humao.rest-client).
+# -----------------------------------------------------------------------------
+# How to use: 
+#  - in Visual studio code, install the REST client extension,
+#  - open this file,
+#  - launch the JSatOrb REST API server,
+#  - click on the "Send request" link above each request,
+#  - the REST API response should be displayed in a separated Response window.
+# -----------------------------------------------------------------------------
+# To separate two distinct requests, add a line with '###' between them.
+# -----------------------------------------------------------------------------
+
+
+## Send a request to generate several files for a cartesian
+## and a keplerian orbits
+POST http://localhost:8000/vts HTTP/1.1
+content-type: application/json
+
+{
+  "header": {
+    "mission": "test-VTS",
+    "celestialBody": "EARTH",
+    "timeStart": "2011-12-01T16:43:45",
+    "timeEnd": "2011-12-02T16:43:45",
+    "step": "10"
+  },
+  "constellation": [
+  ],
+  "satellites": [
+    {"name": "KepSat",
+    "type": "keplerian",
+    "sma": 7000000,
+    "ecc": 0.007014455530245822,
+    "inc": 51,
+    "pa": 0,
+    "raan": 0,
+    "meanAnomaly": 0
+    },
+    {"name": "CartSat",
+    "type": "cartesian",
+    "x": -6142438.668,
+    "y": 3492467.560,
+    "z": -25767.25680,
+    "vx": 505.8479685,
+    "vy": 942.7809215,
+    "vz": 7435.922231
+    }
+  ],
+  "constellations": [],
+  "groundStations": [
+    {"name": "sydney",
+    "latitude": -33.8678500,
+    "longitude": 151.2073200,
+    "altitude": 58,
+    "elevation": 12
+    }
+  ],
+  "options": {
+    "CARTESIAN": {},
+    "KEPLERIAN": {},
+    "ATTITUDE": {"law": "LOF_LVLH"},
+    "ECLIPSE": {}
+  }
+}
+
+###
+
+## Send a request to generate several files for a TLE, timeStart does not count with TLE
+POST http://localhost:8000/vts HTTP/1.1
+content-type: application/json
+
+{
+  "header": {
+    "timeStart": "2008-07-01T13:35:00",
+    "timeEnd": "2008-10-01T15:15:00",
+    "step": "10"
+  },
+  "satellites": [
+    {"name": "ISS",
+    "type": "tle",
+    "line1": "1 25544U 98067A   08264.51782528 -.00002182  00000-0 -11606-4 0  2927",
+    "line2": "2 25544  51.6416 247.4627 0006703 130.5360 325.0288 15.72125391563537"
+    }
+  ],
+  "groundStations": [
+    {"name": "isae",
+    "latitude": 43,
+    "longitude": 1.5,
+    "altitude": 150,
+    "elevation": 12
+    }
+  ],
+  "options": {
+    "CARTESIAN": {},
+    "ATTITUDE": {"law": "POINTING_CENTRAL"},
+    "KEPLERIAN": {},
+    "ECLIPSE": {}
+  }
+}
+
+###
+
+## Send a request to generate visibility and lla files for a keplerian orbit 
+POST http://localhost:8000/vts HTTP/1.1
+content-type: application/json
+
+{
+  "header": {
+    "timeStart": "2020-12-01T16:43:45",
+    "timeEnd": "2020-12-02T16:43:45",
+    "step": "10"
+  },
+  "satellites": [
+    {"name": "KepSat2",
+    "type": "keplerian",
+    "color": "#4254f4",
+    "sma": 10000000,
+    "ecc": 0,
+    "inc": 30,
+    "pa": 0,
+    "raan": 0,
+    "meanAnomaly": 90
+    }
+  ],
+  "groundStations": [
+    {"name": "isae",
+    "latitude": 43,
+    "longitude": 1.5,
+    "altitude": 150,
+    "elevation": 12
+    },
+    {"name": "cayenne",
+    "latitude": 4.5,
+    "longitude": -52.9,
+    "altitude": 0,
+    "elevation": 12
+    }
+  ],
+  "options": {
+    "CARTESIAN": {},
+    "LLA": {},
+    "VISIBILITY": {},
+    "ATTITUDE": {"law": "NADIR"}
+  }
+}
+
+###
+
+## Send a request to generate LLA for a geostationary orbit
+POST http://localhost:8000/vts HTTP/1.1
+content-type: application/json
+
+{
+  "header": {
+    "timeStart": "2010-01-01T00:00:00",
+    "timeEnd": "2010-01-01T10:00:00",
+    "step": "100"
+  },
+  "satellites": [
+    {"name": "GeoSat",
+    "type": "keplerian",
+    "sma": 42162140,
+    "ecc": 0,
+    "inc": 0,
+    "pa": 0,
+    "raan": 0,
+    "meanAnomaly": 0
+    }
+  ],
+  "groundStations": [
+  ],
+  "options": {
+    "CARTESIAN": {},
+    "LLA": {},
+    "ATTITUDE": {"law": "POINTING_SUN"}
+  }
+}
+
+###
+
+# Test visibility through the VTS REST entry point
+POST http://localhost:8000/vts HTTP/1.1
+content-type: application/json
+
+{
+  "header": {
+    "timeStart": "2011-12-01T16:43:45",
+    "timeEnd": "2011-12-02T16:43:45",
+    "step": "60",
+    "mission": "ValidateVisibility"
+  },
+  "satellites": [
+    {"name": "Sat",
+    "type": "keplerian",
+    "sma": 6801682.16,
+    "ecc": 0.0012566,
+    "inc": 52.03041,
+    "pa": 128.74852,
+    "raan": 72.67830,
+    "meanAnomaly": 67.79703
+    }
+  ],
+  "groundStations": [
+      {"name": "TLS",
+      "latitude": "43.5",
+      "longitude": "1.5",
+      "altitude": "100",
+      "elevation": "5.0"
+      }
+  ],
+  "options": {
+    "VISIBILITY": {}
+  }
+}
+
+###
+
+## Send a request to generate eclipse for a LEO orbit
+POST http://localhost:8000/vts HTTP/1.1
+content-type: application/json
+
+{
+  "header": {
+    "timeStart": "2020-04-19T11:29:10.811",
+    "timeEnd":  "2020-04-20T11:29:10.811",
+    "step": "10"
+  },
+  "satellites": [
+    {"name": "LEO",
+    "type": "keplerian",
+    "sma": 6778137,
+    "ecc": 0.2,
+    "inc": 51.6,
+    "pa": 0,
+    "raan": 0,
+    "meanAnomaly": 0
+    }
+  ],
+  "groundStations": [
+  ],
+  "options": {
+    "CARTESIAN": {},
+    "ATTITUDE": {"law": "NADIR"},
+    "LLA": {}
+  }
+}
+
+###
+
+## Send a request for a Martian orbit
+POST http://localhost:8000/vts HTTP/1.1
+content-type: application/json
+
+{
+  "header": {
+    "timeStart": "2020-04-19T11:29:10.811",
+    "timeEnd":  "2020-04-20T11:29:10.811",
+    "step": "60",
+    "celestialBody": "MARS",
+    "mission": "MarsOrbiter"
+  },
+  "satellites": [
+    {"name": "MarsOrbiterBis",
+    "type": "keplerian",
+    "sma": 6000938.817624505,
+    "ecc": 0.02,
+    "inc": 0,
+    "pa": 0,
+    "raan": 0,
+    "meanAnomaly": 0
+    }
+  ],
+  "groundStations": [
+  ],
+  "options": {
+    "CARTESIAN": {},
+    "ECLIPSE": {}
+  }
+}

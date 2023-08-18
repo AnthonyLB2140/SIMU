@@ -1,0 +1,3 @@
+ERROR: for mongo  Cannot start service mongo: driver failed programming external connectivity on endpoint ccc_mongo (add9ceb816eb8fa06a862c96cb51fd76610ea5e39160b2554f4860cd337d0475): Error starting userland proxy: listen tcp4 0.0.0.0:27017: bind: address already in use
+ERROR: Encountered errors while bringing up the project.
+

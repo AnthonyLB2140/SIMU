@@ -1,0 +1,13 @@
+-- auto-generated script for alternate body textures in VTS
+
+hasAltTexture = true
+
+layerTable = {
+   Sol_Earth_BuiltinLayer = {
+      isVisible = false,
+      position = 0,
+      getAltTexture = function ( jd1950 )
+         return ""
+      end
+   },
+}

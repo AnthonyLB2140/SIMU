@@ -1,0 +1,14 @@
+#<AM-acces:COL-V2.0>
+<INIT:
+Logiciel="JPSIMU"
+VERSION="V11.6.2"
+<COL:
+  1 : EVENT ~ (Event code)
+  2 : TIME ~s (duration since initial conditions)
+  3 : XIN ~m (inertial x coordinates)
+  4 : YIN ~m (inertial y coordinates)
+  5 : ZIN ~m (inertial z coordinates)
+>
+>
+ Event #1: Propagation start event                                   0.00000000000000e+00       -5.94509956211339e+06       -1.55602389547423e+06       -1.96253901499088e+06
+ Event #2: Propagation end event on geodetic altitude (0.0km)        3.95106035949445e+02       -5.10264839719722e+06       -2.41987294267702e+06       -2.95441131538355e+06

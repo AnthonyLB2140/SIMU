@@ -1,0 +1,397 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Data generator integration &mdash; VTS 3.6.0-9030 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="VTS 3.6.0-9030 documentation" href="../../index.html"/>
+        <link rel="next" title="About" href="../About/index.html"/>
+        <link rel="prev" title="VTS project file format" href="../Plugin_development/VTS_project_file_format.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> VTS
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../General/index.html">General</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Files_used_by_VTS/index.html">Files used by VTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Starting_VTS/index.html">Starting VTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VTS_applications_user_manuals/index.html">VTS applications user manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Plugin_development/index.html">Plugin development</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Data generator integration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#generators-folder-hierarchy-and-nomenclature">Generators folder hierarchy and nomenclature</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#data-generation-capacities">Data generation capacities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#command-line-parameters">Command line parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#optional-standard-output-reply">Optional standard output reply</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#orbit-propagation-with-the-keplerian-generator">Orbit propagation with the Keplerian Generator</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#using-the-keplerian-generator">Using the Keplerian Generator</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#orbit-propagation-with-the-tle2ccsds-generator">Orbit propagation with the TLE2CCSDS Generator</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#using-the-tle2ccsds-generator">Using the TLE2CCSDS Generator</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../About/index.html">About</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">VTS</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Data generator integration</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/pages/Data_generators_in_VTS/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="data-generator-integration">
+<h1>Data generator integration<a class="headerlink" href="#data-generator-integration" title="Permalink to this headline">¶</a></h1>
+<p id="data-generators-in-vts">The VTS toolkit is conceived to allow generic integration of data generator applications to provide CIC/CCSDS data to a VTS visualization. Data generator applications must provide a number of interfaces in order to fully integrate with the toolkit. This chapter describes the interfaces to implement for new data generator applications.</p>
+<div class="figure align-center" id="id1">
+<img alt="../../_images/GenPosition.png" src="../../_images/GenPosition.png" />
+<p class="caption"><span class="caption-text"><em>Position generation</em></span></p>
+</div>
+<div class="section" id="generators-folder-hierarchy-and-nomenclature">
+<span id="data-generators-in-vts-generators-folder-hierarchy-and-nomenclature"></span><h2>Generators folder hierarchy and nomenclature<a class="headerlink" href="#generators-folder-hierarchy-and-nomenclature" title="Permalink to this headline">¶</a></h2>
+<p>Data generator applications must follow the following folder hierarchy and nomenclature:</p>
+<ul class="simple">
+<li>The generator folder must be located in the <strong>Generators</strong> folder of the VTS toolkit. The new generator folder name must start with an uppercase letter. This name will be used as the generator application’s name.</li>
+<li>The generator executable must be located in the <strong>bin</strong> subfolder of the generator folder.</li>
+<li>The generator executable must have the same name as the generator folder (case-insensitive). On a Windows platform the executable must have the <em>.exe</em> or <em>.bat</em> file extension. On a Linux platform the name can be suffixed by <em>.sh</em>, <em>.lnx</em> or might not be suffixed.</li>
+<li>The <strong>doc</strong> subfolder of the generator folder may contain a text file with its name starting by the application name and followed by <em>VtsConf.ini</em>. If present, this file must contain the generator capacities for generating data.</li>
+</ul>
+<p>Sample folder hierarchy for the Keplerian Generator :</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="30%" />
+<col width="9%" />
+<col width="44%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td rowspan="2">Generators</td>
+<td rowspan="2">KeplerianGenerator</td>
+<td>bin</td>
+<td>kepleriangenerator.exe</td>
+</tr>
+<tr class="row-even"><td>doc</td>
+<td>kepleriangeneratorVtsConf.ini</td>
+</tr>
+</tbody>
+</table>
+<p>If the generator is installed outside the VTS toolkit, a proxy script file (.bat, .sh) file can be used to start the external generator application.</p>
+<div class="section" id="data-generation-capacities">
+<span id="data-generators-in-vts-data-generation-capacities"></span><h3>Data generation capacities<a class="headerlink" href="#data-generation-capacities" title="Permalink to this headline">¶</a></h3>
+<p>If the configuration file (xxxVtsConf.ini) doesn’t exist, the generator is handled as a position data generator. If it exists, it can contain the keys listed in the table below (note the default values are false except for the “GenPosition” key which is true by default). A data generator can declare several keys according to its generating capabilities.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="14%" />
+<col width="9%" />
+<col width="63%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Value</th>
+<th class="head">Default</th>
+<th class="head">Usage</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>GenPosition</td>
+<td>true or false</td>
+<td>true</td>
+<td>Generate position data</td>
+</tr>
+<tr class="row-odd"><td>GenQuaternion</td>
+<td>true or false</td>
+<td>false</td>
+<td>Generate quaternion data</td>
+</tr>
+<tr class="row-even"><td>GenEuler</td>
+<td>true or false</td>
+<td>false</td>
+<td>Generate euler angle data (see CCSDS documentation)</td>
+</tr>
+<tr class="row-odd"><td>GenAxis</td>
+<td>true or false</td>
+<td>false</td>
+<td>Generate axis data (X, Y, Z)</td>
+</tr>
+<tr class="row-even"><td>GenAngle</td>
+<td>true or false</td>
+<td>false</td>
+<td>Generate angle data (degree or radian, see CCSDS documentation)</td>
+</tr>
+<tr class="row-odd"><td>GenDirection</td>
+<td>true or false</td>
+<td>false</td>
+<td>Generate direction data (X, Y, Z)</td>
+</tr>
+<tr class="row-even"><td>GenAltAz</td>
+<td>true or false</td>
+<td>false</td>
+<td>Generate altitude/azimuth data</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="command-line-parameters">
+<span id="data-generators-in-vts-command-line-parameters"></span><h3>Command line parameters<a class="headerlink" href="#command-line-parameters" title="Permalink to this headline">¶</a></h3>
+<p>When the data generator is available in VTS, it will be started with the following command line parameters :</p>
+<ul class="simple">
+<li><em>–vtsgentype [RequestedGenerationType]</em> with [RequestedGenerationType] equal to “GenPosition”, “GenQuaternion”, “GenEuler”, “GenAxis”, “GenAngle”, “GenDirection” or “GenAltAz” corresponding to the current generating capability requested</li>
+<li><em>–vtsdefaultfile [DefaultOutputFilePath]</em> with [DefaultOutputFilePath] equal to the current output file path selected in VTS</li>
+<li><em>–vtsmjddates [[StartDate] [EndDate]]</em> with [[StartDate] [EndDate]] as two string parameters, and each date encoded in MJD dates defining the current project dates</li>
+</ul>
+</div>
+<div class="section" id="optional-standard-output-reply">
+<span id="data-generators-in-vts-optional-standard-output-reply"></span><h3>Optional standard output reply<a class="headerlink" href="#optional-standard-output-reply" title="Permalink to this headline">¶</a></h3>
+<p>When the generating process has ended, the generator may print to standard output a different output file than the provided [DefaultOutputFilePath]. All standard output is processed by VTS seeking a line containing a string starting with “outputvtsfile=” followed by a file path. This file path will be used to update the file entry in the VTS interface. The file path may contain spaces.</p>
+</div>
+</div>
+<div class="section" id="orbit-propagation-with-the-keplerian-generator">
+<span id="data-generators-in-vts-orbit-propagation-with-the-keplerian-generator"></span><h2>Orbit propagation with the Keplerian Generator<a class="headerlink" href="#orbit-propagation-with-the-keplerian-generator" title="Permalink to this headline">¶</a></h2>
+<div class="figure align-center" id="id2">
+<img alt="../../_images/Propagateur.png" src="../../_images/Propagateur.png" />
+<p class="caption"><span class="caption-text"><em>Keplerian Generator</em></span></p>
+</div>
+<p>The Keplerian Generator allows automatic generation of CIC/CCSDS files containing position ephemerides for an elliptical keplerian orbit, in a defined time range. Positions are computed in the EME2000 reference frame.</p>
+<p>The Keplerian Generator relies on the <a class="reference external" href="https://www.orekit.org/">Orekit</a> library to compute the ephemerides. Please refer to this library’s documentation for further information on how the computations are performed.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Java 8 runtime environment (JRE 1.8.0) must be installed on your system in order to use the Keplerian Generator. Older Java versions (at lease &gt;v1.4) may also work but are not tested. Only the the 32bit JRE is supported on Windows.</p>
+</div>
+<div class="section" id="using-the-keplerian-generator">
+<span id="data-generators-in-vts-using-the-keplerian-generator"></span><h3>Using the Keplerian Generator<a class="headerlink" href="#using-the-keplerian-generator" title="Permalink to this headline">¶</a></h3>
+<p>To generate an orbit ephemerides file, all orbital parameters in the <em>Classic elliptical keplerian orbit</em> area must be filled in. Note that only elliptical orbits are currently supported, i.e. orbits with eccentricity strictly below 1.</p>
+<p>The start and end dates for the CIC/CCSDS file must also be defined in the <em>Date configuration</em> area, as well as the time interval between two position values (in seconds).</p>
+<p>Clicking the <strong>Generate</strong> button prompts the user for the output file location and name, then generates the orbit data. The output data file can then be used to define the position of a satellite in the VTS configuration utility.</p>
+</div>
+</div>
+<div class="section" id="orbit-propagation-with-the-tle2ccsds-generator">
+<span id="data-generators-in-vts-orbit-propagation-with-the-tle2ccsds-generator"></span><h2>Orbit propagation with the TLE2CCSDS Generator<a class="headerlink" href="#orbit-propagation-with-the-tle2ccsds-generator" title="Permalink to this headline">¶</a></h2>
+<div class="figure align-center" id="id3">
+<img alt="../../_images/TLE2CCSDS.png" src="../../_images/TLE2CCSDS.png" />
+<p class="caption"><span class="caption-text"><em>TLE2CCSDS Generator</em></span></p>
+</div>
+<p>The TLE2CCSDS Generator allows generation of CIC/CCSDS files containing position and velocity ephemerides for a ”’two-line element set (TLE)”’, in a defined time range. Positions are computed in the EME2000 reference frame. TLE data can be found on <a class="reference external" href="http://www.celestrak.com/">http://www.celestrak.com/</a>.</p>
+<div class="section" id="using-the-tle2ccsds-generator">
+<span id="data-generators-in-vts-using-the-tle2ccsds-generator"></span><h3>Using the TLE2CCSDS Generator<a class="headerlink" href="#using-the-tle2ccsds-generator" title="Permalink to this headline">¶</a></h3>
+<p>To generate an orbit ephemerides file, fill the TLE data fields with the orbital elements. A simple way to fill the TLE data fields is to copy the two data line and pasting them into one of the two TLE data fields.</p>
+<p>The start and end dates for the CIC/CCSDS file must also be defined in the <em>Date configuration</em> area, as well as the time interval between two position values (in seconds).</p>
+<p>Select an output file and click the <strong>Generate</strong> button to generate the orbit data. The output data file can then be used to define the position of a satellite in the VTS configuration utility.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../About/index.html" class="btn btn-neutral float-right" title="About" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../Plugin_development/VTS_project_file_format.html" class="btn btn-neutral" title="VTS project file format" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright VTS Team.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'3.6.0-9030',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

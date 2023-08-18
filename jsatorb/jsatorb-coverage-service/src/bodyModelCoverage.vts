@@ -1,0 +1,18 @@
+<Body Name="[CENTRALBODY]" ParentPath="[PARENTPATH]">
+ <Prop2d>
+  <Icon Anchor="CENTER" Size="MEDIUM" Opacity="100">
+   <Font Size="MEDIUM" Color="1 1 1"/>
+   <ImageLayer Type="Default"/>
+  </Icon>
+ </Prop2d>
+ <Track Color="1 0 0.697841" PenStyle="SolidLine" PenWidth="2"/>
+ <VisibilityCircle ContourColor="0.0545052 0 1" FillColor="0.527245 0.499992 1" FillOpacity="60"/>
+ <EphemerisMode Mode="Default"/>
+ <Layers>
+  <TextureLayer Name="[NAMELAYER]" TexturePath="Models/[NAMELAYER].png" ProjectionName="equirectangular"/>
+  <BuiltinLayer Name="BuiltinLayer"/>
+ </Layers>
+<GroupGroundStations>
+ [GROUNDSTATIONS]
+</GroupGroundStations>
+</Body>

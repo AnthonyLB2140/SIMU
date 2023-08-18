@@ -1,0 +1,47 @@
+.. _3D_file_format_in_VTS:
+
+3D file format in VTS
+==================================================================================
+
+VTS relies on the *3ds* file format, from the *Autodesk 3DS Max* software suite, but also on the *obj* file format. These are widely-used file formats for 3D files.
+
+
+.. _3D_file_format_in_VTS#File_format_of_textures:
+
+File format of textures
+----------------------------------------------------------------------------------
+3D files can make use of external texture files. These must be in *bmp*, *jpg*, *jpeg*, *png*, *tif* or *tga* format, and be located in the same folder as the 3D file.
+
+The *obj* file format also relies on a *mtl* file which must be located in the same folder as the *obj* file. It represents the definition of the materials used by the 3D file.
+
+
+.. _3D_file_format_in_VTS#Origin_of_the_reference_frame_for_the_3D_file:
+
+Origin of the reference frame for the 3D file
+----------------------------------------------------------------------------------
+The position and orientation of objects in 3D views depends on their reference frames. Refer to the following pages:
+
+- :ref:`Position of objects in VTS <Position_of_objects_in_VTS>`
+- :ref:`Orientation of objects in VTS <Orientation_of_objects_in_VTS>`
+
+When position and orientation values are null, the object's local frame is aligned with its reference frame. VTS offers two options to define the local frame of a 3D object:
+
+- Either use the 3D coordinates contained in the 3D file. The origin of the local frame corresponds to the point of null coordinates in the file.
+- Either define the origin of the local frame as the center of the 3D file object's bounding box.
+
+These options can be selected in the VTS configuration utility, independently for each 3D object. The *"Use file coordinates"* setting must be checked to enable use of the 3D file's origin, unchecked to use the geometric center of the object as origin. Refer to the :ref:`VTS configuration utility user manual <VTS_configuration_utility_user_manual>` chapter for more information.
+
+It must be well understood that these options make it easier to define satellites composed of multiple components. When all 3D files for a satellite's components and sub-components are extracted from a single master 3D file, all those files use the same local frame and thus the coordinates can be read directly from the files. The *SMOS* example supplied with VTS perfectly illustrates this situation.
+
+
+.. _3D_file_format_in_VTS#Dimensions_and_units:
+
+Dimensions and units
+----------------------------------------------------------------------------------
+As above, the size of a 3D object can either be read as is from the 3D file, or defined by VTS. This choice also depends on the option used for the origin of the local frame.
+
+When the origin is the geometric center of the object (the *"Use file coordinates"* option is unchecked), the size of the object is defined in the VTS configuration utility. The specified size, in meters, is used as the dimension of the smallest bounding box for the object.
+
+When the origin is taken from the 3D file, the specified size is used as an hint of the object's size, for the 3D views to optimize its display. The given size should be accurate within a factor of 2 (hence the *Approximate size* label). The user must also specify the unit of the 3D file's coordinates. The default unit is the meter.
+
+

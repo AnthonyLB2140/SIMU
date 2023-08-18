@@ -1,0 +1,37 @@
+.. _Software_requirements_for_VTS:
+
+Software requirements for VTS
+==================================================================================
+
+This page describes the software requirements for proper operation of the VTS toolkit.
+
+
+.. _Software_requirements_for_VTS#Write_access_permission:
+
+Write access permission
+----------------------------------------------------------------------------------
+
+VTS needs write access permission in its whole folder hierarchy. Many tools create temporary files for configuration and visualization. Moreover, installation of new VTS clients consists in copying the client directory in the ``VTS/Apps`` folder.
+
+
+.. _Software_requirements_for_VTS#System_font_size:
+
+System font size
+----------------------------------------------------------------------------------
+
+VTS is currently designed with a compact display. Some UI might be better looking by setting the font scaling factor on Windows: Right click on Desktop, Personalize, Display, Check SMaller (100%)
+
+
+.. _Software_requirements_for_VTS#Supported_operating_systems:
+
+Supported operating systems
+----------------------------------------------------------------------------------
+
+List of supported operating systems:
+
+* Windows 7
+* Windows 10
+* Linux CentOS 6 32/64bits
+* Linux CentOS 7
+
+VTS is known to work in other major Linux distributions although not officially supported (additional packages may be required).

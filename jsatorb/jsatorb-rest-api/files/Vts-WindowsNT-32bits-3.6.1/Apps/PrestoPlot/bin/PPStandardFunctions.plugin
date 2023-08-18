@@ -1,0 +1,239 @@
+# ---------------------------------------------------------------------------- #
+# Plugin for Standard Calculator functions
+#
+# HISTORY
+# VERSION : 4.5.2 : DM : TMA PrestoTools : 23/03/2015 : PrestoPlot 4.5.2
+# VERSION : 4.4.4 : DM : DM_2147 : 27/03/2014 : Add FFT computations to the calculator - part 2
+# END-HISTORY
+# ---------------------------------------------------------------------------- #
+
+# Register this plugin with prestoplot
+#  There is no Init function needed yet (Empty 5th argument)
+#  There is no Exit function needed yet (6th argument)
+RegisterPlugin "Calculator" "STDCalc" "1.0" "Standard calculator function library" ""
+
+# Initialise the XHTML body text for the help
+set helptext {
+This library implements some common functions for the PrestoPlot <a href='calculator'>Calculator</a>
+<p />It implements the following functions:
+<ul type='square'>
+<li><font color='#800000'><b>Norm</b></font> - <code nonewline>Norm( v1, [v2, ...])</code> - Produce the norm of a set of vectors.<br /><code nonewline>Norm(v1, v2) = sqrt( v1^2 + v2^2 )</code></li>
+</ul>
+}
+
+# Register a help page for this plugin
+#                      Plugin      Title                                  Page id      bodytext in Help format
+RegisterPluginHelpPage STDCalc     "Standard Calculator Function Library" "stdcalclib" $helptext
+
+namespace eval Functions {
+
+namespace eval Norm {
+    # Namespace for the Norm function procedures
+}
+####################################
+# CALLBACK: Check to see if the number of input vectors is acceptable
+#
+# Arguments:
+#   count  Count of selected parameters
+#
+# Globals: NONE
+#
+# Variables: NONE
+#
+# Return:
+#   - Always true
+proc Norm::IsActive {count} {
+    # Any number of parameters is ok
+    return true
+}
+
+####################################
+# Provide information on the Norm function
+#
+# Arguments: NONE
+#
+# Globals: NONE
+#
+# Variables: NONE
+#
+# Return:
+#   - List of information on the function
+proc Norm::Information {} {
+    # Return the list of information
+    return [list Norm Norm() "Norm(Vector1, Vector2, ...) \nGenerate a new vector by computing the Euclidean norm (or 2-norm) of the n input vectors" n 1 1 Library]
+}
+####################################
+# Test if the current formula containd the Norm function call
+#
+# Arguments:
+#   formula  Formula to check
+#
+# Globals: NONE
+#
+# Variables: NONE
+#
+# Return:
+#   -
+proc Norm::Exists {formula} {
+    # Check for the Norm Function call
+    if {[string match "Norm(*" $formula]} {
+        # Return found
+        return true
+    } else {
+        # Return not found
+        return false
+    }
+}
+####################################
+# Build a Norm function call from a list of datasets for the dataset menu
+#
+# Arguments:
+#    names    List of parameter names
+#
+# Globals: NONE
+#
+# Variables: NONE
+#
+# Return:
+#   -
+proc Norm::BuildFormula {names} {
+    # Construct the formula for the Norm from the list of parameters
+    return "Norm( [join $names ", "] )"
+}
+####################################
+# Calculate the Norm from the formula string
+#
+# Arguments:
+#   formula   Formula to process
+#   length     Length of the results to produce
+#   datatable  Table of information about the calcule to process
+#
+# Globals: NONE
+#
+# Variables: NONE
+#
+# Return:
+#   -
+proc Norm::Calculate {formula length datatable} {
+    upvar $datatable CalcData
+    # Remove any spaces to simplify parsing
+    set formula [string map {" " ""} $formula]
+    set arguments ""
+    # Extract the list of arguments
+    regexp {^Norm\((.*)\)$} $formula -> arguments
+
+    # Initilise the output lists
+    set missing ""
+    set paramlist ""
+    # Process each paramter in the args list
+    foreach param [split $arguments ,] {
+        # If the parameter exists
+        if {$param ne "" && [DataVectorExists $param]} {
+            lappend paramlist $param
+            lappend paramnamelist [DataInfo $param Name]
+            lappend paramsquaredlist "$param^2"
+        } elseif {$param ne ""} {
+            # The parameter is not loaded
+            # Add to the missing list for the error message
+            lappend missing $param
+        }
+    }
+    # If there are unknown parameters
+    if {[llength $missing] == 1} {
+        # Return the missing message
+        return "Error can't find vector '$missing'"
+    }
+    # More than one missing vector
+    if {[llength $missing] != 0} {
+        # Return the missing message
+        return "Error can't find vectors '[join $missing ", "]'"
+    }
+    # If no names were given
+    if {[llength $paramlist] == 0} {
+        # Return the syntax message
+        return "Syntax is 'Norm( vector1, vector2, ...)'"
+    }
+    # If this is not the example vector
+    if {$CalcData(YNames) ne "CALCRES"} {
+        set name [lindex $paramnamelist 0]
+        # If the name is the default name
+        if {$CalcData(YNames) eq "${name}_Norm"} {
+            # Find the longest string common to all the parameter names
+            foreach param $paramnamelist {
+                set name [LongestCommonStartString $name $param]
+            }
+            # Dont use 1 in the name
+            set length [llength $paramlist]
+            if {[llength $paramlist] == 1} {
+                set length ""
+            }
+            # Generate a name for the results vector
+            if {$name eq ""} {
+                set CalcData(YNames) "Norm$length"
+            } else {
+                set CalcData(YNames) "${name}_Norm$length"
+            }
+        }
+    }
+    # Create the results vector
+    set vector [CreateCalcVector $CalcData(YNames)]
+    # If an error occured
+    if {[llength $vector] != 1} {
+        # Return the error
+        return $vector
+    }
+    # Give the new dataset a date vector
+    set CalcData(XNames) [DataInfo [lindex $paramnamelist 0] DateVector]
+    # Add the description of the generated data
+    set CalcData(Description)  [list "Norm of [join $paramnamelist ", "]"]
+    set CalcData(CalcName) [lindex $paramnamelist 0]_Norm
+    # Add the list of processed parameters
+    set CalcData(VNames) $paramlist
+    # Give the result vector list
+    set CalcData(VResNames) $vector
+
+    # Create a vector formula string
+    set formula "sqrt([join $paramsquaredlist "+"])"
+    # Execute the formula string
+    if { [catch {$vector expr $formula} res]} {
+        # Return the error message
+        return $res
+    }
+
+    # All OK
+    return ""
+}
+####################################
+# Find the longest string from the start of two strings
+#  eg   VecA VecB -> Vec
+#
+# Arguments:
+#   stra  first string
+#   strb  second string
+#
+# Globals: NONE
+#
+# Variables: NONE
+#
+# Return:
+#   -  Longest common start string
+proc Norm::LongestCommonStartString {stra strb} {
+    # Start with the empty string
+    set name ""
+    # Process each character from each string
+    foreach chara [split $stra ""] charb [split $strb ""] {
+        # If they are the same
+        if {$chara eq $charb} {
+            # Add them to the new name
+            append name $chara
+        } else {
+            # Stop comparing
+            break
+        }
+    }
+    # Return the common string
+    return $name
+}
+
+} ;# Namespace Functions
+

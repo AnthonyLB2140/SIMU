@@ -1,0 +1,412 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Celestia user manual &mdash; VTS 3.6.0-9030 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="VTS 3.6.0-9030 documentation" href="../../index.html"/>
+        <link rel="up" title="VTS applications user manuals" href="index.html"/>
+        <link rel="next" title="InfoBox user manual" href="InfoBox_user_manual.html"/>
+        <link rel="prev" title="ZenithView user manual" href="ZenithView_user_manual.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> VTS
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../General/index.html">General</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Files_used_by_VTS/index.html">Files used by VTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Starting_VTS/index.html">Starting VTS</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">VTS applications user manuals</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="VTS_configuration_utility_user_manual.html">VTS configuration utility user manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Broker_user_manual.html">Broker user manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SurfaceView_user_manual.html">SurfaceView user manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SkyView_user_manual.html">SkyView user manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SensorView_user_manual.html">SensorView user manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NadirView_user_manual.html">NadirView user manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ZenithView_user_manual.html">ZenithView user manual</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Celestia user manual</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#integration-with-vts">Integration with VTS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#navigating-in-celestia">Navigating in Celestia</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#specific-application-parameters-in-vts">Specific application parameters in VTS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#specific-properties-in-vts">Specific properties  in VTS</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#umbra-and-penumbra-cone">Umbra and Penumbra cone</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#clusters">Clusters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#celestial-bodies-texture-layers">Celestial bodies texture layers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="InfoBox_user_manual.html">InfoBox user manual</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Plugin_development/index.html">Plugin development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Data_generators_in_VTS/index.html">Data generator integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../About/index.html">About</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">VTS</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">VTS applications user manuals</a> &raquo;</li>
+        
+      <li>Celestia user manual</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/pages/VTS_applications_user_manuals/Celestia_user_manual.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="celestia-user-manual">
+<span id="id1"></span><h1>Celestia user manual<a class="headerlink" href="#celestia-user-manual" title="Permalink to this headline">¶</a></h1>
+<p>The main 3D client application in VTS is Celestia. Celestia is open-source software, developed, amongst others, by Chris Laurel.</p>
+<p>VTS relies on the latest source version of Celestia (<a class="reference external" href="http://www.shatters.net/celestia">http://www.shatters.net/celestia</a>). It is interfaced with VTS through LUA scripts.</p>
+<div class="section" id="integration-with-vts">
+<span id="celestia-user-manual-integration-with-vts"></span><h2>Integration with VTS<a class="headerlink" href="#integration-with-vts" title="Permalink to this headline">¶</a></h2>
+<p>Celestia is fully integrated with VTS. All of Celestia’s features related to the visualization of satellites within the perimeter of VTS are available directly from the Broker.  These features are described in detail in the <a class="reference internal" href="../Plugin_development/Synchronization_protocol_for_VTS_clients.html#synchronization-protocol-for-vts-clients-messages-received-by-celestia"><span class="std std-ref">Messages received by Celestia</span></a> section of the <a class="reference internal" href="../Plugin_development/Synchronization_protocol_for_VTS_clients.html#synchronization-protocol-for-vts-clients"><span class="std std-ref">Synchronization protocol for VTS clients</span></a> chapter, and in the <span class="xref std std-ref">*3D Cameras* tab</span> section of the <a class="reference internal" href="Broker_user_manual.html#broker-user-manual"><span class="std std-ref">Broker user manual</span></a> chapter.</p>
+</div>
+<div class="section" id="navigating-in-celestia">
+<span id="celestia-user-manual-navigating-in-celestia"></span><h2>Navigating in Celestia<a class="headerlink" href="#navigating-in-celestia" title="Permalink to this headline">¶</a></h2>
+<p>The main navigation controls in Celestia are:</p>
+<ul class="simple">
+<li>Left click + mouse move: camera pointing</li>
+<li>Right click + mouse move: rotation around the selected object</li>
+<li>Mouse wheel: zoom in/out on the selected object</li>
+<li>Shift + left click + mouse move: change field of view</li>
+<li>Left/right arrow keys: camera roll</li>
+</ul>
+<p>All controls are described in Celestia’s <em>Help</em> menu (the menu bar must be enabled in the Broker).</p>
+<p>If Celestia is used inside a virtual machine (VirtualBox, VMware, etc.), one should disable mouse integration in order to have correct mouse move handling.</p>
+</div>
+<div class="section" id="specific-application-parameters-in-vts">
+<span id="celestia-user-manual-specific-application-parameters-in-vts"></span><h2>Specific application parameters in VTS<a class="headerlink" href="#specific-application-parameters-in-vts" title="Permalink to this headline">¶</a></h2>
+<p>When adding Celestia as a VTS client application, some parameters can be set by clicking on the Celestia entry in the VTS project tree:</p>
+<div class="figure align-center" id="id2">
+<img alt="../../_images/CelestiaApplicationParameters.png" src="../../_images/CelestiaApplicationParameters.png" />
+<p class="caption"><span class="caption-text">Celestia application parameters</span></p>
+</div>
+<ul class="simple">
+<li><strong>Sensor view camera offset</strong>: The sensor camera view, accessible through 3D Camera tab in the Broker, sets the camera position at the sensor position plus an offset in meters to avoid some artifacts or obstructions of sight. This offset moves the camera along the Z axis.</li>
+<li><strong>Sensor geometry section count</strong>: Number of points making up the outline polygon of the aiming sensor surface. Performance and display accuracy depend on this parameter.</li>
+</ul>
+<p>One the one hand, performance may be affected by a too high setting and a long residual trace. On the other hand, accuracy is better with a high setting when the satellite attitude has a large angle with the nadir.</p>
+<p>If you want to focus on sensor swath accuracy: increase the SensorGeometrySectionCount parameter and favor a short residual trace.
+If you want to view long missions coverage: lower the SensorGeometrySectionCount parameter with a long residual trace.</p>
+<ul class="simple">
+<li><strong>Sensor swath resolution</strong>: Change the interval (in seconds) between two instantaneous sensor aiming surfaces.</li>
+</ul>
+<p>Use a small value for an agile satellite, but affects the performance.
+Use a high value for a long coverage mission with good performance.</p>
+<div class="figure align-center" id="id3">
+<img alt="../../_images/DefaultSensorSwathResolution.png" src="../../_images/DefaultSensorSwathResolution.png" />
+<p class="caption"><span class="caption-text">The default setting creates a lot of overlapping traces</span></p>
+</div>
+<div class="figure align-center" id="id4">
+<img alt="../../_images/MatchingSensorSwathResolution.png" src="../../_images/MatchingSensorSwathResolution.png" />
+<p class="caption"><span class="caption-text">A matching value between sensor width and satellite speed gives a better appearance</span></p>
+</div>
+<ul class="simple">
+<li><strong>Antialiasing samples</strong>: Set the level of multisample antialiasing.  Not all 3D graphics hardware support antialiasing, through most newer graphics chipsets do. Larger values will result in smoother edges with a cost in rendering speed. 4 is a sensible setting for recent, higher-end graphics hardware; 2 is probably better for mid-range graphics hardware. 0 or 1 values disables antialiasing.</li>
+<li><strong>Force legacy 3DS reader</strong>: When activated, the Celestia legacy 3D model reader is used. If a 3DS file can’t be read, try another reader by disabling this option.</li>
+</ul>
+</div>
+<div class="section" id="specific-properties-in-vts">
+<span id="celestia-user-manual-specific-poperties-in-vts"></span><h2>Specific properties  in VTS<a class="headerlink" href="#specific-properties-in-vts" title="Permalink to this headline">¶</a></h2>
+<p>Each entity defined in the VTS project can have specific properties in the Celestia application.
+They are available in the Scenario Editor panel for the Celestia application :</p>
+<div class="figure align-center" id="id5">
+<img alt="../../_images/CelestiaProperties.png" src="../../_images/CelestiaProperties.png" />
+<p class="caption"><span class="caption-text">Configuration of entity properties for Celestia</span></p>
+</div>
+<div class="section" id="umbra-and-penumbra-cone">
+<h3>Umbra and Penumbra cone<a class="headerlink" href="#umbra-and-penumbra-cone" title="Permalink to this headline">¶</a></h3>
+<div class="figure align-center" id="id6">
+<img alt="../../_images/CelestiaUmbraPenumbra.png" src="../../_images/CelestiaUmbraPenumbra.png" />
+<p class="caption"><span class="caption-text">Earth’s umbra and penumbra during a lunar eclipse</span></p>
+</div>
+<p>Available only for body entities, their umbra and penumbra cone can be displayed in celestia.
+For each cone, can be configured:</p>
+<ul>
+<li><dl class="first docutils">
+<dt><strong>{Umbra|Penumbra} cone visibility</strong>:</dt>
+<dd><p class="first last">Either the cone is displayed or not (hidden by default)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>{Umbra|Penumbra} cone color</strong>:</dt>
+<dd><p class="first last">The cone color</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>{Umbra|Penumbra} cone extent</strong>:</dt>
+<dd><p class="first last">The cone extent (in km)from the center of the body (400000 km by default).
+The cone will be contained in the sphere center on the body center and of radius equal to the extent.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="figure align-center" id="id7">
+<img alt="../../_images/CelestiaUmbraPenumbraProperties.png" src="../../_images/CelestiaUmbraPenumbraProperties.png" />
+<p class="caption"><span class="caption-text">Configuration of the umbra and penumbra cone for the Earth entity</span></p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>The solar or lunar eclipse are not perfectlty matching with the informations given by the IMCCE whether CNES or Celestia ephemeris are used.
+E.g. for the total the lunar eclipse on the 26/05/2021:</p>
+<ul class="last simple">
+<li>IMCCE forecast are available at : <a class="reference external" href="https://promenade.imcce.fr/fr/images/ecl/LE2021May26T.pdf">https://promenade.imcce.fr/fr/images/ecl/LE2021May26T.pdf</a></li>
+<li>The U1 event happens about 2 min 43 s later with CNES ephemeris</li>
+<li>The U1 event happens about 1 min 45 s later with Celestia ephemerds</li>
+</ul>
+</div>
+</div>
+<div class="section" id="clusters">
+<h3>Clusters<a class="headerlink" href="#clusters" title="Permalink to this headline">¶</a></h3>
+<p>In Celestia, the population of a cluster is represented by an icon.</p>
+<div class="figure align-center" id="id8">
+<img alt="../../_images/CelestiaCluster.png" src="../../_images/CelestiaCluster.png" />
+<p class="caption"><span class="caption-text">A cluster in celestia</span></p>
+</div>
+<p>It can be configured in terms of appearance and visibility.</p>
+<div class="figure align-center" id="id9">
+<img alt="../../_images/CelestiaClusterConfiguration.png" src="../../_images/CelestiaClusterConfiguration.png" />
+<p class="caption"><span class="caption-text">Cluster configuration</span></p>
+</div>
+<ul>
+<li><dl class="first docutils">
+<dt><strong>Cluster visibility</strong>:</dt>
+<dd><p class="first">String describing the visibility. Accepted values are:</p>
+<ul class="last simple">
+<li>all : all objects are displayed</li>
+<li>none : no object is displayed</li>
+<li>all except obj1, obj2n, …, objN : all objects are visible except those designated by name in the comma separated list</li>
+<li>none except obj1, obj2n, …, objN : all objects are hidden except those designated by name in the comma separated list</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="celestial-bodies-texture-layers">
+<h3>Celestial bodies texture layers<a class="headerlink" href="#celestial-bodies-texture-layers" title="Permalink to this headline">¶</a></h3>
+<p>Celestia handles all texture layers except web tile map layers. As layer transparency is not supported, the cloud map is used to store the first fixed texture layer which handles transparency. In order to use it, you might make the first layer invisible.</p>
+<ul>
+<li><dl class="first docutils">
+<dt><strong>Top layer overlay</strong>:</dt>
+<dd><p class="first last">The top layer texture used as “cloud map” is displayed or not (hidden by default)</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="InfoBox_user_manual.html" class="btn btn-neutral float-right" title="InfoBox user manual" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ZenithView_user_manual.html" class="btn btn-neutral" title="ZenithView user manual" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright VTS Team.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'3.6.0-9030',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

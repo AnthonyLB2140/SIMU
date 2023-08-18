@@ -1,0 +1,448 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Examples for position and orientation of objects in VTS &mdash; VTS 3.6.0-9030 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="VTS 3.6.0-9030 documentation" href="../../index.html"/>
+        <link rel="up" title="General" href="index.html"/>
+        <link rel="next" title="Backward compatibility in VTS" href="Backwards_compatibility_in_VTS.html"/>
+        <link rel="prev" title="Orientation of objects in VTS" href="Orientation_of_objects_in_VTS.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> VTS
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction/index.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">General</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Conventions_in_VTS.html">Conventions in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Date_formats_in_VTS.html">Date formats in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Data_sources_in_VTS.html">Data sources in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Position_of_objects_in_VTS.html">Position of objects in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Orientation_of_objects_in_VTS.html">Orientation of objects in VTS</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Examples for position and orientation of objects in VTS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#methodology">Methodology</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#list-of-tests">List of tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#illustration-of-the-result">Illustration of the result</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#description-of-the-result">Description of the result</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#case-1-no-modification">Case 1: no modification</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#case-2-single-translation">Case 2: single translation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#case-3-single-rotation">Case 3: single rotation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#case-4-translation-and-rotation">Case 4: translation and rotation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#case-5-offset-rotation">Case 5: offset rotation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#case-6-translation-and-offset-rotation">Case 6: translation and offset rotation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Backwards_compatibility_in_VTS.html">Backward compatibility in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Object_paths_in_VTS.html">Object paths in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Central_bodies_in_VTS.html">Central bodies in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Structure_of_satellites_in_VTS.html">Structure of satellites in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sensors_in_VTS.html">Sensors in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Masks_in_VTS.html">Physical masks in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scale_factors_in_VTS.html">Scale factors in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cluster_in_VTS.html">Clusters in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scenario_in_VTS.html">Scenario in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Manage_window_geometry.html">Window Geometry Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mission_events_in_VTS.html">Mission events in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="POIs_and_ROIs_in_VTS.html">POIs and ROIs in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Other_visualisable_objects.html">Other visualisable objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scripts_and_macros_in_VTS.html">Scripts and macros in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="VTS_Broker.html">VTS Broker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Files_used_by_VTS/index.html">Files used by VTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Starting_VTS/index.html">Starting VTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VTS_applications_user_manuals/index.html">VTS applications user manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Plugin_development/index.html">Plugin development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Data_generators_in_VTS/index.html">Data generator integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../About/index.html">About</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">VTS</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">General</a> &raquo;</li>
+        
+      <li>Examples for position and orientation of objects in VTS</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/pages/General/Examples_for_position_and_orientation_of_objects_in_VTS.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="examples-for-position-and-orientation-of-objects-in-vts">
+<span id="id1"></span><h1>Examples for position and orientation of objects in VTS<a class="headerlink" href="#examples-for-position-and-orientation-of-objects-in-vts" title="Permalink to this headline">¶</a></h1>
+<p>This section illustrates the positioning and orientation of an object with regards to its parent satellite. Relevant definitions can be found in the <a class="reference internal" href="Position_of_objects_in_VTS.html#position-of-objects-in-vts"><span class="std std-ref">Position of objects in VTS</span></a> and <a class="reference internal" href="Orientation_of_objects_in_VTS.html#orientation-of-objects-in-vts"><span class="std std-ref">Orientation of objects in VTS</span></a> sections.</p>
+<div class="section" id="methodology">
+<span id="examples-for-position-and-orientation-of-objects-in-vts-methodology"></span><h2>Methodology<a class="headerlink" href="#methodology" title="Permalink to this headline">¶</a></h2>
+<p>In order to fully understand the mechanisms at hand in the 3D views of VTS for the display of satellites and their parts (components, sensors, etc.), the following parameters will be analyzed:</p>
+<ul>
+<li><p class="first">Position relative to the satellite (or in a more general way, relative to the parent object)</p>
+</li>
+<li><dl class="first docutils">
+<dt>Orientation, with the following parameters:</dt>
+<dd><ul class="first last simple">
+<li>Center of rotation</li>
+<li>Axis of rotation</li>
+<li>Angle of rotation</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>The position and orientation (be it quaternion, Euler angles, axis and angle, etc.) of an object can be defined in the <em>Position/orientation</em> dialog of the object. For components, the center of rotation can be defined in the <em>3D Properties</em> dialog. Refer to the <a class="reference internal" href="../VTS_applications_user_manuals/VTS_configuration_utility_user_manual.html#vts-configuration-utility-user-manual"><span class="std std-ref">VTS configuration utility user manual</span></a> for more details.</p>
+<p>The 3D object used for this demonstration is the 3-axes trihedral usually used in VTS to materialize reference frames. The X, Y, and Z axes are respectively colored in red, green, and blue. This object represents here the satellite or any parent object. The length of each axis is one meter.
+Then, the same model is used, scaled down and tarnished, to represent the object positioned by the transformations described below.</p>
+<div class="figure align-center" id="id2">
+<img alt="../../_images/LegendeAxis.jpg" src="../../_images/LegendeAxis.jpg" />
+<p class="caption"><span class="caption-text">Materialization of the axes of the reference frame</span></p>
+</div>
+</div>
+<div class="section" id="list-of-tests">
+<span id="examples-for-position-and-orientation-of-objects-in-vts-list-of-tests"></span><h2>List of tests<a class="headerlink" href="#list-of-tests" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="27%" />
+<col width="16%" />
+<col width="17%" />
+<col width="17%" />
+<col width="14%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Number</th>
+<th class="head">Designation</th>
+<th class="head">Position</th>
+<th class="head">Center of rotation</th>
+<th class="head">Axis of rotation</th>
+<th class="head">Angle of rotation</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>No modification</td>
+<td>X=0 Y=0 Z=0</td>
+<td>X=0 Y=0 Z=0</td>
+<td>X=0 Y=1 Z=0</td>
+<td>0°</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>Single translation</td>
+<td>X=1 Y=0 Z=0</td>
+<td>X=0 Y=0 Z=0</td>
+<td>X=0 Y=1 Z=0</td>
+<td>0°</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>Single rotation</td>
+<td>X=0 Y=0 Z=0</td>
+<td>X=0 Y=0 Z=0</td>
+<td>X=0 Y=1 Z=0</td>
+<td>30°</td>
+</tr>
+<tr class="row-odd"><td>4</td>
+<td>Translation and rotation</td>
+<td>X=1 Y=0 Z=0</td>
+<td>X=0 Y=0 Z=0</td>
+<td>X=0 Y=1 Z=0</td>
+<td>30°</td>
+</tr>
+<tr class="row-even"><td>5</td>
+<td>Offset rotation</td>
+<td>X=0 Y=0 Z=0</td>
+<td>X=1 Y=0 Z=0</td>
+<td>X=0 Y=1 Z=0</td>
+<td>30°</td>
+</tr>
+<tr class="row-odd"><td>6</td>
+<td>Translation and offset rotation</td>
+<td>X=1 Y=0 Z=0</td>
+<td>X=1 Y=0 Z=0</td>
+<td>X=0 Y=1 Z=0</td>
+<td>30°</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="illustration-of-the-result">
+<span id="examples-for-position-and-orientation-of-objects-in-vts-illustration-of-the-result"></span><h2>Illustration of the result<a class="headerlink" href="#illustration-of-the-result" title="Permalink to this headline">¶</a></h2>
+<div class="figure align-center" id="id3">
+<img alt="../../_images/ExemplePositionOrientationVTS.jpg" src="../../_images/ExemplePositionOrientationVTS.jpg" />
+<p class="caption"><span class="caption-text">Examples of various positions and orientations</span></p>
+</div>
+</div>
+<div class="section" id="description-of-the-result">
+<span id="examples-for-position-and-orientation-of-objects-in-vts-description-of-the-result"></span><h2>Description of the result<a class="headerlink" href="#description-of-the-result" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="examples-for-position-and-orientation-of-objects-in-vts-case-1-no-modification"></span><div class="section" id="case-1-no-modification">
+<h3>Case 1: no modification<a class="headerlink" href="#case-1-no-modification" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Position: X=0 Y=0 Z=0</li>
+<li>Center of rotation: X=0 Y=0 Z=0</li>
+<li>Axis of rotation: X=0 Y=1 Z=0</li>
+<li>Angle of rotation: 0°</li>
+</ul>
+<p>The position and the angle of rotation are null. In this case, the object is at the same position and is aligned with its reference frame. It should be noted that since the angle of rotation is null, the axis and center of rotation have no influence.</p>
+</div>
+<div class="section" id="case-2-single-translation">
+<span id="examples-for-position-and-orientation-of-objects-in-vts-case-2-single-translation"></span><h3>Case 2: single translation<a class="headerlink" href="#case-2-single-translation" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Position: X=1 Y=0 Z=0</li>
+<li>Center of rotation: X=0 Y=0 Z=0</li>
+<li>Axis of rotation: X=0 Y=1 Z=0</li>
+<li>Angle of rotation: 0°</li>
+</ul>
+<p>In this case, the position of the object has been modified. Its value defines a position 1 meter forward along the X axis. The object is now centered at the end of the X axis of the reference frame.</p>
+</div>
+<div class="section" id="case-3-single-rotation">
+<span id="examples-for-position-and-orientation-of-objects-in-vts-case-3-single-rotation"></span><h3>Case 3: single rotation<a class="headerlink" href="#case-3-single-rotation" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Position: X=0 Y=0 Z=0</li>
+<li>Center of rotation: X=0 Y=0 Z=0</li>
+<li>Axis of rotation: X=0 Y=1 Z=0</li>
+<li>Angle of rotation: 30°</li>
+</ul>
+<p>The object’s position vector is null and its center is located at the origin of its reference frame.</p>
+<p>A single rotation has been applied. The center of rotation is null. The axis of rotation is 0 1 0, i.e. the rotation is counterclockwise around the Y axis (as if <em>screwing</em> in the direction of the axis). The diagram shows that the Y axis is shared by the two objects, while the X and Z axes have rotated 30°. The direction of the rotation can also be observed, clockwise when looking in the direction of the axis of rotation.</p>
+</div>
+<div class="section" id="case-4-translation-and-rotation">
+<span id="examples-for-position-and-orientation-of-objects-in-vts-case-4-translation-and-rotation"></span><h3>Case 4: translation and rotation<a class="headerlink" href="#case-4-translation-and-rotation" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Position: X=1 Y=0 Z=0</li>
+<li>Center of rotation: X=0 Y=0 Z=0</li>
+<li>Axis of rotation: X=0 Y=1 Z=0</li>
+<li>Angle of rotation: 30°</li>
+</ul>
+<p>This case combines both cases. It illustrates the order in which the transformations are applied: <strong>the object is first rotated, then translated to its position</strong>.</p>
+</div>
+<div class="section" id="case-5-offset-rotation">
+<span id="examples-for-position-and-orientation-of-objects-in-vts-case-5-offset-rotation"></span><h3>Case 5: offset rotation<a class="headerlink" href="#case-5-offset-rotation" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Position: X=0 Y=0 Z=0</li>
+<li>Center of rotation: X=1 Y=0 Z=0</li>
+<li>Axis of rotation: X=0 Y=1 Z=0</li>
+<li>Angle of rotation: 30°</li>
+</ul>
+<p>For a single rotation, the origin of the reference frame is used as rotation center. The rotation center can be modified so that the object is rotated around another point (e.g. for solar arrays). The coordinates of the center of rotation are 1 0 0. The object is rotated 30° around an axis located at the end of the red X axis, and directed along the green Y axis.
+Note that this rotation axis is not displayed on the diagram, hence the object appearing as if <em>translated</em> and not only rotated, due to the rotation center being offset.</p>
+</div>
+<div class="section" id="case-6-translation-and-offset-rotation">
+<span id="examples-for-position-and-orientation-of-objects-in-vts-case-6-translation-and-offset-rotation"></span><h3>Case 6: translation and offset rotation<a class="headerlink" href="#case-6-translation-and-offset-rotation" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Position: X=1 Y=0 Z=0</li>
+<li>Center of rotation: X=1 Y=0 Z=0</li>
+<li>Axis of rotation: X=0 Y=1 Z=0</li>
+<li>Angle of rotation: 30°</li>
+</ul>
+<p>This example adds a translation of 1 meter along the X axis on top of the transformations of case 5. The diagram confirms that rotation occurs before translation.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Backwards_compatibility_in_VTS.html" class="btn btn-neutral float-right" title="Backward compatibility in VTS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Orientation_of_objects_in_VTS.html" class="btn btn-neutral" title="Orientation of objects in VTS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright VTS Team.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'3.6.0-9030',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

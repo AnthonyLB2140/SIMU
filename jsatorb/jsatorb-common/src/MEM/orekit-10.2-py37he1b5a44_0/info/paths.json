@@ -1,0 +1,131 @@
+{
+  "paths": [
+    {
+      "_path": "etc/conda/activate.d/orekit-activate.sh",
+      "path_type": "hardlink",
+      "sha256": "b8ee5d62fb1121663d09241166acf3a4bc2ab70a970a55cec687040276bac5dd",
+      "size_in_bytes": 220
+    },
+    {
+      "_path": "etc/conda/deactivate.d/orekit-deactivate.sh",
+      "path_type": "hardlink",
+      "sha256": "e24f4be8eb73aa91c0f20cb60e6feef19b288777f338bf0f47640d45402a3e0e",
+      "size_in_bytes": 193
+    },
+    {
+      "_path": "lib/python3.7/site-packages/orekit-10.2-py3.7-linux-x86_64.egg-info/PKG-INFO",
+      "path_type": "hardlink",
+      "sha256": "b7c6be0860a6b8093a627cf5d677bdca44130193c50df6b650edb56f628d19c4",
+      "size_in_bytes": 179
+    },
+    {
+      "_path": "lib/python3.7/site-packages/orekit-10.2-py3.7-linux-x86_64.egg-info/SOURCES.txt",
+      "path_type": "hardlink",
+      "sha256": "f592201fb41bf6410f117db5495216c537afe5222dd3ba5313efa6f4cbf138dd",
+      "size_in_bytes": 158
+    },
+    {
+      "_path": "lib/python3.7/site-packages/orekit-10.2-py3.7-linux-x86_64.egg-info/dependency_links.txt",
+      "path_type": "hardlink",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size_in_bytes": 1
+    },
+    {
+      "_path": "lib/python3.7/site-packages/orekit-10.2-py3.7-linux-x86_64.egg-info/native_libs.txt",
+      "path_type": "hardlink",
+      "sha256": "ebb8a9f735f8e9be577d96beda89da6114bd7eb6b996cbf23fe9f2bfbf7c8816",
+      "size_in_bytes": 47
+    },
+    {
+      "_path": "lib/python3.7/site-packages/orekit-10.2-py3.7-linux-x86_64.egg-info/not-zip-safe",
+      "path_type": "hardlink",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size_in_bytes": 1
+    },
+    {
+      "_path": "lib/python3.7/site-packages/orekit-10.2-py3.7-linux-x86_64.egg-info/top_level.txt",
+      "path_type": "hardlink",
+      "sha256": "bde5debecf776db5bfb877eeb8b81ccc8c6122b689f855454f8fb336a24c8803",
+      "size_in_bytes": 7
+    },
+    {
+      "_path": "lib/python3.7/site-packages/orekit/__init__.py",
+      "path_type": "hardlink",
+      "sha256": "9bad8366361c4552c2fbb2efbdb750c0dbf9bb4b36626390246fc0c7160795a1",
+      "size_in_bytes": 1212
+    },
+    {
+      "_path": "lib/python3.7/site-packages/orekit/_orekit.cpython-37m-x86_64-linux-gnu.so",
+      "path_type": "hardlink",
+      "sha256": "c1b9d2fca09f6e5bd8f779888833c7139ef8a81140cc3c2e5d5b599849578d36",
+      "size_in_bytes": 45256144
+    },
+    {
+      "_path": "lib/python3.7/site-packages/orekit/_orekit.py",
+      "path_type": "hardlink",
+      "sha256": "d7d028b131e2f383f29bf3519496c067a600c509c9ff40cb738af2e5d92c8eb5",
+      "size_in_bytes": 312
+    },
+    {
+      "_path": "lib/python3.7/site-packages/orekit/hipparchus-core-1.6.jar",
+      "path_type": "hardlink",
+      "sha256": "02e0386f99f6d12b765535f8b27021790c27578f4269c50c91c74084cffdcb25",
+      "size_in_bytes": 994079
+    },
+    {
+      "_path": "lib/python3.7/site-packages/orekit/hipparchus-filtering-1.6.jar",
+      "path_type": "hardlink",
+      "sha256": "36ff55761f04b645de11c1f96d3e8b011efb69fb6c0ef5c08a925f119e4e9b78",
+      "size_in_bytes": 20414
+    },
+    {
+      "_path": "lib/python3.7/site-packages/orekit/hipparchus-fitting-1.6.jar",
+      "path_type": "hardlink",
+      "sha256": "f1fb37cc5a32e68e3a42b06b4909fd33abbee0646732bc05ebe61fb4ebe315c4",
+      "size_in_bytes": 31038
+    },
+    {
+      "_path": "lib/python3.7/site-packages/orekit/hipparchus-geometry-1.6.jar",
+      "path_type": "hardlink",
+      "sha256": "e7e4fe3bdc66ab446a6d785e5e4eae1551616a14e05eb45780055d5c42ef1c25",
+      "size_in_bytes": 263733
+    },
+    {
+      "_path": "lib/python3.7/site-packages/orekit/hipparchus-ode-1.6.jar",
+      "path_type": "hardlink",
+      "sha256": "4413a49732a33d4b43525016c4649e98f1582054958bbff77b9b0090bc1340ec",
+      "size_in_bytes": 255256
+    },
+    {
+      "_path": "lib/python3.7/site-packages/orekit/hipparchus-optim-1.6.jar",
+      "path_type": "hardlink",
+      "sha256": "291c027876df2670f8b0c26b9a8253394c95b69f3f895287eba2ec79d7a08d1a",
+      "size_in_bytes": 180918
+    },
+    {
+      "_path": "lib/python3.7/site-packages/orekit/hipparchus-stat-1.6.jar",
+      "path_type": "hardlink",
+      "sha256": "322c180b08d669ff3773b120f06e90b6088757b3ea416b2e02c744106beb8e78",
+      "size_in_bytes": 216598
+    },
+    {
+      "_path": "lib/python3.7/site-packages/orekit/orekit-10.2.jar",
+      "path_type": "hardlink",
+      "sha256": "3f7703f1072cb68a971a5596233741f6dbece13a5a212f653ea12f819db973e1",
+      "size_in_bytes": 3557693
+    },
+    {
+      "_path": "lib/python3.7/site-packages/orekit/pyhelpers.py",
+      "path_type": "hardlink",
+      "sha256": "52d67f9ae93e8a9c817603f3e03de092c8e10aa0dc257bebfc144b2a04cca016",
+      "size_in_bytes": 5398
+    },
+    {
+      "_path": "lib/python3.7/site-packages/orekit/rugged-2.1.jar",
+      "path_type": "hardlink",
+      "sha256": "4146cd89b2b2a49af333971267f43d18e1fc2e7d6b830683470267e0111bf10b",
+      "size_in_bytes": 232424
+    }
+  ],
+  "paths_version": 1
+}

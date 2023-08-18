@@ -1,0 +1,927 @@
+[
+    {
+        "id": "28b2904fa84f2ef7",
+        "type": "tab",
+        "label": "Secours des bases de données",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "f3d673397ec32476",
+        "type": "file in",
+        "z": "28b2904fa84f2ef7",
+        "name": "",
+        "filename": "latest-tle.txt",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 1010,
+        "y": 360,
+        "wires": [
+            [
+                "bd1a85cc09311355"
+            ]
+        ]
+    },
+    {
+        "id": "bd1a85cc09311355",
+        "type": "split",
+        "z": "28b2904fa84f2ef7",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": "1",
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 1150,
+        "y": 360,
+        "wires": [
+            [
+                "feaee79426617f3b"
+            ]
+        ]
+    },
+    {
+        "id": "feaee79426617f3b",
+        "type": "function",
+        "z": "28b2904fa84f2ef7",
+        "name": "filtre emptystring",
+        "func": "if(msg.payload.length<=1){}\nelse{return msg;}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 400,
+        "wires": [
+            [
+                "1323e4154d19cc79"
+            ]
+        ]
+    },
+    {
+        "id": "1323e4154d19cc79",
+        "type": "join",
+        "z": "28b2904fa84f2ef7",
+        "name": "TLE recomb",
+        "mode": "custom",
+        "build": "array",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "30",
+        "count": "3",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 490,
+        "y": 400,
+        "wires": [
+            [
+                "6bed48f6cefe8426"
+            ]
+        ]
+    },
+    {
+        "id": "1c232ba696ee574e",
+        "type": "function",
+        "z": "28b2904fa84f2ef7",
+        "name": "Select the right message",
+        "func": "if(msg.payload[0]===\"ROBUSTA 1B\" ){return msg;}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 890,
+        "y": 400,
+        "wires": [
+            [
+                "feea61ddfb28e227"
+            ]
+        ]
+    },
+    {
+        "id": "6bed48f6cefe8426",
+        "type": "function",
+        "z": "28b2904fa84f2ef7",
+        "name": "Trim TLE",
+        "func": "msg.payload[0]=msg.payload[0].trim();\nmsg.payload[1]=msg.payload[1].trim();\nmsg.payload[2]=msg.payload[2].trim();\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 640,
+        "y": 400,
+        "wires": [
+            [
+                "1c232ba696ee574e",
+                "2ee51a51ee0acc60",
+                "55edf00b487d6b10",
+                "b875b7a310b5b080",
+                "aa8337d1b88584cf",
+                "ca0db661b87f2902",
+                "5d9b1dbc5f9a18c5",
+                "4f2663ac354460f6",
+                "e418e91a28990fa9",
+                "9f49262c361adff9"
+            ]
+        ]
+    },
+    {
+        "id": "2ee51a51ee0acc60",
+        "type": "function",
+        "z": "28b2904fa84f2ef7",
+        "name": "Select the right message",
+        "func": "if(msg.payload[0]===\"PLEIADES 1A\" ){return msg;}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 890,
+        "y": 460,
+        "wires": [
+            [
+                "0cc2e9c902acf8dc"
+            ]
+        ]
+    },
+    {
+        "id": "55edf00b487d6b10",
+        "type": "function",
+        "z": "28b2904fa84f2ef7",
+        "name": "Select the right message",
+        "func": "if(msg.payload[0]===\"STORK-1\" ){return msg;}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 890,
+        "y": 520,
+        "wires": [
+            [
+                "2f78aa719bfe43f2"
+            ]
+        ]
+    },
+    {
+        "id": "b875b7a310b5b080",
+        "type": "function",
+        "z": "28b2904fa84f2ef7",
+        "name": "Select the right message",
+        "func": "if(msg.payload[0]===\"PLEIADES 1B\" ){return msg;}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 890,
+        "y": 580,
+        "wires": [
+            [
+                "314e25b66e513a34"
+            ]
+        ]
+    },
+    {
+        "id": "feea61ddfb28e227",
+        "type": "function",
+        "z": "28b2904fa84f2ef7",
+        "name": "Prepare the message for upload to DB",
+        "func": "\n msg.payload={\n\ntle1:msg.payload[1],\ntle2:msg.payload[2],\nstatus:1,\n}\nreturn msg\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1190,
+        "y": 400,
+        "wires": [
+            [
+                "73329d11e7cca784"
+            ]
+        ]
+    },
+    {
+        "id": "0cc2e9c902acf8dc",
+        "type": "function",
+        "z": "28b2904fa84f2ef7",
+        "name": "Prepare the message for upload to DB",
+        "func": "\n msg.payload={\n\ntle1:msg.payload[1],\ntle2:msg.payload[2],\nstatus:1,\n}\nreturn msg\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1190,
+        "y": 460,
+        "wires": [
+            [
+                "b5af1e099efaa02c"
+            ]
+        ]
+    },
+    {
+        "id": "2f78aa719bfe43f2",
+        "type": "function",
+        "z": "28b2904fa84f2ef7",
+        "name": "Prepare the message for upload to DB",
+        "func": "\n msg.payload={\n\ntle1:msg.payload[1],\ntle2:msg.payload[2],\nstatus:1,\n}\nreturn msg\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1190,
+        "y": 520,
+        "wires": [
+            [
+                "1753c0514f615d37"
+            ]
+        ]
+    },
+    {
+        "id": "314e25b66e513a34",
+        "type": "function",
+        "z": "28b2904fa84f2ef7",
+        "name": "Prepare the message for upload to DB",
+        "func": "\n msg.payload={\n\ntle1:msg.payload[1],\ntle2:msg.payload[2],\nstatus:1,\n}\nreturn msg\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1190,
+        "y": 580,
+        "wires": [
+            [
+                "ee4c1819c4964cdb"
+            ]
+        ]
+    },
+    {
+        "id": "aa8337d1b88584cf",
+        "type": "function",
+        "z": "28b2904fa84f2ef7",
+        "name": "Select the right message",
+        "func": "if(msg.payload[0]===\"PLEIADES NEO 4\" ){return msg;}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 890,
+        "y": 640,
+        "wires": [
+            [
+                "925de84d9d30cd33"
+            ]
+        ]
+    },
+    {
+        "id": "925de84d9d30cd33",
+        "type": "function",
+        "z": "28b2904fa84f2ef7",
+        "name": "Prepare the message for upload to DB",
+        "func": "\n msg.payload={\n\ntle1:msg.payload[1],\ntle2:msg.payload[2],\nstatus:1,\n}\nreturn msg\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1190,
+        "y": 640,
+        "wires": [
+            [
+                "416c899df6967077"
+            ]
+        ]
+    },
+    {
+        "id": "ca0db661b87f2902",
+        "type": "function",
+        "z": "28b2904fa84f2ef7",
+        "name": "Select the right message",
+        "func": "if(msg.payload[0]===\"PLEIADES NEO 3\" ){return msg;}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 890,
+        "y": 700,
+        "wires": [
+            [
+                "21409fa5e99eb066"
+            ]
+        ]
+    },
+    {
+        "id": "21409fa5e99eb066",
+        "type": "function",
+        "z": "28b2904fa84f2ef7",
+        "name": "Prepare the message for upload to DB",
+        "func": "\n msg.payload={\ntle1:msg.payload[1],\ntle2:msg.payload[2],\nstatus:1,\n}\nreturn msg\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1190,
+        "y": 700,
+        "wires": [
+            [
+                "196b5ad9dccf5fd0"
+            ]
+        ]
+    },
+    {
+        "id": "105e0133427349cd",
+        "type": "comment",
+        "z": "28b2904fa84f2ef7",
+        "name": "Repeupler les DB",
+        "info": "",
+        "x": 520,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "73329d11e7cca784",
+        "type": "mongodb out",
+        "z": "28b2904fa84f2ef7",
+        "mongodb": "8de6bb2e.d8b2a8",
+        "name": "insert-rob1btlelatest",
+        "collection": "rob1btlelatest",
+        "payonly": true,
+        "upsert": false,
+        "multi": false,
+        "operation": "insert",
+        "x": 1530,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "b5af1e099efaa02c",
+        "type": "mongodb out",
+        "z": "28b2904fa84f2ef7",
+        "mongodb": "8de6bb2e.d8b2a8",
+        "name": "insert-p1atlelatest",
+        "collection": "p1atlelatest",
+        "payonly": true,
+        "upsert": false,
+        "multi": false,
+        "operation": "insert",
+        "x": 1530,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "1753c0514f615d37",
+        "type": "mongodb out",
+        "z": "28b2904fa84f2ef7",
+        "mongodb": "8de6bb2e.d8b2a8",
+        "name": "insert-sattlelatest",
+        "collection": "sattlelatest",
+        "payonly": true,
+        "upsert": false,
+        "multi": false,
+        "operation": "insert",
+        "x": 1530,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "ee4c1819c4964cdb",
+        "type": "mongodb out",
+        "z": "28b2904fa84f2ef7",
+        "mongodb": "8de6bb2e.d8b2a8",
+        "name": "insert-p1btlelatest",
+        "collection": "p1btlelatest",
+        "payonly": true,
+        "upsert": false,
+        "multi": false,
+        "operation": "insert",
+        "x": 1530,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "416c899df6967077",
+        "type": "mongodb out",
+        "z": "28b2904fa84f2ef7",
+        "mongodb": "8de6bb2e.d8b2a8",
+        "name": "insert-pneo4tlelatest",
+        "collection": "pneo4tlelatest",
+        "payonly": true,
+        "upsert": false,
+        "multi": false,
+        "operation": "insert",
+        "x": 1540,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "196b5ad9dccf5fd0",
+        "type": "mongodb out",
+        "z": "28b2904fa84f2ef7",
+        "mongodb": "8de6bb2e.d8b2a8",
+        "name": "insert-pneo3tlelatest",
+        "collection": "pneo3tlelatest",
+        "payonly": true,
+        "upsert": true,
+        "multi": false,
+        "operation": "insert",
+        "x": 1540,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "96193540a0ec924a",
+        "type": "mongodb out",
+        "z": "28b2904fa84f2ef7",
+        "mongodb": "8de6bb2e.d8b2a8",
+        "name": "delete rob1blelatest",
+        "collection": "rob1btlelatest",
+        "payonly": false,
+        "upsert": false,
+        "multi": false,
+        "operation": "delete",
+        "x": 1810,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "ad691d6ffca4eb1e",
+        "type": "mongodb out",
+        "z": "28b2904fa84f2ef7",
+        "mongodb": "8de6bb2e.d8b2a8",
+        "name": "delete p1atlelatest",
+        "collection": "p1atlelatest",
+        "payonly": false,
+        "upsert": false,
+        "multi": false,
+        "operation": "delete",
+        "x": 1810,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "54cfede9447cb367",
+        "type": "mongodb out",
+        "z": "28b2904fa84f2ef7",
+        "mongodb": "8de6bb2e.d8b2a8",
+        "name": "delete sattlelatest",
+        "collection": "sattlelatest",
+        "payonly": false,
+        "upsert": false,
+        "multi": false,
+        "operation": "delete",
+        "x": 1810,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "1fff3845a477ef0a",
+        "type": "mongodb out",
+        "z": "28b2904fa84f2ef7",
+        "mongodb": "8de6bb2e.d8b2a8",
+        "name": "delete p1btlelatest",
+        "collection": "p1btlelatest",
+        "payonly": false,
+        "upsert": false,
+        "multi": false,
+        "operation": "delete",
+        "x": 1810,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "c74f4f6c304ec44a",
+        "type": "mongodb out",
+        "z": "28b2904fa84f2ef7",
+        "mongodb": "8de6bb2e.d8b2a8",
+        "name": "delete pneo4tlelatest",
+        "collection": "pneo4tlelatest",
+        "payonly": false,
+        "upsert": false,
+        "multi": false,
+        "operation": "delete",
+        "x": 1820,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "3fcc5919fcbf1af6",
+        "type": "mongodb out",
+        "z": "28b2904fa84f2ef7",
+        "mongodb": "8de6bb2e.d8b2a8",
+        "name": "delete pneo3tlelatest",
+        "collection": "pneo3tlelatest",
+        "payonly": false,
+        "upsert": false,
+        "multi": false,
+        "operation": "delete",
+        "x": 1820,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "b41683c4594c0b99",
+        "type": "function",
+        "z": "28b2904fa84f2ef7",
+        "name": "query to delete ",
+        "func": "msg.payload = {};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1540,
+        "y": 340,
+        "wires": [
+            [
+                "96193540a0ec924a",
+                "ad691d6ffca4eb1e",
+                "54cfede9447cb367",
+                "1fff3845a477ef0a",
+                "c74f4f6c304ec44a",
+                "3fcc5919fcbf1af6",
+                "26ab3d0f81422a8d",
+                "942d3b2feef50906",
+                "ba7a17caad12f1b7",
+                "b4fc3214ebd41348"
+            ]
+        ]
+    },
+    {
+        "id": "5bb503760d7aa70e",
+        "type": "inject",
+        "z": "28b2904fa84f2ef7",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 620,
+        "y": 340,
+        "wires": [
+            [
+                "d5697e9074f76a67"
+            ]
+        ]
+    },
+    {
+        "id": "5d9b1dbc5f9a18c5",
+        "type": "function",
+        "z": "28b2904fa84f2ef7",
+        "name": "Select the right message",
+        "func": "if(msg.payload[0]===\"STORK-1\" ){return msg;}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 890,
+        "y": 760,
+        "wires": [
+            [
+                "894d685f28425b92"
+            ]
+        ]
+    },
+    {
+        "id": "894d685f28425b92",
+        "type": "function",
+        "z": "28b2904fa84f2ef7",
+        "name": "Prepare the message for upload to DB",
+        "func": "\n msg.payload={\n\ntle1:msg.payload[1],\ntle2:msg.payload[2],\nstatus:1,\n}\nreturn msg\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1190,
+        "y": 760,
+        "wires": [
+            [
+                "b75530590e19aa02"
+            ]
+        ]
+    },
+    {
+        "id": "b75530590e19aa02",
+        "type": "mongodb out",
+        "z": "28b2904fa84f2ef7",
+        "mongodb": "8de6bb2e.d8b2a8",
+        "name": "insert-b1tlelatest",
+        "collection": "b1tlelatest",
+        "payonly": true,
+        "upsert": false,
+        "multi": false,
+        "operation": "insert",
+        "x": 1520,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "26ab3d0f81422a8d",
+        "type": "mongodb out",
+        "z": "28b2904fa84f2ef7",
+        "mongodb": "8de6bb2e.d8b2a8",
+        "name": "delete b1tlelatest",
+        "collection": "b1tlelatest",
+        "payonly": false,
+        "upsert": false,
+        "multi": false,
+        "operation": "delete",
+        "x": 1810,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "4f2663ac354460f6",
+        "type": "function",
+        "z": "28b2904fa84f2ef7",
+        "name": "Select the right message",
+        "func": "if(msg.payload[0]===\"STORK-1\" ){return msg;}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 890,
+        "y": 820,
+        "wires": [
+            [
+                "a77bb7cd3ab82523"
+            ]
+        ]
+    },
+    {
+        "id": "a77bb7cd3ab82523",
+        "type": "function",
+        "z": "28b2904fa84f2ef7",
+        "name": "Prepare the message for upload to DB",
+        "func": "\n msg.payload={\n\ntle1:msg.payload[1],\ntle2:msg.payload[2],\nstatus:1,\n}\nreturn msg\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1190,
+        "y": 820,
+        "wires": [
+            [
+                "b43ec98bb2297c40"
+            ]
+        ]
+    },
+    {
+        "id": "b43ec98bb2297c40",
+        "type": "mongodb out",
+        "z": "28b2904fa84f2ef7",
+        "mongodb": "8de6bb2e.d8b2a8",
+        "name": "insert-b2tlelatest",
+        "collection": "b2tlelatest",
+        "payonly": true,
+        "upsert": false,
+        "multi": false,
+        "operation": "insert",
+        "x": 1520,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "942d3b2feef50906",
+        "type": "mongodb out",
+        "z": "28b2904fa84f2ef7",
+        "mongodb": "8de6bb2e.d8b2a8",
+        "name": "delete b2tlelatest",
+        "collection": "b2tlelatest",
+        "payonly": false,
+        "upsert": false,
+        "multi": false,
+        "operation": "delete",
+        "x": 1810,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "e418e91a28990fa9",
+        "type": "function",
+        "z": "28b2904fa84f2ef7",
+        "name": "Select the right message",
+        "func": "if(msg.payload[0]===\"STORK-1\" ){return msg;}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 890,
+        "y": 880,
+        "wires": [
+            [
+                "c23ad2c14cc389b3"
+            ]
+        ]
+    },
+    {
+        "id": "c23ad2c14cc389b3",
+        "type": "function",
+        "z": "28b2904fa84f2ef7",
+        "name": "Prepare the message for upload to DB",
+        "func": "\n msg.payload={\n\ntle1:msg.payload[1],\ntle2:msg.payload[2],\nstatus:1,\n}\nreturn msg\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1190,
+        "y": 880,
+        "wires": [
+            [
+                "099ba89254412faf"
+            ]
+        ]
+    },
+    {
+        "id": "099ba89254412faf",
+        "type": "mongodb out",
+        "z": "28b2904fa84f2ef7",
+        "mongodb": "8de6bb2e.d8b2a8",
+        "name": "insert-r1tlelatest",
+        "collection": "r1tlelatest",
+        "payonly": true,
+        "upsert": false,
+        "multi": false,
+        "operation": "insert",
+        "x": 1520,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "ba7a17caad12f1b7",
+        "type": "mongodb out",
+        "z": "28b2904fa84f2ef7",
+        "mongodb": "8de6bb2e.d8b2a8",
+        "name": "delete r1tlelatest",
+        "collection": "r1tlelatest",
+        "payonly": false,
+        "upsert": false,
+        "multi": false,
+        "operation": "delete",
+        "x": 1800,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "9f49262c361adff9",
+        "type": "function",
+        "z": "28b2904fa84f2ef7",
+        "name": "Select the right message",
+        "func": "if(msg.payload[0]===\"STORK-1\" ){return msg;}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 890,
+        "y": 940,
+        "wires": [
+            [
+                "0a82570cc35b8ae5"
+            ]
+        ]
+    },
+    {
+        "id": "0a82570cc35b8ae5",
+        "type": "function",
+        "z": "28b2904fa84f2ef7",
+        "name": "Prepare the message for upload to DB",
+        "func": "\n msg.payload={\n\ntle1:msg.payload[1],\ntle2:msg.payload[2],\nstatus:1,\n}\nreturn msg\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1190,
+        "y": 940,
+        "wires": [
+            [
+                "519896cd5ec36fc2"
+            ]
+        ]
+    },
+    {
+        "id": "519896cd5ec36fc2",
+        "type": "mongodb out",
+        "z": "28b2904fa84f2ef7",
+        "mongodb": "8de6bb2e.d8b2a8",
+        "name": "insert-r2tlelatest",
+        "collection": "r2tlelatest",
+        "payonly": true,
+        "upsert": false,
+        "multi": false,
+        "operation": "insert",
+        "x": 1520,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "b4fc3214ebd41348",
+        "type": "mongodb out",
+        "z": "28b2904fa84f2ef7",
+        "mongodb": "8de6bb2e.d8b2a8",
+        "name": "delete r2tlelatest",
+        "collection": "r2tlelatest",
+        "payonly": false,
+        "upsert": false,
+        "multi": false,
+        "operation": "delete",
+        "x": 1800,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "d5697e9074f76a67",
+        "type": "ui_button",
+        "z": "28b2904fa84f2ef7",
+        "name": "",
+        "group": "b10e0a54.7b0198",
+        "order": 10,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Rescue TLE databases",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "#104900",
+        "className": "",
+        "icon": "fa-globe",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 850,
+        "y": 300,
+        "wires": [
+            [
+                "b41683c4594c0b99",
+                "f3d673397ec32476"
+            ]
+        ]
+    },
+    {
+        "id": "8de6bb2e.d8b2a8",
+        "type": "mongodb",
+        "hostname": "mongo",
+        "topology": "direct",
+        "connectOptions": "",
+        "port": "27017",
+        "db": "csug",
+        "name": ""
+    },
+    {
+        "id": "b10e0a54.7b0198",
+        "type": "ui_group",
+        "name": "MCS Manager",
+        "tab": "d9532912.7a0608",
+        "order": 9,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "d9532912.7a0608",
+        "type": "ui_tab",
+        "name": "MCS Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]

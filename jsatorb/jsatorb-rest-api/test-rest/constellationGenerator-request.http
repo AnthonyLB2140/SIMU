@@ -1,0 +1,53 @@
+# -----------------------------------------------------------------------------
+# JSatOrb Module REST requests: Constellation generator
+# -----------------------------------------------------------------------------
+# These requests are sent from Visual studio code, using the REST client for
+# Visual Studio Code extension 
+# (https://marketplace.visualstudio.com/items?itemName=humao.rest-client).
+# -----------------------------------------------------------------------------
+# How to use: 
+#  - in Visual studio code, install the REST client extension,
+#  - open this file,
+#  - launch the JSatOrb REST API server,
+#  - click on the "Send request" link above each request,
+#  - the REST API response should be displayed in a separated Response window.
+# -----------------------------------------------------------------------------
+# To separate two distinct requests, add a line with '###' between them.
+# -----------------------------------------------------------------------------
+
+
+## Send a request to generate a constellation of Keplerian satellites
+POST http://localhost:8000/constellationgenerator HTTP/1.1
+content-type: application/json
+
+{
+  "header": {
+    "name": "CONST-01",
+    "sma": 7000000.0,
+    "inc": 15.0,
+    "firstraan": 10.0,
+    "t": 9,
+    "p": 3,
+    "f": 1
+  }
+}
+
+###
+
+## Send a request to generate a constellation of Keplerian satellites
+## with a common color.
+POST http://localhost:8000/constellationgenerator HTTP/1.1
+content-type: application/json
+
+{
+  "header": {
+    "name": "CONST-01",
+    "sma": 7000000.0,
+    "inc": 15.0,
+    "firstraan": 10.0,
+    "t": 9,
+    "p": 3,
+    "f": 1,
+    "color": "#FF55AA"
+  }
+}

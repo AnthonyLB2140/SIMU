@@ -1,0 +1,87 @@
+# This file created by conda-build 3.18.11
+# meta.yaml template originally from:
+# /home/conda/recipe_root, last modified Wed Feb 19 20:58:43 2020
+# ------------------------------------------------
+
+package:
+    name: orekit
+    version: '10.2'
+#source:
+#    fn: v10_1_5.zip
+#    sha256: 350781883ced170a2d2d7b4a5d91f8af4010aa942347eb7ff59aad48570aa780
+#    url: https://github.com/petrushy/orekit_python_artifacts/archive/v10_1_5.zip
+build:
+    number: '0'
+    rpaths:
+        - jre/lib/amd64/
+        - jre/lib/amd64/server/
+        - lib/
+    string: py37he1b5a44_0
+requirements:
+    build:
+        - _libgcc_mutex 0.1 conda_forge
+        - _openmp_mutex 4.5 0_gnu
+        - binutils_impl_linux-64 2.33.1 h53a641e_8
+        - binutils_linux-64 2.33.1 h9595d00_16
+        - gcc_impl_linux-64 7.3.0 hd420e75_5
+        - gcc_linux-64 7.3.0 h553295d_16
+        - gxx_impl_linux-64 7.3.0 hdf63c60_5
+        - gxx_linux-64 7.3.0 h553295d_16
+        - ld_impl_linux-64 2.33.1 h53a641e_8
+        - libgcc-ng 9.2.0 h24d8f2e_2
+        - libgomp 9.2.0 h24d8f2e_2
+        - libstdcxx-ng 9.2.0 hdf63c60_2
+    host:
+        - _libgcc_mutex 0.1 conda_forge
+        - _openmp_mutex 4.5 0_gnu
+        - ca-certificates 2019.11.28 hecc5488_0
+        - certifi 2019.11.28 py37_0
+        - jcc 3.6 py37he1b5a44_4
+        - ld_impl_linux-64 2.33.1 h53a641e_8
+        - libffi 3.2.1 he1b5a44_1006
+        - libgcc-ng 9.2.0 h24d8f2e_2
+        - libgomp 9.2.0 h24d8f2e_2
+        - libstdcxx-ng 9.2.0 hdf63c60_2
+        - ncurses 6.1 hf484d3e_1002
+        - openjdk 8.0.152 h7b6447c_2
+        - openssl 1.1.1d h516909a_0
+        - python 3.7.6 h357f687_2
+        - readline 8.0 hf8c457e_0
+        - setuptools 45.2.0 py37_0
+        - sqlite 3.30.1 hcee41ef_0
+        - tk 8.6.10 hed695b0_0
+        - xz 5.2.4 h14c3975_1001
+        - zlib 1.2.11 h516909a_1006
+    run:
+        - libgcc-ng >=7.3.0
+        - libstdcxx-ng >=7.3.0
+        - openjdk 8.0.152.*
+        - python >=3.7,<3.8.0a0
+test:
+    imports:
+        - orekit
+    source_files:
+        - test/*.py
+        - test/orekit-data.zip
+        - test/resources.zip
+about:
+    description: 'Orekit aims at providing accurate and efficient low level components
+        for the development of flight dynamics applications. It is designed to be
+        easily used in very different contexts, from quick studies up to critical
+        operations. As a library, Orekit provides basic elements (orbits, dates, attitude,
+        frames, ...) and various algorithms to handle them (conversions, propagations,
+        pointing, ....).
+
+        The Orekit library is written in java. This package provides a python wrapper
+        to that library.'
+    doc_url: https://www.orekit.org/static/apidocs/
+    home: https://www.orekit.org/forge/projects/orekit-python-wrapper
+    license: Apache-2.0
+    license_family: Apache
+    license_file: LICENSE.txt
+    summary: An accurate and efficient core layer for space flight dynamics applications
+extra:
+    copy_test_source_files: true
+    final: true
+    recipe-maintainers:
+        - petrushy

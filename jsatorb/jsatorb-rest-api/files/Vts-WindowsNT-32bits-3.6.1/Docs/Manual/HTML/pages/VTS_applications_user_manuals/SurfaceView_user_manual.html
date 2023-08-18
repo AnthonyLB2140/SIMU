@@ -1,0 +1,820 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>SurfaceView user manual &mdash; VTS 3.6.0-9030 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="VTS 3.6.0-9030 documentation" href="../../index.html"/>
+        <link rel="up" title="VTS applications user manuals" href="index.html"/>
+        <link rel="next" title="SkyView user manual" href="SkyView_user_manual.html"/>
+        <link rel="prev" title="Broker user manual" href="Broker_user_manual.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> VTS
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../General/index.html">General</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Files_used_by_VTS/index.html">Files used by VTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Starting_VTS/index.html">Starting VTS</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">VTS applications user manuals</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="VTS_configuration_utility_user_manual.html">VTS configuration utility user manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Broker_user_manual.html">Broker user manual</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">SurfaceView user manual</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#what-is-displayed-in-surfaceview">What is displayed in SurfaceView</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration-in-vts">Configuration in VTS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#application-parameters-in-vts">Application parameters in VTS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#coverage-swath">Coverage swath</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#map-projections">Map Projections</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tile-map">Tile map</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#clusters">Clusters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#interacting-with-surfaceview">Interacting with SurfaceView</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#context-menu">Context menu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cursor-coordinates">Cursor coordinates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#projection-center">Projection center</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#orthodromic-measures">Orthodromic measures</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#interacting-with-a-satellites-and-other-entities">Interacting with a satellites and other entities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mission-events">Mission events</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#technical-notes">Technical notes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#rotation-model">Rotation model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#central-body-texture">Central body texture</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="SkyView_user_manual.html">SkyView user manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SensorView_user_manual.html">SensorView user manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NadirView_user_manual.html">NadirView user manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ZenithView_user_manual.html">ZenithView user manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Celestia_user_manual.html">Celestia user manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InfoBox_user_manual.html">InfoBox user manual</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Plugin_development/index.html">Plugin development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Data_generators_in_VTS/index.html">Data generator integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../About/index.html">About</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">VTS</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">VTS applications user manuals</a> &raquo;</li>
+        
+      <li>SurfaceView user manual</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/pages/VTS_applications_user_manuals/SurfaceView_user_manual.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="surfaceview-user-manual">
+<span id="id1"></span><h1>SurfaceView user manual<a class="headerlink" href="#surfaceview-user-manual" title="Permalink to this headline">¶</a></h1>
+<p>The SurfaceView client application displays a planisphere of the project’s main central body in different projections.</p>
+<div class="section" id="introduction">
+<span id="surfaceview-user-manual-introduction"></span><h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>SurfaceView displays a 2D scene based on a projection of one of the bodies of the VTS project tree. Other entities defined in the project tree (such as satellites, ground stations or other celestial bodies) are represented as 2D items over their projected position.</p>
+<div class="figure align-center">
+<img alt="../../_images/SurfaceView.png" src="../../_images/SurfaceView.png" />
+</div>
+<div class="section" id="what-is-displayed-in-surfaceview">
+<span id="surfaceview-user-manual-what-is-displayed-in-surfaceview"></span><h3>What is displayed in SurfaceView<a class="headerlink" href="#what-is-displayed-in-surfaceview" title="Permalink to this headline">¶</a></h3>
+<p>The following items are displayed on the planisphere of SurfaceView:</p>
+<ul>
+<li><dl class="first docutils">
+<dt><em>Main body</em></dt>
+<dd><p class="first last">The plate carre projection of the main body’s surface is displayed in the background of the scene.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><em>Latitude/Longitude grid</em></dt>
+<dd><p class="first last">The grid automatically adapts to the current zoom level.
+The latitude and longitude values are displayed respectively at the left and top of the window.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="figure align-center" id="id2" style="width: 300px">
+<img alt="../../_images/SurfaceViewGrid.png" src="../../_images/SurfaceViewGrid.png" />
+<p class="caption"><span class="caption-text">Interacting with SurfaceView</span></p>
+</div>
+<ul>
+<li><dl class="first docutils">
+<dt><em>Sun terminator</em></dt>
+<dd><p class="first last">The fictional line that separates the sunlit and obscured faces of the body is displayed in yellow and the obscured face appearing darker than the sunlit one.
+Refer to the Configuring the sun terminator section in the VTS configuration utility user manual chapter for more information.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><em>Subsolar point</em></dt>
+<dd><p class="first last">The the point at the surface of the body where the Sun is at the zenith is represented as an icon.
+Refer to the Configuring the sun icon section in the VTS configuration utility user manual chapter for more information.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><em>Celestial bodies</em></dt>
+<dd><p class="first last">Celestial bodies different from the main body are displayed as icons over their projected position.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="figure align-center" id="id3" style="width: 300px">
+<img alt="../../_images/SurfaceViewSunTerminator.png" src="../../_images/SurfaceViewSunTerminator.png" />
+<p class="caption"><span class="caption-text">SurfaceView Sun terminator and other celestial bodies</span></p>
+</div>
+<ul>
+<li><dl class="first docutils">
+<dt><em>Satellites</em></dt>
+<dd><p class="first last">Satellites orbiting the main body are displayed as icons over the projection of their orbit position.
+Icons are automatically oriented in the direction of the satellite motion.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><em>Satellite sensor footprint</em></dt>
+<dd><p class="first last">The satellite sensor footprint is the intersection of the satellite sensor’s aim volume with the surface of the body.
+Refer to the Configuring a satellite sensor section in the VTS configuration utility user manual chapter for more information.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="figure align-center" id="id4" style="width: 300px">
+<img alt="../../_images/SurfaceViewSatelliteSensor.png" src="../../_images/SurfaceViewSatelliteSensor.png" />
+<p class="caption"><span class="caption-text">SurfaceView Satellite and sensor footprint</span></p>
+</div>
+<ul>
+<li><dl class="first docutils">
+<dt><em>Satellite / Sun / Celestial bodies ground track</em></dt>
+<dd><p class="first last">The ground tracks of the sun, satellites and other celestial bodies appear before and after each entity.
+Their lengths can be defined in the VTS configuration utility.
+In SurfaceView, the tracks are displayed in the body’s local frame (as opposed to an inertial frame in Celestia).</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><em>Satellite / Celestial bodies visibility region</em></dt>
+<dd><p class="first last">The visibility regions of satellites and other celestial bodies is the region of the earth visible from the current position of the entity.
+Their graphic properties can be defined in the VTS configuration utility.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="figure align-center" id="id5" style="width: 300px">
+<img alt="../../_images/SurfaceViewSatelliteTrackVisibilityCircle.png" src="../../_images/SurfaceViewSatelliteTrackVisibilityCircle.png" />
+<p class="caption"><span class="caption-text">SurfaceView Satellite track and visibility circle</span></p>
+</div>
+<ul>
+<li><dl class="first docutils">
+<dt><em>Ground stations</em></dt>
+<dd><p class="first last">Ground stations attached to the main body.
+Refer to the Configuring a ground station section in the VTS configuration utility user manual chapter for more information.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><em>Station sensor footprint</em></dt>
+<dd><p class="first last">The station sensor footprint is the intersection of the ground station sensor’s aim volume with a virtual sphere at a specified altitude.
+This altitude can be either fixed or linked to the satellite altitude.
+Refer to the General properties of a ground station section in the VTS configuration utility user manual chapter for more information.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><em>Geometrical visibility</em></dt>
+<dd><p class="first last">The geometrical visibility between a satellite and a ground station targeting its altitude.
+Refer to the General properties of a ground station section in the VTS configuration utility user manual chapter for more information.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="figure align-center" id="id6" style="width: 300px">
+<img alt="../../_images/SurfaceViewStation.png" src="../../_images/SurfaceViewStation.png" />
+<p class="caption"><span class="caption-text">SurfaceView Ground Station</span></p>
+</div>
+<ul>
+<li><dl class="first docutils">
+<dt><em>Regions of Interest (ROI)</em></dt>
+<dd><p class="first last">Regions Of Interest attached to the main body.
+Refer to the Configuring a Region Of Interest section in the VTS configuration utility user manual chapter for more information.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><em>Points of Interest (POI)</em></dt>
+<dd><p class="first last">Points Of Interest attached to the main body.
+Refer to the Configuring a Point Of Interest section in the VTS configuration utility user manual chapter for more information.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="figure align-center" id="id7" style="width: 300px">
+<img alt="../../_images/SurfaceViewROIPOI.png" src="../../_images/SurfaceViewROIPOI.png" />
+<p class="caption"><span class="caption-text">SurfaceView ROI and POI</span></p>
+</div>
+<ul>
+<li><dl class="first docutils">
+<dt><em>Mission events</em></dt>
+<dd><p class="first last">The mission events attached to all satellites of the main body.
+Mission events appear at the date of their occurrence on the ground track of the satellite they are attached to.
+Refer to the Events attached to a satellite section in the VTS configuration utility user manual chapter for more information.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="figure align-center" id="id8" style="width: 300px">
+<img alt="../../_images/2dWinEvents.png" src="../../_images/2dWinEvents.png" />
+<p class="caption"><span class="caption-text">SurfaceView mission events attached to a satellite</span></p>
+</div>
+<ul>
+<li><dl class="first docutils">
+<dt><em>Clusters</em></dt>
+<dd><p class="first last">Clusters are attached to the main body and represent a population of objects.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="configuration-in-vts">
+<span id="surfaceview-user-manual-configuration-in-vts"></span><h2>Configuration in VTS<a class="headerlink" href="#configuration-in-vts" title="Permalink to this headline">¶</a></h2>
+<p>The entities and properties defined in the VTS configuration utility will be displayed in SurfaceView. The main body can be defined using the initial parameters of the application, otherwise the first central body defined in the VTS project tree will be used. Refer to the <a class="reference internal" href="VTS_configuration_utility_user_manual.html#vts-configuration-utility-user-manual-configuring-a-central-body"><span class="std std-ref">Configuring a central body</span></a> section in the <a class="reference internal" href="VTS_configuration_utility_user_manual.html#vts-configuration-utility-user-manual"><span class="std std-ref">VTS configuration utility user manual</span></a> chapter for more information.</p>
+</div>
+<div class="section" id="application-parameters-in-vts">
+<span id="surfaceview-user-manual-application-parameters-in-vts"></span><h2>Application parameters in VTS<a class="headerlink" href="#application-parameters-in-vts" title="Permalink to this headline">¶</a></h2>
+<p>When adding SurfaceView as a VTS client application, some parameters can be set by clicking on the SurfaceView entry in the VTS project tree:</p>
+<div class="figure align-center">
+<img alt="../../_images/SurfaceViewApplicationParameters.png" src="../../_images/SurfaceViewApplicationParameters.png" />
+</div>
+<ul>
+<li><dl class="first docutils">
+<dt><em>Scene Reference</em></dt>
+<dd><p class="first last">This combo box allows you to select the main body from the list of celestial bodies defined in the VTS project tree.
+The selected body will become the scene reference and in the SurfaceView instance and the position of all other entities will be projected on it.
+By default, the first body from the VTS project tree is selected as a scene reference.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><em>Map Projection</em></dt>
+<dd><p class="first last">This combo box allows you to select the world map projection that will be used in the SurfaceView instance.
+Currently supported projections are Equirectangular (plate carree), Mercator and Polar.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><em>Target framerate</em></dt>
+<dd><p class="first last">The application target framerate (frames per seconds).
+A higher value improves the accuracy but slows down the application.
+An accurate simulation can be achieved with a framerate of 40, however framerates higher than 50 will make little difference in the accuracy.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><em>Track sampling resolution</em></dt>
+<dd><p class="first last">This parameter allows you to modify the sampling resolution of all the tracks in VTS.
+Tracks represent the trajectory of different objects (satellites, celestial bodies, stars).
+Decrease this value to improve track accuracy at the expense of performance degradation.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><em>Sensor geometry section count</em></dt>
+<dd><p class="first last">Number of points making up the outline polygon of the aiming sensor surface.
+Increase this parameter if you want to focus on sensor swath accuracy.
+Decrease it for long missions coverage to improve performance.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><em>Sensor coverage significant threshold</em></dt>
+<dd><p class="first">The sensor swath is composed by a set of instantaneous sensor aiming surfaces represented by polygons.
+An instantaneous aiming surface is retained when a significant percentage of new coverage is provided by the new surface.
+This parameter sets the percentage of novelty (minimum threshold).</p>
+<ul class="simple">
+<li>Use a small value for an agile satellite.</li>
+<li>Use a high value for a long coverage mission.</li>
+</ul>
+<div class="figure align-center" id="id9">
+<img alt="../../_images/DefautSignificantThreshold.png" src="../../_images/DefautSignificantThreshold.png" />
+<p class="caption"><span class="caption-text">A significant threshold of 5% of novelty is ideal for an agile satellite maneuver.</span></p>
+</div>
+<div class="figure align-center" id="id10">
+<img alt="../../_images/DefautSignificantThreshold2.png" src="../../_images/DefautSignificantThreshold2.png" />
+<p class="caption"><span class="caption-text">A small threshold works well for long coverage missions but slows down the display.</span></p>
+</div>
+<div class="figure align-center" id="id11">
+<img alt="../../_images/HighSignificantThreshold.png" src="../../_images/HighSignificantThreshold.png" />
+<p class="caption"><span class="caption-text">A significant threshold of 40% gives poor results during agile satellite maneuvers.</span></p>
+</div>
+<div class="figure align-center" id="id12">
+<img alt="../../_images/HighSignificantThreshold.png" src="../../_images/HighSignificantThreshold.png" />
+<p class="caption"><span class="caption-text">A high threshold gives good results for long coverage missions with good performance.</span></p>
+</div>
+<p class="last"><strong>This parameter has no effect if the Sensor coverage nadir optimization is enabled.</strong></p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><em>Sensor coverage merging threshold</em></dt>
+<dd><p class="first">The sensor residual trace is composed by many polygons.
+Its length is maintained by deleting polygons at the end of the tail.
+For better performance, polygons are merged together when two polygons have at least a certain percentage of area in common.
+This parameter sets the percentage of novelty (minimum threshold).</p>
+<ul class="simple">
+<li>Choose a small value when the length of the sensor residual trace must be accurate (0% of merging will keep all polygons separated).</li>
+<li>Choose a high value for better performance (99% of merging will merge huge blocks of polygons, which will be removed one by one, making the residual trace length vary a lot).</li>
+<li>Choose the special value of 100% to only merge by orbit path color : this mode is useful for long coverage missions, where only the current orbit pass should be displayed.</li>
+</ul>
+<p class="last"><strong>This parameter has no effect if the Sensor coverage nadir optimization is enabled.</strong></p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><em>Sensor coverage nadir optimization</em></dt>
+<dd><p class="first">For satellites pointing nadir, this optimization improves significantly the performance of the sensor coverage calculation at the cost of reducing the accuracy: the computed coverage is less accurate but the simulation is faster and it shows satellites coverages overlap.
+If the optimization is disabled, the sensor coverage will follow the exact sensor surface.</p>
+<p><strong>If the optimization is enabled, the Sensor coverage significant threshold and Sensor coverage merging threshold parameters will have no effect in the application.</strong></p>
+<p class="last">Refer to the <a class="reference internal" href="#surfaceview-user-manual-coverage-swath"><span class="std std-ref">Coverage swath</span></a> section for more information.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="coverage-swath">
+<span id="surfaceview-user-manual-coverage-swath"></span><h2>Coverage swath<a class="headerlink" href="#coverage-swath" title="Permalink to this headline">¶</a></h2>
+<p>SurfaceView has an option to optimize the coverage swath of satellites pointing nadir.</p>
+<p>Without the nadir optimization, the sensor coverage is exact because the sensor surface is used as a stamp. However, the coverage could be incomplete if the time ratio is high enough (some sensor stamps will be missed). By the default, the coverage is kept in memory during one hour.</p>
+<p>With the nadir optimization, the sensor coverage will be always complete even if the time ratio is high and it will allow the simulation of a higher number of satellites’ coverages without slowing down the application. However, the accuracy of the coverage can be reduced at the poles or if the satellite is not pointing nadir. The nadir optimization is enabled by default.</p>
+<div class="figure align-center">
+<img alt="../../_images/CoverageComparison.png" src="../../_images/CoverageComparison.png" />
+</div>
+</div>
+<div class="section" id="map-projections">
+<span id="surfaceview-user-manual-map-projections"></span><h2>Map Projections<a class="headerlink" href="#map-projections" title="Permalink to this headline">¶</a></h2>
+<p>Currently SurfaceView supports the following projections:</p>
+<ul class="simple">
+<li>Equirectangular projection (<em>plate carree</em>)</li>
+<li>Mercator</li>
+<li>Polar</li>
+</ul>
+<p>Each SurfaceView instance can be configured with a different projection using from the initial parameters of the application. Please refer to <a class="reference internal" href="#surfaceview-user-manual-application-parameters-in-vts"><span class="std std-ref">Application parameters in VTS</span></a>.</p>
+<div class="figure align-center">
+<img alt="../../_images/SurfaceViewProjections.png" src="../../_images/SurfaceViewProjections.png" />
+</div>
+<div class="figure align-center">
+<img alt="../../_images/SurfaceViewPolar.png" src="../../_images/SurfaceViewPolar.png" />
+</div>
+</div>
+<div class="section" id="tile-map">
+<span id="surfaceview-user-manual-tile-map"></span><h2>Tile map<a class="headerlink" href="#tile-map" title="Permalink to this headline">¶</a></h2>
+<p>The tilemap mechanism allows you to load and display high definition maps as background images, depending on the zoom level. The tilemap is configured by a local URL pointing to a multi-level image hierarchy or a WMS server.</p>
+<p>Please refer to <a class="reference internal" href="VTS_configuration_utility_user_manual.html#vts-configuration-utility-user-manual-tile-map-textures"><span class="std std-ref">Tile Map textures</span></a> for more information about local or WMS tile maps.</p>
+<p>When using a WMS tile map, in SurfaceView, the following parameters will be automatically added according the current zoom level.</p>
+<ul class="simple">
+<li>Latitude/longitude tile’s border coordinates: <code class="docutils literal"><span class="pre">&amp;BBOX=&lt;west&gt;,&lt;south&gt;,&lt;east&gt;,&lt;north&gt;</span></code></li>
+<li>Tile size in pixels: <code class="docutils literal"><span class="pre">&amp;WIDTH=&lt;width&gt;&amp;HEIGHT=&lt;height&gt;</span></code></li>
+</ul>
+<div class="figure align-center" id="id13">
+<img alt="../../_images/OSMTileMapFrance.png" src="../../_images/OSMTileMapFrance.png" />
+<p class="caption"><span class="caption-text">Open Street Map in SurfaceView</span></p>
+</div>
+</div>
+<div class="section" id="clusters">
+<span id="surfaceview-user-manual-clusters"></span><h2>Clusters<a class="headerlink" href="#clusters" title="Permalink to this headline">¶</a></h2>
+<p>Clusters are used to display a large population of objects. Information about each object can be displayed in real-time.</p>
+<div class="figure align-center" id="id14">
+<img alt="../../_images/SurfaceViewClusterInfo.png" src="../../_images/SurfaceViewClusterInfo.png" />
+<p class="caption"><span class="caption-text">Information about an object of the population</span></p>
+</div>
+<p>User can configure it by editing the following parameters:</p>
+<ul>
+<li><dl class="first docutils">
+<dt><em>Cluster visibility</em>:</dt>
+<dd><p class="first">String defining a partial or a total visibility of the cluster. Allowed strings are :</p>
+<ul class="last simple">
+<li><code class="docutils literal"><span class="pre">all</span></code>: all objects are visible</li>
+<li><code class="docutils literal"><span class="pre">none</span></code>: all objects are hidden</li>
+<li><code class="docutils literal"><span class="pre">all</span> <span class="pre">except</span> <span class="pre">obj1,</span> <span class="pre">obj2,</span> <span class="pre">...,</span> <span class="pre">objN</span></code>: all objects are visible except the objects specified in the list (comma-separated object names)</li>
+<li><code class="docutils literal"><span class="pre">none</span> <span class="pre">except</span> <span class="pre">obj1,</span> <span class="pre">obj2,</span> <span class="pre">...,</span> <span class="pre">objN</span></code>: all objects are hidden except the objects specified in the list (comma-separated object names)</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="interacting-with-surfaceview">
+<span id="surfaceview-user-manual-interacting-with-surfaceview"></span><h2>Interacting with SurfaceView<a class="headerlink" href="#interacting-with-surfaceview" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="context-menu">
+<span id="surfaceview-user-manual-context-menu"></span><h3>Context menu<a class="headerlink" href="#context-menu" title="Permalink to this headline">¶</a></h3>
+<p>The context menu accessible by right-clicking anywhere in the application window offers the entries:</p>
+<div class="figure align-center">
+<img alt="../../_images/SurfaceViewContextMenu.png" src="../../_images/SurfaceViewContextMenu.png" />
+</div>
+<p>These tools can also be accessed through the window toolbar. The toolbar is hidden by default and can be shown/hidden by pressing <strong>F12</strong></p>
+<div class="figure align-center">
+<img alt="../../_images/SurfaceViewToolbar.png" src="../../_images/SurfaceViewToolbar.png" />
+</div>
+<ul>
+<li><dl class="first docutils">
+<dt><a class="reference internal" href="../../_images/SurfaceViewNormalMode.png"><img alt="F4" src="../../_images/SurfaceViewNormalMode.png" style="width: 20px;" /></a> <code class="docutils literal"><span class="pre">F4</span></code></dt>
+<dd><p class="first last">Activates the “normal” manipulation mode. This mode allows manipulating the view and centering on object via a left click.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><a class="reference internal" href="../../_images/SurfaceViewEditingMode.png"><img alt="F5" src="../../_images/SurfaceViewEditingMode.png" style="width: 20px;" /></a> <code class="docutils literal"><span class="pre">F5</span></code></dt>
+<dd><p class="first last">Activates the “editing” manipulation mode. When this mode is enabled, shift+left clicking on the map stores the click geographic location in the system clipboard.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><a class="reference internal" href="../../_images/SurfaceViewSingleMeasure.png"><img alt="F6" src="../../_images/SurfaceViewSingleMeasure.png" style="width: 20px;" /></a> <code class="docutils literal"><span class="pre">F6</span></code></dt>
+<dd><p class="first last">Activates the “single measure” tool. This mode allows creating orthodromic measures from points to points.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><a class="reference internal" href="../../_images/SurfaceViewChainedMeasures.png"><img alt="F7" src="../../_images/SurfaceViewChainedMeasures.png" style="width: 20px;" /></a> <code class="docutils literal"><span class="pre">F7</span></code></dt>
+<dd><p class="first last">Activates the “chained measure” tool. This mode allows creating chained measures : the end point of a measure becomes the beginning point of the next one.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><a class="reference internal" href="../../_images/SurfaceViewCentralMeasures.png"><img alt="F8" src="../../_images/SurfaceViewCentralMeasures.png" style="width: 20px;" /></a> <code class="docutils literal"><span class="pre">F8</span></code></dt>
+<dd><p class="first last">Activates the “central measure” tool. This mode allows creating central measures : all measures are done from the same first “central” point.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><a class="reference internal" href="../../_images/SurfaceViewClearMeasures.png"><img alt="F9" src="../../_images/SurfaceViewClearMeasures.png" style="width: 20px;" /></a> <code class="docutils literal"><span class="pre">F9</span></code></dt>
+<dd><p class="first last">Clears all the measures done beforehand.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><a class="reference internal" href="../../_images/SurfaceViewZoomFit.png"><img alt="CtrlF" src="../../_images/SurfaceViewZoomFit.png" style="width: 20px;" /></a> <code class="docutils literal"><span class="pre">Ctrl+F</span></code></dt>
+<dd><p class="first last">Adjusts the zoom level so that the whole planisphere fits in the window.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><a class="reference internal" href="../../_images/SurfaceViewZoomIn.png"><img alt="CtrlI" src="../../_images/SurfaceViewZoomIn.png" style="width: 20px;" /></a> <a class="reference internal" href="../../_images/SurfaceViewZoomOut.png"><img alt="CtrlO" src="../../_images/SurfaceViewZoomOut.png" style="width: 20px;" /></a> <code class="docutils literal"><span class="pre">Ctrl+I</span></code> <code class="docutils literal"><span class="pre">Ctrl+O</span></code></dt>
+<dd><p class="first last">Zooms in and out the planisphere. This can also be achieved using the mouse wheel. The zoom is then centered on the current mouse position in the window.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><a class="reference internal" href="../../_images/SurfaceViewToggleSatelliteVisiblity.png"><img alt="CtrlS" src="../../_images/SurfaceViewToggleSatelliteVisiblity.png" style="width: 20px;" /></a> <code class="docutils literal"><span class="pre">Ctrl+S</span></code></dt>
+<dd><p class="first last">Shows/hides all satellite icons.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><a class="reference internal" href="../../_images/SurfaceViewToggleStationVisibility.png"><img alt="CtrlG" src="../../_images/SurfaceViewToggleStationVisibility.png" style="width: 20px;" /></a> <code class="docutils literal"><span class="pre">Ctrl+G</span></code></dt>
+<dd><p class="first last">Shows/hides all ground station icons.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><a class="reference internal" href="../../_images/SurfaceViewClean.png"><img alt="CtrlT" src="../../_images/SurfaceViewClean.png" style="width: 20px;" /></a> <code class="docutils literal"><span class="pre">Ctrl+T</span></code></dt>
+<dd><p class="first last">Clears the sensor swath overlay, if enabled in the project.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><a class="reference internal" href="../../_images/SurfaceViewToolBarIcon.png"><img alt="F12" src="../../_images/SurfaceViewToolBarIcon.png" style="width: 20px;" /></a> <code class="docutils literal"><span class="pre">F12</span></code></dt>
+<dd><p class="first last">Shows/hides the toolbar.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="cursor-coordinates">
+<span id="surfaceview-user-manual-cursor-coordinates"></span><h3>Cursor coordinates<a class="headerlink" href="#cursor-coordinates" title="Permalink to this headline">¶</a></h3>
+<p>The cursor coordinates can be displayed by pressing the <code class="docutils literal"><span class="pre">SHIFT</span></code> key. The coordinates expressed in latitude/longitude are displayed in the window status bar.</p>
+<p>Use <code class="docutils literal"><span class="pre">SHIFT</span></code> + <code class="docutils literal"><span class="pre">left</span> <span class="pre">click</span></code> to copy the cursor coordinates into the clipboard.
+When the <code class="docutils literal"><span class="pre">Edit</span> <span class="pre">mode</span></code> is active, the points are kept after the release of <code class="docutils literal"><span class="pre">SHIFT</span></code>, so that more points can be accumulated.
+When the <code class="docutils literal"><span class="pre">Normal</span> <span class="pre">mode</span></code> is active, the points are cleaned after the release of <code class="docutils literal"><span class="pre">SHIFT</span></code>. Added new points will reset the previous points in the clipboard.</p>
+<p>You can copy multiple coordinates by maintaining the <code class="docutils literal"><span class="pre">SHIFT</span></code> key pressed and left clicking on different locations. The distance between the selected points is also displayed in the status bar. The locations marks will remain visible until the SHIFT key is released. This is useful to create a POI/ROI as the coordinates can be directly pasted in the POI/ROI file.</p>
+<div class="figure align-center">
+<img alt="../../_images/CursorCoordinates.png" src="../../_images/CursorCoordinates.png" />
+</div>
+</div>
+<div class="section" id="projection-center">
+<span id="surfaceview-user-manual-projection-center"></span><h3>Projection center<a class="headerlink" href="#projection-center" title="Permalink to this headline">¶</a></h3>
+<p>It is possible to shift the longitude coordinate of the map projection’s center and thus to center the scene at a meridian other than the prime meridian (Greenwich).</p>
+<p>This is achieved by holding the <code class="docutils literal"><span class="pre">CTRL</span></code> key while dragging the background image. The coordinates of the projection center are displayed in the window status bar.</p>
+<div class="figure align-center">
+<img alt="../../_images/SurfaceViewProjectionCenter.png" src="../../_images/SurfaceViewProjectionCenter.png" />
+</div>
+</div>
+<div class="section" id="orthodromic-measures">
+<span id="surfaceview-user-manual-orthodromic-measures"></span><h3>Orthodromic measures<a class="headerlink" href="#orthodromic-measures" title="Permalink to this headline">¶</a></h3>
+<p>You can create measures in SurfaceView using one of the three availables tools, described below. The <code class="docutils literal"><span class="pre">LEFT</span></code> button of the mouse is used to create measures.</p>
+<p>The three measuring tools proposed by SurfaceView are:</p>
+<ul class="simple">
+<li><strong>Single Measures</strong> (F6) : allows creating orthodromic measures from points to points.</li>
+</ul>
+<div class="figure align-center">
+<img alt="../../_images/SurfaceViewSingleMeasuresScreen.png" src="../../_images/SurfaceViewSingleMeasuresScreen.png" />
+</div>
+<ul class="simple">
+<li><strong>Chained Measures</strong> (F7) : allows creating chained measures : the end point of a measure becomes the beginning point of the next measure.</li>
+</ul>
+<div class="figure align-center">
+<img alt="../../_images/SurfaceViewChainedMeasuresScreen.png" src="../../_images/SurfaceViewChainedMeasuresScreen.png" />
+</div>
+<ul class="simple">
+<li><strong>Central Measures</strong> (F8) : allows creating central measures : all measures a done from the same first “central” point.</li>
+</ul>
+<div class="figure align-center">
+<img alt="../../_images/SurfaceViewCentralMeasuresScreen.png" src="../../_images/SurfaceViewCentralMeasuresScreen.png" />
+</div>
+<p>Pressing <code class="docutils literal"><span class="pre">F9</span></code> clears all the measures.</p>
+</div>
+<div class="section" id="interacting-with-a-satellites-and-other-entities">
+<span id="surfaceview-user-manual-interacting-with-a-satellites-and-other-entities"></span><h3>Interacting with a satellites and other entities<a class="headerlink" href="#interacting-with-a-satellites-and-other-entities" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="centering-lock">
+<span id="surfaceview-user-manual-centering-lock"></span><h4>Centering lock<a class="headerlink" href="#centering-lock" title="Permalink to this headline">¶</a></h4>
+<p>Clicking on a satellite, a station or any celestial body will center and lock the view on that entity during the animation. Zoom actions are also centered on the entity instead of the mouse cursor. Clicking the map unlocks the view.</p>
+</div>
+<div class="section" id="geographical-coordinates">
+<span id="surfaceview-user-manual-geographical-coordinates"></span><h4>Geographical coordinates<a class="headerlink" href="#geographical-coordinates" title="Permalink to this headline">¶</a></h4>
+<p>Hovering the mouse over a satellite, ground station or celestial body, will display a tooltip containing the geographical coordinates of the entity.</p>
+<p>These coordinates are computed by VTS and are approximate, especially when computing the longitude near the poles.</p>
+<div class="figure align-center">
+<img alt="../../_images/2dWinZoom.png" src="../../_images/2dWinZoom.png" />
+</div>
+</div>
+<div class="section" id="moving-the-time">
+<span id="surfaceview-user-manual-moving-the-time"></span><h4>Moving the time<a class="headerlink" href="#moving-the-time" title="Permalink to this headline">¶</a></h4>
+<p>The Sun, satellites and celestial bodies defined in the VTS project have a <strong>ground track</strong> associated which can be used to drag the entity along it in order to move forwards or backwards in time. The dragged entity automatically snaps to the nearest point of its ground track. The corresponding date is sent to the Broker and all applications are synchronized.</p>
+<div class="figure align-center">
+<img alt="../../_images/DragSun.png" src="../../_images/DragSun.png" />
+</div>
+<p>It is possible to “jump” from orbit to orbit if the ground track is long enough (for example, greater than the period of the satellite’s orbit). This results in a similar “jump” in visualization time.</p>
+<p>Dragging satellites near track intersections can become very “unstable” (typically near the poles, or if the track time window is greater than the period of the satellite’s orbit). The satellite may “jump” from orbit to orbit depending on the position and movement of the mouse. It is advised to avoid dragging a satellite in these areas if “jumping” from orbit to orbit is not desired.</p>
+<p><em>Note that visualization time is automatically paused when dragging an entity</em>.</p>
+</div>
+</div>
+<div class="section" id="mission-events">
+<span id="surfaceview-user-manual-mission-events"></span><h3>Mission events<a class="headerlink" href="#mission-events" title="Permalink to this headline">¶</a></h3>
+<p>SurfaceView displays mission events attached to satellites and allows some interaction with them. The events are displayed along the satellite’s ground track at the corresponding date of the event. Refer to the <a class="reference internal" href="VTS_configuration_utility_user_manual.html#vts-configuration-utility-user-manual-events-attached-to-a-satellite"><span class="std std-ref">Events attached to a satellite</span></a> section in the <a class="reference internal" href="VTS_configuration_utility_user_manual.html#vts-configuration-utility-user-manual"><span class="std std-ref">VTS configuration utility user manual</span></a> chapter for more information.</p>
+<p>The line segment linking the icon of an event to its actual position on the satellite ground track is the same color (only a bit lighter) as that of the satellite ground track.</p>
+<p>The name of all events are always displayed if the <em>All event text visibility</em> parameter is checked in the Broker.</p>
+<p>The visibility of all event types can be controlled from the <em>Events</em> tab of the Broker. Refer to the <span class="xref std std-ref">*Events* tab</span> section of the <a class="reference internal" href="Broker_user_manual.html#broker-user-manual"><span class="std std-ref">Broker user manual</span></a> chapter for more information.</p>
+<p>The appearance of mission events can be defined in the <em>Event Type Editor</em> tab of the VTS configuration utility. Refer to the <a class="reference internal" href="VTS_configuration_utility_user_manual.html#vts-configuration-utility-user-manual-configuring-event-types"><span class="std std-ref">Configuring event types</span></a> section in the <a class="reference internal" href="VTS_configuration_utility_user_manual.html#vts-configuration-utility-user-manual"><span class="std std-ref">VTS configuration utility user manual</span></a> chapter for more information.</p>
+<div class="figure align-center">
+<img alt="../../_images/2dWinEvents.png" src="../../_images/2dWinEvents.png" />
+</div>
+<div class="section" id="interacting-with-events">
+<span id="surfaceview-user-manual-interacting-with-events"></span><h4>Interacting with events<a class="headerlink" href="#interacting-with-events" title="Permalink to this headline">¶</a></h4>
+<ul>
+<li><dl class="first docutils">
+<dt><strong>Hovering</strong>: Hovering above a single event will display a tooltip containing the name of the satellite the event is attached to, the name of the event, as well as additional data provided by the CIC/CCSDS event file.</dt>
+<dd><ul class="first last simple">
+<li>Events at the exact same date – or at dates close enough that they appear to be at the same date at the current zoom level – will animate and split when the mouse is hovered above them.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first"><strong>Double-click</strong>: Double-clicking an event will set the current visualization time to the date of the event. The satellite then appears located at the position of the event. The visualization is also paused.</p>
+</li>
+</ul>
+<div class="figure align-center">
+<img alt="../../_images/2dWinEventsDetails.png" src="../../_images/2dWinEventsDetails.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="technical-notes">
+<span id="surfaceview-user-manual-technical-notes"></span><h2>Technical notes<a class="headerlink" href="#technical-notes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="rotation-model">
+<span id="surfaceview-user-manual-rotation-model"></span><h3>Rotation model<a class="headerlink" href="#rotation-model" title="Permalink to this headline">¶</a></h3>
+<p>SurfaceView uses the VTS ephemeris catalog to display an accurate positioning and Sun terminator (see the [Central bodies in VTS] section for more information about ephemeris origin). For custom positioning or unsupported bodies, suitable ephemerides files will need to be provided to override the catalog ones. Refer to the <a class="reference internal" href="VTS_configuration_utility_user_manual.html#vts-configuration-utility-user-manual-position-and-orientation-of-a-body"><span class="std std-ref">Position and orientation of a body</span></a> section of the <a class="reference internal" href="VTS_configuration_utility_user_manual.html#vts-configuration-utility-user-manual"><span class="std std-ref">VTS configuration utility user manual</span></a> chapter for more information.</p>
+</div>
+<div class="section" id="central-body-texture">
+<span id="surfaceview-user-manual-central-body-texture"></span><h3>Central body texture<a class="headerlink" href="#central-body-texture" title="Permalink to this headline">¶</a></h3>
+<p>The current architecture of the SurfaceView application enforces a few constraints:</p>
+<ul class="simple">
+<li>The <em>built-in</em> texture for Earth is embedded in SurfaceView. It is based on the Blue Marble photos from NASA (<a class="reference external" href="https://visibleearth.nasa.gov/collection/1484/blue-marble">image link</a> , <a class="reference external" href="http://earthobservatory.nasa.gov/Features/BlueMarble/bmng.pdf">documentation link</a>).</li>
+<li>For other solar system bodies or celestial bodies available in Celestia, the <em>built-in</em> texture will be taken from Celestia, using the equidistant cylindrical (plate carree) projection.</li>
+<li>For bodies not available in Celestia, a black texture will appear in <em>built-in</em> mode. A custom texture should then be defined. Refer to the <span class="xref std std-ref">Texture of a body</span> section of the <a class="reference internal" href="VTS_configuration_utility_user_manual.html#vts-configuration-utility-user-manual"><span class="std std-ref">VTS configuration utility user manual</span></a> chapter for more information.</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="SkyView_user_manual.html" class="btn btn-neutral float-right" title="SkyView user manual" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Broker_user_manual.html" class="btn btn-neutral" title="Broker user manual" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright VTS Team.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'3.6.0-9030',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

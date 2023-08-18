@@ -1,0 +1,103 @@
+.. _Mission_events_in_VTS:
+
+Mission events in VTS
+==================================================================================
+
+Mission events in VTS are timestampped punctual events attached to visualization entities. Currently, events may only be attached to satellites.
+
+Events are displayed in the project timeline and in compatible client applications. Currently, the only standard VTS client application with events capability is SurfaceView.
+
+An event is defined by its event type and timestamp. Text metadata may also be attached to an event.
+
+
+.. _Mission_events_in_VTS#Event_type:
+
+Event type
+----------------------------------------------------------------------------------
+
+The event type is a category describing the event that occurs at the dates of instances of this type. For example, events of the ``OEF/EARTH_IN_SENSOR_END (2)`` event type are orbit events at the dates when the Earth leaves the field of view of the second star tracker.
+
+Event types in VTS are organized hierarchically. An event type full name includes the names of all its parent types, separated with slashes, e.g. ``PASS/KRU/TC_EMISSION_END``.
+
+
+.. _Mission_events_in_VTS#CIC/CCSDS_event_files:
+
+CIC/CCSDS event files
+----------------------------------------------------------------------------------
+
+Events are described in CIC/CCSDS files in MEM format. For more information on the CIC/CCSDS file format, refer to the :ref:`CIC-CCSDS?data files in VTS <CIC-CCSDS?data_files_in_VTS>` chapter.
+
+A CIC/CCSDS event file must have the following characteristics:
+
+- The ``USER_DEFINED_PROTOCOL`` must be ``NONE``.
+- The ``USER_DEFINED_CONTENT`` is the top-level event type name for all events in the file. It will be implicitly prepended to the event type names found in the file.
+- The ``USER_DEFINED_SIZE`` must be ``1`` or more. The first column (after the date) must be the event type full name (not including the top-level type, *USER_DEFINED_CONTENT*). All other columns will be used as text description/metadata for the event.
+- The ``USER_DEFINED_TYPE`` must be ``STRING``.
+- The ``USER_DEFINED_UNIT`` must be ``[n/a]``.
+
+The following is a sample CIC/CCSDS event file:
+
+::
+
+   CIC_MEM_VERS   = 1.0
+   CREATION_DATE  = 2013-07-18T16:19:51
+   ORIGINATOR     = PROTON
+
+   META_START
+
+   COMMENT PROTON OEF file
+   COMMENT Misc columns: PSO Lat Long Cycle Orbit
+
+   OBJECT_NAME = PLEIADES
+   OBJECT_ID   = PHR
+
+   USER_DEFINED_PROTOCOL = NONE
+   USER_DEFINED_CONTENT = OEF
+   USER_DEFINED_SIZE = 6
+   USER_DEFINED_TYPE = STRING
+   USER_DEFINED_UNIT = [n/a]
+
+   TIME_SYSTEM = UTC
+
+   META_STOP
+
+   56273 0.000000       "DAS_Update_TC_CHCOMRLDDAS"      "25.7"   "25.39"  "-26.5"  "8"  "272"
+   56273 126.809000     "AUS/0_DEG_AOS"                  "33.44"  "33.05"  "-28.48" "8"  "272"
+   56273 282.221000     "AUS/MAX_ELEVATION_PASS)"        "42.9"   "42.38"  "-31.3"  "8"  "272"
+   56273 438.342000     "AUS/0_DEG_LOS"                  "52.4"   "51.68"  "-34.89" "8"  "272"
+   56273 453.909000     "STH/0_DEG_AOS"                  "53.35"  "52.6"   "-35.32" "8"  "272"
+   56273 510.640000     "STH/PHYSICAL_AOS"               "56.8"   "55.95"  "-36.99" "8"  "272"
+   56273 566.297000     "STH/MAX_ELEVATION_PASS"         "60.18"  "59.21"  "-38.91" "8"  "272"
+   56273 616.599000     "KRN/0_DEG_AOS"                  "63.24"  "62.14"  "-40.93" "8"  "272"
+   56273 663.121000     "KRN/PHYSICAL_AOS"               "66.07"  "64.82"  "-43.15" "8"  "272"
+   56273 678.672000     "STH/PHYSICAL_LOS"               "67.01"  "65.71"  "-43.98" "8"  "272"
+   56273 678.672000001  "STH/0_DEG_LOS"                  "67.01"  "65.71"  "-43.98" "8"  "272"
+   56273 769.656000     "AUTONOMOUS_MODE_GAP/SUP_START"  "72.54"  "70.8"   "-50.17" "8"  "272"
+   56273 780.478000     "KRN/MAX_ELEVATION_PASS"         "73.2"   "71.39"  "-51.11" "8"  "272"
+   56273 803.998000     "EARTH_IN_SENSOR_START (3)"      "74.63"  "72.66"  "-53.34" "8"  "272"
+   56273 808.998000     "SUN_IN_SENSOR_START (3)"        "74.93"  "72.92"  "-53.85" "8"  "272"
+   56273 872.998000     "SUN_IN_SENSOR_END (3)"          "78.82"  "76.19"  "-62.02" "8"  "272"
+   56273 875.835000     "KRN/PHYSICAL_LOS"               "78.99"  "76.33"  "-62.47" "8"  "272"
+   56273 908.478000     "NPL/0_DEG_AOS"                  "80.98"  "77.86"  "-68.28" "8"  "272"
+   56273 935.329000     "NPL/PHYSICAL_AOS"               "82.61"  "79."    "-74.17" "8"  "272"
+   56273 942.531000     "AUTONOMOUS_MODE_GAP/SUP_END"    "83.05"  "79.29"  "-75.95" "8"  "272"
+   56273 944.742000     "KRN/0_DEG_LOS"                  "83.18"  "79.37"  "-76.51" "8"  "272"
+   56273 947.195000     "SHADOW_PENOMBRA"                "83.33"  "79.47"  "-77.15" "8"  "272"
+   56273 957.008000     "PENOMBRA_LIGHT"                 "83.93"  "79.83"  "-79.82" "8"  "272"
+
+
+.. _Mission_events_in_VTS#Event_decorations:
+
+Event decorations
+----------------------------------------------------------------------------------
+
+Event decorations define the appearance of events in the project timeline and in compatible client applications.
+
+Each event type may have its own custom decoration, in order to be easily distinguishable from other event types. Note that all events of a single event type have the same appearance.
+
+Thanks to the hierarchy of event types, event decorations are inherited: all children type of an event type share the same decoration as their parent type. This inheritance mechanism can be overridden by specifically customizing the decoration of an event type.
+
+For more information on the specifics of event decoration configuration, refer to the :ref:`Configuring event types <VTS_configuration_utility_user_manual#Configuring_event_types>` section of the :ref:`VTS configuration utility user manual <VTS_configuration_utility_user_manual>` chapter.
+
+
+

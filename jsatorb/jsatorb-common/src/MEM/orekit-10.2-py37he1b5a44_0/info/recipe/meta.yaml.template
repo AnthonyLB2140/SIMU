@@ -1,0 +1,72 @@
+{% set name = "orekit" %}
+{% set version = "10.2" %}
+#{% set artifact_filename = "v10_1_5" %}
+{% set sha256 = "350781883ced170a2d2d7b4a5d91f8af4010aa942347eb7ff59aad48570aa780" %}  # [not osx]
+{% set sha256 = "66ebabc895773dff2293e011547a626c9652ffeb74023fc900f3875b55f95de2" %}  # [osx]
+
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+#source:
+#  fn: {{ artifact_filename }}.zip  # [not osx]
+#  url: https://github.com/petrushy/orekit_python_artifacts/archive/{{ artifact_filename }}.zip  # [not osx]
+#  fn: {{ artifact_filename }}.tar.gz  # [osx]
+#  url: https://github.com/petrushy/orekit_python_artifacts/archive/{{ artifact_filename }}.tar.gz  # [osx]
+#  sha256: {{ sha256 }}
+
+build:
+  number: 0
+
+  rpaths:
+    - lib/
+    - jre/lib/amd64/
+    - jre/lib/amd64/server/
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+  host:
+    - python
+    - setuptools
+    - jcc >=3.6
+    # Force anaconda openjdk 
+    - openjdk 8.0.152
+
+  run:
+    - python
+    # Force anaconda openjdk
+    - openjdk 8.0.152
+
+test:
+  imports:
+    - orekit
+
+  source_files:
+    - test/*.py
+    - test/orekit-data.zip
+    - test/resources.zip
+
+about:
+  home: https://www.orekit.org/forge/projects/orekit-python-wrapper
+  license: Apache-2.0
+  license_family: Apache
+  license_file: LICENSE.txt
+  summary: 'An accurate and efficient core layer for space flight dynamics applications'
+
+  description:
+    Orekit aims at providing accurate and efficient low level components for
+    the development of flight dynamics applications. It is designed to be
+    easily used in very different contexts, from quick studies up to critical operations.
+    As a library, Orekit provides basic elements (orbits, dates, attitude, frames, ...) and
+    various algorithms to handle them (conversions, propagations, pointing, ....).
+
+    The Orekit library is written in java. This package provides a python wrapper to that library.
+
+  doc_url: https://www.orekit.org/static/apidocs/
+
+extra:
+  recipe-maintainers:
+    - petrushy

@@ -1,0 +1,962 @@
+2023-04-11T21:08:18	INFO	Broker	> Arguments: --title #0 - Celestia --dir C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin --conf celestia.cfg --url C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/extras_0/VTS/default_Sat.celx --extrasdir C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/extras_0 --aasamples 1
+2023-04-11T21:08:18	INFO	Broker	[SurfaceView Client]
+2023-04-11T21:08:18	INFO	Broker	> Program: C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/SurfaceView/bin/surfaceview.exe
+2023-04-11T21:08:18	INFO	Broker	> Arguments: //wsl$/Ubuntu-20.04/home/antoine/jsatorb/jsatorb-rest-api/files/default_Sat/default_Sat.vts 1 --mode surface --closeondisconnected
+2023-04-11T21:08:18	INFO	Broker	[PrestoPlot Client]
+2023-04-11T21:08:18	INFO	Broker	> Program: C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/PrestoPlot/bin/prestoplot.exe
+2023-04-11T21:08:18	INFO	Broker	> Arguments: -commandfile C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/PrestoPlot/bin/cmdLineVTS_8888_2.pcf
+2023-04-11T21:08:18	WARNING	Celestia (#0)	Loading image from file splash.png
+2023-04-11T21:08:18	WARNING	Celestia (#0)	Error opening image file splash.png
+2023-04-11T21:08:18	TRACE	Celestia (#0)	Error getting joystick caps.
+2023-04-11T21:08:18	TRACE	Celestia (#0)	Couldn't load localized resources: locale\res_LANGUAGE.dll
+2023-04-11T21:08:18	WARNING	Celestia (#0)	106747 stars in binary database
+2023-04-11T21:08:18	WARNING	Celestia (#0)	Loaded cross index data/hdxindex.dat
+2023-04-11T21:08:18	WARNING	Celestia (#0)	Loaded cross index data/saoxindex.dat
+2023-04-11T21:08:19	WARNING	Celestia (#0)	Total star count: 107626
+2023-04-11T21:08:22	WARNING	Celestia (#0)	Loaded 11087 deep space objects
+2023-04-11T21:08:22	WARNING	Celestia (#0)	Loading solar system catalog: extras/BMNG/BMNG.ssc
+2023-04-11T21:08:22	WARNING	Celestia (#0)	Loading solar system catalog: extras/JMII DDS/JMII DDS.ssc
+2023-04-11T21:08:22	WARNING	Celestia (#0)	Loading solar system catalog: extras/JohnVV/EarthClouds.ssc
+2023-04-11T21:08:22	WARNING	Celestia (#0)	Loading solar system catalog: C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/extras_0/VTS/default_Sat.ssc
+2023-04-11T21:08:23	TRACE	Celestia (#0)	Initializing ARB vertex programs . . .
+2023-04-11T21:08:23	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/diffuse_arb.vp
+2023-04-11T21:08:23	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/specular_arb.vp
+2023-04-11T21:08:24	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/haze_arb.vp
+2023-04-11T21:08:24	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/bumpdiffuse_arb.vp
+2023-04-11T21:08:24	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/bumphaze_arb.vp
+2023-04-11T21:08:24	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/shadowtex_arb.vp
+2023-04-11T21:08:24	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/diffuse_texoff_arb.vp
+2023-04-11T21:08:24	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/rings_arb.vp
+2023-04-11T21:08:24	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/ringshadow_arb.vp
+2023-04-11T21:08:24	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/night_arb.vp
+2023-04-11T21:08:24	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/glossmap_arb.vp
+2023-04-11T21:08:24	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/diffuse2_arb.vp
+2023-04-11T21:08:24	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/haze2_arb.vp
+2023-04-11T21:08:24	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/diffuse_texoff2_arb.vp
+2023-04-11T21:08:24	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/specular2_arb.vp
+2023-04-11T21:08:24	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/night2_arb.vp
+2023-04-11T21:08:24	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/star_arb.vp
+2023-04-11T21:08:24	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/multishadow_arb.vp
+2023-04-11T21:08:24	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/texphong_arb.vp
+2023-04-11T21:08:24	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/texphong_alpha_arb.vp
+2023-04-11T21:08:24	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/ell_galaxy_arb.vp
+2023-04-11T21:08:24	TRACE	Celestia (#0)	All ARB vertex programs loaded successfully.
+2023-04-11T21:08:24	TRACE	Celestia (#0)	render path: 8
+2023-04-11T21:08:24	WARNING	Celestia (#0)	Loading image from file textures/flare.jpg
+2023-04-11T21:08:24	WARNING	Celestia (#0)	Creating ordinary texture: 256x256
+2023-04-11T21:08:24	WARNING	Celestia (#0)	Loading...
+2023-04-11T21:08:24	WARNING	Celestia (#0)	Loading model: models/
+2023-04-11T21:08:24	WARNING	Celestia (#0)	emeAxes.3ds
+2023-04-11T21:08:24	WARNING	Celestia (#0)	Model statistics: 21240 vertices, 7080 primitives, 7 materials (7 unique)
+2023-04-11T21:08:24	WARNING	Celestia (#0)	Loading model: models/bodyAxes.3ds
+2023-04-11T21:08:24	WARNING	Celestia (#0)	Model statistics: 10506 vertices, 3502 primitives, 7 materials (7 unique)
+2023-04-11T21:08:24	WARNING	Celestia (#0)	Loading image from file textures/medres/gstar.jpg
+2023-04-11T21:08:24	WARNING	Celestia (#0)	Creating ordinary texture: 512x256
+2023-04-11T21:08:25	WARNING	Celestia (#0)	Connected !
+2023-04-11T21:08:25	WARNING	Celestia (#0)	Connected to localhost(8888), sent bytes: 31.0
+2023-04-11T21:08:25	WARNING	Celestia (#0)	Unknown command of type PROP (SensorGeometrySectionCount)
+2023-04-11T21:08:25	WARNING	Celestia (#0)	Unknown command of type PROP (SensorSwathResolution)
+2023-04-11T21:08:25	WARNING	Celestia (#0)	Unknown command of type PROP (AntialiasingSamples)
+2023-04-11T21:08:25	WARNING	Celestia (#0)	Unknown command of type PROP (ForceLegacy3dsReader)
+2023-04-11T21:08:25	WARNING	Celestia (#0)	Loading model: models/ref_model.3ds
+2023-04-11T21:08:25	WARNING	Celestia (#0)	   Model statistics: 36 vertices, 12 primitives, 1 materials (1 unique)
+2023-04-11T21:08:25	WARNING	Celestia (#0)	Loading model: C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/extras_0/VTS/models/rosetta-orbiterOnly.3ds
+2023-04-11T21:08:25	WARNING	Celestia (#0)	Model statistics: 52212 vertices, 17404 primitives, 8 materials (8 unique)
+2023-04-11T21:08:25	WARNING	Celestia (#0)	Loading model: models/qswAxes.3ds
+2023-04-11T21:08:25	WARNING	Celestia (#0)	Model statistics: 56442 vertices, 18814 primitives, 7 materials (7 unique)
+2023-04-11T21:08:25	WARNING	Celestia (#0)	Loading model: models/tnwAxes.3ds
+2023-04-11T21:08:25	WARNING	Celestia (#0)	Model statistics: 51732 vertices, 17244 primitives, 7 materials (7 unique)
+2023-04-11T21:08:25	WARNING	Celestia (#0)	Loading model: models/satAxes.3ds
+2023-04-11T21:08:25	WARNING	Celestia (#0)	Model statistics: 9954 vertices, 3318 primitives, 7 materials (7 unique)
+2023-04-11T21:08:25	WARNING	Celestia (#0)	Loading model: models/vector-yellow-sun.3ds
+2023-04-11T21:08:25	WARNING	Celestia (#0)	Model statistics: 7482 vertices, 2494 primitives, 2 materials (2 unique)
+2023-04-11T21:08:25	WARNING	Celestia (#0)	Loading model: models/vector-magenta-body.3ds
+2023-04-11T21:08:25	WARNING	Celestia (#0)	Model statistics: 9054 vertices, 3018 primitives, 2 materials (2 unique)
+2023-04-11T21:08:25	WARNING	Celestia (#0)	Loading model: models/vector-white.3ds
+2023-04-11T21:08:25	WARNING	Celestia (#0)	Model statistics: 6720 vertices, 2240 primitives, 2 materials (2 unique)
+2023-04-11T21:08:25	WARNING	Celestia (#0)	Unknown command of type TIME (TimeModeChangedTo)
+2023-04-11T21:08:25	WARNING	Celestia (#0)	Loading image from file extras/JMII DDS/textures/hires/JMII DDS/level0/tx_1_0.dds
+2023-04-11T21:08:25	WARNING	Celestia (#0)	Loading image from file extras/JMII DDS/textures/hires/JMII DDS/level0/tx_0_0.dds
+2023-04-11T21:08:51	WARNING	SurfaceView (#1)	libpng warning: iCCP: known incorrect sRGB profile
+2023-04-11T21:08:51	WARNING	SurfaceView (#1)	libpng warning: iCCP: known incorrect sRGB profile
+2023-04-11T21:08:51	WARNING	SurfaceView (#1)	"Warning: OmniView doesn't handle default ephemeris mode, switching to catalog mode for body: Earth."
+2023-04-11T21:08:55	WARNING	Celestia (#0)	Visualization ready!
+2023-04-12T09:49:56	INFO	Broker	Launch of Broker
+2023-04-12T09:50:01	INFO	Broker	Project loaded from revision 8200 by XmlReader v3.4
+2023-04-12T09:50:08	WARNING	Broker	Warning: Insufficient data for the defined time interval. Consider using the compute dates button.
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Project file \"Data/Sat_MEM_VISIBILITY_Ariel_University.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/Sat_MEM_VISIBILITY_Ariel_University.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/Sat_MEM_VISIBILITY_Ariel_University.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Project file \"Data/Sat_MEM_VISIBILITY_UPF_Faa.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/Sat_MEM_VISIBILITY_UPF_Faa.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/Sat_MEM_VISIBILITY_UPF_Faa.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Project file \"Data/Sat_MEM_VISIBILITY_CNES_Toulouse.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/Sat_MEM_VISIBILITY_CNES_Toulouse.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/Sat_MEM_VISIBILITY_CNES_Toulouse.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Project file \"Data/Sat_MEM_VISIBILITY_Lattakia.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/Sat_MEM_VISIBILITY_Lattakia.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/Sat_MEM_VISIBILITY_Lattakia.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Project file \"Data/Sat_MEM_VISIBILITY_Teheran.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Project file \"Data/Sat_MEM_VISIBILITY_Beijing.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/Sat_MEM_VISIBILITY_Beijing.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/Sat_MEM_VISIBILITY_Beijing.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Project file \"Data/Sat_MEM_VISIBILITY_Hainan_Naval.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/Sat_MEM_VISIBILITY_Hainan_Naval.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/Sat_MEM_VISIBILITY_Hainan_Naval.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Project file \"Data/Sat_MEM_VISIBILITY_AirLiquide_Global_Helium.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/Sat_MEM_VISIBILITY_AirLiquide_Global_Helium.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/Sat_MEM_VISIBILITY_AirLiquide_Global_Helium.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Project file \"Data/Sat_MEM_VISIBILITY_Univ_Intl_Rabat.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/Sat_MEM_VISIBILITY_Univ_Intl_Rabat.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/Sat_MEM_VISIBILITY_Univ_Intl_Rabat.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Project file \"Data/Sat_MEM_VISIBILITY_IPEV_Bretagne.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/Sat_MEM_VISIBILITY_IPEV_Bretagne.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/Sat_MEM_VISIBILITY_IPEV_Bretagne.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Project file \"Data/Sat_MEM_VISIBILITY_Univ_Ouv_Catalogne.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/Sat_MEM_VISIBILITY_Univ_Ouv_Catalogne.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/Sat_MEM_VISIBILITY_Univ_Ouv_Catalogne.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES1A_MEM_VISIBILITY_IPEV_Dumont_DUrville.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES1A_MEM_VISIBILITY_IPEV_Dumont_DUrville.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES1A_MEM_VISIBILITY_IPEV_Dumont_DUrville.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES1A_MEM_VISIBILITY_UPF_Faa.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES1A_MEM_VISIBILITY_UPF_Faa.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES1A_MEM_VISIBILITY_UPF_Faa.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES1A_MEM_VISIBILITY_CNES_Toulouse.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES1A_MEM_VISIBILITY_CNES_Toulouse.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES1A_MEM_VISIBILITY_CNES_Toulouse.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES1A_MEM_VISIBILITY_DGER_Station.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES1A_MEM_VISIBILITY_DGER_Station.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES1A_MEM_VISIBILITY_DGER_Station.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES1A_MEM_VISIBILITY_Gao_Airport.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES1A_MEM_VISIBILITY_Gao_Airport.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES1A_MEM_VISIBILITY_Gao_Airport.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES1A_MEM_VISIBILITY_Teheran.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES1A_MEM_VISIBILITY_Teheran.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES1A_MEM_VISIBILITY_Teheran.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES1A_MEM_VISIBILITY_Hainan_Naval.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES1A_MEM_VISIBILITY_CSUG.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES1A_MEM_VISIBILITY_CSUG.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES1A_MEM_VISIBILITY_CSUG.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES1A_MEM_VISIBILITY_AirLiquide_Global_Helium.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES1A_MEM_VISIBILITY_AirLiquide_Global_Helium.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES1A_MEM_VISIBILITY_AirLiquide_Global_Helium.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES1A_MEM_VISIBILITY_Univ_Ouv_Catalogne.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES1A_MEM_VISIBILITY_Univ_Ouv_Catalogne.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES1A_MEM_VISIBILITY_Univ_Ouv_Catalogne.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES1A_MEM_VISIBILITY_TEST.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES1A_MEM_VISIBILITY_TEST.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES1A_MEM_VISIBILITY_TEST.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES1B_MEM_VISIBILITY_Ariel_University.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES1B_MEM_VISIBILITY_Ariel_University.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES1B_MEM_VISIBILITY_Ariel_University.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES1B_MEM_VISIBILITY_UPF_Faa.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES1B_MEM_VISIBILITY_UPF_Faa.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES1B_MEM_VISIBILITY_UPF_Faa.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES1B_MEM_VISIBILITY_Rostov.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES1B_MEM_VISIBILITY_Rostov.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:10	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES1B_MEM_VISIBILITY_Rostov.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:11	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES1B_MEM_VISIBILITY_Bagdad.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:11	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES1B_MEM_VISIBILITY_Bagdad.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:11	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES1B_MEM_VISIBILITY_Bagdad.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:11	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES1B_MEM_VISIBILITY_Kabul.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:11	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES1B_MEM_VISIBILITY_Kabul.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:11	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES1B_MEM_VISIBILITY_Kabul.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:11	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES1B_MEM_VISIBILITY_Xinjiang_point.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:11	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES1B_MEM_VISIBILITY_Xinjiang_point.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:11	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES1B_MEM_VISIBILITY_Xinjiang_point.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:11	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES1B_MEM_VISIBILITY_Beijing.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:11	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES1B_MEM_VISIBILITY_Beijing.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:11	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES1B_MEM_VISIBILITY_Beijing.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:11	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES1B_MEM_VISIBILITY_Univ_Intl_Rabat.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:11	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES1B_MEM_VISIBILITY_Univ_Intl_Rabat.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:11	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES1B_MEM_VISIBILITY_Univ_Intl_Rabat.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:11	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES1B_MEM_VISIBILITY_IPEV_Bretagne.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:11	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES1B_MEM_VISIBILITY_IPEV_Bretagne.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:11	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES1B_MEM_VISIBILITY_IPEV_Bretagne.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:11	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES-NEO3_MEM_VISIBILITY_CNES_Toulouse.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:11	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES-NEO3_MEM_VISIBILITY_CNES_Toulouse.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:11	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES-NEO3_MEM_VISIBILITY_CNES_Toulouse.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:11	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES-NEO3_MEM_VISIBILITY_Bagdad.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:11	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES-NEO3_MEM_VISIBILITY_Bagdad.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:11	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES-NEO3_MEM_VISIBILITY_Bagdad.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:11	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES-NEO3_MEM_VISIBILITY_Kabul.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:11	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES-NEO3_MEM_VISIBILITY_Kabul.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:11	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES-NEO3_MEM_VISIBILITY_Kabul.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:11	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES-NEO3_MEM_VISIBILITY_Xinjiang_point.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:11	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES-NEO3_MEM_VISIBILITY_Xinjiang_point.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:11	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES-NEO3_MEM_VISIBILITY_Xinjiang_point.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:11	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES-NEO3_MEM_VISIBILITY_Beijing.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:11	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES-NEO3_MEM_VISIBILITY_Beijing.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:11	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES-NEO3_MEM_VISIBILITY_Beijing.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:11	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES-NEO3_MEM_VISIBILITY_AirLiquide_Global_Helium.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:11	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES-NEO3_MEM_VISIBILITY_AirLiquide_Global_Helium.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:11	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES-NEO3_MEM_VISIBILITY_AirLiquide_Global_Helium.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:11	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES-NEO3_MEM_VISIBILITY_Univ_Intl_Rabat.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:11	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES-NEO3_MEM_VISIBILITY_IPEV_Bretagne.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:11	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES-NEO3_MEM_VISIBILITY_IPEV_Bretagne.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:11	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES-NEO3_MEM_VISIBILITY_IPEV_Bretagne.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:11	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES-NEO3_MEM_VISIBILITY_Univ_Ouv_Catalogne.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:11	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES-NEO3_MEM_VISIBILITY_Univ_Ouv_Catalogne.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:11	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES-NEO3_MEM_VISIBILITY_Univ_Ouv_Catalogne.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:11	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_IPEV_Dumont_DUrville.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:11	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_IPEV_Dumont_DUrville.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:11	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_IPEV_Dumont_DUrville.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_Ariel_University.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_Ariel_University.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_Ariel_University.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_UPF_Faa.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_UPF_Faa.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_UPF_Faa.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_CNES_Toulouse.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_CNES_Toulouse.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_CNES_Toulouse.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_DGER_Station.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_DGER_Station.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_DGER_Station.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_Gao_Airport.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_Gao_Airport.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_Gao_Airport.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_Hainan_Naval.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_CSUG.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_CSUG.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_CSUG.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_AirLiquide_Global_Helium.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_AirLiquide_Global_Helium.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_AirLiquide_Global_Helium.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_Univ_Ouv_Catalogne.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_Univ_Ouv_Catalogne.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_Univ_Ouv_Catalogne.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_TEST.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_TEST.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_TEST.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Project file \"Data/BLUE1_MEM_VISIBILITY_Ariel_University.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/BLUE1_MEM_VISIBILITY_Ariel_University.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/BLUE1_MEM_VISIBILITY_Ariel_University.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Project file \"Data/BLUE1_MEM_VISIBILITY_UPF_Faa.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/BLUE1_MEM_VISIBILITY_UPF_Faa.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/BLUE1_MEM_VISIBILITY_UPF_Faa.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Project file \"Data/BLUE1_MEM_VISIBILITY_Rostov.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/BLUE1_MEM_VISIBILITY_Rostov.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/BLUE1_MEM_VISIBILITY_Rostov.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Project file \"Data/BLUE1_MEM_VISIBILITY_Kharkiv.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/BLUE1_MEM_VISIBILITY_Kharkiv.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/BLUE1_MEM_VISIBILITY_Kharkiv.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Project file \"Data/BLUE1_MEM_VISIBILITY_Moscow.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/BLUE1_MEM_VISIBILITY_Moscow.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/BLUE1_MEM_VISIBILITY_Moscow.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Project file \"Data/BLUE1_MEM_VISIBILITY_Lattakia.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/BLUE1_MEM_VISIBILITY_Lattakia.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/BLUE1_MEM_VISIBILITY_Lattakia.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Project file \"Data/BLUE1_MEM_VISIBILITY_Bagdad.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Project file \"Data/BLUE1_MEM_VISIBILITY_Baikonur.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/BLUE1_MEM_VISIBILITY_Baikonur.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/BLUE1_MEM_VISIBILITY_Baikonur.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Project file \"Data/BLUE1_MEM_VISIBILITY_Xinjiang_point.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Project file \"Data/BLUE1_MEM_VISIBILITY_Hainan_Naval.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/BLUE1_MEM_VISIBILITY_Hainan_Naval.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/BLUE1_MEM_VISIBILITY_Hainan_Naval.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Project file \"Data/BLUE1_MEM_VISIBILITY_CSUG.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Project file \"Data/BLUE1_MEM_VISIBILITY_AirLiquide_Global_Helium.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/BLUE1_MEM_VISIBILITY_AirLiquide_Global_Helium.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/BLUE1_MEM_VISIBILITY_AirLiquide_Global_Helium.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Project file \"Data/BLUE1_MEM_VISIBILITY_Univ_Intl_Rabat.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/BLUE1_MEM_VISIBILITY_Univ_Intl_Rabat.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/BLUE1_MEM_VISIBILITY_Univ_Intl_Rabat.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Project file \"Data/BLUE1_MEM_VISIBILITY_IPEV_Bretagne.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/BLUE1_MEM_VISIBILITY_IPEV_Bretagne.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/BLUE1_MEM_VISIBILITY_IPEV_Bretagne.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Project file \"Data/BLUE2_MEM_VISIBILITY_IPEV_Ny_Alesund.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/BLUE2_MEM_VISIBILITY_IPEV_Ny_Alesund.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/BLUE2_MEM_VISIBILITY_IPEV_Ny_Alesund.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Project file \"Data/BLUE2_MEM_VISIBILITY_IPEV_Dumont_DUrville.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/BLUE2_MEM_VISIBILITY_IPEV_Dumont_DUrville.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:12	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/BLUE2_MEM_VISIBILITY_IPEV_Dumont_DUrville.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:13	WARNING	Broker	[Timeline] Project file \"Data/BLUE2_MEM_VISIBILITY_IPEV_BA_Concordia.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:13	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/BLUE2_MEM_VISIBILITY_IPEV_BA_Concordia.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:13	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/BLUE2_MEM_VISIBILITY_IPEV_BA_Concordia.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:13	WARNING	Broker	[Timeline] Project file \"Data/BLUE2_MEM_VISIBILITY_Ariel_University.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:13	WARNING	Broker	[Timeline] Project file \"Data/BLUE2_MEM_VISIBILITY_UPF_Faa.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:13	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/BLUE2_MEM_VISIBILITY_UPF_Faa.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:13	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/BLUE2_MEM_VISIBILITY_UPF_Faa.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:13	WARNING	Broker	[Timeline] Project file \"Data/BLUE2_MEM_VISIBILITY_CNES_Toulouse.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:13	WARNING	Broker	[Timeline] Project file \"Data/BLUE2_MEM_VISIBILITY_NPI_Tromso.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:13	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/BLUE2_MEM_VISIBILITY_NPI_Tromso.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:13	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/BLUE2_MEM_VISIBILITY_NPI_Tromso.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:13	WARNING	Broker	[Timeline] Project file \"Data/BLUE2_MEM_VISIBILITY_DGER_Station.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:13	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/BLUE2_MEM_VISIBILITY_DGER_Station.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:13	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/BLUE2_MEM_VISIBILITY_DGER_Station.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:13	WARNING	Broker	[Timeline] Project file \"Data/BLUE2_MEM_VISIBILITY_Kharkiv.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:13	WARNING	Broker	[Timeline] Project file \"Data/BLUE2_MEM_VISIBILITY_Bagdad.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:13	WARNING	Broker	[Timeline] Project file \"Data/BLUE2_MEM_VISIBILITY_Kabul.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:13	WARNING	Broker	[Timeline] Project file \"Data/BLUE2_MEM_VISIBILITY_Hainan_Naval.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:13	WARNING	Broker	[Timeline] Project file \"Data/BLUE2_MEM_VISIBILITY_CSUG.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:13	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/BLUE2_MEM_VISIBILITY_CSUG.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:13	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/BLUE2_MEM_VISIBILITY_CSUG.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:13	WARNING	Broker	[Timeline] Project file \"Data/BLUE2_MEM_VISIBILITY_AirLiquide_Global_Helium.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:13	WARNING	Broker	[Timeline] Project file \"Data/BLUE2_MEM_VISIBILITY_Univ_Intl_Rabat.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:13	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/BLUE2_MEM_VISIBILITY_Univ_Intl_Rabat.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:13	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/BLUE2_MEM_VISIBILITY_Univ_Intl_Rabat.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:13	WARNING	Broker	[Timeline] Project file \"Data/BLUE2_MEM_VISIBILITY_Univ_Ouv_Catalogne.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:13	WARNING	Broker	[Timeline] Project file \"Data/BLUE2_MEM_VISIBILITY_TEST.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:13	WARNING	Broker	[Timeline] Project file \"Data/RED1_MEM_VISIBILITY_Ariel_University.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:13	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/RED1_MEM_VISIBILITY_Ariel_University.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:13	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/RED1_MEM_VISIBILITY_Ariel_University.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:13	WARNING	Broker	[Timeline] Project file \"Data/RED1_MEM_VISIBILITY_Hainan_Naval.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Project file \"Data/RED2_MEM_VISIBILITY_IPEV_Ny_Alesund.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/RED2_MEM_VISIBILITY_IPEV_Ny_Alesund.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/RED2_MEM_VISIBILITY_IPEV_Ny_Alesund.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Project file \"Data/RED2_MEM_VISIBILITY_IPEV_Dumont_DUrville.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/RED2_MEM_VISIBILITY_IPEV_Dumont_DUrville.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/RED2_MEM_VISIBILITY_IPEV_Dumont_DUrville.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Project file \"Data/RED2_MEM_VISIBILITY_IPEV_BA_Concordia.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/RED2_MEM_VISIBILITY_IPEV_BA_Concordia.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/RED2_MEM_VISIBILITY_IPEV_BA_Concordia.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Project file \"Data/RED2_MEM_VISIBILITY_Ariel_University.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/RED2_MEM_VISIBILITY_Ariel_University.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/RED2_MEM_VISIBILITY_Ariel_University.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Project file \"Data/RED2_MEM_VISIBILITY_CNES_Toulouse.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/RED2_MEM_VISIBILITY_CNES_Toulouse.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/RED2_MEM_VISIBILITY_CNES_Toulouse.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Project file \"Data/RED2_MEM_VISIBILITY_NPI_Tromso.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/RED2_MEM_VISIBILITY_NPI_Tromso.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/RED2_MEM_VISIBILITY_NPI_Tromso.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Project file \"Data/RED2_MEM_VISIBILITY_DGER_Station.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/RED2_MEM_VISIBILITY_DGER_Station.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/RED2_MEM_VISIBILITY_DGER_Station.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Project file \"Data/RED2_MEM_VISIBILITY_Rostov.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/RED2_MEM_VISIBILITY_Rostov.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/RED2_MEM_VISIBILITY_Rostov.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Project file \"Data/RED2_MEM_VISIBILITY_Kharkiv.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/RED2_MEM_VISIBILITY_Kharkiv.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/RED2_MEM_VISIBILITY_Kharkiv.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Project file \"Data/RED2_MEM_VISIBILITY_Moscow.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/RED2_MEM_VISIBILITY_Moscow.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/RED2_MEM_VISIBILITY_Moscow.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Project file \"Data/RED2_MEM_VISIBILITY_Lattakia.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/RED2_MEM_VISIBILITY_Lattakia.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/RED2_MEM_VISIBILITY_Lattakia.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Project file \"Data/RED2_MEM_VISIBILITY_Bagdad.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/RED2_MEM_VISIBILITY_Bagdad.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/RED2_MEM_VISIBILITY_Bagdad.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Project file \"Data/RED2_MEM_VISIBILITY_Teheran.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/RED2_MEM_VISIBILITY_Teheran.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/RED2_MEM_VISIBILITY_Teheran.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Project file \"Data/RED2_MEM_VISIBILITY_Kabul.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/RED2_MEM_VISIBILITY_Kabul.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/RED2_MEM_VISIBILITY_Kabul.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Project file \"Data/RED2_MEM_VISIBILITY_Baikonur.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/RED2_MEM_VISIBILITY_Baikonur.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/RED2_MEM_VISIBILITY_Baikonur.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Project file \"Data/RED2_MEM_VISIBILITY_Xinjiang_point.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/RED2_MEM_VISIBILITY_Xinjiang_point.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/RED2_MEM_VISIBILITY_Xinjiang_point.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Project file \"Data/RED2_MEM_VISIBILITY_Beijing.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/RED2_MEM_VISIBILITY_Beijing.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/RED2_MEM_VISIBILITY_Beijing.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Project file \"Data/RED2_MEM_VISIBILITY_CSUG.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/RED2_MEM_VISIBILITY_CSUG.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/RED2_MEM_VISIBILITY_CSUG.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Project file \"Data/RED2_MEM_VISIBILITY_PuertollanoSR.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/RED2_MEM_VISIBILITY_PuertollanoSR.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/RED2_MEM_VISIBILITY_PuertollanoSR.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Project file \"Data/RED2_MEM_VISIBILITY_MilanSR.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/RED2_MEM_VISIBILITY_MilanSR.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/RED2_MEM_VISIBILITY_MilanSR.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Project file \"Data/RED2_MEM_VISIBILITY_Univ_Intl_Rabat.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/RED2_MEM_VISIBILITY_Univ_Intl_Rabat.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/RED2_MEM_VISIBILITY_Univ_Intl_Rabat.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Project file \"Data/RED2_MEM_VISIBILITY_IPEV_Bretagne.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/RED2_MEM_VISIBILITY_IPEV_Bretagne.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/RED2_MEM_VISIBILITY_IPEV_Bretagne.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Project file \"Data/RED2_MEM_VISIBILITY_Univ_Ouv_Catalogne.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/RED2_MEM_VISIBILITY_Univ_Ouv_Catalogne.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/RED2_MEM_VISIBILITY_Univ_Ouv_Catalogne.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Project file \"Data/RED2_MEM_VISIBILITY_TEST.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/RED2_MEM_VISIBILITY_TEST.TXT\": unexpected end of file (line 17)
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/RED2_MEM_VISIBILITY_TEST.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:50:14	WARNING	Broker	[Timeline] Timeline updated.
+2023-04-12T09:50:14	INFO	Broker	[Celestia Launcher] (LEGACY mode)
+2023-04-12T09:50:14	INFO	Broker	> Program: C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/launcherCelestia.exe
+2023-04-12T09:50:14	INFO	Broker	> Parameters: //192.168.192.200/files/default_Sat/default_Sat.vts 0
+2023-04-12T09:50:14	INFO	Broker	[SurfaceView Launcher] (LEGACY mode)
+2023-04-12T09:50:14	INFO	Broker	> Program: C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/SurfaceView/bin/launcherSurfaceView.exe
+2023-04-12T09:50:14	INFO	Broker	> Parameters: //192.168.192.200/files/default_Sat/default_Sat.vts 1
+2023-04-12T09:50:15	INFO	Broker	[PrestoPlot Launcher] (LEGACY mode)
+2023-04-12T09:50:15	INFO	Broker	> Program: C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/PrestoPlot/bin/launcherPrestoPlot.exe
+2023-04-12T09:50:15	INFO	Broker	> Parameters: //192.168.192.200/files/default_Sat/default_Sat.vts 2
+2023-04-12T09:50:15	TRACE	LauncherSurfaceView	1 //192.168.192.200/files/default_Sat/default_Sat.vts 1 --mode surface --closeondisconnected
+2023-04-12T09:50:20	WARNING	LauncherCelestia	"Converting into .color file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/PLEIADES-NEO4_COLOR.TXT'""Converting into .q file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/PLEIADES-NEO3_AEM_ATTITUDE.TXT'""Direct copy from 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Models/solar2C.bmp' into 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/extras_0/VTS/textures/medres/solar2C.bmp'""Converting into .xyz file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/Sat_OEM_POSITION.TXT'"
+2023-04-12T09:50:20	WARNING	LauncherCelestia	"Converting into .color file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/Sat_COLOR.TXT'""Direct copy from 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Models/solar2C.png' into 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/extras_0/VTS/textures/medres/solar2C.png'""Converting into .color file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/BLUE2_COLOR.TXT'""Converting into .q file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/BLUE1_AEM_ATTITUDE.TXT'"
+2023-04-12T09:50:21	WARNING	LauncherCelestia	"Converting into .color file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/PLEIADES1B_COLOR.TXT'"
+2023-04-12T09:50:21	WARNING	LauncherCelestia	"Converting into .q file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/PLEIADES-NEO4_AEM_ATTITUDE.TXT'"
+2023-04-12T09:50:21	WARNING	LauncherCelestia	"Converting into .q file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/RED2_AEM_ATTITUDE.TXT'"
+2023-04-12T09:50:21	WARNING	LauncherCelestia	"Direct copy from 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Models/rosetta_.bmp' into 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/extras_0/VTS/textures/medres/rosetta_.bmp'"
+2023-04-12T09:50:21	WARNING	LauncherCelestia	"Direct copy from 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Models/rosetta1.bmp' into 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/extras_0/VTS/textures/medres/rosetta1.bmp'"
+2023-04-12T09:50:21	WARNING	LauncherCelestia	"Converting into .color file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/RED2_COLOR.TXT'"
+2023-04-12T09:50:21	WARNING	LauncherCelestia	"Converting into .color file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/PLEIADES1A_COLOR.TXT'"
+2023-04-12T09:50:21	WARNING	LauncherCelestia	"Converting into .q file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/Sat_AEM_ATTITUDE.TXT'"
+2023-04-12T09:50:21	WARNING	LauncherCelestia	"Direct copy from 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Models/rosetta-orbiterOnly.3ds' into 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/extras_0/VTS/models/rosetta-orbiterOnly.3ds'"
+2023-04-12T09:50:21	WARNING	LauncherCelestia	"Converting into .q file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/PLEIADES1A_AEM_ATTITUDE.TXT'"
+2023-04-12T09:50:21	TRACE	LauncherPrestoPlot	2 -commandfile "C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/PrestoPlot/bin/cmdLineVTS_8888_2.pcf"
+2023-04-12T09:50:21	WARNING	LauncherCelestia	"Converting into .xyz file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/BLUE2_OEM_POSITION.TXT'"
+2023-04-12T09:50:21	WARNING	LauncherCelestia	"Converting into .xyz file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/PLEIADES-NEO4_OEM_POSITION.TXT'"
+2023-04-12T09:50:21	WARNING	LauncherCelestia	"Converting into .color file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/PLEIADES-NEO3_COLOR.TXT'"
+2023-04-12T09:50:21	WARNING	LauncherCelestia	"Converting into .color file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/RED1_COLOR.TXT'"
+2023-04-12T09:50:21	WARNING	LauncherCelestia	"Converting into .xyz file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/RED2_OEM_POSITION.TXT'"
+2023-04-12T09:50:21	WARNING	LauncherCelestia	"Converting into .color file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/Sat_COLOR.TXT'"
+2023-04-12T09:50:21	WARNING	LauncherCelestia	"Converting into .color file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/BLUE1_COLOR.TXT'"
+2023-04-12T09:50:21	WARNING	LauncherCelestia	"Direct copy from 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Models/solar2D.bmp' into 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/extras_0/VTS/textures/medres/solar2D.bmp'"
+2023-04-12T09:50:21	WARNING	LauncherCelestia	"Direct copy from 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Models/goldfoil.bmp' into 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/extras_0/VTS/textures/medres/goldfoil.bmp'"
+2023-04-12T09:50:21	WARNING	LauncherCelestia	"Converting into .q file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/RED1_AEM_ATTITUDE.TXT'"
+2023-04-12T09:50:21	WARNING	LauncherCelestia	"Converting into .xyz file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/PLEIADES1B_OEM_POSITION.TXT'"
+2023-04-12T09:50:21	WARNING	LauncherCelestia	"Converting into .color file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/PLEIADES-NEO4_COLOR.TXT'"
+2023-04-12T09:50:21	WARNING	LauncherCelestia	"Converting into .color file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/PLEIADES-NEO3_COLOR.TXT'"
+2023-04-12T09:50:21	WARNING	LauncherCelestia	"Converting into .q file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/PLEIADES1B_AEM_ATTITUDE.TXT'"
+2023-04-12T09:50:21	WARNING	LauncherCelestia	"Converting into .xyz file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/BLUE1_OEM_POSITION.TXT'"
+2023-04-12T09:50:21	WARNING	LauncherCelestia	"Direct copy from 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Models/solar1.bmp' into 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/extras_0/VTS/textures/medres/solar1.bmp'"
+2023-04-12T09:50:21	WARNING	LauncherCelestia	"Converting into .xyz file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/RED1_OEM_POSITION.TXT'"
+2023-04-12T09:50:21	WARNING	LauncherCelestia	"Converting into .color file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/BLUE2_COLOR.TXT'"
+2023-04-12T09:50:21	WARNING	LauncherCelestia	"Converting into .color file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/RED1_COLOR.TXT'"
+2023-04-12T09:50:21	WARNING	LauncherCelestia	"Converting into .xyz file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/PLEIADES-NEO3_OEM_POSITION.TXT'"
+2023-04-12T09:50:22	WARNING	LauncherCelestia	"Direct copy from 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Models/solar2A.bmp' into 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/extras_0/VTS/textures/medres/solar2A.bmp'"
+2023-04-12T09:50:22	WARNING	LauncherCelestia	"Direct copy from 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Models/solar1.png' into 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/extras_0/VTS/textures/medres/solar1.png'"
+2023-04-12T09:50:22	WARNING	LauncherCelestia	"Direct copy from 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Models/rosetta1.png' into 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/extras_0/VTS/textures/medres/rosetta1.png'"
+2023-04-12T09:50:22	WARNING	LauncherCelestia	"Direct copy from 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Models/solar2D.png' into 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/extras_0/VTS/textures/medres/solar2D.png'"
+2023-04-12T09:50:22	WARNING	LauncherCelestia	"Converting into .color file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/PLEIADES1B_COLOR.TXT'"
+2023-04-12T09:50:22	WARNING	LauncherCelestia	"Direct copy from 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Models/solar2B.bmp' into 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/extras_0/VTS/textures/medres/solar2B.bmp'"
+2023-04-12T09:50:22	WARNING	LauncherCelestia	"Direct copy from 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Models/solar2A.png' into 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/extras_0/VTS/textures/medres/solar2A.png'"
+2023-04-12T09:50:22	WARNING	LauncherCelestia	"Converting into .color file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/BLUE1_COLOR.TXT'""Direct copy from 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Models/philae.bmp' into 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/extras_0/VTS/textures/medres/philae.bmp'"
+2023-04-12T09:50:22	WARNING	LauncherCelestia	"Converting into .color file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/PLEIADES1A_COLOR.TXT'"
+2023-04-12T09:50:22	WARNING	LauncherCelestia	"Converting into .color file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/RED2_COLOR.TXT'"
+2023-04-12T09:50:22	WARNING	LauncherCelestia	"Converting into .q file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/BLUE2_AEM_ATTITUDE.TXT'"
+2023-04-12T09:50:22	WARNING	LauncherCelestia	"Direct copy from 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Models/solar2B.png' into 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/extras_0/VTS/textures/medres/solar2B.png'"
+2023-04-12T09:50:22	WARNING	LauncherCelestia	"Converting into .xyz file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/PLEIADES1A_OEM_POSITION.TXT'"
+2023-04-12T09:50:22	TRACE	LauncherCelestia	0 --title "#0 - Celestia" --dir "C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin" --conf celestia.cfg --url "C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/extras_0/VTS/default_Sat.celx" --extrasdir "C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/extras_0" --aasamples 1
+2023-04-12T09:50:22	INFO	Broker	[Celestia Client]
+2023-04-12T09:50:22	INFO	Broker	> Program: C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/celestia.exe
+2023-04-12T09:50:22	INFO	Broker	> Arguments: --title #0 - Celestia --dir C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin --conf celestia.cfg --url C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/extras_0/VTS/default_Sat.celx --extrasdir C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/extras_0 --aasamples 1
+2023-04-12T09:50:22	INFO	Broker	[SurfaceView Client]
+2023-04-12T09:50:22	INFO	Broker	> Program: C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/SurfaceView/bin/surfaceview.exe
+2023-04-12T09:50:22	INFO	Broker	> Arguments: //192.168.192.200/files/default_Sat/default_Sat.vts 1 --mode surface --closeondisconnected
+2023-04-12T09:50:22	INFO	Broker	[PrestoPlot Client]
+2023-04-12T09:50:22	INFO	Broker	> Program: C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/PrestoPlot/bin/prestoplot.exe
+2023-04-12T09:50:22	INFO	Broker	> Arguments: -commandfile C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/PrestoPlot/bin/cmdLineVTS_8888_2.pcf
+2023-04-12T09:50:24	WARNING	Celestia (#0)	Loading image from file splash.png
+2023-04-12T09:50:24	WARNING	Celestia (#0)	Error opening image file splash.png
+2023-04-12T09:50:24	WARNING	Celestia (#0)	106747 stars in binary database
+2023-04-12T09:50:24	WARNING	Celestia (#0)	Loaded cross index data/hdxindex.dat
+2023-04-12T09:50:24	WARNING	Celestia (#0)	Loaded cross index data/saoxindex.dat
+2023-04-12T09:50:24	WARNING	Celestia (#0)	Total star count: 107626
+2023-04-12T09:50:24	TRACE	Celestia (#0)	Error getting joystick caps.
+2023-04-12T09:50:24	TRACE	Celestia (#0)	Couldn't load localized resources: locale\res_LANGUAGE.dll
+2023-04-12T09:50:25	WARNING	SurfaceView (#1)	libpng warning: iCCP: known incorrect sRGB profile
+2023-04-12T09:50:25	WARNING	SurfaceView (#1)	libpng warning: iCCP: known incorrect sRGB profile
+2023-04-12T09:50:25	WARNING	SurfaceView (#1)	"Warning: OmniView doesn't handle default ephemeris mode, switching to catalog mode for body: Earth."
+2023-04-12T09:50:26	WARNING	Celestia (#0)	Loaded 11087 deep space objects
+2023-04-12T09:50:26	WARNING	Celestia (#0)	Loading solar system catalog: extras/BMNG/BMNG.ssc
+2023-04-12T09:50:26	WARNING	Celestia (#0)	Loading solar system catalog: extras/JMII DDS/JMII DDS.ssc
+2023-04-12T09:50:27	WARNING	Celestia (#0)	Loading solar system catalog: extras/JohnVV/EarthClouds.ssc
+2023-04-12T09:50:27	WARNING	Celestia (#0)	Loading solar system catalog: C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/extras_0/VTS/default_Sat.ssc
+2023-04-12T09:50:28	TRACE	Celestia (#0)	Initializing ARB vertex programs . . .
+2023-04-12T09:50:28	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/diffuse_arb.vp
+2023-04-12T09:50:28	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/specular_arb.vp
+2023-04-12T09:50:28	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/haze_arb.vp
+2023-04-12T09:50:28	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/bumpdiffuse_arb.vp
+2023-04-12T09:50:28	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/bumphaze_arb.vp
+2023-04-12T09:50:28	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/shadowtex_arb.vp
+2023-04-12T09:50:28	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/diffuse_texoff_arb.vp
+2023-04-12T09:50:28	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/rings_a
+2023-04-12T09:50:28	TRACE	Celestia (#0)	rb.vp
+2023-04-12T09:50:28	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/ringshadow_arb.vp
+2023-04-12T09:50:28	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/night_arb.vp
+2023-04-12T09:50:28	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/glossmap_arb.vp
+2023-04-12T09:50:28	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/diffuse2_arb.vp
+2023-04-12T09:50:28	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/haze2_arb.vp
+2023-04-12T09:50:28	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/diffuse_texoff2_arb.vp
+2023-04-12T09:50:28	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/specular2_arb.vp
+2023-04-12T09:50:29	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/night2_arb.vp
+2023-04-12T09:50:29	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/star_arb.vp
+2023-04-12T09:50:29	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/multishadow_arb.vp
+2023-04-12T09:50:29	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/texphong_arb.vp
+2023-04-12T09:50:29	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/texphong_alpha_arb.vp
+2023-04-12T09:50:29	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/ell_galaxy_arb.vp
+2023-04-12T09:50:29	TRACE	Celestia (#0)	All ARB vertex programs loaded successfully.
+2023-04-12T09:50:29	TRACE	Celestia (#0)	render path: 8
+2023-04-12T09:50:29	WARNING	Celestia (#0)	Loading image from file textures/flare.jpg
+2023-04-12T09:50:29	WARNING	Celestia (#0)	Creating ordinary texture: 256x256
+2023-04-12T09:50:29	WARNING	Celestia (#0)	Loading...
+2023-04-12T09:50:29	WARNING	Celestia (#0)	Loading model: models/emeAxes.3ds
+2023-04-12T09:50:29	WARNING	Celestia (#0)	Model statistics: 21240 vertices, 7080 primitives, 7 materials (7 unique)
+2023-04-12T09:50:29	WARNING	Celestia (#0)	Loading model: models/bodyAxes.3ds
+2023-04-12T09:50:29	WARNING	Celestia (#0)	Model statistics: 10506 vertices, 3502 primitives, 7 materials (7 unique)
+2023-04-12T09:50:29	WARNING	Celestia (#0)	Loading image from file textures/medres/gs
+2023-04-12T09:50:29	WARNING	Celestia (#0)	tar.jpg
+2023-04-12T09:50:29	WARNING	Celestia (#0)	Creating ordinary texture: 512x256
+2023-04-12T09:50:30	WARNING	Celestia (#0)	Connected !
+2023-04-12T09:50:30	WARNING	Celestia (#0)	Connected to localhost(8888), sent bytes: 31.0
+2023-04-12T09:50:30	WARNING	Celestia (#0)	Unknown command of type PROP (SensorGeometrySectionCount)
+2023-04-12T09:50:30	WARNING	Celestia (#0)	Unknown command of type PROP (SensorSwathResolution)
+2023-04-12T09:50:30	WARNING	Celestia (#0)	Unknown command of type PROP (AntialiasingSamples)
+2023-04-12T09:50:30	WARNING	Celestia (#0)	Unknown command of type PROP (ForceLegacy3dsReader)
+2023-04-12T09:50:30	WARNING	Celestia (#0)	Loading model: models/ref_model.3ds
+2023-04-12T09:50:30	WARNING	Celestia (#0)	   Model statistics: 36 vertices, 12 primitives, 1 materials (1 unique)
+2023-04-12T09:50:30	WARNING	Celestia (#0)	Loading model: C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/extras_0/VTS/models/rosetta-orbiterOnly.3ds
+2023-04-12T09:50:30	WARNING	Celestia (#0)	   Model statistics: 52212 vertices, 17404 primitives, 8 materials (8 unique)
+2023-04-12T09:50:30	WARNING	Celestia (#0)	Loading model: models/qswAxes.3ds
+2023-04-12T09:50:30	WARNING	Celestia (#0)	Model statistics: 56442 vertices, 18814 primitives, 7 materials (7 unique)
+2023-04-12T09:50:30	WARNING	Celestia (#0)	Loading model: models/tnwAxes.3ds
+2023-04-12T09:50:30	WARNING	Celestia (#0)	Model statistics: 51732 vertices, 17244 primitives, 7 materials (7 unique)
+2023-04-12T09:50:30	WARNING	Celestia (#0)	Loading model: models/satAxes.3ds
+2023-04-12T09:50:30	WARNING	Celestia (#0)	Model statistics: 9954 vertices, 3318 primitives, 7 materials (7 unique)
+2023-04-12T09:50:30	WARNING	Celestia (#0)	Loading model: models/vector-yellow-sun.3ds
+2023-04-12T09:50:30	WARNING	Celestia (#0)	Model statistics: 7482 vertices, 2494 primitives, 2 materials (2 unique)
+2023-04-12T09:50:30	WARNING	Celestia (#0)	Loading model: models/vector-magenta-body.3ds
+2023-04-12T09:50:30	WARNING	Celestia (#0)	Model statistics: 9054 vertices, 3018 primitives, 2 materials (2 unique)
+2023-04-12T09:50:30	WARNING	Celestia (#0)	Loading model: models/vector-white.3ds
+2023-04-12T09:50:30	WARNING	Celestia (#0)	Model statistics: 6720 vertices, 2240 primitives, 2 materials (2 unique)
+2023-04-12T09:50:31	WARNING	Celestia (#0)	Unknown command of type TIME (TimeModeChangedTo)
+2023-04-12T09:50:31	WARNING	Celestia (#0)	Visualization ready!
+2023-04-12T09:50:31	WARNING	Celestia (#0)	Loading image from file extras/JMII DDS/textures/hires/JMII DDS/level0/tx_1_0.dds
+2023-04-12T09:50:31	WARNING	Celestia (#0)	Loading image from file extras/JMII DDS/textures/hires/JMII DDS/level0/tx_0_0.dds
+2023-04-12T09:51:28	WARNING	Broker	End of Celestia (#0).
+2023-04-12T09:51:28	WARNING	Broker	End of SurfaceView (#1).
+2023-04-12T09:51:28	WARNING	Broker	End of PrestoPlot (#2).
+2023-04-12T09:51:29	INFO	Broker	End of Broker.
+2023-04-12T09:52:43	INFO	Broker	Launch of Broker
+2023-04-12T09:52:47	INFO	Broker	Project loaded from revision 8200 by XmlReader v3.4
+2023-04-12T09:52:51	WARNING	Broker	Warning: Insufficient data for the defined time interval. Consider using the compute dates button.
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Project file \"Data/Sat_MEM_VISIBILITY_Ariel_University.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/Sat_MEM_VISIBILITY_Ariel_University.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/Sat_MEM_VISIBILITY_Ariel_University.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Project file \"Data/Sat_MEM_VISIBILITY_UPF_Faa.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/Sat_MEM_VISIBILITY_UPF_Faa.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/Sat_MEM_VISIBILITY_UPF_Faa.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Project file \"Data/Sat_MEM_VISIBILITY_CNES_Toulouse.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/Sat_MEM_VISIBILITY_CNES_Toulouse.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/Sat_MEM_VISIBILITY_CNES_Toulouse.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Project file \"Data/Sat_MEM_VISIBILITY_Lattakia.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/Sat_MEM_VISIBILITY_Lattakia.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/Sat_MEM_VISIBILITY_Lattakia.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Project file \"Data/Sat_MEM_VISIBILITY_Teheran.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Project file \"Data/Sat_MEM_VISIBILITY_Beijing.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/Sat_MEM_VISIBILITY_Beijing.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/Sat_MEM_VISIBILITY_Beijing.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Project file \"Data/Sat_MEM_VISIBILITY_Hainan_Naval.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/Sat_MEM_VISIBILITY_Hainan_Naval.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/Sat_MEM_VISIBILITY_Hainan_Naval.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Project file \"Data/Sat_MEM_VISIBILITY_AirLiquide_Global_Helium.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/Sat_MEM_VISIBILITY_AirLiquide_Global_Helium.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/Sat_MEM_VISIBILITY_AirLiquide_Global_Helium.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Project file \"Data/Sat_MEM_VISIBILITY_Univ_Intl_Rabat.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/Sat_MEM_VISIBILITY_Univ_Intl_Rabat.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/Sat_MEM_VISIBILITY_Univ_Intl_Rabat.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Project file \"Data/Sat_MEM_VISIBILITY_IPEV_Bretagne.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/Sat_MEM_VISIBILITY_IPEV_Bretagne.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/Sat_MEM_VISIBILITY_IPEV_Bretagne.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Project file \"Data/Sat_MEM_VISIBILITY_Univ_Ouv_Catalogne.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/Sat_MEM_VISIBILITY_Univ_Ouv_Catalogne.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/Sat_MEM_VISIBILITY_Univ_Ouv_Catalogne.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES1A_MEM_VISIBILITY_IPEV_Dumont_DUrville.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES1A_MEM_VISIBILITY_IPEV_Dumont_DUrville.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES1A_MEM_VISIBILITY_IPEV_Dumont_DUrville.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES1A_MEM_VISIBILITY_UPF_Faa.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES1A_MEM_VISIBILITY_UPF_Faa.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES1A_MEM_VISIBILITY_UPF_Faa.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES1A_MEM_VISIBILITY_CNES_Toulouse.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES1A_MEM_VISIBILITY_CNES_Toulouse.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES1A_MEM_VISIBILITY_CNES_Toulouse.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES1A_MEM_VISIBILITY_DGER_Station.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES1A_MEM_VISIBILITY_DGER_Station.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES1A_MEM_VISIBILITY_DGER_Station.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES1A_MEM_VISIBILITY_Gao_Airport.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES1A_MEM_VISIBILITY_Gao_Airport.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES1A_MEM_VISIBILITY_Gao_Airport.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES1A_MEM_VISIBILITY_Teheran.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES1A_MEM_VISIBILITY_Teheran.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES1A_MEM_VISIBILITY_Teheran.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES1A_MEM_VISIBILITY_Hainan_Naval.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES1A_MEM_VISIBILITY_CSUG.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES1A_MEM_VISIBILITY_CSUG.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES1A_MEM_VISIBILITY_CSUG.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES1A_MEM_VISIBILITY_AirLiquide_Global_Helium.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES1A_MEM_VISIBILITY_AirLiquide_Global_Helium.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:53	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES1A_MEM_VISIBILITY_AirLiquide_Global_Helium.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES1A_MEM_VISIBILITY_Univ_Ouv_Catalogne.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES1A_MEM_VISIBILITY_Univ_Ouv_Catalogne.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES1A_MEM_VISIBILITY_Univ_Ouv_Catalogne.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES1A_MEM_VISIBILITY_TEST.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES1A_MEM_VISIBILITY_TEST.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES1A_MEM_VISIBILITY_TEST.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES1B_MEM_VISIBILITY_Ariel_University.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES1B_MEM_VISIBILITY_Ariel_University.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES1B_MEM_VISIBILITY_Ariel_University.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES1B_MEM_VISIBILITY_UPF_Faa.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES1B_MEM_VISIBILITY_UPF_Faa.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES1B_MEM_VISIBILITY_UPF_Faa.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES1B_MEM_VISIBILITY_Rostov.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES1B_MEM_VISIBILITY_Rostov.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES1B_MEM_VISIBILITY_Rostov.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES1B_MEM_VISIBILITY_Bagdad.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES1B_MEM_VISIBILITY_Bagdad.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES1B_MEM_VISIBILITY_Bagdad.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES1B_MEM_VISIBILITY_Kabul.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES1B_MEM_VISIBILITY_Kabul.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES1B_MEM_VISIBILITY_Kabul.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES1B_MEM_VISIBILITY_Xinjiang_point.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES1B_MEM_VISIBILITY_Xinjiang_point.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES1B_MEM_VISIBILITY_Xinjiang_point.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES1B_MEM_VISIBILITY_Beijing.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES1B_MEM_VISIBILITY_Beijing.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES1B_MEM_VISIBILITY_Beijing.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES1B_MEM_VISIBILITY_Univ_Intl_Rabat.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES1B_MEM_VISIBILITY_Univ_Intl_Rabat.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES1B_MEM_VISIBILITY_Univ_Intl_Rabat.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES1B_MEM_VISIBILITY_IPEV_Bretagne.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES1B_MEM_VISIBILITY_IPEV_Bretagne.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES1B_MEM_VISIBILITY_IPEV_Bretagne.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES-NEO3_MEM_VISIBILITY_CNES_Toulouse.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES-NEO3_MEM_VISIBILITY_CNES_Toulouse.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES-NEO3_MEM_VISIBILITY_CNES_Toulouse.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES-NEO3_MEM_VISIBILITY_Bagdad.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES-NEO3_MEM_VISIBILITY_Bagdad.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES-NEO3_MEM_VISIBILITY_Bagdad.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES-NEO3_MEM_VISIBILITY_Kabul.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES-NEO3_MEM_VISIBILITY_Kabul.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES-NEO3_MEM_VISIBILITY_Kabul.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES-NEO3_MEM_VISIBILITY_Xinjiang_point.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES-NEO3_MEM_VISIBILITY_Xinjiang_point.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES-NEO3_MEM_VISIBILITY_Xinjiang_point.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES-NEO3_MEM_VISIBILITY_Beijing.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES-NEO3_MEM_VISIBILITY_Beijing.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES-NEO3_MEM_VISIBILITY_Beijing.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES-NEO3_MEM_VISIBILITY_AirLiquide_Global_Helium.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES-NEO3_MEM_VISIBILITY_AirLiquide_Global_Helium.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES-NEO3_MEM_VISIBILITY_AirLiquide_Global_Helium.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES-NEO3_MEM_VISIBILITY_Univ_Intl_Rabat.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES-NEO3_MEM_VISIBILITY_IPEV_Bretagne.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES-NEO3_MEM_VISIBILITY_IPEV_Bretagne.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES-NEO3_MEM_VISIBILITY_IPEV_Bretagne.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES-NEO3_MEM_VISIBILITY_Univ_Ouv_Catalogne.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES-NEO3_MEM_VISIBILITY_Univ_Ouv_Catalogne.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES-NEO3_MEM_VISIBILITY_Univ_Ouv_Catalogne.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_IPEV_Dumont_DUrville.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_IPEV_Dumont_DUrville.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_IPEV_Dumont_DUrville.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_Ariel_University.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_Ariel_University.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_Ariel_University.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_UPF_Faa.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_UPF_Faa.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_UPF_Faa.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:54	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_CNES_Toulouse.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_CNES_Toulouse.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_CNES_Toulouse.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_DGER_Station.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_DGER_Station.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_DGER_Station.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_Gao_Airport.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_Gao_Airport.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_Gao_Airport.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_Hainan_Naval.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_CSUG.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_CSUG.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_CSUG.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_AirLiquide_Global_Helium.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_AirLiquide_Global_Helium.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_AirLiquide_Global_Helium.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_Univ_Ouv_Catalogne.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_Univ_Ouv_Catalogne.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_Univ_Ouv_Catalogne.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Project file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_TEST.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_TEST.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/PLEIADES-NEO4_MEM_VISIBILITY_TEST.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Project file \"Data/BLUE1_MEM_VISIBILITY_Ariel_University.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/BLUE1_MEM_VISIBILITY_Ariel_University.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/BLUE1_MEM_VISIBILITY_Ariel_University.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Project file \"Data/BLUE1_MEM_VISIBILITY_UPF_Faa.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/BLUE1_MEM_VISIBILITY_UPF_Faa.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/BLUE1_MEM_VISIBILITY_UPF_Faa.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Project file \"Data/BLUE1_MEM_VISIBILITY_Rostov.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/BLUE1_MEM_VISIBILITY_Rostov.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/BLUE1_MEM_VISIBILITY_Rostov.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Project file \"Data/BLUE1_MEM_VISIBILITY_Kharkiv.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/BLUE1_MEM_VISIBILITY_Kharkiv.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/BLUE1_MEM_VISIBILITY_Kharkiv.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Project file \"Data/BLUE1_MEM_VISIBILITY_Moscow.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/BLUE1_MEM_VISIBILITY_Moscow.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/BLUE1_MEM_VISIBILITY_Moscow.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Project file \"Data/BLUE1_MEM_VISIBILITY_Lattakia.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/BLUE1_MEM_VISIBILITY_Lattakia.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/BLUE1_MEM_VISIBILITY_Lattakia.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Project file \"Data/BLUE1_MEM_VISIBILITY_Bagdad.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Project file \"Data/BLUE1_MEM_VISIBILITY_Baikonur.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/BLUE1_MEM_VISIBILITY_Baikonur.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/BLUE1_MEM_VISIBILITY_Baikonur.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Project file \"Data/BLUE1_MEM_VISIBILITY_Xinjiang_point.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Project file \"Data/BLUE1_MEM_VISIBILITY_Hainan_Naval.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/BLUE1_MEM_VISIBILITY_Hainan_Naval.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/BLUE1_MEM_VISIBILITY_Hainan_Naval.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Project file \"Data/BLUE1_MEM_VISIBILITY_CSUG.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Project file \"Data/BLUE1_MEM_VISIBILITY_AirLiquide_Global_Helium.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/BLUE1_MEM_VISIBILITY_AirLiquide_Global_Helium.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/BLUE1_MEM_VISIBILITY_AirLiquide_Global_Helium.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Project file \"Data/BLUE1_MEM_VISIBILITY_Univ_Intl_Rabat.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/BLUE1_MEM_VISIBILITY_Univ_Intl_Rabat.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/BLUE1_MEM_VISIBILITY_Univ_Intl_Rabat.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Project file \"Data/BLUE1_MEM_VISIBILITY_IPEV_Bretagne.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/BLUE1_MEM_VISIBILITY_IPEV_Bretagne.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/BLUE1_MEM_VISIBILITY_IPEV_Bretagne.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Project file \"Data/BLUE2_MEM_VISIBILITY_IPEV_Ny_Alesund.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/BLUE2_MEM_VISIBILITY_IPEV_Ny_Alesund.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/BLUE2_MEM_VISIBILITY_IPEV_Ny_Alesund.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Project file \"Data/BLUE2_MEM_VISIBILITY_IPEV_Dumont_DUrville.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/BLUE2_MEM_VISIBILITY_IPEV_Dumont_DUrville.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/BLUE2_MEM_VISIBILITY_IPEV_Dumont_DUrville.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Project file \"Data/BLUE2_MEM_VISIBILITY_IPEV_BA_Concordia.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/BLUE2_MEM_VISIBILITY_IPEV_BA_Concordia.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/BLUE2_MEM_VISIBILITY_IPEV_BA_Concordia.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Project file \"Data/BLUE2_MEM_VISIBILITY_Ariel_University.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Project file \"Data/BLUE2_MEM_VISIBILITY_UPF_Faa.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/BLUE2_MEM_VISIBILITY_UPF_Faa.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/BLUE2_MEM_VISIBILITY_UPF_Faa.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:55	WARNING	Broker	[Timeline] Project file \"Data/BLUE2_MEM_VISIBILITY_CNES_Toulouse.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:56	WARNING	Broker	[Timeline] Project file \"Data/BLUE2_MEM_VISIBILITY_NPI_Tromso.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:56	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/BLUE2_MEM_VISIBILITY_NPI_Tromso.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:56	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/BLUE2_MEM_VISIBILITY_NPI_Tromso.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:56	WARNING	Broker	[Timeline] Project file \"Data/BLUE2_MEM_VISIBILITY_DGER_Station.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:56	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/BLUE2_MEM_VISIBILITY_DGER_Station.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:56	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/BLUE2_MEM_VISIBILITY_DGER_Station.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:56	WARNING	Broker	[Timeline] Project file \"Data/BLUE2_MEM_VISIBILITY_Kharkiv.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:56	WARNING	Broker	[Timeline] Project file \"Data/BLUE2_MEM_VISIBILITY_Bagdad.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:56	WARNING	Broker	[Timeline] Project file \"Data/BLUE2_MEM_VISIBILITY_Kabul.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:56	WARNING	Broker	[Timeline] Project file \"Data/BLUE2_MEM_VISIBILITY_Hainan_Naval.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:56	WARNING	Broker	[Timeline] Project file \"Data/BLUE2_MEM_VISIBILITY_CSUG.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:56	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/BLUE2_MEM_VISIBILITY_CSUG.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:56	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/BLUE2_MEM_VISIBILITY_CSUG.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:56	WARNING	Broker	[Timeline] Project file \"Data/BLUE2_MEM_VISIBILITY_AirLiquide_Global_Helium.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:56	WARNING	Broker	[Timeline] Project file \"Data/BLUE2_MEM_VISIBILITY_Univ_Intl_Rabat.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:56	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/BLUE2_MEM_VISIBILITY_Univ_Intl_Rabat.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:56	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/BLUE2_MEM_VISIBILITY_Univ_Intl_Rabat.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:56	WARNING	Broker	[Timeline] Project file \"Data/BLUE2_MEM_VISIBILITY_Univ_Ouv_Catalogne.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:56	WARNING	Broker	[Timeline] Project file \"Data/BLUE2_MEM_VISIBILITY_TEST.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:56	WARNING	Broker	[Timeline] Project file \"Data/RED1_MEM_VISIBILITY_Ariel_University.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:56	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/RED1_MEM_VISIBILITY_Ariel_University.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:56	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/RED1_MEM_VISIBILITY_Ariel_University.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:56	WARNING	Broker	[Timeline] Project file \"Data/RED1_MEM_VISIBILITY_Hainan_Naval.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:56	WARNING	Broker	[Timeline] Project file \"Data/RED2_MEM_VISIBILITY_IPEV_Ny_Alesund.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:56	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/RED2_MEM_VISIBILITY_IPEV_Ny_Alesund.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:56	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/RED2_MEM_VISIBILITY_IPEV_Ny_Alesund.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:56	WARNING	Broker	[Timeline] Project file \"Data/RED2_MEM_VISIBILITY_IPEV_Dumont_DUrville.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/RED2_MEM_VISIBILITY_IPEV_Dumont_DUrville.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/RED2_MEM_VISIBILITY_IPEV_Dumont_DUrville.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Project file \"Data/RED2_MEM_VISIBILITY_IPEV_BA_Concordia.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/RED2_MEM_VISIBILITY_IPEV_BA_Concordia.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/RED2_MEM_VISIBILITY_IPEV_BA_Concordia.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Project file \"Data/RED2_MEM_VISIBILITY_Ariel_University.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/RED2_MEM_VISIBILITY_Ariel_University.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/RED2_MEM_VISIBILITY_Ariel_University.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Project file \"Data/RED2_MEM_VISIBILITY_CNES_Toulouse.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/RED2_MEM_VISIBILITY_CNES_Toulouse.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/RED2_MEM_VISIBILITY_CNES_Toulouse.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Project file \"Data/RED2_MEM_VISIBILITY_NPI_Tromso.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/RED2_MEM_VISIBILITY_NPI_Tromso.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/RED2_MEM_VISIBILITY_NPI_Tromso.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Project file \"Data/RED2_MEM_VISIBILITY_DGER_Station.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/RED2_MEM_VISIBILITY_DGER_Station.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/RED2_MEM_VISIBILITY_DGER_Station.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Project file \"Data/RED2_MEM_VISIBILITY_Rostov.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/RED2_MEM_VISIBILITY_Rostov.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/RED2_MEM_VISIBILITY_Rostov.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Project file \"Data/RED2_MEM_VISIBILITY_Kharkiv.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/RED2_MEM_VISIBILITY_Kharkiv.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/RED2_MEM_VISIBILITY_Kharkiv.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Project file \"Data/RED2_MEM_VISIBILITY_Moscow.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/RED2_MEM_VISIBILITY_Moscow.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/RED2_MEM_VISIBILITY_Moscow.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Project file \"Data/RED2_MEM_VISIBILITY_Lattakia.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/RED2_MEM_VISIBILITY_Lattakia.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/RED2_MEM_VISIBILITY_Lattakia.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Project file \"Data/RED2_MEM_VISIBILITY_Bagdad.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/RED2_MEM_VISIBILITY_Bagdad.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/RED2_MEM_VISIBILITY_Bagdad.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Project file \"Data/RED2_MEM_VISIBILITY_Teheran.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/RED2_MEM_VISIBILITY_Teheran.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/RED2_MEM_VISIBILITY_Teheran.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Project file \"Data/RED2_MEM_VISIBILITY_Kabul.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/RED2_MEM_VISIBILITY_Kabul.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/RED2_MEM_VISIBILITY_Kabul.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Project file \"Data/RED2_MEM_VISIBILITY_Baikonur.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/RED2_MEM_VISIBILITY_Baikonur.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/RED2_MEM_VISIBILITY_Baikonur.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Project file \"Data/RED2_MEM_VISIBILITY_Xinjiang_point.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/RED2_MEM_VISIBILITY_Xinjiang_point.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/RED2_MEM_VISIBILITY_Xinjiang_point.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Project file \"Data/RED2_MEM_VISIBILITY_Beijing.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/RED2_MEM_VISIBILITY_Beijing.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/RED2_MEM_VISIBILITY_Beijing.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Project file \"Data/RED2_MEM_VISIBILITY_CSUG.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/RED2_MEM_VISIBILITY_CSUG.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/RED2_MEM_VISIBILITY_CSUG.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Project file \"Data/RED2_MEM_VISIBILITY_PuertollanoSR.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/RED2_MEM_VISIBILITY_PuertollanoSR.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/RED2_MEM_VISIBILITY_PuertollanoSR.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Project file \"Data/RED2_MEM_VISIBILITY_MilanSR.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/RED2_MEM_VISIBILITY_MilanSR.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/RED2_MEM_VISIBILITY_MilanSR.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Project file \"Data/RED2_MEM_VISIBILITY_Univ_Intl_Rabat.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/RED2_MEM_VISIBILITY_Univ_Intl_Rabat.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/RED2_MEM_VISIBILITY_Univ_Intl_Rabat.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Project file \"Data/RED2_MEM_VISIBILITY_IPEV_Bretagne.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/RED2_MEM_VISIBILITY_IPEV_Bretagne.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/RED2_MEM_VISIBILITY_IPEV_Bretagne.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Project file \"Data/RED2_MEM_VISIBILITY_Univ_Ouv_Catalogne.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/RED2_MEM_VISIBILITY_Univ_Ouv_Catalogne.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/RED2_MEM_VISIBILITY_Univ_Ouv_Catalogne.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Project file \"Data/RED2_MEM_VISIBILITY_TEST.TXT\" has no intersection with project dates, please consider re-computing project dates
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Warning: Cannot display CIC file data, falling back to Block display mode: Error (CIC library) in file \"Data/RED2_MEM_VISIBILITY_TEST.TXT\": unexpected end of file (line 17)
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Warning: Unable to load CIC file \"Data/RED2_MEM_VISIBILITY_TEST.TXT\": Cannot describe or read CIC data from an invalid file!
+2023-04-12T09:52:57	WARNING	Broker	[Timeline] Timeline updated.
+2023-04-12T09:52:57	INFO	Broker	[Celestia Launcher] (LEGACY mode)
+2023-04-12T09:52:57	INFO	Broker	> Program: C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/launcherCelestia.exe
+2023-04-12T09:52:57	INFO	Broker	> Parameters: //192.168.192.200/files/default_Sat/default_Sat.vts 0
+2023-04-12T09:52:57	INFO	Broker	[SurfaceView Launcher] (LEGACY mode)
+2023-04-12T09:52:57	INFO	Broker	> Program: C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/SurfaceView/bin/launcherSurfaceView.exe
+2023-04-12T09:52:57	INFO	Broker	> Parameters: //192.168.192.200/files/default_Sat/default_Sat.vts 1
+2023-04-12T09:52:57	INFO	Broker	[PrestoPlot Launcher] (LEGACY mode)
+2023-04-12T09:52:57	INFO	Broker	> Program: C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/PrestoPlot/bin/launcherPrestoPlot.exe
+2023-04-12T09:52:57	INFO	Broker	> Parameters: //192.168.192.200/files/default_Sat/default_Sat.vts 2
+2023-04-12T09:52:57	TRACE	LauncherSurfaceView	1 //192.168.192.200/files/default_Sat/default_Sat.vts 1 --mode surface --closeondisconnected
+2023-04-12T09:53:00	WARNING	LauncherCelestia	"Converting into .color file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/PLEIADES-NEO4_COLOR.TXT'""Converting into .color file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/BLUE2_COLOR.TXT'""Converting into .color file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/Sat_COLOR.TXT'""Direct copy from 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Models/solar2C.png' into 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/extras_0/VTS/textures/medres/solar2C.png'"
+2023-04-12T09:53:00	WARNING	LauncherCelestia	"Converting into .q file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/BLUE1_AEM_ATTITUDE.TXT'""Direct copy from 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Models/solar2C.bmp' into 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/extras_0/VTS/textures/medres/solar2C.bmp'""Converting into .q file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/PLEIADES-NEO3_AEM_ATTITUDE.TXT'""Converting into .xyz file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/Sat_OEM_POSITION.TXT'"
+2023-04-12T09:53:00	WARNING	LauncherCelestia	"Converting into .color file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/PLEIADES1B_COLOR.TXT'"
+2023-04-12T09:53:00	WARNING	LauncherCelestia	"Converting into .q file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/PLEIADES-NEO4_AEM_ATTITUDE.TXT'"
+2023-04-12T09:53:00	WARNING	LauncherCelestia	"Converting into .q file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/RED2_AEM_ATTITUDE.TXT'"
+2023-04-12T09:53:00	WARNING	LauncherCelestia	"Direct copy from 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Models/rosetta_.bmp' into 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/extras_0/VTS/textures/medres/rosetta_.bmp'"
+2023-04-12T09:53:01	WARNING	LauncherCelestia	"Direct copy from 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Models/rosetta1.bmp' into 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/extras_0/VTS/textures/medres/rosetta1.bmp'""Converting into .color file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/RED2_COLOR.TXT'"
+2023-04-12T09:53:01	WARNING	LauncherCelestia	"Converting into .color file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/PLEIADES1A_COLOR.TXT'"
+2023-04-12T09:53:01	WARNING	LauncherCelestia	"Converting into .q file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/Sat_AEM_ATTITUDE.TXT'"
+2023-04-12T09:53:01	WARNING	LauncherCelestia	"Direct copy from 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Models/rosetta-orbiterOnly.3ds' into 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/extras_0/VTS/models/rosetta-orbiterOnly.3ds'"
+2023-04-12T09:53:01	WARNING	LauncherCelestia	"Converting into .q file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/PLEIADES1A_AEM_ATTITUDE.TXT'"
+2023-04-12T09:53:01	WARNING	LauncherCelestia	"Converting into .xyz file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/BLUE2_OEM_POSITION.TXT'"
+2023-04-12T09:53:01	WARNING	LauncherCelestia	"Converting into .xyz file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/PLEIADES-NEO4_OEM_POSITION.TXT'"
+2023-04-12T09:53:01	WARNING	LauncherCelestia	"Converting into .color file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/PLEIADES-NEO3_COLOR.TXT'"
+2023-04-12T09:53:01	WARNING	LauncherCelestia	"Converting into .color file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/RED1_COLOR.TXT'"
+2023-04-12T09:53:01	WARNING	LauncherCelestia	"Converting into .xyz file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/RED2_OEM_POSITION.TXT'"
+2023-04-12T09:53:01	WARNING	LauncherCelestia	"Converting into .color file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/Sat_COLOR.TXT'"
+2023-04-12T09:53:01	WARNING	LauncherCelestia	"Converting into .color file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/BLUE1_COLOR.TXT'"
+2023-04-12T09:53:01	WARNING	LauncherCelestia	"Direct copy from 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Models/solar2D.bmp' into 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/extras_0/VTS/textures/medres/solar2D.bmp'""Direct copy from 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Models/goldfoil.bmp' into 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/extras_0/VTS/textures/medres/goldfoil.bmp'""Converting into .q file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/RED1_AEM_ATTITUDE.TXT'""Converting into .xyz file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/PLEIADES1B_OEM_POSITION.TXT'"
+2023-04-12T09:53:01	WARNING	LauncherCelestia	"Converting into .color file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/PLEIADES-NEO4_COLOR.TXT'"
+2023-04-12T09:53:01	WARNING	LauncherCelestia	"Converting into .color file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/PLEIADES-NEO3_COLOR.TXT'"
+2023-04-12T09:53:01	WARNING	LauncherCelestia	"Converting into .q file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/PLEIADES1B_AEM_ATTITUDE.TXT'"
+2023-04-12T09:53:01	WARNING	LauncherCelestia	"Converting into .xyz file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/BLUE1_OEM_POSITION.TXT'"
+2023-04-12T09:53:01	WARNING	LauncherCelestia	"Direct copy from 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Models/solar1.bmp' into 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/extras_0/VTS/textures/medres/solar1.bmp'"
+2023-04-12T09:53:02	WARNING	LauncherCelestia	"Converting into .xyz file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/RED1_OEM_POSITION.TXT'"
+2023-04-12T09:53:02	WARNING	LauncherCelestia	"Converting into .color file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/BLUE2_COLOR.TXT'"
+2023-04-12T09:53:02	WARNING	LauncherCelestia	"Converting into .color file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/RED1_COLOR.TXT'"
+2023-04-12T09:53:02	WARNING	LauncherCelestia	"Converting into .xyz file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/PLEIADES-NEO3_OEM_POSITION.TXT'"
+2023-04-12T09:53:02	WARNING	LauncherCelestia	"Direct copy from 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Models/solar2A.bmp' into 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/extras_0/VTS/textures/medres/solar2A.bmp'"
+2023-04-12T09:53:02	WARNING	LauncherCelestia	"Direct copy from 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Models/solar1.png' into 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/extras_0/VTS/textures/medres/solar1.png'"
+2023-04-12T09:53:02	WARNING	LauncherCelestia	"Direct copy from 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Models/rosetta1.png' into 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/extras_0/VTS/textures/medres/rosetta1.png'"
+2023-04-12T09:53:02	WARNING	LauncherCelestia	"Direct copy from 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Models/solar2D.png' into 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/extras_0/VTS/textures/medres/solar2D.png'"
+2023-04-12T09:53:02	WARNING	LauncherCelestia	"Converting into .color file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/PLEIADES1B_COLOR.TXT'"
+2023-04-12T09:53:02	WARNING	LauncherCelestia	"Direct copy from 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Models/solar2B.bmp' into 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/extras_0/VTS/textures/medres/solar2B.bmp'"
+2023-04-12T09:53:02	WARNING	LauncherCelestia	"Direct copy from 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Models/solar2A.png' into 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/extras_0/VTS/textures/medres/solar2A.png'"
+2023-04-12T09:53:02	WARNING	LauncherCelestia	"Direct copy from 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Models/philae.bmp' into 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/extras_0/VTS/textures/medres/philae.bmp'"
+2023-04-12T09:53:02	WARNING	LauncherCelestia	"Converting into .color file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/BLUE1_COLOR.TXT'"
+2023-04-12T09:53:02	WARNING	LauncherCelestia	"Converting into .color file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/PLEIADES1A_COLOR.TXT'"
+2023-04-12T09:53:02	WARNING	LauncherCelestia	"Converting into .color file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/RED2_COLOR.TXT'"
+2023-04-12T09:53:02	WARNING	LauncherCelestia	"Converting into .q file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/BLUE2_AEM_ATTITUDE.TXT'"
+2023-04-12T09:53:02	WARNING	LauncherCelestia	"Direct copy from 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Models/solar2B.png' into 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/extras_0/VTS/textures/medres/solar2B.png'"
+2023-04-12T09:53:02	WARNING	LauncherCelestia	"Converting into .xyz file: 'C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/launcherCelestia/Data/PLEIADES1A_OEM_POSITION.TXT'"
+2023-04-12T09:53:02	TRACE	LauncherCelestia	0 --title "#0 - Celestia" --dir "C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin" --conf celestia.cfg --url "C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/extras_0/VTS/default_Sat.celx" --extrasdir "C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/extras_0" --aasamples 1
+2023-04-12T09:53:03	TRACE	LauncherPrestoPlot	2 -commandfile "C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/PrestoPlot/bin/cmdLineVTS_8888_2.pcf"
+2023-04-12T09:53:03	INFO	Broker	[Celestia Client]
+2023-04-12T09:53:03	INFO	Broker	> Program: C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/celestia.exe
+2023-04-12T09:53:03	INFO	Broker	> Arguments: --title #0 - Celestia --dir C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin --conf celestia.cfg --url C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/extras_0/VTS/default_Sat.celx --extrasdir C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/extras_0 --aasamples 1
+2023-04-12T09:53:03	INFO	Broker	[SurfaceView Client]
+2023-04-12T09:53:03	INFO	Broker	> Program: C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/SurfaceView/bin/surfaceview.exe
+2023-04-12T09:53:03	INFO	Broker	> Arguments: //192.168.192.200/files/default_Sat/default_Sat.vts 1 --mode surface --closeondisconnected
+2023-04-12T09:53:03	INFO	Broker	[PrestoPlot Client]
+2023-04-12T09:53:03	INFO	Broker	> Program: C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/PrestoPlot/bin/prestoplot.exe
+2023-04-12T09:53:03	INFO	Broker	> Arguments: -commandfile C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/PrestoPlot/bin/cmdLineVTS_8888_2.pcf
+2023-04-12T09:53:03	WARNING	Celestia (#0)	Loading image from file splash.png
+2023-04-12T09:53:03	WARNING	Celestia (#0)	Error opening image file splash.png
+2023-04-12T09:53:03	TRACE	Celestia (#0)	Error getting joystick caps.
+2023-04-12T09:53:03	TRACE	Celestia (#0)	Couldn't load localized resources: locale\res_LANGUAGE.dll
+2023-04-12T09:53:03	WARNING	Celestia (#0)	106747 stars in binary database
+2023-04-12T09:53:03	WARNING	Celestia (#0)	Loaded cross index data/hdxindex.dat
+2023-04-12T09:53:03	WARNING	Celestia (#0)	Loaded cross index data/saoxindex.dat
+2023-04-12T09:53:04	WARNING	Celestia (#0)	Total star count: 107626
+2023-04-12T09:53:05	WARNING	Celestia (#0)	Loaded 11087 deep space objects
+2023-04-12T09:53:06	WARNING	Celestia (#0)	Loading solar system catalog: extras/BMNG/BMNG.ssc
+2023-04-12T09:53:06	WARNING	Celestia (#0)	Loading solar system catalog: extras/JMII DDS/JMII DDS.ssc
+2023-04-12T09:53:06	WARNING	SurfaceView (#1)	libpng warning: iCCP: known incorrect sRGB profile
+2023-04-12T09:53:06	WARNING	SurfaceView (#1)	libpng warning: iCCP: known incorrect sRGB profile
+2023-04-12T09:53:06	WARNING	SurfaceView (#1)	"Warning: OmniView doesn't handle default ephemeris mode, switching to catalog mode for body: Earth."
+2023-04-12T09:53:06	WARNING	Celestia (#0)	Loading solar system catalog: extras/JohnVV/EarthClouds.ssc
+2023-04-12T09:53:06	WARNING	Celestia (#0)	Loading solar system catalog: C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/extras_0/VTS/default_Sat.ssc
+2023-04-12T09:53:07	TRACE	Celestia (#0)	Initializing ARB vertex programs . . .
+2023-04-12T09:53:07	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/diffuse_arb.vp
+2023-04-12T09:53:07	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/specular_arb.vp
+2023-04-12T09:53:07	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/haze_arb.vp
+2023-04-12T09:53:07	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/bumpdiffuse_arb.vp
+2023-04-12T09:53:07	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/bumphaze_arb.vp
+2023-04-12T09:53:07	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/shadowtex_arb.vp
+2023-04-12T09:53:07	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/diffuse_texoff_arb.vp
+2023-04-12T09:53:07	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/rings_arb.vp
+2023-04-12T09:53:07	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/ringshadow_arb.vp
+2023-04-12T09:53:07	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/night_arb.vp
+2023-04-12T09:53:07	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/glossmap_arb.vp
+2023-04-12T09:53:07	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/diffuse2_arb.vp
+2023-04-12T09:53:07	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/haze2_arb.vp
+2023-04-12T09:53:07	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/diffuse_texoff2_arb.vp
+2023-04-12T09:53:07	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/specular2_arb.vp
+2023-04-12T09:53:07	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/night2_arb.vp
+2023-04-12T09:53:07	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/star_arb.vp
+2023-04-12T09:53:07	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/multishadow_arb.vp
+2023-04-12T09:53:07	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/texphong_arb.vp
+2023-04-12T09:53:07	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/texphong_alpha_arb.vp
+2023-04-12T09:53:07	TRACE	Celestia (#0)	Loading ARB vertex program: shaders/ell_galaxy_arb.vp
+2023-04-12T09:53:07	TRACE	Celestia (#0)	All ARB vertex programs loaded successfully.
+2023-04-12T09:53:07	TRACE	Celestia (#0)	render path: 8
+2023-04-12T09:53:07	WARNING	Celestia (#0)	Loading image from file
+2023-04-12T09:53:07	WARNING	Celestia (#0)	textures/flare.jpg
+2023-04-12T09:53:07	WARNING	Celestia (#0)	Creating ordinary texture: 256x256
+2023-04-12T09:53:07	WARNING	Celestia (#0)	Loading...
+2023-04-12T09:53:07	WARNING	Celestia (#0)	Loading model: models/emeAxes.3ds
+2023-04-12T09:53:07	WARNING	Celestia (#0)	Model statistics: 21240 vertices, 7080 primitives, 7 materials (7 unique)
+2023-04-12T09:53:07	WARNING	Celestia (#0)	Loading model: models/bodyAxes.3ds
+2023-04-12T09:53:07	WARNING	Celestia (#0)	Model statistics: 10506 vertices, 3502 primitives, 7 materials (7 unique)
+2023-04-12T09:53:07	WARNING	Celestia (#0)	Loading image from file textures/medres/gstar.jpg
+2023-04-12T09:53:07	WARNING	Celestia (#0)	Creating ordinary texture: 512x256
+2023-04-12T09:53:08	WARNING	Celestia (#0)	Connected !
+2023-04-12T09:53:09	WARNING	Celestia (#0)	Connected to localhost(8888), sent bytes: 31.0
+2023-04-12T09:53:09	WARNING	Celestia (#0)	Unknown command of type PROP (SensorGeometrySectionCount)
+2023-04-12T09:53:09	WARNING	Celestia (#0)	Unknown command of type PROP (SensorSwathResolution)
+2023-04-12T09:53:09	WARNING	Celestia (#0)	Unknown command of type PROP (AntialiasingSamples)
+2023-04-12T09:53:09	WARNING	Celestia (#0)	Unknown command of type PROP (ForceLegacy3dsReader)
+2023-04-12T09:53:09	WARNING	Celestia (#0)	Loading model: models/ref_model.3ds
+2023-04-12T09:53:09	WARNING	Celestia (#0)	   Model statistics: 36 vertices, 12 primitives, 1 materials (1 unique)
+2023-04-12T09:53:09	WARNING	Celestia (#0)	Loading model: C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/extras_0/VTS/models/rosetta-orbiterOnly.3ds
+2023-04-12T09:53:09	WARNING	Celestia (#0)	Model statistics: 52212 vertices, 17404 primitives,
+2023-04-12T09:53:09	WARNING	Celestia (#0)	8 materials (8 unique)
+2023-04-12T09:53:09	WARNING	Celestia (#0)	Loading model: models/qswAxes.3ds
+2023-04-12T09:53:09	WARNING	Celestia (#0)	Model statistics: 56442 vertices, 18814 primitives, 7 materials (7 unique)
+2023-04-12T09:53:09	WARNING	Celestia (#0)	Loading model: models/tnwAxes.3ds
+2023-04-12T09:53:09	WARNING	Celestia (#0)	Model statistics: 51732 vertices, 17244 primitives, 7 materials (7 unique)
+2023-04-12T09:53:09	WARNING	Celestia (#0)	Loading model: models/satAxes.3ds
+2023-04-12T09:53:09	WARNING	Celestia (#0)	Model statistics: 9954 vertices, 3318 primitives, 7 materials (7 unique)
+2023-04-12T09:53:09	WARNING	Celestia (#0)	Loading model: models/vector-yellow-sun.3ds
+2023-04-12T09:53:09	WARNING	Celestia (#0)	Model statistics: 7482 vertices, 2494 primitives, 2 materials (2 unique)
+2023-04-12T09:53:09	WARNING	Celestia (#0)	Loading model: models/vector-magenta-body.3ds
+2023-04-12T09:53:09	WARNING	Celestia (#0)	Model statistics: 9054 vertices, 3018 primitives, 2 materials (2 unique)
+2023-04-12T09:53:09	WARNING	Celestia (#0)	Loading model: models/vector-white.3ds
+2023-04-12T09:53:09	WARNING	Celestia (#0)	Model statistics: 6720 vertices, 2240 primitives, 2 materials (2 unique)
+2023-04-12T09:53:09	WARNING	Celestia (#0)	Unknown command of type TIME (TimeModeChangedTo)
+2023-04-12T09:53:09	WARNING	Celestia (#0)	Visualization ready!
+2023-04-12T09:53:09	WARNING	Celestia (#0)	Loading image from file extras/JMII DDS/textures/hires/JMII DDS/level0/tx_1_0.dds
+2023-04-12T09:53:09	WARNING	Celestia (#0)	Loading image from file extras/JMII DDS/textures/hires/JMII DDS/level0/tx_0_0.dds
+2023-04-12T09:53:33	WARNING	Broker	End of Celestia (#0).
+2023-04-12T09:53:33	WARNING	Broker	End of SurfaceView (#1).
+2023-04-12T09:53:33	WARNING	Broker	End of PrestoPlot (#2).
+2023-04-12T09:53:34	INFO	Broker	End of Broker.

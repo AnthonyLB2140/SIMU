@@ -1,0 +1,76 @@
+For more detailed information, run with --verbose option
+
+--------------------------------------------------------------------------------
+SOFTWARE
+--------------------------------------------------------------------------------
+
+===== VTS ======================================================================
+Version: 3.6.1
+Revision: 9032
+Architecture: 32
+
+===== JAVA =====================================================================
+Version: java version "1.8.0_321"
+Java(TM) SE Runtime Environment (build 1.8.0_321-b07)
+Java HotSpot(TM) Client VM (build 25.321-b07, mixed mode, sharing)
+
+
+
+--------------------------------------------------------------------------------
+HARDWARE
+--------------------------------------------------------------------------------
+
+===== Operating system =========================================================
+Name: Windows 10 (10.0)
+Kernel: winnt 10.0.19044
+RAM size: 16122 MB
+
+===== Processor ================================================================
+Architecture: x86_64
+Available core: 8
+
+===== Graphic card =============================================================
+Name: Intel(R) Iris(R) Xe Graphics
+Version: 4.6.0 - Build 30.0.100.9955
+Shading: 4.60 - Build 30.0.100.9955
+OpenGL version: 4.6
+Profile: CompatibilityProfile
+Swap behavior: DoubleBuffer
+Buffer size (RGBA): 8,8,8,8
+Depth buffer: 24
+Stencil buffer: 8
+
+GPU #1:
+         Card name         : Intel(R) Iris(R) Xe Graphics
+       Driver Name         : igdumdim32.dll
+    Driver Version         : 30.0.100.9955
+         Vendor ID         : 0x8086
+         Device ID         : 0x9A49
+         SubSys ID         : 0x0A211028
+       Revision ID         : 0x0001
+
+===== Network ==================================================================
+
+===== Screen ===================================================================
+Screen: #1
+Name: \\.\DISPLAY1
+Depth: 32
+Primary: yes
+Manufacturer: 
+Model: 
+Serial number: 
+Geometry: 1920x1080+0+0
+Available: 1920x1030+0+0
+Physical size: 344x194
+Refresh rate: 60 Hz
+Physical DPI: X=141.767,Y=141.402 
+Logical DPI: X=120,Y=120 
+Orientation: LandscapeOrientation
+
+
+===== Touch device =============================================================
+Device: #1
+Name: 
+Type: TouchScreen
+Maximum points: 40
+Capabilities: Position,Area,NormalizedPosition,MouseEmulation

@@ -1,0 +1,1 @@
+Philae is a robotic European Space Agency lander that accompanies the Rosetta spacecraft. It is designed to land on comet 67P/Churyumov–Gerasimenko shortly after arrival in 2014. The lander is named after Philae island in the Nile, where an obelisk was found that was used along with the Rosetta Stone to decipher Egyptian hieroglyphic.

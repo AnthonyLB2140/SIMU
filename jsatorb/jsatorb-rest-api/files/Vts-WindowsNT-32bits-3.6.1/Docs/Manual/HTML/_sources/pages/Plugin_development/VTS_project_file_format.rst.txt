@@ -1,0 +1,194 @@
+.. _VTS_project_file_format:
+
+VTS project file format
+=======================
+
+A VTS project file describes all the elements of a visualization. It is written in XML format for clarity. Its name must end with the *.vts* extension.
+
+
+.. _VTS_project_file_format#Notation:
+
+Notation
+--------
+
+The sections below are structured as a tree representing the XML tags contained in a VTS project file.
+
+Section names follow this nomenclature:
+
+- Tags written as *<Tag>* may contain other tags.
+- Tags written as *<Tag/>* are self-contained (they may not contain other tags).
+- Tags written as *<**Tag**>* are generic tags which are used in various contexts.
+
+Generic tags are indicated under the sections of tags they may be child of. However, they are only fully described in separate sections outside of the main structure.
+
+
+.. _VTS_project_file_format#File_format_schema:
+
+File format schema
+------------------
+
+.. _VTS_project_file_format#Definition:
+
+Definition
+""""""""""
+
+Starting from VTS 3.2, each release of VTS comes with its **validation schema** file. Theses files can be found in the *VTS/Docs/Schemas* folder.
+A validation schema consist of an XML representation of how the VTS project file (also XML) must be organized.
+VTS validation schemas use the standard **XML Schema Definition** syntax (known as XSD).
+
+
+.. _VTS_project_file_format#Generating_VTS_projects_from_the_XSD:
+
+Generating VTS projects from the XSD
+""""""""""""""""""""""""""""""""""""
+
+Since the VTS Schema are described using the standard XML Schema Definition, it is recognized and understood by many software and libraries.
+In particular, VTS schemas can be used to automatically generate valid VTS projects using almost any modern programming languages.
+The following chapters describe how to generate a VTS project using *Python* and *C#*.
+
+
+.. _VTS_project_file_format#VTS_project_generation_with_Python:
+
+VTS project generation with Python
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In order to generate a VTS project with Python, one can use *PyXB*. PyXB is a set of Python commands capable of generating a Python library from a XSD that:
+
+- gives access to a memory representation of the VTS project file,
+- can read a VTS project to this memory representation,
+- can write a VTS project from this memory representation.
+
+Using this library one can easily create a project and, for example, add programmatically satellites, components, bodies, layers of any kind, etc.
+
+
+.. _VTS_project_file_format#Installing_PyXB:
+
+Installing PyXB
+***************
+
+Python 2.7 or 3.x must be available on the computer. We assume the PATH environment variable is set to its directory.
+
+Download PyXB (and unzip if necessary) anywhere on the computer.
+
+PyXB can be found here: https://github.com/pabigot/pyxb (use **git clone** or download it as a ZIP).
+
+
+.. _VTS_project_file_format#Generating_a_library_from_the_XSD_using_PyXB:
+
+Generating a library from the XSD using PyXB
+********************************************
+
+Open a terminal in the PyXB folder and execute **python setup.py install**
+
+Go to the **PyXB/build/scripts*** folder and run **python pyxbgen -m VTSProject -u <path to VTSProject-xxx.xsd>**
+
+This will output the file **VTSProject.py**
+
+
+.. _VTS_project_file_format#Usage_example_of_the_generated_library:
+
+Usage example of the generated library
+**************************************
+
+The following example shows how to:
+
+- Open a project "CubeSat.vts",
+- Change its Start Time using a MJD Date,
+- Create a hundred new satellites with "Sol/Earth" as parent,
+- Write a new project file with all these changes.
+
+.. code-block:: python
+
+    import pyxb
+    import VTSProject
+
+    xml = open("CubeSat.vts").read()
+    project = VTSProject.CreateFromDocument(xml)
+
+    project.General.StartDateTime = VTSProject.MJDDateTimeType("55277 81261.150400")
+
+    for i in range(0,100):
+        sat = VTSProject.SatelliteType()
+        sat.Name = "sat_" + str(i)
+        sat.ParentPath = "Sol/Earth"
+        project.Entities.Satellite.append(sat)
+
+    f = open('CubeSatModified.vts', 'w')
+    pyxb.RequireValidWhenGenerating(True)
+    f.write(project.toxml("utf-8"))
+
+
+.. _VTS_project_file_format#VTS_project_generation_with_C#:
+
+VTS project generation with C#
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. _VTS_project_file_format#Generating_a_library_from_the_XSD_using_Visual_Studio_Community:
+
+Generating a library from the XSD using Visual Studio Community
+***************************************************************
+
+Install **Visual Studio Community 2017**.
+
+Open the **Developer Command Prompt** and go to the XSD folder.
+
+Enter the command **xsd <name of the XSD file> /classes**.
+
+This will output the source file **<name of this input XSD>.cs**.
+
+
+.. _VTS_project_file_format#Usage_example_of_the_generated_library_c#:
+
+Usage example of the generated library
+**************************************
+
+.. code-block:: csharp
+
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Xml;
+    using System.Xml.Schema;
+    using System.Xml.Serialization;
+
+    namespace ConsoleApp
+    {
+        class Program
+        {
+            static void Main(string[] args)
+            {
+                XmlSerializer serializer = new XmlSerializer(typeof(Project));
+                Project project;
+
+                XmlSchemaSet sc = new XmlSchemaSet();
+                sc.Add(null, @"VTSProject-3.2.xsd");
+
+                XmlReaderSettings settings = new XmlReaderSettings();
+                settings.ValidationType = ValidationType.Schema;
+                settings.ValidationFlags =
+                    System.Xml.Schema.XmlSchemaValidationFlags.ReportValidationWarnings |
+                    System.Xml.Schema.XmlSchemaValidationFlags.ProcessSchemaLocation;
+                settings.Schemas = sc;
+                settings.ValidationEventHandler += new ValidationEventHandler(ValidationCallBack);
+
+                string xml = System.IO.File.ReadAllText(@"CubeSat.vts");
+                using (XmlReader reader = XmlReader.Create(new StringReader(xml), settings))
+                {
+                    project = (Project)serializer.Deserialize(reader);
+                }
+
+                FileStream fout = new FileStream(@"CubeSat.out.vts", FileMode.Create);
+                serializer.Serialize(fout, (object)project);
+            }
+            
+            // Display any validation errors.
+            private static void ValidationCallBack(object sender, ValidationEventArgs e)
+            {
+                Console.WriteLine("Validation Error: {0}", e.Message);
+            }
+        }
+    }
+

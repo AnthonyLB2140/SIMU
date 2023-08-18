@@ -1,0 +1,383 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Sensors in VTS &mdash; VTS 3.6.0-9030 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="VTS 3.6.0-9030 documentation" href="../../index.html"/>
+        <link rel="up" title="General" href="index.html"/>
+        <link rel="next" title="Physical masks in VTS" href="Masks_in_VTS.html"/>
+        <link rel="prev" title="Structure of satellites in VTS" href="Structure_of_satellites_in_VTS.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> VTS
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction/index.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">General</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Conventions_in_VTS.html">Conventions in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Date_formats_in_VTS.html">Date formats in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Data_sources_in_VTS.html">Data sources in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Position_of_objects_in_VTS.html">Position of objects in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Orientation_of_objects_in_VTS.html">Orientation of objects in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Examples_for_position_and_orientation_of_objects_in_VTS.html">Examples for position and orientation of objects in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Backwards_compatibility_in_VTS.html">Backward compatibility in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Object_paths_in_VTS.html">Object paths in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Central_bodies_in_VTS.html">Central bodies in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Structure_of_satellites_in_VTS.html">Structure of satellites in VTS</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Sensors in VTS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#properties-of-a-sensor">Properties of a sensor</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#elliptical-or-rectangular-sensors">Elliptical or rectangular sensors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#azimuth-elevation-sensors">Azimuth-elevation sensors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sensors-orientation">Sensors orientation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#visualization-of-a-sensor">Visualization of a sensor</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#satellite-sensor">Satellite sensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ground-station-sensor">Ground station sensor</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Masks_in_VTS.html">Physical masks in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scale_factors_in_VTS.html">Scale factors in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cluster_in_VTS.html">Clusters in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scenario_in_VTS.html">Scenario in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Manage_window_geometry.html">Window Geometry Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mission_events_in_VTS.html">Mission events in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="POIs_and_ROIs_in_VTS.html">POIs and ROIs in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Other_visualisable_objects.html">Other visualisable objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scripts_and_macros_in_VTS.html">Scripts and macros in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="VTS_Broker.html">VTS Broker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Files_used_by_VTS/index.html">Files used by VTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Starting_VTS/index.html">Starting VTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VTS_applications_user_manuals/index.html">VTS applications user manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Plugin_development/index.html">Plugin development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Data_generators_in_VTS/index.html">Data generator integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../About/index.html">About</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">VTS</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">General</a> &raquo;</li>
+        
+      <li>Sensors in VTS</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/pages/General/Sensors_in_VTS.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sensors-in-vts">
+<span id="id1"></span><h1>Sensors in VTS<a class="headerlink" href="#sensors-in-vts" title="Permalink to this headline">¶</a></h1>
+<p>A sensor is either an onboard element on a satellite or an element of a ground station. This section presents the properties of sensors in VTS, and their representation in client applications.</p>
+<div class="section" id="properties-of-a-sensor">
+<span id="sensors-in-vts-properties-of-a-sensor"></span><h2>Properties of a sensor<a class="headerlink" href="#properties-of-a-sensor" title="Permalink to this headline">¶</a></h2>
+<p>The sensors’ base can be elliptical or rectangular for both satellites and ground stations, or an angular sector of space constrained in azimuth-elevation for ground stations only.</p>
+<div class="section" id="elliptical-or-rectangular-sensors">
+<span id="sensors-in-vts-elliptical-or-rectangular-sensors"></span><h3>Elliptical or rectangular sensors<a class="headerlink" href="#elliptical-or-rectangular-sensors" title="Permalink to this headline">¶</a></h3>
+<p>The cone is characterized by two half-angles around the X and Y axes (see the <a class="reference internal" href="Orientation_of_objects_in_VTS.html#orientation-of-objects-in-vts"><span class="std std-ref">Orientation of objects in VTS</span></a> chapter concerning the reference frame).
+These angles define rotations of the sensors’s aim axis around the X axis (in the YZ plane) and Y axis (in the XZ plane).</p>
+</div>
+<div class="section" id="azimuth-elevation-sensors">
+<span id="sensors-in-vts-azimuth-elevation-sensor"></span><h3>Azimuth-elevation sensors<a class="headerlink" href="#azimuth-elevation-sensors" title="Permalink to this headline">¶</a></h3>
+<p>The azimuth-elevation sensor type can be used to represent an angular sector of space. This type of sensor makes more sense when defined inside a ground station. It is defined by a minimum and a maximum azimuth and a minimum and a maximum elevation.</p>
+<p>When azimuth and elevation are equal to zero the sensor points towards X in the sensor frame.
+When azimuth is equal to zero and elevation is equal to PI/2 the sensor points towards Z in the sensor frame.</p>
+<p>The mimimum and maximum azimuth angles are ordered, and the first angle is wrapped between [0,2PI] and the second angle is wrapped between [0;4PI].</p>
+<p>The mimimum and maximum azimuth angles are defined in the interval [0;PI/2].</p>
+</div>
+<div class="section" id="sensors-orientation">
+<span id="sensors-in-vts-sensors-orientation"></span><h3>Sensors orientation<a class="headerlink" href="#sensors-orientation" title="Permalink to this headline">¶</a></h3>
+<p>When orientated by a quaternion, euler angles or axis and angles, a sensor is defined by a conical aim volume around the Z axis, its apex being located at the origin of the sensor’s local frame.</p>
+<p>When orientated by a direction or elevation and azimuth, an additional rotation is made: X becomes the main axis, i.e. the sensor looks at the given direction. Since the third (self) rotation is not reliable, this orientation mode should be used only with elliptical sensors with similar X and Y apertures (circular sensors).</p>
+<p>See the <a class="reference internal" href="Orientation_of_objects_in_VTS.html#orientation-of-objects-in-vts"><span class="std std-ref">Orientation of objects in VTS</span></a> chapter concerning the reference frame.</p>
+<p>There is currently no limit to the effective range of a sensor. Half-angles are internally limited to 90° in OmniView and Celestia.</p>
+</div>
+</div>
+<div class="section" id="visualization-of-a-sensor">
+<span id="sensors-in-vts-visualization-of-a-sensor"></span><h2>Visualization of a sensor<a class="headerlink" href="#visualization-of-a-sensor" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="satellite-sensor">
+<span id="sensors-in-vts-satellite-sensor"></span><h3>Satellite sensor<a class="headerlink" href="#satellite-sensor" title="Permalink to this headline">¶</a></h3>
+<p>In the 2D view, a satellite sensor is represented by the intersection of its volume with its target central body.</p>
+<div class="figure align-center" id="id2">
+<img alt="../../_images/Senseur2DWin.png" src="../../_images/Senseur2DWin.png" />
+<p class="caption"><span class="caption-text">Elliptical sensor in SurfaceView</span></p>
+</div>
+<div class="figure align-center" id="id3">
+<img alt="../../_images/SenseurRect2DWin.png" src="../../_images/SenseurRect2DWin.png" />
+<p class="caption"><span class="caption-text">Rectangular sensor in SurfaceView</span></p>
+</div>
+<p>In the 3D view, a satellite sensor is represented by its aim volume. In order not to overload the visualization, a maximum range is defined for the sensor in the VTS configuration utility. Beyond this range, the sensor’s volume will not be displayed. As a rule of thumb, the maximum sensor range should be taken equal to the maximum distance between the satellite and the center of the central body. Beware that a too short range could result in an erroneous computation of the sensor volume’s intersection with the sensor target.</p>
+<div class="figure align-center" id="id4">
+<img alt="../../_images/SenseurCelestia.png" src="../../_images/SenseurCelestia.png" />
+<p class="caption"><span class="caption-text">Elliptical sensor in Celestia</span></p>
+</div>
+<div class="figure align-center" id="id5">
+<img alt="../../_images/SenseurRectCelestia.png" src="../../_images/SenseurRectCelestia.png" />
+<p class="caption"><span class="caption-text">Rectangular sensor in Celestia</span></p>
+</div>
+<p>Moreover, the 3D view allows rendering the scene from the point of view of the sensor, so that what the sensor perceives can be displayed (refer to the <span class="xref std std-ref">*3D Cameras* tab</span> section in the Broker’s user manual).</p>
+<div class="figure align-center" id="id6">
+<img alt="../../_images/CameraSenseurCelestia.png" src="../../_images/CameraSenseurCelestia.png" />
+<p class="caption"><span class="caption-text">Sensor camera in Celestia</span></p>
+</div>
+<p>VTS also allows displaying the sensor’s swath, both in SurfaceView and Celestia. <strong>Important note:</strong> a sensor coverage nadir optimization can be activated. See the <a class="reference internal" href="../VTS_applications_user_manuals/SurfaceView_user_manual.html#surfaceview-user-manual"><span class="std std-ref">SurfaceView user manual</span></a> for more information.</p>
+<div class="figure align-center" id="id7">
+<img alt="../../_images/Fauchee2DWin.png" src="../../_images/Fauchee2DWin.png" />
+<p class="caption"><span class="caption-text">Sensor swath in SurfaceView</span></p>
+</div>
+<div class="figure align-center" id="id8">
+<img alt="../../_images/FaucheeCelestia.png" src="../../_images/FaucheeCelestia.png" />
+<p class="caption"><span class="caption-text">Sensor swath in Celestia</span></p>
+</div>
+<p><strong>Caution:</strong> To preserve reasonable performances on the widest possible range of computers, the computation algorithm for sensor swath in Celestia is approximate.
+This has the consequence that when a sensor covers a large portion of its target body, the computed sensor swath is erroneous near the sides of the body disc.</p>
+<p><strong>In case of forceful close of Celestia when visualizing sensor swath:</strong> see the section on <a class="reference internal" href="../Introduction/Hardware_requirements_for_VTS.html#hardware-requirements-for-vts"><span class="std std-ref">Hardware requirements for VTS</span></a>.</p>
+</div>
+<div class="section" id="ground-station-sensor">
+<span id="sensors-in-vts-ground-station-sensor"></span><h3>Ground station sensor<a class="headerlink" href="#ground-station-sensor" title="Permalink to this headline">¶</a></h3>
+<p>A ground station sensor has the same parameters as a <a class="reference internal" href="../VTS_applications_user_manuals/VTS_configuration_utility_user_manual.html#vts-configuration-utility-user-manual-configuring-a-satellite-sensor"><span class="std std-ref">satellite sensor</span></a>. It is oriented in its ground station’s frame (see <a class="reference internal" href="Orientation_of_objects_in_VTS.html#orientation-of-objects-in-vts"><span class="std std-ref">Orientation of objects in VTS</span></a>).</p>
+<p>A ground station always owns a “Default” main sensor attached to it, with a fixed orientation : its aim (Z) axis is directed from the body center towards the station position. This sensor can be used to obtain the station visibility circle : to show it at minimum elevation, the half-angles should be set to the complementary angles of the half-angles (90° - half-angle around X or Y).</p>
+<p>Secondary sensors can be created attached to a ground station. These sensors can be freely oriented in the ground station’s frame.</p>
+<div class="section" id="visualization-of-ground-station-sensors-in-2d">
+<h4>Visualization of ground station sensors in 2D<a class="headerlink" href="#visualization-of-ground-station-sensors-in-2d" title="Permalink to this headline">¶</a></h4>
+<p>In the 2D view, a ground station sensor is represented by the projection of the base of its aim volume, at a given altitude, back on the surface of its central body. The altitude can also be set to the altitude of one of the project’s satellites, and will then vary with time. Attaching more satellites will introduce a second dashed line which displays the visibility area for the higher and the lower tracked satellites.</p>
+<div class="figure align-center" id="id9">
+<img alt="../../_images/ProjectionSenseurStation.png" src="../../_images/ProjectionSenseurStation.png" />
+<p class="caption"><span class="caption-text">Projection of a ground station sensor in SurfaceView</span></p>
+</div>
+<div class="figure align-center" id="id10">
+<img alt="../../_images/SenseurStation2DWin.png" src="../../_images/SenseurStation2DWin.png" />
+<p class="caption"><span class="caption-text">Ground station sensor in SurfaceView</span></p>
+</div>
+<div class="figure align-center" id="id11">
+<img alt="../../_images/SenseurStationAzimuthElevation.png" src="../../_images/SenseurStationAzimuthElevation.png" />
+<p class="caption"><span class="caption-text">Ground station sensor with azimuth-elevation constraints in SurfaceView and ZenithView</span></p>
+</div>
+</div>
+<div class="section" id="visualization-of-ground-station-sensors-in-3d">
+<h4>Visualization of ground station sensors in 3D<a class="headerlink" href="#visualization-of-ground-station-sensors-in-3d" title="Permalink to this headline">¶</a></h4>
+<p>The “Default” main sensors are not displayed in Celestia. There is no station visibility circle neither. Orientable secondary sensors are displayed as a aim volume at a fixed altitude.</p>
+<div class="figure align-center" id="id12">
+<img alt="../../_images/SenseurStationCelestia.png" src="../../_images/SenseurStationCelestia.png" />
+<p class="caption"><span class="caption-text">Ground station sensor in Celestia</span></p>
+</div>
+<div class="figure align-center" id="id13">
+<img alt="../../_images/SenseurStationCamera.png" src="../../_images/SenseurStationCamera.png" />
+<p class="caption"><span class="caption-text">Ground station sensor camera view in Celestia</span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Masks_in_VTS.html" class="btn btn-neutral float-right" title="Physical masks in VTS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Structure_of_satellites_in_VTS.html" class="btn btn-neutral" title="Structure of satellites in VTS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright VTS Team.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'3.6.0-9030',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

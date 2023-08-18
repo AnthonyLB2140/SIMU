@@ -1,0 +1,284 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>3D file format in VTS &mdash; VTS 3.6.0-9030 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="VTS 3.6.0-9030 documentation" href="../../index.html"/>
+        <link rel="up" title="Files used by VTS" href="index.html"/>
+        <link rel="next" title="CIC/CCSDS data files in VTS" href="CIC-CCSDS_data_files_in_VTS.html"/>
+        <link rel="prev" title="Data description for VTS projects" href="Data_description_for_VTS_projects.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> VTS
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../General/index.html">General</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Files used by VTS</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Data_description_for_VTS_projects.html">Data description for VTS projects</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3D file format in VTS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#file-format-of-textures">File format of textures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#origin-of-the-reference-frame-for-the-3d-file">Origin of the reference frame for the 3D file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dimensions-and-units">Dimensions and units</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="CIC-CCSDS_data_files_in_VTS.html">CIC/CCSDS data files in VTS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Starting_VTS/index.html">Starting VTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VTS_applications_user_manuals/index.html">VTS applications user manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Plugin_development/index.html">Plugin development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Data_generators_in_VTS/index.html">Data generator integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../About/index.html">About</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">VTS</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Files used by VTS</a> &raquo;</li>
+        
+      <li>3D file format in VTS</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/pages/Files_used_by_VTS/3D_file_format_in_VTS.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="d-file-format-in-vts">
+<span id="id1"></span><h1>3D file format in VTS<a class="headerlink" href="#d-file-format-in-vts" title="Permalink to this headline">¶</a></h1>
+<p>VTS relies on the <em>3ds</em> file format, from the <em>Autodesk 3DS Max</em> software suite, but also on the <em>obj</em> file format. These are widely-used file formats for 3D files.</p>
+<div class="section" id="file-format-of-textures">
+<span id="d-file-format-in-vts-file-format-of-textures"></span><h2>File format of textures<a class="headerlink" href="#file-format-of-textures" title="Permalink to this headline">¶</a></h2>
+<p>3D files can make use of external texture files. These must be in <em>bmp</em>, <em>jpg</em>, <em>jpeg</em>, <em>png</em>, <em>tif</em> or <em>tga</em> format, and be located in the same folder as the 3D file.</p>
+<p>The <em>obj</em> file format also relies on a <em>mtl</em> file which must be located in the same folder as the <em>obj</em> file. It represents the definition of the materials used by the 3D file.</p>
+</div>
+<div class="section" id="origin-of-the-reference-frame-for-the-3d-file">
+<span id="d-file-format-in-vts-origin-of-the-reference-frame-for-the-3d-file"></span><h2>Origin of the reference frame for the 3D file<a class="headerlink" href="#origin-of-the-reference-frame-for-the-3d-file" title="Permalink to this headline">¶</a></h2>
+<p>The position and orientation of objects in 3D views depends on their reference frames. Refer to the following pages:</p>
+<ul class="simple">
+<li><a class="reference internal" href="../General/Position_of_objects_in_VTS.html#position-of-objects-in-vts"><span class="std std-ref">Position of objects in VTS</span></a></li>
+<li><a class="reference internal" href="../General/Orientation_of_objects_in_VTS.html#orientation-of-objects-in-vts"><span class="std std-ref">Orientation of objects in VTS</span></a></li>
+</ul>
+<p>When position and orientation values are null, the object’s local frame is aligned with its reference frame. VTS offers two options to define the local frame of a 3D object:</p>
+<ul class="simple">
+<li>Either use the 3D coordinates contained in the 3D file. The origin of the local frame corresponds to the point of null coordinates in the file.</li>
+<li>Either define the origin of the local frame as the center of the 3D file object’s bounding box.</li>
+</ul>
+<p>These options can be selected in the VTS configuration utility, independently for each 3D object. The <em>“Use file coordinates”</em> setting must be checked to enable use of the 3D file’s origin, unchecked to use the geometric center of the object as origin. Refer to the <a class="reference internal" href="../VTS_applications_user_manuals/VTS_configuration_utility_user_manual.html#vts-configuration-utility-user-manual"><span class="std std-ref">VTS configuration utility user manual</span></a> chapter for more information.</p>
+<p>It must be well understood that these options make it easier to define satellites composed of multiple components. When all 3D files for a satellite’s components and sub-components are extracted from a single master 3D file, all those files use the same local frame and thus the coordinates can be read directly from the files. The <em>SMOS</em> example supplied with VTS perfectly illustrates this situation.</p>
+</div>
+<div class="section" id="dimensions-and-units">
+<span id="d-file-format-in-vts-dimensions-and-units"></span><h2>Dimensions and units<a class="headerlink" href="#dimensions-and-units" title="Permalink to this headline">¶</a></h2>
+<p>As above, the size of a 3D object can either be read as is from the 3D file, or defined by VTS. This choice also depends on the option used for the origin of the local frame.</p>
+<p>When the origin is the geometric center of the object (the <em>“Use file coordinates”</em> option is unchecked), the size of the object is defined in the VTS configuration utility. The specified size, in meters, is used as the dimension of the smallest bounding box for the object.</p>
+<p>When the origin is taken from the 3D file, the specified size is used as an hint of the object’s size, for the 3D views to optimize its display. The given size should be accurate within a factor of 2 (hence the <em>Approximate size</em> label). The user must also specify the unit of the 3D file’s coordinates. The default unit is the meter.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="CIC-CCSDS_data_files_in_VTS.html" class="btn btn-neutral float-right" title="CIC/CCSDS data files in VTS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Data_description_for_VTS_projects.html" class="btn btn-neutral" title="Data description for VTS projects" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright VTS Team.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'3.6.0-9030',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

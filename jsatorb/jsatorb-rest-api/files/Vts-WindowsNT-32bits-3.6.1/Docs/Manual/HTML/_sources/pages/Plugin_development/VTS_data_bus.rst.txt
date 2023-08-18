@@ -1,0 +1,290 @@
+.. _VTS_data_bus:
+
+Provider / Subscriber Data Bus
+==================================================================================
+
+.. warning:: 
+
+   The Provider / Subscriber mechanism is available starting from protocol version 2.0
+
+The VTS Synchronization protocol integrates a data Provider / Subscriber mechanism.
+Clients can act on this bus as data providers and/or data subscribers. Some clients may ask for parameters and/or provide some.
+
+When a client requires some data, identified by a parameter name, it can request for this data on the VTS Data Bus. The other clients, connected on this bus, are then informed of this request. If some of these clients can provide the requested parameter, they start emitting this parameter on the bus. By doing so, they become providers.
+
+When a parameter is no longer needed (all the clients that were using it disconnected, for example), the providers are informed of this fact so that they can stop pushing the data on the bus.
+
+On the other hand, when a new provider arrives on the data bus, it informs other clients of its arrival by declaring itself as a provider. By doing so, other clients can then ask for the parameters they require.
+
+
+Bus overview
+----------------------------------------------------------------------------------
+
+The VTS Data Bus is designed to allow any client to connect to it, subscribe to parameters or provide some.
+
+Each client on this bus is identified by their VTS ID (Synchronization protocol ID). Even though we talk about *ProviderID* or *SubscriberID*, these ID are both the VTS ID no matter if the client provides and/or subscribes to parameters.
+
+The providers or subscribers do not need to know how the parameters are transmitted on the VTS Data Bus. The bus ensures that all subscribers will receive the parameters and that all providers will receive the requests.
+
+In order to send data over the VTS data bus, providers shall use the ``DATA`` command, like any other data.
+
+Protocol rules
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The VTS Data Bus is based on the VTS Synchronization protocol. Thus, the latter's rules apply to the former's.
+
+The following rules are added:
+
+* Parameters name can be letters, numbers and underscores.
+* Parameters values must be encoded as JSON values (scalars, strings, arrays of objects).
+
+
+Data transmission
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The VTS Data Bus relies on the Broker to ensure the transmission of the data and commands. The Broker acts as a broadcaster.
+
+When a provider acknowledge a parameter request, it must stores internally this request by **storing a SubscriberID/ParameterName token**.
+When a subscriber unsubscribes from a parameter, all the concerned providers should **remove the corresponding SubscriberID/ParameterName token**.
+Each time the concerned parameter is updated, the provider should push its value on the data bus as long as at least one token concerns it.
+
+
+.. _JSONFormatChapter:
+
+JSON format
+----------------------------------------------------------------------------------
+
+In order to transmit structured data of any kind, some commands require their payload to be represented as inline ``JSON`` data. This format is commonly used to represent structured and hierarchical information with a key/value principle.
+
+Example of JSON:
+
+.. code-block:: json
+
+   {
+      "key1": "value1",
+      "key2": -42,
+      "key3": 1.0,
+      "key4": [ 42, "str", 1.0 ],
+      "key5": {
+         "subkey1": "value1",
+         "subkey2": "value2"
+      }
+   }
+
+In this example we declare an object (between ``{`` and ``}``):
+
+* ``key1`` stores a characters string ``"value1"``,
+* ``key2`` stores an integer ``-42``,
+* ``key3`` stores a floating point value,
+* ``key4`` stores an array of values (containing ``42``, ``"str"`` and ``1.0``) because these values are between ``[`` and ``]``,
+* ``key5`` stores an object (because of ``{`` and ``}``) which has itself two key/value pairs (``subkey1`` and ``subkey2``).
+
+Using this syntax, if we want to transmit two parameters called ``PARAM1`` and ``PARAM2``, we can write the following JSON :
+
+.. code-block:: json
+
+   {
+      "PARAM1": "some value",
+      "PARAM2": "some other value"
+   }
+
+In order to transmit this JSON data, **it must be inlined and the quotes must be escaped**:
+
+.. code-block:: json
+   
+   { \"PARAM1\": \"some value\", \"PARAM2\": \"some other value\" }
+
+
+.. warning:: Inlining the JSON data is required as long as it contains a quote ``"``.
+
+
+Commands
+----------------------------------------------------------------------------------
+
+The VTS Data Bus protocol relies on the VTS Synchronization protocol. All the Data Bus commands are transmitted as ``CMD`` messages.
+The keyword ``BUS`` informs the Broker and the Data Bus clients that a command is a Data Bus command.
+
+.. code-block:: bash
+
+   CMD BUS CommandName <Argument> <Argument> <...>
+
+The command names are **case insensitive**.
+
+
+Subscribe Command
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This command allows a client to declare itself interested by a set of parameters, identified by their name.
+All the providers on the data bus that can provide some or all of these parameters are informed of this request and can start pushing the parameters values on the data bus.
+
+When a provider takes into account a new subscription, it shall push on the bus the last known value of the requested parameter.
+By doing this the data bus can provide constants parameters only when needed, and ensures all the subscribers will receive them.
+
+Syntax
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+The ``Subscribe`` command is as follow:
+
+.. code-block:: bash
+
+   CMD BUS Subscribe <SubscriberID> <AUTO,ProviderID> "Comma-separated parameters names list"
+
+where :
+
+* *SubscriberID*: ID of the requesting client.
+* *AUTO*: means that all the clients that can provide some of the requested parameters should start pushing the parameters values on the bus,
+* *ProviderID*: means that only the provider with this ID is asked to transmit the requested parameters, if ever it can provide these parameters.
+
+Example
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+The following command is an example of a client (id #123) that subscribes to the parameters ``PARAM1`` and ``PARAM2`` without specifying which provider should provide them:
+
+.. code-block:: bash
+
+   CMD BUS Subscribe 123 AUTO "PARAM1,PARAM2"
+
+
+Unsubscribe Command
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This command allows a client to inform all the providers on the bus that it is no more interested in some parameters, identified by their name.
+All the providers on the data bus must take that fact into account. Potentially, if some parameters are not requested anymore by any client, the providers can stop emitting them on the bus.
+
+Syntax
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+The ``Unsubscribe`` command is as follow:
+
+.. code-block:: bash
+
+   CMD Bus Unsubscribe <SubscriberID> <AUTO,ProviderID> "comma-separated parameters names list"
+
+where:
+
+* *SubscriberID*: ID of the requesting client.
+* *AUTO*: means that all the clients that were providing the given parameters for this specific SubscriberID should remove that subscriber from their list of subscribers.
+* *ProviderID*: means that the specific provider with this ID must remove the subscriber identified by the SubscriberID from their its list of subscribers.
+
+Example
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+The following command is an example of a client (id #123) that unsubscribes from the parameters ``PARAM1`` and ``PARAM2`` from all the concerned providers:
+
+.. code-block:: bash
+
+   CMD BUS Unsubscribe 123 AUTO "PARAM1,PARAM2"
+
+
+NewProvider Command
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This allows a client to inform all other clients on the bus that a new provider is now available.
+
+Other clients may use this information to subscribe to new parameters.
+
+Syntax
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+The ``NewProvider`` command is as follow:
+
+.. code-block:: bash
+
+   CMD BUS NewProvider <ProviderID>
+
+where:
+
+* *ProviderID*: ID of the new provider.
+
+Example
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+The following command is an example of a client (id #123) that declares itself as a provider on the bus:
+
+.. code-block:: bash
+
+   CMD BUS NewProvider 123
+
+
+
+Describe Command
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This command allows a client to ask for information about a set of parameters. *The nature of the description is let free and independent of the data bus.*
+
+All providers concerned by this request shall return a ``Description`` command in response.
+
+This request can be sent to all providers, or to a specific provider (refered to by its ID).
+
+Syntax
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+The ``Describe`` command respects the following syntax:
+
+.. code-block:: bash
+
+   CMD BUS Describe <SubscriberID> <AUTO,ProviderID> "comma-separated parameters names list"
+
+where:
+
+* *SubscriberID*: ID of the requesting client.
+* *AUTO*: means that all the clients that can provide information about the requested parameters shall answer,
+* *ProviderID*: means that only the provider with this ID is asked to give information about the requested parameters, if ever it can provide any information.
+
+Example
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+The following command is an example of a client (id #123) that asks for information about the parameters ``PARAM1`` and ``PARAM2`` from all the concerned providers:
+
+.. code-block:: bash
+
+   CMD BUS Describe 123 AUTO "PARAM1,PARAM2"
+
+
+Description Command
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This allows is used to transmit **constant** information about a set of parameters. *The nature of the description is let free and independent of the data bus.*
+
+This commands is usually sent in response to a ``Describe`` command.
+
+In order to transmit any kind of parameters, the ``Description`` command payload is stored as inlined JSON data. Please refer to :ref:`JSONFormatChapter`.
+
+Syntax
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+The ``Description`` command respects the following syntax:
+
+.. code-block:: bash
+
+   CMD BUS Description <ProviderID> "Inlined-JSON-Data"
+
+where:
+
+* *ProviderID*: ID of the transmitting provider.
+
+The payload has to be represented as an inline JSON object where each key/value pair correspond to the description of a parameter.
+
+Example
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+The following command is an example of a provider (id #123) that gives a description of two parameters ``PARAM1`` and ``PARAM2``.
+
+The payload contains the following JSON data:
+
+.. code-block:: json
+
+   {
+      "PARAM1": {
+         "desc": "some description",
+         "limit": 3.14159
+      },
+      "PARAM2": [ "another info", 789 ]
+   }
+
+With this data inlined and its quotes escaped, we get the following command:
+
+.. code-block:: bash
+
+   CMD BUS Description 123 "{ \"PARAM1\": { \"desc\": \"some description\", \"limit\": 3.14159 }, \"PARAM2\": [ \"another info\", 789 ] }"
+

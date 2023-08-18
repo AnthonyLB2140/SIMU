@@ -1,0 +1,22 @@
+.. _Conventions_in_VTS:
+
+Conventions in VTS
+==================================================================================
+
+As in every software, VTS sets up conventions for some of its elements. This page lists those conventions.
+
+
+.. _Conventions_in_VTS#Frames:
+
+Frames
+----------------------------------------------------------------------------------
+In VTS, frame axes form an orthonormal direct basis.
+
+
+.. _Conventions_in_VTS#Quaternions:
+
+Quaternions
+----------------------------------------------------------------------------------
+The first element of a quaternion corresponds to its scalar part.
+
+

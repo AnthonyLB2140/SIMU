@@ -1,0 +1,10 @@
+AltSurface "JMII DDS" "Sol/Earth"
+{
+	Texture "JMII DDS.ctx"
+        NightTexture "JNight DDS.ctx"
+        NormalMap "JNormal DDS.ctx"
+	HazeColor [ 1 1 1 ]
+	HazeDensity 0.25
+	SpecularColor [ 0.5 0.5 0.55 ]
+	SpecularPower 12.0
+}

@@ -1,0 +1,41 @@
+.. _CIC-CCSDS_data_files_in_VTS:
+
+CIC/CCSDS data files in VTS
+==================================================================================
+
+.. _CIC-CCSDS_data_files_in_VTS#References:
+
+Introduction
+----------------------------------------------------------------------------------
+The data files used by VTS and its client applications are written in the CIC/CCSDS format, a column-based text format derived from the CCSDS OEM, AEM and MPM formats.
+
+The CIC/CCSDS file format is described in the reference document *CIC Data Exchange Protocol V2.0* (DCT/DA/PA - 2009.0021267). This document is included in the VTS root directory. You will also find many examples of CIC/CCSDS files in the "Data" directory.
+
+Some features of the CIC/CCSDS file format:
+
+- Standardized header depending on file type
+- Data as timestamped lines
+- MJD date format with 2 fields respectively for days and seconds (see the :ref:`Date formats in VTS <Date_formats_in_VTS>` section)
+- Satellite position in kilometers
+- Orientation as quaternions from EME2000 towards satellite local frame
+- Heterogeneous data units within the same file
+
+VTS handles World Geodetic System (WGS84) in SurfaceView.
+
+
+.. _CIC-CCSDS_data_files_in_VTS#Heterogeneous_data_units:
+
+Heterogeneous data units
+----------------------------------------------------------------------------------
+CCSDS files can store data with multiple units. This allows for the use of data such as Lat/Long/Alt (degrees, degrees, meters).
+When explicitly specified, the unit is defined in the ``USER_DEFINED_UNIT`` field of the CCSDS header, enclosed by square brackets.
+
+Multiple units can be defined by putting pipes between different units. The order of the units corresponds to the order of the data columns.
+
+
+.. code-block:: bash
+
+   USER_DEFINED_UNIT = [deg|deg|m]
+
+
+

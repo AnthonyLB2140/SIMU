@@ -1,0 +1,90 @@
+.. _POIs_and_ROIs_in_VTS:
+
+POIs and ROIs in VTS
+==================================================================================
+
+POIs and ROIs in VTS are files defining Points and Regions of Interest for the visualization. They are displayed in 2D and 3D applications that support them. Both SurfaceView and Celestia support displaying POIs and ROIs.
+
+
+.. _POIs_and_ROIs_in_VTS#CIC/CCSDS_POI_and_ROI_file_format:
+
+CIC/CCSDS POI and ROI file format
+----------------------------------------------------------------------------------
+POIs and ROIs are defined in CIC/CCSDS files in MPM format. For more information on the CIC/CCSDS file format, refer to the :ref:`CIC-CCSDS data files in VTS <CIC-CCSDS_data_files_in_VTS>` chapter.
+
+A CIC/CCSDS POI or ROI file must have the following characteristics:
+
+- The ``USER_DEFINED_PROTOCOL`` must be ``NONE``.
+- The ``USER_DEFINED_CONTENT`` may be arbitrary.
+- The ``USER_DEFINED_SIZE`` must be ``2``, or ``3`` for POIs only.
+- The ``USER_DEFINED_TYPE`` must be ``REAL``, or ``STRING`` for POIs only with a size of 3.
+- The ``USER_DEFINED_UNIT`` must be ``[deg]``, or ``n/a`` for POIs only with a size of 3.
+
+The data values in the file are coordinates in latitude/longitude.
+
+In ROI files, the special data value ``180 180`` is interpreted as a separator and will create a new polygon with the following sequence of coordinates.
+
+A single POI file may define multiple points of interest. In POI files with 3 columns, the last column defines a label for the corresponding coordinates.
+
+
+.. _POIs_and_ROIs_in_VTS#Sample_POI_file:
+
+Sample POI file
+----------------------------------------------------------------------------------
+
+The following is a sample CIC/CCSDS POI file:
+
+::
+
+   CIC_MPM_VERS = 1.0
+   CREATION_DATE = 2014-04-23T15:25:04.268055
+   ORIGINATOR = VTS
+
+   META_START
+
+   USER_DEFINED_PROTOCOL = NONE
+   USER_DEFINED_CONTENT = POINTS OF INTEREST
+   USER_DEFINED_SIZE = 3
+   USER_DEFINED_TYPE = STRING
+   USER_DEFINED_UNIT = [n/a]
+
+   META_STOP
+
+   48.861348   2.345248    "Siege social"
+   48.843445   2.390097    DLA
+   43.561948   1.481500    CST
+   5.208395    -52.775477  CSG
+
+
+.. _POIs_and_ROIs_in_VTS#Sample_ROI_file:
+
+Sample ROI file
+----------------------------------------------------------------------------------
+
+The following is a sample CIC/CCSDS ROI file containing two polygons:
+
+::
+
+   CIC_MPM_VERS = 1.0
+   CREATION_DATE = 2014-04-23T15:25:04.268055
+   ORIGINATOR = VTS
+
+   META_START
+
+   USER_DEFINED_PROTOCOL = NONE
+   USER_DEFINED_CONTENT = REGION OF INTEREST
+   USER_DEFINED_SIZE = 2
+   USER_DEFINED_TYPE = REAL
+   USER_DEFINED_UNIT = [deg]
+
+   META_STOP
+
+   -30 30
+   30 30
+   0 0
+   180 180
+   0 0
+   -25 -25
+   25 -25
+
+

@@ -1,0 +1,765 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Scenario in VTS &mdash; VTS 3.6.0-9030 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="VTS 3.6.0-9030 documentation" href="../../index.html"/>
+        <link rel="up" title="General" href="index.html"/>
+        <link rel="next" title="Window Geometry Manager" href="Manage_window_geometry.html"/>
+        <link rel="prev" title="Clusters in VTS" href="Cluster_in_VTS.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> VTS
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction/index.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">General</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Conventions_in_VTS.html">Conventions in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Date_formats_in_VTS.html">Date formats in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Data_sources_in_VTS.html">Data sources in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Position_of_objects_in_VTS.html">Position of objects in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Orientation_of_objects_in_VTS.html">Orientation of objects in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Examples_for_position_and_orientation_of_objects_in_VTS.html">Examples for position and orientation of objects in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Backwards_compatibility_in_VTS.html">Backward compatibility in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Object_paths_in_VTS.html">Object paths in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Central_bodies_in_VTS.html">Central bodies in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Structure_of_satellites_in_VTS.html">Structure of satellites in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sensors_in_VTS.html">Sensors in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Masks_in_VTS.html">Physical masks in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scale_factors_in_VTS.html">Scale factors in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cluster_in_VTS.html">Clusters in VTS</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Scenario in VTS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#timeline">Timeline</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#badges">Badges</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#time-window">Time window</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#time-cursor">Time cursor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#project-scenario">Project scenario</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mission-events">Mission events</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#project-scripts">Project scripts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#project-data-files">Project data files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#timeline-toolbar">Timeline toolbar</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#view-properties-editor">View properties editor</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#scenario-state-properties">Scenario state properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#view-properties-editor-toolbar">View properties editor toolbar</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#window-geometry-manager">Window geometry manager</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Manage_window_geometry.html">Window Geometry Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mission_events_in_VTS.html">Mission events in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="POIs_and_ROIs_in_VTS.html">POIs and ROIs in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Other_visualisable_objects.html">Other visualisable objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scripts_and_macros_in_VTS.html">Scripts and macros in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="VTS_Broker.html">VTS Broker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Files_used_by_VTS/index.html">Files used by VTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Starting_VTS/index.html">Starting VTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VTS_applications_user_manuals/index.html">VTS applications user manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Plugin_development/index.html">Plugin development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Data_generators_in_VTS/index.html">Data generator integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../About/index.html">About</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">VTS</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">General</a> &raquo;</li>
+        
+      <li>Scenario in VTS</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/pages/General/Scenario_in_VTS.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="scenario-in-vts">
+<span id="id1"></span><h1>Scenario in VTS<a class="headerlink" href="#scenario-in-vts" title="Permalink to this headline">¶</a></h1>
+<p>The VTS project scenario consists of a set of visualization states applied at precise instants of the visualization.</p>
+<p>These states hold visualization properties specific to each client, such as position and orientation of the camera, visibility of satellite components, visibility of the equatorial grid, etc. Special behavior can then be triggered at precise dates through visualization states, e.g. momentarily switching to sensor view when an acquisition occurs on some instrument.</p>
+<p>VTS offers two tools to edit a project scenario: the timeline and the view properties editor. In the VTS configuration utility, these tools are available in the <strong>Scenario Editor</strong> tab.</p>
+<div class="figure align-center" id="id2">
+<img alt="../../_images/ScenarioEditor.png" src="../../_images/ScenarioEditor.png" />
+<p class="caption"><span class="caption-text">Scenario editor in the VTS configuration utility</span></p>
+</div>
+<p>In the Broker, they are available in the <strong>Timeline</strong> and <strong>View Properties</strong> tab. Parts of the timeline, displaying dates and the project scenario, are always visible in the Broker, no matter which tab is currently selected.</p>
+<div class="section" id="timeline">
+<span id="scenario-in-vts-timeline"></span><h2>Timeline<a class="headerlink" href="#timeline" title="Permalink to this headline">¶</a></h2>
+<p>The timeline displays and allows selecting, creating and removing visualization states in the project scenario. It also displays the contents of the project’s data files and event files.</p>
+<div class="figure align-center" id="id3">
+<img alt="../../_images/BrokerTimeline.png" src="../../_images/BrokerTimeline.png" />
+<p class="caption"><span class="caption-text">Timeline in the Broker</span></p>
+</div>
+<p>In the VTS configuration utility, modifications to the project in the <strong>Structure</strong> tab are not reflected automatically in the timeline. The <strong>Refresh</strong> button must be clicked to update the view.</p>
+<div class="section" id="badges">
+<span id="scenario-in-vts-badge"></span><h3>Badges<a class="headerlink" href="#badges" title="Permalink to this headline">¶</a></h3>
+<p>Timeline files can be categorized using badges. A <strong>badge</strong> is a stamp identified by a <em>name</em> and a <em>color</em> that is displayed at the right of the file name. Badges are displayed in the Scenario Editor and the Broker.</p>
+<p>To assign a new badge to a file, right-click on a file, select “<em>Assign</em>” and then select a badge from the list. New badges can be created using the “<em>New badge</em>” option. All files can have badges except for the special “Scenario” line.</p>
+<p>Existing badges can be modified or removed from the project using the “<em>Badges</em>” option.</p>
+<p>Except for the scenario, badges can also be used to filter specific files from the Timeline.</p>
+<div class="figure align-center" id="id4">
+<img alt="../../_images/BadgeFilter.png" src="../../_images/BadgeFilter.png" />
+<p class="caption"><span class="caption-text">Filter Timeline files using badges</span></p>
+</div>
+<p>Badges are defined at project-level and saved in the VTS project file.</p>
+</div>
+<div class="section" id="time-window">
+<span id="scenario-in-vts-time-window"></span><h3>Time window<a class="headerlink" href="#time-window" title="Permalink to this headline">¶</a></h3>
+<p>The timeline can be zoomed in/out using the mouse wheel, and panned by drag-and-dropping when the mouse cursor has the shape of a hand. This allows for great flexibility during visualization of a project, since the timeline can easily display an overview of the whole project scenario or a detailed view of a small time frame. The maximum zoom level is limited depending on the scenario duration.</p>
+<p>Dates outside of the date range of the project are grayed out in the timeline.</p>
+<p>By default, the timeline displays the whole project scenario when the Broker starts. By using the <em>Save View</em> button, users can save :</p>
+<ul>
+<li><dl class="first docutils">
+<dt>If the cursor is currently followed:</dt>
+<dd><ul class="first last simple">
+<li>Where it is locked (in % of the window)</li>
+<li>The width of the window (in hours)</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>If it is not cursor-locked:</dt>
+<dd><ul class="first last simple">
+<li>The date corresponding to the left of the window</li>
+<li>The width of the window (in hours)</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Moreover, this button saves the current time format of the timeline.</p>
+</div>
+<div class="section" id="time-cursor">
+<span id="scenario-in-vts-time-cursor"></span><h3>Time cursor<a class="headerlink" href="#time-cursor" title="Permalink to this headline">¶</a></h3>
+<p>The timeline’s red time cursor indicates the current visualization date. It can be drag-and-dropped to modify the visualization date. While moving the time cursor, the visualization date is broadcasted synchronously to all client applications.</p>
+<p>Double-clicking in the timeline moves the time cursor to the mouse location (and sets the visualization date accordingly). Hovering above the time cursor displays a tooltip indicating the visualization date in ISO format. When zooming the timeline, holding the <em>Ctrl</em> key locks the zoom on the time cursor.</p>
+<p>The time cursor is not displayed in the VTS configuration utility, where time does not flow.</p>
+</div>
+<div class="section" id="project-scenario">
+<span id="scenario-in-vts-project-scenario"></span><h3>Project scenario<a class="headerlink" href="#project-scenario" title="Permalink to this headline">¶</a></h3>
+<p>The project scenario is represented as a red line, labelled <em>Scenario</em> in the VTS configuration utility, and displayed in the compact mode GUI of the Broker.</p>
+<div class="section" id="scenario-states">
+<span id="scenario-in-vts-scenario-states"></span><h4>Scenario states<a class="headerlink" href="#scenario-states" title="Permalink to this headline">¶</a></h4>
+<p>Scenario states appear as flags in the project scenario line:</p>
+<ul class="simple">
+<li>a blue flag for a regular state not currently selected</li>
+<li>a red flag for the active state (the one displayed in the view properties editor)</li>
+<li>an green flag for the initial state of the visualization</li>
+<li>a grey flag for a disabled state (Broker only)</li>
+</ul>
+<p>Also, an orange star appears on states which have been modified but not saved.</p>
+<p>In the VTS configuration utility, clicking a state makes it become the active state. In the Broker, the active state is the first enabled state to the left of the time cursor.</p>
+<p>When the time cursor moves past a new state in the Broker, it becomes active and its visualization properties are sent to the corresponding client applications. This allows, for example, precisely setting the camera at a user-defined location upon key events of the visualization (instrument acquisition, ground station communication, orbital maneuver, etc.). Note that a disabled state is never active: when disabling the active state, the first enabled previous state becomes active.</p>
+<p>The initial state of the visualization is a fictional state mirroring all scenario states prior to the project’s start date. It cannot be removed or disabled, and its date is automatically adjusted when the project’s start date changes.</p>
+</div>
+<div class="section" id="state-time-ratio">
+<span id="scenario-in-vts-state-time-ratio"></span><h4>State time ratio<a class="headerlink" href="#state-time-ratio" title="Permalink to this headline">¶</a></h4>
+<p>Each state can be associated with a timeratio. When playing the visualization, the current timeratio will be changed by the Broker if:</p>
+<ul class="simple">
+<li>The project is configured as using <em>Use scenario state time ratio</em> in the <em>Time &amp; Options</em> panel of the Configurator</li>
+<li>The <em>Use Scenario State Time Ratio</em> button has not been unchecked in the Broker</li>
+</ul>
+<div class="figure align-center" id="id5">
+<img alt="../../_images/BrokerStateTimeRatio.png" src="../../_images/BrokerStateTimeRatio.png" />
+<p class="caption"><span class="caption-text">State time ratio activation with the Broker</span></p>
+</div>
+</div>
+<div class="section" id="interacting-with-the-scenario">
+<span id="scenario-in-vts-interacting-with-the-scenario"></span><h4>Interacting with the scenario<a class="headerlink" href="#interacting-with-the-scenario" title="Permalink to this headline">¶</a></h4>
+<p>Right-clicking the scenario displays a context menu with the following actions:</p>
+<ul class="simple">
+<li>The <strong>Create state</strong> entry creates a new scenario state at the selected location.</li>
+<li>The <strong>Select current state</strong> entry marks as active the first enabled state to the left of the selected location.</li>
+<li>The <strong>Disable all states</strong>/<strong>Enable all states</strong> entry disables/enables all states in the scenario (except for the initial state).</li>
+<li>The <strong>Delete all states</strong> entry removes all states in the scenario (except for the initial state)</li>
+</ul>
+<p>The properties of a new state are copied from the previous state at the date of the new state.</p>
+<p>Right-clicking a scenario state displays a context menu with the following actions:</p>
+<ul class="simple">
+<li>The <strong>Go to state</strong> entry sets the visualization date to the date of the selected state.</li>
+<li>The <strong>Disable state</strong>/<strong>Enable state</strong> entry disables/enables the selected state.</li>
+<li>The <strong>Delete state</strong> entry removes the selected state.</li>
+</ul>
+<p>Right-clicking on the initial state of the scenario displays a specific context menu:</p>
+<ul class="simple">
+<li>The <strong>Go to state</strong> entry sets the visualization date to the date of the selected state.</li>
+<li>The <strong>Create state</strong> entry creates a new scenario state at the start of the scenario.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="mission-events">
+<span id="scenario-in-vts-mission-events"></span><h3>Mission events<a class="headerlink" href="#mission-events" title="Permalink to this headline">¶</a></h3>
+<p>Mission events attached to project entities are displayed in the first lines of the timeline. Each entity has its own line of events. Refer to the <a class="reference internal" href="Mission_events_in_VTS.html#mission-events-in-vts"><span class="std std-ref">Mission events in VTS</span></a> chapter for more information on events.</p>
+<div class="section" id="graphical-representation-of-events">
+<span id="scenario-in-vts-graphical-representation-of-events"></span><h4>Graphical representation of events<a class="headerlink" href="#graphical-representation-of-events" title="Permalink to this headline">¶</a></h4>
+<p>The header of each line shows the name of the entity for the events on the line.</p>
+<p>Each event is represented by its decoration, configured in the event types editor. Refer to the <a class="reference internal" href="../VTS_applications_user_manuals/VTS_configuration_utility_user_manual.html#vts-configuration-utility-user-manual-configuring-event-types"><span class="std std-ref">Configuring event types</span></a> section of the <a class="reference internal" href="../VTS_applications_user_manuals/VTS_configuration_utility_user_manual.html#vts-configuration-utility-user-manual"><span class="std std-ref">VTS configuration utility user manual</span></a> chapter for more information.</p>
+<p>Each line can be resized by resizing its header’s line number. Lines can be reordered by drag-and-dropping their headers’ line numbers.</p>
+</div>
+<div class="section" id="interacting-with-events">
+<span id="scenario-in-vts-interacting-with-events"></span><h4>Interacting with events<a class="headerlink" href="#interacting-with-events" title="Permalink to this headline">¶</a></h4>
+<p>Right-clicking on an event displays a context menu with the following actions:</p>
+<ul class="simple">
+<li>The <strong>Go to event</strong> entry sets the visualization date to the date of the selected event (Broker only).</li>
+<li>The <strong>Select state for event</strong> entry marks as active the first enabled state to the left of the selected event.</li>
+<li>The <strong>Create state at event</strong> entry creates a new scenario state at the date of the selected event.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="project-scripts">
+<span id="scenario-in-vts-project-scripts"></span><h3>Project scripts<a class="headerlink" href="#project-scripts" title="Permalink to this headline">¶</a></h3>
+<p>VTS scripts used by the project are displayed in the timeline. Each script has its own line. Refer to the <a class="reference internal" href="Scripts_and_macros_in_VTS.html#scripts-and-macros-in-vts"><span class="std std-ref">Scripts and macros in VTS</span></a> chapter for more information on script files.</p>
+<div class="section" id="graphical-representation-of-scripts">
+<span id="scenario-in-vts-graphical-representation-of-scripts"></span><h4>Graphical representation of scripts<a class="headerlink" href="#graphical-representation-of-scripts" title="Permalink to this headline">¶</a></h4>
+<p>The header of each line shows the name of the script.</p>
+<p>Script commands are displayed as red diamonds at the date at which they occur.</p>
+<p>Each line can be resized by resizing its header’s line number. Lines can be reordered by drag-and-dropping their headers’ line numbers.</p>
+</div>
+<div class="section" id="interacting-with-scripts">
+<span id="scenario-in-vts-interacting-with-scripts"></span><h4>Interacting with scripts<a class="headerlink" href="#interacting-with-scripts" title="Permalink to this headline">¶</a></h4>
+<p>The following actions are available for script headers:</p>
+<ul class="simple">
+<li>Double-clicking the header sets the zoom level and pans the timeline so that the line’s width fits in.</li>
+<li>The <strong>File properties…</strong> button opens a pop-up window with information on the script file.</li>
+<li>The <strong>Remove file</strong> button removes the script from both the timeline and the project.</li>
+</ul>
+<p>Right-clicking on a script command displays a context menu with the following actions:</p>
+<ul class="simple">
+<li>The <strong>Go to command</strong> entry sets the visualization date to the date of the selected command (Broker only).</li>
+<li>The <strong>Select state for command</strong> entry marks as active the first enabled state to the left of the selected command.</li>
+<li>The <strong>Create state at command</strong> entry creates a new scenario state at the date of the selected command.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="project-data-files">
+<span id="scenario-in-vts-project-data-files"></span><h3>Project data files<a class="headerlink" href="#project-data-files" title="Permalink to this headline">¶</a></h3>
+<p>Data files used by the project (position and orientation of satellites, sensors, etc.) are displayed in the timeline. Each file has its own line.</p>
+<div class="section" id="graphical-representation-of-files">
+<span id="scenario-in-vts-graphical-representation-of-files"></span><h4>Graphical representation of files<a class="headerlink" href="#graphical-representation-of-files" title="Permalink to this headline">¶</a></h4>
+<p>The header of each line shows the name of the file.</p>
+<p>The following display modes are available:</p>
+<ul class="simple">
+<li><strong>Normal</strong> mode: Each value is displayed as a rectangle extending from the date of the value to the date of the next value. Rectangles of identical color indicate identical value. In the screenshot below, this display mode is used for line 2.</li>
+<li><strong>Block</strong> mode: The whole file is displayed as a single rectangle. This display mode is used for files with more than 300 lines or bigger than 500Kb, so as not to overload the timeline. When the file contents have not been read, the block is colored in gray and no tooltip is available. Otherwise, the block is colored and tooltips are available. In the screenshot below, this display mode is used for line 3.</li>
+<li><strong>Event</strong> mode: Each value is displayed as a diamond at the date of the value. Diamonds of identical color indicate identical value. In the screenshot below, this display mode is used for line 4.</li>
+<li><strong>Interval</strong> mode: Identical to <strong>Normal</strong> mode, except that “neutral” values (0 for real or integer data) are not displayed. This mode offers better contrast to visualize the contents of files with on/off status, such as in/out of eclipse status for a satellite, etc. In the screenshot below, this display mode is used for line 5.</li>
+<li><strong>Gradient</strong> mode: The whole file is displayed as a single rectangle filled with a color gradient indicating the value variations in the file. This mode offers better visualization of the evolution of values in a file, but may not be suited to files of dimension greater than 1. In the screenshot below, this display mode is used for line 6.</li>
+<li><strong>Color</strong> mode: Identical to <strong>Normal</strong> mode, except that the color of each rectangle is derived by interpreting the corresponding value as a color. This mode allows displaying the contents of color files, and is only available for data which may be interpreted as a color, i.e. files of real or integer data of dimension 3 or 4. In the screenshot below, this display mode is used for line 7.</li>
+<li><strong>Graph</strong> mode: all values are displayed as a graph. This is a preview of the content of the file and may not replace a proper plotter software such as PrestoPlot. In the screenshot below, this display mode is used for line 8.</li>
+</ul>
+<div class="figure align-center" id="id6">
+<img alt="../../_images/TimelineModes.png" src="../../_images/TimelineModes.png" />
+<p class="caption"><span class="caption-text">Display modes available for data files in the Timeline</span></p>
+</div>
+<p>In order to avoid long loading times, files bigger than 500Kb are only partially loaded. The full contents will however be read if the user selects a mode other than <strong>Block</strong> for the file. When hovered, files for which the full contents have been read display a tooltip containing the value at the current location of the mouse.</p>
+<p>Each line can be resized by resizing its header’s line number. Lines can be reordered by drag-and-dropping their headers’ line numbers.</p>
+<p>Color files associated with OEM position files are used to color the line of their position file.</p>
+<p>User-selected display modes are saved in the VTS project file and restored upon loading of the project in the VTS configuration utility or the Broker. Be aware that this might result in longer loading times if a mode other than <strong>Block</strong> is selected for files of significant size.</p>
+</div>
+<div class="section" id="interacting-with-files">
+<span id="scenario-in-vts-interacting-with-files"></span><h4>Interacting with files<a class="headerlink" href="#interacting-with-files" title="Permalink to this headline">¶</a></h4>
+<p>The following actions are available for file headers:</p>
+<ul>
+<li><p class="first">Double-clicking the header sets the zoom level and pans the timeline so that the line’s width fits in.</p>
+</li>
+<li><dl class="first docutils">
+<dt>Right-clicking the header displays a context menu with the following entries:</dt>
+<dd><ul class="first last simple">
+<li>The <strong>File properties…</strong> entry opens a pop-up window with information on the file and parameters controlling its appearance in the timeline.</li>
+<li>The <strong>Edit file…</strong> entry opens the file in a text editor.</li>
+<li>The <strong>Ignore file</strong> or <strong>Remove file</strong> entry removes the file from the timeline. Files referenced in the project structure are not removed from the project, they are merely hidden in the timeline and will remain so until they have been added back or restored.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">Right-clicking a blank zone below the file header list displays a context menu with the following entries:</p>
+</li>
+<li><p class="first"><strong>Restore ignored files</strong>: Restore the previously ignored files.</p>
+</li>
+</ul>
+<p>The file properties pop-up, apart from displaying information on the file, offers the following actions:</p>
+<ul class="simple">
+<li>The <strong>Edit file…</strong> button opens the file in a text editor.</li>
+<li>The <strong>Display mode</strong> drop-down list allows selecting the display mode for the file.</li>
+<li>The <strong>Merge identical values</strong> option enables/disables the merging of consecutive identical values in the file into a single value item (rectangle or diamond). This is on by default to improve the clarity of the timeline’s contents.</li>
+<li>The <strong>Color overlay</strong> option enables/disables the color file overlay for OEM position files.</li>
+</ul>
+<p>Note that the number of lines is not displayed in the <em>Properties</em> tab for partially loaded files.</p>
+<p>Right-clicking on values in the file’s line displays a context menu with the following actions (not available in <strong>Block</strong> and <strong>Gradient</strong> modes):</p>
+<ul class="simple">
+<li>The <strong>Go to event</strong>/<strong>Go to interval start</strong>/<strong>Go to interval end</strong> entry sets the visualization date to the date/start date/end date of the selected diamond/rectangle (Broker only).</li>
+<li>The <strong>Select state for event</strong>/<strong>Select state for interval start</strong>/<strong>Select state for interval end</strong> entry marks as active the first enabled state to the left of the selected diamond/rectangle start/end.</li>
+<li>The <strong>Create state at event</strong>/<strong>Create state at interval start</strong>/<strong>Create state at interval end</strong> entry creates a new scenario state at the date of the selected diamond/rectangle start/end.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="timeline-toolbar">
+<span id="scenario-in-vts-timeline-toolbar"></span><h3>Timeline toolbar<a class="headerlink" href="#timeline-toolbar" title="Permalink to this headline">¶</a></h3>
+<p>The timeline’s toolbar offers the following actions:</p>
+<ul class="simple">
+<li>The <strong>Add files…</strong> button opens a browser to add one or several files (data files or scripts) to the timeline. These files will have to be saved in the project folder if they are located outside of it. Files not part of the structure added this way will be saved and opened on future loads of the project. Files may also be added by drag-and-dropping them onto the timeline.</li>
+<li>The <strong>Refresh timeline</strong> button updates the timeline. The project dates, files (events and data) and the contents of these files are updated. The timeline may only be updated if the project is in a valid state.</li>
+<li>The <strong>Center cursor</strong> button centers the timeline’s view on the time cursor (Broker only).</li>
+<li>The <strong>Follow cursor</strong> button automatically locks the view on the time cursor as it moves with the visualization date (Broker only).</li>
+<li>The <strong>Reset view</strong> button zooms in/out the timeline and pans it so that the whole project is displayed. Unless the user interacts with the timeline, upon change of the project limits the timeline will be adjusted to keep the whole project displayed.</li>
+<li>The <strong>Save view</strong> button saves the current view settings so that they can be restored upon next load of the project. See the <a class="reference internal" href="#scenario-in-vts-time-window"><span class="std std-ref">Time window</span></a> section above for more information on the saved and restored view settings.</li>
+<li>The <strong>Change date format</strong> button changes the date format displayed in the timeline (VTS configuration utility only).</li>
+<li>The <strong>Arrange all client application windows</strong> button shows a visual tool helping arranging client application windows for the current state.</li>
+</ul>
+<p>In the VTS configuration utility, the following buttons allow navigation between scenario states:</p>
+<ul class="simple">
+<li>The <strong>Initial state</strong> button marks the project scenario’s initial state as active.</li>
+<li>The <strong>Previous state</strong> button marks the active state’s previous state as active.</li>
+<li>The <strong>Next state</strong> button marks the active state’s next state as active.</li>
+<li>The <strong>Final state</strong> button marks the project scenario’s last state as active.</li>
+</ul>
+<p>In the Broker, the following buttons allow saving view properties of client applications into scenario states:</p>
+<ul class="simple">
+<li>The <strong>Create state</strong> buttons creates a new scenario state at the current visualization date and fills it with view properties gathered from all client applications. The new state is saved (others are not).</li>
+<li>The <strong>Save current state only</strong> (Ctrl + S) button updates the currently active scenario state with view properties gathered from all client applications. The active state is saved (others are not).</li>
+<li>The <strong>Save all states button</strong> (Ctrl + Shift + S) button updates the currently active scenario state with view properties gathered from all client applications, and saves all scenario states.</li>
+<li>The <strong>Save window positions for current state only</strong> button updates the currently active scenario state with the window position of all client applications. The active state is saved (others are not).</li>
+<li>The <strong>Save window positions for whole scenario</strong> button updates all scenario states with the window position of all client applications. All scenario states are saved.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="view-properties-editor">
+<span id="scenario-in-vts-view-properties-editor"></span><h2>View properties editor<a class="headerlink" href="#view-properties-editor" title="Permalink to this headline">¶</a></h2>
+<p>The view properties editor allows editing the view properties of client applications attached to each scenario state.</p>
+<div class="figure align-center" id="id7">
+<img alt="../../_images/BrokerViewProperties2.png" src="../../_images/BrokerViewProperties2.png" />
+<p class="caption"><span class="caption-text">View properties editor in the Broker</span></p>
+</div>
+<div class="section" id="scenario-state-properties">
+<span id="scenario-in-vts-scenario-state-properties"></span><h3>Scenario state properties<a class="headerlink" href="#scenario-state-properties" title="Permalink to this headline">¶</a></h3>
+<p>The <strong>Label</strong> field displays the label of the current scenario state. This label can be modified and is displayed in the state tooltip.</p>
+<p>The <strong>Date</strong> button opens a dialog to view and edit the date of the current scenario date. However, it is not possible to modify the date of the fictional initial scenario state.</p>
+<p>The <strong>Filter</strong> button (<em>Ctrl+F</em>) shows an editor allowing filtering state properties using case-insensitive regexp patterns .</p>
+<p>The <strong>Application</strong> list displays a list of all client applications. Selecting a client application in the list displays its <strong>view properties</strong> in the tree hierarchy to the right.</p>
+<p>There are two types of <strong>view properties</strong>: application parameters, which describe global properties specific to the application; and objects parameters, which describe display properties of project entities (central bodies, satellites, sensors, etc.) for the application.</p>
+<p>Each property has a label describing its purpose. Clicking or double-clicking a property’s value to the right of its label opens an editor to modify the value.</p>
+<ul class="simple">
+<li>Properties with bold labels have had their values modified but not saved. Scenario states for which at least one of their properties has had its value modified appear with an orange star in the timeline.</li>
+<li>Properties with italic labels have a unique value for the whole scenario. Modifying their value automatically affects all scenario states.</li>
+</ul>
+<p>Each property can be reset to default by right-click. In the Broker, this action can lead to a message to the concerned application.</p>
+<ul>
+<li><dl class="first docutils">
+<dt><em>Boolean</em></dt>
+<dd><dl class="first last docutils">
+<dt><em>Editor</em></dt>
+<dd><div class="first last figure">
+<img alt="../../_images/BoolEditor.png" src="../../_images/BoolEditor.png" />
+</div>
+</dd>
+<dt><em>Description</em></dt>
+<dd><div class="first last line-block">
+<div class="line">Editor for a boolean property (e.g.: equatorial grid visibility in Celestia).</div>
+<div class="line">Clicking the checkbox toggles the property.</div>
+</div>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><em>Integer or real number</em></dt>
+<dd><dl class="first last docutils">
+<dt><em>Editor</em></dt>
+<dd><div class="first last figure">
+<img alt="../../_images/IntEditor.png" src="../../_images/IntEditor.png" />
+</div>
+</dd>
+<dt><em>Description</em></dt>
+<dd><div class="first last line-block">
+<div class="line">Editor for an integer or real number property.</div>
+<div class="line">The integer or real value can be entered manually or increased/decreased using the buttons.</div>
+</div>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><em>Character string</em></dt>
+<dd><dl class="first last docutils">
+<dt><em>Editor</em></dt>
+<dd><div class="first last figure">
+<img alt="../../_images/StringEditor.png" src="../../_images/StringEditor.png" />
+</div>
+</dd>
+<dt><em>Description</em></dt>
+<dd><div class="first last line-block">
+<div class="line">Editor for a string property (e.g.: selected object in Celestia).</div>
+<div class="line">The string must be entered manually.</div>
+</div>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><em>Character string list</em></dt>
+<dd><dl class="first last docutils">
+<dt><em>Editor</em></dt>
+<dd><div class="first last figure">
+<img alt="../../_images/StringListEditor.png" src="../../_images/StringListEditor.png" />
+</div>
+</dd>
+<dt><em>Description</em></dt>
+<dd><div class="first last line-block">
+<div class="line">Editor for a string list property (e.g.: visible event types in SurfaceView).</div>
+<div class="line">The string list must be entered manually. Syntax rules of the VTS synchronization protocol apply (except the newline rule). Refer to the <a class="reference internal" href="../Plugin_development/Synchronization_protocol_for_VTS_clients.html#synchronization-protocol-for-vts-clients-message-syntax"><span class="std std-ref">Message syntax</span></a> section of the <a class="reference internal" href="../Plugin_development/Synchronization_protocol_for_VTS_clients.html#synchronization-protocol-for-vts-clients"><span class="std std-ref">Synchronization protocol for VTS clients</span></a> chapter for a list of these rules.</div>
+</div>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><em>Scale factor</em></dt>
+<dd><dl class="first last docutils">
+<dt><em>Editor</em></dt>
+<dd><div class="first last figure">
+<img alt="../../_images/EntityScaleEditor.png" src="../../_images/EntityScaleEditor.png" />
+</div>
+</dd>
+<dt><em>Description</em></dt>
+<dd><div class="first last line-block">
+<div class="line">Editor for a scale factor property (e.g.: satellite scale factor in Celestia).</div>
+<div class="line">The scale factor value can be adjusted by dragging the slider left or right, or entered manually, or reset using the buttons.</div>
+</div>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><em>Range</em></dt>
+<dd><dl class="first last docutils">
+<dt><em>Editor</em></dt>
+<dd><div class="first last figure">
+<img alt="../../_images/RangeEditor.png" src="../../_images/RangeEditor.png" />
+</div>
+</dd>
+<dt><em>Description</em></dt>
+<dd><div class="first last line-block">
+<div class="line">Editor for a range property (e.g.: ambient light level in Celestia).</div>
+<div class="line">The range value can be set by moving the slider, or entered manually, or reset using the button.</div>
+</div>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><em>Rectangle</em></dt>
+<dd><dl class="first last docutils">
+<dt><em>Editor</em></dt>
+<dd><div class="first last figure">
+<img alt="../../_images/RectEditor.png" src="../../_images/RectEditor.png" />
+</div>
+</dd>
+<dt><em>Description</em></dt>
+<dd><div class="first last line-block">
+<div class="line">Editor for a rectangle property (e.g.: window position and size).</div>
+<div class="line">The X, Y coordinates and width, height of the rectangle can each be entered manually or increased/decreased using the buttons.</div>
+</div>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><em>Camera</em></dt>
+<dd><dl class="first last docutils">
+<dt><em>Editor</em></dt>
+<dd><div class="first last figure">
+<img alt="../../_images/CelestiaCameraWidget.png" src="../../_images/CelestiaCameraWidget.png" />
+</div>
+</dd>
+<dt><em>Description</em></dt>
+<dd><div class="first line-block">
+<div class="line">Editor for camera parameters (e.g.: point of view in Celestia).</div>
+</div>
+<ul class="last simple">
+<li>The camera being configured is selected in the <strong>View</strong> drop-down list. The Celestia view layout can be controlled using the <strong>Change view layout…</strong> button.</li>
+<li>The reference frame the camera is attached to is defined by an object selected in the <strong>Reference</strong> drop-down list, and a frame selected in the <strong>Frame</strong> drop-down list.</li>
+<li>The position of the camera in its reference frame can be entered in the <strong>Position</strong> group, in kilometers.</li>
+<li>The orientation of the camera in its reference frame can be entered in the <strong>Orientation</strong> group, either as a quaternion, as Euler angles (in degrees), as an axis and angle (in degrees), or as a direction and up vector.</li>
+<li>The field of view of the camera can be entered in the <strong>FOV</strong> field, in degrees.</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><em>File</em></dt>
+<dd><dl class="first last docutils">
+<dt><em>Editor</em></dt>
+<dd><div class="first last figure">
+<img alt="../../_images/DataFileEditor.png" src="../../_images/DataFileEditor.png" />
+</div>
+</dd>
+<dt><em>Description</em></dt>
+<dd><div class="first last line-block">
+<div class="line">Editor for file properties.</div>
+<div class="line">The file path (either relative or absolute) can be entered in the text field or selected through a file browser using the button.</div>
+</div>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><em>Time Window</em></dt>
+<dd><dl class="first last docutils">
+<dt><em>Editor</em></dt>
+<dd><div class="first last figure">
+<img alt="../../_images/TimeWindow.png" src="../../_images/TimeWindow.png" />
+</div>
+</dd>
+<dt><em>Description</em></dt>
+<dd><div class="first last line-block">
+<div class="line">Editor for a time window. It represents the time distribution before and after a dated event. Durations are in hours.</div>
+</div>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Further documentation on the properties of standard client applications can be found in the <a class="reference internal" href="../Plugin_development/Synchronization_protocol_for_VTS_clients.html#synchronization-protocol-for-vts-clients"><span class="std std-ref">Synchronization protocol for VTS clients</span></a> chapter. In particular, the <a class="reference internal" href="../Plugin_development/Synchronization_protocol_for_VTS_clients.html#synchronization-protocol-for-vts-clients-messages-received-by-celestia"><span class="std std-ref">Messages received by Celestia</span></a> and <a class="reference internal" href="../Plugin_development/Synchronization_protocol_for_VTS_clients.html#synchronization-protocol-for-vts-clients-messages-received-by-surfaceview"><span class="std std-ref">Messages received by SurfaceView</span></a> sections describe properties of the Celestia and SurfaceView client applications.</p>
+</div>
+<div class="section" id="view-properties-editor-toolbar">
+<h3>View properties editor toolbar<a class="headerlink" href="#view-properties-editor-toolbar" title="Permalink to this headline">¶</a></h3>
+<p>The view properties editor offers buttons to propagate view properties between scenario states. Upon selection of one or several properties in the tree hierarchy, these buttons allow copying the selected properties for the same application in one or several other scenario states:</p>
+<ul class="simple">
+<li>The <strong>Propagate selection to all previous states</strong> button copies the selected view properties to all previous scenario states.</li>
+<li>The <strong>Propagate selection to previous state</strong> button copies the selected view properties to the previous scenario state.</li>
+<li>The <strong>Propagate selection to next state</strong> button copies the selected view properties to the next scenario state.</li>
+<li>The <strong>Propagate selection to all next states</strong> button copies the selected view properties to all next scenario states.</li>
+<li>The <strong>Propagate selection to all states</strong> button copies the selected view properties to all scenario states.</li>
+</ul>
+<p>These actions allow easily setting a property value for multiple scenario states. Several properties can be selected by holding down the <em>Ctrl</em> or <em>Shift</em> keys while selecting the properties to propagate. If a tree node is selected, all properties beneath it will be propagated.</p>
+<p>In the Broker, the view properties editor also offers the same buttons as those available to save states in the timeline.</p>
+</div>
+</div>
+<div class="section" id="window-geometry-manager">
+<span id="scenario-in-vts-window-geometry-manager"></span><h2>Window geometry manager<a class="headerlink" href="#window-geometry-manager" title="Permalink to this headline">¶</a></h2>
+<p>For information, see <a class="reference internal" href="Manage_window_geometry.html#window-geometry-manager"><span class="std std-ref">Window Geometry Manager</span></a></p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Manage_window_geometry.html" class="btn btn-neutral float-right" title="Window Geometry Manager" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Cluster_in_VTS.html" class="btn btn-neutral" title="Clusters in VTS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright VTS Team.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'3.6.0-9030',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

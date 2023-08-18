@@ -1,0 +1,214 @@
+# -----------------------------------------------------------------------------
+# JSatOrb Module REST requests: File generator
+# -----------------------------------------------------------------------------
+# These requests are sent from Visual studio code, using the REST client for
+# Visual Studio Code extension 
+# (https://marketplace.visualstudio.com/items?itemName=humao.rest-client).
+# -----------------------------------------------------------------------------
+# How to use: 
+#  - in Visual studio code, install the REST client extension,
+#  - open this file,
+#  - launch the JSatOrb REST API server,
+#  - click on the "Send request" link above each request,
+#  - the REST API response should be displayed in a separated Response window.
+# -----------------------------------------------------------------------------
+# To separate two distinct requests, add a line with '###' between them.
+# -----------------------------------------------------------------------------
+
+
+## Send a request to generate several files for a keplerian orbit
+POST http://localhost:8000/vts HTTP/1.1
+content-type: application/json
+
+{
+  "header": {
+    "mission": "KepSat",
+    "celestialBody": "EARTH",
+    "timeStart": "2011-12-01T16:43:45",
+    "timeEnd": "2011-12-02T16:43:45",
+    "step": "10"
+  },
+  "satellites": [
+    {"name": "KepSat",
+    "type": "keplerian",
+    "sma": 7000000,
+    "ecc": 0.007014455530245822,
+    "inc": 51,
+    "pa": 0,
+    "raan": 0,
+    "meanAnomaly": 0
+    }
+  ],
+  "constellations": [],
+  "groundStations": [
+    {"name": "sydney",
+    "latitude": -33.8678500,
+    "longitude": 151.2073200,
+    "altitude": 58,
+    "elevation": 12
+    }
+  ],
+  "options": {
+    "COVERAGE": {
+      "timeStart": "2011-12-01T16:43:45",
+      "timeEnd": "2011-12-02T16:43:45",
+      "step": 60,
+      "elevation": 0,
+      "nbSatsToCover": 1,
+      "regionLatitudes": [-90, 90],
+      "regionLongitudes": [-180, 180],
+      "plotType": "PERCENT_COV"
+    },
+    "CARTESIAN": {}
+  }
+}
+
+###
+
+## Send a request to generate several files for a cartesian
+## and a keplerian orbits
+POST http://localhost:8000/vts HTTP/1.1
+content-type: application/json
+
+{
+  "header": {
+    "mission": "test-VTS",
+    "celestialBody": "EARTH",
+    "timeStart": "2011-12-01T16:43:45",
+    "timeEnd": "2011-12-02T16:43:45",
+    "step": "60"
+  },
+  "satellites": [
+    {"name": "KepSat",
+    "type": "keplerian",
+    "sma": 7000000,
+    "ecc": 0.007014455530245822,
+    "inc": 51,
+    "pa": 0,
+    "raan": 0,
+    "meanAnomaly": 0
+    },
+    {"name": "CartSat",
+    "type": "cartesian",
+    "x": -6142438.668,
+    "y": 3492467.560,
+    "z": -25767.25680,
+    "vx": 505.8479685,
+    "vy": 942.7809215,
+    "vz": 7435.922231
+    }
+  ],
+  "constellations": [],
+  "groundStations": [
+    {"name": "sydney",
+    "latitude": -33.8678500,
+    "longitude": 151.2073200,
+    "altitude": 58,
+    "elevation": 12
+    }
+  ],
+  "options": {
+    "COVERAGE": {
+      "timeStart": "2011-12-01T16:43:45",
+      "timeEnd": "2011-12-02T16:43:45",
+      "step": 60,
+      "elevation": 0,
+      "nbSatsToCover": 1,
+      "regionLatitudes": [-90, 90],
+      "regionLongitudes": [-180, 180],
+      "plotType": "PERCENT_COV"
+    },
+    "CARTESIAN": {}
+  }
+}
+
+###
+
+## Send a request to generate several files for a keplerian
+## orbit in a specified region
+POST http://localhost:8000/vts HTTP/1.1
+content-type: application/json
+
+{
+  "header": {
+    "mission": "KepSatRegion",
+    "celestialBody": "EARTH",
+    "timeStart": "2011-12-01T16:43:45",
+    "timeEnd": "2011-12-02T16:43:45",
+    "step": "10"
+  },
+  "satellites": [
+    {"name": "KepSat",
+    "type": "keplerian",
+    "sma": 7000000,
+    "ecc": 0.007014455530245822,
+    "inc": 51,
+    "pa": 0,
+    "raan": 0,
+    "meanAnomaly": 0
+    }
+  ],
+  "constellations": [],
+  "groundStations": [
+    {"name": "sydney",
+    "latitude": -33.8678500,
+    "longitude": 151.2073200,
+    "altitude": 58,
+    "elevation": 12
+    }
+  ],
+  "options": {
+    "COVERAGE": {
+      "timeStart": "2011-12-01T16:43:45",
+      "timeEnd": "2011-12-02T16:43:45",
+      "step": 60,
+      "elevation": 0,
+      "nbSatsToCover": 1,
+      "regionLatitudes": [-30, 40],
+      "regionLongitudes": [-90, 80],
+      "plotType": "PERCENT_COV"
+    },
+    "CARTESIAN": {}
+  }
+}
+
+###
+
+## Send a request for a Martian orbit
+POST http://localhost:8000/vts HTTP/1.1
+content-type: application/json
+
+{
+  "header": {
+    "timeStart": "2020-04-19T11:29:10.811",
+    "timeEnd":  "2020-04-20T11:29:10.811",
+    "step": "60",
+    "celestialBody": "MARS",
+    "mission": "MarsOrbiter"
+  },
+  "satellites": [
+    {"name": "MarsOrbiter",
+    "type": "keplerian",
+    "sma": 6000938.817624505,
+    "ecc": 0.02,
+    "inc": 0,
+    "pa": 0,
+    "raan": 0,
+    "meanAnomaly": 0
+    }
+  ],
+  "groundStations": [
+  ],
+  "options": {
+    "COVERAGE": {
+      "timeStart": "2020-04-19T11:29:10.811",
+      "timeEnd":  "2020-04-20T11:29:10.811",
+      "step": "60",
+      "elevation": 0,
+      "nbSatsToCover": 1,
+      "regionLatitudes": [-90, 90],
+      "regionLongitudes": [-180, 180],
+      "plotType": "PERCENT_COV"
+    }
+  }
+}

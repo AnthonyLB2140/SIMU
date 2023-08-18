@@ -1,0 +1,5 @@
+-- Automatically generated file
+require( "vtsROI" )
+
+loadRegionOfInterestFile( "C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/extras_1/VTS/data/Redland.poly", "Sol/Earth", "Redland", "#00ff9f", 40, 1 )
+loadRegionOfInterestFile( "C:/Users/antoine.ciborski/OneDrive - Ecole de l'air/Documents/Vts-WindowsNT-32bits-3.6.1/Apps/Celestia/bin/extras_1/VTS/data/Blueland.poly", "Sol/Earth", "Blueland", "#e6ff00", 40, 1 )

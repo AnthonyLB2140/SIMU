@@ -1,0 +1,494 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Orientation of objects in VTS &mdash; VTS 3.6.0-9030 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="VTS 3.6.0-9030 documentation" href="../../index.html"/>
+        <link rel="up" title="General" href="index.html"/>
+        <link rel="next" title="Examples for position and orientation of objects in VTS" href="Examples_for_position_and_orientation_of_objects_in_VTS.html"/>
+        <link rel="prev" title="Position of objects in VTS" href="Position_of_objects_in_VTS.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> VTS
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction/index.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">General</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Conventions_in_VTS.html">Conventions in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Date_formats_in_VTS.html">Date formats in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Data_sources_in_VTS.html">Data sources in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Position_of_objects_in_VTS.html">Position of objects in VTS</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Orientation of objects in VTS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#reference-frames">Reference frames</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rotation-center">Rotation center</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#orientation-types">Orientation types</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#quaternion">Quaternion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#euler-angles">Euler angles</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#axis-and-angle">Axis and angle</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#direction">Direction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#azimuth-and-elevation">Azimuth and elevation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#validity-domains">Validity domains</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#see-also">See also</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Examples_for_position_and_orientation_of_objects_in_VTS.html">Examples for position and orientation of objects in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Backwards_compatibility_in_VTS.html">Backward compatibility in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Object_paths_in_VTS.html">Object paths in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Central_bodies_in_VTS.html">Central bodies in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Structure_of_satellites_in_VTS.html">Structure of satellites in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sensors_in_VTS.html">Sensors in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Masks_in_VTS.html">Physical masks in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scale_factors_in_VTS.html">Scale factors in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cluster_in_VTS.html">Clusters in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scenario_in_VTS.html">Scenario in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Manage_window_geometry.html">Window Geometry Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mission_events_in_VTS.html">Mission events in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="POIs_and_ROIs_in_VTS.html">POIs and ROIs in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Other_visualisable_objects.html">Other visualisable objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scripts_and_macros_in_VTS.html">Scripts and macros in VTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="VTS_Broker.html">VTS Broker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Files_used_by_VTS/index.html">Files used by VTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Starting_VTS/index.html">Starting VTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VTS_applications_user_manuals/index.html">VTS applications user manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Plugin_development/index.html">Plugin development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Data_generators_in_VTS/index.html">Data generator integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../About/index.html">About</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">VTS</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">General</a> &raquo;</li>
+        
+      <li>Orientation of objects in VTS</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/pages/General/Orientation_of_objects_in_VTS.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="orientation-of-objects-in-vts">
+<span id="id1"></span><h1>Orientation of objects in VTS<a class="headerlink" href="#orientation-of-objects-in-vts" title="Permalink to this headline">¶</a></h1>
+<p>The orientation of an object in VTS is defined as a rotation from the object’s reference frame towards its attitude. The orientation can be fixed, sampled, or streamed. This section is dedicated to the contents of orientation data, no matter its source. For a definition of the various data sources, see the <a class="reference internal" href="Data_sources_in_VTS.html#data-sources-in-vts"><span class="std std-ref">Data sources in VTS</span></a> section.</p>
+<div class="section" id="reference-frames">
+<span id="orientation-of-objects-in-vts-reference-frames"></span><h2>Reference frames<a class="headerlink" href="#reference-frames" title="Permalink to this headline">¶</a></h2>
+<p>Each object in VTS has its orientation defined in a reference frame. For example, satellites around Earth use reference frame EME2000.</p>
+<p>An object is aligned with the axes of its reference frame when its rotation vector is null.
+In the case of a satellite defined by a 3D file (see the <a class="reference internal" href="../Files_used_by_VTS/3D_file_format_in_VTS.html#d-file-format-in-vts"><span class="std std-ref">3D file format in VTS</span></a> section), the X axis of the 3D mesh is aligned with the X axis of the EME2000 frame. The same applies for the Y and Z axes.</p>
+<p>Reference frames for the orientations of various object types are defined in the table below:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Object type</th>
+<th class="head">Reference frame</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Central body</td>
+<td>Parent object’s frame</td>
+</tr>
+<tr class="row-odd"><td>Ground station</td>
+<td>-Z : body center +X : towards geographic North pole
+At poles : undefined</td>
+</tr>
+<tr class="row-even"><td>Ground station sensor</td>
+<td>Ground station’s frame</td>
+</tr>
+<tr class="row-odd"><td>Satellite</td>
+<td><p class="first">When a satellite orbits around a celestial body:</p>
+<ul class="simple">
+<li>EME2000, Earth Mean Equator at epoch J2000</li>
+</ul>
+<p>When another satellite is defined as the center of the reference frame,
+the following frame types are available (also applied to position)</p>
+<ul class="last simple">
+<li>EME2000</li>
+<li>BodyFixed</li>
+<li>TNW</li>
+<li>QSW</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td>Component</td>
+<td>Satellite’s frame for a top-level component
+Parent component’s frame for components of other levels</td>
+</tr>
+<tr class="row-odd"><td>Satellite sensor</td>
+<td>Satellite’s frame for a top-level sensor, component frame for sub-level sensors.
+Aligned with the satellite’s frame and the sensor points along the Z axis.
+Parent component’s frame for a sensor attached to a component</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="rotation-center">
+<span id="orientation-of-objects-in-vts-rotation-center"></span><h2>Rotation center<a class="headerlink" href="#rotation-center" title="Permalink to this headline">¶</a></h2>
+<p>The rotation center defines the point around which a 3D object is rotated. It depends on the object type, and is defined in the table below:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="28%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Object type</th>
+<th class="head">Rotation center</th>
+<th class="head">Reference frame for the rotation center</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Central body</td>
+<td>Central body’s center</td>
+<td>Central body’s frame</td>
+</tr>
+<tr class="row-odd"><td>Ground station</td>
+<td>Ground station’s position</td>
+<td>Central body’s frame</td>
+</tr>
+<tr class="row-even"><td>Ground station sensor</td>
+<td>Sensor’s position</td>
+<td>Ground station’s frame</td>
+</tr>
+<tr class="row-odd"><td>Satellite</td>
+<td>Center of gravity (user-defined)</td>
+<td>Satellite’s frame</td>
+</tr>
+<tr class="row-even"><td>Component</td>
+<td>Rotation center (user-defined)</td>
+<td>Component’s frame</td>
+</tr>
+<tr class="row-odd"><td>Satellite sensor</td>
+<td>Sensor’s position</td>
+<td>Satellite’s frame for a top-level sensor
+Parent component’s frame for a sensor attached to a component</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="orientation-types">
+<span id="orientation-of-objects-in-vts-orientation-types"></span><h2>Orientation types<a class="headerlink" href="#orientation-types" title="Permalink to this headline">¶</a></h2>
+<p>In VTS, an orientation can be defined by several types of rotations in the reference frame.</p>
+<div class="section" id="quaternion">
+<span id="orientation-of-objects-in-vts-quaternion"></span><h3>Quaternion<a class="headerlink" href="#quaternion" title="Permalink to this headline">¶</a></h3>
+<p>A quaternion defines a rotation from an object’s reference frame towards its local frame.</p>
+<p>The convention used for a quaternion sets its real part as the first component.</p>
+<p>A null rotation is defined by the following quaternion:</p>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="mf">1.0</span> <span class="mf">0.0</span> <span class="mf">0.0</span> <span class="mf">0.0</span>
+</pre></div>
+</div>
+<p>All orientations can be reached. Quaternions are normalized by VTS. An all-zeroes value (0 0 0 0) is invalid.</p>
+</div>
+<div class="section" id="euler-angles">
+<span id="orientation-of-objects-in-vts-euler-angles"></span><h3>Euler angles<a class="headerlink" href="#euler-angles" title="Permalink to this headline">¶</a></h3>
+<p>Euler angles define a sequence of three rotations from an object’s reference frame towards its local frame.</p>
+<p>The convention used for Euler angles defines the order of rotations <code class="docutils literal"><span class="pre">Z</span></code>, <code class="docutils literal"><span class="pre">X'</span></code>, <code class="docutils literal"><span class="pre">Z''</span></code> as:</p>
+<ul class="simple">
+<li>Precession around axis <code class="docutils literal"><span class="pre">Z</span></code> of the reference frame</li>
+<li>Nutation around axis <code class="docutils literal"><span class="pre">X'</span></code> of the frame resulting from the precession</li>
+<li>Intrinsic rotation around axis <code class="docutils literal"><span class="pre">Z''</span></code> of the frame resulting from the two previous rotations</li>
+</ul>
+<p>Angles are expressed in degrees.</p>
+<p>All orientations can be reached. There is no invalid value.</p>
+</div>
+<div class="section" id="axis-and-angle">
+<span id="orientation-of-objects-in-vts-axis-and-angle"></span><h3>Axis and angle<a class="headerlink" href="#axis-and-angle" title="Permalink to this headline">¶</a></h3>
+<p>Axis and angle rotations allow easy definition of the orientation of objects physically rotating around an axis, e.g. solar arrays.</p>
+<p>The rotation axis must be defined, i.e. non null (0 0 0). Its coordinates are expressed in the object’s reference frame.</p>
+<p>The rotation angle in degrees is applied to the object around the rotation axis, in the counterclockwise direction. A positive angle implies a counterclockwise rotation around the axis ; convention dictates that this corresponds to <em>screwing</em> along the direction of the axis, i.e. in clockwise direction while looking along the direction of the axis.</p>
+</div>
+<div class="section" id="direction">
+<span id="orientation-of-objects-in-vts-direction"></span><h3>Direction<a class="headerlink" href="#direction" title="Permalink to this headline">¶</a></h3>
+<p>A direction defines a rotation so that the <code class="docutils literal"><span class="pre">X</span></code> axis of the object points in the specified direction. It should be noted that this kind of orientation leaves a degree of freedom (3rd rotation of the Euler angles), and should thus only be used for solids of revolution around the <code class="docutils literal"><span class="pre">X</span></code> axis (e.g. a vector along the <code class="docutils literal"><span class="pre">X</span></code> axis).</p>
+</div>
+<div class="section" id="azimuth-and-elevation">
+<span id="orientation-of-objects-in-vts-azimuth-and-elevation"></span><h3>Azimuth and elevation<a class="headerlink" href="#azimuth-and-elevation" title="Permalink to this headline">¶</a></h3>
+<p>Azimuth and elevation define a sequence of two rotations, first around axis <code class="docutils literal"><span class="pre">Z</span></code> then around axis <code class="docutils literal"><span class="pre">-Y'</span></code> (resulting of the previous rotation). If both rotations are null, the object points towards <code class="docutils literal"><span class="pre">X</span></code>. As for the direction orientation, this kind of orientation leaves a degree of freedom around the aim axis. Notice that in this orientation mode, conventions for sensor orientations pointing toward <code class="docutils literal"><span class="pre">+Z</span></code> is changed for pointing towards <code class="docutils literal"><span class="pre">+X</span></code>.</p>
+</div>
+</div>
+<div class="section" id="validity-domains">
+<span id="orientation-of-objects-in-vts-validity-domains"></span><h2>Validity domains<a class="headerlink" href="#validity-domains" title="Permalink to this headline">¶</a></h2>
+<p>The different kinds of orientations are not relevant for all object types. The table below lists the valid orientation kinds for all object types. It should be noted that combinations marked as not relevant are still available in VTS, so that they may be used should the need arise. Combinations marked with a dash are however not possible to use with VTS.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="13%" />
+<col width="17%" />
+<col width="15%" />
+<col width="22%" />
+<col width="20%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Object type</strong></th>
+<th class="head"><strong>Quaternion</strong></th>
+<th class="head"><strong>Euler angles</strong></th>
+<th class="head"><strong>Axis and angle</strong></th>
+<th class="head"><strong>Direction</strong></th>
+<th class="head"><strong>Azimuth elevation</strong></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Central body</strong></td>
+<td><strong>Yes</strong>
+<em>E.g.: Comet</em></td>
+<td>Possible</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td><strong>Satellite</strong></td>
+<td><strong>Yes</strong>
+<em>E.g.: Attitude</em></td>
+<td>Possible</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td><strong>Component</strong></td>
+<td><strong>Yes</strong>
+<em>E.g.: Mobile part</em></td>
+<td><strong>Yes</strong>
+<em>E.g.: Onboard instrument</em></td>
+<td><strong>Yes</strong>
+<em>E.g.: Solar arrays</em></td>
+<td><strong>Yes</strong>
+<em>E.g.: Representation of a vector</em></td>
+<td><strong>Yes</strong>
+<em>E.g.: Direction of an antenna</em></td>
+</tr>
+<tr class="row-odd"><td><strong>Satellite sensor</strong></td>
+<td><strong>Yes</strong>
+<em>Ex.: Star tracker</em></td>
+<td><strong>Yes</strong>
+<em>Ex.: Star tracker</em></td>
+<td>No</td>
+<td><strong>Yes</strong></td>
+<td><strong>Yes</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>NB:</strong> Currently, the orientation of ground stations and ground station sensors cannot be modified.</p>
+</div>
+<div class="section" id="see-also">
+<span id="orientation-of-objects-in-vts-see-also"></span><h2>See also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><span class="xref std std-ref">Examples for position and orientation of objects in VTS</span></li>
+<li><a class="reference internal" href="Conventions_in_VTS.html#conventions-in-vts"><span class="std std-ref">Conventions in VTS</span></a></li>
+<li><a class="reference internal" href="../Files_used_by_VTS/3D_file_format_in_VTS.html#d-file-format-in-vts"><span class="std std-ref">3D file format in VTS</span></a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Examples_for_position_and_orientation_of_objects_in_VTS.html" class="btn btn-neutral float-right" title="Examples for position and orientation of objects in VTS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Position_of_objects_in_VTS.html" class="btn btn-neutral" title="Position of objects in VTS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright VTS Team.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'3.6.0-9030',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

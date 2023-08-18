@@ -1,0 +1,688 @@
+.. _Broker_user_manual:
+
+Broker user manual
+==================================================================================
+
+The Broker is the core application of the visualization phase. It starts the client applications, regulates the visualization time, sends user commands to the client applications, and much more.
+
+
+.. _Broker_user_manual#Command-line_arguments:
+
+Command-line options 
+----------------------------------------------------------------------------------
+
+The Broker is started by the VTS configuration utility when the **Run** button is clicked.
+
+It can also be started from the command line, either directly or through the *startVTS* binary. The latter uses the following syntax:
+
+.. code-block:: bash
+
+   startVTS --batch [Broker options]
+
+When started from the command line, the following options can be specified:
+
+
+.. _Broker_user_manual#--project_<File.vts>:
+
+--project <File.vts> 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+This option tells the Broker which VTS project file to load and visualize.
+
+Example:
+
+.. code-block:: bash
+
+   broker --project C:\Project\CubeSat.vts
+
+
+.. _Broker_user_manual#--specificargs_<appIdName>_<SpecificArgs>:
+
+--specificargs <appIdName> <SpecificArgs> 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+This option defines additional arguments which will be passed on to client applications upon startup.
+
+Client applications can be identified in several ways:
+
+- The application ID (1, 2, etc.)
+- The application name ("Celestia", "SurfaceView", etc.)
+   - If no number is specified, then the given arguments will be passed on to all clients with the given name (i.e. all instances of Celestia, SurfaceView, etc.)
+   - If an additional number is specified ("Celestia:1", "PrestoPlot:3", etc.), then the given arguments will only be passed on to the n-th instance of the application
+
+Examples:
+
+.. code-block:: bash
+
+   broker --project C:\Project\CubeSat.vts --specificArgs 1 "--someOption"
+   broker --project C:\Project\CubeSat.vts --specificArgs Celestia "--url exampleUrl"
+   broker --project C:\Project\CubeSat.vts --specificArgs SurfaceView:2 "--colorLayer"
+
+The *--specificArgs* arguments must be specified after the *--project* option on the command line.
+
+
+.. _Broker_user_manual#--datadir_<dataDirectory>:
+
+--datadir <dataDirectory> 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Use an alternate data directory for the project's data: file names referenced by the project will be resolved from this directory instead of the project file's directory.
+
+Example:
+
+.. code-block:: bash
+
+   broker --project project-without-data.vts --datadir /path/to/project/data
+
+This is used internally by VTS when the project file's directory is read-only. The project is then run from a temporary directory, using the data located in the original project file's directory.
+
+
+.. _Broker_user_manual#--tempdir_<tempDirectory>:
+
+--tempdir <tempDirectory> 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Start the Broker in read-only mode, meaning it will not write to its installation directory. It may still write to project files outside its installation directory.
+
+In this mode, application data for the visualization and changes to a project file located inside the installation directory will be written to the specified temporary directory instead. It the directory is ``""``, the Broker will create one.
+
+Example:
+
+.. code-block:: bash
+
+   broker --tempdir /tmp
+
+This is used internally by VTS when its installation directory is read-only, or when the configuration utility has been started with the *--readonly* option.
+
+
+.. _Broker_user_manual#--port:
+
+--port 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Force the Broker to use a specific port number to start its server. By default, the port 8888 is used.
+
+Example:
+
+.. code-block:: bash
+
+   broker --port 9999
+
+
+.. _Broker_user_manual#--close:
+
+--close 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The Broker is started as a client and try to connect to an already running Broker, according to the --port option. When connected, the AUTOCLOSE command is send and the Broker closes.
+
+Example:
+
+.. code-block:: bash
+
+   broker --close --port 9999
+
+
+.. _Broker_user_manual#--closeIfProjectAppsEnd:
+
+--closeIfProjectAppsEnd
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+This option programs the Broker shutoff when all client applications are closed, regardless dynamic or external applications connected.
+
+Example:
+
+.. code-block:: bash
+
+   broker --closeIfProjectAppsEnd
+
+
+.. _Broker_user_manual#--restart:
+
+--restart 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The Broker is started as a client and try to connect to an already running Broker, according to the --port option. When connected, the AUTORESTART command is send and the Broker restarts or closes, depending on if the option --externalrestart has been specified.
+
+Example:
+
+.. code-block:: bash
+
+   broker --restart
+
+
+.. _Broker_user_manual#--externalRestart:
+
+--externalRestart 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+This infrastructure option tells the Broker to not restart itself when it receives an ANTORESTART command. Instead, it closes with a special exit code. This option is used by the configuration utility.
+
+Example:
+
+.. code-block:: bash
+
+   broker --project C:\Project\CubeSat.vts --externalRestart
+
+
+.. _Broker_user_manual#--stdout:
+
+--stdout 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+This option tells the Broker to write every information message to the standard output instead of the logger tab.
+
+Example:
+
+.. code-block:: bash
+
+   broker --project C:\Project\CubeSat.vts --stdout
+
+--nocheckvalidity
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+This option disables the project validity check. This option can improve the startup speed of a project visualization but should be used only with a valid project.
+
+Example:
+
+.. code-block:: bash
+
+   broker --project C:\Project\CubeSat.vts --nocheckvalidity
+
+--logdir <logDirectory>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+This option redirects log get by the Broker (which means log from the Broker or from applications during the visualization) in a specific directory. This specific directory has to exist before using the option.
+
+Example:
+
+.. code-block:: bash
+
+   broker --project C:\Project\CubeSat.vts --logdir C:\Project\Logs
+
+.. _Broker_user_manual#Start_of_a_visualization:
+
+Start of a visualization 
+----------------------------------------------------------------------------------
+
+When a visualization is started from the :ref:`VTS configuration utility <VTS_configuration_utility_user_manual>`, the Broker starts all the :ref:`client applications <Client_applications_in_VTS>` defined in the VTS project. During this initialization phase, the Broker displays the *Initializing* message in the text fields of the time control area. Time does not start flowing until all client applications have signaled they are ready.
+
+Upon connection of the various client applications, the Broker's tabs are populated with commands and information regarding these applications.
+
+Visualization automatically starts to play with time ratio 1 once initialization is finished, unless specified otherwise in the VTS project.
+
+
+.. _Broker_user_manual#End_of_a_visualization:
+
+End of a visualization 
+----------------------------------------------------------------------------------
+
+The visualization can be stopped directly by clicking the top-right cross button to close the Broker. It also stops once all client applications have been closed by the user, or if the VTS configuration utility is closed (if the visualization was started from there).
+
+
+.. _Broker_user_manual#Broker_menu:
+
+Broker menu 
+----------------------------------------------------------------------------------
+
+The Broker menu can be reached through the gears icon in the top-left corner of the Broker.
+
+.. figure:: /_images/10_startRecording.png
+   :align: center
+
+   Broker menu
+
+It offers the following options:
+
+- **Dock on top of screen** / **Dock on bottom of screen** / **Enable always on top**: Control special Broker display modes (refer to the :ref:`Display modes <Broker_user_manual#Display_modes>` section below for more information)
+- **Save Broker position**: Save the Broker window state and position, so that it can be restored at the next startup of project visualization. The Broker is guaranteed not to disappear in the case of a change of the desktop geometry. If the Broker monitor is no longer available, the Broker window will move itself inside the closest available monitor.
+- **Record movie**: Record a movie (refer to the :ref:`Recording movies <Broker_user_manual#Recording_movies>` section below for more information)
+- **Capture area**: Save an image of a screen area
+- **Capture all applications**: Request all application to capture itself into an image
+- **Capture application**: Request an application to capture itself into an image
+- **Add application**: Start a new dynamic client application (refer to the :ref:`*Applications* tab <Broker_user_manual#Applications_tab>` section below for more information)
+- **Run macro**: Run a CIC/CCSDS macro file (refer to the :ref:`Scripts and macros in VTS <Scripts_and_macros_in_VTS>` chapter for more information)
+   - **Choose macro...**: Browse for a CIC/CCSDS macro file to run
+   - **Project macros**: Run a CIC/CCSDS macro file found in the *Macros* subfolder of the project folder
+   - **VTS macros**: Run a CIC/CCSDS macro found in the *Apps/Broker/macros* subfolder of the VTS installation folder
+- **Quit**: Close the visualization
+
+
+.. _Broker_user_manual#Display_modes:
+
+Display modes 
+----------------------------------------------------------------------------------
+
+The Broker can either display itself in compact or full mode. In compact mode, only time control buttons are displayed and the Broker is pinned in the foreground (always on top of other windows). In full mode, the tabbed interface is displayed, allowing access to the scenario timeline, all client commands, and information on the state of the visualization.
+By default, at the start of a visualization, the Broker is in compact mode. The **Unfold** arrow button allows switching to full mode.
+
+.. figure:: /_images/01_brokerMinimize.png
+   :align: center
+
+   Compact display mode
+
+.. figure:: /_images/03_brokerMaximize.png
+   :align: center
+
+   Full display mode
+
+The gears menu in the top-left corner of the Broker offers the following options:
+
+- **Dock on top of screen** : dock the Broker in compact mode at the top of the current screen
+- **Dock on bottom of screen** : dock the Broker in compact mode at the bottom of the current screen
+- **Enable always on top** : whether or not the Broker window should remain always on top of other windows (enabled by default in compact mode)
+
+.. figure:: /_images/BrokerDocked.png
+   :align: center
+
+   Docked display mode
+
+
+.. _Broker_user_manual#Time_management:
+
+Time management 
+----------------------------------------------------------------------------------
+
+Controls and information regarding time are available in all Broker display modes. The following interface allows interacting with visualization time:
+
+.. figure:: /_images/02_brokerMinimize.png
+   :align: center
+
+   Visualization time interaction areas
+
+
+.. _Broker_user_manual#Time_controls:
+
+Time controls 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The buttons in area (1) control time in all client applications:
+
+- **Time Loop**: Toggles loop playback for the visualization.
+- **Restart**: Resets time to the project's start date. The play/pause status remains unchanged.
+- **Play/Pause**: Plays/pauses the time flow. Pausing does not prevent interaction with the visualized entities in the client applications, or navigation in visualization time using the timeline.
+- **Reverse Time**: Every click on this button inverts the time flow direction. The time ratio remains unchanged.
+- **Use Scenario State Time Ratio**: When this button is unchecked, the user have a full control over the time ratio. When the button is checked, every time the time bar crosses a state, the state time ratio is applied to the visualization. The modification of the time ratio value is only  applied when the "Use Scenario State Time Ratio" is toggled from OFF to ON.
+- **Slower**: Decreases the time ratio. Two clicks on this button result in a 5 times slower time flow. The current time ratio is displayed next to this button.
+- **Faster**: Increases the time ratio. Two clicks on this button result in a 5 times faster time flow.
+
+
+.. _Broker_user_manual#Timeline:
+
+Timeline 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The timeline (2) displays the visualization's time range. Dragging the cursor controls the visualization's current time. While moving the cursor, the current time is kept updated in all client applications synchronously. For finer or coarser-grained time control, the timeline can be zoomed in/out using the mouse wheel.
+
+
+.. _Broker_user_manual#Time_information:
+
+Time information 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+A text area (3) displays the current visualization time. The default format is the ISO time format (date and time in UTC). The arrow button circles through other available time formats: CNES julian day (JD1950, fractional days, with reference date January 1st, 1950), modified julian day (MJD, days and seconds, reference date November 17th, 1858) and proect-relative (Project, seconds, reference project start date). The **Edit date...** button pops up a dialog in which the current visualization time can be accurately defined (in all of the above time formats).
+
+Refer to the :ref:`Date formats in VTS <Date_formats_in_VTS>` for further information on dates.
+
+.. _Broker_user_manual#Timeshifting:
+
+Timeshifting
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Timeshifting is a feature which allows the user the go back in time while the scenario is running and then catch up on the current time.
+This feature is only enabled on project containing data which are streamed. It has to be activated during :ref:`the configuration phase of the project <VTS_configuration_utility_user_manual#Configuring_timeshifting>`.
+Once activated, the streamed data are stored to be resent to all connected clients during the playback phase. To enter in the playback phase, the following actions are possible:
+
+- Press the **Pause** button
+- Enter a date which is before the current date of the scenario
+- Drag the time cursor to an earlier date
+
+To catch up on the current time of the scenario, users can increase the current time ratio while playback or drag the time cursor to current date of the scenario
+
+.. _Broker_user_manual#Interacting_with_client_applications:
+
+Interacting with client applications 
+----------------------------------------------------------------------------------
+
+The *Timeline* tab displays graphical information on the progress of the visualization.
+
+The *View Properties* and *3D Cameras* tabs allow interacting with client applications. Available actions are hierarchised according to the project structure, for each application.
+
+The *Events* tab allows controlling the visibility of events in client applications. Event types are displayed in a tree structure for applications that support events.
+
+The *Applications* tab allows managing the Broker's client applications.
+
+The *Server* tab displays information, warning and error messages from the Broker or its client applications, provides a log of all messages received by the Broker and sent to its clients, and displays some technical information on all currently connected clients.
+
+
+.. _Broker_user_manual#*Timeline*_tab:
+
+*Timeline* tab 
+----------------------------------------------------------------------------------
+
+The *Timeline* tab displays graphical information on the progress of the visualization.
+
+.. figure:: /_images/BrokerTimeline.png
+   :align: center
+
+   Project timeline
+
+The contents of the timeline are described in the :ref:`Timeline <Scenario_in_VTS#Timeline>` section of the :ref:`Scenario in VTS <Scenario_in_VTS>` chapter.
+
+
+.. _Broker_user_manual#*View_Properties*_tab:
+
+*View Properties* tab 
+----------------------------------------------------------------------------------
+The *View Properties* tab allows interacting with client applications and defining the properties of all project scenario states.
+
+.. figure:: /_images/BrokerViewProperties.png
+   :align: center
+
+   Client application view properties
+
+The contents of this tab are described in the :ref:`View properties editor <Scenario_in_VTS#View_properties_editor>` section of the :ref:`Scenario in VTS <Scenario_in_VTS>` chapter.
+
+
+.. _Broker_user_manual#*Events*_tab:
+
+*Events* tab 
+----------------------------------------------------------------------------------
+The *Events* tab allows controlling the visibility of mission events in client applications that support them.
+
+.. figure:: /_images/BrokerOngletEvents.png
+   :align: center
+
+   Mission events visibility
+
+
+- The list of client applications allows selecting the target client when setting the visibility of mission events.
+- The event type hierarchy displays all event types and allows setting the visibility of an event type for all satellites or for each satellite individually. The value indicated in parentheses is the number of events of the corresponding event type in all event files.
+- The visibility status of all event types is maintained in the scenario states, and is hence saved between states and visualization sessions.
+- Mission events are also displayed in the *Timeline* tab, for each satellite.
+
+For more information on events in VTS, refer to the :ref:`Mission events in VTS <Mission_events_in_VTS>` chapter.
+
+
+.. _Broker_user_manual#*3D_Cameras*_tab:
+
+*3D Cameras* tab 
+----------------------------------------------------------------------------------
+The *3D Cameras* tab allows interacting with standard visualization cameras in 3D applications. The various cameras are displayed in a hierarchical fashion for all visualization entities, and each column corresponds to a specific instance of a currently running 3D client application.
+
+Cameras are positionned relatively to a reference frame axis, such as EME2000 axes, satellite axes, etc. The parameter "Display axes at..." of the section "3D properties of a satellite" also select if the camera is attached to the satellite local frame axis or to its center of gravity.
+
+.. figure:: /_images/04_brokerCameras.png
+   :align: center
+
+   Camera controls
+
+
+.. _Broker_user_manual#Central_bodies:
+
+Central bodies 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Central bodies such as **Earth** are top-level entities of the visualized project. All central bodies defined in the project appear in the hierarchy. Available actions are:
+
+- '*Fixed in *Body* frame*': The camera is positioned in the body's local frame, pointed at the body.
+- **Inertial**: The camera is positioned in an inertial frame attached to the body, pointed at the body. Expanding this item allows positioning the camera on all axes of the inertial frame.
+- **Body frame**: The camera is positioned in the body's local frame, pointed at the body. Expanding this item allows positioning the camera on all axes of the body frame.
+- **Goto**: The camera is pointed at the body, travelled so that it occupies as much space as possible in the 3D window, and attached to the body's local frame. The UP vector of the camera is undefined.
+- **Center**: The camera is simply pointed at the body. Its reference frame is unchanged. The UP vector of the camera is undefined.
+- **North pole**: The camera is positioned above the North pole of the body, pointed towards it, and attached to the body's local frame. The UP vector of the camera is along the Y axis of the local frame.
+- **South pole**: The camera is positioned above the South pole of the body, pointed towards it, and attached to the body's local frame. The UP vector of the camera is along the -Y axis of the local frame.
+- **Ground Stations**: The camera is pointing from or towards a ground station. This entry is available only if a ground stations is configured as targeting a satellite altitude (see the :ref:`Configuring a ground station <VTS_configuration_utility_user_manual#Configuring_a_ground_station>` section).
+
+
+.. _Broker_user_manual#Satellites:
+
+Satellites 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Satellites are top-level entities of the visualized project. All satellites defined in the project appear in the hierarchy. Available actions are:
+
+- **Inertial cameras**: The camera is positioned in an inertial frame attached to the satellite, pointed at the satellite. Expanding this item allows positioning the camera on all axes of the inertial frame.
+- '*Sun and *Body* cameras*': The camera is positioned in a Sun/body-synchronous frame attached to the satellite, pointed at the satellite. Expanding this item allows positioning the camera so that it points towards the Sun/body. The UP vector of the camera is undefined.
+- **Satellite frame cameras**: The camera is positioned in the satellite's local frame, pointed at the satellite. Expanding this item allows positioning the camera on all axes of the satellite frame.
+- **QSW frame cameras**: The camera is positioned in the QSW local orbital frame, pointed at the satellite. Expanding this action allows positioning the camera on all axes of the QSW frame.
+- **TNW frame cameras**: The camera is positioned in the TNW local orbital frame, pointed at the satellite. Expanding this action allows positioning the camera on all axes of the TNW frame.
+- **Miscellaneous cameras**
+   - **Orbit**: The camera is positioned at a distance of the satellite's central body, pointed towards the body in a direction normal to the satellite's velocity, so that the orbit of the satellite can be observed. The UP vector of the camera is aligned on the Z axis of the central body's local frame. Hold the CTRL key while clicking to observe the scene from the opposite side of the body.
+   - **Goto**: The camera is pointed at the satellite, travelled so that it occupies as much space as possible in the 3D window, and attached to the satellite's local frame. The UP vector of the camera is undefined.
+   - **Center**: The camera is simply pointed at the satellite. Its reference frame remains unchanged. The UP vector of the camera is undefined.
+- **Sensors**: These cameras are only available when sensors are attached to the satellite. The camera is positioned at the location of the sensor (plus an offset which can be set in the application parameters), pointed in the direction of its aim vector. Expanding the action allows selecting each sensor of the satellite. The UP vector of the camera is the X axis of the sensor. Hold the CTRL key while clicking to use the Y axis as the UP vector.
+
+.. _Broker_user_manual#Tracking_shot:
+
+Tracking shot
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The *tracking* node allows you to perform camera animations in an object frame. The animation will be saved in the current state. It is recommended to create a state beforehand in order to fix the position and orientation of the camera, then another state in which the animation properties will be saved.
+
+1. Create a state, setup a camera (preferably with a camera button and adjust with mouse) an save the state (*Save current state* button)
+2. Create a new state a moment later
+3. Click the *From* button: the tracking source position is set
+4. Move the camera using mouse or another preconfigured camera button **in the same reference frame** (don't mix *Satellite frame* with *TNW frame* position for example)
+5. Click the *To* button: the tracking target position is set
+6. Set the *Go...* button: a dialog box shows up
+7. Configure the animation using the following parameters:
+ - *Duration*: Number of seconds the goto should take. Default is 5 seconds.
+ - *Start interpolation*: The point in time during the goto (expressed as a percent number between 0 and 100), at which the observer should begin turning from the initial orientation to the final orientation. Default is 25.
+ - *End interpolation*: The point in time during the goto (expressed as a percent number between 0 and 100) at which the observer should finish turning from the initial orientation to the final orientation. Default is 75.
+ - *Acceleration time*: Indicates (as a percentage number between 0 and 100) how much of the time during the goto should be spent accelerating away from the initial position. It also represents the amount of time that will be spent decelerating towards the final position. The remainder of the time during the goto is spend cruising. Default is 25, minimum is 1 and maximum is 50.
+8. Click on OK: the animation is played
+9. Click on the *Save current state* button to save the animation
+10. You can redo any step to modify the animation and save the changes
+
+
+.. _Broker_user_manual#*Applications*_tab:
+
+*Applications* tab 
+----------------------------------------------------------------------------------
+The *Applications* tab allows managing currently connected client applications, as well as starting new clients.
+
+.. figure:: /_images/BrokerApplications.png
+   :align: center
+
+   Client applications
+
+
+.. _Broker_user_manual#Managing_client_applications:
+
+Managing client applications 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- To start a new instance of a client application, double-click its icon in the *Installed* list or drag-and-drop it into the right area of the window. Clients started this way are listed in the *Dynamic Applications* category.
+- Clients not started by the Broker but connected to it are listed in the *External Applications* category.
+- More details about a client can be displayed by clicking the arrow button next to each client.
+   - To stop a client, click the red **Stop** button.
+   - To restart a stopped client, click the green **Play** button. A checkbox allows specifying whether or not to execute the client application's launcher before restarting the application, in order to update the client's data.
+   - To remove a dynamic application from the list, click the red cross button. The client will be stopped if it is currently running.
+   - To change application start options, ensure this application is promoted as a project application. The new options will be applied when you restart the broker. Options are:
+   
+      - **Launch when the broker starts**: The application is started just after the broker is started
+      - **Application Label** : Title and label of the application
+
+.. figure:: /_images/BrokerApplicationsStart.png
+   :align: center
+
+   Starting a client by drag-and-drop
+
+
+.. _Broker_user_manual#Promoting_a_dynamic_application_into_a_project_application:
+
+Promoting a dynamic application into a project application 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Dynamic applications can be promoted to project applications by drag-and-dropping their icons into the *Project Applications* list. When closing the Broker, a pop-up dialog will offer to save the changes made to the VTS project. If changes are saved, the promoted client will appear in the list of project applications in the VTS configuration utility and its view properties will be saved in the project scenario.
+
+
+.. _Broker_user_manual#*Server*_tab:
+
+*Server* tab 
+----------------------------------------------------------------------------------
+The *Server* tab displays information on the connection and communication of client applications with the Broker.
+
+
+.. _Broker_user_manual#*Log*_tab:
+
+*Log* tab 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The *Log* tab displays the log of all messages emitted by the Broker or client applications during visualization. Since messages are collected from applications executed in different processes, the order in which the messages are displayed should not be taken as an accurate representation of the order in which the messages have actually been emitted.
+
+.. figure:: /_images/09_brokerLog.png
+   :align: center
+
+   Logged messages
+
+The color code of logged messages is as follows:
+
+- **Blue**: informational messages about the state of the visualization. Only emitted by the Broker.
+- **Orange**: warning messages. Only emitted by the Broker. These messages usually appear when an action fails, without causing the visualization to stop.
+- **Red**: error messages. Only emitted by the Broker. These messages usually appear when a client application crashes.
+- **Grey**: messages printed to the standard output of client applications. These messages are prefixed with the name of the client application that emitted them. They can be either informational, warning or error messages.
+
+Logged messages are also stored in a log file (broker.log). This file can be found in the "Apps/Logs" directory or in the temporary directory (if readonly is on).
+
+**Note:** Always remember to send a copy of the message log to the VTS support team when an error occurs during visualization.
+
+
+.. _Broker_user_manual#*Clients*_tab:
+
+*Clients* tab 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The *Clients* tab displays the connection state of client applications.
+
+.. figure:: /_images/07_brokerServerClients.png
+   :align: center
+
+   Connection state of client applications
+
+
+- **Server status**: indicates the TCP port used by the Broker.
+
+The following information is available for each client:
+
+- **Identifier**: the client's ID
+- **Name**: the client application's name
+- **Time type**: the time behaviour of the client (*Constraint* or *Regulating*). Refer to the :ref:`Synchronization protocol for VTS clients <Synchronization_protocol_for_VTS_clients>` section for further information.
+- **Socket**: the socket ID for Broker-client communication.
+- **Read**: Number of incoming bytes that are waiting to be read from this client.
+- **Write**: Number of bytes that are waiting to be written to this client.
+
+
+.. _Broker_user_manual#*Received_packets*_and_*Sent_packets*_tabs:
+
+*Received packets* and *Sent packets* tabs 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The *Received packets* and *Sent packets* tabs display the messages respectively received and sent by the Broker, from or to client applications.
+
+.. figure:: /_images/08_brokerServerPackets.png
+   :align: center
+
+   Messages received from clients
+
+*TIME* messages deal with time synchronization of clients, while *CMD* messages are related to client commands. All messages are displayed truncated when they are too long. Further information on these messages can be found in the :ref:`Synchronization protocol for VTS clients <Synchronization_protocol_for_VTS_clients>` section.
+
+The **TIME**, **CMD** and **DATA** checkboxes allow enabling or disabling the display of these classes of messages in the list.
+
+
+.. _Broker_user_manual#Recording_movies:
+
+Recording movies 
+----------------------------------------------------------------------------------
+Movies can be recorded by the Broker during visualization. When recording a movie, client applications are synchronized frame by frame and an image is captured at each frame. The output movie is set at a framerate of 25 images per second.
+
+Note that recording a movie is not possible when the Broker is in real-time mode. For more information on real-time mode, refer to the :ref:`Real-time VTS <Synchronization_protocol_for_VTS_clients#Real-time_VTS>` section of the :ref:`Synchronization protocol for VTS clients <Synchronization_protocol_for_VTS_clients>` chapter.
+
+To start recording a movie, click the **Record movie** entry in the Broker's action menu:
+
+.. figure:: /_images/10_startRecording.png
+   :align: center
+
+   Recording a movie
+
+A configuration dialog pops up and visualization is paused. Interaction with the Broker is disabled while the dialog is opened, which means that the visualization must be correctly configured before starting the recording.
+
+.. figure:: /_images/11_recordingSettings.png
+   :align: center
+
+   Recording settings
+
+The following parameters must be provided:
+
+- **Output file**: Name of the movie output file. The file extension will be either *.avi* (MPEG-4) or *.mpg* (MPEG-2). For correct integration of the recorded movie within Microsoft PowerPoint, the *.mpg* format must be selected.
+- **Preset**: List of standard movie definitions. A *Custom* definition allows manual specification of the movie width and height.
+- **Width**, **Height**: Movie definition (the mouse wheel may be used on these fields for faster adjustment of the values). For technical reasons linked to the requirements of the encoding codec of the movie, these values must be multiples of 8. If not, they will be automatically rounded up to the nearest multiple of 8 at the start of the recording.
+- **X offset**, **Y offset**: Position of the recorded area (the mouse wheel may be used on these fields for faster adjustment of the values).
+- **Overlay**: An overlay could be added on the movie to show an image in the foreground.
+   - **Standard** combobox: A list of standard logos. You can also put your own image files in the Apps/Broker/overlays directory.
+   - **Custom image file**: Path of an image to be used as an overlay for the movie. If not path is given, the movie will not contain any overlay.
+   - **Anchor**: Anchor of the image in the recording area. By clicking on the icon, it shows the different possibilities for anchors.
+   - **X offset**, **Y offset**: Position of the image from the anchor position in the recording area.
+   - **Side**: The largest side of the image used for scaling
+- **Quality** (*Low*, *Medium*, *High*): Quality factor determining the bitrate of the recording.
+- **Pause visualization when starting recording**: Option allowing to start the recording paused at the current visualization time.
+
+**Notes:**
+
+- The movie bitrate is proportional to the movie definition.
+- The quality factor increases or decreases the quality of the movie. A *Low* quality factor produces compression artifacts on moving parts in the video, but smaller file size. A *High* quality factor produces good quality video, but significant file size.
+
+The recording can be stopped with the **Stop recording** entry in the Broker's action menu. The *Ctrl+R* keyboard shortcut can also be used when the Broker window is focused.
+
+.. figure:: /_images/12_captureZone.png
+   :align: center
+
+   Recording area
+
+The screen area located within the red frame is recorded in the movie. The mouse pointer is not recorded. During the recording, it is advised not to move recorded windows and to use camera states rather than manual camera movements. Otherwise, since the movie is not recorded at real-time speed, camera movements may appear to be slower or faster than expected.
+
+.. figure:: /_images/14_movieWithOverlay.png
+   :align: center
+
+   Recording of a SurfaceView with an overlay at the bottom left of the recording area.
+
+During the recording, additional information is displayed in the *Log* tab of the *Server* tab of the Broker:
+
+.. figure:: /_images/13_recordingInfos.png
+   :align: center
+
+   Recording information
+
+- **Bitrate**: the current movie bitrate
+- **Movie length**: the current length of the recorded movie
+- **Recording FPS**: the current record framerate (this does not affect the output framerate)
+
+
+.. _Broker_user_manual#Other_interactions:
+
+Other interactions 
+----------------------------------------------------------------------------------
+The *Ctrl+Shift+C* keyboard shortcut copies to the clipboard the full path to the VTS project file.
+
+
+.. _Broker_user_manual#Image_capture:
+
+Image capture 
+----------------------------------------------------------------------------------
+Images can be captured by two different ways. On the one hand the Broker can capture the desktop by defining an area. This way, all applications can be captured, including the Broker. On the other hand, the Broker can request each application to capture itself. If the application handle the "TakeScreenshot" VTS protocol command, an image will be produced as definied in the application (usually without window decoration).
+
+
+.. _Broker_user_manual#Area_capture:
+
+Area capture 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+To open the capture settings click the **Capture Area** entry in the in the Broker's action menu:
+
+.. figure:: /_images/AreaCapture.png
+   :align: center
+
+   Area capture
+
+The following parameters must be provided:
+
+- **Output file**: Name of the image output file.
+- **Preset**: List of standard definitions. 
+- **Width**, **Height**: Image definition (the mouse wheel may be used on these fields for faster adjustment of the values). 
+- **X offset**, **Y offset**: Position of the captured area.
+- **Overlay**: An overlay could be added on the cpature to show an image in the foreground. See the :ref:`Recording Movies <Broker_user_manual#Recording_movies>` section for more details.
+- **add counter suffix to the filename**: When checked, a counter will be added to the filename. Click on **Reset** to start it over.
+
+Click on the **Capture** button to capture the image. The settings window will briefly disappear during the image capture.
+
+
+.. _Broker_user_manual#Capture_by_application:
+
+Capture by application 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Using the **Capture All Applications** or the **Capture Application** entry, a VTS protocol command "CMD SERVICE TakeScreenshot <fileInProjectFolder>" will be sent the concerned applications. Each application can handle this command in different ways. Captured images will be produced in the project folder.
+
+The *Ctrl+T* keyboard shortcut can also be used to send a **Capture All Applications** request when the Broker window is focused.
+
+This command might not be handled by some applications so this action is not guaranteed contrary to the area capture method. All applications bundled with VTS handle the TakeScreenshot command, excepting PrestoPlot. See the :ref:`TakeScreenshot command <Synchronization_protocol_for_VTS_clients#TakeScreenshot_command>` section of the :ref:`Synchronization protocol for VTS clients <Synchronization_protocol_for_VTS_clients>` chapter for more information about this command.
+
+
+

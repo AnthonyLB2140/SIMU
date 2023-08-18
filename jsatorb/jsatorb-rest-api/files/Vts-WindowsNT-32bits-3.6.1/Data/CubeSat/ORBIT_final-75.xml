@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fr.cnes.genopus.orbits.GPOrbit>
+  <Orbit name="Orbit">
+    <AbsoluteDate name="Date">
+      <String name="date">01/01/2022 00h50m20s</String>
+      <String name="scale">UTC</String>
+    </AbsoluteDate>
+    <Frame name="Frame">
+      <String name="name">EME2000</String>
+    </Frame>
+    <String name="typeOfParameters">Cartesian</String>
+    <CartesianParameters name="Cartesian_Parameters">
+      <Real name="x" unit="km">-5.94509956211339E3</Real>
+      <Real name="y" unit="km">-1.55602389547423E3</Real>
+      <Real name="z" unit="km">-1.96253901499088E3</Real>
+      <Real name="vx" unit="km/s">3.1170315086683E0</Real>
+      <Real name="vy" unit="km/s">-4.42717698209642E0</Real>
+      <Real name="vz" unit="km/s">-5.5746974224931E0</Real>
+      <Real name="mu" unit="km^3/s^2">3.986004415E5</Real>
+    </CartesianParameters>
+  </Orbit>
+</fr.cnes.genopus.orbits.GPOrbit>
+

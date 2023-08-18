@@ -1,0 +1,41 @@
+<Satellite Name="[NAMESAT]" ParentPath="[PARENTPATH]">
+ <CommonProp>
+  <OrbitPath Color="0 0.976471 0.145098" PenStyle="SolidLine" PenWidth="2"/>
+ </CommonProp>
+ <Prop2d>
+  <Icon Anchor="CENTER" Size="MEDIUM" Opacity="100">
+   <Font Size="MEDIUM" Color="1 1 1"/>
+   <ImageLayer Type="Default"/>
+  </Icon>
+ </Prop2d>
+ <Track Color="0.664668 1 0" PenStyle="SolidLine" PenWidth="2"/>
+ <VisibilityCircle ContourColor="0 1 0.227329" FillColor="0.499992 1 0.613657" FillOpacity="60"/>
+ <Component Name="[NAMESAT]">
+  <Graphics3d>
+   <File3ds Name="Models/rosetta-orbiterOnly.3ds"/>
+   <Radius Value="2"/>
+   <LightSensitive Value="1"/>
+   <Use3dsCoords Value="1" MeshScale="1"/>
+   <AxesPosition Value="1"/>
+   <RotationCenter X="0" Y="0" Z="0"/>
+  </Graphics3d>
+  <Geometry>
+   <Position>
+    <Value>
+     <File Name="[SAT_POSITION_FILE]">
+      <ColorFile Name="[SAT_COLOR_FILE]"/>
+     </File>
+    </Value>
+   </Position>
+   <Orientation>
+    <Quaternion>
+    [SAT_ATTITUDE_FILE]
+    </Quaternion>
+   </Orientation>
+  </Geometry>
+  <SensorSatellite>
+  [SENSORSAT]
+  </SensorSatellite>
+ </Component>
+ <Events/>
+</Satellite>

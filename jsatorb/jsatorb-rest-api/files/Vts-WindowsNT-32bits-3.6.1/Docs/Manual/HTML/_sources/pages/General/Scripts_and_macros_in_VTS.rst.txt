@@ -1,0 +1,129 @@
+.. _Scripts_and_macros_in_VTS:
+
+Scripts and macros in VTS
+==================================================================================
+
+Scripts and macros in VTS are commands from the VTS synchronization protocol, which are sent by the Broker to client applications during visualization.
+
+Scripts are timestamped commands sent at predefined dates, while macros are non-timestamped commands sent in a batch upon macro execution.
+When the visualization date reaches the timestamp of a script command, the command is sent to all client applications specified in the recipient field of the script line.
+
+Scripts are displayed in the project timeline. Macros are listed in the Broker menu. For more information on how to use scripts and macros in VTS, refer to the :ref:`Timeline <Scenario_in_VTS#Timeline>` section in the :ref:`Scenario in VTS <Scenario_in_VTS>` chapter, and the :ref:`Broker menu <Broker_user_manual#Broker_menu>` section in the :ref:`Broker user manual <Broker_user_manual>` chapter.
+
+
+.. _Scripts_and_macros_in_VTS#CIC/CCSDS_script_and_macro_file_format:
+
+CIC/CCSDS script and macro file format 
+----------------------------------------------------------------------------------
+
+Scripts are written as CIC/CCSDS files in MEM format. Macros are written as CIC/CCSDS files in MPM format. For more information on the CIC/CCSDS file format, refer to the :ref:`CIC/CCSDS data files in VTS <CIC-CCSDS_data_files_in_VTS>` chapter.
+
+A CIC/CCSDS script or macro file must have the following characteristics:
+
+- The ``USER_DEFINED_PROTOCOL`` must be ``NONE``.
+- The ``USER_DEFINED_CONTENT`` must be ``SCRIPT`` for a script, ``MACRO`` for a macro.
+- The ``USER_DEFINED_SIZE`` must be ``2``. The first column (after the date in the case of scripts) must be the recipient specification for the command (see below). The second column must be the command to send (see below).
+- The ``USER_DEFINED_TYPE`` must be ``STRING``.
+- The ``USER_DEFINED_UNIT`` must be ``[n/a]``.
+
+
+.. _Scripts_and_macros_in_VTS#Command_recipient_specification:
+
+Command recipient specification 
+----------------------------------------------------------------------------------
+
+The recipient for a script or macro command may be specified using any of the following:
+
+- ``*`` indicates that the command shall be sent to all clients
+- ``broker`` indicates that the command shall be sent to the Broker itself
+- ``<Name>`` indicates that the command shall be sent to all client applications with the specified name
+- ``<ID>`` indicates that the command shall be sent to the client with the specified ID
+- ``<Name>:<#>`` indicates that the command shall be sent to the *n*-th instance of the client application with the specified name
+- ``:<#>`` indicates that the command shall be sent to the *n*-th client application (using the order of the **Applications** tab of the Broker)
+
+
+.. _Scripts_and_macros_in_VTS#Command_contents:
+
+Command contents 
+----------------------------------------------------------------------------------
+
+Refer to the :ref:`Synchronization protocol for VTS clients <Synchronization_protocol_for_VTS_clients>` chapter for full details on the syntax of commands, and for a list of available commands in the standard client applications.
+
+In order to allow "customized" commands to be sent to several client applications with a single line in a script or macro file, some special strings in script and macro file commands are automatically replaced before sending the command to clients:
+
+- ``%APPNAME%`` gets replaced with the recipient client application name and ID, in the following format: ``<Name>-<ID>``
+- ``%DATE%`` gets replaced with the sending date, in the following format: ``yyyy-MM-dd--hh-mm-ss-zzz``
+- ``%COUNT%`` gets replaced with a sequence number, counting from 0 and shared between all script files, macro files and client applications in the project
+- ``%PROJECT%`` gets replaced with the full path to the project folder
+
+Note that when taking screenshots in Celestia, the ``%PROJECT%`` string is required at the beginning of the screenshot name to store the screenshot in the project folder. Otherwise, Celestia stores the screenshot in the ``Apps/Celestia/bin`` directory of the main VTS folder.
+
+
+.. _Scripts_and_macros_in_VTS#Sample_script_file:
+
+Sample script file 
+----------------------------------------------------------------------------------
+
+The following is a sample CIC/CCSDS MEM script file:
+
+::
+
+   CIC_MEM_VERS   = 1.0
+   CREATION_DATE  = 2014-02-18T16:19:51
+   ORIGINATOR     = VTS
+
+   META_START
+
+   OBJECT_NAME = SCRIPT_SCREENSHOT
+   OBJECT_ID   = SCR001
+
+   USER_DEFINED_PROTOCOL = NONE
+   USER_DEFINED_CONTENT = SCRIPT
+   USER_DEFINED_SIZE = 2
+   USER_DEFINED_TYPE = STRING
+   USER_DEFINED_UNIT = [n/a]
+
+   TIME_SYSTEM = UTC
+
+   META_STOP
+
+   55276  3000 celestia   "CMD PROP equatorialgrid true"
+   55276  3001 *          "CMD SERVICE TakeScreenshot %PROJECT%/%DATE%_%APPNAME%_%COUNT%"
+   55276  3002 celestia   "CMD PROP equatorialgrid false"
+   55276  3003 *          "CMD SERVICE TakeScreenshot %PROJECT%/%DATE%_%APPNAME%_%COUNT%"
+   55276  3004 2dwin:0    "CMD STRUCT OrbitVisible \"Sol/Earth/CubeSat\" false"
+   55276  3005 *          "CMD SERVICE TakeScreenshot %PROJECT%/%DATE%_%APPNAME%_%COUNT%"
+
+.. _Scripts_and_macros_in_VTS#Sample_macro_file:
+
+Sample macro file 
+----------------------------------------------------------------------------------
+
+The following is a sample CIC/CCSDS MPM macro file:
+
+::
+
+   CIC_MPM_VERS   = 1.0
+   CREATION_DATE  = 2014-06-12T16:54:12
+   ORIGINATOR     = VTS
+
+   META_START
+
+   OBJECT_NAME = MACRO_4SPLIT
+   OBJECT_ID   = MAC001
+
+   USER_DEFINED_PROTOCOL = NONE
+   USER_DEFINED_CONTENT = MACRO
+   USER_DEFINED_SIZE = 2
+   USER_DEFINED_TYPE = STRING
+   USER_DEFINED_UNIT = [n/a]
+
+   META_STOP
+
+   :1 "CMD PROP WindowGeometry 0 0 640 480"
+   :2 "CMD PROP WindowGeometry 640 0 640 480"
+   :3 "CMD PROP WindowGeometry 0 480 640 480"
+   :4 "CMD PROP WindowGeometry 640 480 640 480"
+
+
+

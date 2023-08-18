@@ -1,0 +1,159 @@
+.. _Sensors_in_VTS:
+
+Sensors in VTS
+==================================================================================
+
+A sensor is either an onboard element on a satellite or an element of a ground station. This section presents the properties of sensors in VTS, and their representation in client applications.
+
+
+.. _Sensors_in_VTS#Properties_of_a_sensor:
+
+Properties of a sensor
+----------------------------------------------------------------------------------
+
+.. |deg| unicode:: 0xB0
+
+The sensors' base can be elliptical or rectangular for both satellites and ground stations, or an angular sector of space constrained in azimuth-elevation for ground stations only.
+
+.. _Sensors_in_VTS#Elliptical_or_rectangular_sensors:
+
+Elliptical or rectangular sensors
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The cone is characterized by two half-angles around the X and Y axes (see the :ref:`Orientation of objects in VTS <Orientation_of_objects_in_VTS>` chapter concerning the reference frame).
+These angles define rotations of the sensors's aim axis around the X axis (in the YZ plane) and Y axis (in the XZ plane).
+
+.. _Sensors_in_VTS#Azimuth_elevation_sensor:
+
+Azimuth-elevation sensors
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The azimuth-elevation sensor type can be used to represent an angular sector of space. This type of sensor makes more sense when defined inside a ground station. It is defined by a minimum and a maximum azimuth and a minimum and a maximum elevation.
+
+When azimuth and elevation are equal to zero the sensor points towards X in the sensor frame.
+When azimuth is equal to zero and elevation is equal to PI/2 the sensor points towards Z in the sensor frame.
+
+The mimimum and maximum azimuth angles are ordered, and the first angle is wrapped between [0,2PI] and the second angle is wrapped between [0;4PI].
+
+The mimimum and maximum azimuth angles are defined in the interval [0;PI/2].
+
+.. _Sensors_in_VTS#Sensors_orientation:
+
+Sensors orientation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When orientated by a quaternion, euler angles or axis and angles, a sensor is defined by a conical aim volume around the Z axis, its apex being located at the origin of the sensor's local frame.
+
+When orientated by a direction or elevation and azimuth, an additional rotation is made: X becomes the main axis, i.e. the sensor looks at the given direction. Since the third (self) rotation is not reliable, this orientation mode should be used only with elliptical sensors with similar X and Y apertures (circular sensors).
+
+See the :ref:`Orientation of objects in VTS <Orientation_of_objects_in_VTS>` chapter concerning the reference frame.
+
+There is currently no limit to the effective range of a sensor. Half-angles are internally limited to 90\ |deg| in OmniView and Celestia.
+
+.. _Sensors_in_VTS#Visualization_of_a_sensor:
+
+Visualization of a sensor
+----------------------------------------------------------------------------------
+
+
+.. _Sensors_in_VTS#Satellite_sensor:
+
+Satellite sensor
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In the 2D view, a satellite sensor is represented by the intersection of its volume with its target central body.
+
+.. figure:: /_images/Senseur2DWin.png
+   :align: center
+
+   Elliptical sensor in SurfaceView
+
+.. figure:: /_images/SenseurRect2DWin.png
+   :align: center
+
+   Rectangular sensor in SurfaceView
+
+In the 3D view, a satellite sensor is represented by its aim volume. In order not to overload the visualization, a maximum range is defined for the sensor in the VTS configuration utility. Beyond this range, the sensor's volume will not be displayed. As a rule of thumb, the maximum sensor range should be taken equal to the maximum distance between the satellite and the center of the central body. Beware that a too short range could result in an erroneous computation of the sensor volume's intersection with the sensor target.
+
+.. figure:: /_images/SenseurCelestia.png
+   :align: center
+
+   Elliptical sensor in Celestia
+
+.. figure:: /_images/SenseurRectCelestia.png
+   :align: center
+
+   Rectangular sensor in Celestia
+
+
+Moreover, the 3D view allows rendering the scene from the point of view of the sensor, so that what the sensor perceives can be displayed (refer to the :ref:`*3D Cameras* tab <Broker_user_manual#3D_Cameras_tab>` section in the Broker's user manual).
+
+.. figure:: /_images/CameraSenseurCelestia.png
+   :align: center
+
+   Sensor camera in Celestia
+
+
+VTS also allows displaying the sensor's swath, both in SurfaceView and Celestia. **Important note:** a sensor coverage nadir optimization can be activated. See the :ref:`SurfaceView user manual <SurfaceView_user_manual>` for more information.
+
+.. figure:: /_images/Fauchee2DWin.png
+   :align: center
+
+   Sensor swath in SurfaceView
+
+.. figure:: /_images/FaucheeCelestia.png
+   :align: center
+
+   Sensor swath in Celestia
+
+**Caution:** To preserve reasonable performances on the widest possible range of computers, the computation algorithm for sensor swath in Celestia is approximate.
+This has the consequence that when a sensor covers a large portion of its target body, the computed sensor swath is erroneous near the sides of the body disc.
+
+**In case of forceful close of Celestia when visualizing sensor swath:** see the section on :ref:`Hardware requirements for VTS <Hardware_requirements_for_VTS>`.
+
+
+.. _Sensors_in_VTS#Ground_station_sensor:
+
+Ground station sensor
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A ground station sensor has the same parameters as a :ref:`satellite sensor <VTS_configuration_utility_user_manual#Configuring_a_satellite_sensor>`. It is oriented in its ground station's frame (see :ref:`Orientation of objects in VTS <Orientation_of_objects_in_VTS>`).
+
+A ground station always owns a "Default" main sensor attached to it, with a fixed orientation : its aim (Z) axis is directed from the body center towards the station position. This sensor can be used to obtain the station visibility circle : to show it at minimum elevation, the half-angles should be set to the complementary angles of the half-angles (90\ |deg| - half-angle around X or Y).
+
+Secondary sensors can be created attached to a ground station. These sensors can be freely oriented in the ground station's frame.
+
+Visualization of ground station sensors in 2D
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+In the 2D view, a ground station sensor is represented by the projection of the base of its aim volume, at a given altitude, back on the surface of its central body. The altitude can also be set to the altitude of one of the project's satellites, and will then vary with time. Attaching more satellites will introduce a second dashed line which displays the visibility area for the higher and the lower tracked satellites.
+
+.. figure:: /_images/ProjectionSenseurStation.png
+   :align: center
+
+   Projection of a ground station sensor in SurfaceView
+
+.. figure:: /_images/SenseurStation2DWin.png
+   :align: center
+
+   Ground station sensor in SurfaceView
+
+.. figure:: /_images/SenseurStationAzimuthElevation.png
+   :align: center
+
+   Ground station sensor with azimuth-elevation constraints in SurfaceView and ZenithView
+
+Visualization of ground station sensors in 3D
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+The "Default" main sensors are not displayed in Celestia. There is no station visibility circle neither. Orientable secondary sensors are displayed as a aim volume at a fixed altitude.
+
+.. figure:: /_images/SenseurStationCelestia.png
+   :align: center
+
+   Ground station sensor in Celestia
+
+.. figure:: /_images/SenseurStationCamera.png
+   :align: center
+
+   Ground station sensor camera view in Celestia

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project Revision="8200">
+ [GENERAL]
+ <MetaData>
+  <Description>JSatOrb</Description>
+ </MetaData>
+ <MonitorConfiguration>
+  <Monitor X="0" Y="25" Height="1055" Width="1920"/>
+ </MonitorConfiguration>
+ <StartOptions TimeRatio="1" UseStateTimeRatio="0" SysTimeSynced="0" Paused="0" Looped="0" Minimized="0" Hidden="0" AutoClosed="0"/>
+ <BrokerOptions WindowMode="Undocked" Collapsed="0" AlwaysOnTop="1" XPos="0" YPos="680" Width="1200" Height="300" ActiveTab="0" HiddenTabs=""/>
+ [TIMELINE]
+ <Sky>
+  <Sun>
+   <Prop2d>
+    <Icon Anchor="CENTER" Size="MEDIUM" Opacity="100">
+     <Font Size="MEDIUM" Color="1 1 1"/>
+     <ImageLayer Type="Default"/>
+    </Icon>
+   </Prop2d>
+   <Track Color="0.862745 0.862745 0" PenStyle="SolidLine" PenWidth="2"/>
+   <VisibilityCircle ContourColor="0.501961 0.501961 0" FillColor="0 0 0" FillOpacity="50"/>
+  </Sun>
+  <StarCatalog CatalogMode="Builtin">
+   <Track Color="1 1 1" PenStyle="DotLine" PenWidth="1"/>
+  </StarCatalog>
+ </Sky>
+ <ToBeUsedApps>
+  <Application Name="SurfaceView" Id="0" Label="" AutoStarted="1"/>
+ </ToBeUsedApps>
+  [ENTITIES]
+ <Events/>
+ <States>
+  <Instant Time="0 0" TimeRatio="1" Label="Initial state">
+   <AppState Id="0">
+    [SURFACEVIEW]
+   </AppState>
+  </Instant>
+ </States>
+</Project>

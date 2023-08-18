@@ -1,0 +1,57 @@
+# -----------------------------------------------------------------------------
+# JSatOrb project: JSatOrb Docker composition
+# -----------------------------------------------------------------------------
+# This Docker-compose file deploy the 3 JSatOrb Docker containers:
+#   - JSatOrb's frontend container: 
+#     Nginx server containing the JSatOrb GUI JS/NodeJS (Typescript/Angular 8)
+#   - JSatOrb's backend container: 
+#     Anaconda3/Python 3.7 using Orekit Python wrapper
+#   - JSatOrb's Celstrak container (DockerHub: thib21/celestrak-json-proxy:dev)
+# -----------------------------------------------------------------------------
+# Notes:
+#   A bind-mount is needed for the backend container to store mission data sets
+#   As we run the container as the same user (uid:guid) that run the present 
+#   docker-compose script, it should be noted that in the container:
+#     - The user has no name
+#     - The user has no home directory
+#   Therefore, it explains why we have to map the Docker host folder
+#        /home/${USER}/JSatOrb/mission-data
+#   to the Docker backend container folder
+#        /JSatOrb/mission-data (with no /home/${USER} prefix)
+#
+# The bright side of this is that the backend mission data set files are 
+# written as the Docker host user in the Docker host 
+# /home/${USER}/JSatOrb/mission-data folder.
+# -----------------------------------------------------------------------------
+version: "3.8"
+services:
+  # JSatOrb's backend container
+  backend:
+    container_name: jsatorb-backend-container
+    image: jsatorb-backend:prod
+    ports:
+      - "8000:8000"
+    user: "${USER_ID}:${GROUP_UID}"
+    volumes:
+      - type: bind
+        source: "/home/${USER}/JSatOrb/mission-data"
+        target: "/JSatOrb/mission-data"
+    restart: always
+
+  # JSatOrb's frontend container
+  frontend:
+    container_name: jsatorb-frontend-container
+    depends_on:
+      - backend
+    image: jsatorb-frontend:prod
+    ports:
+      - "80:80"
+    restart: always
+
+  # JSatOrb's Celestrak container
+  celestrak:
+    container_name: celestrak-json-proxy-container
+    image: thib21/celestrak-json-proxy:dev
+    ports:
+      - "7777:7777"
+    restart: always

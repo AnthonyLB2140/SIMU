@@ -1,0 +1,20 @@
+.. _Overview_of_VTS:
+
+Overview of VTS
+===============
+
+VTS is a visualization toolkit for space data. Its primary goal is to animate satellites in both 2D and 3D environments. Its architecture also allows it to be extended with any number of compatible applications.
+
+The toolkit comes with a configuration utility, which allows the definition of the elements in the visualization: 3D models, geometry and mobile parts of the satellites, data sources for all positions, attitudes, angle of rotations, etc. It also allows configuration for satellite sensors and ground stations, for the visualization scenario, and for the applications involved in the visualization.
+VTS then uses this configuration to run the animation. It handles starting and synchronizing all the chosen applications. Its core element, the *Broker*, offers functionality for navigating in visualization time, controlling 3D cameras and defining a range of other display attributes. It also broadcasts visualization settings associated with each scenario state to client applications.
+
+VTS is designed in a way that allows connected applications to control the visualization time (eg. time ticks from a simulator, time navigation in a plotting software, etc.). As for the visualization data, they can be provided either through files or network streams (which are broadcasted to all clients).
+The synchronization protocol for client applications is specific to VTS; however the data files are based on a CCSDS standard, allowing direct compatibility with all tools handling this european format.
+
+On the technical side, VTS relies on Celestia as its default 3D visualization tool. Celestia is free software, well known for its performance and the realism of its rendering. All of Celestia's many features are thus available to VTS users.
+As for portability, the toolkit is written using C++ and the Qt framework, ensuring stable behavior across Linux and Windows platforms.
+Lastly, available client applications come from a variety of origins. As an example, the PrestoPlot plotting tool is fully interfaced with VTS.
+
+With these characteristics, VTS becomes an essential tool for all data production activities in the satellites flight dynamics field. It enables graphical validation of behaviors and attitude strategies, and can be used as a practical exchange support for all actors in satellite AOCS and space mechanics.
+
+

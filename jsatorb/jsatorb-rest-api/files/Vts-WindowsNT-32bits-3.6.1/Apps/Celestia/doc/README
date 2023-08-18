@@ -1,0 +1,13 @@
+Celestia plugin
+
+Celestia is a 3D space simulator program created by Chris Laurel, based on the Hipparcos Catalogue (HIP). For more information, see the README.txt file under the Apps/Celestia/bin directory.
+
+Useful shortcuts :
+
+[i] : show/hide clouds
+
+Move observer :
+[8] : Pitch down
+[2] : Pitch up
+[7] : Roll right 
+[9] : Roll left
