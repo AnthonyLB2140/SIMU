@@ -7,11 +7,11 @@ def find_previous_time(lines, target_time):
     for i in range(len(lines) - 1, -1, -1):
         line = lines[i]
         line_elements = line.split()
-        if len(line_elements) >= 2:     # skip empty lines
+        if len(line_elements) >= 2:     # Skip empty lines
             try:
-                #time = float(line_elements[1])
+                # Time = float(line_elements[1])
                 time = float(line_elements[1])+(86400*float(line_elements[0]))
-                if time < target_time and abs(target_time-time)<=10:     ## Warning here 10 is the time step 
+                if time < target_time and abs(target_time-time)<=3600:     ## Warning here 10 is the time step ##
                     return i
             except ValueError:
                 continue
@@ -38,18 +38,8 @@ def merge_files(file1_path, file2_path):
         lines2 = file2.readlines()  # Read all lines from file2
         metadata2 = []
         data2 = []
-        reading_data = False
-
-        # Separate metadata and data lines from file2
         for line in lines2:
-            if not line.strip():
-                continue
-
-            # Check if we have started reading data lines
-            if not reading_data and line[0].isdigit():
-                reading_data = True
-
-            if reading_data:
+            if line.strip() and line[0].isdigit():
                 data2.append(line)
             else:
                 metadata2.append(line)
@@ -59,7 +49,7 @@ def merge_files(file1_path, file2_path):
         return
 
     # Find the previous time index in data1 based on the target time from data2
-    #previous_time_index = find_previous_time(data1, float(data2[0].split()[1]))
+    # Previous_time_index = find_previous_time(data1, float(data2[0].split()[1]))
     previous_time_index = find_previous_time(data1, (float(data2[0].split()[1]) + ( 86400 * float(data2[0].split()[0]))) )# 18/07/23 Correction we sum the date and time to avoid error if simulation is over two days
     if previous_time_index != -1:
         # Merge metadata1, data1, and data2 into a single list
