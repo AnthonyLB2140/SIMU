@@ -1,0 +1,2 @@
+To install the shortcuts all the .desktop have to be in your /usr/share/applications you need to use the command sudo mv ./name_of_file /usr/share/applications/name_of_file to move the files from your $HOME to the applications directory the same has to be done for all .sh scripts except the script starterVTS that should be in $HOME/VTS/Vts-Linux-64bits-3.6.1 all pictures should be in $HOME/Pictures if the directory doesn't existe please use mkdir Pictures from your $HOME
+Anthony Le Batteux anthony.lebatteux@gmail.com

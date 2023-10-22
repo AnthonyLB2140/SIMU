@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Docker Jsatorb
+Comment=Launch all docker containers
+Exec=gnome-terminal --command "/usr/share/applications/dockercompose.sh"
+Icon=$HOME/Pictures/EAE.png
+Terminal=true
+Type=Application
+Categories=Development;System;
+

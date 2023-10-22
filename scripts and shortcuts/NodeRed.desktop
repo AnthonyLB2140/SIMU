@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=NodeRed
+Type=Application
+Terminal=True
+Exec=/usr/share/applications/open_links.sh
+Icon=$HOME/Pictures/node-red-hexagon.png
+
