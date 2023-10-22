@@ -1,0 +1,2277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project Revision="8200">
+ <General Name="" StartDateTime="60235 0.0" EndDateTime="60236 0.0"/>
+ <MetaData>
+  <Description>JSatOrb</Description>
+ </MetaData>
+ <MonitorConfiguration>
+  <Monitor X="0" Y="25" Height="1055" Width="1920"/>
+ </MonitorConfiguration>
+ <StartOptions TimeRatio="1" UseStateTimeRatio="0" SysTimeSynced="0" Paused="0" Looped="0" Minimized="0" Hidden="0" AutoClosed="0"/>
+ <BrokerOptions WindowMode="Undocked" Collapsed="0" AlwaysOnTop="1" XPos="0" YPos="680" Width="1200" Height="300" ActiveTab="0" HiddenTabs=""/>
+ <TimelineOptions ProjectLocked="1" CursorLocked="0" CursorRatio="0" ViewStart="33282 0.000000" ViewSpan="0" DateFormat="ISODate" NoBadgeFiltered="0" BadgeFiltered="">
+  <TimelineScenario Name="Scenario" Pos="0" Size="23"/>
+  <TimelineFile Name="Sat_MEM_VISIBILITY_CSUG.TXT" Pos="1" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="Sat_MEM_VISIBILITY_PuertollanoSR.TXT" Pos="2" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="Sat_MEM_VISIBILITY_MilanSR.TXT" Pos="3" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="Sat_MEM_VISIBILITY_IPEV_Ny_Alesund.TXT" Pos="4" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="Sat_MEM_VISIBILITY_IPEV_Dumont_DUrville.TXT" Pos="5" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="Sat_MEM_VISIBILITY_IPEV_BA_Concordia.TXT" Pos="6" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="Sat_MEM_VISIBILITY_AirLiquide_Global_Helium.TXT" Pos="7" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="Sat_MEM_VISIBILITY_Ariel_University.TXT" Pos="8" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="Sat_MEM_VISIBILITY_UPF_Faa.TXT" Pos="9" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="Sat_MEM_VISIBILITY_Univ_Intl_Rabat.TXT" Pos="10" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="Sat_MEM_VISIBILITY_IPEV_Bretagne.TXT" Pos="11" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="Sat_MEM_VISIBILITY_Univ_Ouv_Catalogne.TXT" Pos="12" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="Sat_MEM_VISIBILITY_CNES_Toulouse.TXT" Pos="13" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="Sat_MEM_VISIBILITY_NPI_Tromso.TXT" Pos="14" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="Sat_MEM_VISIBILITY_DGER_Station.TXT" Pos="15" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="Sat_MEM_VISIBILITY_test-station.TXT" Pos="16" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="Sat_MEM_VISIBILITY_Gao_Airport.TXT" Pos="17" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="Sat_MEM_VISIBILITY_Rostov.TXT" Pos="18" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="Sat_MEM_VISIBILITY_Kharkiv.TXT" Pos="19" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="Sat_MEM_VISIBILITY_Moscow.TXT" Pos="20" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="Sat_MEM_VISIBILITY_Lattakia.TXT" Pos="21" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="Sat_MEM_VISIBILITY_Bagdad.TXT" Pos="22" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="Sat_MEM_VISIBILITY_Teheran.TXT" Pos="23" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="Sat_MEM_VISIBILITY_Kabul.TXT" Pos="24" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="Sat_MEM_VISIBILITY_Baikonur.TXT" Pos="25" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="Sat_MEM_VISIBILITY_Xinjiang_point.TXT" Pos="26" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="Sat_MEM_VISIBILITY_Beijing.TXT" Pos="27" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="Sat_MEM_VISIBILITY_Hainan_Naval.TXT" Pos="28" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1A_MEM_VISIBILITY_CSUG.TXT" Pos="29" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1A_MEM_VISIBILITY_PuertollanoSR.TXT" Pos="30" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1A_MEM_VISIBILITY_MilanSR.TXT" Pos="31" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1A_MEM_VISIBILITY_IPEV_Ny_Alesund.TXT" Pos="32" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1A_MEM_VISIBILITY_IPEV_Dumont_DUrville.TXT" Pos="33" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1A_MEM_VISIBILITY_IPEV_BA_Concordia.TXT" Pos="34" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1A_MEM_VISIBILITY_AirLiquide_Global_Helium.TXT" Pos="35" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1A_MEM_VISIBILITY_Ariel_University.TXT" Pos="36" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1A_MEM_VISIBILITY_UPF_Faa.TXT" Pos="37" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1A_MEM_VISIBILITY_Univ_Intl_Rabat.TXT" Pos="38" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1A_MEM_VISIBILITY_IPEV_Bretagne.TXT" Pos="39" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1A_MEM_VISIBILITY_Univ_Ouv_Catalogne.TXT" Pos="40" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1A_MEM_VISIBILITY_CNES_Toulouse.TXT" Pos="41" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1A_MEM_VISIBILITY_NPI_Tromso.TXT" Pos="42" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1A_MEM_VISIBILITY_DGER_Station.TXT" Pos="43" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1A_MEM_VISIBILITY_test-station.TXT" Pos="44" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1A_MEM_VISIBILITY_Gao_Airport.TXT" Pos="45" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1A_MEM_VISIBILITY_Rostov.TXT" Pos="46" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1A_MEM_VISIBILITY_Kharkiv.TXT" Pos="47" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1A_MEM_VISIBILITY_Moscow.TXT" Pos="48" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1A_MEM_VISIBILITY_Lattakia.TXT" Pos="49" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1A_MEM_VISIBILITY_Bagdad.TXT" Pos="50" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1A_MEM_VISIBILITY_Teheran.TXT" Pos="51" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1A_MEM_VISIBILITY_Kabul.TXT" Pos="52" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1A_MEM_VISIBILITY_Baikonur.TXT" Pos="53" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1A_MEM_VISIBILITY_Xinjiang_point.TXT" Pos="54" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1A_MEM_VISIBILITY_Beijing.TXT" Pos="55" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1A_MEM_VISIBILITY_Hainan_Naval.TXT" Pos="56" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1B_MEM_VISIBILITY_CSUG.TXT" Pos="57" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1B_MEM_VISIBILITY_PuertollanoSR.TXT" Pos="58" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1B_MEM_VISIBILITY_MilanSR.TXT" Pos="59" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1B_MEM_VISIBILITY_IPEV_Ny_Alesund.TXT" Pos="60" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1B_MEM_VISIBILITY_IPEV_Dumont_DUrville.TXT" Pos="61" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1B_MEM_VISIBILITY_IPEV_BA_Concordia.TXT" Pos="62" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1B_MEM_VISIBILITY_AirLiquide_Global_Helium.TXT" Pos="63" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1B_MEM_VISIBILITY_Ariel_University.TXT" Pos="64" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1B_MEM_VISIBILITY_UPF_Faa.TXT" Pos="65" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1B_MEM_VISIBILITY_Univ_Intl_Rabat.TXT" Pos="66" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1B_MEM_VISIBILITY_IPEV_Bretagne.TXT" Pos="67" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1B_MEM_VISIBILITY_Univ_Ouv_Catalogne.TXT" Pos="68" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1B_MEM_VISIBILITY_CNES_Toulouse.TXT" Pos="69" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1B_MEM_VISIBILITY_NPI_Tromso.TXT" Pos="70" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1B_MEM_VISIBILITY_DGER_Station.TXT" Pos="71" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1B_MEM_VISIBILITY_test-station.TXT" Pos="72" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1B_MEM_VISIBILITY_Gao_Airport.TXT" Pos="73" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1B_MEM_VISIBILITY_Rostov.TXT" Pos="74" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1B_MEM_VISIBILITY_Kharkiv.TXT" Pos="75" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1B_MEM_VISIBILITY_Moscow.TXT" Pos="76" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1B_MEM_VISIBILITY_Lattakia.TXT" Pos="77" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1B_MEM_VISIBILITY_Bagdad.TXT" Pos="78" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1B_MEM_VISIBILITY_Teheran.TXT" Pos="79" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1B_MEM_VISIBILITY_Kabul.TXT" Pos="80" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1B_MEM_VISIBILITY_Baikonur.TXT" Pos="81" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1B_MEM_VISIBILITY_Xinjiang_point.TXT" Pos="82" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1B_MEM_VISIBILITY_Beijing.TXT" Pos="83" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES1B_MEM_VISIBILITY_Hainan_Naval.TXT" Pos="84" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO3_MEM_VISIBILITY_CSUG.TXT" Pos="85" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO3_MEM_VISIBILITY_PuertollanoSR.TXT" Pos="86" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO3_MEM_VISIBILITY_MilanSR.TXT" Pos="87" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO3_MEM_VISIBILITY_IPEV_Ny_Alesund.TXT" Pos="88" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO3_MEM_VISIBILITY_IPEV_Dumont_DUrville.TXT" Pos="89" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO3_MEM_VISIBILITY_IPEV_BA_Concordia.TXT" Pos="90" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO3_MEM_VISIBILITY_AirLiquide_Global_Helium.TXT" Pos="91" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO3_MEM_VISIBILITY_Ariel_University.TXT" Pos="92" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO3_MEM_VISIBILITY_UPF_Faa.TXT" Pos="93" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO3_MEM_VISIBILITY_Univ_Intl_Rabat.TXT" Pos="94" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO3_MEM_VISIBILITY_IPEV_Bretagne.TXT" Pos="95" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO3_MEM_VISIBILITY_Univ_Ouv_Catalogne.TXT" Pos="96" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO3_MEM_VISIBILITY_CNES_Toulouse.TXT" Pos="97" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO3_MEM_VISIBILITY_NPI_Tromso.TXT" Pos="98" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO3_MEM_VISIBILITY_DGER_Station.TXT" Pos="99" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO3_MEM_VISIBILITY_test-station.TXT" Pos="100" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO3_MEM_VISIBILITY_Gao_Airport.TXT" Pos="101" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO3_MEM_VISIBILITY_Rostov.TXT" Pos="102" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO3_MEM_VISIBILITY_Kharkiv.TXT" Pos="103" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO3_MEM_VISIBILITY_Moscow.TXT" Pos="104" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO3_MEM_VISIBILITY_Lattakia.TXT" Pos="105" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO3_MEM_VISIBILITY_Bagdad.TXT" Pos="106" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO3_MEM_VISIBILITY_Teheran.TXT" Pos="107" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO3_MEM_VISIBILITY_Kabul.TXT" Pos="108" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO3_MEM_VISIBILITY_Baikonur.TXT" Pos="109" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO3_MEM_VISIBILITY_Xinjiang_point.TXT" Pos="110" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO3_MEM_VISIBILITY_Beijing.TXT" Pos="111" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO3_MEM_VISIBILITY_Hainan_Naval.TXT" Pos="112" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO4_MEM_VISIBILITY_CSUG.TXT" Pos="113" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO4_MEM_VISIBILITY_PuertollanoSR.TXT" Pos="114" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO4_MEM_VISIBILITY_MilanSR.TXT" Pos="115" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO4_MEM_VISIBILITY_IPEV_Ny_Alesund.TXT" Pos="116" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO4_MEM_VISIBILITY_IPEV_Dumont_DUrville.TXT" Pos="117" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO4_MEM_VISIBILITY_IPEV_BA_Concordia.TXT" Pos="118" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO4_MEM_VISIBILITY_AirLiquide_Global_Helium.TXT" Pos="119" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO4_MEM_VISIBILITY_Ariel_University.TXT" Pos="120" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO4_MEM_VISIBILITY_UPF_Faa.TXT" Pos="121" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO4_MEM_VISIBILITY_Univ_Intl_Rabat.TXT" Pos="122" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO4_MEM_VISIBILITY_IPEV_Bretagne.TXT" Pos="123" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO4_MEM_VISIBILITY_Univ_Ouv_Catalogne.TXT" Pos="124" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO4_MEM_VISIBILITY_CNES_Toulouse.TXT" Pos="125" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO4_MEM_VISIBILITY_NPI_Tromso.TXT" Pos="126" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO4_MEM_VISIBILITY_DGER_Station.TXT" Pos="127" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO4_MEM_VISIBILITY_test-station.TXT" Pos="128" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO4_MEM_VISIBILITY_Gao_Airport.TXT" Pos="129" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO4_MEM_VISIBILITY_Rostov.TXT" Pos="130" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO4_MEM_VISIBILITY_Kharkiv.TXT" Pos="131" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO4_MEM_VISIBILITY_Moscow.TXT" Pos="132" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO4_MEM_VISIBILITY_Lattakia.TXT" Pos="133" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO4_MEM_VISIBILITY_Bagdad.TXT" Pos="134" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO4_MEM_VISIBILITY_Teheran.TXT" Pos="135" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO4_MEM_VISIBILITY_Kabul.TXT" Pos="136" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO4_MEM_VISIBILITY_Baikonur.TXT" Pos="137" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO4_MEM_VISIBILITY_Xinjiang_point.TXT" Pos="138" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO4_MEM_VISIBILITY_Beijing.TXT" Pos="139" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="PLEIADES-NEO4_MEM_VISIBILITY_Hainan_Naval.TXT" Pos="140" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE1_MEM_VISIBILITY_CSUG.TXT" Pos="141" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE1_MEM_VISIBILITY_PuertollanoSR.TXT" Pos="142" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE1_MEM_VISIBILITY_MilanSR.TXT" Pos="143" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE1_MEM_VISIBILITY_IPEV_Ny_Alesund.TXT" Pos="144" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE1_MEM_VISIBILITY_IPEV_Dumont_DUrville.TXT" Pos="145" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE1_MEM_VISIBILITY_IPEV_BA_Concordia.TXT" Pos="146" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE1_MEM_VISIBILITY_AirLiquide_Global_Helium.TXT" Pos="147" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE1_MEM_VISIBILITY_Ariel_University.TXT" Pos="148" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE1_MEM_VISIBILITY_UPF_Faa.TXT" Pos="149" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE1_MEM_VISIBILITY_Univ_Intl_Rabat.TXT" Pos="150" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE1_MEM_VISIBILITY_IPEV_Bretagne.TXT" Pos="151" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE1_MEM_VISIBILITY_Univ_Ouv_Catalogne.TXT" Pos="152" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE1_MEM_VISIBILITY_CNES_Toulouse.TXT" Pos="153" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE1_MEM_VISIBILITY_NPI_Tromso.TXT" Pos="154" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE1_MEM_VISIBILITY_DGER_Station.TXT" Pos="155" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE1_MEM_VISIBILITY_test-station.TXT" Pos="156" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE1_MEM_VISIBILITY_Gao_Airport.TXT" Pos="157" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE1_MEM_VISIBILITY_Rostov.TXT" Pos="158" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE1_MEM_VISIBILITY_Kharkiv.TXT" Pos="159" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE1_MEM_VISIBILITY_Moscow.TXT" Pos="160" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE1_MEM_VISIBILITY_Lattakia.TXT" Pos="161" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE1_MEM_VISIBILITY_Bagdad.TXT" Pos="162" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE1_MEM_VISIBILITY_Teheran.TXT" Pos="163" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE1_MEM_VISIBILITY_Kabul.TXT" Pos="164" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE1_MEM_VISIBILITY_Baikonur.TXT" Pos="165" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE1_MEM_VISIBILITY_Xinjiang_point.TXT" Pos="166" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE1_MEM_VISIBILITY_Beijing.TXT" Pos="167" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE1_MEM_VISIBILITY_Hainan_Naval.TXT" Pos="168" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE2_MEM_VISIBILITY_CSUG.TXT" Pos="169" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE2_MEM_VISIBILITY_PuertollanoSR.TXT" Pos="170" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE2_MEM_VISIBILITY_MilanSR.TXT" Pos="171" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE2_MEM_VISIBILITY_IPEV_Ny_Alesund.TXT" Pos="172" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE2_MEM_VISIBILITY_IPEV_Dumont_DUrville.TXT" Pos="173" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE2_MEM_VISIBILITY_IPEV_BA_Concordia.TXT" Pos="174" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE2_MEM_VISIBILITY_AirLiquide_Global_Helium.TXT" Pos="175" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE2_MEM_VISIBILITY_Ariel_University.TXT" Pos="176" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE2_MEM_VISIBILITY_UPF_Faa.TXT" Pos="177" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE2_MEM_VISIBILITY_Univ_Intl_Rabat.TXT" Pos="178" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE2_MEM_VISIBILITY_IPEV_Bretagne.TXT" Pos="179" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE2_MEM_VISIBILITY_Univ_Ouv_Catalogne.TXT" Pos="180" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE2_MEM_VISIBILITY_CNES_Toulouse.TXT" Pos="181" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE2_MEM_VISIBILITY_NPI_Tromso.TXT" Pos="182" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE2_MEM_VISIBILITY_DGER_Station.TXT" Pos="183" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE2_MEM_VISIBILITY_test-station.TXT" Pos="184" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE2_MEM_VISIBILITY_Gao_Airport.TXT" Pos="185" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE2_MEM_VISIBILITY_Rostov.TXT" Pos="186" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE2_MEM_VISIBILITY_Kharkiv.TXT" Pos="187" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE2_MEM_VISIBILITY_Moscow.TXT" Pos="188" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE2_MEM_VISIBILITY_Lattakia.TXT" Pos="189" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE2_MEM_VISIBILITY_Bagdad.TXT" Pos="190" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE2_MEM_VISIBILITY_Teheran.TXT" Pos="191" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE2_MEM_VISIBILITY_Kabul.TXT" Pos="192" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE2_MEM_VISIBILITY_Baikonur.TXT" Pos="193" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE2_MEM_VISIBILITY_Xinjiang_point.TXT" Pos="194" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE2_MEM_VISIBILITY_Beijing.TXT" Pos="195" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="BLUE2_MEM_VISIBILITY_Hainan_Naval.TXT" Pos="196" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED1_MEM_VISIBILITY_CSUG.TXT" Pos="197" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED1_MEM_VISIBILITY_PuertollanoSR.TXT" Pos="198" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED1_MEM_VISIBILITY_MilanSR.TXT" Pos="199" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED1_MEM_VISIBILITY_IPEV_Ny_Alesund.TXT" Pos="200" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED1_MEM_VISIBILITY_IPEV_Dumont_DUrville.TXT" Pos="201" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED1_MEM_VISIBILITY_IPEV_BA_Concordia.TXT" Pos="202" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED1_MEM_VISIBILITY_AirLiquide_Global_Helium.TXT" Pos="203" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED1_MEM_VISIBILITY_Ariel_University.TXT" Pos="204" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED1_MEM_VISIBILITY_UPF_Faa.TXT" Pos="205" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED1_MEM_VISIBILITY_Univ_Intl_Rabat.TXT" Pos="206" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED1_MEM_VISIBILITY_IPEV_Bretagne.TXT" Pos="207" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED1_MEM_VISIBILITY_Univ_Ouv_Catalogne.TXT" Pos="208" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED1_MEM_VISIBILITY_CNES_Toulouse.TXT" Pos="209" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED1_MEM_VISIBILITY_NPI_Tromso.TXT" Pos="210" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED1_MEM_VISIBILITY_DGER_Station.TXT" Pos="211" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED1_MEM_VISIBILITY_test-station.TXT" Pos="212" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED1_MEM_VISIBILITY_Gao_Airport.TXT" Pos="213" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED1_MEM_VISIBILITY_Rostov.TXT" Pos="214" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED1_MEM_VISIBILITY_Kharkiv.TXT" Pos="215" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED1_MEM_VISIBILITY_Moscow.TXT" Pos="216" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED1_MEM_VISIBILITY_Lattakia.TXT" Pos="217" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED1_MEM_VISIBILITY_Bagdad.TXT" Pos="218" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED1_MEM_VISIBILITY_Teheran.TXT" Pos="219" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED1_MEM_VISIBILITY_Kabul.TXT" Pos="220" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED1_MEM_VISIBILITY_Baikonur.TXT" Pos="221" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED1_MEM_VISIBILITY_Xinjiang_point.TXT" Pos="222" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED1_MEM_VISIBILITY_Beijing.TXT" Pos="223" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED1_MEM_VISIBILITY_Hainan_Naval.TXT" Pos="224" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED2_MEM_VISIBILITY_CSUG.TXT" Pos="225" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED2_MEM_VISIBILITY_PuertollanoSR.TXT" Pos="226" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED2_MEM_VISIBILITY_MilanSR.TXT" Pos="227" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED2_MEM_VISIBILITY_IPEV_Ny_Alesund.TXT" Pos="228" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED2_MEM_VISIBILITY_IPEV_Dumont_DUrville.TXT" Pos="229" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED2_MEM_VISIBILITY_IPEV_BA_Concordia.TXT" Pos="230" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED2_MEM_VISIBILITY_AirLiquide_Global_Helium.TXT" Pos="231" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED2_MEM_VISIBILITY_Ariel_University.TXT" Pos="232" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED2_MEM_VISIBILITY_UPF_Faa.TXT" Pos="233" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED2_MEM_VISIBILITY_Univ_Intl_Rabat.TXT" Pos="234" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED2_MEM_VISIBILITY_IPEV_Bretagne.TXT" Pos="235" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED2_MEM_VISIBILITY_Univ_Ouv_Catalogne.TXT" Pos="236" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED2_MEM_VISIBILITY_CNES_Toulouse.TXT" Pos="237" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED2_MEM_VISIBILITY_NPI_Tromso.TXT" Pos="238" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED2_MEM_VISIBILITY_DGER_Station.TXT" Pos="239" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED2_MEM_VISIBILITY_test-station.TXT" Pos="240" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED2_MEM_VISIBILITY_Gao_Airport.TXT" Pos="241" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED2_MEM_VISIBILITY_Rostov.TXT" Pos="242" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED2_MEM_VISIBILITY_Kharkiv.TXT" Pos="243" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED2_MEM_VISIBILITY_Moscow.TXT" Pos="244" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED2_MEM_VISIBILITY_Lattakia.TXT" Pos="245" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED2_MEM_VISIBILITY_Bagdad.TXT" Pos="246" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED2_MEM_VISIBILITY_Teheran.TXT" Pos="247" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED2_MEM_VISIBILITY_Kabul.TXT" Pos="248" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED2_MEM_VISIBILITY_Baikonur.TXT" Pos="249" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED2_MEM_VISIBILITY_Xinjiang_point.TXT" Pos="250" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED2_MEM_VISIBILITY_Beijing.TXT" Pos="251" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+  <TimelineFile Name="RED2_MEM_VISIBILITY_Hainan_Naval.TXT" Pos="252" Size="18" Badges="" Mode="Interval" Overlay="false"/>
+ </TimelineOptions>
+ <Sky>
+  <Sun>
+   <Prop2d>
+    <Icon Anchor="CENTER" Size="MEDIUM" Opacity="100">
+     <Font Size="MEDIUM" Color="1 1 1"/>
+     <ImageLayer Type="Default"/>
+    </Icon>
+   </Prop2d>
+   <Track Color="0.862745 0.862745 0" PenStyle="SolidLine" PenWidth="2"/>
+   <VisibilityCircle ContourColor="0.501961 0.501961 0" FillColor="0 0 0" FillOpacity="50"/>
+  </Sun>
+  <StarCatalog CatalogMode="Builtin">
+   <Track Color="1 1 1" PenStyle="DotLine" PenWidth="1"/>
+  </StarCatalog>
+ </Sky>
+ <ToBeUsedApps>
+  <Application Name="Celestia" Id="0" Label="" AutoStarted="1"/>
+  <Application Name="SurfaceView" Id="1" Label="" AutoStarted="1"/>
+  <Application Name="PrestoPlot" Id="2" Label="" AutoStarted="1"/>
+ </ToBeUsedApps>
+ <Entities>
+  <Body Name="Earth" ParentPath="Sol">
+   <Prop2d>
+    <Icon Anchor="CENTER" Size="MEDIUM" Opacity="100">
+     <Font Size="MEDIUM" Color="1 1 1"/>
+     <ImageLayer Type="Default"/>
+    </Icon>
+   </Prop2d>
+   <Track Color="1 0 0.697841" PenStyle="SolidLine" PenWidth="2"/>
+   <VisibilityCircle ContourColor="0.0545052 0 1" FillColor="0.527245 0.499992 1" FillOpacity="60"/>
+   <EphemerisMode Mode="Default"/>
+   <Layers>
+    <BuiltinLayer Name="BuiltinLayer"/>
+   </Layers>
+  <GroupGroundStations>
+   <GroundStation Name="CSUG">
+    <Prop2d>
+     <Icon Anchor="CENTER" Size="SMALL" Opacity="100">
+      <Font Size="MEDIUM" Color="1 1 0"/>
+      <ImageLayer Type="Default"/>
+     </Icon>
+    </Prop2d>
+    <LatLongAlt>
+     <Value>
+      <Fixed Data="45.19175 5.759967 227"/>
+     </Value>
+    </LatLongAlt>
+    <SensorStation>
+    <SensorTarget>
+     <TargetAltitude Altitude="842.1774828868713"/>
+    </SensorTarget>
+    <Sensor Name="Default">
+     <SensorProp>
+      <SensorElliptical HalfAngleX="0.5235987755982988" HalfAngleY="0.5235987755982988"/>
+      <SensorGraphics Range="10000" VolumeColor="0.717647 0 1" VolumeOpacity="10" ContourColor="0.717647 0 1"/>
+     </SensorProp>
+     <Geometry>
+      <Position>
+       <Value>
+        <Fixed Data="0 0 0"/>
+       </Value>
+      </Position>
+      <Orientation>
+       <Quaternion>
+        <Value>
+         <Fixed Data="1 0 0 0"/>
+        </Value>
+       </Quaternion>
+      </Orientation>
+     </Geometry>
+    </Sensor>
+    </SensorStation>
+   </GroundStation>
+   <GroundStation Name="PuertollanoSR">
+    <Prop2d>
+     <Icon Anchor="CENTER" Size="SMALL" Opacity="100">
+      <Font Size="MEDIUM" Color="1 1 0"/>
+      <ImageLayer Type="Default"/>
+     </Icon>
+    </Prop2d>
+    <LatLongAlt>
+     <Value>
+      <Fixed Data="38.67 -4.16 678"/>
+     </Value>
+    </LatLongAlt>
+    <SensorStation>
+    <SensorTarget>
+     <TargetAltitude Altitude="842.1774828868713"/>
+    </SensorTarget>
+    <Sensor Name="Default">
+     <SensorProp>
+      <SensorElliptical HalfAngleX="1.3962634015954636" HalfAngleY="1.3962634015954636"/>
+      <SensorGraphics Range="10000" VolumeColor="0.717647 0 1" VolumeOpacity="10" ContourColor="0.717647 0 1"/>
+     </SensorProp>
+     <Geometry>
+      <Position>
+       <Value>
+        <Fixed Data="0 0 0"/>
+       </Value>
+      </Position>
+      <Orientation>
+       <Quaternion>
+        <Value>
+         <Fixed Data="1 0 0 0"/>
+        </Value>
+       </Quaternion>
+      </Orientation>
+     </Geometry>
+    </Sensor>
+    </SensorStation>
+   </GroundStation>
+   <GroundStation Name="MilanSR">
+    <Prop2d>
+     <Icon Anchor="CENTER" Size="SMALL" Opacity="100">
+      <Font Size="MEDIUM" Color="1 1 0"/>
+      <ImageLayer Type="Default"/>
+     </Icon>
+    </Prop2d>
+    <LatLongAlt>
+     <Value>
+      <Fixed Data="45.59 9.36 174"/>
+     </Value>
+    </LatLongAlt>
+    <SensorStation>
+    <SensorTarget>
+     <TargetAltitude Altitude="842.1774828868713"/>
+    </SensorTarget>
+    <Sensor Name="Default">
+     <SensorProp>
+      <SensorElliptical HalfAngleX="1.3962634015954636" HalfAngleY="1.3962634015954636"/>
+      <SensorGraphics Range="10000" VolumeColor="0.717647 0 1" VolumeOpacity="10" ContourColor="0.717647 0 1"/>
+     </SensorProp>
+     <Geometry>
+      <Position>
+       <Value>
+        <Fixed Data="0 0 0"/>
+       </Value>
+      </Position>
+      <Orientation>
+       <Quaternion>
+        <Value>
+         <Fixed Data="1 0 0 0"/>
+        </Value>
+       </Quaternion>
+      </Orientation>
+     </Geometry>
+    </Sensor>
+    </SensorStation>
+   </GroundStation>
+   <GroundStation Name="IPEV_Ny_Alesund">
+    <Prop2d>
+     <Icon Anchor="CENTER" Size="SMALL" Opacity="100">
+      <Font Size="MEDIUM" Color="1 1 0"/>
+      <ImageLayer Type="Default"/>
+     </Icon>
+    </Prop2d>
+    <LatLongAlt>
+     <Value>
+      <Fixed Data="78.92419 11.92346 20"/>
+     </Value>
+    </LatLongAlt>
+    <SensorStation>
+    <SensorTarget>
+     <TargetAltitude Altitude="842.1774828868713"/>
+    </SensorTarget>
+    <Sensor Name="Default">
+     <SensorProp>
+      <SensorElliptical HalfAngleX="0.5235987755982988" HalfAngleY="0.5235987755982988"/>
+      <SensorGraphics Range="10000" VolumeColor="0.717647 0 1" VolumeOpacity="10" ContourColor="0.717647 0 1"/>
+     </SensorProp>
+     <Geometry>
+      <Position>
+       <Value>
+        <Fixed Data="0 0 0"/>
+       </Value>
+      </Position>
+      <Orientation>
+       <Quaternion>
+        <Value>
+         <Fixed Data="1 0 0 0"/>
+        </Value>
+       </Quaternion>
+      </Orientation>
+     </Geometry>
+    </Sensor>
+    </SensorStation>
+   </GroundStation>
+   <GroundStation Name="IPEV_Dumont_DUrville">
+    <Prop2d>
+     <Icon Anchor="CENTER" Size="SMALL" Opacity="100">
+      <Font Size="MEDIUM" Color="1 1 0"/>
+      <ImageLayer Type="Default"/>
+     </Icon>
+    </Prop2d>
+    <LatLongAlt>
+     <Value>
+      <Fixed Data="-66.66317 140.0025 0"/>
+     </Value>
+    </LatLongAlt>
+    <SensorStation>
+    <SensorTarget>
+     <TargetAltitude Altitude="842.1774828868713"/>
+    </SensorTarget>
+    <Sensor Name="Default">
+     <SensorProp>
+      <SensorElliptical HalfAngleX="0.5235987755982988" HalfAngleY="0.5235987755982988"/>
+      <SensorGraphics Range="10000" VolumeColor="0.717647 0 1" VolumeOpacity="10" ContourColor="0.717647 0 1"/>
+     </SensorProp>
+     <Geometry>
+      <Position>
+       <Value>
+        <Fixed Data="0 0 0"/>
+       </Value>
+      </Position>
+      <Orientation>
+       <Quaternion>
+        <Value>
+         <Fixed Data="1 0 0 0"/>
+        </Value>
+       </Quaternion>
+      </Orientation>
+     </Geometry>
+    </Sensor>
+    </SensorStation>
+   </GroundStation>
+   <GroundStation Name="IPEV_BA_Concordia">
+    <Prop2d>
+     <Icon Anchor="CENTER" Size="SMALL" Opacity="100">
+      <Font Size="MEDIUM" Color="1 1 0"/>
+      <ImageLayer Type="Default"/>
+     </Icon>
+    </Prop2d>
+    <LatLongAlt>
+     <Value>
+      <Fixed Data="-75.10062 123.347 3265"/>
+     </Value>
+    </LatLongAlt>
+    <SensorStation>
+    <SensorTarget>
+     <TargetAltitude Altitude="842.1774828868713"/>
+    </SensorTarget>
+    <Sensor Name="Default">
+     <SensorProp>
+      <SensorElliptical HalfAngleX="0.5235987755982988" HalfAngleY="0.5235987755982988"/>
+      <SensorGraphics Range="10000" VolumeColor="0.717647 0 1" VolumeOpacity="10" ContourColor="0.717647 0 1"/>
+     </SensorProp>
+     <Geometry>
+      <Position>
+       <Value>
+        <Fixed Data="0 0 0"/>
+       </Value>
+      </Position>
+      <Orientation>
+       <Quaternion>
+        <Value>
+         <Fixed Data="1 0 0 0"/>
+        </Value>
+       </Quaternion>
+      </Orientation>
+     </Geometry>
+    </Sensor>
+    </SensorStation>
+   </GroundStation>
+   <GroundStation Name="AirLiquide_Global_Helium">
+    <Prop2d>
+     <Icon Anchor="CENTER" Size="SMALL" Opacity="100">
+      <Font Size="MEDIUM" Color="1 1 0"/>
+      <ImageLayer Type="Default"/>
+     </Icon>
+    </Prop2d>
+    <LatLongAlt>
+     <Value>
+      <Fixed Data="24.93445 55.08732 53"/>
+     </Value>
+    </LatLongAlt>
+    <SensorStation>
+    <SensorTarget>
+     <TargetAltitude Altitude="842.1774828868713"/>
+    </SensorTarget>
+    <Sensor Name="Default">
+     <SensorProp>
+      <SensorElliptical HalfAngleX="0.5235987755982988" HalfAngleY="0.5235987755982988"/>
+      <SensorGraphics Range="10000" VolumeColor="0.717647 0 1" VolumeOpacity="10" ContourColor="0.717647 0 1"/>
+     </SensorProp>
+     <Geometry>
+      <Position>
+       <Value>
+        <Fixed Data="0 0 0"/>
+       </Value>
+      </Position>
+      <Orientation>
+       <Quaternion>
+        <Value>
+         <Fixed Data="1 0 0 0"/>
+        </Value>
+       </Quaternion>
+      </Orientation>
+     </Geometry>
+    </Sensor>
+    </SensorStation>
+   </GroundStation>
+   <GroundStation Name="Ariel_University">
+    <Prop2d>
+     <Icon Anchor="CENTER" Size="SMALL" Opacity="100">
+      <Font Size="MEDIUM" Color="1 1 0"/>
+      <ImageLayer Type="Default"/>
+     </Icon>
+    </Prop2d>
+    <LatLongAlt>
+     <Value>
+      <Fixed Data="32.1031 35.20774 664"/>
+     </Value>
+    </LatLongAlt>
+    <SensorStation>
+    <SensorTarget>
+     <TargetAltitude Altitude="842.1774828868713"/>
+    </SensorTarget>
+    <Sensor Name="Default">
+     <SensorProp>
+      <SensorElliptical HalfAngleX="0.5235987755982988" HalfAngleY="0.5235987755982988"/>
+      <SensorGraphics Range="10000" VolumeColor="0.717647 0 1" VolumeOpacity="10" ContourColor="0.717647 0 1"/>
+     </SensorProp>
+     <Geometry>
+      <Position>
+       <Value>
+        <Fixed Data="0 0 0"/>
+       </Value>
+      </Position>
+      <Orientation>
+       <Quaternion>
+        <Value>
+         <Fixed Data="1 0 0 0"/>
+        </Value>
+       </Quaternion>
+      </Orientation>
+     </Geometry>
+    </Sensor>
+    </SensorStation>
+   </GroundStation>
+   <GroundStation Name="UPF_Faa">
+    <Prop2d>
+     <Icon Anchor="CENTER" Size="SMALL" Opacity="100">
+      <Font Size="MEDIUM" Color="1 1 0"/>
+      <ImageLayer Type="Default"/>
+     </Icon>
+    </Prop2d>
+    <LatLongAlt>
+     <Value>
+      <Fixed Data="-17.57659 -149.6091 64"/>
+     </Value>
+    </LatLongAlt>
+    <SensorStation>
+    <SensorTarget>
+     <TargetAltitude Altitude="842.1774828868713"/>
+    </SensorTarget>
+    <Sensor Name="Default">
+     <SensorProp>
+      <SensorElliptical HalfAngleX="0.5235987755982988" HalfAngleY="0.5235987755982988"/>
+      <SensorGraphics Range="10000" VolumeColor="0.717647 0 1" VolumeOpacity="10" ContourColor="0.717647 0 1"/>
+     </SensorProp>
+     <Geometry>
+      <Position>
+       <Value>
+        <Fixed Data="0 0 0"/>
+       </Value>
+      </Position>
+      <Orientation>
+       <Quaternion>
+        <Value>
+         <Fixed Data="1 0 0 0"/>
+        </Value>
+       </Quaternion>
+      </Orientation>
+     </Geometry>
+    </Sensor>
+    </SensorStation>
+   </GroundStation>
+   <GroundStation Name="Univ_Intl_Rabat">
+    <Prop2d>
+     <Icon Anchor="CENTER" Size="SMALL" Opacity="100">
+      <Font Size="MEDIUM" Color="1 1 0"/>
+      <ImageLayer Type="Default"/>
+     </Icon>
+    </Prop2d>
+    <LatLongAlt>
+     <Value>
+      <Fixed Data="33.984845 -6.7252 145"/>
+     </Value>
+    </LatLongAlt>
+    <SensorStation>
+    <SensorTarget>
+     <TargetAltitude Altitude="842.1774828868713"/>
+    </SensorTarget>
+    <Sensor Name="Default">
+     <SensorProp>
+      <SensorElliptical HalfAngleX="0.5235987755982988" HalfAngleY="0.5235987755982988"/>
+      <SensorGraphics Range="10000" VolumeColor="0.717647 0 1" VolumeOpacity="10" ContourColor="0.717647 0 1"/>
+     </SensorProp>
+     <Geometry>
+      <Position>
+       <Value>
+        <Fixed Data="0 0 0"/>
+       </Value>
+      </Position>
+      <Orientation>
+       <Quaternion>
+        <Value>
+         <Fixed Data="1 0 0 0"/>
+        </Value>
+       </Quaternion>
+      </Orientation>
+     </Geometry>
+    </Sensor>
+    </SensorStation>
+   </GroundStation>
+   <GroundStation Name="IPEV_Bretagne">
+    <Prop2d>
+     <Icon Anchor="CENTER" Size="SMALL" Opacity="100">
+      <Font Size="MEDIUM" Color="1 1 0"/>
+      <ImageLayer Type="Default"/>
+     </Icon>
+    </Prop2d>
+    <LatLongAlt>
+     <Value>
+      <Fixed Data="48.359742 -4.562486 75"/>
+     </Value>
+    </LatLongAlt>
+    <SensorStation>
+    <SensorTarget>
+     <TargetAltitude Altitude="842.1774828868713"/>
+    </SensorTarget>
+    <Sensor Name="Default">
+     <SensorProp>
+      <SensorElliptical HalfAngleX="0.5235987755982988" HalfAngleY="0.5235987755982988"/>
+      <SensorGraphics Range="10000" VolumeColor="0.717647 0 1" VolumeOpacity="10" ContourColor="0.717647 0 1"/>
+     </SensorProp>
+     <Geometry>
+      <Position>
+       <Value>
+        <Fixed Data="0 0 0"/>
+       </Value>
+      </Position>
+      <Orientation>
+       <Quaternion>
+        <Value>
+         <Fixed Data="1 0 0 0"/>
+        </Value>
+       </Quaternion>
+      </Orientation>
+     </Geometry>
+    </Sensor>
+    </SensorStation>
+   </GroundStation>
+   <GroundStation Name="Univ_Ouv_Catalogne">
+    <Prop2d>
+     <Icon Anchor="CENTER" Size="SMALL" Opacity="100">
+      <Font Size="MEDIUM" Color="1 1 0"/>
+      <ImageLayer Type="Default"/>
+     </Icon>
+    </Prop2d>
+    <LatLongAlt>
+     <Value>
+      <Fixed Data="41.406541 2.194503 10"/>
+     </Value>
+    </LatLongAlt>
+    <SensorStation>
+    <SensorTarget>
+     <TargetAltitude Altitude="842.1774828868713"/>
+    </SensorTarget>
+    <Sensor Name="Default">
+     <SensorProp>
+      <SensorElliptical HalfAngleX="0.5235987755982988" HalfAngleY="0.5235987755982988"/>
+      <SensorGraphics Range="10000" VolumeColor="0.717647 0 1" VolumeOpacity="10" ContourColor="0.717647 0 1"/>
+     </SensorProp>
+     <Geometry>
+      <Position>
+       <Value>
+        <Fixed Data="0 0 0"/>
+       </Value>
+      </Position>
+      <Orientation>
+       <Quaternion>
+        <Value>
+         <Fixed Data="1 0 0 0"/>
+        </Value>
+       </Quaternion>
+      </Orientation>
+     </Geometry>
+    </Sensor>
+    </SensorStation>
+   </GroundStation>
+   <GroundStation Name="CNES_Toulouse">
+    <Prop2d>
+     <Icon Anchor="CENTER" Size="SMALL" Opacity="100">
+      <Font Size="MEDIUM" Color="1 1 0"/>
+      <ImageLayer Type="Default"/>
+     </Icon>
+    </Prop2d>
+    <LatLongAlt>
+     <Value>
+      <Fixed Data="43.561669 1.40949 150"/>
+     </Value>
+    </LatLongAlt>
+    <SensorStation>
+    <SensorTarget>
+     <TargetAltitude Altitude="842.1774828868713"/>
+    </SensorTarget>
+    <Sensor Name="Default">
+     <SensorProp>
+      <SensorElliptical HalfAngleX="0.5235987755982988" HalfAngleY="0.5235987755982988"/>
+      <SensorGraphics Range="10000" VolumeColor="0.717647 0 1" VolumeOpacity="10" ContourColor="0.717647 0 1"/>
+     </SensorProp>
+     <Geometry>
+      <Position>
+       <Value>
+        <Fixed Data="0 0 0"/>
+       </Value>
+      </Position>
+      <Orientation>
+       <Quaternion>
+        <Value>
+         <Fixed Data="1 0 0 0"/>
+        </Value>
+       </Quaternion>
+      </Orientation>
+     </Geometry>
+    </Sensor>
+    </SensorStation>
+   </GroundStation>
+   <GroundStation Name="NPI_Tromso">
+    <Prop2d>
+     <Icon Anchor="CENTER" Size="SMALL" Opacity="100">
+      <Font Size="MEDIUM" Color="1 1 0"/>
+      <ImageLayer Type="Default"/>
+     </Icon>
+    </Prop2d>
+    <LatLongAlt>
+     <Value>
+      <Fixed Data="69.64385 18.948586 5"/>
+     </Value>
+    </LatLongAlt>
+    <SensorStation>
+    <SensorTarget>
+     <TargetAltitude Altitude="842.1774828868713"/>
+    </SensorTarget>
+    <Sensor Name="Default">
+     <SensorProp>
+      <SensorElliptical HalfAngleX="0.5235987755982988" HalfAngleY="0.5235987755982988"/>
+      <SensorGraphics Range="10000" VolumeColor="0.717647 0 1" VolumeOpacity="10" ContourColor="0.717647 0 1"/>
+     </SensorProp>
+     <Geometry>
+      <Position>
+       <Value>
+        <Fixed Data="0 0 0"/>
+       </Value>
+      </Position>
+      <Orientation>
+       <Quaternion>
+        <Value>
+         <Fixed Data="1 0 0 0"/>
+        </Value>
+       </Quaternion>
+      </Orientation>
+     </Geometry>
+    </Sensor>
+    </SensorStation>
+   </GroundStation>
+   <GroundStation Name="DGER_Station">
+    <Prop2d>
+     <Icon Anchor="CENTER" Size="SMALL" Opacity="100">
+      <Font Size="MEDIUM" Color="1 1 0"/>
+      <ImageLayer Type="Default"/>
+     </Icon>
+    </Prop2d>
+    <LatLongAlt>
+     <Value>
+      <Fixed Data="43.6195104 5.1143273 147"/>
+     </Value>
+    </LatLongAlt>
+    <SensorStation>
+    <SensorTarget>
+     <TargetAltitude Altitude="842.1774828868713"/>
+    </SensorTarget>
+    <Sensor Name="Default">
+     <SensorProp>
+      <SensorElliptical HalfAngleX="0.7853981633974483" HalfAngleY="0.7853981633974483"/>
+      <SensorGraphics Range="10000" VolumeColor="0.717647 0 1" VolumeOpacity="10" ContourColor="0.717647 0 1"/>
+     </SensorProp>
+     <Geometry>
+      <Position>
+       <Value>
+        <Fixed Data="0 0 0"/>
+       </Value>
+      </Position>
+      <Orientation>
+       <Quaternion>
+        <Value>
+         <Fixed Data="1 0 0 0"/>
+        </Value>
+       </Quaternion>
+      </Orientation>
+     </Geometry>
+    </Sensor>
+    </SensorStation>
+   </GroundStation>
+   <GroundStation Name="test-station">
+    <Prop2d>
+     <Icon Anchor="CENTER" Size="SMALL" Opacity="100">
+      <Font Size="MEDIUM" Color="1 1 0"/>
+      <ImageLayer Type="Default"/>
+     </Icon>
+    </Prop2d>
+    <LatLongAlt>
+     <Value>
+      <Fixed Data="45.0548 5.6584 500"/>
+     </Value>
+    </LatLongAlt>
+    <SensorStation>
+    <SensorTarget>
+     <TargetAltitude Altitude="842.1774828868713"/>
+    </SensorTarget>
+    <Sensor Name="Default">
+     <SensorProp>
+      <SensorElliptical HalfAngleX="1.3962634015954636" HalfAngleY="1.3962634015954636"/>
+      <SensorGraphics Range="10000" VolumeColor="0.717647 0 1" VolumeOpacity="10" ContourColor="0.717647 0 1"/>
+     </SensorProp>
+     <Geometry>
+      <Position>
+       <Value>
+        <Fixed Data="0 0 0"/>
+       </Value>
+      </Position>
+      <Orientation>
+       <Quaternion>
+        <Value>
+         <Fixed Data="1 0 0 0"/>
+        </Value>
+       </Quaternion>
+      </Orientation>
+     </Geometry>
+    </Sensor>
+    </SensorStation>
+   </GroundStation>
+   <GroundStation Name="Gao_Airport">
+    <Prop2d>
+     <Icon Anchor="CENTER" Size="SMALL" Opacity="100">
+      <Font Size="MEDIUM" Color="1 1 0"/>
+      <ImageLayer Type="Default"/>
+     </Icon>
+    </Prop2d>
+    <LatLongAlt>
+     <Value>
+      <Fixed Data="16.25364212839886 -0.007763259137150019 227"/>
+     </Value>
+    </LatLongAlt>
+    <SensorStation>
+    <SensorTarget>
+     <TargetAltitude Altitude="842.1774828868713"/>
+    </SensorTarget>
+    <Sensor Name="Default">
+     <SensorProp>
+      <SensorElliptical HalfAngleX="0.7853981633974483" HalfAngleY="0.7853981633974483"/>
+      <SensorGraphics Range="10000" VolumeColor="0.717647 0 1" VolumeOpacity="10" ContourColor="0.717647 0 1"/>
+     </SensorProp>
+     <Geometry>
+      <Position>
+       <Value>
+        <Fixed Data="0 0 0"/>
+       </Value>
+      </Position>
+      <Orientation>
+       <Quaternion>
+        <Value>
+         <Fixed Data="1 0 0 0"/>
+        </Value>
+       </Quaternion>
+      </Orientation>
+     </Geometry>
+    </Sensor>
+    </SensorStation>
+   </GroundStation>
+   <GroundStation Name="Rostov">
+    <Prop2d>
+     <Icon Anchor="CENTER" Size="SMALL" Opacity="100">
+      <Font Size="MEDIUM" Color="1 1 0"/>
+      <ImageLayer Type="Default"/>
+     </Icon>
+    </Prop2d>
+    <LatLongAlt>
+     <Value>
+      <Fixed Data="47.236313266393424 39.698744677218286 76"/>
+     </Value>
+    </LatLongAlt>
+    <SensorStation>
+    <SensorTarget>
+     <TargetAltitude Altitude="842.1774828868713"/>
+    </SensorTarget>
+    <Sensor Name="Default">
+     <SensorProp>
+      <SensorElliptical HalfAngleX="0.7853981633974483" HalfAngleY="0.7853981633974483"/>
+      <SensorGraphics Range="10000" VolumeColor="0.717647 0 1" VolumeOpacity="10" ContourColor="0.717647 0 1"/>
+     </SensorProp>
+     <Geometry>
+      <Position>
+       <Value>
+        <Fixed Data="0 0 0"/>
+       </Value>
+      </Position>
+      <Orientation>
+       <Quaternion>
+        <Value>
+         <Fixed Data="1 0 0 0"/>
+        </Value>
+       </Quaternion>
+      </Orientation>
+     </Geometry>
+    </Sensor>
+    </SensorStation>
+   </GroundStation>
+   <GroundStation Name="Kharkiv">
+    <Prop2d>
+     <Icon Anchor="CENTER" Size="SMALL" Opacity="100">
+      <Font Size="MEDIUM" Color="1 1 0"/>
+      <ImageLayer Type="Default"/>
+     </Icon>
+    </Prop2d>
+    <LatLongAlt>
+     <Value>
+      <Fixed Data="49.99265559910479 36.230723023742144 152"/>
+     </Value>
+    </LatLongAlt>
+    <SensorStation>
+    <SensorTarget>
+     <TargetAltitude Altitude="842.1774828868713"/>
+    </SensorTarget>
+    <Sensor Name="Default">
+     <SensorProp>
+      <SensorElliptical HalfAngleX="0.7853981633974483" HalfAngleY="0.7853981633974483"/>
+      <SensorGraphics Range="10000" VolumeColor="0.717647 0 1" VolumeOpacity="10" ContourColor="0.717647 0 1"/>
+     </SensorProp>
+     <Geometry>
+      <Position>
+       <Value>
+        <Fixed Data="0 0 0"/>
+       </Value>
+      </Position>
+      <Orientation>
+       <Quaternion>
+        <Value>
+         <Fixed Data="1 0 0 0"/>
+        </Value>
+       </Quaternion>
+      </Orientation>
+     </Geometry>
+    </Sensor>
+    </SensorStation>
+   </GroundStation>
+   <GroundStation Name="Moscow">
+    <Prop2d>
+     <Icon Anchor="CENTER" Size="SMALL" Opacity="100">
+      <Font Size="MEDIUM" Color="1 1 0"/>
+      <ImageLayer Type="Default"/>
+     </Icon>
+    </Prop2d>
+    <LatLongAlt>
+     <Value>
+      <Fixed Data="55.75560252144984 37.6190948021327 156"/>
+     </Value>
+    </LatLongAlt>
+    <SensorStation>
+    <SensorTarget>
+     <TargetAltitude Altitude="842.1774828868713"/>
+    </SensorTarget>
+    <Sensor Name="Default">
+     <SensorProp>
+      <SensorElliptical HalfAngleX="0.7853981633974483" HalfAngleY="0.7853981633974483"/>
+      <SensorGraphics Range="10000" VolumeColor="0.717647 0 1" VolumeOpacity="10" ContourColor="0.717647 0 1"/>
+     </SensorProp>
+     <Geometry>
+      <Position>
+       <Value>
+        <Fixed Data="0 0 0"/>
+       </Value>
+      </Position>
+      <Orientation>
+       <Quaternion>
+        <Value>
+         <Fixed Data="1 0 0 0"/>
+        </Value>
+       </Quaternion>
+      </Orientation>
+     </Geometry>
+    </Sensor>
+    </SensorStation>
+   </GroundStation>
+   <GroundStation Name="Lattakia">
+    <Prop2d>
+     <Icon Anchor="CENTER" Size="SMALL" Opacity="100">
+      <Font Size="MEDIUM" Color="1 1 0"/>
+      <ImageLayer Type="Default"/>
+     </Icon>
+    </Prop2d>
+    <LatLongAlt>
+     <Value>
+      <Fixed Data="35.53130154053617 35.77286648616013 11"/>
+     </Value>
+    </LatLongAlt>
+    <SensorStation>
+    <SensorTarget>
+     <TargetAltitude Altitude="842.1774828868713"/>
+    </SensorTarget>
+    <Sensor Name="Default">
+     <SensorProp>
+      <SensorElliptical HalfAngleX="0.7853981633974483" HalfAngleY="0.7853981633974483"/>
+      <SensorGraphics Range="10000" VolumeColor="0.717647 0 1" VolumeOpacity="10" ContourColor="0.717647 0 1"/>
+     </SensorProp>
+     <Geometry>
+      <Position>
+       <Value>
+        <Fixed Data="0 0 0"/>
+       </Value>
+      </Position>
+      <Orientation>
+       <Quaternion>
+        <Value>
+         <Fixed Data="1 0 0 0"/>
+        </Value>
+       </Quaternion>
+      </Orientation>
+     </Geometry>
+    </Sensor>
+    </SensorStation>
+   </GroundStation>
+   <GroundStation Name="Bagdad">
+    <Prop2d>
+     <Icon Anchor="CENTER" Size="SMALL" Opacity="100">
+      <Font Size="MEDIUM" Color="1 1 0"/>
+      <ImageLayer Type="Default"/>
+     </Icon>
+    </Prop2d>
+    <LatLongAlt>
+     <Value>
+      <Fixed Data="33.30860368185867 44.36460765902239 34"/>
+     </Value>
+    </LatLongAlt>
+    <SensorStation>
+    <SensorTarget>
+     <TargetAltitude Altitude="842.1774828868713"/>
+    </SensorTarget>
+    <Sensor Name="Default">
+     <SensorProp>
+      <SensorElliptical HalfAngleX="0.7853981633974483" HalfAngleY="0.7853981633974483"/>
+      <SensorGraphics Range="10000" VolumeColor="0.717647 0 1" VolumeOpacity="10" ContourColor="0.717647 0 1"/>
+     </SensorProp>
+     <Geometry>
+      <Position>
+       <Value>
+        <Fixed Data="0 0 0"/>
+       </Value>
+      </Position>
+      <Orientation>
+       <Quaternion>
+        <Value>
+         <Fixed Data="1 0 0 0"/>
+        </Value>
+       </Quaternion>
+      </Orientation>
+     </Geometry>
+    </Sensor>
+    </SensorStation>
+   </GroundStation>
+   <GroundStation Name="Teheran">
+    <Prop2d>
+     <Icon Anchor="CENTER" Size="SMALL" Opacity="100">
+      <Font Size="MEDIUM" Color="1 1 0"/>
+      <ImageLayer Type="Default"/>
+     </Icon>
+    </Prop2d>
+    <LatLongAlt>
+     <Value>
+      <Fixed Data="35.69106993662373 51.381569299478606 1200"/>
+     </Value>
+    </LatLongAlt>
+    <SensorStation>
+    <SensorTarget>
+     <TargetAltitude Altitude="842.1774828868713"/>
+    </SensorTarget>
+    <Sensor Name="Default">
+     <SensorProp>
+      <SensorElliptical HalfAngleX="0.7853981633974483" HalfAngleY="0.7853981633974483"/>
+      <SensorGraphics Range="10000" VolumeColor="0.717647 0 1" VolumeOpacity="10" ContourColor="0.717647 0 1"/>
+     </SensorProp>
+     <Geometry>
+      <Position>
+       <Value>
+        <Fixed Data="0 0 0"/>
+       </Value>
+      </Position>
+      <Orientation>
+       <Quaternion>
+        <Value>
+         <Fixed Data="1 0 0 0"/>
+        </Value>
+       </Quaternion>
+      </Orientation>
+     </Geometry>
+    </Sensor>
+    </SensorStation>
+   </GroundStation>
+   <GroundStation Name="Kabul">
+    <Prop2d>
+     <Icon Anchor="CENTER" Size="SMALL" Opacity="100">
+      <Font Size="MEDIUM" Color="1 1 0"/>
+      <ImageLayer Type="Default"/>
+     </Icon>
+    </Prop2d>
+    <LatLongAlt>
+     <Value>
+      <Fixed Data="34.55671368047901 69.20746149314715 1791"/>
+     </Value>
+    </LatLongAlt>
+    <SensorStation>
+    <SensorTarget>
+     <TargetAltitude Altitude="842.1774828868713"/>
+    </SensorTarget>
+    <Sensor Name="Default">
+     <SensorProp>
+      <SensorElliptical HalfAngleX="0.7853981633974483" HalfAngleY="0.7853981633974483"/>
+      <SensorGraphics Range="10000" VolumeColor="0.717647 0 1" VolumeOpacity="10" ContourColor="0.717647 0 1"/>
+     </SensorProp>
+     <Geometry>
+      <Position>
+       <Value>
+        <Fixed Data="0 0 0"/>
+       </Value>
+      </Position>
+      <Orientation>
+       <Quaternion>
+        <Value>
+         <Fixed Data="1 0 0 0"/>
+        </Value>
+       </Quaternion>
+      </Orientation>
+     </Geometry>
+    </Sensor>
+    </SensorStation>
+   </GroundStation>
+   <GroundStation Name="Baikonur">
+    <Prop2d>
+     <Icon Anchor="CENTER" Size="SMALL" Opacity="100">
+      <Font Size="MEDIUM" Color="1 1 0"/>
+      <ImageLayer Type="Default"/>
+     </Icon>
+    </Prop2d>
+    <LatLongAlt>
+     <Value>
+      <Fixed Data="45.61204798968816 63.306081134842586 100"/>
+     </Value>
+    </LatLongAlt>
+    <SensorStation>
+    <SensorTarget>
+     <TargetAltitude Altitude="842.1774828868713"/>
+    </SensorTarget>
+    <Sensor Name="Default">
+     <SensorProp>
+      <SensorElliptical HalfAngleX="0.7853981633974483" HalfAngleY="0.7853981633974483"/>
+      <SensorGraphics Range="10000" VolumeColor="0.717647 0 1" VolumeOpacity="10" ContourColor="0.717647 0 1"/>
+     </SensorProp>
+     <Geometry>
+      <Position>
+       <Value>
+        <Fixed Data="0 0 0"/>
+       </Value>
+      </Position>
+      <Orientation>
+       <Quaternion>
+        <Value>
+         <Fixed Data="1 0 0 0"/>
+        </Value>
+       </Quaternion>
+      </Orientation>
+     </Geometry>
+    </Sensor>
+    </SensorStation>
+   </GroundStation>
+   <GroundStation Name="Xinjiang_point">
+    <Prop2d>
+     <Icon Anchor="CENTER" Size="SMALL" Opacity="100">
+      <Font Size="MEDIUM" Color="1 1 0"/>
+      <ImageLayer Type="Default"/>
+     </Icon>
+    </Prop2d>
+    <LatLongAlt>
+     <Value>
+      <Fixed Data="40.46865229975696 90.85465735831093 1000"/>
+     </Value>
+    </LatLongAlt>
+    <SensorStation>
+    <SensorTarget>
+     <TargetAltitude Altitude="842.1774828868713"/>
+    </SensorTarget>
+    <Sensor Name="Default">
+     <SensorProp>
+      <SensorElliptical HalfAngleX="0.7853981633974483" HalfAngleY="0.7853981633974483"/>
+      <SensorGraphics Range="10000" VolumeColor="0.717647 0 1" VolumeOpacity="10" ContourColor="0.717647 0 1"/>
+     </SensorProp>
+     <Geometry>
+      <Position>
+       <Value>
+        <Fixed Data="0 0 0"/>
+       </Value>
+      </Position>
+      <Orientation>
+       <Quaternion>
+        <Value>
+         <Fixed Data="1 0 0 0"/>
+        </Value>
+       </Quaternion>
+      </Orientation>
+     </Geometry>
+    </Sensor>
+    </SensorStation>
+   </GroundStation>
+   <GroundStation Name="Beijing">
+    <Prop2d>
+     <Icon Anchor="CENTER" Size="SMALL" Opacity="100">
+      <Font Size="MEDIUM" Color="1 1 0"/>
+      <ImageLayer Type="Default"/>
+     </Icon>
+    </Prop2d>
+    <LatLongAlt>
+     <Value>
+      <Fixed Data="39.9151476897851 116.39125610855652 44"/>
+     </Value>
+    </LatLongAlt>
+    <SensorStation>
+    <SensorTarget>
+     <TargetAltitude Altitude="842.1774828868713"/>
+    </SensorTarget>
+    <Sensor Name="Default">
+     <SensorProp>
+      <SensorElliptical HalfAngleX="0.7853981633974483" HalfAngleY="0.7853981633974483"/>
+      <SensorGraphics Range="10000" VolumeColor="0.717647 0 1" VolumeOpacity="10" ContourColor="0.717647 0 1"/>
+     </SensorProp>
+     <Geometry>
+      <Position>
+       <Value>
+        <Fixed Data="0 0 0"/>
+       </Value>
+      </Position>
+      <Orientation>
+       <Quaternion>
+        <Value>
+         <Fixed Data="1 0 0 0"/>
+        </Value>
+       </Quaternion>
+      </Orientation>
+     </Geometry>
+    </Sensor>
+    </SensorStation>
+   </GroundStation>
+   <GroundStation Name="Hainan_Naval">
+    <Prop2d>
+     <Icon Anchor="CENTER" Size="SMALL" Opacity="100">
+      <Font Size="MEDIUM" Color="1 1 0"/>
+      <ImageLayer Type="Default"/>
+     </Icon>
+    </Prop2d>
+    <LatLongAlt>
+     <Value>
+      <Fixed Data="18.211447134601833 109.68668155918022 0"/>
+     </Value>
+    </LatLongAlt>
+    <SensorStation>
+    <SensorTarget>
+     <TargetAltitude Altitude="842.1774828868713"/>
+    </SensorTarget>
+    <Sensor Name="Default">
+     <SensorProp>
+      <SensorElliptical HalfAngleX="0.7853981633974483" HalfAngleY="0.7853981633974483"/>
+      <SensorGraphics Range="10000" VolumeColor="0.717647 0 1" VolumeOpacity="10" ContourColor="0.717647 0 1"/>
+     </SensorProp>
+     <Geometry>
+      <Position>
+       <Value>
+        <Fixed Data="0 0 0"/>
+       </Value>
+      </Position>
+      <Orientation>
+       <Quaternion>
+        <Value>
+         <Fixed Data="1 0 0 0"/>
+        </Value>
+       </Quaternion>
+      </Orientation>
+     </Geometry>
+    </Sensor>
+    </SensorStation>
+   </GroundStation>
+  </GroupGroundStations>
+  </Body>
+  <Satellite Name="Sat" ParentPath="Sol/Earth">
+   <CommonProp>
+    <OrbitPath Color="0 0.976471 0.145098" PenStyle="SolidLine" PenWidth="2"/>
+   </CommonProp>
+   <Prop2d>
+    <Icon Anchor="CENTER" Size="MEDIUM" Opacity="100">
+     <Font Size="MEDIUM" Color="1 1 1"/>
+     <ImageLayer Type="Default"/>
+    </Icon>
+   </Prop2d>
+   <Track Color="0.664668 1 0" PenStyle="SolidLine" PenWidth="2"/>
+   <VisibilityCircle ContourColor="0 1 0.227329" FillColor="0.499992 1 0.613657" FillOpacity="60"/>
+   <Component Name="Sat">
+    <Graphics3d>
+     <File3ds Name="Models/rosetta-orbiterOnly.3ds"/>
+     <Radius Value="2"/>
+     <LightSensitive Value="1"/>
+     <Use3dsCoords Value="1" MeshScale="1"/>
+     <AxesPosition Value="1"/>
+     <RotationCenter X="0" Y="0" Z="0"/>
+    </Graphics3d>
+    <Geometry>
+     <Position>
+      <Value>
+       <File Name="Data/Sat_OEM_POSITION.TXT">
+        <ColorFile Name="Data/Sat_COLOR.TXT"/>
+       </File>
+      </Value>
+     </Position>
+     <Orientation>
+      <Quaternion>
+   <Value>
+    <File Name="Data/Sat_AEM_ATTITUDE.TXT"/>
+   </Value>
+      </Quaternion>
+     </Orientation>
+    </Geometry>
+    <SensorSatellite>
+   <Sensor Name="sensor_Sat">
+    <SensorProp>
+     <SensorRectangular HalfAngleX="0.348" HalfAngleY="0.174"/>
+     <SensorGraphics Range="10000" VolumeColor="1 0.286275 0.00392157" VolumeOpacity="60" ContourColor="1 0.921569 0.0235294">
+      <SensorTrace Duration="60" Opacity="60"/>
+     </SensorGraphics>
+    </SensorProp>
+    <Geometry>
+     <Position>
+      <Value>
+       <Fixed Data="0 0 0"/>
+      </Value>
+     </Position>
+     <Orientation>
+      <Quaternion>
+       <Value>
+        <Fixed Data="1 0 0 0"/>
+       </Value>
+      </Quaternion>
+     </Orientation>
+    </Geometry>
+   </Sensor>
+    </SensorSatellite>
+   </Component>
+   <Events/>
+  </Satellite>
+  <Satellite Name="PLEIADES1A" ParentPath="Sol/Earth">
+   <CommonProp>
+    <OrbitPath Color="0 0.976471 0.145098" PenStyle="SolidLine" PenWidth="2"/>
+   </CommonProp>
+   <Prop2d>
+    <Icon Anchor="CENTER" Size="MEDIUM" Opacity="100">
+     <Font Size="MEDIUM" Color="1 1 1"/>
+     <ImageLayer Type="Default"/>
+    </Icon>
+   </Prop2d>
+   <Track Color="0.664668 1 0" PenStyle="SolidLine" PenWidth="2"/>
+   <VisibilityCircle ContourColor="0 1 0.227329" FillColor="0.499992 1 0.613657" FillOpacity="60"/>
+   <Component Name="PLEIADES1A">
+    <Graphics3d>
+     <File3ds Name="Models/rosetta-orbiterOnly.3ds"/>
+     <Radius Value="2"/>
+     <LightSensitive Value="1"/>
+     <Use3dsCoords Value="1" MeshScale="1"/>
+     <AxesPosition Value="1"/>
+     <RotationCenter X="0" Y="0" Z="0"/>
+    </Graphics3d>
+    <Geometry>
+     <Position>
+      <Value>
+       <File Name="Data/PLEIADES1A_OEM_POSITION.TXT">
+        <ColorFile Name="Data/PLEIADES1A_COLOR.TXT"/>
+       </File>
+      </Value>
+     </Position>
+     <Orientation>
+      <Quaternion>
+   <Value>
+    <File Name="Data/PLEIADES1A_AEM_ATTITUDE.TXT"/>
+   </Value>
+      </Quaternion>
+     </Orientation>
+    </Geometry>
+    <SensorSatellite>
+   <Sensor Name="sensor_PLEIADES1A">
+    <SensorProp>
+     <SensorRectangular HalfAngleX="0.348" HalfAngleY="0.174"/>
+     <SensorGraphics Range="10000" VolumeColor="1 0.286275 0.00392157" VolumeOpacity="60" ContourColor="1 0.921569 0.0235294">
+      <SensorTrace Duration="60" Opacity="60"/>
+     </SensorGraphics>
+    </SensorProp>
+    <Geometry>
+     <Position>
+      <Value>
+       <Fixed Data="0 0 0"/>
+      </Value>
+     </Position>
+     <Orientation>
+      <Quaternion>
+       <Value>
+        <Fixed Data="1 0 0 0"/>
+       </Value>
+      </Quaternion>
+     </Orientation>
+    </Geometry>
+   </Sensor>
+    </SensorSatellite>
+   </Component>
+   <Events/>
+  </Satellite>
+  <Satellite Name="PLEIADES1B" ParentPath="Sol/Earth">
+   <CommonProp>
+    <OrbitPath Color="0 0.976471 0.145098" PenStyle="SolidLine" PenWidth="2"/>
+   </CommonProp>
+   <Prop2d>
+    <Icon Anchor="CENTER" Size="MEDIUM" Opacity="100">
+     <Font Size="MEDIUM" Color="1 1 1"/>
+     <ImageLayer Type="Default"/>
+    </Icon>
+   </Prop2d>
+   <Track Color="0.664668 1 0" PenStyle="SolidLine" PenWidth="2"/>
+   <VisibilityCircle ContourColor="0 1 0.227329" FillColor="0.499992 1 0.613657" FillOpacity="60"/>
+   <Component Name="PLEIADES1B">
+    <Graphics3d>
+     <File3ds Name="Models/rosetta-orbiterOnly.3ds"/>
+     <Radius Value="2"/>
+     <LightSensitive Value="1"/>
+     <Use3dsCoords Value="1" MeshScale="1"/>
+     <AxesPosition Value="1"/>
+     <RotationCenter X="0" Y="0" Z="0"/>
+    </Graphics3d>
+    <Geometry>
+     <Position>
+      <Value>
+       <File Name="Data/PLEIADES1B_OEM_POSITION.TXT">
+        <ColorFile Name="Data/PLEIADES1B_COLOR.TXT"/>
+       </File>
+      </Value>
+     </Position>
+     <Orientation>
+      <Quaternion>
+   <Value>
+    <File Name="Data/PLEIADES1B_AEM_ATTITUDE.TXT"/>
+   </Value>
+      </Quaternion>
+     </Orientation>
+    </Geometry>
+    <SensorSatellite>
+   <Sensor Name="sensor_PLEIADES1B">
+    <SensorProp>
+     <SensorRectangular HalfAngleX="0.348" HalfAngleY="0.174"/>
+     <SensorGraphics Range="10000" VolumeColor="1 0.286275 0.00392157" VolumeOpacity="60" ContourColor="1 0.921569 0.0235294">
+      <SensorTrace Duration="60" Opacity="60"/>
+     </SensorGraphics>
+    </SensorProp>
+    <Geometry>
+     <Position>
+      <Value>
+       <Fixed Data="0 0 0"/>
+      </Value>
+     </Position>
+     <Orientation>
+      <Quaternion>
+       <Value>
+        <Fixed Data="1 0 0 0"/>
+       </Value>
+      </Quaternion>
+     </Orientation>
+    </Geometry>
+   </Sensor>
+    </SensorSatellite>
+   </Component>
+   <Events/>
+  </Satellite>
+  <Satellite Name="PLEIADES-NEO3" ParentPath="Sol/Earth">
+   <CommonProp>
+    <OrbitPath Color="0 0.976471 0.145098" PenStyle="SolidLine" PenWidth="2"/>
+   </CommonProp>
+   <Prop2d>
+    <Icon Anchor="CENTER" Size="MEDIUM" Opacity="100">
+     <Font Size="MEDIUM" Color="1 1 1"/>
+     <ImageLayer Type="Default"/>
+    </Icon>
+   </Prop2d>
+   <Track Color="0.664668 1 0" PenStyle="SolidLine" PenWidth="2"/>
+   <VisibilityCircle ContourColor="0 1 0.227329" FillColor="0.499992 1 0.613657" FillOpacity="60"/>
+   <Component Name="PLEIADES-NEO3">
+    <Graphics3d>
+     <File3ds Name="Models/rosetta-orbiterOnly.3ds"/>
+     <Radius Value="2"/>
+     <LightSensitive Value="1"/>
+     <Use3dsCoords Value="1" MeshScale="1"/>
+     <AxesPosition Value="1"/>
+     <RotationCenter X="0" Y="0" Z="0"/>
+    </Graphics3d>
+    <Geometry>
+     <Position>
+      <Value>
+       <File Name="Data/PLEIADES-NEO3_OEM_POSITION.TXT">
+        <ColorFile Name="Data/PLEIADES-NEO3_COLOR.TXT"/>
+       </File>
+      </Value>
+     </Position>
+     <Orientation>
+      <Quaternion>
+   <Value>
+    <File Name="Data/PLEIADES-NEO3_AEM_ATTITUDE.TXT"/>
+   </Value>
+      </Quaternion>
+     </Orientation>
+    </Geometry>
+    <SensorSatellite>
+   <Sensor Name="sensor_PLEIADES-NEO3">
+    <SensorProp>
+     <SensorRectangular HalfAngleX="0.348" HalfAngleY="0.174"/>
+     <SensorGraphics Range="10000" VolumeColor="1 0.286275 0.00392157" VolumeOpacity="60" ContourColor="1 0.921569 0.0235294">
+      <SensorTrace Duration="60" Opacity="60"/>
+     </SensorGraphics>
+    </SensorProp>
+    <Geometry>
+     <Position>
+      <Value>
+       <Fixed Data="0 0 0"/>
+      </Value>
+     </Position>
+     <Orientation>
+      <Quaternion>
+       <Value>
+        <Fixed Data="1 0 0 0"/>
+       </Value>
+      </Quaternion>
+     </Orientation>
+    </Geometry>
+   </Sensor>
+    </SensorSatellite>
+   </Component>
+   <Events/>
+  </Satellite>
+  <Satellite Name="PLEIADES-NEO4" ParentPath="Sol/Earth">
+   <CommonProp>
+    <OrbitPath Color="0 0.976471 0.145098" PenStyle="SolidLine" PenWidth="2"/>
+   </CommonProp>
+   <Prop2d>
+    <Icon Anchor="CENTER" Size="MEDIUM" Opacity="100">
+     <Font Size="MEDIUM" Color="1 1 1"/>
+     <ImageLayer Type="Default"/>
+    </Icon>
+   </Prop2d>
+   <Track Color="0.664668 1 0" PenStyle="SolidLine" PenWidth="2"/>
+   <VisibilityCircle ContourColor="0 1 0.227329" FillColor="0.499992 1 0.613657" FillOpacity="60"/>
+   <Component Name="PLEIADES-NEO4">
+    <Graphics3d>
+     <File3ds Name="Models/rosetta-orbiterOnly.3ds"/>
+     <Radius Value="2"/>
+     <LightSensitive Value="1"/>
+     <Use3dsCoords Value="1" MeshScale="1"/>
+     <AxesPosition Value="1"/>
+     <RotationCenter X="0" Y="0" Z="0"/>
+    </Graphics3d>
+    <Geometry>
+     <Position>
+      <Value>
+       <File Name="Data/PLEIADES-NEO4_OEM_POSITION.TXT">
+        <ColorFile Name="Data/PLEIADES-NEO4_COLOR.TXT"/>
+       </File>
+      </Value>
+     </Position>
+     <Orientation>
+      <Quaternion>
+   <Value>
+    <File Name="Data/PLEIADES-NEO4_AEM_ATTITUDE.TXT"/>
+   </Value>
+      </Quaternion>
+     </Orientation>
+    </Geometry>
+    <SensorSatellite>
+   <Sensor Name="sensor_PLEIADES-NEO4">
+    <SensorProp>
+     <SensorRectangular HalfAngleX="0.348" HalfAngleY="0.174"/>
+     <SensorGraphics Range="10000" VolumeColor="1 0.286275 0.00392157" VolumeOpacity="60" ContourColor="1 0.921569 0.0235294">
+      <SensorTrace Duration="60" Opacity="60"/>
+     </SensorGraphics>
+    </SensorProp>
+    <Geometry>
+     <Position>
+      <Value>
+       <Fixed Data="0 0 0"/>
+      </Value>
+     </Position>
+     <Orientation>
+      <Quaternion>
+       <Value>
+        <Fixed Data="1 0 0 0"/>
+       </Value>
+      </Quaternion>
+     </Orientation>
+    </Geometry>
+   </Sensor>
+    </SensorSatellite>
+   </Component>
+   <Events/>
+  </Satellite>
+  <Satellite Name="BLUE1" ParentPath="Sol/Earth">
+   <CommonProp>
+    <OrbitPath Color="0 0.976471 0.145098" PenStyle="SolidLine" PenWidth="2"/>
+   </CommonProp>
+   <Prop2d>
+    <Icon Anchor="CENTER" Size="MEDIUM" Opacity="100">
+     <Font Size="MEDIUM" Color="1 1 1"/>
+     <ImageLayer Type="Default"/>
+    </Icon>
+   </Prop2d>
+   <Track Color="0.664668 1 0" PenStyle="SolidLine" PenWidth="2"/>
+   <VisibilityCircle ContourColor="0 1 0.227329" FillColor="0.499992 1 0.613657" FillOpacity="60"/>
+   <Component Name="BLUE1">
+    <Graphics3d>
+     <File3ds Name="Models/rosetta-orbiterOnly.3ds"/>
+     <Radius Value="2"/>
+     <LightSensitive Value="1"/>
+     <Use3dsCoords Value="1" MeshScale="1"/>
+     <AxesPosition Value="1"/>
+     <RotationCenter X="0" Y="0" Z="0"/>
+    </Graphics3d>
+    <Geometry>
+     <Position>
+      <Value>
+       <File Name="Data/BLUE1_OEM_POSITION.TXT">
+        <ColorFile Name="Data/BLUE1_COLOR.TXT"/>
+       </File>
+      </Value>
+     </Position>
+     <Orientation>
+      <Quaternion>
+   <Value>
+    <File Name="Data/BLUE1_AEM_ATTITUDE.TXT"/>
+   </Value>
+      </Quaternion>
+     </Orientation>
+    </Geometry>
+    <SensorSatellite>
+   <Sensor Name="sensor_BLUE1">
+    <SensorProp>
+     <SensorRectangular HalfAngleX="0.348" HalfAngleY="0.174"/>
+     <SensorGraphics Range="10000" VolumeColor="1 0.286275 0.00392157" VolumeOpacity="60" ContourColor="1 0.921569 0.0235294">
+      <SensorTrace Duration="60" Opacity="60"/>
+     </SensorGraphics>
+    </SensorProp>
+    <Geometry>
+     <Position>
+      <Value>
+       <Fixed Data="0 0 0"/>
+      </Value>
+     </Position>
+     <Orientation>
+      <Quaternion>
+       <Value>
+        <Fixed Data="1 0 0 0"/>
+       </Value>
+      </Quaternion>
+     </Orientation>
+    </Geometry>
+   </Sensor>
+    </SensorSatellite>
+   </Component>
+   <Events/>
+  </Satellite>
+  <Satellite Name="BLUE2" ParentPath="Sol/Earth">
+   <CommonProp>
+    <OrbitPath Color="0 0.976471 0.145098" PenStyle="SolidLine" PenWidth="2"/>
+   </CommonProp>
+   <Prop2d>
+    <Icon Anchor="CENTER" Size="MEDIUM" Opacity="100">
+     <Font Size="MEDIUM" Color="1 1 1"/>
+     <ImageLayer Type="Default"/>
+    </Icon>
+   </Prop2d>
+   <Track Color="0.664668 1 0" PenStyle="SolidLine" PenWidth="2"/>
+   <VisibilityCircle ContourColor="0 1 0.227329" FillColor="0.499992 1 0.613657" FillOpacity="60"/>
+   <Component Name="BLUE2">
+    <Graphics3d>
+     <File3ds Name="Models/rosetta-orbiterOnly.3ds"/>
+     <Radius Value="2"/>
+     <LightSensitive Value="1"/>
+     <Use3dsCoords Value="1" MeshScale="1"/>
+     <AxesPosition Value="1"/>
+     <RotationCenter X="0" Y="0" Z="0"/>
+    </Graphics3d>
+    <Geometry>
+     <Position>
+      <Value>
+       <File Name="Data/BLUE2_OEM_POSITION.TXT">
+        <ColorFile Name="Data/BLUE2_COLOR.TXT"/>
+       </File>
+      </Value>
+     </Position>
+     <Orientation>
+      <Quaternion>
+   <Value>
+    <File Name="Data/BLUE2_AEM_ATTITUDE.TXT"/>
+   </Value>
+      </Quaternion>
+     </Orientation>
+    </Geometry>
+    <SensorSatellite>
+   <Sensor Name="sensor_BLUE2">
+    <SensorProp>
+     <SensorRectangular HalfAngleX="0.348" HalfAngleY="0.174"/>
+     <SensorGraphics Range="10000" VolumeColor="1 0.286275 0.00392157" VolumeOpacity="60" ContourColor="1 0.921569 0.0235294">
+      <SensorTrace Duration="60" Opacity="60"/>
+     </SensorGraphics>
+    </SensorProp>
+    <Geometry>
+     <Position>
+      <Value>
+       <Fixed Data="0 0 0"/>
+      </Value>
+     </Position>
+     <Orientation>
+      <Quaternion>
+       <Value>
+        <Fixed Data="1 0 0 0"/>
+       </Value>
+      </Quaternion>
+     </Orientation>
+    </Geometry>
+   </Sensor>
+    </SensorSatellite>
+   </Component>
+   <Events/>
+  </Satellite>
+  <Satellite Name="RED1" ParentPath="Sol/Earth">
+   <CommonProp>
+    <OrbitPath Color="0 0.976471 0.145098" PenStyle="SolidLine" PenWidth="2"/>
+   </CommonProp>
+   <Prop2d>
+    <Icon Anchor="CENTER" Size="MEDIUM" Opacity="100">
+     <Font Size="MEDIUM" Color="1 1 1"/>
+     <ImageLayer Type="Default"/>
+    </Icon>
+   </Prop2d>
+   <Track Color="0.664668 1 0" PenStyle="SolidLine" PenWidth="2"/>
+   <VisibilityCircle ContourColor="0 1 0.227329" FillColor="0.499992 1 0.613657" FillOpacity="60"/>
+   <Component Name="RED1">
+    <Graphics3d>
+     <File3ds Name="Models/rosetta-orbiterOnly.3ds"/>
+     <Radius Value="2"/>
+     <LightSensitive Value="1"/>
+     <Use3dsCoords Value="1" MeshScale="1"/>
+     <AxesPosition Value="1"/>
+     <RotationCenter X="0" Y="0" Z="0"/>
+    </Graphics3d>
+    <Geometry>
+     <Position>
+      <Value>
+       <File Name="Data/RED1_OEM_POSITION.TXT">
+        <ColorFile Name="Data/RED1_COLOR.TXT"/>
+       </File>
+      </Value>
+     </Position>
+     <Orientation>
+      <Quaternion>
+   <Value>
+    <File Name="Data/RED1_AEM_ATTITUDE.TXT"/>
+   </Value>
+      </Quaternion>
+     </Orientation>
+    </Geometry>
+    <SensorSatellite>
+   <Sensor Name="sensor_RED1">
+    <SensorProp>
+     <SensorRectangular HalfAngleX="0.348" HalfAngleY="0.174"/>
+     <SensorGraphics Range="10000" VolumeColor="1 0.286275 0.00392157" VolumeOpacity="60" ContourColor="1 0.921569 0.0235294">
+      <SensorTrace Duration="60" Opacity="60"/>
+     </SensorGraphics>
+    </SensorProp>
+    <Geometry>
+     <Position>
+      <Value>
+       <Fixed Data="0 0 0"/>
+      </Value>
+     </Position>
+     <Orientation>
+      <Quaternion>
+       <Value>
+        <Fixed Data="1 0 0 0"/>
+       </Value>
+      </Quaternion>
+     </Orientation>
+    </Geometry>
+   </Sensor>
+    </SensorSatellite>
+   </Component>
+   <Events/>
+  </Satellite>
+  <Satellite Name="RED2" ParentPath="Sol/Earth">
+   <CommonProp>
+    <OrbitPath Color="0 0.976471 0.145098" PenStyle="SolidLine" PenWidth="2"/>
+   </CommonProp>
+   <Prop2d>
+    <Icon Anchor="CENTER" Size="MEDIUM" Opacity="100">
+     <Font Size="MEDIUM" Color="1 1 1"/>
+     <ImageLayer Type="Default"/>
+    </Icon>
+   </Prop2d>
+   <Track Color="0.664668 1 0" PenStyle="SolidLine" PenWidth="2"/>
+   <VisibilityCircle ContourColor="0 1 0.227329" FillColor="0.499992 1 0.613657" FillOpacity="60"/>
+   <Component Name="RED2">
+    <Graphics3d>
+     <File3ds Name="Models/rosetta-orbiterOnly.3ds"/>
+     <Radius Value="2"/>
+     <LightSensitive Value="1"/>
+     <Use3dsCoords Value="1" MeshScale="1"/>
+     <AxesPosition Value="1"/>
+     <RotationCenter X="0" Y="0" Z="0"/>
+    </Graphics3d>
+    <Geometry>
+     <Position>
+      <Value>
+       <File Name="Data/RED2_OEM_POSITION.TXT">
+        <ColorFile Name="Data/RED2_COLOR.TXT"/>
+       </File>
+      </Value>
+     </Position>
+     <Orientation>
+      <Quaternion>
+   <Value>
+    <File Name="Data/RED2_AEM_ATTITUDE.TXT"/>
+   </Value>
+      </Quaternion>
+     </Orientation>
+    </Geometry>
+    <SensorSatellite>
+   <Sensor Name="sensor_RED2">
+    <SensorProp>
+     <SensorRectangular HalfAngleX="0.348" HalfAngleY="0.174"/>
+     <SensorGraphics Range="10000" VolumeColor="1 0.286275 0.00392157" VolumeOpacity="60" ContourColor="1 0.921569 0.0235294">
+      <SensorTrace Duration="60" Opacity="60"/>
+     </SensorGraphics>
+    </SensorProp>
+    <Geometry>
+     <Position>
+      <Value>
+       <Fixed Data="0 0 0"/>
+      </Value>
+     </Position>
+     <Orientation>
+      <Quaternion>
+       <Value>
+        <Fixed Data="1 0 0 0"/>
+       </Value>
+      </Quaternion>
+     </Orientation>
+    </Geometry>
+   </Sensor>
+    </SensorSatellite>
+   </Component>
+   <Events/>
+  </Satellite>
+ </Entities>
+ <Events/>
+ <AdditionalFiles>
+ <File Name="Data/Sat_MEM_LLA.TXT"/>
+ <File Name="Data/Sat_MEM_VISIBILITY_CSUG.TXT"/>
+ <File Name="Data/Sat_MEM_VISIBILITY_PuertollanoSR.TXT"/>
+ <File Name="Data/Sat_MEM_VISIBILITY_MilanSR.TXT"/>
+ <File Name="Data/Sat_MEM_VISIBILITY_IPEV_Ny_Alesund.TXT"/>
+ <File Name="Data/Sat_MEM_VISIBILITY_IPEV_Dumont_DUrville.TXT"/>
+ <File Name="Data/Sat_MEM_VISIBILITY_IPEV_BA_Concordia.TXT"/>
+ <File Name="Data/Sat_MEM_VISIBILITY_AirLiquide_Global_Helium.TXT"/>
+ <File Name="Data/Sat_MEM_VISIBILITY_Ariel_University.TXT"/>
+ <File Name="Data/Sat_MEM_VISIBILITY_UPF_Faa.TXT"/>
+ <File Name="Data/Sat_MEM_VISIBILITY_Univ_Intl_Rabat.TXT"/>
+ <File Name="Data/Sat_MEM_VISIBILITY_IPEV_Bretagne.TXT"/>
+ <File Name="Data/Sat_MEM_VISIBILITY_Univ_Ouv_Catalogne.TXT"/>
+ <File Name="Data/Sat_MEM_VISIBILITY_CNES_Toulouse.TXT"/>
+ <File Name="Data/Sat_MEM_VISIBILITY_NPI_Tromso.TXT"/>
+ <File Name="Data/Sat_MEM_VISIBILITY_DGER_Station.TXT"/>
+ <File Name="Data/Sat_MEM_VISIBILITY_test-station.TXT"/>
+ <File Name="Data/Sat_MEM_VISIBILITY_Gao_Airport.TXT"/>
+ <File Name="Data/Sat_MEM_VISIBILITY_Rostov.TXT"/>
+ <File Name="Data/Sat_MEM_VISIBILITY_Kharkiv.TXT"/>
+ <File Name="Data/Sat_MEM_VISIBILITY_Moscow.TXT"/>
+ <File Name="Data/Sat_MEM_VISIBILITY_Lattakia.TXT"/>
+ <File Name="Data/Sat_MEM_VISIBILITY_Bagdad.TXT"/>
+ <File Name="Data/Sat_MEM_VISIBILITY_Teheran.TXT"/>
+ <File Name="Data/Sat_MEM_VISIBILITY_Kabul.TXT"/>
+ <File Name="Data/Sat_MEM_VISIBILITY_Baikonur.TXT"/>
+ <File Name="Data/Sat_MEM_VISIBILITY_Xinjiang_point.TXT"/>
+ <File Name="Data/Sat_MEM_VISIBILITY_Beijing.TXT"/>
+ <File Name="Data/Sat_MEM_VISIBILITY_Hainan_Naval.TXT"/>
+ <File Name="Data/PLEIADES1A_MEM_LLA.TXT"/>
+ <File Name="Data/PLEIADES1A_MEM_VISIBILITY_CSUG.TXT"/>
+ <File Name="Data/PLEIADES1A_MEM_VISIBILITY_PuertollanoSR.TXT"/>
+ <File Name="Data/PLEIADES1A_MEM_VISIBILITY_MilanSR.TXT"/>
+ <File Name="Data/PLEIADES1A_MEM_VISIBILITY_IPEV_Ny_Alesund.TXT"/>
+ <File Name="Data/PLEIADES1A_MEM_VISIBILITY_IPEV_Dumont_DUrville.TXT"/>
+ <File Name="Data/PLEIADES1A_MEM_VISIBILITY_IPEV_BA_Concordia.TXT"/>
+ <File Name="Data/PLEIADES1A_MEM_VISIBILITY_AirLiquide_Global_Helium.TXT"/>
+ <File Name="Data/PLEIADES1A_MEM_VISIBILITY_Ariel_University.TXT"/>
+ <File Name="Data/PLEIADES1A_MEM_VISIBILITY_UPF_Faa.TXT"/>
+ <File Name="Data/PLEIADES1A_MEM_VISIBILITY_Univ_Intl_Rabat.TXT"/>
+ <File Name="Data/PLEIADES1A_MEM_VISIBILITY_IPEV_Bretagne.TXT"/>
+ <File Name="Data/PLEIADES1A_MEM_VISIBILITY_Univ_Ouv_Catalogne.TXT"/>
+ <File Name="Data/PLEIADES1A_MEM_VISIBILITY_CNES_Toulouse.TXT"/>
+ <File Name="Data/PLEIADES1A_MEM_VISIBILITY_NPI_Tromso.TXT"/>
+ <File Name="Data/PLEIADES1A_MEM_VISIBILITY_DGER_Station.TXT"/>
+ <File Name="Data/PLEIADES1A_MEM_VISIBILITY_test-station.TXT"/>
+ <File Name="Data/PLEIADES1A_MEM_VISIBILITY_Gao_Airport.TXT"/>
+ <File Name="Data/PLEIADES1A_MEM_VISIBILITY_Rostov.TXT"/>
+ <File Name="Data/PLEIADES1A_MEM_VISIBILITY_Kharkiv.TXT"/>
+ <File Name="Data/PLEIADES1A_MEM_VISIBILITY_Moscow.TXT"/>
+ <File Name="Data/PLEIADES1A_MEM_VISIBILITY_Lattakia.TXT"/>
+ <File Name="Data/PLEIADES1A_MEM_VISIBILITY_Bagdad.TXT"/>
+ <File Name="Data/PLEIADES1A_MEM_VISIBILITY_Teheran.TXT"/>
+ <File Name="Data/PLEIADES1A_MEM_VISIBILITY_Kabul.TXT"/>
+ <File Name="Data/PLEIADES1A_MEM_VISIBILITY_Baikonur.TXT"/>
+ <File Name="Data/PLEIADES1A_MEM_VISIBILITY_Xinjiang_point.TXT"/>
+ <File Name="Data/PLEIADES1A_MEM_VISIBILITY_Beijing.TXT"/>
+ <File Name="Data/PLEIADES1A_MEM_VISIBILITY_Hainan_Naval.TXT"/>
+ <File Name="Data/PLEIADES1B_MEM_LLA.TXT"/>
+ <File Name="Data/PLEIADES1B_MEM_VISIBILITY_CSUG.TXT"/>
+ <File Name="Data/PLEIADES1B_MEM_VISIBILITY_PuertollanoSR.TXT"/>
+ <File Name="Data/PLEIADES1B_MEM_VISIBILITY_MilanSR.TXT"/>
+ <File Name="Data/PLEIADES1B_MEM_VISIBILITY_IPEV_Ny_Alesund.TXT"/>
+ <File Name="Data/PLEIADES1B_MEM_VISIBILITY_IPEV_Dumont_DUrville.TXT"/>
+ <File Name="Data/PLEIADES1B_MEM_VISIBILITY_IPEV_BA_Concordia.TXT"/>
+ <File Name="Data/PLEIADES1B_MEM_VISIBILITY_AirLiquide_Global_Helium.TXT"/>
+ <File Name="Data/PLEIADES1B_MEM_VISIBILITY_Ariel_University.TXT"/>
+ <File Name="Data/PLEIADES1B_MEM_VISIBILITY_UPF_Faa.TXT"/>
+ <File Name="Data/PLEIADES1B_MEM_VISIBILITY_Univ_Intl_Rabat.TXT"/>
+ <File Name="Data/PLEIADES1B_MEM_VISIBILITY_IPEV_Bretagne.TXT"/>
+ <File Name="Data/PLEIADES1B_MEM_VISIBILITY_Univ_Ouv_Catalogne.TXT"/>
+ <File Name="Data/PLEIADES1B_MEM_VISIBILITY_CNES_Toulouse.TXT"/>
+ <File Name="Data/PLEIADES1B_MEM_VISIBILITY_NPI_Tromso.TXT"/>
+ <File Name="Data/PLEIADES1B_MEM_VISIBILITY_DGER_Station.TXT"/>
+ <File Name="Data/PLEIADES1B_MEM_VISIBILITY_test-station.TXT"/>
+ <File Name="Data/PLEIADES1B_MEM_VISIBILITY_Gao_Airport.TXT"/>
+ <File Name="Data/PLEIADES1B_MEM_VISIBILITY_Rostov.TXT"/>
+ <File Name="Data/PLEIADES1B_MEM_VISIBILITY_Kharkiv.TXT"/>
+ <File Name="Data/PLEIADES1B_MEM_VISIBILITY_Moscow.TXT"/>
+ <File Name="Data/PLEIADES1B_MEM_VISIBILITY_Lattakia.TXT"/>
+ <File Name="Data/PLEIADES1B_MEM_VISIBILITY_Bagdad.TXT"/>
+ <File Name="Data/PLEIADES1B_MEM_VISIBILITY_Teheran.TXT"/>
+ <File Name="Data/PLEIADES1B_MEM_VISIBILITY_Kabul.TXT"/>
+ <File Name="Data/PLEIADES1B_MEM_VISIBILITY_Baikonur.TXT"/>
+ <File Name="Data/PLEIADES1B_MEM_VISIBILITY_Xinjiang_point.TXT"/>
+ <File Name="Data/PLEIADES1B_MEM_VISIBILITY_Beijing.TXT"/>
+ <File Name="Data/PLEIADES1B_MEM_VISIBILITY_Hainan_Naval.TXT"/>
+ <File Name="Data/PLEIADES-NEO3_MEM_LLA.TXT"/>
+ <File Name="Data/PLEIADES-NEO3_MEM_VISIBILITY_CSUG.TXT"/>
+ <File Name="Data/PLEIADES-NEO3_MEM_VISIBILITY_PuertollanoSR.TXT"/>
+ <File Name="Data/PLEIADES-NEO3_MEM_VISIBILITY_MilanSR.TXT"/>
+ <File Name="Data/PLEIADES-NEO3_MEM_VISIBILITY_IPEV_Ny_Alesund.TXT"/>
+ <File Name="Data/PLEIADES-NEO3_MEM_VISIBILITY_IPEV_Dumont_DUrville.TXT"/>
+ <File Name="Data/PLEIADES-NEO3_MEM_VISIBILITY_IPEV_BA_Concordia.TXT"/>
+ <File Name="Data/PLEIADES-NEO3_MEM_VISIBILITY_AirLiquide_Global_Helium.TXT"/>
+ <File Name="Data/PLEIADES-NEO3_MEM_VISIBILITY_Ariel_University.TXT"/>
+ <File Name="Data/PLEIADES-NEO3_MEM_VISIBILITY_UPF_Faa.TXT"/>
+ <File Name="Data/PLEIADES-NEO3_MEM_VISIBILITY_Univ_Intl_Rabat.TXT"/>
+ <File Name="Data/PLEIADES-NEO3_MEM_VISIBILITY_IPEV_Bretagne.TXT"/>
+ <File Name="Data/PLEIADES-NEO3_MEM_VISIBILITY_Univ_Ouv_Catalogne.TXT"/>
+ <File Name="Data/PLEIADES-NEO3_MEM_VISIBILITY_CNES_Toulouse.TXT"/>
+ <File Name="Data/PLEIADES-NEO3_MEM_VISIBILITY_NPI_Tromso.TXT"/>
+ <File Name="Data/PLEIADES-NEO3_MEM_VISIBILITY_DGER_Station.TXT"/>
+ <File Name="Data/PLEIADES-NEO3_MEM_VISIBILITY_test-station.TXT"/>
+ <File Name="Data/PLEIADES-NEO3_MEM_VISIBILITY_Gao_Airport.TXT"/>
+ <File Name="Data/PLEIADES-NEO3_MEM_VISIBILITY_Rostov.TXT"/>
+ <File Name="Data/PLEIADES-NEO3_MEM_VISIBILITY_Kharkiv.TXT"/>
+ <File Name="Data/PLEIADES-NEO3_MEM_VISIBILITY_Moscow.TXT"/>
+ <File Name="Data/PLEIADES-NEO3_MEM_VISIBILITY_Lattakia.TXT"/>
+ <File Name="Data/PLEIADES-NEO3_MEM_VISIBILITY_Bagdad.TXT"/>
+ <File Name="Data/PLEIADES-NEO3_MEM_VISIBILITY_Teheran.TXT"/>
+ <File Name="Data/PLEIADES-NEO3_MEM_VISIBILITY_Kabul.TXT"/>
+ <File Name="Data/PLEIADES-NEO3_MEM_VISIBILITY_Baikonur.TXT"/>
+ <File Name="Data/PLEIADES-NEO3_MEM_VISIBILITY_Xinjiang_point.TXT"/>
+ <File Name="Data/PLEIADES-NEO3_MEM_VISIBILITY_Beijing.TXT"/>
+ <File Name="Data/PLEIADES-NEO3_MEM_VISIBILITY_Hainan_Naval.TXT"/>
+ <File Name="Data/PLEIADES-NEO4_MEM_LLA.TXT"/>
+ <File Name="Data/PLEIADES-NEO4_MEM_VISIBILITY_CSUG.TXT"/>
+ <File Name="Data/PLEIADES-NEO4_MEM_VISIBILITY_PuertollanoSR.TXT"/>
+ <File Name="Data/PLEIADES-NEO4_MEM_VISIBILITY_MilanSR.TXT"/>
+ <File Name="Data/PLEIADES-NEO4_MEM_VISIBILITY_IPEV_Ny_Alesund.TXT"/>
+ <File Name="Data/PLEIADES-NEO4_MEM_VISIBILITY_IPEV_Dumont_DUrville.TXT"/>
+ <File Name="Data/PLEIADES-NEO4_MEM_VISIBILITY_IPEV_BA_Concordia.TXT"/>
+ <File Name="Data/PLEIADES-NEO4_MEM_VISIBILITY_AirLiquide_Global_Helium.TXT"/>
+ <File Name="Data/PLEIADES-NEO4_MEM_VISIBILITY_Ariel_University.TXT"/>
+ <File Name="Data/PLEIADES-NEO4_MEM_VISIBILITY_UPF_Faa.TXT"/>
+ <File Name="Data/PLEIADES-NEO4_MEM_VISIBILITY_Univ_Intl_Rabat.TXT"/>
+ <File Name="Data/PLEIADES-NEO4_MEM_VISIBILITY_IPEV_Bretagne.TXT"/>
+ <File Name="Data/PLEIADES-NEO4_MEM_VISIBILITY_Univ_Ouv_Catalogne.TXT"/>
+ <File Name="Data/PLEIADES-NEO4_MEM_VISIBILITY_CNES_Toulouse.TXT"/>
+ <File Name="Data/PLEIADES-NEO4_MEM_VISIBILITY_NPI_Tromso.TXT"/>
+ <File Name="Data/PLEIADES-NEO4_MEM_VISIBILITY_DGER_Station.TXT"/>
+ <File Name="Data/PLEIADES-NEO4_MEM_VISIBILITY_test-station.TXT"/>
+ <File Name="Data/PLEIADES-NEO4_MEM_VISIBILITY_Gao_Airport.TXT"/>
+ <File Name="Data/PLEIADES-NEO4_MEM_VISIBILITY_Rostov.TXT"/>
+ <File Name="Data/PLEIADES-NEO4_MEM_VISIBILITY_Kharkiv.TXT"/>
+ <File Name="Data/PLEIADES-NEO4_MEM_VISIBILITY_Moscow.TXT"/>
+ <File Name="Data/PLEIADES-NEO4_MEM_VISIBILITY_Lattakia.TXT"/>
+ <File Name="Data/PLEIADES-NEO4_MEM_VISIBILITY_Bagdad.TXT"/>
+ <File Name="Data/PLEIADES-NEO4_MEM_VISIBILITY_Teheran.TXT"/>
+ <File Name="Data/PLEIADES-NEO4_MEM_VISIBILITY_Kabul.TXT"/>
+ <File Name="Data/PLEIADES-NEO4_MEM_VISIBILITY_Baikonur.TXT"/>
+ <File Name="Data/PLEIADES-NEO4_MEM_VISIBILITY_Xinjiang_point.TXT"/>
+ <File Name="Data/PLEIADES-NEO4_MEM_VISIBILITY_Beijing.TXT"/>
+ <File Name="Data/PLEIADES-NEO4_MEM_VISIBILITY_Hainan_Naval.TXT"/>
+ <File Name="Data/BLUE1_MEM_LLA.TXT"/>
+ <File Name="Data/BLUE1_MEM_VISIBILITY_CSUG.TXT"/>
+ <File Name="Data/BLUE1_MEM_VISIBILITY_PuertollanoSR.TXT"/>
+ <File Name="Data/BLUE1_MEM_VISIBILITY_MilanSR.TXT"/>
+ <File Name="Data/BLUE1_MEM_VISIBILITY_IPEV_Ny_Alesund.TXT"/>
+ <File Name="Data/BLUE1_MEM_VISIBILITY_IPEV_Dumont_DUrville.TXT"/>
+ <File Name="Data/BLUE1_MEM_VISIBILITY_IPEV_BA_Concordia.TXT"/>
+ <File Name="Data/BLUE1_MEM_VISIBILITY_AirLiquide_Global_Helium.TXT"/>
+ <File Name="Data/BLUE1_MEM_VISIBILITY_Ariel_University.TXT"/>
+ <File Name="Data/BLUE1_MEM_VISIBILITY_UPF_Faa.TXT"/>
+ <File Name="Data/BLUE1_MEM_VISIBILITY_Univ_Intl_Rabat.TXT"/>
+ <File Name="Data/BLUE1_MEM_VISIBILITY_IPEV_Bretagne.TXT"/>
+ <File Name="Data/BLUE1_MEM_VISIBILITY_Univ_Ouv_Catalogne.TXT"/>
+ <File Name="Data/BLUE1_MEM_VISIBILITY_CNES_Toulouse.TXT"/>
+ <File Name="Data/BLUE1_MEM_VISIBILITY_NPI_Tromso.TXT"/>
+ <File Name="Data/BLUE1_MEM_VISIBILITY_DGER_Station.TXT"/>
+ <File Name="Data/BLUE1_MEM_VISIBILITY_test-station.TXT"/>
+ <File Name="Data/BLUE1_MEM_VISIBILITY_Gao_Airport.TXT"/>
+ <File Name="Data/BLUE1_MEM_VISIBILITY_Rostov.TXT"/>
+ <File Name="Data/BLUE1_MEM_VISIBILITY_Kharkiv.TXT"/>
+ <File Name="Data/BLUE1_MEM_VISIBILITY_Moscow.TXT"/>
+ <File Name="Data/BLUE1_MEM_VISIBILITY_Lattakia.TXT"/>
+ <File Name="Data/BLUE1_MEM_VISIBILITY_Bagdad.TXT"/>
+ <File Name="Data/BLUE1_MEM_VISIBILITY_Teheran.TXT"/>
+ <File Name="Data/BLUE1_MEM_VISIBILITY_Kabul.TXT"/>
+ <File Name="Data/BLUE1_MEM_VISIBILITY_Baikonur.TXT"/>
+ <File Name="Data/BLUE1_MEM_VISIBILITY_Xinjiang_point.TXT"/>
+ <File Name="Data/BLUE1_MEM_VISIBILITY_Beijing.TXT"/>
+ <File Name="Data/BLUE1_MEM_VISIBILITY_Hainan_Naval.TXT"/>
+ <File Name="Data/BLUE2_MEM_LLA.TXT"/>
+ <File Name="Data/BLUE2_MEM_VISIBILITY_CSUG.TXT"/>
+ <File Name="Data/BLUE2_MEM_VISIBILITY_PuertollanoSR.TXT"/>
+ <File Name="Data/BLUE2_MEM_VISIBILITY_MilanSR.TXT"/>
+ <File Name="Data/BLUE2_MEM_VISIBILITY_IPEV_Ny_Alesund.TXT"/>
+ <File Name="Data/BLUE2_MEM_VISIBILITY_IPEV_Dumont_DUrville.TXT"/>
+ <File Name="Data/BLUE2_MEM_VISIBILITY_IPEV_BA_Concordia.TXT"/>
+ <File Name="Data/BLUE2_MEM_VISIBILITY_AirLiquide_Global_Helium.TXT"/>
+ <File Name="Data/BLUE2_MEM_VISIBILITY_Ariel_University.TXT"/>
+ <File Name="Data/BLUE2_MEM_VISIBILITY_UPF_Faa.TXT"/>
+ <File Name="Data/BLUE2_MEM_VISIBILITY_Univ_Intl_Rabat.TXT"/>
+ <File Name="Data/BLUE2_MEM_VISIBILITY_IPEV_Bretagne.TXT"/>
+ <File Name="Data/BLUE2_MEM_VISIBILITY_Univ_Ouv_Catalogne.TXT"/>
+ <File Name="Data/BLUE2_MEM_VISIBILITY_CNES_Toulouse.TXT"/>
+ <File Name="Data/BLUE2_MEM_VISIBILITY_NPI_Tromso.TXT"/>
+ <File Name="Data/BLUE2_MEM_VISIBILITY_DGER_Station.TXT"/>
+ <File Name="Data/BLUE2_MEM_VISIBILITY_test-station.TXT"/>
+ <File Name="Data/BLUE2_MEM_VISIBILITY_Gao_Airport.TXT"/>
+ <File Name="Data/BLUE2_MEM_VISIBILITY_Rostov.TXT"/>
+ <File Name="Data/BLUE2_MEM_VISIBILITY_Kharkiv.TXT"/>
+ <File Name="Data/BLUE2_MEM_VISIBILITY_Moscow.TXT"/>
+ <File Name="Data/BLUE2_MEM_VISIBILITY_Lattakia.TXT"/>
+ <File Name="Data/BLUE2_MEM_VISIBILITY_Bagdad.TXT"/>
+ <File Name="Data/BLUE2_MEM_VISIBILITY_Teheran.TXT"/>
+ <File Name="Data/BLUE2_MEM_VISIBILITY_Kabul.TXT"/>
+ <File Name="Data/BLUE2_MEM_VISIBILITY_Baikonur.TXT"/>
+ <File Name="Data/BLUE2_MEM_VISIBILITY_Xinjiang_point.TXT"/>
+ <File Name="Data/BLUE2_MEM_VISIBILITY_Beijing.TXT"/>
+ <File Name="Data/BLUE2_MEM_VISIBILITY_Hainan_Naval.TXT"/>
+ <File Name="Data/RED1_MEM_LLA.TXT"/>
+ <File Name="Data/RED1_MEM_VISIBILITY_CSUG.TXT"/>
+ <File Name="Data/RED1_MEM_VISIBILITY_PuertollanoSR.TXT"/>
+ <File Name="Data/RED1_MEM_VISIBILITY_MilanSR.TXT"/>
+ <File Name="Data/RED1_MEM_VISIBILITY_IPEV_Ny_Alesund.TXT"/>
+ <File Name="Data/RED1_MEM_VISIBILITY_IPEV_Dumont_DUrville.TXT"/>
+ <File Name="Data/RED1_MEM_VISIBILITY_IPEV_BA_Concordia.TXT"/>
+ <File Name="Data/RED1_MEM_VISIBILITY_AirLiquide_Global_Helium.TXT"/>
+ <File Name="Data/RED1_MEM_VISIBILITY_Ariel_University.TXT"/>
+ <File Name="Data/RED1_MEM_VISIBILITY_UPF_Faa.TXT"/>
+ <File Name="Data/RED1_MEM_VISIBILITY_Univ_Intl_Rabat.TXT"/>
+ <File Name="Data/RED1_MEM_VISIBILITY_IPEV_Bretagne.TXT"/>
+ <File Name="Data/RED1_MEM_VISIBILITY_Univ_Ouv_Catalogne.TXT"/>
+ <File Name="Data/RED1_MEM_VISIBILITY_CNES_Toulouse.TXT"/>
+ <File Name="Data/RED1_MEM_VISIBILITY_NPI_Tromso.TXT"/>
+ <File Name="Data/RED1_MEM_VISIBILITY_DGER_Station.TXT"/>
+ <File Name="Data/RED1_MEM_VISIBILITY_test-station.TXT"/>
+ <File Name="Data/RED1_MEM_VISIBILITY_Gao_Airport.TXT"/>
+ <File Name="Data/RED1_MEM_VISIBILITY_Rostov.TXT"/>
+ <File Name="Data/RED1_MEM_VISIBILITY_Kharkiv.TXT"/>
+ <File Name="Data/RED1_MEM_VISIBILITY_Moscow.TXT"/>
+ <File Name="Data/RED1_MEM_VISIBILITY_Lattakia.TXT"/>
+ <File Name="Data/RED1_MEM_VISIBILITY_Bagdad.TXT"/>
+ <File Name="Data/RED1_MEM_VISIBILITY_Teheran.TXT"/>
+ <File Name="Data/RED1_MEM_VISIBILITY_Kabul.TXT"/>
+ <File Name="Data/RED1_MEM_VISIBILITY_Baikonur.TXT"/>
+ <File Name="Data/RED1_MEM_VISIBILITY_Xinjiang_point.TXT"/>
+ <File Name="Data/RED1_MEM_VISIBILITY_Beijing.TXT"/>
+ <File Name="Data/RED1_MEM_VISIBILITY_Hainan_Naval.TXT"/>
+ <File Name="Data/RED2_MEM_LLA.TXT"/>
+ <File Name="Data/RED2_MEM_VISIBILITY_CSUG.TXT"/>
+ <File Name="Data/RED2_MEM_VISIBILITY_PuertollanoSR.TXT"/>
+ <File Name="Data/RED2_MEM_VISIBILITY_MilanSR.TXT"/>
+ <File Name="Data/RED2_MEM_VISIBILITY_IPEV_Ny_Alesund.TXT"/>
+ <File Name="Data/RED2_MEM_VISIBILITY_IPEV_Dumont_DUrville.TXT"/>
+ <File Name="Data/RED2_MEM_VISIBILITY_IPEV_BA_Concordia.TXT"/>
+ <File Name="Data/RED2_MEM_VISIBILITY_AirLiquide_Global_Helium.TXT"/>
+ <File Name="Data/RED2_MEM_VISIBILITY_Ariel_University.TXT"/>
+ <File Name="Data/RED2_MEM_VISIBILITY_UPF_Faa.TXT"/>
+ <File Name="Data/RED2_MEM_VISIBILITY_Univ_Intl_Rabat.TXT"/>
+ <File Name="Data/RED2_MEM_VISIBILITY_IPEV_Bretagne.TXT"/>
+ <File Name="Data/RED2_MEM_VISIBILITY_Univ_Ouv_Catalogne.TXT"/>
+ <File Name="Data/RED2_MEM_VISIBILITY_CNES_Toulouse.TXT"/>
+ <File Name="Data/RED2_MEM_VISIBILITY_NPI_Tromso.TXT"/>
+ <File Name="Data/RED2_MEM_VISIBILITY_DGER_Station.TXT"/>
+ <File Name="Data/RED2_MEM_VISIBILITY_test-station.TXT"/>
+ <File Name="Data/RED2_MEM_VISIBILITY_Gao_Airport.TXT"/>
+ <File Name="Data/RED2_MEM_VISIBILITY_Rostov.TXT"/>
+ <File Name="Data/RED2_MEM_VISIBILITY_Kharkiv.TXT"/>
+ <File Name="Data/RED2_MEM_VISIBILITY_Moscow.TXT"/>
+ <File Name="Data/RED2_MEM_VISIBILITY_Lattakia.TXT"/>
+ <File Name="Data/RED2_MEM_VISIBILITY_Bagdad.TXT"/>
+ <File Name="Data/RED2_MEM_VISIBILITY_Teheran.TXT"/>
+ <File Name="Data/RED2_MEM_VISIBILITY_Kabul.TXT"/>
+ <File Name="Data/RED2_MEM_VISIBILITY_Baikonur.TXT"/>
+ <File Name="Data/RED2_MEM_VISIBILITY_Xinjiang_point.TXT"/>
+ <File Name="Data/RED2_MEM_VISIBILITY_Beijing.TXT"/>
+ <File Name="Data/RED2_MEM_VISIBILITY_Hainan_Naval.TXT"/>
+ </AdditionalFiles>
+ <States>
+  <Instant Time="0 0" TimeRatio="1" Label="Initial state">
+   <AppState Id="0">
+    <Command Str="CMD PROP WindowGeometry 0 0 800 640"/>
+    <Command Str="CMD PROP CameraDesc ecliptic Sol/Earth nil 0.007283254636522 0.001179635528706 0.000231526022466 0.712167126874237 0.198544959469513 -0.667006536346601 0.092196328234123 0.279252678155899"/>
+    <Command Str="CMD STRUCT TrackWindow &quot;Sol/Earth/Sat&quot; 1 1"/>
+    <Command Str="CMD STRUCT TrackWindow &quot;Sol/Earth/PLEIADES1A&quot; 1 1"/>
+    <Command Str="CMD STRUCT TrackWindow &quot;Sol/Earth/PLEIADES1B&quot; 1 1"/>
+    <Command Str="CMD STRUCT TrackWindow &quot;Sol/Earth/PLEIADES-NEO3&quot; 1 1"/>
+    <Command Str="CMD STRUCT TrackWindow &quot;Sol/Earth/PLEIADES-NEO4&quot; 1 1"/>
+    <Command Str="CMD STRUCT TrackWindow &quot;Sol/Earth/BLUE1&quot; 1 1"/>
+    <Command Str="CMD STRUCT TrackWindow &quot;Sol/Earth/BLUE2&quot; 1 1"/>
+    <Command Str="CMD STRUCT TrackWindow &quot;Sol/Earth/RED1&quot; 1 1"/>
+    <Command Str="CMD STRUCT TrackWindow &quot;Sol/Earth/RED2&quot; 1 1"/>
+    <Command Str="CMD STRUCT AimContourVisible &quot;Sol/Earth/Sat/sensor_Sat&quot; false"/>
+    <Command Str="CMD STRUCT AimContourVisible &quot;Sol/Earth/PLEIADES1A/sensor_PLEIADES1A&quot; false"/>
+    <Command Str="CMD STRUCT AimContourVisible &quot;Sol/Earth/PLEIADES1B/sensor_PLEIADES1B&quot; false"/>
+    <Command Str="CMD STRUCT AimContourVisible &quot;Sol/Earth/PLEIADES-NEO3/sensor_PLEIADES-NEO3&quot; false"/>
+    <Command Str="CMD STRUCT AimContourVisible &quot;Sol/Earth/PLEIADES-NEO4/sensor_PLEIADES-NEO4&quot; false"/>
+    <Command Str="CMD STRUCT AimContourVisible &quot;Sol/Earth/BLUE1/sensor_BLUE1&quot; false"/>
+    <Command Str="CMD STRUCT AimContourVisible &quot;Sol/Earth/BLUE2/sensor_BLUE2&quot; false"/>
+    <Command Str="CMD STRUCT AimContourVisible &quot;Sol/Earth/RED1/sensor_RED1&quot; false"/>
+    <Command Str="CMD STRUCT AimContourVisible &quot;Sol/Earth/RED2/sensor_RED2&quot; false"/>
+    <Command Str="CMD STRUCT AimVolumeVisible &quot;Sol/Earth/Sat/sensor_Sat&quot; false"/>
+    <Command Str="CMD STRUCT AimVolumeVisible &quot;Sol/Earth/PLEIADES1A/sensor_PLEIADES1A&quot; false"/>
+    <Command Str="CMD STRUCT AimVolumeVisible &quot;Sol/Earth/PLEIADES1B/sensor_PLEIADES1B&quot; false"/>
+    <Command Str="CMD STRUCT AimVolumeVisible &quot;Sol/Earth/PLEIADES-NEO3/sensor_PLEIADES-NEO3&quot; false"/>
+    <Command Str="CMD STRUCT AimVolumeVisible &quot;Sol/Earth/PLEIADES-NEO4/sensor_PLEIADES-NEO4&quot; false"/>
+    <Command Str="CMD STRUCT AimVolumeVisible &quot;Sol/Earth/BLUE1/sensor_BLUE1&quot; false"/>
+    <Command Str="CMD STRUCT AimVolumeVisible &quot;Sol/Earth/BLUE2/sensor_BLUE2&quot; false"/>
+    <Command Str="CMD STRUCT AimVolumeVisible &quot;Sol/Earth/RED1/sensor_RED1&quot; false"/>
+    <Command Str="CMD STRUCT AimVolumeVisible &quot;Sol/Earth/RED2/sensor_RED2&quot; false"/>
+   </AppState>
+   <AppState Id="1">
+    <Command Str="CMD PROP WindowGeometry 800 0 800 640"/>
+    <Command Str="CMD STRUCT TrackWindow &quot;Sol/Earth/Sat&quot; 1 1"/>
+    <Command Str="CMD STRUCT TrackWindow &quot;Sol/Earth/PLEIADES1A&quot; 1 1"/>
+    <Command Str="CMD STRUCT TrackWindow &quot;Sol/Earth/PLEIADES1B&quot; 1 1"/>
+    <Command Str="CMD STRUCT TrackWindow &quot;Sol/Earth/PLEIADES-NEO3&quot; 1 1"/>
+    <Command Str="CMD STRUCT TrackWindow &quot;Sol/Earth/PLEIADES-NEO4&quot; 1 1"/>
+    <Command Str="CMD STRUCT TrackWindow &quot;Sol/Earth/BLUE1&quot; 1 1"/>
+    <Command Str="CMD STRUCT TrackWindow &quot;Sol/Earth/BLUE2&quot; 1 1"/>
+    <Command Str="CMD STRUCT TrackWindow &quot;Sol/Earth/RED1&quot; 1 1"/>
+    <Command Str="CMD STRUCT TrackWindow &quot;Sol/Earth/RED2&quot; 1 1"/>
+    <Command Str="CMD STRUCT AimContourVisible &quot;Sol/Earth/Sat/sensor_Sat&quot; false"/>
+    <Command Str="CMD STRUCT AimContourVisible &quot;Sol/Earth/PLEIADES1A/sensor_PLEIADES1A&quot; false"/>
+    <Command Str="CMD STRUCT AimContourVisible &quot;Sol/Earth/PLEIADES1B/sensor_PLEIADES1B&quot; false"/>
+    <Command Str="CMD STRUCT AimContourVisible &quot;Sol/Earth/PLEIADES-NEO3/sensor_PLEIADES-NEO3&quot; false"/>
+    <Command Str="CMD STRUCT AimContourVisible &quot;Sol/Earth/PLEIADES-NEO4/sensor_PLEIADES-NEO4&quot; false"/>
+    <Command Str="CMD STRUCT AimContourVisible &quot;Sol/Earth/BLUE1/sensor_BLUE1&quot; false"/>
+    <Command Str="CMD STRUCT AimContourVisible &quot;Sol/Earth/BLUE2/sensor_BLUE2&quot; false"/>
+    <Command Str="CMD STRUCT AimContourVisible &quot;Sol/Earth/RED1/sensor_RED1&quot; false"/>
+    <Command Str="CMD STRUCT AimContourVisible &quot;Sol/Earth/RED2/sensor_RED2&quot; false"/>
+    <Command Str="CMD STRUCT AimTraceVisible &quot;Sol/Earth/Sat/sensor_Sat&quot; false"/>
+    <Command Str="CMD STRUCT AimTraceVisible &quot;Sol/Earth/PLEIADES1A/sensor_PLEIADES1A&quot; false"/>
+    <Command Str="CMD STRUCT AimTraceVisible &quot;Sol/Earth/PLEIADES1B/sensor_PLEIADES1B&quot; false"/>
+    <Command Str="CMD STRUCT AimTraceVisible &quot;Sol/Earth/PLEIADES-NEO3/sensor_PLEIADES-NEO3&quot; false"/>
+    <Command Str="CMD STRUCT AimTraceVisible &quot;Sol/Earth/PLEIADES-NEO4/sensor_PLEIADES-NEO4&quot; false"/>
+    <Command Str="CMD STRUCT AimTraceVisible &quot;Sol/Earth/BLUE1/sensor_BLUE1&quot; false"/>
+    <Command Str="CMD STRUCT AimTraceVisible &quot;Sol/Earth/BLUE2/sensor_BLUE2&quot; false"/>
+    <Command Str="CMD STRUCT AimTraceVisible &quot;Sol/Earth/RED1/sensor_RED1&quot; false"/>
+    <Command Str="CMD STRUCT AimTraceVisible &quot;Sol/Earth/RED2/sensor_RED2&quot; false"/>
+   </AppState>
+   <AppState Id="2">
+    <Command Str="CMD PROP WindowGeometry 1200 660 700 300"/>
+   </AppState>
+  </Instant>
+ </States>
+</Project>
